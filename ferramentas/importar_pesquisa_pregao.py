@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse, csv, hashlib, json, re
 from pathlib import Path
 from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+from urllib.request import HTTPError, Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "dados" / "market_data" / "raw"
@@ -20,9 +20,19 @@ ARQUIVOS = {
 }
 
 def get_json(url: str) -> dict:
-    req = Request(url, headers={"User-Agent": "B3-Dados/1.0"})
-    with urlopen(req, timeout=60) as r:
-        return json.loads(r.read().decode("utf-8"))
+    req = Request(url, headers={
+        "User-Agent": "B3-Dados/1.0",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://www.b3.com.br/",
+    })
+    try:
+        with urlopen(req, timeout=60) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(
+            f"B3 requestname HTTP {exc.code}: {body[:1000]}"
+        ) from exc
 
 def get_bytes(url: str) -> bytes:
     req = Request(url, headers={"User-Agent": "B3-Dados/1.0"})
@@ -68,7 +78,7 @@ def baixar(codigo: str, date: str) -> dict:
     if codigo not in ARQUIVOS:
         raise ValueError(f"Arquivo não suportado: {codigo}")
     table = ARQUIVOS[codigo]
-    qs = urlencode({"fileName": table, "date": date})
+    qs = urlencode({"fileName": table, "date": date, "recaptchaToken": ""})
     info = get_json(f"https://arquivos.b3.com.br/api/download/requestname?{qs}")
     token = info.get("token")
     if not token and info.get("redirectUrl"):
