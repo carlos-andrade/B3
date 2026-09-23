@@ -11,12 +11,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  ingest-1995-1998:
+  ingest-1999-2002:
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
-        year: [1995, 1996, 1997, 1998]
+        year: [1999, 2000, 2001, 2002]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
