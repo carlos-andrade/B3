@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "ano": 1989,
+  "parser_version": "1.1.0",
+  "source": "B3",
+  "raw_file": "COTAHIST_A1989.ZIP",
+  "raw_sha256": "9f2d468dbbd9ff2ffcf960501cbb0a66d3921ecd7fbb9305a8c6269f302c503d",
+  "normalized_file": "COTAHIST_A1989.csv",
+  "normalized_sha256": "fd7ad4ee1b1d2670650f9942a2201c6b9ed7c43a65ac48a444ae0d03ac69c060",
+  "linhas_normalized": 152236,
+  "campos": 25,
+  "primeira_data": "1989-01-02",
+  "ultima_data": "1989-12-28",
+  "datas_invalidas": 0,
+  "datas_fora_do_ano": 0,
+  "duplicidades_chave_candidata": 3,
+  "chave_candidata": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "dismes"
+  ],
+  "evidencia": "NORMALIZED derivado do RAW validado; RAW permanece a fonte primária."
+}
