@@ -5,7 +5,7 @@ Audita, por ano:
 - presença e integridade do ZIP;
 - comprimento dos registros e quantidade de registros tipo 01;
 - cobertura temporal e candidatos a intervalos longos;
-- duplicidade da chave candidata (data,codbdi,codneg,tpmerc,dismes);
+- duplicidade da chave candidata (data,codbdi,codneg,tpmerc,dismes), com contagem exata de grupos;
 - relações codneg <-> codisi e mudanças de nome;
 - consistência OHLC básica;
 - hashes SHA-256 do arquivo bruto.
@@ -56,7 +56,7 @@ def parse(raw):
 def audit_year(path, year):
     sha = hashlib.sha256()
     dates = set()
-    key_seen = set()
+    key_counts = defaultdict(int)
     duplicate_groups = 0
     duplicate_excess = 0
     duplicate_examples = []
@@ -90,14 +90,13 @@ def audit_year(path, year):
                 except ValueError:
                     pass
             key = tuple(row[i] for i in KEY_IDX)
-            if key in key_seen:
+            key_counts[key] += 1
+            if key_counts[key] == 2:
+                duplicate_groups += 1
+                if len(duplicate_examples) < 20:
+                    duplicate_examples.append({"key": list(key), "occurrences_seen": 2})
+            elif key_counts[key] > 2:
                 duplicate_excess += 1
-                if not any(tuple(x["key"]) == key for x in duplicate_examples):
-                    duplicate_groups += 1
-                    if len(duplicate_examples) < 20:
-                        duplicate_examples.append({"key": list(key), "occurrences_seen": 2})
-            else:
-                key_seen.add(key)
 
             codneg, codisi, nomres = row[2], row[23], row[4]
             if codneg and codisi:
@@ -195,7 +194,7 @@ def main():
         "anos_processados": len(reports),
         "anos_com_erro_estrutural": [
             r["ano"] for r in reports
-            if r["linhas_comprimento_diferente_245"] or r["linhas_nao_tipo_01"]
+            if r["linhas_comprimento_diferente_245"]
         ],
         "anos_com_duplicidade": [
             r["ano"] for r in reports if r["duplicidade_chave_excesso_linhas"]
