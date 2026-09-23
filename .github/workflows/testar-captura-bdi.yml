@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
       - name: Capturar
         env:
-          ENDPOINT: ${{ inputs.endpoint }}
+          ENDPOINT: ${{ inputs.endpoint || 'DailyAverageStocks' }}
           DATA: ${{ inputs.date }}
         run: |
           set -euo pipefail
