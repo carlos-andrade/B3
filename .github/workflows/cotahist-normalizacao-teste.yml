@@ -1,0 +1,78 @@
+name: COTAHIST - teste de normalização
+
+on:
+  push:
+    paths:
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Ano COTAHIST a normalizar"
+        required: true
+        default: "1986"
+
+permissions:
+  contents: read
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Selecionar ano
+        shell: bash
+        run: |
+          set -euo pipefail
+          year="${{ inputs.year || '1986' }}"
+          test "$year" -ge 1986
+          echo "ANO=$year" >> "$GITHUB_ENV"
+
+      - name: Normalizar COTAHIST
+        shell: bash
+        run: |
+          set -euo pipefail
+          year="$ANO"
+          zip="dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+          test -s "$zip"
+          mkdir -p /tmp/normalized
+          python scripts/ingestao/normalize_cotahist.py             --zip "$zip"             --output "/tmp/normalized/COTAHIST_A${year}.csv"
+          test -s "/tmp/normalized/COTAHIST_A${year}.csv"
+
+      - name: Auditoria da saída normalizada
+        shell: bash
+        run: |
+          set -euo pipefail
+          year="$ANO"
+          csv="/tmp/normalized/COTAHIST_A${year}.csv"
+          python - "$csv" <<'PY'
+          import csv, sys
+          from pathlib import Path
+          p = Path(sys.argv[1])
+          with p.open(encoding="utf-8", newline="") as f:
+              rows = list(csv.DictReader(f))
+          if not rows:
+              raise SystemExit("NORMALIZED sem registros")
+          required = {"data_pregao", "codneg", "tpmerc", "preabe", "preult", "quatot", "voltot", "codisi"}
+          missing = required - set(rows[0])
+          if missing:
+              raise SystemExit(f"campos ausentes: {sorted(missing)}")
+          dates = [r["data_pregao"] for r in rows if r["data_pregao"]]
+          print(f"LINHAS_NORMALIZED={len(rows)}")
+          print(f"PRIMEIRA_DATA={min(dates)}")
+          print(f"ULTIMA_DATA={max(dates)}")
+          print(f"CAMPOS={len(rows[0])}")
+          PY
+
+      - name: Publicar evidência
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalized-${{ env.ANO }}
+          path: /tmp/normalized/COTAHIST_A${{ env.ANO }}.csv
+          if-no-files-found: error
+          retention-days: 30
