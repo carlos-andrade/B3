@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Captura bruta de uma tabela BDI via API POST.
 
+Validação operacional: endpoint, JSON, tabela, colunas, registros e SHA-256.
+
 Uso:
   python ferramentas/capturar_bdi.py --endpoint DailyAverageStocks --date 2026-09-22
 """
