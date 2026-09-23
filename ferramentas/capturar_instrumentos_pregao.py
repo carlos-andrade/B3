@@ -4,7 +4,9 @@
 Fonte oficial:
 https://www.b3.com.br/pesquisapregao/download?filelist=IN{YYMMDD}.zip
 
-O arquivo é tratado como artefato bruto. O script:
+O arquivo é tratado como artefato bruto.
+
+Versão de captura: 1.0.1. O script:
 1. baixa o ZIP;
 2. calcula SHA-256;
 3. inspeciona ZIP externo e interno;
