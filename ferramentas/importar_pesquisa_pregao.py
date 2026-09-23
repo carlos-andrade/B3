@@ -86,6 +86,7 @@ def baixar(codigo: str, date: str) -> dict:
     if supplied_ext and not name.lower().endswith(supplied_ext.lower()):
         name += supplied_ext
     path = target / name
+    validation = validar_csv(data, table)
     path.write_bytes(data)
     manifest = {
         "date": date,
@@ -95,7 +96,8 @@ def baixar(codigo: str, date: str) -> dict:
         "url_request": f"https://arquivos.b3.com.br/api/download/requestname?fileName={table}&date={date}&recaptchaToken=",
         "file": str(path.relative_to(ROOT)),
         "size_bytes": len(data),
-        "sha256": sha256(data),\n        "validation": validation,
+        "sha256": sha256(data),
+        "validation": validation,
     }
     mdir = MANIFESTS / codigo
     mdir.mkdir(parents=True, exist_ok=True)
