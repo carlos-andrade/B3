@@ -95,6 +95,10 @@ with zipfile.ZipFile(__import__("io").BytesIO(inner)) as z:
             # Approximate instrument family from the first informative category fields.
             family=d.get("AsstDesc") or d.get("Asst") or d.get("SctyCtgy") or "SEM_CLASSIFICACAO"
             type_counts[family]+=1
+            for field in field_counts:
+                value=d.get(field, "").strip()
+                if value:
+                    field_counts[field][value]+=1
             elem.clear()
 
 valid=(declared is not None and rows==declared)
