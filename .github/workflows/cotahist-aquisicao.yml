@@ -11,35 +11,42 @@ on:
   workflow_dispatch:
 
 jobs:
-  probe-1986:
+  ingest-1987-1990:
+    strategy:
+      fail-fast: false
+      matrix:
+        year: [1987, 1988, 1989, 1990]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Baixar COTAHIST 1986
+      - name: Baixar COTAHIST ${{ matrix.year }}
         shell: bash
         run: |
           set -euo pipefail
+          year="${{ matrix.year }}"
           mkdir -p dados/cotahist/raw/anual dados/cotahist/manifests dados/cotahist/checksums
-          url="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1986.ZIP"
+          url="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A${year}.ZIP"
           curl --fail --location --retry 5 --retry-delay 5 --connect-timeout 30 --max-time 300 \
-            "$url" -o dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
-          test -s dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
-          sha256sum dados/cotahist/raw/anual/COTAHIST_A1986.ZIP | tee dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256
+            "$url" -o "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+          test -s "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+          sha256sum "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP" | tee "dados/cotahist/checksums/COTAHIST_A${year}.ZIP.sha256"
 
       - name: Validar ZIP e layout
         shell: bash
         run: |
           set -euo pipefail
-          zipinfo -1 dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
-          rm -rf /tmp/cotahist1986
-          mkdir -p /tmp/cotahist1986
-          unzip -oq dados/cotahist/raw/anual/COTAHIST_A1986.ZIP -d /tmp/cotahist1986
-          files=$(find /tmp/cotahist1986 -type f | wc -l)
+          year="${{ matrix.year }}"
+          zip="dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+          zipinfo -1 "$zip"
+          rm -rf "/tmp/cotahist${year}"
+          mkdir -p "/tmp/cotahist${year}"
+          unzip -oq "$zip" -d "/tmp/cotahist${year}"
+          files=$(find "/tmp/cotahist${year}" -type f | wc -l)
           test "$files" -eq 1
-          txt=$(find /tmp/cotahist1986 -type f | head -1)
+          txt=$(find "/tmp/cotahist${year}" -type f | head -1)
           python - "$txt" <<'PY'
           import sys
           from pathlib import Path
@@ -57,7 +64,7 @@ jobs:
               raise SystemExit("trailer 99 ausente")
           counts={}
           for x in lines:
-              key=x[:2].decode("ascii", "replace")
+              key=x[:2].decode("ascii","replace")
               counts[key]=counts.get(key,0)+1
           quotes=counts.get("01",0)
           if quotes == 0:
@@ -65,51 +72,53 @@ jobs:
           print(f"OK: {p.name}; registros={len(lines)}; tipos={counts}; cotacoes={quotes}")
           PY
 
-      - name: Registrar manifesto 1986
+      - name: Registrar manifesto
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
+          year="${{ matrix.year }}"
+          python - "$year" <<'PY'
           from pathlib import Path
-          import hashlib, json, datetime
-          zip_path=Path("dados/cotahist/raw/anual/COTAHIST_A1986.ZIP")
+          import hashlib, json, datetime, sys
+          year=int(sys.argv[1])
+          zip_path=Path(f"dados/cotahist/raw/anual/COTAHIST_A{year}.ZIP")
           digest=hashlib.sha256(zip_path.read_bytes()).hexdigest()
           manifest={
-              "ano":1986,
+              "ano":year,
               "fonte":"B3",
-              "arquivo_original":"COTAHIST_A1986.ZIP",
-              "url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1986.ZIP",
+              "arquivo_original":zip_path.name,
+              "url":f"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A{year}.ZIP",
               "sha256":digest,
               "status":"VALIDADO",
-              "validacao":"ZIP com 1 arquivo COTAHIST.A1986; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
+              "validacao":"ZIP com 1 arquivo COTAHIST; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
               "acquired_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
           }
-          Path("dados/cotahist/manifests/COTAHIST_A1986.json").write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\n")
+          Path(f"dados/cotahist/manifests/COTAHIST_A{year}.json").write_text(
+              json.dumps(manifest,indent=2,ensure_ascii=False)+"\n"
+          )
           PY
 
       - name: Persistir evidência no repositório
         shell: bash
         run: |
           set -euo pipefail
+          year="${{ matrix.year }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/raw/anual/COTAHIST_A1986.ZIP \
-            dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256 \
-            dados/cotahist/manifests/COTAHIST_A1986.json
-          if git diff --cached --quiet; then
-            echo "Nenhuma alteração de dados para persistir."
-          else
-            git commit -m "data(ingestao): persistir COTAHIST 1986 validado"
-            git push origin HEAD:main
-          fi
+          git add "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP" \
+            "dados/cotahist/checksums/COTAHIST_A${year}.ZIP.sha256" \
+            "dados/cotahist/manifests/COTAHIST_A${year}.json"
+          git commit -m "data(ingestao): persistir COTAHIST ${year} validado"
+          git push origin HEAD:main
 
       - name: Publicar artefato de validação
         uses: actions/upload-artifact@v4
         with:
-          name: cotahist-1986-validado
+          name: cotahist-${{ matrix.year }}-validado
           path: |
-            dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
-            dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256
-            dados/cotahist/manifests/COTAHIST_A1986.json
+            dados/cotahist/raw/anual/COTAHIST_A${{ matrix.year }}.ZIP
+            dados/cotahist/checksums/COTAHIST_A${{ matrix.year }}.ZIP.sha256
+            dados/cotahist/manifests/COTAHIST_A${{ matrix.year }}.json
           if-no-files-found: error
           retention-days: 90
+
