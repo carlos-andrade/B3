@@ -78,7 +78,7 @@ with zipfile.ZipFile(__import__("io").BytesIO(inner)) as z:
     ts, xml_name, declared=xmls[0]
     out_csv=f"ativos/catalogo/INVENTARIO_B3_{DATE}.csv"
     os.makedirs(os.path.dirname(out_csv),exist_ok=True)
-    type_counts=Counter(); rows=0; missing_ticker=0; ids=set(); duplicate_ids=0
+    type_counts=Counter(); field_counts={k:Counter() for k in ["Asst","AsstDesc","SctyCtgy","CFICd","SgmtNm","MktNm"]}; rows=0; missing_ticker=0; ids=set(); duplicate_ids=0
     with z.open(xml_name) as xf, open(out_csv,"w",newline="",encoding="utf-8") as out:
         w=csv.DictWriter(out,fieldnames=FIELDS,delimiter=";",extrasaction="ignore")
         w.writeheader()
@@ -103,7 +103,7 @@ stats={
 "raw_size_bytes":os.path.getsize(ZIP_PATH),"raw_sha256":sha256(ZIP_PATH),
 "selected_snapshot":xml_name,"creation_timestamp":ts,"declared_records":declared,
 "parsed_records":rows,"count_validation":valid,"missing_ticker":missing_ticker,
-"duplicate_fin_instrm_id":duplicate_ids,"family_counts":dict(type_counts.most_common())
+"duplicate_fin_instrm_id":duplicate_ids,"family_counts":dict(type_counts.most_common()),\n"field_distributions":{k:dict(v.most_common(100)) for k,v in field_counts.items()}
 }
 os.makedirs("ativos/catalogo/estatisticas",exist_ok=True)
 with open(f"ativos/catalogo/estatisticas/ESTATISTICAS_BVBG028_{DATE}.json","w",encoding="utf-8") as f:
