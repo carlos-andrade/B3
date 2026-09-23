@@ -1,0 +1,46 @@
+name: Atualizar catálogo B3
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Data de referência YYYY-MM-DD"
+        required: true
+        type: string
+  schedule:
+    - cron: "30 22 * * 1-5"
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Definir data
+        id: data
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.date }}" ]; then
+            echo "date=${{ inputs.date }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Importar BVBG.028.02
+        run: python ferramentas/importar_bvbg028.py --date "${{ steps.data.outputs.date }}"
+
+      - name: Publicar inventário
+        run: |
+          git config user.name "B3 Catalog Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ativos/catalogo ativos/instrumentos
+          git diff --cached --quiet || git commit -m "B3: atualizar inventário BVBG.028.02 ${{ steps.data.outputs.date }}"
+          git push
