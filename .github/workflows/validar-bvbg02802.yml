@@ -1,0 +1,45 @@
+name: Validar BVBG.028.02
+
+on:
+  push:
+    paths:
+      - "ferramentas/capturar_instrumentos_pregao.py"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Data do pregão (YYYY-MM-DD)"
+        required: true
+        default: "2026-09-22"
+
+permissions:
+  contents: write
+
+jobs:
+  captura:
+    runs-on: ubuntu-latest
+    env:
+      DATA: ${{ inputs.date || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Definir data
+        run: |
+          set -euo pipefail
+          if [ -z "$DATA" ]; then
+            DATA="$(TZ=America/Sao_Paulo date -d 'yesterday' +%F)"
+          fi
+          echo "DATA=$DATA" >> "$GITHUB_ENV"
+      - name: Capturar e validar
+        run: |
+          set -euo pipefail
+          python ferramentas/capturar_instrumentos_pregao.py --date "$DATA"
+      - name: Commit manifesto
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ativos/catalogo/fontes/INSTRUMENTOS_BVBG028_02_${DATA}.json
+          git commit -m "data(b3): manifesto BVBG.028.02 $DATA"
+          git push
