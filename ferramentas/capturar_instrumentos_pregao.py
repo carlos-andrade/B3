@@ -14,9 +14,8 @@ Versão de captura: 1.0.1. O script:
 5. lê CreDtAndTm e TtlNbOfMsg do header;
 6. registra tamanho, membros e metadados em manifesto.
 
-Não grava o ZIP bruto no Git por padrão, pois a B3 pode publicar artefatos
-superiores ao limite de arquivo do GitHub. O manifesto registra o hash para
-auditoria; o workflow preserva o bruto como artifact do GitHub Actions.
+Grava o ZIP bruto no repositório quando o tamanho permanecer compatível com o
+limite de arquivo do GitHub. O manifesto registra o hash e o caminho do bruto.
 """
 from __future__ import annotations
 
@@ -33,6 +32,7 @@ from pathlib import Path
 BASE = "https://www.b3.com.br/pesquisapregao/download"
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "ativos" / "catalogo" / "fontes"
+RAW_DIR = ROOT / "ativos" / "catalogo" / "raw"
 STAMP_RE = re.compile(rb"<CreDtAndTm>([^<]+)</CreDtAndTm>")
 COUNT_RE = re.compile(rb"<TtlNbOfMsg>([^<]+)</TtlNbOfMsg>")
 
@@ -121,10 +121,10 @@ def main() -> None:
     file_name = f"IN{date_ref:%y%m%d}.zip"
     url = f"{BASE}?filelist={file_name}"
 
-    with tempfile.TemporaryDirectory() as tmp:
-        path = Path(tmp) / file_name
-        size, sha256 = download(url, path)
-        archive = inspect_archive(path)
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    path = RAW_DIR / file_name
+    size, sha256 = download(url, path)
+    archive = inspect_archive(path)
 
     snapshots = archive.get("snapshots", [])
     if not snapshots:
@@ -142,6 +142,7 @@ def main() -> None:
         "url": url,
         "size_bytes": size,
         "sha256": sha256,
+        "raw_file": str(path.relative_to(ROOT)),
         "outer_members": archive["outer_members"],
         "snapshots": sorted(
             snapshots, key=lambda x: x["creation_timestamp"], reverse=True
