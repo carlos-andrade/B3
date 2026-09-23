@@ -84,3 +84,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Pipeline validado em 2026-09-23; captura acionada por push do workflow.
