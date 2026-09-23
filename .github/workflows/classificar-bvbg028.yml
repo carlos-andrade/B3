@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "ferramentas/classificar_inventario_bvbg028.py"
+      - ".github/workflows/classificar-bvbg028.yml"
 
 jobs:
   classificar:
