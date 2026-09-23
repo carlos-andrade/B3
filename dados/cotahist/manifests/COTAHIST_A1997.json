@@ -1,0 +1,10 @@
+{
+  "ano": 1997,
+  "fonte": "B3",
+  "arquivo_original": "COTAHIST_A1997.ZIP",
+  "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1997.ZIP",
+  "sha256": "f6bd380e753ec8024857b739b7d9b010c7467a5fd967e82d01186a46f5e33fc3",
+  "status": "VALIDADO",
+  "validacao": "ZIP com 1 arquivo COTAHIST; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
+  "acquired_at_utc": "2026-09-23T13:34:28.448916+00:00"
+}
