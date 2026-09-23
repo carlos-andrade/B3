@@ -50,6 +50,7 @@ def main() -> None:
         f"{BASE}/{args.endpoint}/{args.date}/{args.date}/"
         f"{args.page}/{PAGE_SIZE}"
     )
+    print(f"BDI_REQUEST={url}")
     data = download(url)
     if not data:
         raise RuntimeError("Resposta BDI vazia.")
@@ -60,7 +61,12 @@ def main() -> None:
     path.write_bytes(data)
 
     payload = json.loads(data.decode("utf-8"))
+    if not isinstance(payload, dict):
+        raise RuntimeError("Resposta BDI não é um objeto JSON.")
+
     table = payload.get("table") or {}
+    if not isinstance(table, dict):
+        raise RuntimeError("Resposta BDI sem objeto table.")
     columns = table.get("columns") or []
     values = table.get("values") or []
 
