@@ -1,0 +1,10 @@
+{
+  "ano": 2007,
+  "fonte": "B3",
+  "arquivo_original": "COTAHIST_A2007.ZIP",
+  "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2007.ZIP",
+  "sha256": "3c46f425112f838f3eb09023c987d7e5e81500610d3e5e40fedefb52d3dffd66",
+  "status": "VALIDADO",
+  "validacao": "ZIP com 1 arquivo COTAHIST; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
+  "acquired_at_utc": "2026-09-23T13:44:21.312819+00:00"
+}
