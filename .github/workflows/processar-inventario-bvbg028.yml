@@ -1,0 +1,33 @@
+name: Processar inventario BVBG.028.02
+on:
+  push:
+    paths:
+      - "ferramentas/processar_inventario_bvbg028.py"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Data do pregao YYYY-MM-DD"
+        required: true
+        default: "2026-09-22"
+jobs:
+  processar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Processar inventario
+        env:
+          DATA: ${{ github.event.inputs.data || '2026-09-22' }}
+        run: python ferramentas/processar_inventario_bvbg028.py
+      - name: Commit inventario
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ativos/catalogo/INVENTARIO_B3_*.csv ativos/catalogo/estatisticas/ ativos/catalogo/logs/
+          git diff --cached --quiet || git commit -m "data(b3): gerar inventario BVBG.028.02"
+          git push
