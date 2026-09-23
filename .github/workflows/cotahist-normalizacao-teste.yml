@@ -5,7 +5,6 @@ on:
     paths:
       - "scripts/ingestao/normalize_cotahist.py"
       - ".github/workflows/cotahist-normalizacao-teste.yml"
-      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
   workflow_dispatch:
     inputs:
       year:
@@ -19,7 +18,7 @@ permissions:
 jobs:
   normalize:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,39 +40,70 @@ jobs:
           year="$ANO"
           zip="dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
           test -s "$zip"
-          mkdir -p /tmp/normalized
+          mkdir -p /tmp/normalized /tmp/quality
           python scripts/ingestao/normalize_cotahist.py             --zip "$zip"             --output "/tmp/normalized/COTAHIST_A${year}.csv"
-          test -s "/tmp/normalized/COTAHIST_A${year}.csv"
 
-      - name: Auditoria da saída normalizada
+      - name: Auditoria de qualidade
         shell: bash
         run: |
           set -euo pipefail
           year="$ANO"
           csv="/tmp/normalized/COTAHIST_A${year}.csv"
-          python - "$csv" <<'PY'
-          import csv, sys
+          report="/tmp/quality/COTAHIST_A${year}_quality.json"
+          python - "$csv" "$report" <<'PY'
+          import csv, json, sys
+          from collections import Counter
           from pathlib import Path
-          p = Path(sys.argv[1])
-          with p.open(encoding="utf-8", newline="") as f:
+
+          csv_path = Path(sys.argv[1])
+          report_path = Path(sys.argv[2])
+
+          with csv_path.open(encoding="utf-8", newline="") as f:
               rows = list(csv.DictReader(f))
+
           if not rows:
               raise SystemExit("NORMALIZED sem registros")
-          required = {"data_pregao", "codneg", "tpmerc", "preabe", "preult", "quatot", "voltot", "codisi"}
-          missing = required - set(rows[0])
+
+          required = {
+              "data_pregao", "codbdi", "codneg", "tpmerc", "nomres",
+              "preabe", "premax", "premin", "premed", "preult",
+              "totneg", "quatot", "voltot", "codisi", "dismes"
+          }
+          missing = sorted(required - set(rows[0]))
           if missing:
-              raise SystemExit(f"campos ausentes: {sorted(missing)}")
+              raise SystemExit(f"campos ausentes: {missing}")
+
           dates = [r["data_pregao"] for r in rows if r["data_pregao"]]
-          print(f"LINHAS_NORMALIZED={len(rows)}")
-          print(f"PRIMEIRA_DATA={min(dates)}")
-          print(f"ULTIMA_DATA={max(dates)}")
-          print(f"CAMPOS={len(rows[0])}")
+          bad_dates = [d for d in dates if len(d) != 10 or d[4] != "-" or d[7] != "-"]
+          keys = [
+              (r["data_pregao"], r["codbdi"], r["codneg"], r["tpmerc"], r["dismes"])
+              for r in rows
+          ]
+          duplicates = sum(c - 1 for c in Counter(keys).values() if c > 1)
+
+          report = {
+              "linhas_normalized": len(rows),
+              "campos": len(rows[0]),
+              "primeira_data": min(dates),
+              "ultima_data": max(dates),
+              "datas_invalidas": len(bad_dates),
+              "duplicidades_chave_candidata": duplicates,
+              "chave_candidata": ["data_pregao", "codbdi", "codneg", "tpmerc", "dismes"],
+              "status": "VALIDADO" if not bad_dates else "REVISAR"
+          }
+          report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          print(json.dumps(report, indent=2, ensure_ascii=False))
+
+          if bad_dates:
+              raise SystemExit("datas inválidas encontradas")
           PY
 
-      - name: Publicar evidência
+      - name: Publicar evidências
         uses: actions/upload-artifact@v4
         with:
           name: cotahist-normalized-${{ env.ANO }}
-          path: /tmp/normalized/COTAHIST_A${{ env.ANO }}.csv
+          path: |
+            /tmp/normalized/COTAHIST_A${{ env.ANO }}.csv
+            /tmp/quality/COTAHIST_A${{ env.ANO }}_quality.json
           if-no-files-found: error
           retention-days: 30
