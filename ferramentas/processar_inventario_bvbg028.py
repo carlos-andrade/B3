@@ -103,7 +103,8 @@ stats={
 "raw_size_bytes":os.path.getsize(ZIP_PATH),"raw_sha256":sha256(ZIP_PATH),
 "selected_snapshot":xml_name,"creation_timestamp":ts,"declared_records":declared,
 "parsed_records":rows,"count_validation":valid,"missing_ticker":missing_ticker,
-"duplicate_fin_instrm_id":duplicate_ids,"family_counts":dict(type_counts.most_common()),\n"field_distributions":{k:dict(v.most_common(100)) for k,v in field_counts.items()}
+"duplicate_fin_instrm_id":duplicate_ids ,"family_counts":dict(type_counts.most_common()),
+"field_distributions":{k:dict(v.most_common(100)) for k,v in field_counts.items()}
 }
 os.makedirs("ativos/catalogo/estatisticas",exist_ok=True)
 with open(f"ativos/catalogo/estatisticas/ESTATISTICAS_BVBG028_{DATE}.json","w",encoding="utf-8") as f:
