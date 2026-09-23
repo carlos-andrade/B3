@@ -1,0 +1,26 @@
+{
+  "capture_date": "2026-09-22",
+  "source": "B3 Pesquisa por Pregão",
+  "layout": "BVBG.028.02",
+  "file_name": "IN260922.zip",
+  "url": "https://www.b3.com.br/pesquisapregao/download?filelist=IN260922.zip",
+  "size_bytes": 20151525,
+  "sha256": "b3ae480a1eb9c2293446b2c9e566d9e8b8d65997e35a3a8767921d5822e4e060",
+  "outer_members": [
+    "IN260922.zip"
+  ],
+  "snapshots": [
+    {
+      "member": "BVBG.028.02_BV000327202609220327118187239047743.xml",
+      "creation_timestamp": "2026-09-22T18:39:18",
+      "declared_records": 120973,
+      "header_probe_bytes": 4096
+    },
+    {
+      "member": "BVBG.028.02_BV000327202609220327157984612152365.xml",
+      "creation_timestamp": "2026-09-22T00:18:57",
+      "declared_records": 120899,
+      "header_probe_bytes": 4096
+    }
+  ]
+}
