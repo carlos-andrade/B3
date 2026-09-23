@@ -35,6 +35,10 @@ jobs:
           ARQUIVO: ${{ inputs.arquivo }}
         run: |
           set -euo pipefail
+          if [ -z "$DATA" ]; then
+            DATA="$(TZ=America/Sao_Paulo date +%F)"
+          fi
+          echo "Data de referência: $DATA"
           if [ -n "$ARQUIVO" ]; then
             python ferramentas/importar_pesquisa_pregao.py --date "$DATA" --arquivo "$ARQUIVO"
           else
@@ -53,6 +57,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhum novo dado para commit."
           else
-            git commit -m "data(b3): captura Pesquisa por Pregao ${{ inputs.date }}"
+            git commit -m "data(b3): captura Pesquisa por Pregao $DATA"
             git push
           fi
