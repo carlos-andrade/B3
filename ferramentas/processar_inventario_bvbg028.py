@@ -114,3 +114,5 @@ with open(f"ativos/catalogo/logs/VALIDACAO_BVBG028_{DATE}.json","w",encoding="ut
 if not valid:
     raise SystemExit(f"VALIDACAO_FALHOU: declarado={declared} parseado={rows}")
 print(json.dumps(stats,ensure_ascii=False,indent=2))
+
+# Acionamento CI: processamento deterministico por data.
