@@ -1,0 +1,50 @@
+name: Testar captura BDI
+
+on:
+  push:
+    paths:
+      - "ferramentas/capturar_bdi.py"
+  workflow_dispatch:
+    inputs:
+      endpoint:
+        description: "Endpoint BDI"
+        required: true
+        default: "DailyAverageStocks"
+      date:
+        description: "Data YYYY-MM-DD"
+        required: true
+        default: "2026-09-22"
+
+permissions:
+  contents: write
+
+jobs:
+  captura:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Capturar
+        env:
+          ENDPOINT: ${{ inputs.endpoint }}
+          DATA: ${{ inputs.date }}
+        run: |
+          set -euo pipefail
+          if [ -z "$DATA" ]; then
+            DATA="$(TZ=America/Sao_Paulo date -d 'yesterday' +%F)"
+          fi
+          python ferramentas/capturar_bdi.py --endpoint "$ENDPOINT" --date "$DATA"
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/bdi/raw dados/bdi/manifests
+          if git diff --cached --quiet; then
+            echo "Nenhum novo dado."
+          else
+            git commit -m "data(b3): captura BDI $DATA"
+            git push
+          fi
