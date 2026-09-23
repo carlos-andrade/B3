@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "ano": 2024,
+  "parser_version": "1.1.0",
+  "source": "B3",
+  "raw_file": "COTAHIST_A2024.ZIP",
+  "raw_sha256": "96a003d10fab0fa2ace0c64cdc2b892b4c111adf9da8e538aa0b28437bd2a172",
+  "normalized_file": "COTAHIST_A2024.csv",
+  "normalized_sha256": "156f0610e3810186cd05632e4726ab12441a46e6d20b123c3ed299892d24076b",
+  "linhas_normalized": 2635561,
+  "campos": 25,
+  "primeira_data": "2024-01-02",
+  "ultima_data": "2024-12-30",
+  "datas_invalidas": 0,
+  "datas_fora_do_ano": 0,
+  "duplicidades_chave_candidata": 27713,
+  "chave_candidata": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "dismes"
+  ],
+  "evidencia": "NORMALIZED derivado do RAW validado; RAW permanece a fonte primária."
+}
