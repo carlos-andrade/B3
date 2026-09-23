@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import argparse
 import csv
-import io
 import zipfile
+from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
 
+
+PARSER_VERSION = "1.1.0"
 
 FIELDS = [
     ("data_pregao", 3, 10, "date"),
@@ -39,12 +41,7 @@ FIELDS = [
     ("dismes", 243, 245, "str"),
 ]
 
-HEADER = [
-    "data_pregao", "codbdi", "codneg", "tpmerc", "nomres", "especi",
-    "prazot", "modref", "preabe", "premax", "premin", "premed", "preult",
-    "preofc", "preofv", "totneg", "quatot", "voltot", "preexe", "indopc",
-    "datven", "fatcot", "ptoexe", "codisi", "dismes",
-]
+HEADER = [field[0] for field in FIELDS]
 
 
 def clean(raw: bytes) -> str:
@@ -63,7 +60,15 @@ def parse_field(raw: bytes, kind: str) -> str:
         return clean(raw)
     if kind == "date":
         value = clean(raw)
-        return "" if value in {"", "00000000"} else f"{value[:4]}-{value[4:6]}-{value[6:8]}"
+        if value in {"", "00000000"}:
+            return ""
+        if len(value) != 8 or not value.isdigit():
+            raise ValueError(f"data inválida: {value!r}")
+        try:
+            parsed = datetime.strptime(value, "%Y%m%d")
+        except ValueError as exc:
+            raise ValueError(f"data inválida: {value!r}") from exc
+        return parsed.strftime("%Y-%m-%d")
     if kind == "price":
         return numeric(raw, 2)
     if kind == "money":
@@ -81,10 +86,7 @@ def normalize_line(line: bytes) -> list[str]:
         raise ValueError(f"registro com {len(line)} bytes; esperado 245")
     if line[:2] != b"01":
         raise ValueError("registro não é 01")
-    values = []
-    for _, start, end, kind in FIELDS:
-        values.append(parse_field(line[start - 1:end], kind))
-    return values
+    return [parse_field(line[start - 1:end], kind) for _, start, end, kind in FIELDS]
 
 
 def main() -> None:
@@ -99,7 +101,7 @@ def main() -> None:
     last_date = None
 
     with zipfile.ZipFile(args.zip) as zf:
-        members = [n for n in zf.namelist() if not n.endswith("/")]
+        members = [name for name in zf.namelist() if not name.endswith("/")]
         if len(members) != 1:
             raise SystemExit(f"ZIP deve conter exatamente 1 arquivo: {members}")
         with zf.open(members[0]) as src, args.output.open("w", encoding="utf-8", newline="") as dst:
@@ -112,11 +114,12 @@ def main() -> None:
                 row = normalize_line(line)
                 writer.writerow(row)
                 quotes += 1
-                d = row[0]
-                first_date = d if first_date is None else min(first_date, d)
-                last_date = d if last_date is None else max(last_date, d)
+                date = row[0]
+                first_date = date if first_date is None else min(first_date, date)
+                last_date = date if last_date is None else max(last_date, date)
 
     print(f"NORMALIZADO: {args.output}")
+    print(f"PARSER_VERSION={PARSER_VERSION}")
     print(f"COTACOES_01={quotes}")
     print(f"PRIMEIRA_DATA={first_date}")
     print(f"ULTIMA_DATA={last_date}")
