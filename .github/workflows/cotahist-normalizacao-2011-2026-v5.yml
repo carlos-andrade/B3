@@ -1,0 +1,19 @@
+name: COTAHIST - teste executor normalizacao 2011-2026 V5
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-normalizacao-2011-2026-v5.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Teste
+        run: |
+          echo "WORKFLOW_OK"
+          echo "NORMALIZACAO_V5_ATIVA"
