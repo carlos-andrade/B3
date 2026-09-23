@@ -24,7 +24,9 @@ O arquivo oficial capturado é `ativos/catalogo/raw/IN260922.zip`.
 
 A classificação não deve ser feita pelo ticker isoladamente. O inventário contém campos estruturais como `Asst`, `AsstDesc`, `SctyCtgy` e `CFICd`.
 
-O CFI é uma classificação internacional de instrumentos financeiros definida pela ISO 10962; o código possui seis caracteres e começa pela categoria do instrumento. A ISO descreve o CFI como sistema aplicável a instrumentos domésticos e internacionais. 
+A documentação da B3 define `SctyCtgy` como Security Category e informa que sua codificação depende de uma lista externa (`ExternalSecurityCategoryCode`). Portanto, os códigos numéricos de `SctyCtgy` observados no snapshot não serão traduzidos por inferência.
+
+O CFI é uma classificação internacional de instrumentos financeiros definida pela ISO 10962:2021. O código possui seis caracteres, com categoria, grupo e atributos.
 
 ## 3. Principais códigos CFI
 
@@ -131,11 +133,15 @@ A classificação final deverá utilizar, em ordem de prioridade:
 5. mercado/segmento oficial;
 6. apenas como validação auxiliar, ticker e ativo-base.
 
-## 9. Fonte normativa
+## 9. Fonte normativa e controle de classificação
 
-A ISO 10962:2021 define a estrutura do CFI Code e permanece como referência internacional para classificação de instrumentos financeiros. A própria ISO informa que o CFI utiliza categoria, grupo e atributos para caracterizar o instrumento. 
+A B3 documenta `SctyCtgy` como Security Category e informa que a correspondência dos códigos é mantida em uma lista externa denominada `ExternalSecurityCategoryCode`. A tradução dos códigos numéricos somente será considerada oficial após a captura dessa lista.
 
-Fonte: ISO 10962:2021. 
+A ISO 10962:2021 permanece como referência internacional para a estrutura do CFI Code. A ISO descreve o CFI como código de seis caracteres formado por categoria, grupo e atributos.
+
+Fonte B3: catálogo de taxonomia UP2DATA / documentação do cadastro de instrumentos.
+
+Fonte ISO: ISO 10962:2021.
 
 ## 10. Status
 
