@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Baixa arquivos da API CSV oficial da B3 e gera manifesto auditável."""
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, csv, hashlib, json, re
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -35,6 +35,35 @@ def sha256(data: bytes) -> str:
 def safe_filename(name: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", name)
 
+
+def validar_csv(data: bytes, expected_table: str) -> dict:
+    text = data.decode("iso-8859-1")
+    lines = text.splitlines()
+    status = None
+    header_idx = None
+    for i, line in enumerate(lines[:10]):
+        if line.strip().lower().startswith("status do arquivo"):
+            status = line.split(":", 1)[-1].strip()
+        if ";" in line and ("TckrSymb" in line or "RptDt" in line or "TradeDate" in line):
+            header_idx = i
+            break
+    if header_idx is None:
+        raise RuntimeError(f"Cabeçalho CSV não localizado para {expected_table}.")
+    reader = csv.DictReader(lines[header_idx:], delimiter=";")
+    rows = list(reader)
+    if not rows:
+        raise RuntimeError(f"CSV sem registros para {expected_table}.")
+    fields = reader.fieldnames or []
+    return {
+        "encoding": "ISO-8859-1",
+        "delimiter": ";",
+        "status": status,
+        "header_line_zero_based": header_idx,
+        "columns": len(fields),
+        "records": len(rows),
+        "required_key_present": any(k in fields for k in ("TckrSymb", "RptDt", "TradeDate")),
+    }
+
 def baixar(codigo: str, date: str) -> dict:
     if codigo not in ARQUIVOS:
         raise ValueError(f"Arquivo não suportado: {codigo}")
@@ -66,7 +95,7 @@ def baixar(codigo: str, date: str) -> dict:
         "url_request": f"https://arquivos.b3.com.br/api/download/requestname?fileName={table}&date={date}&recaptchaToken=",
         "file": str(path.relative_to(ROOT)),
         "size_bytes": len(data),
-        "sha256": sha256(data),
+        "sha256": sha256(data),\n        "validation": validation,
     }
     mdir = MANIFESTS / codigo
     mdir.mkdir(parents=True, exist_ok=True)
