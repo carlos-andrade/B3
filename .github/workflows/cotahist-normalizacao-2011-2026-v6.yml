@@ -1,0 +1,64 @@
+name: COTAHIST - normalizacao historica 2011-2026 V6
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-normalizacao-2011-2026-v6.yml"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-normalizacao-historica-v6
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalizar anos
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/normalized /tmp/quality dados/cotahist/normalized/manifests
+          for year in 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026; do
+            zip="dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+            csv="/tmp/normalized/COTAHIST_A${year}.csv"
+            report="/tmp/quality/COTAHIST_A${year}_quality.json"
+            sha="/tmp/quality/COTAHIST_A${year}.csv.sha256"
+            test -s "$zip"
+            python scripts/ingestao/normalize_cotahist.py --zip "$zip" --output "$csv"
+            sha256sum "$csv" | awk '{print $1}' > "$sha"
+            raw_sha256="$(sha256sum "$zip" | awk '{print $1}')"
+            normalized_sha256="$(cat "$sha")"
+            python scripts/ingestao/validar_normalized.py "$csv" "$report" "$year" "$raw_sha256" "$normalized_sha256"
+            cp "$report" "dados/cotahist/normalized/manifests/COTAHIST_A${year}_quality.json"
+            cp "$sha" "dados/cotahist/normalized/manifests/COTAHIST_A${year}.csv.sha256"
+          done
+
+      - name: Persistir evidencias
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/manifests/COTAHIST_A*_quality.json dados/cotahist/normalized/manifests/COTAHIST_A*.csv.sha256
+          git commit -m "data(normalized): validar COTAHIST 2011-2026" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar artefatos
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalized-2011-2026-v6
+          path: |
+            /tmp/normalized/*.csv
+            /tmp/quality/*.json
+            /tmp/quality/*.sha256
+          retention-days: 30
