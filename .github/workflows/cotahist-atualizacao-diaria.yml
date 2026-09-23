@@ -1,15 +1,18 @@
-name: COTAHIST - atualização diária
+name: COTAHIST - rotina diária B3
 
 permissions:
   contents: write
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    # 23:55 e 08:55 no horário de Brasília (America/Sao_Paulo).
+    # GitHub Actions usa UTC: 02:55 UTC e 11:55 UTC.
+    - cron: "55 2 * * *"
+    - cron: "55 11 * * *"
   workflow_dispatch:
 
 concurrency:
-  group: cotahist-atualizacao-diaria
+  group: cotahist-rotina-diaria
   cancel-in-progress: false
 
 jobs:
@@ -22,16 +25,24 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Identificar horário e ano corrente
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "EXECUCAO_UTC=$(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "EXECUCAO_BRASIL=$(TZ=America/Sao_Paulo date '+%Y-%m-%d %H:%M:%S %Z')"
+          year="$(TZ=America/Sao_Paulo date +%Y)"
+          echo "ANO=$year" >> "$GITHUB_ENV"
+
       - name: Baixar COTAHIST do ano corrente
         shell: bash
         run: |
           set -euo pipefail
-          year="$(date -u +%Y)"
+          year="$ANO"
           url="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A${year}.ZIP"
           mkdir -p dados/cotahist/raw/anual dados/cotahist/manifests dados/cotahist/checksums
           curl --fail --location --retry 8 --retry-all-errors --retry-delay 10             --connect-timeout 30 --max-time 600             "$url" -o "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
           test -s "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
-          echo "ANO=$year" >> "$GITHUB_ENV"
 
       - name: Validar ZIP e layout B3
         shell: bash
@@ -107,10 +118,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add             "dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"             "dados/cotahist/checksums/COTAHIST_A${year}.ZIP.sha256"             "dados/cotahist/manifests/COTAHIST_A${year}.json"
           if git diff --cached --quiet; then
-            echo "SEM ALTERACAO: a versão diária já está igual à registrada."
+            echo "SEM ALTERACAO: a versão obtida é idêntica à versão registrada."
             exit 0
           fi
-          git commit -m "data(ingestao): atualizar COTAHIST ${year}"
+          git commit -m "data(ingestao): atualização COTAHIST ${year}"
           git pull --rebase origin main
           git push origin HEAD:main
 
