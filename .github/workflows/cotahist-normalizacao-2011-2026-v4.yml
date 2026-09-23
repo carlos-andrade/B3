@@ -1,0 +1,79 @@
+name: COTAHIST - normalizacao historica 2011-2026 V4
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-normalizacao-2011-2026-v4.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-normalizacao-historica-v4
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Normalizar 2011-2026
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/normalized /tmp/quality dados/cotahist/normalized/manifests
+          for year in 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026; do
+            zip="dados/cotahist/raw/anual/COTAHIST_A${year}.ZIP"
+            csv="/tmp/normalized/COTAHIST_A${year}.csv"
+            report="/tmp/quality/COTAHIST_A${year}_quality.json"
+            sha="/tmp/quality/COTAHIST_A${year}.csv.sha256"
+            test -s "$zip"
+            python scripts/ingestao/normalize_cotahist.py --zip "$zip" --output "$csv"
+            sha256sum "$csv" | awk '{print $1}' > "$sha"
+            raw_sha256="$(sha256sum "$zip" | awk '{print $1}')"
+            normalized_sha256="$(cat "$sha")"
+            python - "$csv" "$report" "$year" "$raw_sha256" "$normalized_sha256" <<'PY'
+import csv,json,sys
+from datetime import datetime
+from pathlib import Path
+p=Path(sys.argv[1]); out=Path(sys.argv[2]); year=int(sys.argv[3])
+with p.open(encoding="utf-8",newline="") as f:
+    r=csv.DictReader(f); rows=list(r); fields=r.fieldnames or []
+if not rows: raise SystemExit("NORMALIZED sem registros")
+required={"data_pregao","codbdi","codneg","tpmerc","nomres","preabe","premax","premin","premed","preult","totneg","quatot","voltot","codisi","dismes"}
+missing=sorted(required-set(fields))
+if missing: raise SystemExit("campos ausentes: "+str(missing))
+dates=[x["data_pregao"] for x in rows]
+bad=[]
+for d in dates:
+    try: datetime.strptime(d,"%Y-%m-%d")
+    except ValueError: bad.append(d)
+wrong=[d for d in dates if not d.startswith(str(year)+"-")]
+report={"schema_version":"1.0.0","status":"VALIDADO" if not bad and not wrong else "REVISAR","ano":year,"parser_version":"1.1.0","source":"B3","raw_file":f"COTAHIST_A{year}.ZIP","raw_sha256":sys.argv[4],"normalized_file":f"COTAHIST_A{year}.csv","normalized_sha256":sys.argv[5],"linhas_normalized":len(rows),"campos":len(fields),"primeira_data":min(dates),"ultima_data":max(dates),"datas_invalidas":len(bad),"datas_fora_do_ano":len(wrong)}
+out.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+if bad or wrong: raise SystemExit("falha de qualidade")
+PY
+            cp "$report" "dados/cotahist/normalized/manifests/COTAHIST_A${year}_quality.json"
+            cp "$sha" "dados/cotahist/normalized/manifests/COTAHIST_A${year}.csv.sha256"
+          done
+      - name: Persistir
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/manifests/COTAHIST_A*_quality.json dados/cotahist/normalized/manifests/COTAHIST_A*.csv.sha256
+          git commit -m "data(normalized): revalidar COTAHIST 2011-2026" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalized-2011-2026-v4
+          path: |
+            /tmp/normalized/*.csv
+            /tmp/quality/*.json
+            /tmp/quality/*.sha256
+          retention-days: 30
