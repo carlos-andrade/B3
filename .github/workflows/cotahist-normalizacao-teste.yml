@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/ingestao/normalize_cotahist.py"
+      - ".github/workflows/cotahist-normalizacao-teste.yml"
       - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
   workflow_dispatch:
     inputs:
