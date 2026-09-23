@@ -68,7 +68,7 @@ def baixar(codigo: str, date: str) -> dict:
     if codigo not in ARQUIVOS:
         raise ValueError(f"Arquivo não suportado: {codigo}")
     table = ARQUIVOS[codigo]
-    qs = urlencode({"fileName": table, "date": date, "recaptchaToken": ""})
+    qs = urlencode({"fileName": table, "date": date})
     info = get_json(f"https://arquivos.b3.com.br/api/download/requestname?{qs}")
     token = info.get("token")
     if not token and info.get("redirectUrl"):
