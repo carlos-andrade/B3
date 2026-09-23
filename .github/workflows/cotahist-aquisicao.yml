@@ -1,5 +1,8 @@
 name: COTAHIST - aquisição B3
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
@@ -83,6 +86,22 @@ jobs:
           }
           Path("dados/cotahist/manifests/COTAHIST_A1986.json").write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\n")
           PY
+
+      - name: Persistir evidência no repositório
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/raw/anual/COTAHIST_A1986.ZIP \
+            dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256 \
+            dados/cotahist/manifests/COTAHIST_A1986.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração de dados para persistir."
+          else
+            git commit -m "data(ingestao): persistir COTAHIST 1986 validado"
+            git push origin HEAD:main
+          fi
 
       - name: Publicar artefato de validação
         uses: actions/upload-artifact@v4
