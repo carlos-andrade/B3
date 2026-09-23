@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "ano": 2005,
+  "parser_version": "1.1.0",
+  "source": "B3",
+  "raw_file": "COTAHIST_A2005.ZIP",
+  "raw_sha256": "41eac6d743d9c3e812bb001c4d327582fa7c408dbc99ff4a1734698da8b18f52",
+  "normalized_file": "COTAHIST_A2005.csv",
+  "normalized_sha256": "9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c",
+  "linhas_normalized": 181408,
+  "campos": 25,
+  "primeira_data": "2005-01-03",
+  "ultima_data": "2005-12-29",
+  "datas_invalidas": 0,
+  "datas_fora_do_ano": 0,
+  "duplicidades_chave_candidata": 23045,
+  "chave_candidata": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "dismes"
+  ],
+  "evidencia": "NORMALIZED derivado do RAW validado; RAW permanece a fonte primária."
+}
