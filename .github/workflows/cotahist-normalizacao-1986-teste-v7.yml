@@ -1,0 +1,62 @@
+name: COTAHIST - teste normalizacao 1986 V7
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-normalizacao-1986-teste-v7.yml"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-normalizacao-1986-teste-v7
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalizar 1986
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/normalized /tmp/quality dados/cotahist/normalized/manifests
+          zip="dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+          csv="/tmp/normalized/COTAHIST_A1986.csv"
+          report="/tmp/quality/COTAHIST_A1986_quality.json"
+          sha="/tmp/quality/COTAHIST_A1986.csv.sha256"
+          test -s "$zip"
+          python scripts/ingestao/normalize_cotahist.py --zip "$zip" --output "$csv"
+          sha256sum "$csv" | awk '{print $1}' > "$sha"
+          raw_sha256="$(sha256sum "$zip" | awk '{print $1}')"
+          normalized_sha256="$(cat "$sha")"
+          python scripts/ingestao/validar_normalized.py "$csv" "$report" "1986" "$raw_sha256" "$normalized_sha256"
+          cp "$report" "dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json"
+          cp "$sha" "dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256"
+
+      - name: Persistir evidencias
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256
+          git commit -m "data(normalized): validar COTAHIST 1986" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalized-1986-v7
+          path: |
+            /tmp/normalized/COTAHIST_A1986.csv
+            /tmp/quality/COTAHIST_A1986_quality.json
+            /tmp/quality/COTAHIST_A1986.csv.sha256
+          retention-days: 30
