@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUDITORIA_SEMANTICA_CONCLUIDA",
+  "raw_file": "/tmp/cotahist/COTAHIST_A1988.ZIP",
+  "candidate_key": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "dismes"
+  ],
+  "duplicate_groups": 0,
+  "duplicate_rows_excess": 0,
+  "groups_identical_full_row": 0,
+  "groups_different_full_row": 0,
+  "different_field_group_counts": {},
+  "examples": []
+}
