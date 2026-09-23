@@ -13,14 +13,5 @@
   "primeira_data": "2001-01-02",
   "ultima_data": "2001-12-28",
   "datas_invalidas": 0,
-  "datas_fora_do_ano": 0,
-  "duplicidades_chave_candidata": 13690,
-  "chave_candidata": [
-    "data_pregao",
-    "codbdi",
-    "codneg",
-    "tpmerc",
-    "dismes"
-  ],
-  "evidencia": "NORMALIZED derivado do RAW validado; RAW permanece a fonte primária."
+  "datas_fora_do_ano": 0
 }
