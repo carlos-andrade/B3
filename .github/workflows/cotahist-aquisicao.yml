@@ -1,0 +1,68 @@
+name: COTAHIST - aquisição B3
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-aquisicao.yml"
+      - "scripts/ingestao/download_cotahist_1986_atual.py"
+  workflow_dispatch:
+
+jobs:
+  probe-1986:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Baixar COTAHIST 1986
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dados/cotahist/raw/anual dados/cotahist/manifests dados/cotahist/checksums
+          url="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1986.ZIP"
+          curl --fail --location --retry 5 --retry-delay 5 --connect-timeout 30 --max-time 300 \
+            "$url" -o dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
+          test -s dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
+          sha256sum dados/cotahist/raw/anual/COTAHIST_A1986.ZIP | tee dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256
+
+      - name: Validar ZIP e layout
+        shell: bash
+        run: |
+          set -euo pipefail
+          zipinfo -1 dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
+          mkdir -p /tmp/cotahist1986
+          unzip -oq dados/cotahist/raw/anual/COTAHIST_A1986.ZIP -d /tmp/cotahist1986
+          txt_count=$(find /tmp/cotahist1986 -type f -name "*.TXT" | wc -l)
+          test "$txt_count" -eq 1
+          txt=$(find /tmp/cotahist1986 -type f -name "*.TXT" | head -1)
+          python - "$txt" <<'PY'
+          import sys
+          from pathlib import Path
+          p=Path(sys.argv[1])
+          raw=p.read_bytes()
+          lines=raw.splitlines()
+          if not lines:
+              raise SystemExit("arquivo TXT vazio")
+          lengths={len(x) for x in lines}
+          if lengths != {245}:
+              raise SystemExit(f"tamanhos de registro inesperados: {sorted(lengths)}")
+          if not lines[0].startswith(b"00"):
+              raise SystemExit("header 00 ausente")
+          if not lines[-1].startswith(b"99"):
+              raise SystemExit("trailer 99 ausente")
+          quotes=sum(1 for x in lines if x.startswith(b"01"))
+          if quotes == 0:
+              raise SystemExit("nenhum registro 01 encontrado")
+          print(f"OK: {p.name}; registros={len(lines)}; cotacoes={quotes}")
+          PY
+
+      - name: Publicar artefato de validação
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-1986-validado
+          path: |
+            dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
+            dados/cotahist/checksums/COTAHIST_A1986.ZIP.sha256
+          if-no-files-found: error
+          retention-days: 90
