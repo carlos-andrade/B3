@@ -3498,5 +3498,13 @@
     "MRPX": 1,
     "RIBE": 1,
     "NELO": 1
+  },
+  "field_distributions": {
+    "Asst": {},
+    "AsstDesc": {},
+    "SctyCtgy": {},
+    "CFICd": {},
+    "SgmtNm": {},
+    "MktNm": {}
   }
 }
