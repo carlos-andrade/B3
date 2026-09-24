@@ -409,3 +409,59 @@ Documento detalhado:
 Commit: `161dac2a46d5d9df747da0408e53395885e289b8`
 
 **FASE 08L:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à separação conceitual Tipo × Prazo × Cxx; causa da colisão permanece NÃO DETERMINADA.
+
+
+## 19. FASE 08M — Busca documental dirigida pela coluna Tipo
+
+A FASE 08M investigou especificamente a dimensão histórica **Tipo** do Mercado a Termo e sua possível relação com a colisão K4 de 10/10/1986.
+
+### 19.1 Resultado documental
+
+A pesquisa confirmou, em publicação contemporânea de 1986, a estrutura:
+
+**Tipo | Prazo | Quant | Fech | Máx | Mín | Méd | N°**
+
+e a ocorrência de **Vigor PP C05**. citeturn0search0turn1search0
+
+Publicações históricas de 1987 também mostram códigos como **PP-G, PB-G e PP-H**, incluindo **Vigor PP-G**. citeturn2search0turn2search4
+
+### 19.2 Classificação
+
+**VALIDADO**
+- Tipo era uma dimensão publicada separadamente de Prazo;
+- C05 não deve ser tratado como sinônimo de Tipo;
+- códigos históricos posteriores como PP-G/PB-G/PP-H existiam;
+- a documentação pública localizada não fornece legenda suficiente para converter esses códigos em semântica econômica segura.
+
+**NÃO VALIDADO**
+- Tipo = comprador;
+- Tipo = vendedor;
+- Tipo = corretora;
+- Tipo = comitente;
+- Tipo = taxa;
+- participação de Tipo na regra de agregação do COTAHIST;
+- relação causal entre Tipo e as linhas RAW 140808/140809.
+
+### 19.3 Impacto na hipótese da colisão
+
+A FASE 08M fortalece a hipótese de que o processo histórico do Mercado a Termo possuía uma **dimensão operacional adicional denominada Tipo**, que não está explicitamente representada na K4 utilizada pela investigação.
+
+Isso, entretanto, não prova que Tipo seja a dimensão que separou as duas linhas de 10/10/1986.
+
+A causa da colisão continua **NÃO DETERMINADA**.
+
+Documento detalhado:
+
+`docs/ingestao/FASE08M_COTAHIST_1986_BUSCA_DOCUMENTAL_TIPO_TERMO_V1.0.md`
+
+Commit: `a15f70c71aba708fbad229ef806f27efb9466d38`.
+
+### 19.4 Governança
+
+RAW permanece intocado.
+
+C05, PP-G, PB-G e PP-H permanecem como códigos históricos literais.
+
+Nenhuma semântica econômica é inferida sem documentação primária.
+
+**FASE 08M:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à existência e separação documental da dimensão Tipo; causa da colisão permanece NÃO DETERMINADA.
