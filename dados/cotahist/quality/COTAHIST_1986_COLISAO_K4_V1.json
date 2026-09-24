@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "status": "FASE_07F_COLISAO_K4_1986_ANALISE",
-  "generated_at_utc": "2026-09-24T17:29:50Z",
+  "generated_at_utc": "2026-09-24T17:41:51Z",
   "raw_file": "COTAHIST_A1986.ZIP",
   "target_k4": [
     "19861010",
@@ -13,9 +13,9 @@
     "PP *C05",
     "060",
     "99991231",
-    "0.0",
+    0.0,
     "0",
-    "0.0"
+    0.0
   ],
   "match_count": 0,
   "matches": [],
