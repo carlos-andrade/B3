@@ -26,8 +26,8 @@ with zipfile.ZipFile(RAW) as z:
                 "especi":s(line,40,49).strip(),"prazot":s(line,50,52).strip(),
                 "preab":price(line,57,69),"premax":price(line,70,82),
                 "premin":price(line,83,95),"premed":price(line,96,108),
-                "preult":price(line,109,121),"totneg":num(line,133,139),
-                "quatot":num(line,140,151),"voltot":num(line,153,170)/100.0,
+                "preult":price(line,109,121),"totneg":num(line,148,152),
+                "quatot":num(line,153,170),"voltot":num(line,171,188)/100.0,
                 "fatcot":num(line,211,217),"codisi":codisi,"dimes":s(line,243,245)
             })
 
@@ -49,6 +49,7 @@ for r in focus:
 result={
  "schema_version":"1.0.0","status":"FASE_08P_TRANSICAO_VIGOR_0910_1310_1986",
  "raw_file":RAW.name,"raw_sha256":hashlib.sha256(RAW.read_bytes()).hexdigest(),
+ "parser_field_map":"Aligned with validated FASE08F fixed-width offsets: TOTNEG 148-152; QUATOT 153-170; VOLTOT 171-188; FATCOT 211-217.",
  "scope":{"dates":sorted(focus_dates),"codneg":"VGO 2","codisi":"VGORACPP"},
  "rows": [profile(r) for r in focus],
  "daily_summary":[
