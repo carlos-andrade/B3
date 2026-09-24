@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Auditoria de chaves lógicas COTAHIST 1986; somente leitura do RAW."""
 from __future__ import annotations
-import argparse,json,zipfile
+import argparse,hashlib,json,zipfile
 from collections import Counter,defaultdict
 from decimal import Decimal
 from pathlib import Path
@@ -45,12 +45,14 @@ def main():
     repeat_samples={k:[] for k in key_defs}
     k4_rows_by_key=defaultdict(list)
     raw_rows=0
+    line_number=0
 
     with zipfile.ZipFile(a.zip) as z:
         members=[x for x in z.namelist() if not x.endswith("/")]
         if len(members)!=1: raise SystemExit(f"ZIP inválido: {members}")
         with z.open(members[0]) as f:
             for raw in f:
+                line_number+=1
                 r=parse(raw)
                 if not r: continue
                 raw_rows+=1
@@ -58,9 +60,10 @@ def main():
                     key=tuple(r[x] for x in fields)
                     counters[name][key]+=1
                     if name=="K4_contractual":
-                        k4_rows_by_key[key].append(r)
-                    if name=="K4_contractual":
-                        k4_rows_by_key[key].append(r)
+                        detail=dict(r)
+                        detail["line_number"]=line_number
+                        detail["raw_sha256"]=hashlib.sha256(raw.rstrip(b"\r\n")).hexdigest()
+                        k4_rows_by_key[key].append(detail)
 
     for name,c in counters.items():
         repeated=[(k,n) for k,n in c.items() if n>1]
@@ -72,13 +75,9 @@ def main():
             for item in repeat_samples[name]:
                 key=tuple(item["key"])
                 item["row_details"]=k4_rows_by_key[key]
-        if name=="K4_contractual":
-            for item in repeat_samples[name]:
-                key=tuple(item["key"])
-                item["row_details"]=k4_rows_by_key[key]
 
     out={
-        "schema_version":"2.0.0",
+        "schema_version":"2.1.0",
         "status":"AUDITORIA_CHAVES_LOGICAS_COTAHIST_1986",
         "raw_file":Path(a.zip).name,
         "record_type_01_rows":raw_rows,
