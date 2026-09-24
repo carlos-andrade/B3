@@ -2,6 +2,7 @@
 """FASE 07F — investigação da colisão residual K4 no COTAHIST 1986."""
 from __future__ import annotations
 import argparse,json,zipfile,hashlib
+from pathlib import Path
 from datetime import datetime, timezone
 
 TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231",0.0,"0",0.0)
@@ -15,8 +16,8 @@ def parse(raw: bytes):
       "tpmerc":s(25,27),"nome_resumido":s(28,39),"especi":s(40,49),"prazot":s(50,52),
       "modref":s(52,56),"preab":s(57,69),"premax":s(70,82),"premin":s(83,95),
       "premed":s(96,108),"preult":s(109,121),"preofc":s(122,134),"preofv":s(135,147),
-      "totneg":s(148,152),"quatot":s(153,170),"voltot":s(171,188),"preexe":s(189,201),
-      "indopc":s(202,202),"ptoexe":s(203,210),"datven":s(211,217),
+      "totneg":s(148,152),"quatot":s(153,170),"voltot":s(171,188),"preexe":int(s(189,201))/100 if s(189,201) else None,
+      "indopc":s(202,202),"ptoexe":int(s(203,210))/100 if s(203,210) else None,"datven":int(s(211,217)) if s(211,217) else None,
       "codisi":s(231,242),"dimes":s(243,245),
     }
 
@@ -46,6 +47,7 @@ def main():
       "classification_rule":{"two_rows_same_k4_is_not_automatic_duplicate":True,"economic_identity_not_inferred":True,"raw_unchanged":True,"normalized_unchanged":True},
       "conclusion_status":"REQUIRES_SEMANTIC_REVIEW" if len(matches)==2 else ("NO_MATCH" if len(matches)==0 else "UNEXPECTED_MATCH_COUNT")
     }
+    Path(a.output).parent.mkdir(parents=True, exist_ok=True)
     with open(a.output,"w",encoding="utf-8") as f: json.dump(result,f,ensure_ascii=False,indent=2); f.write("\n")
 if __name__=="__main__": main()
 
