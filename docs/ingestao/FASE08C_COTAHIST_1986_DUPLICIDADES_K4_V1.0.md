@@ -105,3 +105,57 @@ A FASE 08C estará VALIDADA quando:
 6. nenhum resultado depender de alteração do RAW.
 
 A FASE 08C não fecha a investigação histórica da FASE 08. Ela apenas estabelece a evidência estrutural necessária para decidir se a colisão VGO 2 é isolada ou pertence a uma classe recorrente.
+
+
+## 9. Resultado publicado — 24/09/2026
+
+O workflow publicou o artefato:
+
+`dados/cotahist/quality/COTAHIST_1986_FASE08C_DUPLICIDADES_K4_V1.json`
+
+Commit de publicação: `57ce26674059ec50dbdf5731539797f32c01dd55`.
+
+### 9.1 Reconciliação
+
+- registros tipo 01: **177.981**;
+- grupos K4: **177.980**;
+- grupos K4 duplicados: **1**;
+- linhas pertencentes a grupos duplicados: **2**;
+- duplicidades no mesmo pregão: **1**;
+- duplicidades entre pregões: **0**;
+- tamanho máximo do grupo: **2**;
+- mercado da única colisão: **CODBDI 62 / TPMERC 030**;
+- colisão identificada: **VGO 2 em 10/10/1986**.
+
+O SHA-256 do RAW publicado é:
+
+`350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018`
+
+Esse valor deve ser usado como âncora de reconciliação nas fases seguintes.
+
+### 9.2 Resultado estrutural
+
+A análise encontrou **uma única colisão K4 em todo o COTAHIST 1986**.
+
+Portanto, com base no arquivo analisado, a colisão VGO 2:
+
+- não é uma ocorrência recorrente em múltiplos pregões;
+- não é uma classe recorrente de colisões K4 em 1986;
+- não ocorre simultaneamente em outros mercados dentro da mesma classificação K4;
+- é o único grupo com duas linhas que compartilham a mesma chave K4.
+
+As duas linhas permanecem economicamente diferentes nos campos estatísticos: número de negócios, quantidade, volume e preços de negociação. A igualdade da K4 significa somente igualdade dos campos que compõem a chave; **não significa igualdade dos agregados de negociação**.
+
+### 9.3 Conclusão da FASE 08C
+
+**FATO VALIDADO:** a colisão VGO 2 é **estruturalmente singular dentro do COTAHIST 1986** segundo a K4 definida nas FASES 07/08.
+
+**FATO VALIDADO:** as duas linhas pertencem ao mesmo pregão e ao mesmo contexto `CODBDI=62 / TPMERC=030`.
+
+**FATO VALIDADO:** a K4 é idêntica, enquanto os agregados estatísticos são diferentes.
+
+**NÃO DETERMINADO:** a causa histórica da duplicidade.
+
+Não há base para converter essa singularidade em “erro”, “duplicação indevida” ou “dois ativos” sem documentação contemporânea.
+
+A investigação histórica da FASE 08 permanece aberta. O foco passa agora de uma busca por recorrência estrutural para a busca de **evidência primária contemporânea de 10/10/1986** capaz de explicar a origem dos dois agregados.
