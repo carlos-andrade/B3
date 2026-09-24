@@ -29,7 +29,7 @@ def parse(raw: bytes):
         int(s(171,188))/100 if s(171,188) else None,
         int(s(189,201))/100 if s(189,201) else None,
         s(202,202), s(203,210),
-        int(s(211,217)) if s(211,217) else None,
+        s(211,217),
         int(s(218,230))/1_000_000 if s(218,230) else None,
         s(231,242), s(243,245)
     ]
