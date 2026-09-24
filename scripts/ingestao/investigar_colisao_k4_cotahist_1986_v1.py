@@ -5,7 +5,7 @@ import argparse,json,zipfile,hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
-TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231",0.0,"0",0.0)
+TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231",0.0,"0","0")
 
 def parse(raw: bytes):
     b=raw.rstrip(b"\r\n")
