@@ -343,3 +343,43 @@ Commit de publicação da evidência: `c19566cf1481c245b6908f4a3e2238138656c229`
 **VALIDADO:** a colisão K4 com estatísticas diferentes ocorre somente em 1986 no universo analisado.
 
 **FASE 08:** a pergunta de recorrência multianual está encerrada; permanece aberta a reconstrução histórica da regra que gerou a colisão.
+
+
+## 17. FASE 08K — Arqueologia do BDI/COTAHIST
+
+A FASE 08K localizou evidência contemporânea de 1986 que preserva a estrutura pública da tabela de **Mercado a Termo** da Bolsa de Valores de São Paulo.
+
+A publicação do Jornal do Brasil de 05/06/1986 apresenta a estrutura:
+
+**Tipo | Prazo | Quant | Fech | Máx | Mín | Méd | N°**
+
+e exemplos com prazo **030**, quantidade, preços e número de negócios. citeturn3view1turn4view0
+
+A mesma publicação registra **Vigor PP C05**, além de outras combinações Cxx, confirmando que a notação Cxx era efetivamente utilizada na publicação de mercado antes de outubro de 1986. citeturn3view0
+
+### 17.1 Resultado estrutural
+
+A evidência permite separar duas camadas:
+
+- identificação/estrutura do instrumento e operação;
+- agregados estatísticos da negociação.
+
+Isso é compatível com a observação das fases 08F–08I de que as duas linhas de 10/10/1986 possuem K4 equivalente, mas estatísticas diferentes.
+
+A evidência **não prova** que a Bovespa deliberadamente gerava duas linhas para a mesma K4. Ela apenas demonstra que a publicação histórica possuía múltiplas dimensões estatísticas que não fazem parte da K4 investigada.
+
+### 17.2 Estado após 08K
+
+**FATO VALIDADO:** estrutura pública histórica do Mercado a Termo com Tipo, Prazo, Quant, Fech, Máx, Mín, Méd e N°.
+
+**FATO VALIDADO:** Vigor PP C05 já era publicado em junho de 1986.
+
+**NÃO RESOLVIDO:** regra formal que explique duas linhas com a mesma K4 e agregados diferentes.
+
+**EVIDÊNCIA AUSENTE:** BDI primário de 10/10/1986, manual interno de geração do COTAHIST, legenda oficial contemporânea de C05 e regra formal de agregação.
+
+Documento detalhado: docs/ingestao/FASE08K_COTAHIST_1986_ARQUEOLOGIA_BDI_TABELA_TERMO_V1.0.md
+
+Commit: f8439257cda46569e40b02980434f5fe60ea0cf1
+
+**FASE 08K:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à estrutura documental encontrada; causa da colisão permanece NÃO DETERMINADA.
