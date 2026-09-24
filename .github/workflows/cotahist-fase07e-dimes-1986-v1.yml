@@ -1,0 +1,41 @@
+name: COTAHIST FASE 07E - DIMES 1986
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_dimes_cotahist_1986_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+
+permissions:
+  contents: write
+
+jobs:
+  analisar-dimes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Executar análise DIMES
+        run: |
+          python scripts/ingestao/analisar_dimes_cotahist_1986_v1.py \
+            --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP \
+            --output dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json
+
+      - name: Commit evidência
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json
+          if git diff --cached --quiet; then
+            echo "Sem alteração na evidência."
+            exit 0
+          fi
+          git commit -m "data(cotahist): executar fase 07E DIMES 1986"
+          git push
