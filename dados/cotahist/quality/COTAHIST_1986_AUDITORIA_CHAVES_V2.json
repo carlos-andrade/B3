@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "status": "AUDITORIA_CHAVES_LOGICAS_COTAHIST_1986",
   "raw_file": "COTAHIST_A1986.ZIP",
   "record_type_01_rows": 177981,
@@ -2907,34 +2907,9 @@
               "fatcot": 1000,
               "ptoexe": "0",
               "codisi": "VGORACPP",
-              "dismes": "104"
-            },
-            {
-              "data_pregao": "19861010",
-              "codbdi": "62",
-              "codneg": "VGO 2",
-              "tpmerc": "030",
-              "nomres": "VGOR",
-              "especi": "PP *C05",
-              "prazot": "060",
-              "modref": "CZ$",
-              "preabe": "1.9",
-              "premax": "1.9",
-              "premin": "1.9",
-              "premed": "1.9",
-              "preult": "1.9",
-              "preofc": "0",
-              "preofv": "0",
-              "totneg": 1,
-              "quatot": 39000000,
-              "voltot": "74100",
-              "preexe": "0",
-              "indopc": "0",
-              "datven": "99991231",
-              "fatcot": 1000,
-              "ptoexe": "0",
-              "codisi": "VGORACPP",
-              "dismes": "104"
+              "dismes": "104",
+              "line_number": 140808,
+              "raw_sha256": "04280f94086266d5ea7aebd95eb8ccaf7771a6df3bbb210a189791369642a2e0"
             },
             {
               "data_pregao": "19861010",
@@ -2961,34 +2936,9 @@
               "fatcot": 1000,
               "ptoexe": "0",
               "codisi": "VGORACPP",
-              "dismes": "104"
-            },
-            {
-              "data_pregao": "19861010",
-              "codbdi": "62",
-              "codneg": "VGO 2",
-              "tpmerc": "030",
-              "nomres": "VGOR",
-              "especi": "PP *C05",
-              "prazot": "060",
-              "modref": "CZ$",
-              "preabe": "1.65",
-              "premax": "1.91",
-              "premin": "1.65",
-              "premed": "1.87",
-              "preult": "1.75",
-              "preofc": "0",
-              "preofv": "0",
-              "totneg": 4,
-              "quatot": 190000000,
-              "voltot": "356460",
-              "preexe": "0",
-              "indopc": "0",
-              "datven": "99991231",
-              "fatcot": 1000,
-              "ptoexe": "0",
-              "codisi": "VGORACPP",
-              "dismes": "104"
+              "dismes": "104",
+              "line_number": 140809,
+              "raw_sha256": "1e836a05ad33c4990d319ea85490820c723a666121de89c3ddfc9cea67f7789e"
             }
           ]
         }
