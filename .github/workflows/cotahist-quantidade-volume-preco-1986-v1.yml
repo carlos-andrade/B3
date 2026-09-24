@@ -1,4 +1,4 @@
-name: COTAHIST 1986 - Auditoria Quantidade Volume Preco V1\n# V1.1.0 - reexecucao com teste de arredondamento
+name: COTAHIST 1986 - Auditoria Quantidade Volume Preco V1\n# V1.1.1 - classificacao corrigida de volume zero por arredondamento
 
 on:
   workflow_dispatch:
