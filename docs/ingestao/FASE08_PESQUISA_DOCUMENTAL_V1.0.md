@@ -184,3 +184,43 @@ Testar, com dados já preservados:
 **NÃO RESOLVIDO:** legenda dos códigos históricos e relação causal com a colisão K4.
 
 **FASE 08:** ABERTA — investigação histórica continua.
+
+
+## 21. FASE 08P — Transição Vigor 09/10 → 10/10 → 13/10/1986
+
+**Documento:** `docs/ingestao/FASE08P_COTAHIST_1986_TRANSICAO_VIGOR_0910_1310_V1.0.md`
+
+A FASE 08P reconstruiu diretamente no RAW preservado o comportamento de VGO 2 / VGORACPP em 09/10, 10/10 e 13/10/1986.
+
+### Resultado validado
+
+- RAW SHA-256: `350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018`
+- 7 registros relevantes na janela.
+- 09/10: 1 linha a termo PRAZOT 060.
+- 10/10: 2 linhas a termo PRAZOT 060.
+- 13/10: 1 linha a termo PRAZOT 060.
+- Em toda a janela: ESPECI `PP *C05` e DIMES `104`.
+- A colisão continua restrita às linhas RAW 140808 e 140809 de 10/10/1986.
+- A chave estrutural é idêntica nas duas linhas:
+  `19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060`.
+- Os agregados estatísticos são distintos:
+  - linha 140808: TOTNEG 1, QUATOT 39.000.000, VOLTOT 74.100,00, preços 1,90;
+  - linha 140809: TOTNEG 4, QUATOT 190.000.000, VOLTOT 356.460,00, PREAB 1,65, PREMED 1,87, PREMAX 1,91, PREULT 1,75.
+
+### Interpretação
+
+A sequência temporal observada é `1 linha → 2 linhas → 1 linha` para a mesma combinação estrutural VGO 2 / termo 060 / C05 / DIMES 104.
+
+Isso **não identifica a causa**. Reforça, porém, que a duplicidade não decorre de uma mudança de PRAZOT, ESPECI ou DIMES dentro da janela.
+
+A hipótese de trabalho permanece: **regra histórica de agregação/publicação ou dimensão operacional não representada na chave K4**.
+
+Não foi demonstrado que a dimensão ausente seja Tipo, taxa, comitente, corretora, comprador/vendedor ou outra classificação.
+
+### Governança
+
+RAW preservado; nenhuma linha removida ou consolidada; C05 mantido literalmente; nenhum Tipo inferido; nenhuma identidade econômica ou causalidade inferida.
+
+**Status:** IMPLEMENTADO / EXECUTADO / VALIDADO quanto à reconstrução da janela; **NÃO RESOLVIDO** quanto à causa histórica.
+
+**Próxima frente:** recuperação documental primária do BDI de 10/10/1986 e da regra de publicação/agregação do Mercado a Termo.
