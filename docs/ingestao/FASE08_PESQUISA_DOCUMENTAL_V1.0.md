@@ -243,3 +243,39 @@ Somente depois dessa publicação serão extraídos os resultados completos de:
 - `duplicate_k4_same_day_groups_count`.
 
 A classificação documental e a eventual decisão de modelagem dependerão desses resultados.
+
+
+## 15. FASE 08D — Reconstrução documental de 10/10/1986
+
+A FASE 08D foi executada em 24/09/2026 com busca direcionada por fontes contemporâneas ao evento de 10/10/1986.
+
+### 15.1 Resultado
+
+Não foi localizada cópia primária verificável do Boletim Diário de Informações da Bovespa de 10/10/1986. Também não foi localizada documentação primária que explique diretamente a duplicidade K4.
+
+Foi localizada, entretanto, evidência contemporânea anterior ao evento: publicação do Jornal do Brasil de 05/06/1986 com a identificação **Vigor PP C05**, além de outras ocorrências de códigos Cxx. Essa fonte valida a existência histórica da convenção de publicação, mas não decodifica o C05.
+
+Também foi localizada fonte normativa oficial do Senado referente ao Decreto-Lei nº 2.286/1986, relacionado a operações a termo. Ela confirma o contexto regulatório contemporâneo, mas não explica a regra de gravação do COTAHIST.
+
+### 15.2 Classificação
+
+**FATO VALIDADO**
+- Vigor PP C05 já era publicado antes de outubro de 1986.
+- Operações a termo possuíam tratamento normativo específico em 1986.
+- A colisão K4 de 10/10/1986 permanece única no COTAHIST 1986 segundo a FASE 08C.
+
+**NÃO DETERMINADO**
+- significado numérico de C05;
+- significado histórico completo de VGO 2;
+- significado histórico de DIMES 104;
+- significado de DATVEN=99991231;
+- causa da existência de duas linhas com K4 equivalente e estatísticas distintas.
+
+Documento detalhado:
+`docs/ingestao/FASE08D_COTAHIST_1986_RECONSTRUCAO_DOCUMENTAL_10101986_V1.0.md`
+
+Commit: `e2bdc5a8ed434d754ad5640c4b218d0e7d62f3c6`
+
+### 15.3 Próxima frente
+
+A próxima frente controlada é a **FASE 08E — Reconstrução estatística da cronologia C03/C05/Cxx e DIMES/VGO 2**, usando somente o COTAHIST 1986 preservado, antes de qualquer nova hipótese semântica.
