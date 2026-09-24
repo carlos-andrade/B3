@@ -46,6 +46,23 @@ with zipfile.ZipFile(RAW) as z:
 target=[r for r in rows if r["data_pregao"]=="19861010" and r["codneg"]=="VGO 2" and r["codbdi"]=="62" and r["tpmerc"]=="030"]
 same_codisi=[r for r in rows if r["codisi"]=="VGORACPP"]
 same_codneg=[r for r in rows if r["codneg"]=="VGO 2"]
+vgo_dates=defaultdict(list)
+for r in same_codneg: vgo_dates[r["data_pregao"]].append(r)
+
+def transition_summary(records, field):
+    by=defaultdict(list)
+    for r in records: by[r["data_pregao"]].append(r[field])
+    dates=sorted(by)
+    transitions=[]
+    for prev,cur in zip(dates,dates[1:]):
+        a=sorted(set(by[prev])); b=sorted(set(by[cur]))
+        if a!=b: transitions.append({"from_date":prev,"from_values":a,"to_date":cur,"to_values":b})
+    return transitions
+
+vgo_especi_transitions=transition_summary(same_codneg,"especi")
+vgo_dimes_transitions=transition_summary(same_codneg,"dimes")
+vgo_market_by_date={d:sorted(set((r["codbdi"],r["tpmerc"],r["prazot"]) for r in rs)) for d,rs in sorted(vgo_dates.items())}
+
 vgor=[r for r in rows if "VGOR" in r["nomres"]]
 
 def key_k4(r):
@@ -103,6 +120,9 @@ result={
  "same_codneg_term_prazot":dict(sorted(Counter(r["prazot"] for r in same_codneg if r["tpmerc"]=="030").items())),
  "same_codneg_dimes":dict(sorted(Counter(r["dimes"] for r in same_codneg).items())),
  "same_codneg_especi":dict(sorted(Counter(r["especi"] for r in same_codneg).items())),
+ "vgo_especi_transitions":vgo_especi_transitions,
+ "vgo_dimes_transitions":vgo_dimes_transitions,
+ "vgo_market_by_date":vgo_market_by_date,
  "same_codneg_sample_contexts":[ctx(r) for r in same_codneg if r["data_pregao"] in ("19861010","19861009","19861013")],
  "vgor_nomres_count":len(vgor),
  "target_same_date_codneg_rows":[ctx(r) for r in rows if r["data_pregao"]=="19861010" and r["codneg"]=="VGO 2"],
