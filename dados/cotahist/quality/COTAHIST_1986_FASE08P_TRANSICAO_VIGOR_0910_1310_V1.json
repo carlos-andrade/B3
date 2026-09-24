@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_08P_TRANSICAO_VIGOR_0910_1310_1986",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "scope": {
+    "dates": [
+      "19861009",
+      "19861010",
+      "19861013"
+    ],
+    "codneg": "VGO 2",
+    "codisi": "VGORACPP"
+  },
+  "rows": [
+    {
+      "date": "19861009",
+      "source_line": 140018,
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "especi": "PP *C05",
+      "prazot": "",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.65,
+      "premax": 1.65,
+      "premin": 1.65,
+      "premed": 1.65,
+      "preult": 1.65,
+      "totneg": 6000000,
+      "quatot": 1,
+      "voltot": 610000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861009",
+      "source_line": 140094,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.76,
+      "premax": 1.76,
+      "premin": 1.75,
+      "premed": 1.75,
+      "preult": 1.75,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 60000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861010",
+      "source_line": 140617,
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "especi": "PP *C05",
+      "prazot": "",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.55,
+      "premax": 1.8,
+      "premin": 1.55,
+      "premed": 1.75,
+      "preult": 1.7,
+      "totneg": 6000000,
+      "quatot": 1,
+      "voltot": 2672000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861010",
+      "source_line": 140808,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.9,
+      "premax": 1.9,
+      "premin": 1.9,
+      "premed": 1.9,
+      "preult": 1.9,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 390000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861010",
+      "source_line": 140809,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.65,
+      "premax": 1.91,
+      "premin": 1.65,
+      "premed": 1.87,
+      "preult": 1.75,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 1900000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861013",
+      "source_line": 141324,
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "especi": "PP *C05",
+      "prazot": "",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.7,
+      "premax": 1.7,
+      "premin": 1.3,
+      "premed": 1.47,
+      "preult": 1.5,
+      "totneg": 4000000,
+      "quatot": 2000001,
+      "voltot": 1591000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861013",
+      "source_line": 141539,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.6,
+      "premax": 1.6,
+      "premin": 1.59,
+      "premed": 1.59,
+      "preult": 1.59,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 405000.0,
+      "fatcot": 1000
+    }
+  ],
+  "daily_summary": [
+    {
+      "date": "19861009",
+      "rows": 2,
+      "especi": {
+        "PP *C05": 2
+      },
+      "dimes": {
+        "104": 2
+      },
+      "term_prazot": {
+        "060": 1
+      },
+      "market": {
+        "02|010|": 1,
+        "62|030|060": 1
+      }
+    },
+    {
+      "date": "19861010",
+      "rows": 3,
+      "especi": {
+        "PP *C05": 3
+      },
+      "dimes": {
+        "104": 3
+      },
+      "term_prazot": {
+        "060": 2
+      },
+      "market": {
+        "02|010|": 1,
+        "62|030|060": 2
+      }
+    },
+    {
+      "date": "19861013",
+      "rows": 2,
+      "especi": {
+        "PP *C05": 2
+      },
+      "dimes": {
+        "104": 2
+      },
+      "term_prazot": {
+        "060": 1
+      },
+      "market": {
+        "02|010|": 1,
+        "62|030|060": 1
+      }
+    }
+  ],
+  "target_rows": [
+    {
+      "date": "19861010",
+      "source_line": 140808,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.9,
+      "premax": 1.9,
+      "premin": 1.9,
+      "premed": 1.9,
+      "preult": 1.9,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 390000.0,
+      "fatcot": 1000
+    },
+    {
+      "date": "19861010",
+      "source_line": 140809,
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "preab": 1.65,
+      "premax": 1.91,
+      "premin": 1.65,
+      "premed": 1.87,
+      "preult": 1.75,
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 1900000.0,
+      "fatcot": 1000
+    }
+  ],
+  "same_structural_key_groups": [
+    {
+      "key": [
+        "19861010",
+        "62",
+        "VGO 2",
+        "030",
+        "VGORACPP",
+        "104",
+        "PP *C05",
+        "060"
+      ],
+      "rows": [
+        {
+          "date": "19861010",
+          "source_line": 140808,
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "preab": 1.9,
+          "premax": 1.9,
+          "premin": 1.9,
+          "premed": 1.9,
+          "preult": 1.9,
+          "totneg": 0,
+          "quatot": 0,
+          "voltot": 390000.0,
+          "fatcot": 1000
+        },
+        {
+          "date": "19861010",
+          "source_line": 140809,
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "preab": 1.65,
+          "premax": 1.91,
+          "premin": 1.65,
+          "premed": 1.87,
+          "preult": 1.75,
+          "totneg": 0,
+          "quatot": 0,
+          "voltot": 1900000.0,
+          "fatcot": 1000
+        }
+      ]
+    }
+  ],
+  "interpretation": {
+    "fact": [
+      "The comparison is restricted to preserved RAW records for VGO 2/VGORACPP on 09/10, 10/10 and 13/10/1986.",
+      "Target rows 140808 and 140809 are preserved as distinct records.",
+      "No Type code is inferred from C05."
+    ],
+    "test": [
+      "Whether the anomaly appears as a one-day transition in ESPECI, DIMES, PRAZOT or market context.",
+      "Whether multiple structural-statistical profiles coexist for VGO 2 in the three-session window."
+    ],
+    "not_determined": [
+      "Historical meaning of Type, C05 and DIMES 104.",
+      "Economic or operational reason for the target collision."
+    ]
+  }
+}
