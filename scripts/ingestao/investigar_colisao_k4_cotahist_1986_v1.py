@@ -32,7 +32,7 @@ def main():
           line_no+=1; r=parse(raw)
           if not r: continue
           key=(r["data_pregao"],r["codbdi"],r["codneg"],r["tpmerc"],r["codisi"],r["dimes"],r["especi"],r["prazot"],r["datven"],r["preexe"],r["indopc"],r["ptoexe"])
-          if key==TARGET:
+          if key[:8]==TARGET_PREFIX:
             rr=dict(r); rr["source_line"]=line_no; rr["raw_sha256"]=hashlib.sha256(raw.rstrip(b"\r\n")).hexdigest(); matches.append(rr)
     differences={}
     if len(matches)>=2:
