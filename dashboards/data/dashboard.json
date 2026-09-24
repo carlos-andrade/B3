@@ -1,0 +1,23 @@
+{
+  "schema_version":"1.0",
+  "generated_at":null,
+  "status":"AGUARDANDO_DADOS",
+  "kpis":{
+    "pipeline_status":"AGUARDANDO_DADOS",
+    "period":null,
+    "start_year":null,
+    "end_year":null,
+    "records_processed":null,
+    "quality_score":null,
+    "coverage_percent":null
+  },
+  "years":[],
+  "runs":[],
+  "checks":[],
+  "by_year":[],
+  "provenance":{
+    "source":"B3 ingestion pipeline",
+    "classification":"SCHEMA_ONLY / NO OBSERVATIONS EMBEDDED",
+    "note":"Este arquivo é um contrato inicial do dashboard. Valores nulos não significam zero."
+  }
+}
