@@ -1,13 +1,11 @@
 name: COTAHIST - teste executor normalizacao 2011-2026 V5
 
+# V5 mantida apenas para execucao manual.
 on:
-  push:
-    paths:
-      - ".github/workflows/cotahist-normalizacao-2011-2026-v5.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   test:
