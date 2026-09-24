@@ -1,6 +1,11 @@
 name: Capturar BCB - Copom
 
 on:
+  push:
+    paths:
+      - ".github/workflows/capturar-bcb-copom.yml"
+      - "scripts/ingestao/capturar_bcb_copom_v2.py"
+      - "scripts/ingestao/validar_bcb_copom_v1.py"
   workflow_dispatch:
     inputs:
       quantidade:
