@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "source": "Banco Central do Brasil",
+  "source_url": "https://www.bcb.gov.br/publicacoes/atascopom/16092026",
+  "retrieved_at": "2026-09-24",
+  "events": [
+    {
+      "event_id": "BCB-COPOM-281-MEETING-20260915",
+      "event_name": "281ª reunião do Copom",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 281,
+      "meeting_session": 1,
+      "scheduled_date": "2026-09-15",
+      "scheduled_time": null,
+      "timezone": "America/Sao_Paulo",
+      "event_time_status": "UNKNOWN",
+      "status": "RELEASED"
+    },
+    {
+      "event_id": "BCB-COPOM-281-MEETING-20260916",
+      "event_name": "281ª reunião do Copom",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 281,
+      "meeting_session": 2,
+      "scheduled_date": "2026-09-16",
+      "scheduled_time": null,
+      "timezone": "America/Sao_Paulo",
+      "event_time_status": "UNKNOWN",
+      "status": "RELEASED"
+    },
+    {
+      "event_id": "BCB-COPOM-281-DECISION-20260916",
+      "event_name": "Decisão de política monetária",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-16",
+      "scheduled_time": null,
+      "timezone": "America/Sao_Paulo",
+      "event_time_status": "UNKNOWN",
+      "actual_value": "13.75% a.a.",
+      "selic_target_pct": 13.75,
+      "selic_effective_start": "2026-09-17",
+      "vote_result": "Unânime, conforme comunicado/ata oficial",
+      "status": "RELEASED"
+    },
+    {
+      "event_id": "BCB-COPOM-281-ATA-20260922",
+      "event_name": "Ata da 281ª reunião do Copom",
+      "event_code": "COPOM_ATA",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-22",
+      "scheduled_time": null,
+      "timezone": "America/Sao_Paulo",
+      "event_time_status": "UNKNOWN",
+      "status": "RELEASED",
+      "information_available_at": "2026-09-22",
+      "source_url": "https://www.bcb.gov.br/publicacoes/atascopom/16092026"
+    }
+  ]
+}
