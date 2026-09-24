@@ -1,0 +1,30 @@
+name: COTAHIST FASE 07G - MATRIZ IDENTIDADE 1986
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/consolidar_identidade_historica_cotahist_1986_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+permissions:
+  contents: write
+jobs:
+  matriz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Executar matriz
+        run: |
+          python scripts/ingestao/consolidar_identidade_historica_cotahist_1986_v1.py \
+            --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP \
+            --output dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json
+      - name: Commit evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(cotahist): executar fase 07G matriz identidade 1986"
+          git push
