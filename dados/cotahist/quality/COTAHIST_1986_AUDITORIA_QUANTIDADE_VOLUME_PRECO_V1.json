@@ -1,0 +1,1124 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUDITORIA_QUANTIDADE_VOLUME_PRECO_1986",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "type01_records": 177981,
+  "records_without_flag": 177920,
+  "issue_count": 61,
+  "fatcot_distribution": {
+    "1": 23586,
+    "1000": 154395
+  },
+  "classification_counts": {
+    "ECONOMIC_RATIO_OUTLIER": 61,
+    "QTY_NONZERO_VOLUME_ZERO": 61
+  },
+  "issues": [
+    {
+      "line_number": 24048,
+      "data_pregao": "19860304",
+      "codbdi": "96",
+      "codneg": "SUR 2",
+      "tpmerc": "020",
+      "nomres": "ELEVAD SUR",
+      "preult": "9",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "4dd98fda2e5407e70f46a41dbd467c098d733b8f6f49658337778c16b02af8fa"
+    },
+    {
+      "line_number": 24663,
+      "data_pregao": "19860305",
+      "codbdi": "96",
+      "codneg": "BAR 2",
+      "tpmerc": "020",
+      "nomres": "MET BARBARA",
+      "preult": "6",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "35aaf4f2f0e372f883abd9e74859d77e958d809b85be635ed3c9183b5f82298a"
+    },
+    {
+      "line_number": 28512,
+      "data_pregao": "19860313",
+      "codbdi": "96",
+      "codneg": "BFI 3",
+      "tpmerc": "020",
+      "nomres": "SUDAMERIS",
+      "preult": "1.2",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "43717e45477ceb97741cbe76bc01fdcc45d9ed311edcf4cc496e8daa53d0ffbb"
+    },
+    {
+      "line_number": 29167,
+      "data_pregao": "19860314",
+      "codbdi": "96",
+      "codneg": "QMS 4",
+      "tpmerc": "020",
+      "nomres": "QUIMISINOS",
+      "preult": "1.5",
+      "quatot": 5,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "a3e833fad700dcc3b77d98fe825dd197b156b8b590e6ae517860e15fcc406fac"
+    },
+    {
+      "line_number": 30580,
+      "data_pregao": "19860318",
+      "codbdi": "96",
+      "codneg": "FBM 2",
+      "tpmerc": "020",
+      "nomres": "FIBAM",
+      "preult": "3",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "146afbe9cdb0c6ccf4da4fbfe21eeb2b9be8f5be96e6afdb65c8f7d500c5b093"
+    },
+    {
+      "line_number": 48571,
+      "data_pregao": "19860423",
+      "codbdi": "96",
+      "codneg": "UNI 8",
+      "tpmerc": "020",
+      "nomres": "UNIPAR",
+      "preult": "1",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "95b6c2a95f89b72b12374ad0647497b07b2b21cd7e6aae68d5ecbd5bfb30ad8a"
+    },
+    {
+      "line_number": 60239,
+      "data_pregao": "19860515",
+      "codbdi": "96",
+      "codneg": "NFC 1",
+      "tpmerc": "020",
+      "nomres": "CONFRIO",
+      "preult": "1",
+      "quatot": 9,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "59a2447f763c01a0878e80e8a07aee0cf4a40b67a241c2a89813c5f3c3759c37"
+    },
+    {
+      "line_number": 66375,
+      "data_pregao": "19860528",
+      "codbdi": "96",
+      "codneg": "MNS 4",
+      "tpmerc": "020",
+      "nomres": "MANASA",
+      "preult": "2",
+      "quatot": 4,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "d5aeff8388af2ca36f275b763744bc12737af81f09f1b4f56550e8ef8f320dcc"
+    },
+    {
+      "line_number": 67104,
+      "data_pregao": "19860529",
+      "codbdi": "96",
+      "codneg": "EGV 2",
+      "tpmerc": "020",
+      "nomres": "ENGEVIX",
+      "preult": "1",
+      "quatot": 8,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f3e0af47304c1d93f825f623da022b32127bedff01046e6a5583fa67caa2f992"
+    },
+    {
+      "line_number": 67113,
+      "data_pregao": "19860529",
+      "codbdi": "96",
+      "codneg": "FID 4",
+      "tpmerc": "020",
+      "nomres": "FRIG IDEAL",
+      "preult": "0.5",
+      "quatot": 8,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "a03c6c8adc98d988d63d2403fd7b0804ea8a2d16b362231c44bbe99beb1c4a87"
+    },
+    {
+      "line_number": 68718,
+      "data_pregao": "19860602",
+      "codbdi": "96",
+      "codneg": "MAD 6",
+      "tpmerc": "020",
+      "nomres": "MADEIRIT",
+      "preult": "0.01",
+      "quatot": 80,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f5b4c14710dcf9c3e6fddf3d9df4535781366cdea68191ebcd2d07e9a45377e7"
+    },
+    {
+      "line_number": 69614,
+      "data_pregao": "19860603",
+      "codbdi": "96",
+      "codneg": "PPS 2",
+      "tpmerc": "020",
+      "nomres": "PROPASA",
+      "preult": "2",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "81f6bfa996ca5dca6604f9f51e918595ed6ad6f4acffedebdab957fd2c84f52e"
+    },
+    {
+      "line_number": 86786,
+      "data_pregao": "19860703",
+      "codbdi": "96",
+      "codneg": "TUP 4",
+      "tpmerc": "020",
+      "nomres": "TUPY",
+      "preult": "0.5",
+      "quatot": 4,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "9a0506c54049260f6c45956ead292a6d0bfec776ea2a22cd76c9c626e3b37f80"
+    },
+    {
+      "line_number": 91133,
+      "data_pregao": "19860711",
+      "codbdi": "50",
+      "codneg": "BAQ 5",
+      "tpmerc": "017",
+      "nomres": "ANT QUEIROZ",
+      "preult": "0.01",
+      "quatot": 34,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "72026180ada58ebc0ab4d3fba80e29ba401f599d4236833ad06b3825887c6bb1"
+    },
+    {
+      "line_number": 91134,
+      "data_pregao": "19860711",
+      "codbdi": "50",
+      "codneg": "BAQ 6",
+      "tpmerc": "017",
+      "nomres": "ANT QUEIROZ",
+      "preult": "0.01",
+      "quatot": 40,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "0bd58ae0a1b9692d1372596ace520646bf5425b02ab8b0a71044e4068891b8e3"
+    },
+    {
+      "line_number": 96365,
+      "data_pregao": "19860721",
+      "codbdi": "96",
+      "codneg": "BRS 5",
+      "tpmerc": "020",
+      "nomres": "BANRISUL",
+      "preult": "0.4",
+      "quatot": 4,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "04971510c309488fd615dd1c1850d60e1c47adb6c97577c6ad0ea4780bb7c8e8"
+    },
+    {
+      "line_number": 100652,
+      "data_pregao": "19860728",
+      "codbdi": "96",
+      "codneg": "MAS 2",
+      "tpmerc": "020",
+      "nomres": "CASA MASSON",
+      "preult": "0.75",
+      "quatot": 9,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "5731d7115fdfc5e93f106b27b6525d7ba9615ac7309870b1db1c30d365966c78"
+    },
+    {
+      "line_number": 110520,
+      "data_pregao": "19860813",
+      "codbdi": "96",
+      "codneg": "BCE 4",
+      "tpmerc": "020",
+      "nomres": "ECONOMICO",
+      "preult": "4",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "df8edb1dbf99217e7c82b5a51da757a63cb1d0714c979663123ead194608b707"
+    },
+    {
+      "line_number": 112066,
+      "data_pregao": "19860815",
+      "codbdi": "96",
+      "codneg": "QMS 4",
+      "tpmerc": "020",
+      "nomres": "QUIMISINOS",
+      "preult": "3.3",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f14aae22086c8f22c332a0c929328fae86bdc63c13a49391dfc6558c6a755860"
+    },
+    {
+      "line_number": 112080,
+      "data_pregao": "19860815",
+      "codbdi": "96",
+      "codneg": "SOE 7",
+      "tpmerc": "020",
+      "nomres": "SADIA OESTE",
+      "preult": "1",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "586826a28f7f136f17cdd0d2d210f072f0188a8ed53a9739a57415441778d20d"
+    },
+    {
+      "line_number": 114319,
+      "data_pregao": "19860820",
+      "codbdi": "96",
+      "codneg": "BEP 4",
+      "tpmerc": "020",
+      "nomres": "EST PARANA",
+      "preult": "0.85",
+      "quatot": 8,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "e093a6dc242b7bed8909dc9e1d32189189747a03a3a1688839727821f6ed1727"
+    },
+    {
+      "line_number": 116686,
+      "data_pregao": "19860825",
+      "codbdi": "96",
+      "codneg": "CBF 2",
+      "tpmerc": "020",
+      "nomres": "BAND C F INV",
+      "preult": "3",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "910f166c56866db7e8a1ec3bd00d8307d07366c2ae77ff1821d748717cb1374f"
+    },
+    {
+      "line_number": 117600,
+      "data_pregao": "19860826",
+      "codbdi": "96",
+      "codneg": "SGU 4",
+      "tpmerc": "020",
+      "nomres": "SID.GUAIRA",
+      "preult": "1",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "5106b08fe5388d0647a43dc4ba492177d2777a5ed4f5e8d5f1322af5582c697e"
+    },
+    {
+      "line_number": 122100,
+      "data_pregao": "19860903",
+      "codbdi": "96",
+      "codneg": "GOA 3",
+      "tpmerc": "020",
+      "nomres": "MET GERDAU",
+      "preult": "2.4",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "c8f66d6c7f1fe486e11a29cd30457ff6a3c70ced4cc6f9bef665182473bd46b7"
+    },
+    {
+      "line_number": 122809,
+      "data_pregao": "19860904",
+      "codbdi": "96",
+      "codneg": "PMT 2",
+      "tpmerc": "020",
+      "nomres": "PROMETAL",
+      "preult": "1.2",
+      "quatot": 8,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "438ef54b56df5a8caa62d66eaf153272d7bbac33d0d6e68fb384460adce18083"
+    },
+    {
+      "line_number": 123497,
+      "data_pregao": "19860905",
+      "codbdi": "96",
+      "codneg": "DHB 6",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1",
+      "quatot": 6,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "46a209b90740bc4779618e6d37693f1d04c8235beee04ba31b38427011298d74"
+    },
+    {
+      "line_number": 138197,
+      "data_pregao": "19861006",
+      "codbdi": "96",
+      "codneg": "MNS 4",
+      "tpmerc": "020",
+      "nomres": "MANASA",
+      "preult": "1.8",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "d22700c62e26179340be863194cae3456f9975436077712bfbd7babed0e08a7f"
+    },
+    {
+      "line_number": 139617,
+      "data_pregao": "19861008",
+      "codbdi": "96",
+      "codneg": "SOE 7",
+      "tpmerc": "020",
+      "nomres": "SADIA OESTE",
+      "preult": "1.4",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "97a9cdedd186fd4e971f596ab66731ec343b34e57c1db5175479a874e005e93a"
+    },
+    {
+      "line_number": 140169,
+      "data_pregao": "19861009",
+      "codbdi": "96",
+      "codneg": "FES 2",
+      "tpmerc": "020",
+      "nomres": "FERBASA",
+      "preult": "2",
+      "quatot": 4,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "c0d9620cf25d1cf6b7bbfd1a480525f2c947377a66e9bf535da4bf65c6ea436d"
+    },
+    {
+      "line_number": 141605,
+      "data_pregao": "19861013",
+      "codbdi": "96",
+      "codneg": "DHB 2",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1.5",
+      "quatot": 6,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "346289f51f8626b98a669de99d1a01fa611d5c018e21831319e9bf8049f4a601"
+    },
+    {
+      "line_number": 142887,
+      "data_pregao": "19861015",
+      "codbdi": "96",
+      "codneg": "CGR 2",
+      "tpmerc": "020",
+      "nomres": "GRAZZIOTIN",
+      "preult": "0.5",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "05ad55c915f7670b4143936b053d69a959a1fc35f1378152bdf4ac18a2326ce5"
+    },
+    {
+      "line_number": 143590,
+      "data_pregao": "19861016",
+      "codbdi": "96",
+      "codneg": "WHM 1",
+      "tpmerc": "020",
+      "nomres": "WHIT MARTINS",
+      "preult": "1.8",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "eba00070f6a83758fe07990631416d4e4a702e2dd6e4328c3e4cd4d69231ffe4"
+    },
+    {
+      "line_number": 143998,
+      "data_pregao": "19861017",
+      "codbdi": "14",
+      "codneg": "FNA 5",
+      "tpmerc": "020",
+      "nomres": "FINAM",
+      "preult": "4.21",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "31a255b44f17c8ce825a20e55d6eaa3f78fc312d48e6b2ad5818f18f03b49804"
+    },
+    {
+      "line_number": 144217,
+      "data_pregao": "19861017",
+      "codbdi": "96",
+      "codneg": "BEM 4",
+      "tpmerc": "020",
+      "nomres": "BEMGE",
+      "preult": "0.3",
+      "quatot": 5,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "791a48bae0c2a525a304a3f9d06cb5e6cf8fc94bc2ae8a3f0669117884487235"
+    },
+    {
+      "line_number": 145022,
+      "data_pregao": "19861020",
+      "codbdi": "96",
+      "codneg": "QGN 4",
+      "tpmerc": "020",
+      "nomres": "QUIMIC GERAL",
+      "preult": "1.5",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "3966edcd8ebdb25915b023bad3f6ea5ea111f111b8bb4ae243c23097cb5c32a8"
+    },
+    {
+      "line_number": 147879,
+      "data_pregao": "19861024",
+      "codbdi": "96",
+      "codneg": "SOL 1",
+      "tpmerc": "020",
+      "nomres": "SOLORRICO",
+      "preult": "4.75",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f42dd19715a54ff6167c12a6a9ed3366cff8239c55ca5b41f7fdf4f590b7f092"
+    },
+    {
+      "line_number": 150830,
+      "data_pregao": "19861030",
+      "codbdi": "96",
+      "codneg": "ICF 2",
+      "tpmerc": "020",
+      "nomres": "C FABRINI",
+      "preult": "2.5",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "2c464942d3491535b9712270021df6b84d0f6762b116b821c6099bc92bd3c504"
+    },
+    {
+      "line_number": 153525,
+      "data_pregao": "19861105",
+      "codbdi": "96",
+      "codneg": "BAS 4",
+      "tpmerc": "020",
+      "nomres": "AMERICA SUL",
+      "preult": "0.7",
+      "quatot": 13,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "7420309892f5eee44058301fafbeb562b19d14236d76fe9a8affcd244fa357ab"
+    },
+    {
+      "line_number": 153528,
+      "data_pregao": "19861105",
+      "codbdi": "96",
+      "codneg": "IBP 5",
+      "tpmerc": "020",
+      "nomres": "ANTARC PIAUI",
+      "preult": "3.5",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "852574fcd94b33c9bbc1258b66092def87b79d615b8fd8038a64c0771e18dd57"
+    },
+    {
+      "line_number": 154165,
+      "data_pregao": "19861106",
+      "codbdi": "96",
+      "codneg": "RCS 2",
+      "tpmerc": "020",
+      "nomres": "RECRUSUL",
+      "preult": "5",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "cc17050b49581723bc64f49a4ee388e3fa8120dbe56779242b7a6d13f0b63ef6"
+    },
+    {
+      "line_number": 154792,
+      "data_pregao": "19861107",
+      "codbdi": "96",
+      "codneg": "DHB 2",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1.4",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "3f3c508ef9ebe8d8f2a1bc144821e6a3b3981ac2674c55f5822f79c3a316aec9"
+    },
+    {
+      "line_number": 154887,
+      "data_pregao": "19861107",
+      "codbdi": "96",
+      "codneg": "TUP 3",
+      "tpmerc": "020",
+      "nomres": "TUPY",
+      "preult": "0.5",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "874b8a95192ed8a63051aa3d38f5f1e98b1ee888f51eef1e332daaa6489b8b8c"
+    },
+    {
+      "line_number": 155542,
+      "data_pregao": "19861110",
+      "codbdi": "96",
+      "codneg": "CAM 2",
+      "tpmerc": "020",
+      "nomres": "CAMBUCI",
+      "preult": "1.05",
+      "quatot": 5,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "c408471e53d7498ce9b8f52a256c7b9b42b8cfa226d61cb94cb0d6bdc0863773"
+    },
+    {
+      "line_number": 156248,
+      "data_pregao": "19861111",
+      "codbdi": "96",
+      "codneg": "BNA 3",
+      "tpmerc": "020",
+      "nomres": "NACIONAL",
+      "preult": "3.65",
+      "quatot": 2,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "d03dc66bf7c65d9dc67af0d4787c8471933c1377902aeecef3c6e66d54de5a2e"
+    },
+    {
+      "line_number": 158439,
+      "data_pregao": "19861114",
+      "codbdi": "96",
+      "codneg": "PRB 2",
+      "tpmerc": "020",
+      "nomres": "PARAIBUNA",
+      "preult": "2.7",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "830785a997c84808785531d80226a5b9fd46d73ddd33028331332f4da1d83ad6"
+    },
+    {
+      "line_number": 158464,
+      "data_pregao": "19861114",
+      "codbdi": "96",
+      "codneg": "RCS 2",
+      "tpmerc": "020",
+      "nomres": "RECRUSUL",
+      "preult": "3",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "ba0ddac69b27cad317a78035e4493acdf7d693bf3b5622c99a68b2aee4348a2a"
+    },
+    {
+      "line_number": 161209,
+      "data_pregao": "19861120",
+      "codbdi": "96",
+      "codneg": "ELU 1",
+      "tpmerc": "020",
+      "nomres": "ELUMA",
+      "preult": "1.1",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f65e3ccd9d6485cbbd75e30ddf8bc186b6f09a55d3717ac94eb2a4b6fc0c95e0"
+    },
+    {
+      "line_number": 161276,
+      "data_pregao": "19861120",
+      "codbdi": "96",
+      "codneg": "PIB 7",
+      "tpmerc": "020",
+      "nomres": "PIR BRASILIA",
+      "preult": "0.3",
+      "quatot": 30,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "9baf546f7d686b97da946ef3025ae2b360defa2702a80de6dbcfd0ea7eb54d2c"
+    },
+    {
+      "line_number": 163293,
+      "data_pregao": "19861125",
+      "codbdi": "96",
+      "codneg": "CAM 2",
+      "tpmerc": "020",
+      "nomres": "CAMBUCI",
+      "preult": "1.5",
+      "quatot": 6,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "4d36b39fe740115e10c7cb784a175834fb804d2621bdf9b6b1b7fe9e7db2c95d"
+    },
+    {
+      "line_number": 163378,
+      "data_pregao": "19861125",
+      "codbdi": "96",
+      "codneg": "BFI 3",
+      "tpmerc": "020",
+      "nomres": "SUDAMERIS",
+      "preult": "1",
+      "quatot": 6,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "a68c53888f63724059d79df3d6b9e71865ed9579e821c039583f9ac9815830af"
+    },
+    {
+      "line_number": 163913,
+      "data_pregao": "19861126",
+      "codbdi": "96",
+      "codneg": "CGR 2",
+      "tpmerc": "020",
+      "nomres": "GRAZZIOTIN",
+      "preult": "3",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f2c5d56547c550d46ea6ae43c9c2ac499a2685697300dcdef79d9dd6c398348a"
+    },
+    {
+      "line_number": 163926,
+      "data_pregao": "19861126",
+      "codbdi": "96",
+      "codneg": "MNS 4",
+      "tpmerc": "020",
+      "nomres": "MANASA",
+      "preult": "1.6",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f1fd34cbac935ee533e522b51d625995c18c4909edcf9740d45c08ebd633a41a"
+    },
+    {
+      "line_number": 164507,
+      "data_pregao": "19861127",
+      "codbdi": "96",
+      "codneg": "FTS 3",
+      "tpmerc": "020",
+      "nomres": "FERTISUL",
+      "preult": "0.13",
+      "quatot": 15,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "04c0864f619a337cb6a0987fde38e495de59fbaf52fe68674dbd84e43e373c44"
+    },
+    {
+      "line_number": 166955,
+      "data_pregao": "19861203",
+      "codbdi": "96",
+      "codneg": "DHB 2",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1.2",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "8e95b1719f3b5fd6b7b8007007fdf261da41aaa4bb54267b9425101311e283e3"
+    },
+    {
+      "line_number": 168253,
+      "data_pregao": "19861205",
+      "codbdi": "96",
+      "codneg": "DHB 6",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1.2",
+      "quatot": 6,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 2,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "642e70d6620ecef77f05f781b5261f837f6975365b912473c5aa082dd7cfbf3b"
+    },
+    {
+      "line_number": 168280,
+      "data_pregao": "19861205",
+      "codbdi": "96",
+      "codneg": "JHS 2",
+      "tpmerc": "020",
+      "nomres": "J H SANTOS",
+      "preult": "1.35",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "9567278b12d733a7058ca183faa128043d84fb2d3f751674b9c9da5cc0ed0cec"
+    },
+    {
+      "line_number": 173574,
+      "data_pregao": "19861217",
+      "codbdi": "96",
+      "codneg": "LIM 2",
+      "tpmerc": "020",
+      "nomres": "LIMASA",
+      "preult": "0.2",
+      "quatot": 25,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "77b228f52dd70bbf48b16679846b75fd9d7a9206ed6b76a13974bca3c5fc48da"
+    },
+    {
+      "line_number": 174971,
+      "data_pregao": "19861219",
+      "codbdi": "96",
+      "codneg": "TGC 2",
+      "tpmerc": "020",
+      "nomres": "CALFAT",
+      "preult": "0.6",
+      "quatot": 10,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "69a243769018eeb947d84375163b054f208164a077499dc126c8e3f2949ec715"
+    },
+    {
+      "line_number": 175592,
+      "data_pregao": "19861222",
+      "codbdi": "96",
+      "codneg": "FTS 3",
+      "tpmerc": "020",
+      "nomres": "FERTISUL",
+      "preult": "0.13",
+      "quatot": 48,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "9f7c981b5f7e691875382de5df217aa3aa83655b751bd5c05e5e2d833ff6192e"
+    },
+    {
+      "line_number": 177322,
+      "data_pregao": "19861229",
+      "codbdi": "96",
+      "codneg": "DHB 2",
+      "tpmerc": "020",
+      "nomres": "D H B",
+      "preult": "1",
+      "quatot": 3,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "32233478716daadd5715b8f3d006a382607f111597a991fb23a4bf4e6346b57e"
+    },
+    {
+      "line_number": 177945,
+      "data_pregao": "19861230",
+      "codbdi": "96",
+      "codneg": "QMS 4",
+      "tpmerc": "020",
+      "nomres": "QUIMISINOS",
+      "preult": "2",
+      "quatot": 1,
+      "voltot": "0",
+      "fatcot": 1000,
+      "totneg": 1,
+      "classifications": [
+        "QTY_NONZERO_VOLUME_ZERO",
+        "ECONOMIC_RATIO_OUTLIER"
+      ],
+      "raw_sha256": "f35462dc6c4fff2f3b980e2a89e365a6901ba5e8a1b300377fbbeda712502ed9"
+    }
+  ],
+  "methodology": {
+    "price_scale": "2 casas decimais no layout COTAHIST",
+    "volume_scale": "2 casas decimais no layout COTAHIST",
+    "quatot": "quantidade total de títulos negociados",
+    "voltot": "volume total de títulos negociados",
+    "fatcot": "fator de cotação; 1=unitária, 1000=lote de mil ações",
+    "warning": "VOLTOT não é tratado como identidade mecânica PREULT x QUATOT. A relação econômica depende da natureza do instrumento e do fator de cotação."
+  }
+}
