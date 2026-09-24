@@ -11,8 +11,8 @@ jobs:
   matriz:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Executar matriz
@@ -27,4 +27,5 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "data(cotahist): executar fase 07G matriz identidade 1986"
+          git pull --rebase origin main
           git push
