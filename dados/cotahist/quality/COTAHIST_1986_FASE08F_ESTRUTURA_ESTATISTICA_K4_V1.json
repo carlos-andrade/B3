@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_08F_ESTRUTURA_ESTATISTICA_K4_1986_ANALISE",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "records_type01": 177981,
+  "target_row_count": 2,
+  "target_rows": [
+    {
+      "source_line": 140808,
+      "date": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "preab": 1.9,
+      "premax": 1.9,
+      "premin": 1.9,
+      "premed": 1.9,
+      "preult": 1.9,
+      "totneg": 1,
+      "quatot": 39000000,
+      "voltot": 74100.0,
+      "preexe": 0.0,
+      "indopc": "0",
+      "datven": "99991231",
+      "fatcot": 1000,
+      "ptoexe": 0.0,
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "derived": {
+        "implied_unit_price_vtot_quatot": 0.0019,
+        "last_price_per_quotation_unit": 0.0019,
+        "median_price_per_quotation_unit": 0.0019,
+        "implied_vs_last_pct": 0.0,
+        "implied_vs_median_pct": 0.0,
+        "pre_range": 0.0,
+        "price_qty_using_preult": 74100.0,
+        "voltot_minus_preult_qty": 0.0,
+        "price_internal_consistency": true
+      }
+    },
+    {
+      "source_line": 140809,
+      "date": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "preab": 1.65,
+      "premax": 1.91,
+      "premin": 1.65,
+      "premed": 1.87,
+      "preult": 1.75,
+      "totneg": 4,
+      "quatot": 190000000,
+      "voltot": 356460.0,
+      "preexe": 0.0,
+      "indopc": "0",
+      "datven": "99991231",
+      "fatcot": 1000,
+      "ptoexe": 0.0,
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "derived": {
+        "implied_unit_price_vtot_quatot": 0.0018761052631578947,
+        "last_price_per_quotation_unit": 0.00175,
+        "median_price_per_quotation_unit": 0.0018700000000000001,
+        "implied_vs_last_pct": 7.206015037593971,
+        "implied_vs_median_pct": 0.3264846608499683,
+        "pre_range": 0.26,
+        "price_qty_using_preult": 332500.0,
+        "voltot_minus_preult_qty": 23960.0,
+        "price_internal_consistency": true
+      }
+    }
+  ],
+  "scope_counts": {
+    "vgo2_term_62_030": 188,
+    "all_term_62_030": 36596,
+    "k4_collision_groups_total": 1
+  },
+  "distributions": {
+    "vgo2_term_totneg": {
+      ">1": 136,
+      "1": 52
+    },
+    "all_term_totneg": {
+      ">1": 20334,
+      "1": 16262
+    },
+    "vgo2_term_implied_price": {
+      "count": 188,
+      "min": 0.00147,
+      "max": 1.9,
+      "median": 0.00328,
+      "mean": 0.1271599157933683
+    },
+    "all_term_implied_price": {
+      "count": 36596,
+      "min": 0.00041,
+      "max": 2633.5,
+      "median": 0.014815607142857144,
+      "mean": 8.998930954489357
+    },
+    "vgo2_term_internal_price_consistency": {
+      "totneg_gt_1": 136,
+      "implied_price_inside_min_max": 175,
+      "implied_within_1pct_of_median": 188,
+      "totneg_1": 52
+    },
+    "all_term_internal_price_consistency": {
+      "totneg_gt_1": 20334,
+      "implied_price_inside_min_max": 32802,
+      "implied_within_1pct_of_median": 36574,
+      "totneg_1": 16262
+    }
+  },
+  "target_structural_observation": {
+    "row_140808": "TOTNEG=1; VOLTOT/QUATOT=0.19; PREULT/FATCOT=0.19.",
+    "row_140809": "TOTNEG=4; VOLTOT/QUATOT≈0.1876105263; value lies between PREMIN/FATCOT and PREMAX/FATCOT and is close to PREMED/FATCOT.",
+    "limit": "numeric structure does not establish the historical cause of the K4 collision."
+  },
+  "other_k4_collision_groups_sample": [
+    {
+      "size": 2,
+      "date": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "totneg_values": [
+        1,
+        4
+      ],
+      "quatot_values": [
+        39000000,
+        190000000
+      ],
+      "voltot_values": [
+        74100.0,
+        356460.0
+      ],
+      "implied_prices": [
+        0.0019,
+        0.0018761052631578947
+      ],
+      "source_lines": [
+        140808,
+        140809
+      ]
+    }
+  ],
+  "term_analogues": {
+    "exact_implied_0_19_count": 0,
+    "exact_implied_0_19_sample": [],
+    "same_implied_as_second_target_count": 1,
+    "same_implied_as_second_target_sample": [
+      {
+        "source_line": 140809,
+        "date": "19861010",
+        "codbdi": "62",
+        "codneg": "VGO 2",
+        "tpmerc": "030",
+        "nomres": "VGOR",
+        "especi": "PP *C05",
+        "prazot": "060",
+        "preab": 1.65,
+        "premax": 1.91,
+        "premin": 1.65,
+        "premed": 1.87,
+        "preult": 1.75,
+        "totneg": 4,
+        "quatot": 190000000,
+        "voltot": 356460.0,
+        "preexe": 0.0,
+        "indopc": "0",
+        "datven": "99991231",
+        "fatcot": 1000,
+        "ptoexe": 0.0,
+        "codisi": "VGORACPP",
+        "dimes": "104"
+      }
+    ]
+  },
+  "governance": {
+    "raw_changed": false,
+    "rows_deleted": false,
+    "rows_consolidated": false,
+    "economic_identity_inferred": false,
+    "causal_explanation_inferred": false,
+    "method": "fixed-width parse + arithmetic consistency + structural comparison"
+  }
+}
