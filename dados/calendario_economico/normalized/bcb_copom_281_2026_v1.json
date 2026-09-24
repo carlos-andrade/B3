@@ -1,8 +1,10 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "source": "Banco Central do Brasil",
   "source_url": "https://www.bcb.gov.br/publicacoes/atascopom/16092026",
   "retrieved_at": "2026-09-24",
+  "information_available_at": "2026-09-22",
+  "information_available_time_status": "UNKNOWN",
   "events": [
     {
       "event_id": "BCB-COPOM-281-MEETING-20260915",
@@ -37,10 +39,24 @@
       "scheduled_time": null,
       "timezone": "America/Sao_Paulo",
       "event_time_status": "UNKNOWN",
-      "actual_value": "13.75% a.a.",
+      "previous_value": "14.00%",
+      "actual_value": "13.75%",
       "selic_target_pct": 13.75,
       "selic_effective_start": "2026-09-17",
-      "vote_result": "7 votos favoráveis dos 7 membros listados na Ata",
+      "vote_result": {
+        "type": "unanimous",
+        "votes_for": 7,
+        "votes_against": 0,
+        "voters": [
+          "Gabriel Muricca Galípolo",
+          "Ailton de Aquino Santos",
+          "Gilneu Francisco Astolfi Vivan",
+          "Izabela Moreira Correa",
+          "Nilton José Schneider David",
+          "Paulo Picchetti",
+          "Rodrigo Alves Teixeira"
+        ]
+      },
       "status": "RELEASED"
     },
     {
