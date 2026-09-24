@@ -1,0 +1,6656 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_08I_RECONSTRUCAO_REGRA_AGREGACAO_1986_ANALISE",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "records_type01": 177981,
+  "research_question": "qual dimensão operacional pode explicar duas linhas no mesmo pregão com K4 idêntica e estatísticas distintas?",
+  "target": {
+    "k4": [
+      "19861010",
+      "62",
+      "VGO 2",
+      "030",
+      "VGORACPP",
+      "104",
+      "PP *C05",
+      "060",
+      "99991231",
+      0,
+      "0",
+      0
+    ],
+    "rows": [
+      {
+        "line": 140808,
+        "date": "19861010",
+        "codbdi": "62",
+        "codneg": "VGO 2",
+        "tpmerc": "030",
+        "nomres": "VGOR",
+        "especi": "PP *C05",
+        "prazot": "060",
+        "datven": "99991231",
+        "codisi": "VGORACPP",
+        "dimes": "104",
+        "stats": {
+          "preab": 190,
+          "premax": 190,
+          "premin": 190,
+          "premed": 190,
+          "preult": 190,
+          "totneg": 1,
+          "quatot": 39000000,
+          "voltot": 7410000,
+          "fatcot": 1000
+        }
+      },
+      {
+        "line": 140809,
+        "date": "19861010",
+        "codbdi": "62",
+        "codneg": "VGO 2",
+        "tpmerc": "030",
+        "nomres": "VGOR",
+        "especi": "PP *C05",
+        "prazot": "060",
+        "datven": "99991231",
+        "codisi": "VGORACPP",
+        "dimes": "104",
+        "stats": {
+          "preab": 165,
+          "premax": 191,
+          "premin": 165,
+          "premed": 187,
+          "preult": 175,
+          "totneg": 4,
+          "quatot": 190000000,
+          "voltot": 35646000,
+          "fatcot": 1000
+        }
+      }
+    ]
+  },
+  "window_19861006_19861017_vgo2": [
+    {
+      "line": 137927,
+      "date": "19861006",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 180,
+        "premax": 180,
+        "premin": 152,
+        "premed": 167,
+        "preult": 160,
+        "totneg": 22,
+        "quatot": 107050000,
+        "voltot": 17891000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 138108,
+      "date": "19861006",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "030",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 165,
+        "premax": 165,
+        "premin": 164,
+        "premed": 164,
+        "preult": 164,
+        "totneg": 2,
+        "quatot": 8000000,
+        "voltot": 1316000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 138634,
+      "date": "19861007",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 155,
+        "premax": 160,
+        "premin": 150,
+        "premed": 156,
+        "preult": 160,
+        "totneg": 13,
+        "quatot": 42680000,
+        "voltot": 6667160,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 139315,
+      "date": "19861008",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 160,
+        "premax": 160,
+        "premin": 160,
+        "premed": 160,
+        "preult": 160,
+        "totneg": 5,
+        "quatot": 25900000,
+        "voltot": 4144000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 140018,
+      "date": "19861009",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 165,
+        "premax": 165,
+        "premin": 165,
+        "premed": 165,
+        "preult": 165,
+        "totneg": 12,
+        "quatot": 61000000,
+        "voltot": 10065000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 140094,
+      "date": "19861009",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 176,
+        "premax": 176,
+        "premin": 175,
+        "premed": 175,
+        "preult": 175,
+        "totneg": 2,
+        "quatot": 6000000,
+        "voltot": 1052400,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 140617,
+      "date": "19861010",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 155,
+        "premax": 180,
+        "premin": 155,
+        "premed": 175,
+        "preult": 170,
+        "totneg": 14,
+        "quatot": 267200000,
+        "voltot": 46995000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 140808,
+      "date": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 190,
+        "premax": 190,
+        "premin": 190,
+        "premed": 190,
+        "preult": 190,
+        "totneg": 1,
+        "quatot": 39000000,
+        "voltot": 7410000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 140809,
+      "date": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 165,
+        "premax": 191,
+        "premin": 165,
+        "premed": 187,
+        "preult": 175,
+        "totneg": 4,
+        "quatot": 190000000,
+        "voltot": 35646000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 141324,
+      "date": "19861013",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 170,
+        "premax": 170,
+        "premin": 130,
+        "premed": 147,
+        "preult": 150,
+        "totneg": 19,
+        "quatot": 159100000,
+        "voltot": 23459110,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 141539,
+      "date": "19861013",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nomres": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 160,
+        "premax": 160,
+        "premin": 159,
+        "premed": 159,
+        "preult": 159,
+        "totneg": 2,
+        "quatot": 40500000,
+        "voltot": 6459750,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 142049,
+      "date": "19861014",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 160,
+        "premax": 165,
+        "premin": 150,
+        "premed": 161,
+        "preult": 155,
+        "totneg": 10,
+        "quatot": 73300000,
+        "voltot": 11850000,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 142685,
+      "date": "19861015",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 165,
+        "premax": 165,
+        "premin": 150,
+        "premed": 155,
+        "preult": 165,
+        "totneg": 6,
+        "quatot": 8020000,
+        "voltot": 1243100,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 143333,
+      "date": "19861016",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 165,
+        "premax": 175,
+        "premin": 155,
+        "premed": 163,
+        "preult": 160,
+        "totneg": 13,
+        "quatot": 29000000,
+        "voltot": 4740300,
+        "fatcot": 1000
+      }
+    },
+    {
+      "line": 143977,
+      "date": "19861017",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 160,
+        "premax": 160,
+        "premin": 155,
+        "premed": 158,
+        "preult": 155,
+        "totneg": 10,
+        "quatot": 45000000,
+        "voltot": 7140000,
+        "fatcot": 1000
+      }
+    }
+  ],
+  "same_day_term_multi_codneg_count": 5181,
+  "same_day_term_multi_codneg_examples_first_100": [
+    {
+      "date": "19860310",
+      "codneg": "CNF 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 26244,
+          "date": "19860310",
+          "codbdi": "62",
+          "codneg": "CNF 2",
+          "tpmerc": "030",
+          "nomres": "CNFB",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "CNFBACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 21546,
+            "premax": 21546,
+            "premin": 21546,
+            "premed": 21546,
+            "preult": 21546,
+            "totneg": 2,
+            "quatot": 2000000,
+            "voltot": 43092000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 26245,
+          "date": "19860310",
+          "codbdi": "62",
+          "codneg": "CNF 2",
+          "tpmerc": "030",
+          "nomres": "CNFB",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "CNFBACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 22979,
+            "premax": 22979,
+            "premin": 22979,
+            "premed": 22979,
+            "preult": 22979,
+            "totneg": 1,
+            "quatot": 1500000,
+            "voltot": 34468500,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860312",
+      "codneg": "AZE 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 27578,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "AZE 2",
+          "tpmerc": "030",
+          "nomres": "AZEV",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "AZEVACPP",
+          "dimes": "101",
+          "stats": {
+            "preab": 328,
+            "premax": 328,
+            "premin": 328,
+            "premed": 328,
+            "preult": 328,
+            "totneg": 1,
+            "quatot": 13300000,
+            "voltot": 4362400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 27579,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "AZE 2",
+          "tpmerc": "030",
+          "nomres": "AZEV",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "AZEVACPP",
+          "dimes": "101",
+          "stats": {
+            "preab": 325,
+            "premax": 326,
+            "premin": 325,
+            "premed": 325,
+            "preult": 326,
+            "totneg": 3,
+            "quatot": 200000000,
+            "voltot": 65020800,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860312",
+      "codneg": "REP 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 27669,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "REP 2",
+          "tpmerc": "030",
+          "nomres": "REPA",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "REPAACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 470,
+            "premax": 513,
+            "premin": 470,
+            "premed": 502,
+            "preult": 500,
+            "totneg": 5,
+            "quatot": 173000000,
+            "voltot": 86846000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 27670,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "REP 2",
+          "tpmerc": "030",
+          "nomres": "REPA",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "REPAACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 511,
+            "premax": 511,
+            "premin": 511,
+            "premed": 511,
+            "preult": 511,
+            "totneg": 2,
+            "quatot": 115000000,
+            "voltot": 58765000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860312",
+      "codneg": "WHM 1",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 27707,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "WHM 1",
+          "tpmerc": "030",
+          "nomres": "WHMT",
+          "especi": "OP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "WHMTACOP",
+          "dimes": "135",
+          "stats": {
+            "preab": 1887,
+            "premax": 1887,
+            "premin": 1887,
+            "premed": 1887,
+            "preult": 1887,
+            "totneg": 1,
+            "quatot": 30000000,
+            "voltot": 56610000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 27708,
+          "date": "19860312",
+          "codbdi": "62",
+          "codneg": "WHM 1",
+          "tpmerc": "030",
+          "nomres": "WHMT",
+          "especi": "OP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "WHMTACOP",
+          "dimes": "135",
+          "stats": {
+            "preab": 1928,
+            "premax": 1928,
+            "premin": 1927,
+            "premed": 1928,
+            "preult": 1927,
+            "totneg": 5,
+            "quatot": 50000000,
+            "voltot": 96400000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860313",
+      "codneg": "BAR 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 28260,
+          "date": "19860313",
+          "codbdi": "62",
+          "codneg": "BAR 2",
+          "tpmerc": "030",
+          "nomres": "BARB",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BARBACPP",
+          "dimes": "114",
+          "stats": {
+            "preab": 2204,
+            "premax": 2460,
+            "premin": 2204,
+            "premed": 2413,
+            "preult": 2358,
+            "totneg": 8,
+            "quatot": 38800000,
+            "voltot": 93660700,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 28261,
+          "date": "19860313",
+          "codbdi": "62",
+          "codneg": "BAR 2",
+          "tpmerc": "030",
+          "nomres": "BARB",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BARBACPP",
+          "dimes": "114",
+          "stats": {
+            "preab": 2415,
+            "premax": 2415,
+            "premin": 2415,
+            "premed": 2415,
+            "preult": 2415,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 24150000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860325",
+      "codneg": "BAR 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 34042,
+          "date": "19860325",
+          "codbdi": "62",
+          "codneg": "BAR 2",
+          "tpmerc": "030",
+          "nomres": "BARB",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BARBACPP",
+          "dimes": "114",
+          "stats": {
+            "preab": 2576,
+            "premax": 2709,
+            "premin": 2575,
+            "premed": 2639,
+            "preult": 2678,
+            "totneg": 10,
+            "quatot": 72100000,
+            "voltot": 190285700,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 34043,
+          "date": "19860325",
+          "codbdi": "62",
+          "codneg": "BAR 2",
+          "tpmerc": "030",
+          "nomres": "BARB",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BARBACPP",
+          "dimes": "114",
+          "stats": {
+            "preab": 2664,
+            "premax": 2664,
+            "premin": 2664,
+            "premed": 2664,
+            "preult": 2664,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 53280000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860326",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 34846,
+          "date": "19860326",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 165920,
+            "premax": 170740,
+            "premin": 164000,
+            "premed": 168260,
+            "preult": 165680,
+            "totneg": 14,
+            "quatot": 20980000,
+            "voltot": 3530094800,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 34847,
+          "date": "19860326",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 170910,
+            "premax": 170910,
+            "premin": 170910,
+            "premed": 170910,
+            "preult": 170910,
+            "totneg": 1,
+            "quatot": 18500000,
+            "voltot": 3161835000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860408",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 40189,
+          "date": "19860408",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 190920,
+            "premax": 193545,
+            "premin": 190920,
+            "premed": 191350,
+            "preult": 193545,
+            "totneg": 11,
+            "quatot": 14470000,
+            "voltot": 2768845650,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 40190,
+          "date": "19860408",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 199962,
+            "premax": 199962,
+            "premin": 199962,
+            "premed": 199962,
+            "preult": 199962,
+            "totneg": 1,
+            "quatot": 27000000,
+            "voltot": 5398974000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860409",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 41004,
+          "date": "19860409",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 190440,
+            "premax": 192678,
+            "premin": 186704,
+            "premed": 191210,
+            "preult": 186704,
+            "totneg": 18,
+            "quatot": 19920000,
+            "voltot": 3808919200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 41005,
+          "date": "19860409",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 195100,
+            "premax": 195100,
+            "premin": 195100,
+            "premed": 195100,
+            "preult": 195100,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 3902000000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860410",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 41821,
+          "date": "19860410",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 190920,
+            "premax": 190920,
+            "premin": 190920,
+            "premed": 190920,
+            "preult": 190920,
+            "totneg": 1,
+            "quatot": 200000,
+            "voltot": 38184000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 41822,
+          "date": "19860410",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 191646,
+            "premax": 191646,
+            "premin": 191646,
+            "premed": 191646,
+            "preult": 191646,
+            "totneg": 1,
+            "quatot": 40000000,
+            "voltot": 7665840000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860411",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 42679,
+          "date": "19860411",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 185525,
+            "premax": 192123,
+            "premin": 185525,
+            "premed": 191142,
+            "preult": 191475,
+            "totneg": 8,
+            "quatot": 7725000,
+            "voltot": 1476578750,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 42680,
+          "date": "19860411",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 200792,
+            "premax": 200792,
+            "premin": 200792,
+            "premed": 200792,
+            "preult": 200792,
+            "totneg": 1,
+            "quatot": 30000000,
+            "voltot": 6023760000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "DUR 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43418,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "DUR 2",
+          "tpmerc": "030",
+          "nomres": "DURA",
+          "especi": "PP *C81",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "DURAACPP",
+          "dimes": "146",
+          "stats": {
+            "preab": 2261,
+            "premax": 2276,
+            "premin": 2121,
+            "premed": 2197,
+            "preult": 2173,
+            "totneg": 26,
+            "quatot": 200000000,
+            "voltot": 439462500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43419,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "DUR 2",
+          "tpmerc": "030",
+          "nomres": "DURA",
+          "especi": "PP *C81",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "DURAACPP",
+          "dimes": "146",
+          "stats": {
+            "preab": 2301,
+            "premax": 2301,
+            "premin": 2301,
+            "premed": 2301,
+            "preult": 2301,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 23010000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "FES 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43431,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "FES 2",
+          "tpmerc": "030",
+          "nomres": "FESA",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FESAACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 9500,
+            "premax": 9880,
+            "premin": 9500,
+            "premed": 9833,
+            "preult": 9833,
+            "totneg": 6,
+            "quatot": 14000000,
+            "voltot": 137662000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43432,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "FES 2",
+          "tpmerc": "030",
+          "nomres": "FESA",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FESAACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 10165,
+            "premax": 10165,
+            "premin": 10165,
+            "premed": 10165,
+            "preult": 10165,
+            "totneg": 1,
+            "quatot": 3000000,
+            "voltot": 30495000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "MEN 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43474,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "MEN 8",
+          "tpmerc": "030",
+          "nomres": "MEND",
+          "especi": "PPB*I85",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MENDACPPB",
+          "dimes": "125",
+          "stats": {
+            "preab": 3210,
+            "premax": 3415,
+            "premin": 3193,
+            "premed": 3289,
+            "preult": 3296,
+            "totneg": 26,
+            "quatot": 146500000,
+            "voltot": 481971400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43475,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "MEN 8",
+          "tpmerc": "030",
+          "nomres": "MEND",
+          "especi": "PPB*I85",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MENDACPPB",
+          "dimes": "125",
+          "stats": {
+            "preab": 3531,
+            "premax": 3531,
+            "premin": 3531,
+            "premed": 3531,
+            "preult": 3531,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 70620000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "MNS 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43481,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "MNS 4",
+          "tpmerc": "030",
+          "nomres": "MNSA",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MNSAACPN",
+          "dimes": "015",
+          "stats": {
+            "preab": 479,
+            "premax": 479,
+            "premin": 479,
+            "premed": 479,
+            "preult": 479,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 9580000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43482,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "MNS 4",
+          "tpmerc": "030",
+          "nomres": "MNSA",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MNSAACPN",
+          "dimes": "015",
+          "stats": {
+            "preab": 503,
+            "premax": 503,
+            "premin": 503,
+            "premed": 503,
+            "preult": 503,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 10060000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "PMA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43496,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3081,
+            "premax": 3312,
+            "premin": 3081,
+            "premed": 3212,
+            "preult": 3312,
+            "totneg": 57,
+            "quatot": 838250000,
+            "voltot": 2692674625,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43497,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3320,
+            "premax": 3320,
+            "premin": 3320,
+            "premed": 3320,
+            "preult": 3320,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 66400000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "PMT 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43498,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "PMT 2",
+          "tpmerc": "030",
+          "nomres": "PMTL",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMTLACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 2059,
+            "premax": 2079,
+            "premin": 2059,
+            "premed": 2070,
+            "preult": 2069,
+            "totneg": 7,
+            "quatot": 17800000,
+            "voltot": 36846000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43499,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "PMT 2",
+          "tpmerc": "030",
+          "nomres": "PMTL",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMTLACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 2140,
+            "premax": 2140,
+            "premin": 2140,
+            "premed": 2140,
+            "preult": 2140,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 21400000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860414",
+      "codneg": "TEK 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 43535,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 24720,
+            "premax": 25772,
+            "premin": 24720,
+            "premed": 24793,
+            "preult": 24840,
+            "totneg": 7,
+            "quatot": 6900000,
+            "voltot": 171075600,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 43536,
+          "date": "19860414",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 25680,
+            "premax": 25680,
+            "premin": 25680,
+            "premed": 25680,
+            "preult": 25680,
+            "totneg": 2,
+            "quatot": 2000000,
+            "voltot": 51360000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860415",
+      "codneg": "HER 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 44282,
+          "date": "19860415",
+          "codbdi": "62",
+          "codneg": "HER 2",
+          "tpmerc": "030",
+          "nomres": "HERI",
+          "especi": "PP *C57",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "HERIACPP",
+          "dimes": "139",
+          "stats": {
+            "preab": 12317,
+            "premax": 12420,
+            "premin": 12317,
+            "premed": 12397,
+            "preult": 12420,
+            "totneg": 2,
+            "quatot": 4500000,
+            "voltot": 55787000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 44283,
+          "date": "19860415",
+          "codbdi": "62",
+          "codneg": "HER 2",
+          "tpmerc": "030",
+          "nomres": "HERI",
+          "especi": "PP *C57",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "HERIACPP",
+          "dimes": "139",
+          "stats": {
+            "preab": 12852,
+            "premax": 12852,
+            "premin": 12852,
+            "premed": 12852,
+            "preult": 12852,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 12852000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860415",
+      "codneg": "RAD 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 44348,
+          "date": "19860415",
+          "codbdi": "62",
+          "codneg": "RAD 2",
+          "tpmerc": "030",
+          "nomres": "RADO",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "RADOACPP",
+          "dimes": "017",
+          "stats": {
+            "preab": 5180,
+            "premax": 5382,
+            "premin": 5174,
+            "premed": 5236,
+            "preult": 5382,
+            "totneg": 3,
+            "quatot": 4200000,
+            "voltot": 21992400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 44349,
+          "date": "19860415",
+          "codbdi": "62",
+          "codneg": "RAD 2",
+          "tpmerc": "030",
+          "nomres": "RADO",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "RADOACPP",
+          "dimes": "017",
+          "stats": {
+            "preab": 5616,
+            "premax": 5616,
+            "premin": 5616,
+            "premed": 5616,
+            "preult": 5616,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 56160000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860416",
+      "codneg": "MNS 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 45125,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "MNS 4",
+          "tpmerc": "030",
+          "nomres": "MNSA",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MNSAACPN",
+          "dimes": "015",
+          "stats": {
+            "preab": 440,
+            "premax": 474,
+            "premin": 440,
+            "premed": 462,
+            "preult": 474,
+            "totneg": 4,
+            "quatot": 81030000,
+            "voltot": 37435860,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 45126,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "MNS 4",
+          "tpmerc": "030",
+          "nomres": "MNSA",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MNSAACPN",
+          "dimes": "015",
+          "stats": {
+            "preab": 475,
+            "premax": 475,
+            "premin": 474,
+            "premed": 474,
+            "preult": 475,
+            "totneg": 4,
+            "quatot": 350000000,
+            "voltot": 166162500,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860416",
+      "codneg": "MYP 5",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 45130,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "MYP 5",
+          "tpmerc": "030",
+          "nomres": "MYPK",
+          "especi": "PNA*",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MYPKACPNA",
+          "dimes": "103",
+          "stats": {
+            "preab": 2605,
+            "premax": 2605,
+            "premin": 2605,
+            "premed": 2605,
+            "preult": 2605,
+            "totneg": 1,
+            "quatot": 15000000,
+            "voltot": 39075000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 45131,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "MYP 5",
+          "tpmerc": "030",
+          "nomres": "MYPK",
+          "especi": "PNA*",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MYPKACPNA",
+          "dimes": "103",
+          "stats": {
+            "preab": 2690,
+            "premax": 2691,
+            "premin": 2690,
+            "premed": 2690,
+            "preult": 2691,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 269025000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860416",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 45137,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 154500,
+            "premax": 175950,
+            "premin": 154500,
+            "premed": 171200,
+            "preult": 175100,
+            "totneg": 27,
+            "quatot": 23040000,
+            "voltot": 3944453450,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 45138,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 179860,
+            "premax": 179860,
+            "premin": 179860,
+            "premed": 179860,
+            "preult": 179860,
+            "totneg": 8,
+            "quatot": 190000000,
+            "voltot": 34173400000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860416",
+      "codneg": "TEK 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 45177,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 20700,
+            "premax": 20700,
+            "premin": 20540,
+            "premed": 20604,
+            "preult": 20700,
+            "totneg": 3,
+            "quatot": 5000000,
+            "voltot": 103020000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 45178,
+          "date": "19860416",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 22575,
+            "premax": 22575,
+            "premin": 22575,
+            "premed": 22575,
+            "preult": 22575,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 22575000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860417",
+      "codneg": "PMT 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 45882,
+          "date": "19860417",
+          "codbdi": "62",
+          "codneg": "PMT 2",
+          "tpmerc": "030",
+          "nomres": "PMTL",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMTLACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 1966,
+            "premax": 2143,
+            "premin": 1957,
+            "premed": 2039,
+            "preult": 1957,
+            "totneg": 11,
+            "quatot": 84800000,
+            "voltot": 172920000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 45883,
+          "date": "19860417",
+          "codbdi": "62",
+          "codneg": "PMT 2",
+          "tpmerc": "030",
+          "nomres": "PMTL",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMTLACPP",
+          "dimes": "008",
+          "stats": {
+            "preab": 2160,
+            "premax": 2160,
+            "premin": 2160,
+            "premed": 2160,
+            "preult": 2160,
+            "totneg": 1,
+            "quatot": 2000000,
+            "voltot": 4320000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860418",
+      "codneg": "IVI 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 46654,
+          "date": "19860418",
+          "codbdi": "62",
+          "codneg": "IVI 4",
+          "tpmerc": "030",
+          "nomres": "IVIL",
+          "especi": "PN *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "IVILACPN",
+          "dimes": "132",
+          "stats": {
+            "preab": 2277,
+            "premax": 2277,
+            "premin": 2226,
+            "premed": 2269,
+            "preult": 2226,
+            "totneg": 14,
+            "quatot": 104000000,
+            "voltot": 236001000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 46655,
+          "date": "19860418",
+          "codbdi": "62",
+          "codneg": "IVI 4",
+          "tpmerc": "030",
+          "nomres": "IVIL",
+          "especi": "PN *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "IVILACPN",
+          "dimes": "132",
+          "stats": {
+            "preab": 2376,
+            "premax": 2376,
+            "premin": 2376,
+            "premed": 2376,
+            "preult": 2376,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 23760000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860418",
+      "codneg": "MYP 5",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 46688,
+          "date": "19860418",
+          "codbdi": "62",
+          "codneg": "MYP 5",
+          "tpmerc": "030",
+          "nomres": "MYPK",
+          "especi": "PNA*",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MYPKACPNA",
+          "dimes": "103",
+          "stats": {
+            "preab": 3312,
+            "premax": 3519,
+            "premin": 2743,
+            "premed": 3139,
+            "preult": 3415,
+            "totneg": 29,
+            "quatot": 86000000,
+            "voltot": 270001500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 46689,
+          "date": "19860418",
+          "codbdi": "62",
+          "codneg": "MYP 5",
+          "tpmerc": "030",
+          "nomres": "MYPK",
+          "especi": "PNA*",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MYPKACPNA",
+          "dimes": "103",
+          "stats": {
+            "preab": 3638,
+            "premax": 3638,
+            "premin": 3638,
+            "premed": 3638,
+            "preult": 3638,
+            "totneg": 1,
+            "quatot": 4000000,
+            "voltot": 14552000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860422",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 47505,
+          "date": "19860422",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 180250,
+            "premax": 181650,
+            "premin": 175610,
+            "premed": 180505,
+            "preult": 180250,
+            "totneg": 8,
+            "quatot": 5635000,
+            "voltot": 1017147410,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 47506,
+          "date": "19860422",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 190440,
+            "premax": 190440,
+            "premin": 190440,
+            "premed": 190440,
+            "preult": 190440,
+            "totneg": 1,
+            "quatot": 12000000,
+            "voltot": 2285280000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860422",
+      "codneg": "PMA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 47511,
+          "date": "19860422",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3519,
+            "premax": 3627,
+            "premin": 3415,
+            "premed": 3490,
+            "preult": 3415,
+            "totneg": 45,
+            "quatot": 561600000,
+            "voltot": 1960193800,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 47512,
+          "date": "19860422",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3640,
+            "premax": 3640,
+            "premin": 3640,
+            "premed": 3640,
+            "preult": 3640,
+            "totneg": 2,
+            "quatot": 10000000,
+            "voltot": 36400000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860423",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 48319,
+          "date": "19860423",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 176985,
+            "premax": 176985,
+            "premin": 170775,
+            "premed": 173362,
+            "preult": 170775,
+            "totneg": 3,
+            "quatot": 200000,
+            "voltot": 34672500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 48320,
+          "date": "19860423",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C33",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 179180,
+            "premax": 179350,
+            "premin": 179180,
+            "premed": 179305,
+            "preult": 179350,
+            "totneg": 2,
+            "quatot": 42000000,
+            "voltot": 7530830000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860424",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 49123,
+          "date": "19860424",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 172845,
+            "premax": 182000,
+            "premin": 170775,
+            "premed": 175515,
+            "preult": 175949,
+            "totneg": 6,
+            "quatot": 2440000,
+            "voltot": 428258850,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 49124,
+          "date": "19860424",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 179180,
+            "premax": 179180,
+            "premin": 179180,
+            "premed": 179180,
+            "preult": 179180,
+            "totneg": 1,
+            "quatot": 3000000,
+            "voltot": 537540000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860424",
+      "codneg": "PMA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 49130,
+          "date": "19860424",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3519,
+            "premax": 3571,
+            "premin": 3495,
+            "premed": 3518,
+            "preult": 3519,
+            "totneg": 25,
+            "quatot": 210500000,
+            "voltot": 740545500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 49131,
+          "date": "19860424",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 3617,
+            "premax": 3617,
+            "premin": 3617,
+            "premed": 3617,
+            "preult": 3617,
+            "totneg": 1,
+            "quatot": 4000000,
+            "voltot": 14468000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860425",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 49988,
+          "date": "19860425",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 181125,
+            "premax": 208001,
+            "premin": 180250,
+            "premed": 199222,
+            "preult": 197600,
+            "totneg": 10,
+            "quatot": 8360000,
+            "voltot": 1665501050,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 49989,
+          "date": "19860425",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 210800,
+            "premax": 210800,
+            "premin": 210800,
+            "premed": 210800,
+            "preult": 210800,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 2108000000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860428",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 50785,
+          "date": "19860428",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 243930,
+            "premax": 245140,
+            "premin": 206000,
+            "premed": 232840,
+            "preult": 206000,
+            "totneg": 25,
+            "quatot": 8705000,
+            "voltot": 2026872200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 50786,
+          "date": "19860428",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 221400,
+            "premax": 221400,
+            "premin": 221400,
+            "premed": 221400,
+            "preult": 221400,
+            "totneg": 3,
+            "quatot": 300000,
+            "voltot": 66420000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860429",
+      "codneg": "BB  2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 51428,
+          "date": "19860429",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 92880,
+            "premax": 92880,
+            "premin": 89010,
+            "premed": 90528,
+            "preult": 90639,
+            "totneg": 6,
+            "quatot": 4210000,
+            "voltot": 381126200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 51429,
+          "date": "19860429",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 64859,
+            "premax": 94860,
+            "premin": 64859,
+            "premed": 89860,
+            "preult": 94860,
+            "totneg": 11,
+            "quatot": 6000000,
+            "voltot": 539160000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860429",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 51542,
+          "date": "19860429",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 217980,
+            "premax": 217980,
+            "premin": 194750,
+            "premed": 206119,
+            "preult": 211506,
+            "totneg": 28,
+            "quatot": 24146000,
+            "voltot": 4976955520,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 51543,
+          "date": "19860429",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 215999,
+            "premax": 221550,
+            "premin": 215990,
+            "premed": 221280,
+            "preult": 221550,
+            "totneg": 2,
+            "quatot": 8400000,
+            "voltot": 1858752000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860430",
+      "codneg": "CPN 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 52226,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "CPN 8",
+          "tpmerc": "030",
+          "nomres": "CPNE",
+          "especi": "PPA*",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "CPNEACPPA",
+          "dimes": "036",
+          "stats": {
+            "preab": 8754,
+            "premax": 8839,
+            "premin": 8653,
+            "premed": 8741,
+            "preult": 8653,
+            "totneg": 6,
+            "quatot": 19400000,
+            "voltot": 169579500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 52227,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "CPN 8",
+          "tpmerc": "030",
+          "nomres": "CPNE",
+          "especi": "PPA*",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "CPNEACPPA",
+          "dimes": "036",
+          "stats": {
+            "preab": 8967,
+            "premax": 8967,
+            "premin": 8967,
+            "premed": 8967,
+            "preult": 8967,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 44835000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860430",
+      "codneg": "IVI 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 52257,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "IVI 4",
+          "tpmerc": "030",
+          "nomres": "IVIL",
+          "especi": "PN *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "IVILACPN",
+          "dimes": "132",
+          "stats": {
+            "preab": 1976,
+            "premax": 1976,
+            "premin": 1966,
+            "premed": 1968,
+            "preult": 1966,
+            "totneg": 3,
+            "quatot": 6000000,
+            "voltot": 11808500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 52258,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "IVI 4",
+          "tpmerc": "030",
+          "nomres": "IVIL",
+          "especi": "PN *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "IVILACPN",
+          "dimes": "132",
+          "stats": {
+            "preab": 2008,
+            "premax": 2008,
+            "premin": 2008,
+            "premed": 2008,
+            "preult": 2008,
+            "totneg": 1,
+            "quatot": 55000000,
+            "voltot": 110440000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860430",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 52289,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 205800,
+            "premax": 231300,
+            "premin": 205800,
+            "premed": 218060,
+            "preult": 217350,
+            "totneg": 22,
+            "quatot": 50532000,
+            "voltot": 11019007920,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 52290,
+          "date": "19860430",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 237600,
+            "premax": 237600,
+            "premin": 232200,
+            "premed": 232970,
+            "preult": 232200,
+            "totneg": 2,
+            "quatot": 350000,
+            "voltot": 81539500,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860502",
+      "codneg": "TEK 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 53116,
+          "date": "19860502",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 20800,
+            "premax": 20800,
+            "premin": 15525,
+            "premed": 17719,
+            "preult": 19570,
+            "totneg": 6,
+            "quatot": 3900000,
+            "voltot": 69104500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 53117,
+          "date": "19860502",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *C38",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 17281,
+            "premax": 17281,
+            "premin": 17281,
+            "premed": 17281,
+            "preult": 17281,
+            "totneg": 1,
+            "quatot": 100000,
+            "voltot": 1728100,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860505",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 53840,
+          "date": "19860505",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 226820,
+            "premax": 237820,
+            "premin": 226600,
+            "premed": 235661,
+            "preult": 236900,
+            "totneg": 9,
+            "quatot": 25770000,
+            "voltot": 6073009000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 53841,
+          "date": "19860505",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 248400,
+            "premax": 248400,
+            "premin": 248400,
+            "premed": 248400,
+            "preult": 248400,
+            "totneg": 1,
+            "quatot": 50000,
+            "voltot": 12420000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860506",
+      "codneg": "FBM 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 54534,
+          "date": "19860506",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 683,
+            "premax": 683,
+            "premin": 608,
+            "premed": 623,
+            "preult": 608,
+            "totneg": 7,
+            "quatot": 76000000,
+            "voltot": 47386000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 54535,
+          "date": "19860506",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 648,
+            "premax": 648,
+            "premin": 648,
+            "premed": 648,
+            "preult": 648,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 3240000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860507",
+      "codneg": "QMS 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 55414,
+          "date": "19860507",
+          "codbdi": "62",
+          "codneg": "QMS 4",
+          "tpmerc": "030",
+          "nomres": "QMSN",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "QMSNACPN",
+          "dimes": "102",
+          "stats": {
+            "preab": 752,
+            "premax": 777,
+            "premin": 752,
+            "premed": 755,
+            "preult": 777,
+            "totneg": 4,
+            "quatot": 52000000,
+            "voltot": 39279000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 55415,
+          "date": "19860507",
+          "codbdi": "62",
+          "codneg": "QMS 4",
+          "tpmerc": "030",
+          "nomres": "QMSN",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "QMSNACPN",
+          "dimes": "102",
+          "stats": {
+            "preab": 739,
+            "premax": 739,
+            "premin": 739,
+            "premed": 739,
+            "preult": 739,
+            "totneg": 1,
+            "quatot": 25000000,
+            "voltot": 18475000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "BB  2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56087,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 86423,
+            "premax": 87975,
+            "premin": 83268,
+            "premed": 84834,
+            "preult": 83268,
+            "totneg": 6,
+            "quatot": 3100000,
+            "voltot": 262985700,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56088,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 83345,
+            "premax": 84400,
+            "premin": 83345,
+            "premed": 84173,
+            "preult": 84400,
+            "totneg": 3,
+            "quatot": 2000000,
+            "voltot": 168346350,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "FNV 6",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56132,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "FNV 6",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C02",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5573,
+            "premax": 5800,
+            "premin": 5562,
+            "premed": 5672,
+            "preult": 5654,
+            "totneg": 11,
+            "quatot": 108000000,
+            "voltot": 612600000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56133,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "FNV 6",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C02",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5701,
+            "premax": 5701,
+            "premin": 5701,
+            "premed": 5701,
+            "preult": 5701,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 570100000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56181,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 227700,
+            "premax": 229020,
+            "premin": 220590,
+            "premed": 228220,
+            "preult": 221450,
+            "totneg": 16,
+            "quatot": 60480000,
+            "voltot": 13802745600,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56182,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "120",
+          "stats": {
+            "preab": 231120,
+            "premax": 231120,
+            "premin": 231120,
+            "premed": 231120,
+            "preult": 231120,
+            "totneg": 1,
+            "quatot": 50000,
+            "voltot": 11556000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "SAG 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56201,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 5486,
+            "premax": 5665,
+            "premin": 5295,
+            "premed": 5538,
+            "preult": 5295,
+            "totneg": 10,
+            "quatot": 35100000,
+            "voltot": 194398200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56202,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 5275,
+            "premax": 5275,
+            "premin": 5275,
+            "premed": 5275,
+            "preult": 5275,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 26375000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "SHA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56209,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 5641,
+            "premax": 5641,
+            "premin": 5345,
+            "premed": 5446,
+            "preult": 5345,
+            "totneg": 6,
+            "quatot": 124000000,
+            "voltot": 675352000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56210,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 5423,
+            "premax": 5423,
+            "premin": 5423,
+            "premed": 5423,
+            "preult": 5423,
+            "totneg": 1,
+            "quatot": 6000000,
+            "voltot": 32538000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860508",
+      "codneg": "SID 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 56212,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SID 2",
+          "tpmerc": "030",
+          "nomres": "SIDI",
+          "especi": "PP *C04",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SIDIACPP",
+          "dimes": "103",
+          "stats": {
+            "preab": 4128,
+            "premax": 4128,
+            "premin": 3933,
+            "premed": 4039,
+            "preult": 4017,
+            "totneg": 4,
+            "quatot": 22000000,
+            "voltot": 88862000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 56213,
+          "date": "19860508",
+          "codbdi": "62",
+          "codneg": "SID 2",
+          "tpmerc": "030",
+          "nomres": "SIDI",
+          "especi": "PP *C04",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SIDIACPP",
+          "dimes": "103",
+          "stats": {
+            "preab": 4062,
+            "premax": 4062,
+            "premin": 4062,
+            "premed": 4062,
+            "preult": 4062,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 20310000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860509",
+      "codneg": "SAG 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 57013,
+          "date": "19860509",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 5485,
+            "premax": 5665,
+            "premin": 5023,
+            "premed": 5226,
+            "preult": 5433,
+            "totneg": 24,
+            "quatot": 170460000,
+            "voltot": 890907970,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 57014,
+          "date": "19860509",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 5311,
+            "premax": 5311,
+            "premin": 5311,
+            "premed": 5311,
+            "preult": 5311,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 26555000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860512",
+      "codneg": "BB  3",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 57700,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "BB  3",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "ON *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACON",
+          "dimes": "131",
+          "stats": {
+            "preab": 61680,
+            "premax": 61680,
+            "premin": 59624,
+            "premed": 60508,
+            "preult": 59625,
+            "totneg": 3,
+            "quatot": 465000,
+            "voltot": 28136425,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 57701,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "BB  3",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "ON *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACON",
+          "dimes": "131",
+          "stats": {
+            "preab": 61132,
+            "premax": 61132,
+            "premin": 61132,
+            "premed": 61132,
+            "preult": 61132,
+            "totneg": 2,
+            "quatot": 1677000,
+            "voltot": 102518364,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860512",
+      "codneg": "GRN 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 57756,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "GRN 4",
+          "tpmerc": "030",
+          "nomres": "GRNL",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "GRNLACPN",
+          "dimes": "107",
+          "stats": {
+            "preab": 329,
+            "premax": 329,
+            "premin": 329,
+            "premed": 329,
+            "preult": 329,
+            "totneg": 1,
+            "quatot": 14000000,
+            "voltot": 4606000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 57757,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "GRN 4",
+          "tpmerc": "030",
+          "nomres": "GRNL",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "GRNLACPN",
+          "dimes": "107",
+          "stats": {
+            "preab": 337,
+            "premax": 337,
+            "premin": 336,
+            "premed": 336,
+            "preult": 336,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 33680000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860512",
+      "codneg": "LUX 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 57783,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "LUX 2",
+          "tpmerc": "030",
+          "nomres": "LUXM",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "LUXMACPP",
+          "dimes": "010",
+          "stats": {
+            "preab": 4532,
+            "premax": 4626,
+            "premin": 4318,
+            "premed": 4421,
+            "preult": 4318,
+            "totneg": 8,
+            "quatot": 28500000,
+            "voltot": 126018000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 57784,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "LUX 2",
+          "tpmerc": "030",
+          "nomres": "LUXM",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "LUXMACPP",
+          "dimes": "010",
+          "stats": {
+            "preab": 4526,
+            "premax": 4526,
+            "premin": 4525,
+            "premed": 4525,
+            "preult": 4525,
+            "totneg": 2,
+            "quatot": 40000000,
+            "voltot": 181030000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860512",
+      "codneg": "PRS 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 57817,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "PRS 4",
+          "tpmerc": "030",
+          "nomres": "PRSC",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PRSCACPN",
+          "dimes": "007",
+          "stats": {
+            "preab": 1391,
+            "premax": 1391,
+            "premin": 1328,
+            "premed": 1348,
+            "preult": 1337,
+            "totneg": 12,
+            "quatot": 206553000,
+            "voltot": 278433547,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 57818,
+          "date": "19860512",
+          "codbdi": "62",
+          "codneg": "PRS 4",
+          "tpmerc": "030",
+          "nomres": "PRSC",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PRSCACPN",
+          "dimes": "007",
+          "stats": {
+            "preab": 1368,
+            "premax": 1369,
+            "premin": 1368,
+            "premed": 1368,
+            "preult": 1369,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 136825000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860515",
+      "codneg": "BB  2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 60038,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 87380,
+            "premax": 87550,
+            "premin": 84050,
+            "premed": 86733,
+            "preult": 85075,
+            "totneg": 8,
+            "quatot": 5000000,
+            "voltot": 433666026,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 60039,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 86428,
+            "premax": 86428,
+            "premin": 86428,
+            "premed": 86428,
+            "preult": 86428,
+            "totneg": 1,
+            "quatot": 1949000,
+            "voltot": 168448172,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860515",
+      "codneg": "ELB 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 60068,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "ELB 2",
+          "tpmerc": "030",
+          "nomres": "ELBR",
+          "especi": "PP *C03",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "ELBRACPP",
+          "dimes": "102",
+          "stats": {
+            "preab": 1494,
+            "premax": 1664,
+            "premin": 1491,
+            "premed": 1547,
+            "preult": 1491,
+            "totneg": 6,
+            "quatot": 64000000,
+            "voltot": 99041500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 60069,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "ELB 2",
+          "tpmerc": "030",
+          "nomres": "ELBR",
+          "especi": "PP *C03",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "ELBRACPP",
+          "dimes": "102",
+          "stats": {
+            "preab": 1476,
+            "premax": 1477,
+            "premin": 1476,
+            "premed": 1476,
+            "preult": 1477,
+            "totneg": 2,
+            "quatot": 60000000,
+            "voltot": 88599240,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860515",
+      "codneg": "REP 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 60142,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "REP 2",
+          "tpmerc": "030",
+          "nomres": "REPA",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "REPAACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 1132,
+            "premax": 1132,
+            "premin": 1132,
+            "premed": 1132,
+            "preult": 1132,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 11320000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 60143,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "REP 2",
+          "tpmerc": "030",
+          "nomres": "REPA",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "REPAACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 1159,
+            "premax": 1160,
+            "premin": 1159,
+            "premed": 1159,
+            "preult": 1160,
+            "totneg": 2,
+            "quatot": 160000000,
+            "voltot": 185504000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860515",
+      "codneg": "SHA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 60149,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 5140,
+            "premax": 5372,
+            "premin": 5140,
+            "premed": 5268,
+            "preult": 5329,
+            "totneg": 14,
+            "quatot": 229500000,
+            "voltot": 1209006000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 60150,
+          "date": "19860515",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 5117,
+            "premax": 5117,
+            "premin": 5117,
+            "premed": 5117,
+            "preult": 5117,
+            "totneg": 1,
+            "quatot": 15000000,
+            "voltot": 76755000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860520",
+      "codneg": "BEL 1",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 62156,
+          "date": "19860520",
+          "codbdi": "62",
+          "codneg": "BEL 1",
+          "tpmerc": "030",
+          "nomres": "BELG",
+          "especi": "OP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BELGACOP",
+          "dimes": "118",
+          "stats": {
+            "preab": 12347,
+            "premax": 12347,
+            "premin": 11253,
+            "premed": 11305,
+            "preult": 11253,
+            "totneg": 2,
+            "quatot": 2100000,
+            "voltot": 23740700,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 62157,
+          "date": "19860520",
+          "codbdi": "62",
+          "codneg": "BEL 1",
+          "tpmerc": "030",
+          "nomres": "BELG",
+          "especi": "OP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BELGACOP",
+          "dimes": "118",
+          "stats": {
+            "preab": 10845,
+            "premax": 11638,
+            "premin": 10845,
+            "premed": 11241,
+            "preult": 11638,
+            "totneg": 2,
+            "quatot": 2000000,
+            "voltot": 22483000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860520",
+      "codneg": "SUR 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 62301,
+          "date": "19860520",
+          "codbdi": "62",
+          "codneg": "SUR 2",
+          "tpmerc": "030",
+          "nomres": "SURS",
+          "especi": "PP *C21",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SURSACPP",
+          "dimes": "115",
+          "stats": {
+            "preab": 3075,
+            "premax": 3075,
+            "premin": 3075,
+            "premed": 3075,
+            "preult": 3075,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 3075000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 62302,
+          "date": "19860520",
+          "codbdi": "62",
+          "codneg": "SUR 2",
+          "tpmerc": "030",
+          "nomres": "SURS",
+          "especi": "PP *C21",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SURSACPP",
+          "dimes": "115",
+          "stats": {
+            "preab": 3156,
+            "premax": 3156,
+            "premin": 3156,
+            "premed": 3156,
+            "preult": 3156,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 315600000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860521",
+      "codneg": "LUX 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63034,
+          "date": "19860521",
+          "codbdi": "62",
+          "codneg": "LUX 2",
+          "tpmerc": "030",
+          "nomres": "LUXM",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "LUXMACPP",
+          "dimes": "010",
+          "stats": {
+            "preab": 4098,
+            "premax": 4203,
+            "premin": 4091,
+            "premed": 4144,
+            "preult": 4096,
+            "totneg": 10,
+            "quatot": 25850000,
+            "voltot": 107122400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63035,
+          "date": "19860521",
+          "codbdi": "62",
+          "codneg": "LUX 2",
+          "tpmerc": "030",
+          "nomres": "LUXM",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "LUXMACPP",
+          "dimes": "010",
+          "stats": {
+            "preab": 4601,
+            "premax": 4601,
+            "premin": 4601,
+            "premed": 4601,
+            "preult": 4601,
+            "totneg": 1,
+            "quatot": 2000000,
+            "voltot": 9202000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860521",
+      "codneg": "PET 3",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63061,
+          "date": "19860521",
+          "codbdi": "62",
+          "codneg": "PET 3",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "ON *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACON",
+          "dimes": "121",
+          "stats": {
+            "preab": 74057,
+            "premax": 74057,
+            "premin": 73550,
+            "premed": 73938,
+            "preult": 73550,
+            "totneg": 3,
+            "quatot": 2611000,
+            "voltot": 193053050,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63062,
+          "date": "19860521",
+          "codbdi": "62",
+          "codneg": "PET 3",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "ON *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACON",
+          "dimes": "121",
+          "stats": {
+            "preab": 75855,
+            "premax": 75855,
+            "premin": 75855,
+            "premed": 75855,
+            "preult": 75855,
+            "totneg": 1,
+            "quatot": 750000,
+            "voltot": 56891250,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "BB  2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63736,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 77900,
+            "premax": 78128,
+            "premin": 75850,
+            "premed": 76775,
+            "preult": 75850,
+            "totneg": 4,
+            "quatot": 477000,
+            "voltot": 36621750,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63737,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 79577,
+            "premax": 79577,
+            "premin": 79577,
+            "premed": 79577,
+            "preult": 79577,
+            "totneg": 1,
+            "quatot": 2150000,
+            "voltot": 171090550,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "FNV 7",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63797,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 3788,
+            "premax": 3952,
+            "premin": 3742,
+            "premed": 3780,
+            "preult": 3753,
+            "totneg": 10,
+            "quatot": 78784000,
+            "voltot": 297853292,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63798,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 3960,
+            "premax": 3960,
+            "premin": 3960,
+            "premed": 3960,
+            "preult": 3960,
+            "totneg": 1,
+            "quatot": 2000000,
+            "voltot": 7920000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "MUL 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63846,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "MUL 2",
+          "tpmerc": "030",
+          "nomres": "MULL",
+          "especi": "PP *C16",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MULLACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 1188,
+            "premax": 1188,
+            "premin": 1081,
+            "premed": 1095,
+            "preult": 1131,
+            "totneg": 3,
+            "quatot": 58400000,
+            "voltot": 63949400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63847,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "MUL 2",
+          "tpmerc": "030",
+          "nomres": "MULL",
+          "especi": "PP *C16",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MULLACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 1166,
+            "premax": 1166,
+            "premin": 1166,
+            "premed": 1166,
+            "preult": 1166,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 5830000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "PET 3",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63856,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "PET 3",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "ON *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACON",
+          "dimes": "121",
+          "stats": {
+            "preab": 76875,
+            "premax": 79125,
+            "premin": 76875,
+            "premed": 78000,
+            "preult": 79125,
+            "totneg": 2,
+            "quatot": 2000000,
+            "voltot": 156000000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63857,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "PET 3",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "ON *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACON",
+          "dimes": "121",
+          "stats": {
+            "preab": 79125,
+            "premax": 79125,
+            "premin": 79125,
+            "premed": 79125,
+            "preult": 79125,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 79125000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "SAG 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63874,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 4399,
+            "premax": 4501,
+            "premin": 4203,
+            "premed": 4399,
+            "preult": 4408,
+            "totneg": 18,
+            "quatot": 353080000,
+            "voltot": 1553474140,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63875,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 4585,
+            "premax": 4585,
+            "premin": 4585,
+            "premed": 4585,
+            "preult": 4585,
+            "totneg": 1,
+            "quatot": 11000000,
+            "voltot": 50435000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "TEK 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63897,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *DIV",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 15330,
+            "premax": 15330,
+            "premin": 15330,
+            "premed": 15330,
+            "preult": 15330,
+            "totneg": 1,
+            "quatot": 6500000,
+            "voltot": 99645000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63898,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "TEK 2",
+          "tpmerc": "030",
+          "nomres": "TEKA",
+          "especi": "PP *DIV",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TEKAACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 14980,
+            "premax": 14980,
+            "premin": 14980,
+            "premed": 14980,
+            "preult": 14980,
+            "totneg": 1,
+            "quatot": 793000,
+            "voltot": 11879140,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860522",
+      "codneg": "TRB 6",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 63901,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "TRB 6",
+          "tpmerc": "030",
+          "nomres": "TRBR",
+          "especi": "PP *C31",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TRBRACPP",
+          "dimes": "031",
+          "stats": {
+            "preab": 308,
+            "premax": 308,
+            "premin": 288,
+            "premed": 307,
+            "preult": 288,
+            "totneg": 5,
+            "quatot": 199500000,
+            "voltot": 61292000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 63902,
+          "date": "19860522",
+          "codbdi": "62",
+          "codneg": "TRB 6",
+          "tpmerc": "030",
+          "nomres": "TRBR",
+          "especi": "PP *C31",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TRBRACPP",
+          "dimes": "031",
+          "stats": {
+            "preab": 337,
+            "premax": 338,
+            "premin": 337,
+            "premed": 337,
+            "preult": 338,
+            "totneg": 2,
+            "quatot": 120000000,
+            "voltot": 40500000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860523",
+      "codneg": "MEN 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 64641,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "MEN 8",
+          "tpmerc": "030",
+          "nomres": "MEND",
+          "especi": "PPB*I85",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "MENDACPPB",
+          "dimes": "125",
+          "stats": {
+            "preab": 2358,
+            "premax": 2658,
+            "premin": 2255,
+            "premed": 2428,
+            "preult": 2565,
+            "totneg": 29,
+            "quatot": 258000000,
+            "voltot": 626642400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 64642,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "MEN 8",
+          "tpmerc": "030",
+          "nomres": "MEND",
+          "especi": "PPB*I85",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "MENDACPPB",
+          "dimes": "125",
+          "stats": {
+            "preab": 2108,
+            "premax": 2108,
+            "premin": 2108,
+            "premed": 2108,
+            "preult": 2108,
+            "totneg": 1,
+            "quatot": 2000000,
+            "voltot": 4216000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860523",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 64656,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C34",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "121",
+          "stats": {
+            "preab": 133250,
+            "premax": 144782,
+            "premin": 110921,
+            "premed": 131757,
+            "preult": 136050,
+            "totneg": 54,
+            "quatot": 63930331,
+            "voltot": 8423268622,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 64657,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C34",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "121",
+          "stats": {
+            "preab": 110001,
+            "premax": 110001,
+            "premin": 110001,
+            "premed": 110001,
+            "preult": 110001,
+            "totneg": 2,
+            "quatot": 26000000,
+            "voltot": 2860026000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860523",
+      "codneg": "PMA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 64662,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 2443,
+            "premax": 2665,
+            "premin": 2406,
+            "premed": 2442,
+            "preult": 2481,
+            "totneg": 42,
+            "quatot": 660870000,
+            "voltot": 1614049850,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 64663,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "PMA 2",
+          "tpmerc": "030",
+          "nomres": "PMAM",
+          "especi": "PP *C59",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PMAMACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 2266,
+            "premax": 2266,
+            "premin": 2266,
+            "premed": 2266,
+            "preult": 2266,
+            "totneg": 1,
+            "quatot": 8000000,
+            "voltot": 18128000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860523",
+      "codneg": "SAG 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 64677,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 4626,
+            "premax": 4911,
+            "premin": 4422,
+            "premed": 4609,
+            "preult": 4613,
+            "totneg": 30,
+            "quatot": 113150000,
+            "voltot": 521508350,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 64678,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "SAG 2",
+          "tpmerc": "030",
+          "nomres": "SAGR",
+          "especi": "PP *C01",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SAGRACPP",
+          "dimes": "021",
+          "stats": {
+            "preab": 4532,
+            "premax": 4532,
+            "premin": 4532,
+            "premed": 4532,
+            "preult": 4532,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 22660000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860523",
+      "codneg": "SHA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 64684,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 4100,
+            "premax": 4701,
+            "premin": 4100,
+            "premed": 4512,
+            "preult": 4510,
+            "totneg": 61,
+            "quatot": 685300000,
+            "voltot": 3092684300,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 64685,
+          "date": "19860523",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 4141,
+            "premax": 4141,
+            "premin": 4141,
+            "premed": 4141,
+            "preult": 4141,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 20705000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860527",
+      "codneg": "SEB 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 65460,
+          "date": "19860527",
+          "codbdi": "62",
+          "codneg": "SEB 2",
+          "tpmerc": "030",
+          "nomres": "SEBE",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SEBEACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 282,
+            "premax": 298,
+            "premin": 277,
+            "premed": 284,
+            "preult": 298,
+            "totneg": 5,
+            "quatot": 110000000,
+            "voltot": 31250000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 65461,
+          "date": "19860527",
+          "codbdi": "62",
+          "codneg": "SEB 2",
+          "tpmerc": "030",
+          "nomres": "SEBE",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SEBEACPP",
+          "dimes": "009",
+          "stats": {
+            "preab": 278,
+            "premax": 279,
+            "premin": 278,
+            "premed": 278,
+            "preult": 279,
+            "totneg": 2,
+            "quatot": 5000000,
+            "voltot": 1391000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860528",
+      "codneg": "FNV 7",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66158,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5255,
+            "premax": 5524,
+            "premin": 5074,
+            "premed": 5244,
+            "preult": 5125,
+            "totneg": 22,
+            "quatot": 83500000,
+            "voltot": 437874000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66159,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5392,
+            "premax": 5392,
+            "premin": 5392,
+            "premed": 5392,
+            "preult": 5392,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 26960000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860528",
+      "codneg": "PET 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66214,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C34",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "121",
+          "stats": {
+            "preab": 154650,
+            "premax": 158410,
+            "premin": 148620,
+            "premed": 154179,
+            "preult": 158410,
+            "totneg": 14,
+            "quatot": 9306330,
+            "voltot": 1434849959,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66215,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "PET 2",
+          "tpmerc": "030",
+          "nomres": "PETR",
+          "especi": "PP *C34",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PETRACPP",
+          "dimes": "121",
+          "stats": {
+            "preab": 163830,
+            "premax": 163830,
+            "premin": 163830,
+            "premed": 163829,
+            "preult": 163830,
+            "totneg": 1,
+            "quatot": 1333333,
+            "voltot": 218439945,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860528",
+      "codneg": "WHM 1",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66262,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "WHM 1",
+          "tpmerc": "030",
+          "nomres": "WHMT",
+          "especi": "OP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "WHMTACOP",
+          "dimes": "136",
+          "stats": {
+            "preab": 819,
+            "premax": 821,
+            "premin": 812,
+            "premed": 814,
+            "preult": 812,
+            "totneg": 4,
+            "quatot": 57500000,
+            "voltot": 46841500,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66263,
+          "date": "19860528",
+          "codbdi": "62",
+          "codneg": "WHM 1",
+          "tpmerc": "030",
+          "nomres": "WHMT",
+          "especi": "OP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "WHMTACOP",
+          "dimes": "136",
+          "stats": {
+            "preab": 840,
+            "premax": 841,
+            "premin": 840,
+            "premed": 840,
+            "preult": 841,
+            "totneg": 2,
+            "quatot": 150000000,
+            "voltot": 126082200,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860529",
+      "codneg": "BFC 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66904,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "BFC 2",
+          "tpmerc": "030",
+          "nomres": "BFCV",
+          "especi": "PP *DIV",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BFCVACPP",
+          "dimes": "017",
+          "stats": {
+            "preab": 1128,
+            "premax": 1128,
+            "premin": 1044,
+            "premed": 1100,
+            "preult": 1044,
+            "totneg": 3,
+            "quatot": 24000000,
+            "voltot": 26400000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66905,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "BFC 2",
+          "tpmerc": "030",
+          "nomres": "BFCV",
+          "especi": "PP *DIV",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BFCVACPP",
+          "dimes": "017",
+          "stats": {
+            "preab": 1157,
+            "premax": 1157,
+            "premin": 1156,
+            "premed": 1156,
+            "preult": 1156,
+            "totneg": 2,
+            "quatot": 50000000,
+            "voltot": 57805000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860529",
+      "codneg": "CIQ 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66911,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "CIQ 2",
+          "tpmerc": "030",
+          "nomres": "CIQU",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "CIQUACPP",
+          "dimes": "128",
+          "stats": {
+            "preab": 12775,
+            "premax": 14560,
+            "premin": 12775,
+            "premed": 13428,
+            "preult": 14560,
+            "totneg": 7,
+            "quatot": 9700000,
+            "voltot": 130256800,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66912,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "CIQ 2",
+          "tpmerc": "030",
+          "nomres": "CIQU",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "CIQUACPP",
+          "dimes": "128",
+          "stats": {
+            "preab": 13337,
+            "premax": 13337,
+            "premin": 13337,
+            "premed": 13337,
+            "preult": 13337,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 13337000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860529",
+      "codneg": "COB 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66915,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "COB 8",
+          "tpmerc": "030",
+          "nomres": "COBE",
+          "especi": "PPB*",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "COBEACPPB",
+          "dimes": "016",
+          "stats": {
+            "preab": 1640,
+            "premax": 1740,
+            "premin": 1589,
+            "premed": 1625,
+            "preult": 1589,
+            "totneg": 3,
+            "quatot": 11000000,
+            "voltot": 17885000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66916,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "COB 8",
+          "tpmerc": "030",
+          "nomres": "COBE",
+          "especi": "PPB*",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "COBEACPPB",
+          "dimes": "016",
+          "stats": {
+            "preab": 1692,
+            "premax": 1692,
+            "premin": 1692,
+            "premed": 1692,
+            "preult": 1692,
+            "totneg": 2,
+            "quatot": 70000000,
+            "voltot": 118440000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860529",
+      "codneg": "ITP 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 66950,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "ITP 2",
+          "tpmerc": "030",
+          "nomres": "ITPS",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "ITPSACPP",
+          "dimes": "016",
+          "stats": {
+            "preab": 471,
+            "premax": 471,
+            "premin": 471,
+            "premed": 471,
+            "preult": 471,
+            "totneg": 1,
+            "quatot": 16000000,
+            "voltot": 7536000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 66951,
+          "date": "19860529",
+          "codbdi": "62",
+          "codneg": "ITP 2",
+          "tpmerc": "030",
+          "nomres": "ITPS",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "ITPSACPP",
+          "dimes": "016",
+          "stats": {
+            "preab": 473,
+            "premax": 473,
+            "premin": 472,
+            "premed": 472,
+            "preult": 472,
+            "totneg": 3,
+            "quatot": 120000000,
+            "voltot": 56754000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860530",
+      "codneg": "SHA 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 67785,
+          "date": "19860530",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 4986,
+            "premax": 5304,
+            "premin": 4896,
+            "premed": 5120,
+            "preult": 5304,
+            "totneg": 29,
+            "quatot": 283900000,
+            "voltot": 1453694600,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 67786,
+          "date": "19860530",
+          "codbdi": "62",
+          "codneg": "SHA 2",
+          "tpmerc": "030",
+          "nomres": "SHAP",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SHAPACPP",
+          "dimes": "025",
+          "stats": {
+            "preab": 5433,
+            "premax": 5433,
+            "premin": 5433,
+            "premed": 5433,
+            "preult": 5433,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 27165000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860530",
+      "codneg": "TRF 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 67801,
+          "date": "19860530",
+          "codbdi": "62",
+          "codneg": "TRF 4",
+          "tpmerc": "030",
+          "nomres": "TRFO",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "TRFOACPN",
+          "dimes": "014",
+          "stats": {
+            "preab": 2402,
+            "premax": 2402,
+            "premin": 2046,
+            "premed": 2369,
+            "preult": 2302,
+            "totneg": 6,
+            "quatot": 18852000,
+            "voltot": 44671004,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 67802,
+          "date": "19860530",
+          "codbdi": "62",
+          "codneg": "TRF 4",
+          "tpmerc": "030",
+          "nomres": "TRFO",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "TRFOACPN",
+          "dimes": "014",
+          "stats": {
+            "preab": 2480,
+            "premax": 2480,
+            "premin": 2480,
+            "premed": 2480,
+            "preult": 2480,
+            "totneg": 2,
+            "quatot": 6400000,
+            "voltot": 15872000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "FBM 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68498,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 585,
+            "premax": 585,
+            "premin": 532,
+            "premed": 560,
+            "preult": 532,
+            "totneg": 3,
+            "quatot": 28500000,
+            "voltot": 15982000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68499,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 623,
+            "premax": 623,
+            "premin": 623,
+            "premed": 623,
+            "preult": 623,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 6230000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "FER 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68501,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FER 2",
+          "tpmerc": "030",
+          "nomres": "FERO",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FEROACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 19400,
+            "premax": 19929,
+            "premin": 19400,
+            "premed": 19641,
+            "preult": 19437,
+            "totneg": 3,
+            "quatot": 2240000,
+            "voltot": 43996100,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68502,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FER 2",
+          "tpmerc": "030",
+          "nomres": "FERO",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FEROACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 19931,
+            "premax": 19931,
+            "premin": 19931,
+            "premed": 19931,
+            "preult": 19931,
+            "totneg": 1,
+            "quatot": 58000000,
+            "voltot": 1155998000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "FNV 7",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68505,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5253,
+            "premax": 5253,
+            "premin": 4957,
+            "premed": 5196,
+            "preult": 4957,
+            "totneg": 10,
+            "quatot": 41400000,
+            "voltot": 215114400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68506,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5692,
+            "premax": 5692,
+            "premin": 5692,
+            "premed": 5692,
+            "preult": 5692,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 56920000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "FNV 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68507,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FNV 8",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C03",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "122",
+          "stats": {
+            "preab": 793,
+            "premax": 793,
+            "premin": 793,
+            "premed": 793,
+            "preult": 793,
+            "totneg": 1,
+            "quatot": 5000000,
+            "voltot": 3965000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68508,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "FNV 8",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C03",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "122",
+          "stats": {
+            "preab": 837,
+            "premax": 837,
+            "premin": 837,
+            "premed": 837,
+            "preult": 837,
+            "totneg": 1,
+            "quatot": 10000000,
+            "voltot": 8370000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "PRS 4",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68564,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "PRS 4",
+          "tpmerc": "030",
+          "nomres": "PRSC",
+          "especi": "PN *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "PRSCACPN",
+          "dimes": "008",
+          "stats": {
+            "preab": 593,
+            "premax": 593,
+            "premin": 587,
+            "premed": 591,
+            "preult": 587,
+            "totneg": 2,
+            "quatot": 24000000,
+            "voltot": 14184000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68565,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "PRS 4",
+          "tpmerc": "030",
+          "nomres": "PRSC",
+          "especi": "PN *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "PRSCACPN",
+          "dimes": "008",
+          "stats": {
+            "preab": 607,
+            "premax": 607,
+            "premin": 607,
+            "premed": 607,
+            "preult": 607,
+            "totneg": 2,
+            "quatot": 150000000,
+            "voltot": 91050000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860602",
+      "codneg": "SIF 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 68582,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "SIF 2",
+          "tpmerc": "030",
+          "nomres": "SIFC",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "SIFCACPP",
+          "dimes": "023",
+          "stats": {
+            "preab": 5638,
+            "premax": 5638,
+            "premin": 5614,
+            "premed": 5615,
+            "preult": 5614,
+            "totneg": 5,
+            "quatot": 77050000,
+            "voltot": 432636930,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 68583,
+          "date": "19860602",
+          "codbdi": "62",
+          "codneg": "SIF 2",
+          "tpmerc": "030",
+          "nomres": "SIFC",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "SIFCACPP",
+          "dimes": "023",
+          "stats": {
+            "preab": 5706,
+            "premax": 5706,
+            "premin": 5706,
+            "premed": 5706,
+            "preult": 5706,
+            "totneg": 1,
+            "quatot": 40000000,
+            "voltot": 228240000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "AVI 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69241,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "AVI 2",
+          "tpmerc": "030",
+          "nomres": "AVIL",
+          "especi": "PP *C39",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "AVILACPP",
+          "dimes": "137",
+          "stats": {
+            "preab": 2510,
+            "premax": 2510,
+            "premin": 2510,
+            "premed": 2510,
+            "preult": 2510,
+            "totneg": 1,
+            "quatot": 4000000,
+            "voltot": 10040000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69242,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "AVI 2",
+          "tpmerc": "030",
+          "nomres": "AVIL",
+          "especi": "PP *C39",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "AVILACPP",
+          "dimes": "137",
+          "stats": {
+            "preab": 2635,
+            "premax": 2635,
+            "premin": 2635,
+            "premed": 2635,
+            "preult": 2635,
+            "totneg": 1,
+            "quatot": 12765000,
+            "voltot": 33635775,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "BB  2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69247,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 81760,
+            "premax": 83640,
+            "premin": 79050,
+            "premed": 81340,
+            "preult": 79716,
+            "totneg": 17,
+            "quatot": 7380000,
+            "voltot": 600289200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69248,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "BB  2",
+          "tpmerc": "030",
+          "nomres": "BBAS",
+          "especi": "PP *C32",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BBASACPP",
+          "dimes": "132",
+          "stats": {
+            "preab": 82445,
+            "premax": 82445,
+            "premin": 82445,
+            "premed": 82445,
+            "preult": 82445,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 82445000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "BEL 1",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69253,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "BEL 1",
+          "tpmerc": "030",
+          "nomres": "BELG",
+          "especi": "OP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "BELGACOP",
+          "dimes": "118",
+          "stats": {
+            "preab": 13223,
+            "premax": 13287,
+            "premin": 12929,
+            "premed": 13174,
+            "preult": 12990,
+            "totneg": 7,
+            "quatot": 16300000,
+            "voltot": 214752100,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69254,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "BEL 1",
+          "tpmerc": "030",
+          "nomres": "BELG",
+          "especi": "OP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "BELGACOP",
+          "dimes": "118",
+          "stats": {
+            "preab": 13702,
+            "premax": 13702,
+            "premin": 13702,
+            "premed": 13702,
+            "preult": 13702,
+            "totneg": 1,
+            "quatot": 6640000,
+            "voltot": 90981280,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "ELB 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69287,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "ELB 2",
+          "tpmerc": "030",
+          "nomres": "ELBR",
+          "especi": "PP *C03",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "ELBRACPP",
+          "dimes": "102",
+          "stats": {
+            "preab": 1224,
+            "premax": 1245,
+            "premin": 1224,
+            "premed": 1226,
+            "preult": 1227,
+            "totneg": 4,
+            "quatot": 51900000,
+            "voltot": 63641400,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69288,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "ELB 2",
+          "tpmerc": "030",
+          "nomres": "ELBR",
+          "especi": "PP *C03",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "ELBRACPP",
+          "dimes": "102",
+          "stats": {
+            "preab": 1274,
+            "premax": 1274,
+            "premin": 1273,
+            "premed": 1273,
+            "preult": 1273,
+            "totneg": 4,
+            "quatot": 80000000,
+            "voltot": 101894400,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "ELU 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69290,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "ELU 2",
+          "tpmerc": "030",
+          "nomres": "ELUM",
+          "especi": "PP *B/S",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "ELUMACPP",
+          "dimes": "119",
+          "stats": {
+            "preab": 1337,
+            "premax": 1337,
+            "premin": 1227,
+            "premed": 1313,
+            "preult": 1227,
+            "totneg": 4,
+            "quatot": 29400000,
+            "voltot": 38602200,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69291,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "ELU 2",
+          "tpmerc": "030",
+          "nomres": "ELUM",
+          "especi": "PP *B/S",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "ELUMACPP",
+          "dimes": "119",
+          "stats": {
+            "preab": 1375,
+            "premax": 1375,
+            "premin": 1375,
+            "premed": 1375,
+            "preult": 1375,
+            "totneg": 1,
+            "quatot": 26500000,
+            "voltot": 36437500,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "FBM 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69296,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 553,
+            "premax": 563,
+            "premin": 552,
+            "premed": 559,
+            "preult": 552,
+            "totneg": 7,
+            "quatot": 132500000,
+            "voltot": 74153000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69297,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FBM 2",
+          "tpmerc": "030",
+          "nomres": "FBMC",
+          "especi": "PP *INT",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FBMCACPP",
+          "dimes": "124",
+          "stats": {
+            "preab": 543,
+            "premax": 543,
+            "premin": 542,
+            "premed": 542,
+            "preult": 542,
+            "totneg": 2,
+            "quatot": 100000000,
+            "voltot": 54288000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "FER 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69299,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FER 2",
+          "tpmerc": "030",
+          "nomres": "FERO",
+          "especi": "PP *B/D",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FEROACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 18396,
+            "premax": 18396,
+            "premin": 18396,
+            "premed": 18396,
+            "preult": 18396,
+            "totneg": 1,
+            "quatot": 300000,
+            "voltot": 5518800,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69300,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FER 2",
+          "tpmerc": "030",
+          "nomres": "FERO",
+          "especi": "PP *B/D",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FEROACPP",
+          "dimes": "015",
+          "stats": {
+            "preab": 20026,
+            "premax": 20026,
+            "premin": 20026,
+            "premed": 20026,
+            "preult": 20026,
+            "totneg": 1,
+            "quatot": 42000000,
+            "voltot": 841092000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "FNV 7",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69306,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 4906,
+            "premax": 5310,
+            "premin": 4693,
+            "premed": 4838,
+            "preult": 4804,
+            "totneg": 9,
+            "quatot": 25200000,
+            "voltot": 121917600,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69307,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FNV 7",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*BON",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "121",
+          "stats": {
+            "preab": 5379,
+            "premax": 5379,
+            "premin": 5379,
+            "premed": 5379,
+            "preult": 5379,
+            "totneg": 1,
+            "quatot": 1000000,
+            "voltot": 5379000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "FNV 8",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69308,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FNV 8",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C03",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "122",
+          "stats": {
+            "preab": 747,
+            "premax": 750,
+            "premin": 736,
+            "premed": 746,
+            "preult": 736,
+            "totneg": 9,
+            "quatot": 588000000,
+            "voltot": 438696000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69309,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "FNV 8",
+          "tpmerc": "030",
+          "nomres": "FNV",
+          "especi": "PPA*C03",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "FNV ACPPA",
+          "dimes": "122",
+          "stats": {
+            "preab": 756,
+            "premax": 756,
+            "premin": 756,
+            "premed": 756,
+            "preult": 756,
+            "totneg": 1,
+            "quatot": 20000000,
+            "voltot": 15120000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    },
+    {
+      "date": "19860603",
+      "codneg": "KEP 2",
+      "rows": 2,
+      "differing_k4_fields": {
+        "prazot": [
+          "030",
+          "060"
+        ]
+      },
+      "rows_detail": [
+        {
+          "line": 69331,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "KEP 2",
+          "tpmerc": "030",
+          "nomres": "KEPL",
+          "especi": "PP *",
+          "prazot": "030",
+          "datven": "99991231",
+          "codisi": "KEPLACPP",
+          "dimes": "012",
+          "stats": {
+            "preab": 2256,
+            "premax": 2300,
+            "premin": 2245,
+            "premed": 2249,
+            "preult": 2280,
+            "totneg": 14,
+            "quatot": 305000000,
+            "voltot": 686173000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 69332,
+          "date": "19860603",
+          "codbdi": "62",
+          "codneg": "KEP 2",
+          "tpmerc": "030",
+          "nomres": "KEPL",
+          "especi": "PP *",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "KEPLACPP",
+          "dimes": "012",
+          "stats": {
+            "preab": 2349,
+            "premax": 2349,
+            "premin": 2349,
+            "premed": 2349,
+            "preult": 2349,
+            "totneg": 1,
+            "quatot": 60000000,
+            "voltot": 140940000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    }
+  ],
+  "same_day_term_same_k4_statistical_collision_count": 1,
+  "same_day_term_same_k4_statistical_collisions": [
+    {
+      "key": [
+        "19861010",
+        "VGO 2",
+        "VGORACPP",
+        "104",
+        "PP *C05",
+        "060",
+        "99991231",
+        0,
+        "0",
+        0
+      ],
+      "rows": 2,
+      "rows_detail": [
+        {
+          "line": 140808,
+          "date": "19861010",
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "nomres": "VGOR",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "stats": {
+            "preab": 190,
+            "premax": 190,
+            "premin": 190,
+            "premed": 190,
+            "preult": 190,
+            "totneg": 1,
+            "quatot": 39000000,
+            "voltot": 7410000,
+            "fatcot": 1000
+          }
+        },
+        {
+          "line": 140809,
+          "date": "19861010",
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "nomres": "VGOR",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "stats": {
+            "preab": 165,
+            "premax": 191,
+            "premin": 165,
+            "premed": 187,
+            "preult": 175,
+            "totneg": 4,
+            "quatot": 190000000,
+            "voltot": 35646000,
+            "fatcot": 1000
+          }
+        }
+      ]
+    }
+  ],
+  "same_day_spot_vgo2_19861010": [
+    {
+      "line": 140617,
+      "date": "19861010",
+      "codbdi": "02",
+      "codneg": "VGO 2",
+      "tpmerc": "010",
+      "nomres": "VIGOR",
+      "especi": "PP *C05",
+      "prazot": "",
+      "datven": "99991231",
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "stats": {
+        "preab": 155,
+        "premax": 180,
+        "premin": 155,
+        "premed": 175,
+        "preult": 170,
+        "totneg": 14,
+        "quatot": 267200000,
+        "voltot": 46995000,
+        "fatcot": 1000
+      }
+    }
+  ],
+  "assessment": {
+    "facts": [
+      "A K4 inclui prazo, data de vencimento, especificação, CODISI, DIMES e campos de exercício/indicador.",
+      "A colisão-alvo mantém todos esses campos iguais e altera somente campos estatísticos.",
+      "No universo 1986, a busca por múltiplos registros a termo do mesmo ativo no mesmo pregão mostra que, quando existem múltiplas linhas, a separação normalmente ocorre por algum campo estrutural da K4.",
+      "A colisão-alvo é um caso em que essa dimensão estrutural não está presente na K4."
+    ],
+    "hypothesis": "A causa mais tecnicamente plausível passa a ser uma dimensão operacional/negocial que não foi preservada nos campos K4 do COTAHIST, ou uma regra de agregação/publicação que produziu dois agregados sob a mesma identidade estrutural.",
+    "not_proven": [
+      "que a dimensão ausente seja taxa de termo",
+      "que seja corretagem, modalidade, registro ou lote",
+      "que a duplicidade seja erro de processamento",
+      "que as duas linhas representem dois contratos economicamente distintos"
+    ],
+    "important_negative": "Não foi encontrada, no layout COTAHIST vigente, uma coluna explícita de taxa de termo dentro da K4."
+  },
+  "governance": {
+    "raw_changed": false,
+    "rows_deleted": false,
+    "rows_consolidated": false,
+    "economic_identity_inferred": false,
+    "causal_explanation_inferred": false
+  }
+}
