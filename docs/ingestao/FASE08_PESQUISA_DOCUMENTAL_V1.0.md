@@ -383,3 +383,29 @@ Documento detalhado: docs/ingestao/FASE08K_COTAHIST_1986_ARQUEOLOGIA_BDI_TABELA_
 Commit: f8439257cda46569e40b02980434f5fe60ea0cf1
 
 **FASE 08K:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à estrutura documental encontrada; causa da colisão permanece NÃO DETERMINADA.
+
+
+## 18. FASE 08L — Dimensões ocultas do Mercado a Termo
+
+A FASE 08L comparou publicações históricas de 1986, 1987 e 1988 para testar se **Tipo**, **Prazo** e a convenção **Cxx** poderiam explicar a colisão K4.
+
+A publicação de 1986 apresenta Tipo e Prazo na tabela de Mercado a Termo e registra Vigor PP C05. citeturn1search0turn2search1 Uma publicação de 1987 também mostra Cxx associado aos títulos. citeturn2search0turn2search2 Em 1988, a tabela de Operações a Termo apresenta explicitamente **Títulos | Tipo | Prazo | Quant. | Fech. | Máx. | Min. | Méd. | Volume | Nº neg.**, com exemplos de Tipo PP-Q e Prazo 030. citeturn1search29
+
+### 18.1 Resultado
+
+**VALIDADO:** Cxx não deve ser tratado como sinônimo da coluna Tipo.
+
+**VALIDADO:** Tipo e Prazo aparecem como dimensões separadas na documentação pública posterior.
+
+**NÃO VALIDADO:** a codificação exata de Tipo em 1986.
+
+**NÃO VALIDADO:** qualquer dimensão oculta que explique especificamente as duas linhas de 10/10/1986.
+
+**HIPÓTESE PRINCIPAL:** regra histórica de agregação/publicação ou dimensão operacional não preservada pela K4.
+
+Documento detalhado:
+`docs/ingestao/FASE08L_COTAHIST_1986_DIMENSOES_OCULTAS_TERMO_V1.0.md`
+
+Commit: `161dac2a46d5d9df747da0408e53395885e289b8`
+
+**FASE 08L:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à separação conceitual Tipo × Prazo × Cxx; causa da colisão permanece NÃO DETERMINADA.
