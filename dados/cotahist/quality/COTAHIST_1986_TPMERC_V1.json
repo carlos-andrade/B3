@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_07B_TPMERC_1986_ANALISE",
+  "generated_at_utc": "2026-09-24T16:04:19Z",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "rows": 177981,
+  "source_document": {
+    "institution": "B3",
+    "document": "LAYOUT DO ARQUIVO – COTAÇÕES HISTÓRICAS",
+    "revision": "01",
+    "date": "2017-04-13",
+    "source_url": "https://www.b3.com.br/data/files/C8/F3/08/B4/297BE410F816C9E492D828A8/SeriesHistoricas_Layout.pdf",
+    "field": "TPMERC",
+    "positions": "25-27"
+  },
+  "mapping_basis": "Tabela de TPMERC do layout oficial B3 consultado; não presume retroatividade histórica além da evidência documental.",
+  "observed_codes": {
+    "010": {
+      "rows": 96479,
+      "trading_dates": 247,
+      "distinct_codneg": 1393,
+      "description_b3_2017": "VISTA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "012": {
+      "rows": 835,
+      "trading_dates": 141,
+      "distinct_codneg": 292,
+      "description_b3_2017": "EXERCÍCIO DE OPÇÕES DE COMPRA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "013": {
+      "rows": 152,
+      "trading_dates": 33,
+      "distinct_codneg": 125,
+      "description_b3_2017": "EXERCÍCIO DE OPÇÕES DE VENDA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "017": {
+      "rows": 99,
+      "trading_dates": 55,
+      "distinct_codneg": 97,
+      "description_b3_2017": "LEILÃO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "020": {
+      "rows": 36021,
+      "trading_dates": 248,
+      "distinct_codneg": 1176,
+      "description_b3_2017": "FRACIONÁRIO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "030": {
+      "rows": 36596,
+      "trading_dates": 248,
+      "distinct_codneg": 721,
+      "description_b3_2017": "TERMO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "060": {
+      "rows": 11,
+      "trading_dates": 10,
+      "distinct_codneg": 2,
+      "description_b3_2017": "FUTURO COM MOVIMENTAÇÃO CONTÍNUA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "070": {
+      "rows": 7027,
+      "trading_dates": 247,
+      "distinct_codneg": 960,
+      "description_b3_2017": "OPÇÕES DE COMPRA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    },
+    "080": {
+      "rows": 761,
+      "trading_dates": 155,
+      "distinct_codneg": 250,
+      "description_b3_2017": "OPÇÕES DE VENDA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3_2017"
+    }
+  },
+  "unknown_codes": [],
+  "coverage": {
+    "observed_code_count": 9,
+    "documented_code_count": 9,
+    "unknown_code_count": 0,
+    "all_observed_codes_documented": true
+  },
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "economic_identity_not_inferred_from_tpmerc": true,
+    "historical_semantics_1986_requires_temporal_validation": true
+  }
+}
