@@ -279,3 +279,67 @@ Commit: `e2bdc5a8ed434d754ad5640c4b218d0e7d62f3c6`
 ### 15.3 Próxima frente
 
 A próxima frente controlada é a **FASE 08E — Reconstrução estatística da cronologia C03/C05/Cxx e DIMES/VGO 2**, usando somente o COTAHIST 1986 preservado, antes de qualquer nova hipótese semântica.
+
+
+## 16. FASE 08H — Recorrência multianual de colisões K4
+
+A FASE 08H foi executada sobre todos os arquivos `COTAHIST_A*.ZIP` presentes em `dados/cotahist/raw/anual`.
+
+### 16.1 Cobertura
+
+Foram analisados **41 anos, de 1986 a 2026**, totalizando **24.314.082 registros tipo 01**.
+
+### 16.2 Resultado
+
+O universo produziu:
+
+- 24.314.081 grupos K4;
+- 1 único grupo K4 duplicado;
+- 2 linhas pertencentes ao grupo duplicado;
+- 1 único grupo K4 com estatísticas diferentes;
+- 0 grupos K4 duplicados com estatísticas comparadas idênticas;
+- somente o ano **1986** com colisão K4.
+
+A única colisão continua sendo:
+
+`19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060 | 99991231 | 0 | 0 | 0`
+
+Linhas RAW 140808 e 140809.
+
+### 16.3 Conclusão controlada
+
+A colisão K4 de 10/10/1986 é **única no universo anual analisado de 1986–2026**.
+
+Isso valida a singularidade estatística do evento dentro do acervo, mas **não explica sua causa histórica**.
+
+A investigação não autoriza concluir que a colisão seja erro, duplicação indevida, classe econômica distinta ou regra específica de agregação sem documentação adicional.
+
+### 16.4 Governança
+
+RAW permanece intocado.
+
+Nenhuma linha foi removida ou consolidada.
+
+Nenhuma identidade econômica foi inferida.
+
+Documento detalhado:
+
+`docs/ingestao/FASE08H_COTAHIST_RECORRENCIA_K4_MULTIANOS_V1.0.md`
+
+Evidência:
+
+`dados/cotahist/quality/COTAHIST_FASE08H_RECORRENCIA_K4_MULTIANOS_V1.json`
+
+Workflow run: **36070061381 — SUCCESS**.
+
+Commit de publicação da evidência: `c19566cf1481c245b6908f4a3e2238138656c229`.
+
+### 16.5 Estado
+
+**IMPLEMENTADO:** análise multianual criada.
+
+**EXECUTADO:** 41 arquivos anuais processados.
+
+**VALIDADO:** a colisão K4 com estatísticas diferentes ocorre somente em 1986 no universo analisado.
+
+**FASE 08:** a pergunta de recorrência multianual está encerrada; permanece aberta a reconstrução histórica da regra que gerou a colisão.
