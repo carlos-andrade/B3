@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_07G_MATRIZ_IDENTIDADE_1986",
+  "generated_at_utc": "2026-09-24T16:36:41Z",
+  "rows": 177981,
+  "matrix": {
+    "K1": {
+      "groups": 172792,
+      "unitary_groups": 167610,
+      "repeated_groups": 5182,
+      "rows_in_repeated_groups": 10371,
+      "max_group": 3
+    },
+    "K2": {
+      "groups": 172792,
+      "unitary_groups": 167610,
+      "repeated_groups": 5182,
+      "rows_in_repeated_groups": 10371,
+      "max_group": 3
+    },
+    "K3": {
+      "groups": 172793,
+      "unitary_groups": 167612,
+      "repeated_groups": 5181,
+      "rows_in_repeated_groups": 10369,
+      "max_group": 3
+    },
+    "K4": {
+      "groups": 177980,
+      "unitary_groups": 177979,
+      "repeated_groups": 1,
+      "rows_in_repeated_groups": 2,
+      "max_group": 2
+    }
+  },
+  "codneg": {
+    "distinct": 2699,
+    "with_multiple_attribute_contexts": 1818
+  },
+  "semantic_rules": {
+    "codneg": "código de negociação, não identidade econômica permanente",
+    "tpmerc": "tipo de mercado",
+    "codbdi": "classificação BDI",
+    "codisi": "em 1986, código interno do papel; não ISIN",
+    "dimes": "atributo histórico de distribuição/estado de direito",
+    "k4": "chave analítica enriquecida, não chave econômica definitiva"
+  },
+  "residual_k4_records": [],
+  "residual_k4_count": 0,
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "no_economic_identity_inferred": true
+  },
+  "closure": "FASE_07G_ANALISE_EXECUTADA"
+}
