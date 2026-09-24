@@ -10,7 +10,7 @@ def s(line,a,b): return line[a-1:b]
 
 rows=[]
 with zipfile.ZipFile(RAW) as z:
-    name=[n for n in z.namelist() if n.upper().endswith(".TXT")][0]
+    name=[n for n in z.namelist() if not n.endswith("/")][0]
     with z.open(name) as f:
         for n,raw in enumerate(f,1):
             line=raw.decode("latin-1").rstrip("\r\n")
