@@ -1,0 +1,28 @@
+name: COTAHIST FASE08I - Reconstrucao Regra Agregacao 1986
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_reconstrucao_regra_agregacao_k4_cotahist_1986_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+      - ".github/workflows/cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1.yml"
+permissions:
+  contents: write
+jobs:
+  analise:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Executar FASE 08I
+        run: python scripts/ingestao/analisar_reconstrucao_regra_agregacao_k4_cotahist_1986_v1.py
+      - name: Publicar evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_FASE08I_RECONSTRUCAO_REGRA_AGREGACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: publicar evidencia FASE 08I regra agregacao"
+          git pull --rebase origin main
+          git push origin HEAD:main
