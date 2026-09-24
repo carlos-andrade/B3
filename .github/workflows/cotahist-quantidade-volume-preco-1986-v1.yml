@@ -1,4 +1,4 @@
-name: COTAHIST 1986 - Auditoria Quantidade Volume Preco V1\n# V1.1.1 - classificacao corrigida de volume zero por arredondamento
+name: COTAHIST 1986 - Auditoria Quantidade Volume Preco V1\n# V1.1.2 - correcao final do bloco Python
 
 on:
   workflow_dispatch:
