@@ -32,7 +32,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2.json
+          python -c 'import json; p="dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2.json"; o=json.load(open(p,encoding="utf-8")); s={k:o[k] for k in o if k!="por_ano"}; s["resumo_por_ano"]=[{k:r[k] for k in ("ano","linhas_comprimento_diferente_245","linhas_nao_tipo_01","datas_unicas","primeira_data","ultima_data","candidatos_intervalo_longo_total","duplicidade_registro_exato_grupos","duplicidade_registro_exato_excesso_linhas","duplicidade_identidade_instrumento_grupos","duplicidade_identidade_instrumento_excesso_linhas","inconsistencias_ohlc")} for r in o["por_ano"]]; json.dump(s,open("dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2_resumo.json","w",encoding="utf-8"),ensure_ascii=False,indent=2)' 
+          git add dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2.json dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2_resumo.json
           git commit -m "data(quality): publicar auditoria COTAHIST 1986-2026 V2" || exit 0
           git pull --rebase origin main
           git push origin HEAD:main
