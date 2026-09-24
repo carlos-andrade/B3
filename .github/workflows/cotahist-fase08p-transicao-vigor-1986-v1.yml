@@ -1,0 +1,29 @@
+name: COTAHIST FASE08P - Transicao Vigor 09 10 13 Outubro 1986
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_transicao_vigor_0910_13101986_v1.py"
+      - ".github/workflows/cotahist-fase08p-transicao-vigor-1986-v1.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  analisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Executar analise
+        run: python scripts/ingestao/analisar_transicao_vigor_0910_13101986_v1.py
+      - name: Publicar evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_FASE08P_TRANSICAO_VIGOR_0910_1310_V1.json
+          git diff --cached --quiet || git commit -m "data: publica evidencia FASE08P Vigor 09 10 13 outubro 1986"
+          git push
