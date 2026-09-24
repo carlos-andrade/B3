@@ -24,9 +24,7 @@ jobs:
 
       - name: Executar análise DIMES
         run: |
-          python scripts/ingestao/analisar_dimes_cotahist_1986_v1.py \
-            --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP \
-            --output dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json
+          python scripts/ingestao/analisar_dimes_cotahist_1986_v1.py             --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP             --output dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json
 
       - name: Commit evidência
         run: |
@@ -38,4 +36,5 @@ jobs:
             exit 0
           fi
           git commit -m "data(cotahist): executar fase 07E DIMES 1986"
+          git pull --rebase origin main
           git push
