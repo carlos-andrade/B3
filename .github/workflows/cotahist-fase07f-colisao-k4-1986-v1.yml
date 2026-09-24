@@ -24,7 +24,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
           git add dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "data(cotahist): executar fase 07F colisao K4 1986"
