@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "source": "IBGE",
+  "source_url": "https://www.ibge.gov.br/calendario/conjunturais.html",
+  "timezone": "America/Sao_Paulo",
+  "retrieved_at": "2026-09-24",
+  "events": [
+    {"event_id":"IBGE-IPCAE-20260925-202607_202609","event_name":"IPCA-E","event_code":"IPCAE","country":"BR","reference_period":"2026-07/2026-09","scheduled_date":"2026-09-25","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-IPCA15-20260925-202609","event_name":"IPCA-15","event_code":"IPCA15","country":"BR","reference_period":"2026-09","scheduled_date":"2026-09-25","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-PNADC-M-20260929-202608","event_name":"PNAD Contínua mensal","event_code":"PNADC_M","country":"BR","reference_period":"2026-08","scheduled_date":"2026-09-29","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-IPP-20260930-202608","event_name":"IPP","event_code":"IPP","country":"BR","reference_period":"2026-08","scheduled_date":"2026-09-30","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"MEDIUM"},
+    {"event_id":"IBGE-PIMPF-20261002-202608","event_name":"PIM-PF Brasil","event_code":"PIMPF","country":"BR","reference_period":"2026-08","scheduled_date":"2026-10-02","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-INPC-20261009-202609","event_name":"INPC","event_code":"INPC","country":"BR","reference_period":"2026-09","scheduled_date":"2026-10-09","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-IPCA-20261009-202609","event_name":"IPCA","event_code":"IPCA","country":"BR","reference_period":"2026-09","scheduled_date":"2026-10-09","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-PMS-20261014-202608","event_name":"PMS","event_code":"PMS","country":"BR","reference_period":"2026-08","scheduled_date":"2026-10-14","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"MEDIUM"},
+    {"event_id":"IBGE-PMC-20261015-202608","event_name":"PMC","event_code":"PMC","country":"BR","reference_period":"2026-08","scheduled_date":"2026-10-15","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"MEDIUM"},
+    {"event_id":"IBGE-PNADC-T-20261118-202607_202609","event_name":"PNAD Contínua trimestral","event_code":"PNADC_T","country":"BR","reference_period":"2026-07/2026-09","scheduled_date":"2026-11-18","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"},
+    {"event_id":"IBGE-SCNT-20261202-202607_202609","event_name":"SCNT","event_code":"SCNT","country":"BR","reference_period":"2026-07/2026-09","scheduled_date":"2026-12-02","scheduled_time":null,"event_time_status":"UNKNOWN","status":"SCHEDULED","importance":"HIGH"}
+  ]
+}
