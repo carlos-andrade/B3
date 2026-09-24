@@ -10,6 +10,7 @@ import json
 import zipfile
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from pathlib import Path
 
 def parse(raw: bytes):
     b = raw.rstrip(b"\r\n")
@@ -131,6 +132,7 @@ def main():
         }
     }
 
+    Path(a.output).parent.mkdir(parents=True, exist_ok=True)
     with open(a.output, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
         f.write("\n")
