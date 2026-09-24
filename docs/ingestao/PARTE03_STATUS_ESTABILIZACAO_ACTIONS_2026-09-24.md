@@ -23,3 +23,7 @@ A API do GitHub retornou os runs como `completed/failure`, mas a listagem de job
 1. Observar a lista de Actions apos este commit.
 2. Confirmar ausencia de novos runs COTAHIST por `push`.
 3. Somente depois criar o pipeline COTAHIST V7.
+
+## Verificacao apos remocao
+
+Os seis workflows historicos `cotahist-normalizacao-2011-2026*` foram removidos da arvore `.github/workflows/`. Os runs que aparecerem a partir daqui serao tratados como residuais do estado anterior, e nao como novo gatilho configurado nesses arquivos.
