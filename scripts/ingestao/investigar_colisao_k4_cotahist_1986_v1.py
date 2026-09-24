@@ -2,7 +2,7 @@
 """FASE 07F — investigação da colisão residual K4 no COTAHIST 1986."""
 from __future__ import annotations
 import argparse,json,zipfile,hashlib
-from datetime import datetime
+from datetime import datetime, timezone
 
 TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231","0.0","0","0.0")
 
@@ -40,7 +40,7 @@ def main():
         if len(set(map(str,vals)))>1: differences[k]=vals
     result={
       "schema_version":"1.0.0","status":"FASE_07F_COLISAO_K4_1986_ANALISE",
-      "generated_at_utc":datetime.utcnow().replace(microsecond=0).isoformat()+"Z",
+      "generated_at_utc":datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z"),
       "raw_file":"COTAHIST_A1986.ZIP","target_k4":list(TARGET),
       "match_count":len(matches),"matches":matches,"differences":differences,
       "classification_rule":{"two_rows_same_k4_is_not_automatic_duplicate":True,"economic_identity_not_inferred":True,"raw_unchanged":True,"normalized_unchanged":True},
