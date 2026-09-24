@@ -43,6 +43,7 @@ def main():
     }
     counters={k:Counter() for k in key_defs}
     repeat_samples={k:[] for k in key_defs}
+    k4_rows_by_key=defaultdict(list)
     raw_rows=0
 
     with zipfile.ZipFile(a.zip) as z:
@@ -56,6 +57,8 @@ def main():
                 for name,fields in key_defs.items():
                     key=tuple(r[x] for x in fields)
                     counters[name][key]+=1
+                    if name=="K4_contractual":
+                        k4_rows_by_key[key].append(r)
 
     for name,c in counters.items():
         repeated=[(k,n) for k,n in c.items() if n>1]
@@ -63,6 +66,10 @@ def main():
         repeat_samples[name]=[
             {"key":list(k),"rows":n} for k,n in repeated[:a.repeat_samples]
         ]
+        if name=="K4_contractual":
+            for item in repeat_samples[name]:
+                key=tuple(item["key"])
+                item["row_details"]=k4_rows_by_key[key]
 
     out={
         "schema_version":"2.0.0",
