@@ -47,3 +47,9 @@ Não há, nesta verificação, evidência de um novo run COTAHIST posterior caus
 ## Limitação
 
 A API disponível para os runs históricos não expôs jobs suficientes para atribuir a falha interna a uma etapa específica. A correção atual elimina os gatilhos automáticos legados; ela não reclassifica tecnicamente a causa dos failures históricos.
+
+## Teste de isolamento — 2026-09-24
+
+Foi realizado um commit de documentação fora de `.github/workflows/`. O objetivo é verificar se a remoção dos workflows COTAHIST eliminou novos disparos por `push`.
+
+Resultado esperado: nenhum novo run COTAHIST.
