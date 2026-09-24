@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "status": "RECONCILIADO",
+  "ano": 1986,
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP",
+  "manifest": "dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json",
+  "parser": "scripts/ingestao/normalize_cotahist.py",
+  "parser_version": "1.1.0",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "manifest_raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "generated_normalized_sha256": "fbd00ff5b24075813132193dc794e29015df20b7dc6bedadba7e896b30406329",
+  "manifest_normalized_sha256": "fbd00ff5b24075813132193dc794e29015df20b7dc6bedadba7e896b30406329",
+  "raw_type01_count": 177981,
+  "generated_normalized_rows": 177981,
+  "manifest_normalized_rows": 177981,
+  "generated_fields": 25,
+  "manifest_fields": 25,
+  "checks": {
+    "raw_sha256_match": true,
+    "parser_version_match": true,
+    "raw_type01_count_match_manifest": true,
+    "generated_row_count_match_manifest": true,
+    "field_count_match_manifest": true,
+    "normalized_sha256_match_manifest": true
+  }
+}
