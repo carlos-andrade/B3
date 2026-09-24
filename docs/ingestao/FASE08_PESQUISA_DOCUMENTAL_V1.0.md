@@ -95,7 +95,6 @@ Prioridade máxima:
 - Jornal do Brasil, 05/06/1986 — tabela de cotações Bovespa. citeturn1search0
 - Evidência complementar em acervo de imprensa histórica. citeturn1search41
 
-
 ## 10. Segunda rodada — busca ampliada sobre C05 e mercado a termo
 
 Em nova rodada de pesquisa foram consultados documentos históricos e normativos relacionados à Bovespa/CVM e ocorrências contemporâneas de C05.
@@ -156,9 +155,91 @@ Essa segunda frente pode revelar a regra de transição sem depender exclusivame
 
 **FASE 08:** ABERTA.
 
+## 13. FASE 08B — Controle de execução e publicação da análise cronológica
 
-## Atualização técnica — FASE 08B
+O parser foi ampliado para reconstruir cronologicamente as transições do código VGO 2 em 1986, incluindo:
 
-O parser foi ampliado para reconstruir cronologicamente as transições do código VGO 2 em 1986, incluindo mudanças de ESPECI, DIMES e contexto de mercado/prazo por pregão. Commit do parser: `1d40ff35f355fb19be667268064095941b451973`.
+- transições de ESPECI por pregão;
+- transições de DIMES por pregão;
+- contexto de CODBDI × TPMERC × PRAZOT por pregão;
+- contagem de duplicidades K4;
+- exemplos de duplicidade no mesmo dia.
 
-Objetivo: verificar se a colisão K4 de 10/10/1986 integra um padrão histórico recorrente ou permanece uma ocorrência excepcional. Nenhuma linha RAW é alterada ou consolidada nesta etapa.
+Commit do parser: `1d40ff35f355fb19be667268064095941b451973`.
+
+A inspeção do parser confirma que essas estruturas estão implementadas no código e destinadas ao JSON de evidência.
+
+### 13.1 Gate de evidência
+
+Na verificação de 24/09/2026, o arquivo publicado em `dados/cotahist/quality/COTAHIST_1986_FASE08_SEMANTICA_K4_V1.json` ainda contém a versão anterior da evidência, com `schema_version = 1.0.0`, portanto **não foi considerado como resultado executado da FASE 08B**.
+
+Isso é deliberado: não será atribuído status VALIDADO a uma análise cujo artefato de saída ainda não reflita o parser atualizado.
+
+O arquivo publicado anterior continua útil como evidência da FASE 08A e preserva:
+
+- 177.981 registros tipo 01;
+- 2 linhas-alvo;
+- 473 ocorrências de `CODISI = VGORACPP`;
+- 443 ocorrências de `CODNEG = VGO 2`;
+- 188 ocorrências de VGO 2 em mercado a termo;
+- 246 ocorrências de VGO 2 em mercado à vista;
+- 136 registros a termo com `PRAZOT = 030`;
+- 52 registros a termo com `PRAZOT = 060`;
+- 261 ocorrências de VGO 2 com `ESPECI = PP *C05`;
+- 261 ocorrências de VGO 2 com `DIMES = 104`.
+
+Esses números são tratados como evidência publicada da FASE 08A, não como saída nova da FASE 08B.
+
+### 13.2 Classificação atual — FATO → PADRÃO → HIPÓTESE → EVIDÊNCIA NECESSÁRIA
+
+**FATO**
+
+- Em 10/10/1986 existem duas linhas RAW com a mesma chave K4 utilizada pela investigação.
+- As linhas não são byte-idênticas e possuem estatísticas de negociação diferentes.
+- O mesmo VGO 2 aparece em contexto à vista e a termo ao longo de 1986.
+- No próprio dia 10/10/1986 há uma linha à vista e duas linhas a termo para VGO 2.
+- As duas linhas a termo têm `PRAZOT = 060`, `ESPECI = PP *C05`, `DIMES = 104` e `CODISI = VGORACPP`.
+
+**PADRÃO OBSERVADO**
+
+- VGO 2 não é exclusivo do mercado a termo.
+- A identificação Vigor/PP/Cxx aparece em publicação histórica contemporânea.
+- Há reutilização do mesmo CODISI em diferentes contextos de mercado e diferentes valores de DIMES/ESPECI no arquivo de 1986.
+
+**HIPÓTESE**
+
+As duas linhas podem representar agregações ou classes de publicação distintas associadas à mesma identidade contratual/cadastral capturada pela K4. A hipótese permanece aberta entre, pelo menos, artefato de publicação, regra de agregação histórica ou classe de registro não representada pela K4 atual.
+
+**EVIDÊNCIA NECESSÁRIA**
+
+Para elevar a hipótese a conclusão documental são necessários:
+
+1. o BDI/boletim de 10/10/1986 ou dia imediatamente anterior/posterior;
+2. manual/layout histórico da Bovespa usado em 1986;
+3. legenda contemporânea de C05;
+4. regra histórica de publicação/agregação das operações a termo;
+5. evidência independente que explique o uso de VGO 2 e DIMES 104.
+
+### 13.3 Regra de governança
+
+Até a publicação da saída atualizada da FASE 08B:
+
+- RAW permanece intocado;
+- nenhuma das duas linhas será removida;
+- nenhuma linha será consolidada;
+- nenhuma semântica econômica será inferida por igualdade de K4;
+- o status da FASE 08B permanece **IMPLEMENTADO / EXECUÇÃO NÃO COMPROVADA NO ARTEFATO DE SAÍDA**.
+
+## 14. Próximo passo controlado
+
+A próxima ação técnica é publicar e verificar a saída do parser `1d40ff35f355fb19be667268064095941b451973`.
+
+Somente depois dessa publicação serão extraídos os resultados completos de:
+
+- `vgo_especi_transitions`;
+- `vgo_dimes_transitions`;
+- `vgo_market_by_date`;
+- `duplicate_k4_groups_count`;
+- `duplicate_k4_same_day_groups_count`.
+
+A classificação documental e a eventual decisão de modelagem dependerão desses resultados.
