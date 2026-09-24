@@ -53,3 +53,24 @@ A API disponível para os runs históricos não expôs jobs suficientes para atr
 Foi realizado um commit de documentação fora de `.github/workflows/`. O objetivo é verificar se a remoção dos workflows COTAHIST eliminou novos disparos por `push`.
 
 Resultado esperado: nenhum novo run COTAHIST.
+
+
+## COTAHIST V7 — 2026-09-24
+
+Foi criado o workflow único e controlado:
+
+- `.github/workflows/cotahist-normalizacao-controlada-v7.yml`
+- Commit: `3e607a03ed435ed380d2d756eb01caa6d82f0051`
+- Gatilho: somente `workflow_dispatch`
+- Entrada: `ano`, obrigatório, faixa 1986–2026
+- Primeiro piloto previsto: 1986
+
+### Verificação pós-criação
+
+A consulta atual de Actions continua mostrando apenas runs residuais anteriores, associados aos workflows COTAHIST legados removidos. Não foi identificado novo run COTAHIST decorrente de `push` após a limpeza.
+
+### Execução do piloto
+
+A conexão GitHub disponível nesta sessão permite leitura de workflows, runs, jobs e artefatos, mas não disponibiliza uma operação de `workflow_dispatch`. Portanto, **o piloto de 1986 ainda não foi executado** e nenhum resultado de normalização foi inventado.
+
+Próxima ação operacional: executar manualmente o workflow **COTAHIST - normalizacao controlada V7** no GitHub com `ano=1986`. Depois disso, validar o run e o artefato antes de ampliar a série.
