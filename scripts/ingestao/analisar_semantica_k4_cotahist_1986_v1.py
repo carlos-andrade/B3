@@ -77,7 +77,7 @@ def ctx(r):
     return {k:r[k] for k in ["data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref","preab","preult","totneg","quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dimes","source_line"]}
 
 result={
- "schema_version":"1.0.0",
+ "schema_version":"1.1.0",
  "status":"FASE_08_SEMANTICA_K4_1986_ANALISE",
  "raw_file":RAW.name,
  "raw_sha256":hashlib.sha256(RAW.read_bytes()).hexdigest(),
