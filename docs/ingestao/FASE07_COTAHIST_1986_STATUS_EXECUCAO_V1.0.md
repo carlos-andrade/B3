@@ -19,8 +19,8 @@ Regra: **implementado não significa executado**. Uma frente só pode ser consid
 | 07B | TPMERC | Sim | Sim | EXECUTADA |
 | 07C | CODBDI | Sim | Sim | EXECUTADA |
 | 07D | CODISI | Sim | Sim | EXECUTADA |
-| 07E | DIMES | Sim | Não localizada | PENDENTE |
-| 07F | Colisão K4 | Sim | Não localizada | PENDENTE |
+| 07E | DIMES | Sim | Sim | VALIDADA |
+| 07F | Colisão K4 | Sim | Sim | EM VALIDAÇÃO |
 | 07G | Matriz final de identidade | Sim | Sim | EXECUTADA |
 
 ## 3. Evidências verificadas
@@ -86,20 +86,40 @@ A regra histórica registrada é crítica:
 
 A documentação B3 consultada registra o início da interpretação ISIN a partir de 15/05/1995. Portanto, não é permitido retroprojetar a semântica moderna para 1986.
 
-## 4. Frentes ainda não comprovadas por evidência
+## 4. Evidências adicionais — 07E e 07F
 
-Os seguintes arquivos não foram localizados no branch padrão durante a verificação:
+### 07E — DIMES
 
-- `dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json`
-- `dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json`
-- `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` **foi localizada e validada nesta verificação**.
+Arquivo: `dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json`
 
-Consequentemente:
+Commit de evidência: `3d68f2ee63cf918bb2e44f746c9281251098034a`
 
-- 07E não é marcada como executada;
-- 07F não é marcada como resolvida;
-- 07G é marcada como **EXECUTADA**, mas a FASE 07 global permanece aberta até 07E e 07F possuírem evidência própria.
-- a FASE 07 global permanece **ABERTA**.
+Verificação:
+- 177.981 registros;
+- 131 DIMES distintos;
+- 0 registros DIMES em branco;
+- 100% dos campos DIMES com comprimento bruto de 3 bytes;
+- RAW e NORMALIZED declarados inalterados.
+
+O workflow 07E teve uma segunda tentativa com falha de publicação por conflito add/add durante rebase; a etapa **Executar análise DIMES** terminou com sucesso. O artefato já havia sido publicado corretamente na primeira tentativa. O workflow foi corrigido para atualizar as ações para Node 24 e fazer `git pull --rebase` antes da preparação do commit.
+
+### 07F — Colisão K4
+
+Arquivo: `dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json`
+
+A evidência existente foi considerada **não válida para fechamento**, porque o parser anterior mantinha `PREEXE`, `PTOEXE` e `DATVEN` em tipos incompatíveis com a chave K4 consolidada em 07A. O resultado `NO_MATCH` não deve ser usado como conclusão histórica.
+
+Foi corrigido o parser em:
+- `scripts/ingestao/investigar_colisao_k4_cotahist_1986_v1.py`
+- commit: `0251ef6cad0e1decfff634209e21d87127f87573`
+
+O novo workflow 07F está em execução pendente, run `36036976520`, para gerar a evidência semanticamente reconciliada.
+
+### 07G — Matriz final
+
+A evidência `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` permanece válida como consolidação, mas não substitui 07F.
+
+A FASE 07 global permanece **ABERTA** até a validação independente do novo artefato 07F.
 
 ## 5. Integridade dos dados
 
