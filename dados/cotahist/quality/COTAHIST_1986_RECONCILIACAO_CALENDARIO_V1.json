@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "status": "RECONCILIACAO_CALENDARIO_1986_COM_RESSALVAS",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_audit": "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
+  "observed": {
+    "unique_dates": 248,
+    "first": "1986-01-02",
+    "last": "1986-12-30",
+    "weekday_dates": 247,
+    "weekend_dates": 1,
+    "weekend_anomaly": [
+      {
+        "line_number": 50256,
+        "data_pregao": "1986-04-26",
+        "codbdi": "62",
+        "codneg": "SHA 8",
+        "tpmerc": "030",
+        "raw_sha256": "5c316e84964bc515bc3dc60ff94ab7cab4a7d7f2291bee0f93c89f4ae79fa73a"
+      },
+      {
+        "line_number": 50257,
+        "data_pregao": "1986-04-26",
+        "codbdi": "96",
+        "codneg": "MWE 2",
+        "tpmerc": "020",
+        "raw_sha256": "b348fb54c43c43d4b3c4e33fec385e8156d6976d03225c9dd284496b59049952"
+      },
+      {
+        "line_number": 50258,
+        "data_pregao": "1986-04-26",
+        "codbdi": "96",
+        "codneg": "SCP 4",
+        "tpmerc": "020",
+        "raw_sha256": "4410e6d22f32e03a9cbab3e519fae8d39758d8540a9d28910169724719852a9d"
+      }
+    ]
+  },
+  "long_gaps": [
+    {
+      "from": "1986-02-07",
+      "to": "1986-02-13",
+      "calendar_days_between": 6,
+      "missing_calendar_dates": [
+        "1986-02-08",
+        "1986-02-09",
+        "1986-02-10",
+        "1986-02-11",
+        "1986-02-12"
+      ]
+    },
+    {
+      "from": "1986-02-27",
+      "to": "1986-03-04",
+      "calendar_days_between": 5,
+      "missing_calendar_dates": [
+        "1986-02-28",
+        "1986-03-01",
+        "1986-03-02",
+        "1986-03-03"
+      ]
+    },
+    {
+      "from": "1986-03-26",
+      "to": "1986-03-31",
+      "calendar_days_between": 5,
+      "missing_calendar_dates": [
+        "1986-03-27",
+        "1986-03-28",
+        "1986-03-29",
+        "1986-03-30"
+      ]
+    }
+  ],
+  "weekday_missing": [
+    "1986-02-10",
+    "1986-02-11",
+    "1986-02-12",
+    "1986-02-28",
+    "1986-03-03",
+    "1986-03-27",
+    "1986-03-28",
+    "1986-04-21",
+    "1986-05-01",
+    "1986-05-26",
+    "1986-12-24",
+    "1986-12-25"
+  ],
+  "integrity": {
+    "total_lines": 177983,
+    "valid_type01_rows": 177981,
+    "raw_sha256_stream": "c5fe0a62488595ffb93e4a26752cfc63650e17f88110355becde1d7b5fbe685c",
+    "raw_immutable": true
+  },
+  "external_context": [
+    {
+      "source": "Calendário São Paulo 1986",
+      "url": "https://calendario.online/calendario-1986-sp.html"
+    },
+    {
+      "source": "FGV Atlas Histórico — Plano Cruzado",
+      "url": "https://atlas.fgv.br/verbete/6297"
+    },
+    {
+      "source": "Senado Federal — legislação do Plano Cruzado",
+      "url": "https://legis.senado.gov.br/norma/527181/publicacao/34620671"
+    }
+  ]
+}
