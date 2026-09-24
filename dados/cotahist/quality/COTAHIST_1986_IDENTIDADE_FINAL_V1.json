@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "status": "FASE_07G_MATRIZ_IDENTIDADE_1986",
-  "generated_at_utc": "2026-09-24T16:36:41Z",
+  "generated_at_utc": "2026-09-24T18:02:13Z",
   "rows": 177981,
   "matrix": {
     "K1": {
@@ -35,7 +35,7 @@
   },
   "codneg": {
     "distinct": 2699,
-    "with_multiple_attribute_contexts": 1818
+    "with_multiple_attribute_contexts": 1817
   },
   "semantic_rules": {
     "codneg": "código de negociação, não identidade econômica permanente",
