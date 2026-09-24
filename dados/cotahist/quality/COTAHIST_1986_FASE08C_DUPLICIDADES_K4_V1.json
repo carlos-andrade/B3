@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_08C_DUPLICIDADES_K4_1986_ANALISE",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "records_type01": 177981,
+  "k4_groups_total": 177980,
+  "duplicate_k4_groups_total": 1,
+  "duplicate_k4_rows_total": 2,
+  "duplicate_k4_same_day_groups": 1,
+  "duplicate_k4_cross_day_groups": 0,
+  "max_duplicate_group_size": 2,
+  "duplicate_group_size_distribution": {
+    "2": 1
+  },
+  "duplicate_groups_by_market": {
+    "62|030": 1
+  },
+  "duplicate_groups_by_differing_fields": {
+    "NONE": 1
+  },
+  "vgo2_target_collision_found": true,
+  "vgo2_target_comparison": {
+    "expected_rows": 2,
+    "observed_in_collision_class": true,
+    "interpretation": "class membership is factual; economic cause remains unresolved"
+  },
+  "examples_first_20": [
+    {
+      "k4": [
+        "19861010",
+        "62",
+        "VGO 2",
+        "030",
+        "VGORACPP",
+        "104",
+        "PP *C05",
+        "060",
+        "99991231",
+        "0.0",
+        "0",
+        "0.0"
+      ],
+      "group_size": 2,
+      "differing_fields": [],
+      "rows": [
+        {
+          "source_line": 140808,
+          "data_pregao": "19861010",
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "nomres": "VGOR",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "totneg": "00001",
+          "quatot": "000000000039000000",
+          "voltot": "000000000007410000",
+          "preab": "0000000000190",
+          "premax": "0000000000190",
+          "premin": "0000000000190",
+          "premed": "0000000000190",
+          "preult": "0000000000190",
+          "fatcot": "0001000"
+        },
+        {
+          "source_line": 140809,
+          "data_pregao": "19861010",
+          "codbdi": "62",
+          "codneg": "VGO 2",
+          "tpmerc": "030",
+          "nomres": "VGOR",
+          "especi": "PP *C05",
+          "prazot": "060",
+          "datven": "99991231",
+          "codisi": "VGORACPP",
+          "dimes": "104",
+          "totneg": "00004",
+          "quatot": "000000000190000000",
+          "voltot": "000000000035646000",
+          "preab": "0000000000165",
+          "premax": "0000000000191",
+          "premin": "0000000000165",
+          "premed": "0000000000187",
+          "preult": "0000000000175",
+          "fatcot": "0001000"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "raw_changed": false,
+    "rows_deleted": false,
+    "economic_identity_inferred": false,
+    "purpose": "classify K4 collisions structurally before assigning historical semantics"
+  }
+}
