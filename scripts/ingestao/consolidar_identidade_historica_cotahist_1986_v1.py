@@ -35,9 +35,10 @@ def main():
     result={"schema_version":"1.0.0","status":"FASE_07G_MATRIZ_IDENTIDADE_1986","generated_at_utc":datetime.utcnow().replace(microsecond=0).isoformat()+"Z","rows":rows,
       "matrix":matrix,"codneg":{"distinct":len(ca),"with_multiple_attribute_contexts":sum(len(v)>1 for v in ca.values())},
       "semantic_rules":{"codneg":"código de negociação, não identidade econômica permanente","tpmerc":"tipo de mercado","codbdi":"classificação BDI","codisi":"em 1986, código interno do papel; não ISIN","dimes":"atributo histórico de distribuição/estado de direito","k4":"chave analítica enriquecida, não chave econômica definitiva"},
-      "residual_k4_records":residual,"residual_k4_count":len(residual),
+      "residual_k4_records":[{"key":list(k),"count":n} for k,n in keys["K4"].items() if n>1],
+      "residual_k4_count":sum(1 for n in keys["K4"].values() if n>1),
       "governance":{"raw_unchanged":True,"normalized_unchanged":True,"no_economic_identity_inferred":True},
-      "closure":"FASE_07G_REQUER_CONFIRMACAO_DA_COLISAO_K4" if len(residual)==2 else "FASE_07G_ANALISE_EXECUTADA"}
+      "closure":"FASE_07G_REQUER_CONFIRMACAO_DA_COLISAO_K4" if any(n>1 for n in keys["K4"].values()) else "FASE_07G_ANALISE_EXECUTADA"}
     with open(a.output,"w",encoding="utf-8") as f: json.dump(result,f,ensure_ascii=False,indent=2); f.write("\n")
 if __name__=="__main__": main()
 
