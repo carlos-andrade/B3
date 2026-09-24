@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_07C_CODBDI_1986_ANALISE",
+  "generated_at_utc": "2026-09-24T16:14:45Z",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "rows": 177981,
+  "source_document": {
+    "institution": "B3",
+    "document": "LAYOUT DO ARQUIVO – COTAÇÕES HISTÓRICAS",
+    "revision": "02",
+    "date": "2020-10-05",
+    "field": "CODBDI",
+    "positions": "11-12",
+    "source_url": "https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf"
+  },
+  "mapping_basis": "Tabela de CODBDI do layout oficial B3; a documentação posterior não prova isoladamente a semântica em 1986.",
+  "observed_codes": {
+    "02": {
+      "rows": 92653,
+      "trading_dates": 247,
+      "distinct_codneg": 1328,
+      "description_b3_layout": "LOTE PADRÃO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "010": 92653
+      }
+    },
+    "06": {
+      "rows": 2600,
+      "trading_dates": 247,
+      "distinct_codneg": 28,
+      "description_b3_layout": "CONCORDATÁRIAS",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "010": 2600
+      }
+    },
+    "10": {
+      "rows": 343,
+      "trading_dates": 154,
+      "distinct_codneg": 53,
+      "description_b3_layout": "DIREITOS E RECIBOS",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "010": 343
+      }
+    },
+    "14": {
+      "rows": 1222,
+      "trading_dates": 244,
+      "distinct_codneg": 5,
+      "description_b3_layout": "CERT.INVEST/TIT.DIV.PUBLICA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "010": 645,
+        "020": 577
+      }
+    },
+    "38": {
+      "rows": 835,
+      "trading_dates": 141,
+      "distinct_codneg": 292,
+      "description_b3_layout": "EXERCÍCIO DE OPÇÕES DE COMPRA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "012": 835
+      }
+    },
+    "42": {
+      "rows": 152,
+      "trading_dates": 33,
+      "distinct_codneg": 125,
+      "description_b3_layout": "EXERCÍCIO DE OPÇÕES DE VENDA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "013": 152
+      }
+    },
+    "46": {
+      "rows": 28,
+      "trading_dates": 2,
+      "distinct_codneg": 28,
+      "description_b3_layout": "LEILÃO DE NÃO COTADOS",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "017": 28
+      }
+    },
+    "50": {
+      "rows": 67,
+      "trading_dates": 51,
+      "distinct_codneg": 66,
+      "description_b3_layout": "LEILÃO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "017": 67
+      }
+    },
+    "54": {
+      "rows": 4,
+      "trading_dates": 2,
+      "distinct_codneg": 4,
+      "description_b3_layout": "LEILÃO DE AÇÕES EM MORA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "017": 4
+      }
+    },
+    "58": {
+      "rows": 238,
+      "trading_dates": 120,
+      "distinct_codneg": 13,
+      "description_b3_layout": "OUTROS",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "010": 238
+      }
+    },
+    "62": {
+      "rows": 36596,
+      "trading_dates": 248,
+      "distinct_codneg": 721,
+      "description_b3_layout": "MERCADO A TERMO",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "030": 36596
+      }
+    },
+    "70": {
+      "rows": 11,
+      "trading_dates": 10,
+      "distinct_codneg": 2,
+      "description_b3_layout": "FUTURO COM RETENÇÃO DE GANHOS",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "060": 11
+      }
+    },
+    "78": {
+      "rows": 7027,
+      "trading_dates": 247,
+      "distinct_codneg": 960,
+      "description_b3_layout": "OPÇÕES DE COMPRA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "070": 7027
+      }
+    },
+    "82": {
+      "rows": 761,
+      "trading_dates": 155,
+      "distinct_codneg": 250,
+      "description_b3_layout": "OPÇÕES DE VENDA",
+      "mapping_status": "DOCUMENTADO_NO_LAYOUT_B3",
+      "tpmerc_distribution": {
+        "080": 761
+      }
+    },
+    "96": {
+      "rows": 35444,
+      "trading_dates": 248,
+      "distinct_codneg": 1171,
+      "description_b3_layout": null,
+      "mapping_status": "NAO_MAPEADO",
+      "tpmerc_distribution": {
+        "020": 35444
+      }
+    }
+  },
+  "unknown_codes": [
+    "96"
+  ],
+  "coverage": {
+    "observed_code_count": 15,
+    "documented_code_count": 14,
+    "unknown_code_count": 1,
+    "all_observed_codes_documented": false
+  },
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "economic_identity_not_inferred_from_codbdi": true,
+    "historical_semantics_1986_requires_temporal_validation": true
+  }
+}
