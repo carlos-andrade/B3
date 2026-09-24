@@ -21,7 +21,7 @@ Regra: **implementado não significa executado**. Uma frente só pode ser consid
 | 07D | CODISI | Sim | Sim | EXECUTADA |
 | 07E | DIMES | Sim | Não localizada | PENDENTE |
 | 07F | Colisão K4 | Sim | Não localizada | PENDENTE |
-| 07G | Matriz final de identidade | Sim | Não localizada | PENDENTE |
+| 07G | Matriz final de identidade | Sim | Sim | EXECUTADA |
 
 ## 3. Evidências verificadas
 
@@ -92,13 +92,13 @@ Os seguintes arquivos não foram localizados no branch padrão durante a verific
 
 - `dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json`
 - `dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json`
-- `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json`
+- `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` **foi localizada e validada nesta verificação**.
 
 Consequentemente:
 
 - 07E não é marcada como executada;
 - 07F não é marcada como resolvida;
-- 07G não é marcada como concluída;
+- 07G é marcada como **EXECUTADA**, mas a FASE 07 global permanece aberta até 07E e 07F possuírem evidência própria.
 - a FASE 07 global permanece **ABERTA**.
 
 ## 5. Integridade dos dados
@@ -111,15 +111,28 @@ Nenhuma das análises autoriza alteração de:
 
 Os resultados são evidências analíticas separadas.
 
-## 6. Próxima ação controlada
+## 6. Verificação adicional — 07G
+
+A evidência `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` está presente e informa:
+
+- 177.981 registros;
+- K4: 177.980 grupos, 177.979 unitários, 1 grupo repetido, 2 linhas no grupo repetido;
+- 2.699 CODNEG distintos;
+- 1.818 CODNEG com múltiplos contextos de atributos;
+- `residual_k4_count = 0` na matriz final;
+- RAW e normalizado declarados inalterados;
+- encerramento do próprio artefato: `FASE_07G_ANALISE_EXECUTADA`.
+
+**Importante:** esta evidência não substitui o artefato específico 07F. A ausência de `COTAHIST_1986_COLISAO_K4_V1.json` impede declarar a investigação da colisão 07F como validada de forma independente.
+
+## 7. Próxima ação controlada
 
 A próxima ação deve ser exclusivamente operacional:
 
-1. executar 07E;
+1. executar/confirmar 07E;
 2. confirmar a criação do JSON DIMES;
 3. executar/confirmar 07F;
 4. inspecionar as duas linhas da colisão K4;
-5. executar/confirmar 07G;
-6. somente então emitir o fechamento formal da FASE 07.
+5. somente então emitir o fechamento formal da FASE 07.
 
 **Não declarar a FASE 07 concluída antes dessas evidências.**
