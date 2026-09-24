@@ -48,6 +48,31 @@ same_codisi=[r for r in rows if r["codisi"]=="VGORACPP"]
 same_codneg=[r for r in rows if r["codneg"]=="VGO 2"]
 vgor=[r for r in rows if "VGOR" in r["nomres"]]
 
+def key_k4(r):
+    return (r["data_pregao"], r["codbdi"], r["codneg"], r["tpmerc"], r["codisi"], r["dimes"], r["especi"], r["prazot"], r["datven"], str(r["preexe"]), r["indopc"], str(r["ptoexe"]))
+
+vgor_sorted=sorted(same_codisi, key=lambda r:(r["data_pregao"],r["source_line"]))
+all_especi_dates=defaultdict(list)
+for r in same_codisi:
+    all_especi_dates[r["especi"]].append(r["data_pregao"])
+
+duplicate_k4=defaultdict(list)
+for r in rows:
+    duplicate_k4[key_k4(r)].append(r)
+duplicate_k4_groups={k:v for k,v in duplicate_k4.items() if len(v)>1}
+duplicate_same_day=[v for v in duplicate_k4_groups.values() if len({x["data_pregao"] for x in v})==1]
+
+same_codisi_by_especi=Counter(r["especi"] for r in same_codisi)
+same_codisi_by_dimes=Counter(r["dimes"] for r in same_codisi)
+same_codisi_by_market=Counter((r["codbdi"],r["tpmerc"]) for r in same_codisi)
+same_codisi_c05=[r for r in same_codisi if "C05" in r["especi"]]
+same_codisi_c03=[r for r in same_codisi if "C03" in r["especi"]]
+
+def first_last(records):
+    if not records: return None
+    dates=sorted(r["data_pregao"] for r in records)
+    return {"first":dates[0],"last":dates[-1],"count":len(records)}
+
 def ctx(r):
     return {k:r[k] for k in ["data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref","preab","preult","totneg","quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dimes","source_line"]}
 
@@ -63,6 +88,15 @@ result={
  "same_codisi_contexts":[ctx(r) for r in same_codisi[:20]],
  "same_codisi_unique_dimes":sorted(set(r["dimes"] for r in same_codisi)),
  "same_codisi_unique_especi":sorted(set(r["especi"] for r in same_codisi)),
+ "same_codisi_by_especi":dict(sorted(same_codisi_by_especi.items())),
+ "same_codisi_by_dimes":dict(sorted(same_codisi_by_dimes.items())),
+ "same_codisi_by_market":{f"{k[0]}|{k[1]}":v for k,v in sorted(same_codisi_by_market.items())},
+ "same_codisi_c05":first_last(same_codisi_c05),
+ "same_codisi_c03":first_last(same_codisi_c03),
+ "same_codisi_especi_dates":{k:first_last(v) for k,v in sorted(all_especi_dates.items())},
+ "duplicate_k4_groups_count":len(duplicate_k4_groups),
+ "duplicate_k4_same_day_groups_count":len(duplicate_same_day),
+ "duplicate_k4_same_day_examples":[[ctx(x) for x in v] for v in duplicate_same_day[:10]],
  "same_codneg_count":len(same_codneg),
  "same_codneg_term_count":sum(r["codbdi"]=="62" and r["tpmerc"]=="030" for r in same_codneg),
  "same_codneg_spot_count":sum(r["codbdi"]=="02" and r["tpmerc"]=="010" for r in same_codneg),
