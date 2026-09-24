@@ -8,8 +8,8 @@ def parse(raw):
     if len(b)!=245 or b[:2]!=b"01": return None
     def s(a,z): return b[a-1:z].decode("latin-1",errors="replace").strip()
     return {"data_pregao":s(3,10),"codbdi":s(11,12),"codneg":s(13,24),"tpmerc":s(25,27),
-      "especi":s(40,49),"prazot":s(50,51),"preexe":s(189,201),"indopc":s(202,202),
-      "ptoexe":s(203,215),"datven":s(216,223),"codisi":s(231,242),"dimes":s(243,245)}
+      "especi":s(40,49),"prazot":s(50,52),"preexe":s(189,201),"indopc":s(202,202),
+      "datven":s(203,210),"fatcot":s(211,217),"ptoexe":s(218,230),"codisi":s(231,242),"dimes":s(243,245)}
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--zip",required=True); ap.add_argument("--output",required=True); a=ap.parse_args()
