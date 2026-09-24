@@ -465,3 +465,51 @@ C05, PP-G, PB-G e PP-H permanecem como códigos históricos literais.
 Nenhuma semântica econômica é inferida sem documentação primária.
 
 **FASE 08M:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto à existência e separação documental da dimensão Tipo; causa da colisão permanece NÃO DETERMINADA.
+
+
+## 20. FASE 08N — Investigação dos códigos históricos de Tipo
+
+A FASE 08N aprofundou a busca documental iniciada na 08M, concentrando-se nos códigos históricos observados em publicações do Mercado a Termo.
+
+### 20.1 Resultado
+
+Foram confirmadas ocorrências históricas de:
+
+- Vigor PP C05 em 1986;
+- PP-G, PB-G, PP-H e outras combinações em 1987;
+- múltiplas siglas históricas associadas aos títulos.
+
+A pesquisa também confirmou, em documentação normativa, que comprador, vendedor, participante, comitente e taxa são dimensões reais de operações a termo, mas **não encontrou legenda primária que associe essas dimensões aos códigos históricos de Tipo**.
+
+### 20.2 Classificação
+
+**VALIDADO**
+- existência documental da dimensão Tipo;
+- separação Tipo × Prazo;
+- existência de C05 em 1986;
+- existência posterior de PP-G/PB-G/PP-H;
+- existência das dimensões comprador/vendedor/comitente/taxa no mercado a termo.
+
+**NÃO VALIDADO**
+- legenda dos códigos históricos;
+- Tipo = comprador/vendedor;
+- Tipo = corretora/comitente;
+- Tipo = taxa;
+- Tipo como chave de agregação do COTAHIST;
+- Tipo como causa da colisão K4 de 10/10/1986.
+
+### 20.3 Conclusão
+
+A FASE 08N reduz o espaço de hipóteses, mas não identifica a causa da colisão.
+
+A hipótese operacional permanece:
+
+**Tipo é uma dimensão histórica potencialmente relevante, mas sua semântica e sua participação na regra de agregação do COTAHIST 1986 permanecem indeterminadas.**
+
+Documento detalhado:
+
+`docs/ingestao/FASE08N_COTAHIST_1986_INVESTIGACAO_TIPO_CODIGOS_V1.0.md`
+
+Commit: `19ea36b8f9543f00f3ec90e02ea4b88db39d7f60`.
+
+**FASE 08N:** IMPLEMENTADA / EXECUTADA / VALIDADA quanto aos fatos documentais; causa da colisão permanece NÃO DETERMINADA.
