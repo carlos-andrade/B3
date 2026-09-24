@@ -1,0 +1,29 @@
+name: COTAHIST 1986 - Auditoria de Chaves Logicas V2
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/auditar_chaves_logicas_cotahist_1986_v2.py"
+      - ".github/workflows/cotahist-chaves-logicas-1986-v2.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Auditar chaves
+        run: |
+          python scripts/ingestao/auditar_chaves_logicas_cotahist_1986_v2.py             --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP             --output dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CHAVES_V2.json
+      - name: Persistir resultado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CHAVES_V2.json
+          git diff --cached --quiet || git commit -m "data(cotahist): auditoria comparativa de chaves logicas 1986"
+          git push
