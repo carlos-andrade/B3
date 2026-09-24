@@ -10,7 +10,7 @@ def s(line,a,b): return line[a-1:b]
 def price(line,a,b): return int(s(line,a,b))/100.0
 def num(line,a,b): return int(s(line,a,b))
 
-rows=[]
+rows=[]  # FASE08P: parser fixed-width alinhado ao layout validado da FASE08F
 with zipfile.ZipFile(RAW) as z:
     name=[n for n in z.namelist() if not n.endswith("/")][0]
     with z.open(name) as f:
