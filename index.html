@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B3 — Data Observatory</title>
+<style>
+:root{--bg:#070b10;--p:#101720;--p2:#0c1219;--line:#24303d;--txt:#e8eef5;--mut:#8d9aaa;--a:#67d3ff;--ok:#7ee2a8;--warn:#f5cf67;--bad:#ff8e8e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#142333 0,#070b10 45%);color:var(--txt);font:14px system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1500px;margin:auto;padding:28px 22px 60px}header{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}h1{margin:0;font-size:30px}h2{font-size:15px;margin:0 0 14px}.muted{color:var(--mut)}button,select{border:1px solid var(--line);background:var(--p);color:var(--txt);border-radius:8px;padding:9px 12px}button{cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.card,.box{background:rgba(16,23,32,.92);border:1px solid var(--line);border-radius:12px}.card{padding:16px}.label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}.value{font-size:24px;font-weight:700;margin-top:5px}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.box{padding:18px;margin-top:14px}.cols{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}.row{display:flex;justify-content:space-between;gap:20px;padding:9px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}
+table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mut);font-size:11px;text-transform:uppercase}td.num{text-align:right;font-variant-numeric:tabular-nums}.pill{padding:3px 7px;border-radius:99px;background:#1a2733;font-size:11px}.empty{color:var(--mut);padding:16px 0}.small{font-size:12px;color:var(--mut)}
+input{background:var(--p);border:1px solid var(--line);color:var(--txt);padding:9px;border-radius:8px;width:100%}.toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-bottom:12px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}@media(max-width:560px){.grid{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<header><div><h1>B3 Data Observatory</h1><div class="muted">Leitura direta dos dados publicados neste repositório · sem dados fictícios</div></div><button id="refresh">Atualizar repositório</button></header>
+<section class="grid">
+<div class="card"><div class="label">Arquivos de dados</div><div id="files" class="value">—</div></div>
+<div class="card"><div class="label">Anos encontrados</div><div id="years" class="value">—</div></div>
+<div class="card"><div class="label">Dados estruturados</div><div id="structured" class="value">—</div></div>
+<div class="card"><div class="label">Última alteração</div><div id="last" class="value">—</div></div>
+<div class="card"><div class="label">Fonte</div><div class="value">B3 repo</div><div class="small">carlos-andrade/B3 · branch main</div></div>
+</section>
+<div class="cols">
+<section class="box"><h2>Arquivos de mercado detectados</h2><div class="toolbar"><input id="filter" placeholder="Filtrar por nome ou caminho…"><select id="type"><option value="">Todos</option><option value="csv">CSV</option><option value="json">JSON</option><option value="txt">TXT</option><option value="parquet">Parquet</option><option value="other">Outros</option></select><button id="scan">Reexaminar</button></div><div id="fileTable" class="empty">Carregando árvore do repositório…</div></section>
+<section class="box"><h2>Snapshot / indicadores publicados</h2><div id="snapshot" class="empty">Procurando arquivos JSON de indicadores…</div></section>
+</div>
+<section class="box"><h2>Amostra de dados de mercado</h2><div id="sample" class="empty">Selecione um arquivo estruturado compatível para carregar uma amostra.</div></section>
+<section class="box"><h2>Proveniência</h2><div class="row"><span>Repositório</span><span>carlos-andrade/B3</span></div><div class="row"><span>Branch</span><span>main</span></div><div class="row"><span>Descoberta</span><span>Git Trees API</span></div><div class="row"><span>Regra</span><span>não transformar ausência de dado em zero</span></div><div class="small">O painel lê o conteúdo público do próprio GitHub em tempo de execução. Arquivos binários muito grandes, ZIP e Parquet não são interpretados pelo navegador; continuam sendo contabilizados e identificados.</div></section>
+</main>
+<script>
+const OWNER="carlos-andrade",REPO="B3",BRANCH="main",API="https://api.github.com/repos/"+OWNER+"/"+REPO;
+let allFiles=[],jsonCandidates=[];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ext=p=>{let x=p.toLowerCase().split(".").pop();return x==="jsonl"||x==="ndjson"?"json":x};
+function yearFrom(p){let m=p.match(/(?:19|20)\d{2}/g);return m?m.map(Number).filter(y=>y>=1980&&y<=2100)[0]:null}
+async function tree(){
+ const r=await fetch(API+"/git/trees/"+BRANCH+"?recursive=1",{headers:{"Accept":"application/vnd.github+json"}});
+ if(!r.ok)throw Error("Não foi possível ler a árvore do repositório: HTTP "+r.status);
+ const d=await r.json(); allFiles=(d.tree||[]).filter(x=>x.type==="blob"); return d;
+}
+function render(){
+ const q=document.querySelector("#filter").value.toLowerCase(),t=document.querySelector("#type").value;
+ const data=allFiles.filter(x=>{const e=ext(x.path);return(!q||x.path.toLowerCase().includes(q))&&(!t||(t==="other"?![...["csv","json","txt","parquet"]].includes(e):e===t))}).sort((a,b)=>a.path.localeCompare(b.path));
+ document.querySelector("#fileTable").innerHTML=data.length?'<table><thead><tr><th>Caminho</th><th>Tipo</th><th>Tamanho</th><th></th></tr></thead><tbody>'+data.slice(0,250).map(x=>'<tr><td>'+esc(x.path)+'</td><td><span class="pill">'+esc(ext(x.path))+'</span></td><td class="num">'+(x.size?new Intl.NumberFormat("pt-BR").format(x.size):"—")+'</td><td>'+(["csv","json","txt"].includes(ext(x.path))?'<button data-path="'+encodeURIComponent(x.path)+'" class="open">Abrir</button>':"")+'</td></tr>').join("")+'</tbody></table><div class="small">Mostrando '+Math.min(data.length,250)+' de '+data.length+' arquivos filtrados.</div>':'<div class="empty">Nenhum arquivo corresponde ao filtro.</div>';
+ document.querySelectorAll(".open").forEach(b=>b.onclick=()=>loadData(decodeURIComponent(b.dataset.path)));
+}
+async function loadData(path){
+ const f=allFiles.find(x=>x.path===path);if(!f)return;
+ if(f.size>5_000_000){document.querySelector("#sample").innerHTML='<div class="empty">Arquivo grande demais para leitura direta no navegador ('+new Intl.NumberFormat("pt-BR").format(f.size)+' bytes). Use o pipeline para gerar um snapshot consultável.</div>';return}
+ document.querySelector("#sample").textContent="Carregando "+path+"…";
+ const r=await fetch("https://raw.githubusercontent.com/"+OWNER+"/"+REPO+"/"+BRANCH+"/"+path);if(!r.ok){document.querySelector("#sample").textContent="Falha ao ler "+path;return}
+ const text=await r.text(); let out;
+ try{const j=JSON.parse(text);out=renderJson(j)}catch{out=renderText(text)}
+ document.querySelector("#sample").innerHTML='<div class="small">'+esc(path)+'</div>'+out;
+}
+function renderJson(j){
+ const obj=Array.isArray(j)?j.slice(0,25):[j]; if(!obj.length)return '<div class="empty">JSON vazio.</div>';
+ if(typeof obj[0]!=="object"||obj[0]===null)return '<pre>'+esc(JSON.stringify(j,null,2).slice(0,12000))+'</pre>';
+ const cols=[...new Set(obj.flatMap(x=>Object.keys(x)))].slice(0,12);
+ return '<table><thead><tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join("")+'</tr></thead><tbody>'+obj.map(x=>'<tr>'+cols.map(c=>'<td>'+esc(typeof x[c]==="object"?JSON.stringify(x[c]):x[c])+'</td>').join("")+'</tr>').join("")+'</tbody></table>';
+}
+function renderText(s){const lines=s.split(/\r?\n/).filter(Boolean).slice(0,26);return '<pre style="white-space:pre-wrap;overflow:auto;max-height:500px">'+esc(lines.join("\n"))+'</pre>'}
+function snapshot(){
+ jsonCandidates=allFiles.filter(x=>ext(x.path)==="json"&&/(dashboard|snapshot|result|status|quality|indic|market|cotahist|dados)/i.test(x.path));
+ document.querySelector("#snapshot").innerHTML=jsonCandidates.length?jsonCandidates.slice(0,30).map(x=>'<div class="row"><span>'+esc(x.path)+'</span><button data-path="'+encodeURIComponent(x.path)+'" class="openjson">Ler</button></div>').join(""):'<div class="empty">Nenhum JSON de indicadores foi identificado por nome. O painel continua usando a árvore do repositório.</div>';
+ document.querySelectorAll(".openjson").forEach(b=>b.onclick=()=>loadData(decodeURIComponent(b.dataset.path)));
+}
+async function boot(){
+ document.querySelector("#fileTable").textContent="Lendo Git Trees API…";
+ try{
+  const d=await tree(); const years=[...new Set(allFiles.map(x=>yearFrom(x.path)).filter(Boolean))].sort();
+  document.querySelector("#files").textContent=new Intl.NumberFormat("pt-BR").format(allFiles.length);
+  document.querySelector("#years").textContent=years.length?(years[0]+"–"+years[years.length-1]):"—";
+  const structured=allFiles.filter(x=>["csv","json","parquet"].includes(ext(x.path)));document.querySelector("#structured").textContent=new Intl.NumberFormat("pt-BR").format(structured.length);
+  const latest=allFiles.reduce((m,x)=>m, null);document.querySelector("#last").textContent=d.sha?d.sha.slice(0,8):"—";
+  render();snapshot();
+ }catch(e){document.querySelector("#fileTable").innerHTML='<div class="empty">'+esc(e.message)+'</div>'}
+}
+document.querySelector("#filter").oninput=render;document.querySelector("#type").onchange=render;document.querySelector("#refresh").onclick=boot;document.querySelector("#scan").onclick=boot;boot();
+</script></body></html>
