@@ -1,0 +1,34 @@
+name: COTAHIST FASE08E Cronologia Cxx DIMES VGO2 1986 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_cronologia_cxx_dimes_vgo2_1986_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+      - ".github/workflows/cotahist-fase08e-cronologia-1986-v1.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  analisar:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Executar análise
+        run: python scripts/ingestao/analisar_cronologia_cxx_dimes_vgo2_1986_v1.py
+      - name: Publicar evidência
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_FASE08E_CRONOLOGIA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: publica evidência FASE 08E COTAHIST 1986"
+          git pull --rebase origin main
+          git push origin HEAD:main
