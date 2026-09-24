@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "status": "FASE_07F_COLISAO_K4_1986_ANALISE",
-  "generated_at_utc": "2026-09-24T17:57:19Z",
+  "generated_at_utc": "2026-09-24T17:59:50Z",
   "raw_file": "COTAHIST_A1986.ZIP",
-  "target_k4": [
+  "target_k4_prefix": [
     "19861010",
     "62",
     "VGO 2",
@@ -11,20 +11,116 @@
     "VGORACPP",
     "104",
     "PP *C05",
-    "060",
-    99991231,
-    0.0,
-    "0",
-    "0"
+    "060"
   ],
-  "match_count": 0,
-  "matches": [],
-  "differences": {},
+  "match_count": 2,
+  "matches": [
+    {
+      "tipo_registro": "01",
+      "data_pregao": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nome_resumido": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "modref": "0CZ$",
+      "preab": "0000000000190",
+      "premax": "0000000000190",
+      "premin": "0000000000190",
+      "premed": "0000000000190",
+      "preult": "0000000000190",
+      "preofc": "0000000000000",
+      "preofv": "0000000000000",
+      "totneg": "00001",
+      "quatot": "000000000039000000",
+      "voltot": "000000000007410000",
+      "preexe": 0.0,
+      "indopc": "0",
+      "ptoexe": 999912.31,
+      "datven": 1000,
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "source_line": 140808,
+      "raw_sha256": "04280f94086266d5ea7aebd95eb8ccaf7771a6df3bbb210a189791369642a2e0"
+    },
+    {
+      "tipo_registro": "01",
+      "data_pregao": "19861010",
+      "codbdi": "62",
+      "codneg": "VGO 2",
+      "tpmerc": "030",
+      "nome_resumido": "VGOR",
+      "especi": "PP *C05",
+      "prazot": "060",
+      "modref": "0CZ$",
+      "preab": "0000000000165",
+      "premax": "0000000000191",
+      "premin": "0000000000165",
+      "premed": "0000000000187",
+      "preult": "0000000000175",
+      "preofc": "0000000000000",
+      "preofv": "0000000000000",
+      "totneg": "00004",
+      "quatot": "000000000190000000",
+      "voltot": "000000000035646000",
+      "preexe": 0.0,
+      "indopc": "0",
+      "ptoexe": 999912.31,
+      "datven": 1000,
+      "codisi": "VGORACPP",
+      "dimes": "104",
+      "source_line": 140809,
+      "raw_sha256": "1e836a05ad33c4990d319ea85490820c723a666121de89c3ddfc9cea67f7789e"
+    }
+  ],
+  "differences": {
+    "preab": [
+      "0000000000190",
+      "0000000000165"
+    ],
+    "premax": [
+      "0000000000190",
+      "0000000000191"
+    ],
+    "premed": [
+      "0000000000190",
+      "0000000000187"
+    ],
+    "premin": [
+      "0000000000190",
+      "0000000000165"
+    ],
+    "preult": [
+      "0000000000190",
+      "0000000000175"
+    ],
+    "quatot": [
+      "000000000039000000",
+      "000000000190000000"
+    ],
+    "raw_sha256": [
+      "04280f94086266d5ea7aebd95eb8ccaf7771a6df3bbb210a189791369642a2e0",
+      "1e836a05ad33c4990d319ea85490820c723a666121de89c3ddfc9cea67f7789e"
+    ],
+    "source_line": [
+      140808,
+      140809
+    ],
+    "totneg": [
+      "00001",
+      "00004"
+    ],
+    "voltot": [
+      "000000000007410000",
+      "000000000035646000"
+    ]
+  },
   "classification_rule": {
     "two_rows_same_k4_is_not_automatic_duplicate": true,
     "economic_identity_not_inferred": true,
     "raw_unchanged": true,
     "normalized_unchanged": true
   },
-  "conclusion_status": "NO_MATCH"
+  "conclusion_status": "REQUIRES_SEMANTIC_REVIEW"
 }
