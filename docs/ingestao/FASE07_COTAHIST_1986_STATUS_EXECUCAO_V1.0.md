@@ -5,154 +5,156 @@
 **Data:** 24/09/2026  
 **Repositório:** carlos-andrade/B3
 
-## 1. Objetivo
+## 1. Estado atual
 
-Registrar de forma auditável quais frentes da FASE 07 possuem evidência JSON efetivamente presente no repositório e quais permanecem pendentes de execução.
+A FASE 07 foi executada integralmente nas frentes 07A–07G.
 
-Regra: **implementado não significa executado**. Uma frente só pode ser considerada executada quando a evidência resultante estiver presente no caminho esperado e puder ser lida/reconciliada.
+**Estado global: FECHADA COM ANOMALIA RESIDUAL K4 DOCUMENTADA.**
 
-## 2. Situação verificada
+O fechamento não significa que a anomalia econômica foi automaticamente resolvida. Significa que a anomalia foi localizada, reproduzida, documentada com linhas RAW e diferenças observáveis, sem alteração do dado original.
 
-| Frente | Tema | Implementação | Evidência JSON | Situação |
-|---|---|---:|---:|---|
-| 07A | Identidade histórica / chaves K1–K4 | Sim | Sim | EXECUTADA |
-| 07B | TPMERC | Sim | Sim | EXECUTADA |
-| 07C | CODBDI | Sim | Sim | EXECUTADA |
-| 07D | CODISI | Sim | Sim | EXECUTADA |
+## 2. Matriz de execução
+
+| Frente | Tema | Implementação | Execução | Validação |
+|---|---|---:|---:|---:|
+| 07A | Identidade histórica / K1–K4 | Sim | Sim | VALIDADA |
+| 07B | TPMERC | Sim | Sim | VALIDADA |
+| 07C | CODBDI | Sim | Sim | VALIDADA |
+| 07D | CODISI | Sim | Sim | VALIDADA |
 | 07E | DIMES | Sim | Sim | VALIDADA |
-| 07F | Colisão K4 | Sim | Sim | EM VALIDAÇÃO |
-| 07G | Matriz final de identidade | Sim | Sim | EXECUTADA |
+| 07F | Colisão K4 | Sim | Sim | VALIDADA — requer revisão semântica |
+| 07G | Matriz final de identidade | Sim | Sim | VALIDADA |
 
-## 3. Evidências verificadas
+## 3. Correção metodológica crítica
 
-### 07B — TPMERC
+Durante a validação independente da colisão K4 foi identificada uma divergência de offsets em versões anteriores dos parsers.
 
-Arquivo:
+O layout oficial B3 posiciona:
 
-`dados/cotahist/quality/COTAHIST_1986_TPMERC_V1.json`
+- PREEXE: 189–201;
+- INDOPC: 202;
+- DATVEN: 203–210;
+- FATCOT: 211–217;
+- PTOEXE: 218–230;
+- CODISI: 231–242;
+- DIMES: 243–245.
 
-Evidência lida no repositório:
+A correção foi aplicada aos parsers 07A, 07F e 07G.
 
-- 177.981 registros;
-- 9 códigos TPMERC observados;
-- 9 códigos documentados pela tabela de referência utilizada;
-- 0 códigos desconhecidos.
+Fonte oficial utilizada:
+SeriesHistoricas_Layout.pdf, B3, Revisão 02, 05/10/2020.
 
-Distribuição observada:
+## 4. 07A — Identidade histórica
 
-- 010: 96.479
-- 012: 835
-- 013: 152
-- 017: 99
-- 020: 36.021
-- 030: 36.596
-- 060: 11
-- 070: 7.027
-- 080: 761
+Evidência:
 
-A documentação registra explicitamente que a semântica posterior do layout não é presumida como prova automática da semântica original de 1986.
+dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_HISTORICA_V1.json
 
-### 07C — CODBDI
-
-Arquivo:
-
-`dados/cotahist/quality/COTAHIST_1986_CODBDI_V1.json`
-
-Evidência lida no repositório:
+Resultado:
 
 - 177.981 registros;
-- 15 códigos CODBDI observados;
-- 14 mapeados pela tabela documental utilizada;
-- 1 não mapeado: **96**.
+- 2.699 CODNEG distintos;
+- K1: 172.792 grupos;
+- K2: 172.792 grupos;
+- K3: 172.793 grupos;
+- K4: 177.980 grupos;
+- K4 unitários: 177.979;
+- K4 repetidos: 1 grupo;
+- linhas no grupo K4 repetido: 2.
 
-Distribuição dos principais códigos está preservada integralmente no JSON. O código 96 permanece deliberadamente sem descrição inferida.
+A chave K4 repetida é:
 
-### 07D — CODISI
+19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060 | 99991231 | 0 | 0 | 0
 
-Arquivo:
+O resultado não autoriza inferência automática de identidade econômica definitiva.
 
-`dados/cotahist/quality/COTAHIST_1986_CODISI_V1.json`
+## 5. 07F — Colisão K4
 
-Evidência lida no repositório:
+Evidência:
+
+dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json
+
+Workflow validado:
+
+- run: 36038214156;
+- conclusão: success;
+- commit de publicação da evidência: af2f398;
+- evidência gerada em 2026-09-24T18:00:47Z.
+
+Resultado:
+
+- match_count = 2;
+- linhas RAW: 140808 e 140809;
+- os dois registros possuem o mesmo contexto K4;
+- os hashes RAW são diferentes;
+- há diferenças em PREAB, PREMAX, PREMIN, PREMED, PREULT, QUATOT, VOLTOT e TOTNEG;
+- portanto, não são registros byte-a-byte idênticos;
+- não foi inferida identidade econômica automática;
+- a anomalia permanece classificada como REQUIRES_SEMANTIC_REVIEW.
+
+Diferenças observadas:
+
+- TOTNEG: 1 vs 4;
+- QUATOT: 39.000.000 vs 190.000.000;
+- VOLTOT: 7.410.000 vs 35.646.000;
+- PREULT: 190 vs 175;
+- PREMAX: 190 vs 191;
+- PREMIN: 190 vs 165;
+- PREMED: 190 vs 187.
+
+Essas diferenças demonstram que as duas linhas carregam estatísticas de negociação distintas apesar da mesma chave K4.
+
+## 6. 07G — Matriz final
+
+Evidência:
+
+dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json
+
+Workflow validado:
+
+- run: 36038470140;
+- conclusão: success;
+- publicação da evidência: commit 2271f36.
+
+Resultado:
 
 - 177.981 registros;
-- 1.350 CODISI distintos;
-- 0 registros em branco;
-- 1.350 códigos não brancos.
-
-A regra histórica registrada é crítica:
-
-**Em 1986, CODISI é tratado como código interno do papel, e não como ISIN.**
-
-A documentação B3 consultada registra o início da interpretação ISIN a partir de 15/05/1995. Portanto, não é permitido retroprojetar a semântica moderna para 1986.
-
-## 4. Evidências adicionais — 07E e 07F
-
-### 07E — DIMES
-
-Arquivo: `dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json`
-
-Commit de evidência: `3d68f2ee63cf918bb2e44f746c9281251098034a`
-
-Verificação:
-- 177.981 registros;
-- 131 DIMES distintos;
-- 0 registros DIMES em branco;
-- 100% dos campos DIMES com comprimento bruto de 3 bytes;
+- K4: 177.980 grupos;
+- K4: 177.979 grupos unitários;
+- 1 grupo K4 repetido;
+- 2 linhas no grupo repetido;
+- 2.699 CODNEG distintos;
+- 1.817 CODNEG com múltiplos contextos de atributos;
 - RAW e NORMALIZED declarados inalterados.
 
-O workflow 07E teve uma segunda tentativa com falha de publicação por conflito add/add durante rebase; a etapa **Executar análise DIMES** terminou com sucesso. O artefato já havia sido publicado corretamente na primeira tentativa. O workflow foi corrigido para atualizar as ações para Node 24 e fazer `git pull --rebase` antes da preparação do commit.
+O artefato agora reporta explicitamente:
 
-### 07F — Colisão K4
+residual_k4_count = 1
 
-Arquivo: `dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json`
+e preserva a chave K4 repetida.
 
-A evidência existente foi considerada **não válida para fechamento**, porque o parser anterior mantinha `PREEXE`, `PTOEXE` e `DATVEN` em tipos incompatíveis com a chave K4 consolidada em 07A. O resultado `NO_MATCH` não deve ser usado como conclusão histórica.
+## 7. Integridade
 
-Foi corrigido o parser em:
-- `scripts/ingestao/investigar_colisao_k4_cotahist_1986_v1.py`
-- commit: `0251ef6cad0e1decfff634209e21d87127f87573`
+Nenhuma etapa da FASE 07 altera:
 
-O novo workflow 07F está em execução pendente, run `36036976520`, para gerar a evidência semanticamente reconciliada.
+- dados/cotahist/raw/;
+- os dados normalizados reconciliados;
+- os registros históricos originais.
 
-### 07G — Matriz final
+As evidências são artefatos analíticos separados.
 
-A evidência `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` permanece válida como consolidação, mas não substitui 07F.
+## 8. Decisão de fechamento
 
-A FASE 07 global permanece **ABERTA** até a validação independente do novo artefato 07F.
+A FASE 07 pode ser fechada operacionalmente porque:
 
-## 5. Integridade dos dados
+1. 07E possui evidência independente válida;
+2. 07F possui evidência independente válida;
+3. a colisão foi reproduzida diretamente no RAW;
+4. as duas linhas foram inspecionadas;
+5. as diferenças foram preservadas;
+6. nenhum registro foi corrigido;
+7. a anomalia econômica não foi artificialmente resolvida.
 
-Nenhuma das análises autoriza alteração de:
+**Conclusão:** FASE 07 FECHADA COM ANOMALIA RESIDUAL K4 DOCUMENTADA.
 
-- `dados/cotahist/raw/`
-- dados normalizados já reconciliados;
-- registros históricos originais.
-
-Os resultados são evidências analíticas separadas.
-
-## 6. Verificação adicional — 07G
-
-A evidência `dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json` está presente e informa:
-
-- 177.981 registros;
-- K4: 177.980 grupos, 177.979 unitários, 1 grupo repetido, 2 linhas no grupo repetido;
-- 2.699 CODNEG distintos;
-- 1.818 CODNEG com múltiplos contextos de atributos;
-- `residual_k4_count = 0` na matriz final;
-- RAW e normalizado declarados inalterados;
-- encerramento do próprio artefato: `FASE_07G_ANALISE_EXECUTADA`.
-
-**Importante:** esta evidência não substitui o artefato específico 07F. A ausência de `COTAHIST_1986_COLISAO_K4_V1.json` impede declarar a investigação da colisão 07F como validada de forma independente.
-
-## 7. Próxima ação controlada
-
-A próxima ação deve ser exclusivamente operacional:
-
-1. executar/confirmar 07E;
-2. confirmar a criação do JSON DIMES;
-3. executar/confirmar 07F;
-4. inspecionar as duas linhas da colisão K4;
-5. somente então emitir o fechamento formal da FASE 07.
-
-**Não declarar a FASE 07 concluída antes dessas evidências.**
+A próxima fase deve tratar a semântica histórica da anomalia, sem transformar a chave K4 em identidade econômica definitiva sem evidência adicional.
