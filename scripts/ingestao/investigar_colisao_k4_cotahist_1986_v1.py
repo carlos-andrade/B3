@@ -2,7 +2,7 @@
 """FASE 07F — investigação da colisão residual K4 no COTAHIST 1986."""
 from __future__ import annotations
 import argparse,json,zipfile,hashlib
-from datetime import datetime, timezone, timezone
+from datetime import datetime, timezone
 
 TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231",0.0,"0",0.0)
 
@@ -16,7 +16,7 @@ def parse(raw: bytes):
       "modref":s(52,56),"preab":s(57,69),"premax":s(70,82),"premin":s(83,95),
       "premed":s(96,108),"preult":s(109,121),"preofc":s(122,134),"preofv":s(135,147),
       "totneg":s(148,152),"quatot":s(153,170),"voltot":s(171,188),"preexe":s(189,201),
-      "indopc":s(202,202),"ptoexe":s(203,215),"datven":s(216,223),
+      "indopc":s(202,202),"ptoexe":s(203,210),"datven":s(211,217),
       "codisi":s(231,242),"dimes":s(243,245),
     }
 
