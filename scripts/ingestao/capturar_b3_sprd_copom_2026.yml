@@ -1,0 +1,55 @@
+name: Capturar SPRD B3 — Copom 281
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/capturar_b3_sprd_copom_2026.yml"
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Capturar arquivos SPRD
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          for d in 260916 260917; do
+            url="https://www.b3.com.br/pesquisapregao/download?filelist=SPRD${d}.zip"
+            out="out/SPRD${d}.zip"
+            echo "URL=${url}"
+            curl --fail --location --retry 3 --connect-timeout 20 --max-time 180 \
+              -A "B3-INGESTAO/1.0 (+https://github.com/carlos-andrade/B3)" \
+              "${url}" -o "${out}"
+            file "${out}"
+            sha256sum "${out}" | tee "${out}.sha256"
+            unzip -l "${out}" | tee "${out}.listing.txt"
+            if ! unzip -t "${out}" >/dev/null; then
+              echo "ZIP_INVALID=${out}"
+              exit 20
+            fi
+            mkdir -p "out/xml_${d}"
+            unzip -o "${out}" -d "out/xml_${d}" >/dev/null
+            find "out/xml_${d}" -type f -printf "%p %s bytes\\n" | sort
+          done
+
+      - name: Validar presença de XML
+        shell: bash
+        run: |
+          set -euo pipefail
+          for d in 260916 260917; do
+            count=$(find "out/xml_${d}" -type f \\( -iname "*.xml" -o -iname "*.XML" \\) | wc -l)
+            echo "XML_COUNT_${d}=${count}"
+            test "${count}" -gt 0
+          done
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-sprd-copom-281-2026
+          path: out/
+          retention-days: 14
+          if-no-files-found: error
