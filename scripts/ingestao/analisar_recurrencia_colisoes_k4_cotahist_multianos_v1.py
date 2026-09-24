@@ -132,8 +132,8 @@ def analyze_year(path):
         "duplicate_k4_groups_statistically_identical": byte_identical_groups,
         "duplicate_k4_group_size_distribution": dict(sorted(Counter(map(len, dups)).items())),
         "duplicate_k4_groups_by_market": {
-            f"{g[0]['codbdi']}|{g[0]['tpmerc']}": n
-            for (g, n) in sorted(
+            f"{k[0]}|{k[1]}": n
+            for (k, n) in sorted(
                 Counter((g[0]["codbdi"], g[0]["tpmerc"]) for g in dups).items(),
                 key=lambda x: (-x[1], x[0])
             )
