@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "status": "FASE_07G_MATRIZ_IDENTIDADE_1986",
-  "generated_at_utc": "2026-09-24T18:02:13Z",
+  "generated_at_utc": "2026-09-24T18:02:56Z",
   "rows": 177981,
   "matrix": {
     "K1": {
@@ -45,12 +45,30 @@
     "dimes": "atributo histórico de distribuição/estado de direito",
     "k4": "chave analítica enriquecida, não chave econômica definitiva"
   },
-  "residual_k4_records": [],
-  "residual_k4_count": 0,
+  "residual_k4_records": [
+    {
+      "key": [
+        "19861010",
+        "62",
+        "VGO 2",
+        "030",
+        "VGORACPP",
+        "104",
+        "PP *C05",
+        "060",
+        "99991231",
+        "0000000000000",
+        "0",
+        "0000000000000"
+      ],
+      "count": 2
+    }
+  ],
+  "residual_k4_count": 1,
   "governance": {
     "raw_unchanged": true,
     "normalized_unchanged": true,
     "no_economic_identity_inferred": true
   },
-  "closure": "FASE_07G_ANALISE_EXECUTADA"
+  "closure": "FASE_07G_REQUER_CONFIRMACAO_DA_COLISAO_K4"
 }
