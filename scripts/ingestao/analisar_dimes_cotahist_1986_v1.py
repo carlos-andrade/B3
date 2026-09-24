@@ -137,3 +137,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Trigger de execucao auditavel FASE 07
