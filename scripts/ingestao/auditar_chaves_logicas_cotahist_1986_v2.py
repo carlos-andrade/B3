@@ -59,6 +59,8 @@ def main():
                     counters[name][key]+=1
                     if name=="K4_contractual":
                         k4_rows_by_key[key].append(r)
+                    if name=="K4_contractual":
+                        k4_rows_by_key[key].append(r)
 
     for name,c in counters.items():
         repeated=[(k,n) for k,n in c.items() if n>1]
@@ -66,6 +68,10 @@ def main():
         repeat_samples[name]=[
             {"key":list(k),"rows":n} for k,n in repeated[:a.repeat_samples]
         ]
+        if name=="K4_contractual":
+            for item in repeat_samples[name]:
+                key=tuple(item["key"])
+                item["row_details"]=k4_rows_by_key[key]
         if name=="K4_contractual":
             for item in repeat_samples[name]:
                 key=tuple(item["key"])
