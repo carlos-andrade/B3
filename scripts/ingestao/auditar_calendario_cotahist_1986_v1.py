@@ -25,8 +25,10 @@ def main():
     a = ap.parse_args()
 
     counts = Counter()
+    weekend_rows = []
     raw_sha = hashlib.sha256()
-    total_lines = valid_type01 = invalid_dates = 0
+    total_lines = 0
+    valid_type01 = 0
 
     with zipfile.ZipFile(a.zip) as z:
         members = [x for x in z.namelist() if not x.endswith("/")]
@@ -41,25 +43,38 @@ def main():
                     continue
                 valid_type01 += 1
                 counts[d] += 1
+                if d.weekday() >= 5 and len(weekend_rows) < 50:
+                    b = raw.rstrip(b"\r\n")
+                    def field(a, z):
+                        return b[a-1:z].decode("latin-1", errors="replace").strip()
+                    weekend_rows.append({
+                        "line_number": total_lines,
+                        "data_pregao": d.isoformat(),
+                        "codbdi": field(11, 12),
+                        "codneg": field(13, 24),
+                        "tpmerc": field(25, 27),
+                        "raw_sha256": hashlib.sha256(b).hexdigest(),
+                    })
 
     dates = sorted(counts)
     gaps = []
     for prev, nxt in zip(dates, dates[1:]):
         delta = (nxt - prev).days
         if delta > 4:
-            missing = [(prev + timedelta(days=i)).isoformat() for i in range(1, delta)]
             gaps.append({
                 "from": prev.isoformat(),
                 "to": nxt.isoformat(),
                 "calendar_days_between": delta,
-                "missing_calendar_dates": missing,
+                "missing_calendar_dates": [
+                    (prev + timedelta(days=i)).isoformat() for i in range(1, delta)
+                ],
             })
 
     weekday_counts = Counter(d.strftime("%A") for d in dates)
     weekend_observed = [d.isoformat() for d in dates if d.weekday() >= 5]
 
     out = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.0.1",
         "status": "AUDITORIA_CALENDARIO_OBSERVAVEL_COTAHIST_1986",
         "raw_file": Path(a.zip).name,
         "raw_sha256_stream": raw_sha.hexdigest(),
@@ -69,7 +84,8 @@ def main():
         "first_trading_date_observed": dates[0].isoformat() if dates else None,
         "last_trading_date_observed": dates[-1].isoformat() if dates else None,
         "weekday_counts": dict(sorted(weekday_counts.items())),
-        "weekend_dates_observed": weekend_observed,\n        "weekend_row_samples": weekend_rows,
+        "weekend_dates_observed": weekend_observed,
+        "weekend_row_samples": weekend_rows,
         "long_gaps_threshold_days_exclusive": 4,
         "long_gaps_count": len(gaps),
         "long_gaps": gaps,
@@ -80,13 +96,16 @@ def main():
     }
 
     Path(a.output).parent.mkdir(parents=True, exist_ok=True)
-    Path(a.output).write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(a.output).write_text(
+        json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     print(json.dumps({
         "status": out["status"],
         "unique_trading_dates": out["unique_trading_dates"],
         "first_trading_date_observed": out["first_trading_date_observed"],
         "last_trading_date_observed": out["last_trading_date_observed"],
         "weekend_dates_observed": out["weekend_dates_observed"],
+        "weekend_row_samples": out["weekend_row_samples"],
         "long_gaps_count": out["long_gaps_count"],
         "long_gaps": out["long_gaps"],
         "records_per_date_min": out["records_per_date_min"],
