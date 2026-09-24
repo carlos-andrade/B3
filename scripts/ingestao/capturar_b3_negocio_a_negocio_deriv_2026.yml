@@ -1,0 +1,44 @@
+name: Capturar B3 Negócio a Negócio — DERIV Copom 281
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/capturar_b3_negocio_a_negocio_deriv_2026.yml"
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Capturar feed DERIV
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          for d in 2026-09-16 2026-09-17; do
+            compact=\$(echo "\$d" | tr -d '-')
+            url="https://drp.b3.com.br/rapinegocios/tickercsv/\$d?type=1"
+            out="out/\${compact}_NEGOCIOSAVISTA_DRV.zip"
+            echo "DATE=\$d"
+            echo "URL=\$url"
+            curl --fail --location --retry 3 --connect-timeout 20 --max-time 300 \
+              -A "B3-INGESTAO/1.0 (+https://github.com/carlos-andrade/B3)" \
+              "\$url" -o "\$out"
+            file "\$out"
+            sha256sum "\$out" | tee "\$out.sha256"
+            unzip -t "\$out"
+            unzip -l "\$out" | tee "\$out.listing.txt"
+            mkdir -p "out/xml_\${compact}"
+            unzip -o "\$out" -d "out/xml_\${compact}" >/dev/null
+            find "out/xml_\${compact}" -type f -printf "%p %s bytes\n" | sort
+          done
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-negocio-a-negocio-deriv-copom-281-2026
+          path: out/
+          retention-days: 14
+          if-no-files-found: error
