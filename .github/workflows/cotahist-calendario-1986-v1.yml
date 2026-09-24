@@ -1,4 +1,4 @@
-name: COTAHIST 1986 - Auditoria de Calendario V1\n# V1.0.2 - reexecucao apos correcao de sintaxe
+name: COTAHIST 1986 - Auditoria de Calendario V1\n# V1.0.3 - auditoria final de registros de fim de semana
 
 on:
   workflow_dispatch:
