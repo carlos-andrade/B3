@@ -1,0 +1,41 @@
+name: Capturar BDM — Copom 281
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/capturar_bdm_copom_281_2026.yml"
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Capturar PDFs BDM
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          for d in 20260916 20260917; do
+            url="https://arquivos.b3.com.br/bdi/download/bdi/BDI_03-3_\${d}.pdf"
+            out="out/BDI_03-3_\${d}.pdf"
+            echo "URL=\${url}"
+            curl --fail --location --retry 3 --connect-timeout 20 --max-time 180 \
+              -A "B3-INGESTAO/1.0 (+https://github.com/carlos-andrade/B3)" \
+              "\${url}" -o "\${out}"
+            file "\${out}"
+            test "\$(file -b "\${out}" | grep -ci 'PDF')" -gt 0
+            sha256sum "\${out}" | tee "\${out}.sha256"
+            pdfinfo "\${out}" | tee "\${out}.pdfinfo"
+            pdftotext -layout "\${out}" "\${out}.txt"
+            grep -in -E 'Neg[oó]cio a neg[oó]cio|Derivativos de bolsa|WIN|WDO|DI1' "\${out}.txt" | head -100 || true
+          done
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-bdm-copom-281-2026
+          path: out/
+          retention-days: 14
+          if-no-files-found: error
