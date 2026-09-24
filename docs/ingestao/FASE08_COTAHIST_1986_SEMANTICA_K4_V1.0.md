@@ -151,3 +151,39 @@ A FASE 08 já estabeleceu:
 Ainda faltam fontes contemporâneas suficientes para decodificar definitivamente a convenção C05, a regra de DATVEN=99991231 e a razão documental para a duplicidade de agregados no mesmo K4.
 
 A próxima investigação deve priorizar **Boletim Diário de Informações da Bovespa de outubro de 1986**, regulamento/manual histórico do mercado a termo e documentos societários/cadastrais contemporâneos.
+
+
+## 12. Pesquisa documental — evidência contemporânea de C05
+
+Foi localizada uma fonte de imprensa datada de **05/06/1986**, com uma tabela de cotações da Bovespa, que registra explicitamente **Vigor PP C05**. A mesma publicação mostra outras ocorrências do padrão Cxx, incluindo **Weg PP C35**, **Metal Duque PP C45**, **Brahma OP C15**, além de outros papéis com C03, C34 etc. citeturn1search0turn1search41
+
+Esta descoberta é relevante porque demonstra que **C05 não é um artefato criado pelo COTAHIST de 1986**: a notação C05 já era publicada contemporaneamente no ambiente de mercado.
+
+Entretanto, a fonte consultada **não fornece uma legenda que decodifique C05**. Portanto:
+
+- fato estabelecido: Vigor era publicado como **Vigor PP C05** em 05/06/1986;
+- fato estabelecido: a convenção **Cxx** era utilizada para diversos papéis;
+- não estabelecido: o significado semântico exato do número **05**;
+- não estabelecido: se o C05 representa série, condição de negociação, evento societário, direito, lote ou outra classificação histórica.
+
+A investigação não deve converter C05 diretamente em uma categoria moderna sem documentação contemporânea específica.
+
+## 13. Resultado da busca documental de 24/09/2026
+
+Foram pesquisadas combinações específicas para:
+
+- Boletim Diário de Informações da Bovespa em outubro de 1986;
+- VGO 2;
+- Vigor PP C05;
+- Mercado a Termo + Vigor;
+- ocorrência específica de 10/10/1986.
+
+A busca pública localizada **não encontrou, até o momento, o Boletim Diário de Informações de 10/10/1986 nem um documento Bovespa contemporâneo que explique diretamente a duplicidade das linhas 140808/140809**.
+
+Também não foi localizada documentação primária suficiente para afirmar o significado de C05, de DATVEN=99991231 ou da regra de agregação que produziu duas linhas com K4 idêntica.
+
+### Conclusão documental provisória
+
+A pesquisa elevou a confiança sobre a existência histórica da notação **PP C05**, mas **não resolveu a semântica do código** nem a causa da colisão K4.
+
+A FASE 08 permanece aberta. A próxima prioridade documental continua sendo a obtenção de material primário da Bovespa de outubro de 1986, especialmente o boletim do dia 10/10/1986 e documentação normativa do mercado a termo.
