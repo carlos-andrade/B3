@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B3 Data Observatory — V1</title>
+<meta name="description" content="Painel de observabilidade da ingestão, normalização e validação histórica dos dados da B3.">
+<style>
+:root{--bg:#0b0f14;--panel:#121923;--panel2:#0f151d;--text:#e8edf3;--muted:#8e9aaa;--line:#263140;--accent:#7dd3fc;--good:#86efac;--warn:#fcd34d;--bad:#fca5a5}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#080c11,#111925);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1400px;margin:auto;padding:32px 24px 56px}header{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}h1{font-size:30px;margin:0 0 4px}h2{font-size:16px;margin:0 0 14px}.sub,.meta{color:var(--muted)}button,select{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:9px 12px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card,.section{background:rgba(18,25,35,.9);border:1px solid var(--line);border-radius:12px}.card{padding:18px}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}.value{font-size:27px;font-weight:700;margin-top:6px}.ok{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.section{padding:20px;margin-top:18px}.bar{height:12px;background:#202a37;border-radius:99px;overflow:hidden;margin:10px 0 6px}.fill{height:100%;background:var(--accent);width:0}.row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600;font-size:12px}td.num{text-align:right;font-variant-numeric:tabular-nums}.status{font-size:12px;padding:4px 8px;border-radius:99px;background:#1d2936}.layout{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}
+footer{margin-top:28px;color:var(--muted);font-size:12px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}@media(max-width:560px){main{padding:20px 14px}.grid{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<header><div><h1>B3 Data Observatory</h1><div class="sub">Ingestão · normalização · validação · qualidade histórica</div></div><div><button id="reload">Atualizar</button></div></header>
+<section class="grid" aria-label="Indicadores principais">
+<div class="card"><div class="label">Status do pipeline</div><div id="pipeline" class="value">—</div><div id="updated" class="meta">aguardando dados</div></div>
+<div class="card"><div class="label">Período coberto</div><div id="period" class="value">—</div><div class="meta">cobertura declarada pelo pipeline</div></div>
+<div class="card"><div class="label">Registros processados</div><div id="records" class="value">—</div><div class="meta">sem arredondamento na fonte</div></div>
+<div class="card"><div class="label">Qualidade</div><div id="quality" class="value">—</div><div class="meta">baseado nos indicadores fornecidos</div></div>
+</section>
+<section class="section"><h2>Cobertura temporal</h2><div class="bar"><div id="coverageFill" class="fill"></div></div><div class="row"><span id="coverageText">Sem dados</span><span id="years">—</span></div></section>
+<div class="layout">
+<section class="section"><h2>Execuções recentes</h2><div id="runs" class="empty">Nenhuma execução foi publicada no snapshot.</div></section>
+<section class="section"><h2>Qualidade dos dados</h2><div id="checks" class="empty">Nenhuma validação foi publicada no snapshot.</div></section>
+</div>
+<section class="section"><h2>Dados por ano</h2><div id="yearsTable" class="empty">O pipeline ainda não publicou a tabela anual.</div></section>
+<footer>V1 · somente leitura · os valores exibidos dependem exclusivamente de <code>data/dashboard.json</code>. Ausência de dado não é tratada como zero.</footer>
+</main>
+<script>
+const fmt=n=>typeof n==="number"?new Intl.NumberFormat("pt-BR").format(n):"—";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+async function load(){
+ try{
+  const r=await fetch("data/dashboard.json?ts="+Date.now(),{cache:"no-store"});
+  if(!r.ok) throw new Error("dashboard.json não disponível");
+  const d=await r.json(), k=d.kpis||{};
+  document.querySelector("#pipeline").textContent=k.pipeline_status??d.status??"—";
+  document.querySelector("#pipeline").className="value "+(String(k.pipeline_status||d.status).toLowerCase().includes("ok")?"ok":"");
+  document.querySelector("#updated").textContent=d.generated_at?("snapshot: "+new Date(d.generated_at).toLocaleString("pt-BR")):"snapshot sem timestamp";
+  document.querySelector("#period").textContent=k.period||"—";
+  document.querySelector("#records").textContent=fmt(k.records_processed);
+  document.querySelector("#quality").textContent=k.quality_score!=null?String(k.quality_score)+(typeof k.quality_score==="number"?"%":""):"—";
+  const years=d.years||[], min=k.start_year??years[0], max=k.end_year??years[years.length-1];
+  document.querySelector("#coverageText").textContent=min&&max?String(min)+" → "+String(max):"Sem dados";
+  document.querySelector("#years").textContent=years.length?fmt(years.length)+" anos publicados":"—";
+  const total=Number(k.coverage_percent); document.querySelector("#coverageFill").style.width=Number.isFinite(total)?Math.max(0,Math.min(100,total))+"%":"0%";
+  document.querySelector("#runs").innerHTML=(d.runs||[]).length?d.runs.map(x=>'<div class="row"><span>'+esc(x.name||x.id)+'</span><span class="status">'+esc(x.status||"—")+'</span></div>').join(""):'<div class="empty">Nenhuma execução foi publicada no snapshot.</div>';
+  const checks=d.checks||[]; document.querySelector("#checks").innerHTML=checks.length?checks.map(x=>'<div class="row"><span>'+esc(x.name)+'</span><span class="status">'+esc(x.status||"—")+'</span></div>').join(""):'<div class="empty">Nenhuma validação foi publicada no snapshot.</div>';
+  const rows=d.by_year||[]; document.querySelector("#yearsTable").innerHTML=rows.length?'<table><thead><tr><th>Ano</th><th>Status</th><th>Registros</th><th>Válidos</th><th>Rejeitados</th></tr></thead><tbody>'+rows.map(x=>'<tr><td>'+esc(x.year)+'</td><td>'+esc(x.status||"—")+'</td><td class="num">'+fmt(x.records)+'</td><td class="num">'+fmt(x.valid)+'</td><td class="num">'+fmt(x.rejected)+'</td></tr>').join("")+'</tbody></table>':'<div class="empty">Nenhuma tabela anual publicada.</div>';
+ }catch(e){
+  document.querySelector("#pipeline").textContent="SEM SNAPSHOT";
+  document.querySelector("#pipeline").className="value warn";
+  document.querySelector("#updated").textContent=e.message;
+ }
+}
+document.querySelector("#reload").addEventListener("click",load);load();
+</script>
+</body></html>
