@@ -40,3 +40,5 @@ def main():
       "closure":"FASE_07G_REQUER_CONFIRMACAO_DA_COLISAO_K4" if len(residual)==2 else "FASE_07G_ANALISE_EXECUTADA"}
     with open(a.output,"w",encoding="utf-8") as f: json.dump(result,f,ensure_ascii=False,indent=2); f.write("\n")
 if __name__=="__main__": main()
+
+# Trigger de execucao auditavel FASE 07
