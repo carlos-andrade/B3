@@ -3,6 +3,7 @@
   "status": "FASE_08P_TRANSICAO_VIGOR_0910_1310_1986",
   "raw_file": "COTAHIST_A1986.ZIP",
   "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "parser_field_map": "Aligned with validated FASE08F fixed-width offsets: TOTNEG 148-152; QUATOT 153-170; VOLTOT 171-188; FATCOT 211-217.",
   "scope": {
     "dates": [
       "19861009",
@@ -28,9 +29,9 @@
       "premin": 1.65,
       "premed": 1.65,
       "preult": 1.65,
-      "totneg": 6000000,
-      "quatot": 1,
-      "voltot": 610000.0,
+      "totneg": 12,
+      "quatot": 61000000,
+      "voltot": 100650.0,
       "fatcot": 1000
     },
     {
@@ -48,9 +49,9 @@
       "premin": 1.75,
       "premed": 1.75,
       "preult": 1.75,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 60000.0,
+      "totneg": 2,
+      "quatot": 6000000,
+      "voltot": 10524.0,
       "fatcot": 1000
     },
     {
@@ -68,9 +69,9 @@
       "premin": 1.55,
       "premed": 1.75,
       "preult": 1.7,
-      "totneg": 6000000,
-      "quatot": 1,
-      "voltot": 2672000.0,
+      "totneg": 14,
+      "quatot": 267200000,
+      "voltot": 469950.0,
       "fatcot": 1000
     },
     {
@@ -88,9 +89,9 @@
       "premin": 1.9,
       "premed": 1.9,
       "preult": 1.9,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 390000.0,
+      "totneg": 1,
+      "quatot": 39000000,
+      "voltot": 74100.0,
       "fatcot": 1000
     },
     {
@@ -108,9 +109,9 @@
       "premin": 1.65,
       "premed": 1.87,
       "preult": 1.75,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 1900000.0,
+      "totneg": 4,
+      "quatot": 190000000,
+      "voltot": 356460.0,
       "fatcot": 1000
     },
     {
@@ -128,9 +129,9 @@
       "premin": 1.3,
       "premed": 1.47,
       "preult": 1.5,
-      "totneg": 4000000,
-      "quatot": 2000001,
-      "voltot": 1591000.0,
+      "totneg": 19,
+      "quatot": 159100000,
+      "voltot": 234591.1,
       "fatcot": 1000
     },
     {
@@ -148,9 +149,9 @@
       "premin": 1.59,
       "premed": 1.59,
       "preult": 1.59,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 405000.0,
+      "totneg": 2,
+      "quatot": 40500000,
+      "voltot": 64597.5,
       "fatcot": 1000
     }
   ],
@@ -223,9 +224,9 @@
       "premin": 1.9,
       "premed": 1.9,
       "preult": 1.9,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 390000.0,
+      "totneg": 1,
+      "quatot": 39000000,
+      "voltot": 74100.0,
       "fatcot": 1000
     },
     {
@@ -243,9 +244,9 @@
       "premin": 1.65,
       "premed": 1.87,
       "preult": 1.75,
-      "totneg": 0,
-      "quatot": 0,
-      "voltot": 1900000.0,
+      "totneg": 4,
+      "quatot": 190000000,
+      "voltot": 356460.0,
       "fatcot": 1000
     }
   ],
@@ -277,9 +278,9 @@
           "premin": 1.9,
           "premed": 1.9,
           "preult": 1.9,
-          "totneg": 0,
-          "quatot": 0,
-          "voltot": 390000.0,
+          "totneg": 1,
+          "quatot": 39000000,
+          "voltot": 74100.0,
           "fatcot": 1000
         },
         {
@@ -297,9 +298,9 @@
           "premin": 1.65,
           "premed": 1.87,
           "preult": 1.75,
-          "totneg": 0,
-          "quatot": 0,
-          "voltot": 1900000.0,
+          "totneg": 4,
+          "quatot": 190000000,
+          "voltot": 356460.0,
           "fatcot": 1000
         }
       ]
