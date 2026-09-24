@@ -101,3 +101,117 @@ Após a publicação do JSON, confrontar:
 e a janela de 01/10/1986 a 17/10/1986.
 
 Só então será definida a conclusão estatística da FASE 08E.
+
+
+## 9. Resultado executado e validado
+
+O workflow foi executado automaticamente após a gravação do código.
+
+**Run:** 36068299927  
+**Conclusão:** success  
+**Artefato publicado:** `dados/cotahist/quality/COTAHIST_1986_FASE08E_CRONOLOGIA_V1.json`  
+**Commit de publicação:** `282be08d18360521018487ca4f11681bfaaa8ba2`
+
+### 9.1 Resultados quantitativos
+
+- Registros tipo 01: **177.981**
+- VGO 2: **443**
+- CODISI VGORACPP: **473**
+- VGO 2 / ESPECI:
+  - `PP  C03`: **53**
+  - `PP *C03`: **123**
+  - `PP *C05`: **261**
+  - `PP *S/D`: **6**
+- VGO 2 / DIMES:
+  - `102`: **182**
+  - `104`: **261**
+- VGORACPP / ESPECI:
+  - `PP  C03`: **70**
+  - `PP *C03`: **128**
+  - `PP *C05`: **269**
+  - `PP *S/D`: **6**
+- VGORACPP / DIMES:
+  - `102`: **204**
+  - `104`: **269**
+
+### 9.2 Cronologia crítica
+
+A sequência observada para VGO 2 é:
+
+**02/01/1986 → PP C03 + DIMES 102**
+
+**04/03/1986 → PP *C03**
+
+**03/06/1986 → PP *S/D**
+
+**06/06/1986 → PP *C05 + DIMES 104**
+
+Os dois últimos estados mudam simultaneamente: `PP *S/D → PP *C05` e `DIMES 102 → DIMES 104`.
+
+Portanto, **10/10/1986 não é a data de introdução de C05 nem de DIMES 104**.
+
+### 9.3 Janela da anomalia
+
+Em **09/10/1986**, VGO 2 já aparece com:
+
+`CODBDI=62 | TPMERC=030 | PRAZOT=060 | ESPECI=PP *C05 | DIMES=104`
+
+Em **10/10/1986**, as duas linhas da colisão mantêm exatamente esse contexto cadastral/mercadológico.
+
+Em **13/10/1986**, o contexto continua:
+
+`CODBDI=62 | TPMERC=030 | PRAZOT=060 | ESPECI=PP *C05 | DIMES=104`
+
+Isso elimina, como explicação suficiente, uma simples transição cadastral ocorrida no dia da colisão.
+
+### 9.4 C05 em outros papéis
+
+Foram encontrados **449 registros** contendo C05 em ESPECI e pertencentes a outros CODNEG que não VGO 2.
+
+Portanto, **C05 não é exclusivo de VGO 2**.
+
+### 9.5 Outros Cxx em VGO 2
+
+VGO 2 possui **176 registros** com ESPECI contendo Cxx diferente de C05.
+
+Isso confirma que VGO 2 percorreu historicamente múltiplos estados Cxx; contudo, a transição relevante para a anomalia já havia ocorrido meses antes.
+
+## 10. Conclusão estatística
+
+**FATO VALIDADO:** a transição estrutural relevante de VGO 2 ocorreu em 06/06/1986, quando o estado observado passou de `PP *S/D`/DIMES 102 para `PP *C05`/DIMES 104.
+
+**FATO VALIDADO:** em 09/10, 10/10 e 13/10/1986, VGO 2 permanece em `PP *C05` + DIMES 104.
+
+**FATO VALIDADO:** a colisão K4 de 10/10/1986 não coincide com a primeira aparição de C05, nem com a mudança 102→104.
+
+**FATO VALIDADO:** C05 ocorre em centenas de registros de outros CODNEG; portanto, sua simples presença não identifica a colisão.
+
+**HIPÓTESE REBAIXADA:** explicar a duplicidade K4 por uma transição C03→C05 ou 102→104 em 10/10/1986 não é compatível com a cronologia observada.
+
+**NÃO DETERMINADO:** a razão pela qual duas linhas com K4 idêntica foram publicadas para o mesmo VGO 2 / termo / 60 dias em 10/10/1986.
+
+## 11. Status da FASE 08E
+
+**IMPLEMENTADO:** ✅  
+**EXECUTADO:** ✅  
+**VALIDADO:** ✅
+
+A FASE 08E está encerrada quanto ao objetivo estatístico definido.
+
+O RAW continua intacto.
+
+## 12. Próxima frente
+
+**FASE 08F — Análise estrutural dos campos estatísticos da colisão K4.**
+
+Objetivo: verificar se as duas linhas 140808/140809 podem ser separadas por alguma propriedade estatística não pertencente à K4, incluindo:
+
+- relação preço × quantidade × volume;
+- consistência matemática `preço × quantidade` versus `VOLTOT`;
+- número de negócios;
+- fatores de cotação;
+- diferenças de escala;
+- comparação com todas as linhas de VGO 2 em mercado a termo;
+- identificação de padrões de duplicidade estatística sem depender da semântica econômica.
+
+Nenhuma hipótese econômica será introduzida antes dessa análise.
