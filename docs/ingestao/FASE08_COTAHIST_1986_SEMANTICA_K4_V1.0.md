@@ -105,3 +105,49 @@ Nenhuma linha será excluída.
 Nenhuma identidade econômica será imposta por conveniência de modelagem.
 
 Toda hipótese permanecerá separada de fato observado e de definição documental.
+
+## 10. Descoberta quantitativa adicional — VGO 2
+
+A execução direta sobre os 177.981 registros tipo 01 produziu uma evidência importante:
+
+- **443** registros com CODNEG = VGO 2;
+- **246** registros à vista (CODBDI 02 / TPMERC 010);
+- **188** registros a termo (CODBDI 62 / TPMERC 030);
+- **52** registros a termo com PRAZOT 060;
+- **136** registros a termo com PRAZOT 030;
+- CODISI = VGORACPP aparece em **473** registros;
+- esse CODISI aparece associado aos DIMES **102 e 104**;
+- ESPECI associado a esse CODISI inclui PP  C03, PP *C03, PP *C05 e PP *S/D.
+
+No próprio dia **10/10/1986**, VGO 2 aparece três vezes:
+
+1. à vista — CODBDI 02 / TPMERC 010;
+2. termo — CODBDI 62 / TPMERC 030 / PRAZOT 060 / linha 140808;
+3. termo — CODBDI 62 / TPMERC 030 / PRAZOT 060 / linha 140809.
+
+As duas linhas a termo são exatamente a colisão K4 já identificada.
+
+### Implicação
+
+Isso reforça que **VGO 2 não é, por si só, uma identidade econômica simples**. O mesmo CODNEG atravessa pelo menos os contextos à vista e a termo.
+
+Também reforça que CODISI + CODNEG não são suficientes para identificar exclusivamente um registro de negociação histórica.
+
+Essa evidência não explica ainda por que existem duas linhas a termo no mesmo pregão com o mesmo conjunto K4.
+
+## 11. Estado da FASE 08
+
+**FASE 08 — ABERTA / INVESTIGAÇÃO SEMÂNTICA EM ANDAMENTO.**
+
+A FASE 08 já estabeleceu:
+
+- contexto de mercado a termo;
+- coexistência histórica de VGO 2 à vista e a termo;
+- reutilização de CODISI entre contextos;
+- mudança de DIMES 102 → 104;
+- mudança de especificações C03 → C05;
+- persistência de duas linhas K4 em 10/10/1986.
+
+Ainda faltam fontes contemporâneas suficientes para decodificar definitivamente a convenção C05, a regra de DATVEN=99991231 e a razão documental para a duplicidade de agregados no mesmo K4.
+
+A próxima investigação deve priorizar **Boletim Diário de Informações da Bovespa de outubro de 1986**, regulamento/manual histórico do mercado a termo e documentos societários/cadastrais contemporâneos.
