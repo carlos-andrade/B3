@@ -69,7 +69,7 @@ def main():
         "first_trading_date_observed": dates[0].isoformat() if dates else None,
         "last_trading_date_observed": dates[-1].isoformat() if dates else None,
         "weekday_counts": dict(sorted(weekday_counts.items())),
-        "weekend_dates_observed": weekend_observed,
+        "weekend_dates_observed": weekend_observed,\n        "weekend_row_samples": weekend_rows,
         "long_gaps_threshold_days_exclusive": 4,
         "long_gaps_count": len(gaps),
         "long_gaps": gaps,
