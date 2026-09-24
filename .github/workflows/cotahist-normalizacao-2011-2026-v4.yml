@@ -61,20 +61,33 @@ PY
             cp "$report" "dados/cotahist/normalized/manifests/COTAHIST_A${year}_quality.json"
             cp "$sha" "dados/cotahist/normalized/manifests/COTAHIST_A${year}.csv.sha256"
           done
-      - name: Persistir
+      - name: Persistir manifests e hashes
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/normalized/manifests/COTAHIST_A*_quality.json dados/cotahist/normalized/manifests/COTAHIST_A*.csv.sha256
-          git commit -m "data(normalized): revalidar COTAHIST 2011-2026" || exit 0
           git pull --rebase origin main
-          git push origin HEAD:main
-      - uses: actions/upload-artifact@v4
+          git add dados/cotahist/normalized/manifests/COTAHIST_A*_quality.json dados/cotahist/normalized/manifests/COTAHIST_A*.csv.sha256
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nos manifests/hashes."
+            exit 0
+          fi
+          git commit -m "data(normalized): revalidar COTAHIST 2011-2026"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push falhou; sincronizando antes da tentativa $((attempt + 1))."
+            git pull --rebase origin main
+          done
+          echo "Falha após 3 tentativas de push." >&2
+          exit 1
+      - name: Publicar artefatos leves
+        uses: actions/upload-artifact@v4
         with:
-          name: cotahist-normalized-2011-2026-v4
+          name: cotahist-quality-2011-2026-v4
           path: |
-            /tmp/normalized/*.csv
             /tmp/quality/*.json
             /tmp/quality/*.sha256
-          retention-days: 30
+          retention-days: 7
+          if-no-files-found: error
