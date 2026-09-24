@@ -10,11 +10,17 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-fase08p-transicao-vigor-1986
+  cancel-in-progress: false
+
 jobs:
   analisar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -26,4 +32,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/quality/COTAHIST_1986_FASE08P_TRANSICAO_VIGOR_0910_1310_V1.json
           git diff --cached --quiet || git commit -m "data: publica evidencia FASE08P Vigor 09 10 13 outubro 1986"
-          git push
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
