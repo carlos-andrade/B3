@@ -40,7 +40,7 @@ def save_raw(root: Path, name: str, requested: str, payload: bytes, final_url: s
 
 def text_from_html(value: str) -> str:
     value = re.sub(r"<[^>]+>", " ", value or "")
-    return re.sub(r"\\s+", " ", value).strip()
+    return re.sub(r"\s+", " ", value).strip()
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -87,7 +87,7 @@ def main() -> int:
     com_text = text_from_html(com.get("textoComunicado", ""))
 
     decision_text = ata_text + " " + com_text
-    m_rate = re.search(r"taxa (?:básica de juros|Selic).*?(?:em|para)\\s+(\\d+(?:[.,]\\d+)?)%\\s*a\\.?a\\.?", decision_text, re.I)
+    m_rate = re.search(r"taxa (?:básica de juros|Selic).*?(?:em|para)\s+(\d+(?:[.,]\d+)?)%\s*a\.?a\.?", decision_text, re.I)
     rate = float(m_rate.group(1).replace(",", ".")) if m_rate else None
 
     scheduled_date = ata.get("dataReferencia") or com.get("dataReferencia")
@@ -112,7 +112,7 @@ def main() -> int:
             "status": "RELEASED",
             "decision_rate_percent_aa": rate,
             "decision_text": com.get("titulo"),
-            "votes_text": "Extraído do conteúdo da Ata; parser detalhado de votos permanece etapa seguinte.",
+            "votes_text": None,
             "ata_title": ata.get("titulo"),
             "ata_pdf_url": ata.get("urlPdfAta"),
             "ata_text": ata.get("textoAta"),
