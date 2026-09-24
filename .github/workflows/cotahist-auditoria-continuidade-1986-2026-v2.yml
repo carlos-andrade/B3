@@ -42,3 +42,5 @@ jobs:
           name: cotahist-quality-1986-2026-v2
           path: dados/cotahist/quality/COTAHIST_1986_2026_continuidade_v2.json
           retention-days: 90
+
+# trigger V2 audit execution
