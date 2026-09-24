@@ -1,4 +1,4 @@
-name: COTAHIST 1986 - Auditoria de Calendario V1
+name: COTAHIST 1986 - Auditoria de Calendario V1\n# V1.0.1 - reexecucao apos detalhamento de registros de fim de semana
 
 on:
   workflow_dispatch:
