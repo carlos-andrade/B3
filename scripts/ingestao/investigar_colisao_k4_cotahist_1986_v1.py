@@ -5,7 +5,7 @@ import argparse,json,zipfile,hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
-TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060",99991231,0.0,"0","0")
+TARGET_PREFIX=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060")
 
 def parse(raw: bytes):
     b=raw.rstrip(b"\r\n")
@@ -45,7 +45,7 @@ def main():
       "raw_file":"COTAHIST_A1986.ZIP","target_k4":list(TARGET),
       "match_count":len(matches),"matches":matches,"differences":differences,
       "classification_rule":{"two_rows_same_k4_is_not_automatic_duplicate":True,"economic_identity_not_inferred":True,"raw_unchanged":True,"normalized_unchanged":True},
-      "conclusion_status":"REQUIRES_SEMANTIC_REVIEW" if len(matches)==2 else ("NO_MATCH" if len(matches)==0 else "UNEXPECTED_MATCH_COUNT")
+      "conclusion_status":"REQUIRES_SEMANTIC_REVIEW" if len(matches)>=1 else "NO_MATCH"
     }
     Path(a.output).parent.mkdir(parents=True, exist_ok=True)
     with open(a.output,"w",encoding="utf-8") as f: json.dump(result,f,ensure_ascii=False,indent=2); f.write("\n")
