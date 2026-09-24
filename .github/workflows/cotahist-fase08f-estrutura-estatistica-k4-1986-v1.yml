@@ -1,0 +1,28 @@
+name: COTAHIST FASE08F - Estrutura Estatistica K4 1986
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_estrutura_estatistica_colisao_k4_cotahist_1986_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+      - ".github/workflows/cotahist-fase08f-estrutura-estatistica-k4-1986-v1.yml"
+permissions:
+  contents: write
+jobs:
+  analise:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Executar analise
+        run: python scripts/ingestao/analisar_estrutura_estatistica_colisao_k4_cotahist_1986_v1.py
+      - name: Publicar evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_FASE08F_ESTRUTURA_ESTATISTICA_K4_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: publicar evidencia FASE 08F estrutura estatistica K4 1986"
+          git pull --rebase origin main
+          git push origin HEAD:main
