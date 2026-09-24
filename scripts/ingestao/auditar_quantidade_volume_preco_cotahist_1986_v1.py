@@ -73,7 +73,7 @@ def main():
            "quatot":"quantidade total de títulos negociados",
            "voltot":"volume total de títulos negociados",
            "fatcot":"fator de cotação; 1=unitária, 1000=lote de mil ações",
-           "warning":"VOLTOT não é tratado como identidade mecânica PREULT x QUATOT. A relação econômica depende da natureza do instrumento e do fator de cotação."
+           "warning":"VOLTOT não é tratado como identidade mecânica PREULT x QUATOT. A relação econômica depende da natureza do instrumento, do preço efetivo dos negócios e do fator de cotação. Para VOLTOT=0, valores teóricos PREULT*QUATOT/FATCOT <= 0,01 são compatíveis com a resolução de duas casas decimais do campo."
          }}
     Path(a.output).parent.mkdir(parents=True,exist_ok=True)
     Path(a.output).write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
