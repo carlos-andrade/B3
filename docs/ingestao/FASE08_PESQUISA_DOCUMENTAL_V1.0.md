@@ -155,3 +155,10 @@ Essa segunda frente pode revelar a regra de transição sem depender exclusivame
 **VALIDADO:** C05 é convenção histórica observável; não validada sua legenda semântica.
 
 **FASE 08:** ABERTA.
+
+
+## Atualização técnica — FASE 08B
+
+O parser foi ampliado para reconstruir cronologicamente as transições do código VGO 2 em 1986, incluindo mudanças de ESPECI, DIMES e contexto de mercado/prazo por pregão. Commit do parser: `1d40ff35f355fb19be667268064095941b451973`.
+
+Objetivo: verificar se a colisão K4 de 10/10/1986 integra um padrão histórico recorrente ou permanece uma ocorrência excepcional. Nenhuma linha RAW é alterada ou consolidada nesta etapa.
