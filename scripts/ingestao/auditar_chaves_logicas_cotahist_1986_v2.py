@@ -84,7 +84,7 @@ def main():
 
     Path(a.output).parent.mkdir(parents=True,exist_ok=True)
     Path(a.output).write_text(json.dumps(out,ensure_ascii=False,indent=2,default=str)+"\n",encoding="utf-8")
-    print(json.dumps(out["keys"],ensure_ascii=False))
+    print(json.dumps(out["keys"],ensure_ascii=False,default=str))
 
 if __name__=="__main__":
     main()
