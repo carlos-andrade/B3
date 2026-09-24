@@ -31,3 +31,4 @@ summary={
 }
 with open(out,"w",encoding="utf-8") as f: json.dump(summary,f,ensure_ascii=False,indent=2)
 print(json.dumps({k:summary[k] for k in summary if k!="resumo_por_ano"},ensure_ascii=False,indent=2))
+# refresh 2026-09-24T10:26+01:00
