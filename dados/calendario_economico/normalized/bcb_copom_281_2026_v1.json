@@ -1,9 +1,9 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "source": "Banco Central do Brasil",
-  "source_url": "https://www.bcb.gov.br/publicacoes/atascopom/16092026",
+  "source_url": "https://www.bcb.gov.br/controleinflacao/comunicadoscopom/cronologicos",
   "retrieved_at": "2026-09-24",
-  "information_available_at": "2026-09-22",
+  "information_available_at": "2026-09-16",
   "information_available_time_status": "UNKNOWN",
   "events": [
     {
@@ -29,6 +29,31 @@
       "timezone": "America/Sao_Paulo",
       "event_time_status": "UNKNOWN",
       "status": "RELEASED"
+    },
+    {
+      "event_id": "BCB-COPOM-281-COMUNICADO-20260916",
+      "event_name": "Comunicado da 281ª reunião do Copom",
+      "event_code": "COPOM_COMUNICADO",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-16",
+      "scheduled_time": null,
+      "timezone": "America/Sao_Paulo",
+      "event_time_status": "UNKNOWN",
+      "previous_value": "14.00%",
+      "actual_value": "13.75%",
+      "selic_target_pct": 13.75,
+      "selic_effective_start": "2026-09-17",
+      "vote_result": {
+        "type": "unanimous",
+        "votes_for": 7,
+        "votes_against": 0
+      },
+      "status": "RELEASED",
+      "information_available_at": "2026-09-16",
+      "information_available_time_status": "UNKNOWN",
+      "source_url": "https://www.bcb.gov.br/controleinflacao/comunicadoscopom/cronologicos",
+      "evidence_path": "dados/calendario_economico/raw/bcb_copom_281_comunicado_2026-09-24.md",
+      "source_hash": "PENDENTE_CAPTURA_HTTP"
     },
     {
       "event_id": "BCB-COPOM-281-DECISION-20260916",
