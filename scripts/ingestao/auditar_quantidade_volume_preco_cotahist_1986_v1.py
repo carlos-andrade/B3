@@ -41,7 +41,7 @@ def main():
           labels=[]
           if q is None or v is None: labels.append("MISSING_QTY_OR_VOLUME")
           elif q==0 and v!=0: labels.append("QTY_ZERO_VOLUME_NONZERO")
-          elif q!=0 and v==0: labels.append("QTY_NONZERO_VOLUME_ZERO")
+          elif q!=0 and v==0:\n            if p is not None and fc is not None and p >= 0 and (p*q/fc) <= Decimal("0.01"):\n              labels.append("VOLTOT_ZERO_COMPATIVEL_ARREDONDAMENTO_0_01")\n            else:\n              labels.append("QTY_NONZERO_VOLUME_ZERO")
           if p is not None and p<0: labels.append("NEGATIVE_LAST_PRICE")
           if q is not None and q<0: labels.append("NEGATIVE_QUANTITY")
           if v is not None and v<0: labels.append("NEGATIVE_VOLUME")
@@ -62,7 +62,7 @@ def main():
               "totneg":r["totneg"],"classifications":labels,"raw_sha256":r["raw_sha256"]
             })
           else: valid+=1
-    out={"schema_version":"1.0.0","status":"AUDITORIA_QUANTIDADE_VOLUME_PRECO_1986",
+    out={"schema_version":"1.1.0","status":"AUDITORIA_QUANTIDADE_VOLUME_PRECO_1986",
          "raw_file":Path(a.zip).name,"type01_records":total,"records_without_flag":valid,
          "issue_count":len(issues),"fatcot_distribution":dict(sorted(factor.items())),
          "classification_counts":dict(sorted(Counter(x for i in issues for x in i["classifications"]).items())),
