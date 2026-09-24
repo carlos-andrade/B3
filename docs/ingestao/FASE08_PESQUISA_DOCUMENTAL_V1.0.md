@@ -94,3 +94,64 @@ Prioridade máxima:
 
 - Jornal do Brasil, 05/06/1986 — tabela de cotações Bovespa. citeturn1search0
 - Evidência complementar em acervo de imprensa histórica. citeturn1search41
+
+
+## 10. Segunda rodada — busca ampliada sobre C05 e mercado a termo
+
+Em nova rodada de pesquisa foram consultados documentos históricos e normativos relacionados à Bovespa/CVM e ocorrências contemporâneas de C05.
+
+### 10.1 C05 continua sem legenda documental
+
+As buscas confirmam múltiplas ocorrências históricas de códigos Cxx em publicações de mercado, inclusive Vigor PP C05. Também aparecem combinações como C06*C05 e outros códigos Cxx em publicações posteriores. citeturn5search0turn6search0
+
+Isso reforça que C05 é parte de uma convenção histórica de identificação/publicação, mas **não autoriza concluir que C05 seja concordata, classe acionária, série, direito ou evento societário específico**.
+
+Uma fonte secundária de reprodução do layout histórico lista CODBDI 06 como "Concordatárias", enquanto CODBDI 62 corresponde ao mercado a termo. Isso é útil para separar os campos: a presença de C05 em ESPECI não deve ser confundida automaticamente com CODBDI 06. citeturn3search1
+
+### 10.2 Mercado a termo
+
+A regulamentação Bovespa disponível confirma que operações a termo possuem ativo-objeto e prazo de liquidação previamente fixado. A documentação normativa atual não é usada para reconstruir automaticamente a regra de 1986; serve apenas como contexto institucional. citeturn0search41
+
+A Instrução CVM nº 36/1984 é uma fonte normativa contemporânea relevante para o estudo histórico dos mercados a futuro, a termo e de opções. Ela deve ser tratada como fonte primária regulatória de 1984, não como prova automática da regra específica de agregação do COTAHIST em 1986. citeturn0search42
+
+### 10.3 Resultado desta rodada
+
+Não foi localizada ainda uma fonte primária que explique:
+
+- o significado numérico de C05;
+- a convenção VGO 2;
+- a origem de DATVEN 99991231;
+- a razão para duas linhas com K4 idêntica em 10/10/1986.
+
+**Nova evidência:** C05 é uma convenção histórica efetivamente publicada no mercado.
+
+**Não houve mudança de classificação:** a causa da colisão K4 continua indeterminada.
+
+## 11. Próxima investigação técnica
+
+A investigação passa a ter duas frentes paralelas:
+
+**A — documental**
+1. localizar BDI/Bovespa de 10/10/1986;
+2. localizar regulamentos Bovespa de 1984–1987 específicos do mercado a termo;
+3. localizar tabelas históricas de códigos/legendas Cxx;
+4. localizar documentação cadastral de Vigor.
+
+**B — estatística no próprio COTAHIST 1986**
+1. reconstruir a cronologia completa de C03 → C05 para VGORACPP;
+2. medir a primeira e a última ocorrência de cada ESPECI;
+3. cruzar ESPECI × DIMES × TPMERC × PRAZOT;
+4. verificar se C05 aparece em outros CODISI;
+5. procurar padrões de duplicidade de K4 em outros contextos históricos, caso existam.
+
+Essa segunda frente pode revelar a regra de transição sem depender exclusivamente da recuperação de um BDI escaneado.
+
+## 12. Estado
+
+**IMPLEMENTADO:** segunda rodada documental executada.
+
+**EXECUTADO:** fontes normativas e ocorrências históricas adicionais pesquisadas.
+
+**VALIDADO:** C05 é convenção histórica observável; não validada sua legenda semântica.
+
+**FASE 08:** ABERTA.
