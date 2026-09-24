@@ -18,21 +18,21 @@ jobs:
           set -euo pipefail
           mkdir -p out
           for d in 2026-09-16 2026-09-17; do
-            compact=\$(echo "\$d" | tr -d '-')
-            url="https://drp.b3.com.br/rapinegocios/tickercsv/\$d?type=1"
-            out="out/\${compact}_NEGOCIOSAVISTA_DRV.zip"
-            echo "DATE=\$d"
-            echo "URL=\$url"
+            compact=$(echo "$d" | tr -d '-')
+            url="https://drp.b3.com.br/rapinegocios/tickercsv/$d?type=1"
+            out="out/${compact}_NEGOCIOSAVISTA_DRV.zip"
+            echo "DATE=$d"
+            echo "URL=$url"
             curl --fail --location --retry 3 --connect-timeout 20 --max-time 300 \
               -A "B3-INGESTAO/1.0 (+https://github.com/carlos-andrade/B3)" \
-              "\$url" -o "\$out"
-            file "\$out"
-            sha256sum "\$out" | tee "\$out.sha256"
-            unzip -t "\$out"
-            unzip -l "\$out" | tee "\$out.listing.txt"
-            mkdir -p "out/xml_\${compact}"
-            unzip -o "\$out" -d "out/xml_\${compact}" >/dev/null
-            find "out/xml_\${compact}" -type f -printf "%p %s bytes\n" | sort
+              "$url" -o "$out"
+            file "$out"
+            sha256sum "$out" | tee "$out.sha256"
+            unzip -t "$out"
+            unzip -l "$out" | tee "$out.listing.txt"
+            mkdir -p "out/xml_${compact}"
+            unzip -o "$out" -d "out/xml_${compact}" >/dev/null
+            find "out/xml_${compact}" -type f -printf "%p %s bytes\n" | sort
           done
 
       - name: Publicar artefato
