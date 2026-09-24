@@ -9,7 +9,7 @@ import argparse
 import json
 import zipfile
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 
 def parse(raw: bytes):
     b = raw.rstrip(b"\r\n")
@@ -84,7 +84,7 @@ def main():
     result = {
         "schema_version": "1.0.0",
         "status": "FASE_07E_DIMES_1986_ANALISE",
-        "generated_at_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "raw_file": "COTAHIST_A1986.ZIP",
         "rows": rows,
         "source_document": {
