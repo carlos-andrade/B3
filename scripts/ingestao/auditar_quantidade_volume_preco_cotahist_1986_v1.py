@@ -50,7 +50,7 @@ def main():
           if q is not None and q<0: labels.append("NEGATIVE_QUANTITY")
           if v is not None and v<0: labels.append("NEGATIVE_VOLUME")
           if fc is not None and fc<=0: labels.append("NONPOSITIVE_FATCOT")
-          if q is not None and v is not None and p is not None and fc is not None and q>0:
+          if q is not None and v is not None and p is not None and fc is not None and q>0 and v>0:
             implied=v/(p*q)
             # FATCOT is a quote factor, not an automatic identity between volume and price*quantity.
             if p>0:
