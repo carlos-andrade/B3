@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "source": "Banco Central do Brasil",
+  "source_url": "https://www.bcb.gov.br/controleinflacao/copom",
+  "timezone": "America/Sao_Paulo",
+  "retrieved_at": "2026-09-24T11:00:00-03:00",
+  "events": [
+    {
+      "event_id": "BCB_COPOM_276_DECISION_20260128",
+      "event_name": "Decisão Copom",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 276,
+      "scheduled_date": "2026-01-28",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "selic_target_pct": 15,
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_277_DECISION_20260318",
+      "event_name": "Decisão Copom",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 277,
+      "scheduled_date": "2026-03-18",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "selic_target_pct": 14.75,
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_278_DECISION_20260429",
+      "event_name": "Decisão Copom",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 278,
+      "scheduled_date": "2026-04-29",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "selic_target_pct": 14.5,
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_279_DECISION_20260617",
+      "event_name": "Decisão Copom",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 279,
+      "scheduled_date": "2026-06-17",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "selic_target_pct": 14.25,
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_280_DECISION_20260805",
+      "event_name": "Decisão Copom",
+      "event_code": "COPOM_DECISION",
+      "meeting_number": 280,
+      "scheduled_date": "2026-08-05",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "selic_target_pct": 14,
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_281_MEETING_20260915",
+      "event_name": "Reunião Copom — 1ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-15",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_281_MEETING_20260916",
+      "event_name": "Reunião Copom — 2ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-16",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_281_ATA_20260922",
+      "event_name": "Ata da reunião do Copom",
+      "event_code": "COPOM_ATA",
+      "meeting_number": 281,
+      "scheduled_date": "2026-09-22",
+      "scheduled_time": "11:00",
+      "event_time_status": "EXACT",
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_2026_RPM_Q3_20260924",
+      "event_name": "Relatório de Política Monetária — 3º trimestre",
+      "event_code": "COPOM_RPM",
+      "meeting_number": null,
+      "scheduled_date": "2026-09-24",
+      "scheduled_time": "11:00",
+      "event_time_status": "EXACT",
+      "status": "RELEASED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_282_MEETING_20261103",
+      "event_name": "Reunião Copom — 1ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 282,
+      "scheduled_date": "2026-11-03",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_282_MEETING_20261104",
+      "event_name": "Reunião Copom — 2ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 282,
+      "scheduled_date": "2026-11-04",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_282_ATA_20261110",
+      "event_name": "Ata da reunião do Copom",
+      "event_code": "COPOM_ATA",
+      "meeting_number": 282,
+      "scheduled_date": "2026-11-10",
+      "scheduled_time": "11:00",
+      "event_time_status": "EXACT",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_283_MEETING_20261208",
+      "event_name": "Reunião Copom — 1ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 283,
+      "scheduled_date": "2026-12-08",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_283_MEETING_20261209",
+      "event_name": "Reunião Copom — 2ª sessão",
+      "event_code": "COPOM_MEETING",
+      "meeting_number": 283,
+      "scheduled_date": "2026-12-09",
+      "scheduled_time": null,
+      "event_time_status": "UNKNOWN",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    },
+    {
+      "event_id": "BCB_COPOM_283_ATA_20261215",
+      "event_name": "Ata da reunião do Copom",
+      "event_code": "COPOM_ATA",
+      "meeting_number": 283,
+      "scheduled_date": "2026-12-15",
+      "scheduled_time": "11:00",
+      "event_time_status": "EXACT",
+      "status": "SCHEDULED",
+      "importance": "HIGH"
+    }
+  ]
+}
