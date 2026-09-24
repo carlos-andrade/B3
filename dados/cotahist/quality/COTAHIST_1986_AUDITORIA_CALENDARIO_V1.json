@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "status": "AUDITORIA_CALENDARIO_OBSERVAVEL_COTAHIST_1986",
   "raw_file": "COTAHIST_A1986.ZIP",
   "raw_sha256_stream": "c5fe0a62488595ffb93e4a26752cfc63650e17f88110355becde1d7b5fbe685c",
@@ -18,6 +18,32 @@
   },
   "weekend_dates_observed": [
     "1986-04-26"
+  ],
+  "weekend_row_samples": [
+    {
+      "line_number": 50256,
+      "data_pregao": "1986-04-26",
+      "codbdi": "62",
+      "codneg": "SHA 8",
+      "tpmerc": "030",
+      "raw_sha256": "5c316e84964bc515bc3dc60ff94ab7cab4a7d7f2291bee0f93c89f4ae79fa73a"
+    },
+    {
+      "line_number": 50257,
+      "data_pregao": "1986-04-26",
+      "codbdi": "96",
+      "codneg": "MWE 2",
+      "tpmerc": "020",
+      "raw_sha256": "b348fb54c43c43d4b3c4e33fec385e8156d6976d03225c9dd284496b59049952"
+    },
+    {
+      "line_number": 50258,
+      "data_pregao": "1986-04-26",
+      "codbdi": "96",
+      "codneg": "SCP 4",
+      "tpmerc": "020",
+      "raw_sha256": "4410e6d22f32e03a9cbab3e519fae8d39758d8540a9d28910169724719852a9d"
+    }
   ],
   "long_gaps_threshold_days_exclusive": 4,
   "long_gaps_count": 3,
