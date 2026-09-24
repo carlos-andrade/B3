@@ -30,7 +30,9 @@ Comparações:
 
 ## 3. Resultado executado
 
-Workflow FASE 08F: run 36068703551 — success.
+Workflow FASE 08F: run 36068809896 — success.
+
+Commit de publicação da evidência: 823e2aea837c8f993ab981916f7082df58abcb2d.
 
 Evidência publicada:
 dados/cotahist/quality/COTAHIST_1986_FASE08F_ESTRUTURA_ESTATISTICA_K4_V1.json
@@ -98,6 +100,8 @@ Universo CODBDI=62 / TPMERC=030: 36.596 registros.
 
 A colisão K4 permanece única no arquivo: 1 grupo duplicado com 2 linhas.
 
+A relação numérica 0,0019 também não é exclusiva: foram encontrados 8 registros no universo CODBDI=62 / TPMERC=030 com VOLTOT/QUATOT exatamente igual a 0,0019, incluindo a linha 140808. Portanto, a coerência matemática da linha 140808 é um padrão recorrente de preço/quantidade/volume, mas não explica por si só a duplicidade K4.
+
 ## 7. Conclusão
 
 FATO VALIDADO: as duas linhas compartilham a mesma K4, mas apresentam perfis estatísticos diferentes.
@@ -109,6 +113,8 @@ FATO VALIDADO: a linha 140809 possui TOTNEG=4, faixa de preços 1,65–1,91 e pr
 PADRÃO VALIDADO: TOTNEG=1 não é exclusivo do caso; 52 de 188 registros VGO 2 em termo possuem TOTNEG=1.
 
 FATO VALIDADO: a colisão K4 continua sendo única no COTAHIST 1986.
+
+FATO VALIDADO: o perfil numérico 0,0019 ocorre em 8 registros de termo 62/030; a linha 140808 é um deles.
 
 NÃO DETERMINADO: a razão histórica/operacional que levou duas linhas com K4 idêntica a coexistirem em 10/10/1986.
 
