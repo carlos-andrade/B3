@@ -89,7 +89,7 @@ def sig(g):
             "source_lines":[r["source_line"] for r in g]}
 
 target_implied=calc(target[1])["implied_unit_price_vtot_quatot"]
-exact019=[compact(r) for r in term_all if r["quatot"] and abs(r["voltot"]/r["quatot"]-0.19)<1e-12]
+exact019=[compact(r) for r in term_all if r["quatot"] and abs(r["voltot"]/r["quatot"]-0.0019)<1e-12]
 same_second=[compact(r) for r in term_all if r["quatot"] and abs(r["voltot"]/r["quatot"]-target_implied)<1e-9]
 
 result={
@@ -105,12 +105,12 @@ result={
    "vgo2_term_internal_price_consistency":patterns(vgo_term),"all_term_internal_price_consistency":patterns(term_all)
  },
  "target_structural_observation":{
-   "row_140808":"TOTNEG=1; VOLTOT/QUATOT=0.19; PREULT/FATCOT=0.19.",
+   "row_140808":"TOTNEG=1; VOLTOT/QUATOT=0.0019; PREULT/FATCOT=0.0019, using the B3 two-decimal price fields and FATCOT=1000.",
    "row_140809":"TOTNEG=4; VOLTOT/QUATOT≈0.1876105263; value lies between PREMIN/FATCOT and PREMAX/FATCOT and is close to PREMED/FATCOT.",
    "limit":"numeric structure does not establish the historical cause of the K4 collision."
  },
  "other_k4_collision_groups_sample":[sig(g) for g in collisions[:50]],
- "term_analogues":{"exact_implied_0_19_count":len(exact019),"exact_implied_0_19_sample":exact019[:20],
+ "term_analogues":{"exact_implied_0_0019_count":len(exact019),"exact_implied_0_0019_sample":exact019[:20],
                    "same_implied_as_second_target_count":len(same_second),"same_implied_as_second_target_sample":same_second[:20]},
  "governance":{"raw_changed":False,"rows_deleted":False,"rows_consolidated":False,"economic_identity_inferred":False,"causal_explanation_inferred":False,
                "method":"fixed-width parse + arithmetic consistency + structural comparison"}
