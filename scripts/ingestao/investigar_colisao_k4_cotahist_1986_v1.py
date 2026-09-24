@@ -2,9 +2,9 @@
 """FASE 07F — investigação da colisão residual K4 no COTAHIST 1986."""
 from __future__ import annotations
 import argparse,json,zipfile,hashlib
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timezone
 
-TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231","0.0","0","0.0")
+TARGET=("19861010","62","VGO 2","030","VGORACPP","104","PP *C05","060","99991231",0.0,"0",0.0)
 
 def parse(raw: bytes):
     b=raw.rstrip(b"\r\n")
@@ -12,7 +12,7 @@ def parse(raw: bytes):
     def s(a,z): return b[a-1:z].decode("latin-1",errors="replace").strip()
     return {
       "tipo_registro":s(1,2),"data_pregao":s(3,10),"codbdi":s(11,12),"codneg":s(13,24),
-      "tpmerc":s(25,27),"nome_resumido":s(28,39),"especi":s(40,49),"prazot":s(50,51),
+      "tpmerc":s(25,27),"nome_resumido":s(28,39),"especi":s(40,49),"prazot":s(50,52),
       "modref":s(52,56),"preab":s(57,69),"premax":s(70,82),"premin":s(83,95),
       "premed":s(96,108),"preult":s(109,121),"preofc":s(122,134),"preofv":s(135,147),
       "totneg":s(148,152),"quatot":s(153,170),"voltot":s(171,188),"preexe":s(189,201),
