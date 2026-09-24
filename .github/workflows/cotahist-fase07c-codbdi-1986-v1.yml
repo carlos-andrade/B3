@@ -1,0 +1,28 @@
+name: COTAHIST 1986 - FASE 07C CODBDI
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_codbdi_cotahist_1986_v1.py"
+      - ".github/workflows/cotahist-fase07c-codbdi-1986-v1.yml"
+permissions:
+  contents: write
+jobs:
+  codbdi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Executar FASE 07C
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/analisar_codbdi_cotahist_1986_v1.py --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP --output dados/cotahist/quality/COTAHIST_1986_CODBDI_V1.json
+      - name: Persistir resultado
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_CODBDI_V1.json
+          if git diff --cached --quiet; then echo "Nenhuma alteração."; else git commit -m "data(cotahist): executar fase 07c codbdi 1986"; git push; fi
