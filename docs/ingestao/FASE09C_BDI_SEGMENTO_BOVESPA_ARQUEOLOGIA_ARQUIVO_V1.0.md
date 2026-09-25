@@ -501,3 +501,67 @@ A pesquisa deve agora procurar documentação de **BDIN/BDI anterior a 1999** e,
 **Tipo → ESPECI / INDCAR / CODBDI / DIMES-DISMES / Cxx**
 
 Sem essa tabela, nenhuma dessas colunas será reinterpretada como o Tipo publicado em 1986.
+
+## 29. Rodada 25/09/2026 — semântica oficial de CODBDI, INDCAR e TPMERC
+
+A busca por tabelas associadas ao layout BDIN produziu uma evidência útil para separar três dimensões que poderiam ser confundidas com o Tipo observado na publicação de 1986.
+
+O layout oficial do BDIN identifica:
+
+- CODBDI: código utilizado para classificar os papéis na emissão do Boletim Diário de Informações, com referência à tabela associada NE001;
+- INDCAR: indicador de característica do papel, com referência à tabela PA020;
+- TPMERC: tipo de mercado, com referência à tabela PA003;
+- PRAZOT: prazo em dias do Mercado a Termo. citeturn1search12turn2search0
+
+A documentação secundária que reproduz o mesmo layout explicita exemplos de INDCAR, como participação no cálculo do índice Bovespa, mercado META, opção em dólar e SWOPTION. citeturn1search13
+
+### 29.1 Consequência metodológica
+
+Essa separação é importante:
+
+CODBDI ≠ INDCAR ≠ TPMERC ≠ PRAZOT
+
+No layout posterior, são campos independentes, com funções diferentes.
+
+Portanto, a coluna histórica Tipo do Jornal do Brasil de 05/06/1986 não pode ser atribuída automaticamente a nenhum desses campos.
+
+### 29.2 Nova matriz de hipóteses
+
+| Dimensão candidata | Evidência posterior | Pode ser identificada como Tipo de 1986? |
+|---|---|---|
+| CODBDI | classificação BDI | NÃO |
+| INDCAR | característica do papel | NÃO |
+| TPMERC | tipo de mercado | NÃO |
+| PRAZOT | prazo do termo | NÃO |
+| ESPECI | especificação do papel | NÃO |
+| Cxx dentro de ESPECI | nomenclatura observada historicamente | NÃO |
+| Tipo do jornal | coluna documental separada | AINDA NÃO MAPEADO |
+
+A conclusão é deliberadamente conservadora: a documentação posterior ajuda a excluir equivalências simplistas, mas não fornece o mapeamento histórico de 1986.
+
+### 29.3 Novo teste documental prioritário
+
+O próximo alvo deve ser a recuperação da tabela NE001, PA020 e PA003 ou versões anteriores dessas tabelas, procurando:
+
+1. nomenclaturas antigas;
+2. mudanças de código;
+3. eventual campo que tenha sido incorporado/removido;
+4. referências explícitas a Tipo;
+5. códigos associados a Cxx;
+6. documentação específica de Mercado a Termo.
+
+Até que uma dessas fontes estabeleça a relação histórica, Tipo continua sendo uma dimensão não observada pelo K4.
+
+## 30. Estado atualizado
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**CODBDI — CLASSIFICAÇÃO BDI:** CONFIRMADO  
+**INDCAR — CARACTERÍSTICA DO PAPEL:** CONFIRMADO  
+**TPMERC — TIPO DE MERCADO:** CONFIRMADO  
+**PRAZOT — PRAZO DO TERMO:** CONFIRMADO  
+**TIPO HISTÓRICO DE 1986 MAPEADO:** NÃO  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA DA COLISÃO K4:** NÃO RESOLVIDA  
+**RAW COTAHIST:** INALTERADO
