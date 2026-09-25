@@ -312,3 +312,99 @@ A próxima busca deve abandonar a hipótese de que o caminho `/IPN/TRS` seja aut
 5. documentação de migração que relacione os antigos arquivos eletrônicos BDI aos novos BVBG.
 
 **Regra mantida:** nenhum filename moderno será retroprojetado para 1986 e o RAW COTAHIST permanecerá intocado.
+
+
+## 23. Rodada 25/09/2026 — recuperação do ecossistema legado BDIN/BDPregao
+
+Uma nova busca documental recuperou evidência técnica sobre os arquivos eletrônicos legados da BOVESPA/BM&FBovespa.
+
+### 23.1 BDIN — evidência de layout oficial
+
+Foi localizado o documento oficial **Layout do Arquivo de Cotações — BDIN**, datado de 21/03/2011. O documento informa que o BDIN:
+
+- permitia acesso às informações relativas à negociação do dia;
+- continha informações de índices e papéis negociados;
+- era gerado diariamente após o encerramento do pregão;
+- utilizava o nome lógico **BDIN_PUB**;
+- possuía registros específicos de resumo diário por papel e por código de BDI.
+
+Fonte: documento de layout hospedado no domínio histórico BVMF/BM&FBovespa. citeturn4search6
+
+### 23.2 Evidência anterior sobre o BDIN
+
+Também foi recuperada uma versão histórica do layout, atualizada em 07/04/1999, que identifica o arquivo como **BDIN_PUB**, com código de arquivo BDIN e origem BOVESPA. citeturn4search7
+
+Isso demonstra que a família BDIN é anterior a 2011 e constitui uma camada eletrônica própria de cotações da BOVESPA.
+
+### 23.3 Limitação para a colisão Vigor
+
+Essa descoberta **não resolve a colisão K4**.
+
+O layout BDIN recuperado descreve cotações/negociações de índices e papéis e não demonstra que o arquivo continha a tabela histórica específica do **Mercado a Termo** na qual aparecem as duas linhas Vigor de 10/10/1986.
+
+Além disso, o comunicado oficial de 2016 distingue explicitamente:
+
+- **BD Pregão — Segmento BM&F**;
+- **Cotações do Histórico Regular — BDI — Segmento BOVESPA**.
+
+O comunicado também informa que esses dois arquivos seriam descontinuados após a segunda fase do Projeto de Integração da Pós-Negociação. citeturn5search19
+
+Portanto, **BDIN_PUB não deve ser substituído semanticamente por BDI Segmento BOVESPA**.
+
+### 23.4 Nova pista documental de URL legada
+
+Uma fonte técnica independente, publicada em 2011, registrou uma URL histórica para BDIN no formato:
+
+`http://www.bmfbovespa.com.br/fechamento-pregao/bdi/bdi@MM@@DD@@YY@`
+
+A mesma fonte descreve BDIN como arquivo geral de preços de ações negociadas e separa esse arquivo do **BDPregao**, destinado a futuros/opções/derivativos. citeturn2search0
+
+Essa referência é classificada como **PISTA SECUNDÁRIA**, não como fonte primária.
+
+O valor dessa pista é arqueológico: ela mostra que a distribuição eletrônica utilizava uma família de arquivos BDI/BDIN e que havia uma rota HTTP histórica distinta das rotas FTP de outros arquivos.
+
+### 23.5 Nova pista sobre o FTP e o ecossistema de arquivos
+
+A mesma fonte técnica registra que o servidor `ftp.bmf.com.br` era navegável e que arquivos disponibilizados no FTP possuíam estruturas de diretórios correspondentes por HTTP. citeturn2search0
+
+Isso é consistente com a evidência oficial já recuperada para 2016 e 2018, mas continua sendo evidência secundária para os nomes específicos de diretórios.
+
+### 23.6 Conclusão desta rodada
+
+Foi possível separar melhor três camadas que não devem ser confundidas:
+
+1. **BDIN / BDIN_PUB** — arquivo eletrônico de cotações/negociações da BOVESPA, com layout documentado;
+2. **BD Pregão — Segmento BM&F** — arquivo histórico distinto;
+3. **Cotações do Histórico Regular — BDI — Segmento BOVESPA** — série explicitamente identificada pela BM&FBOVESPA em 2016 e ainda não recuperada para 10/10/1986.
+
+Essa distinção é relevante porque a evidência necessária para explicar a colisão Vigor continua sendo a camada histórica correspondente ao **BDI Segmento BOVESPA / Mercado a Termo**, e não simplesmente qualquer arquivo chamado BDI/BDIN.
+
+## 24. Estado após a rodada
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**BDIN/BDIN_PUB DOCUMENTADO:** SIM  
+**BDIN IDENTIFICADO COMO CAMADA ELETRÔNICA DE COTAÇÕES:** SIM  
+**BDI — COTAÇÕES DO HISTÓRICO REGULAR — IDENTIFICADO INSTITUCIONALMENTE:** SIM  
+**ARQUIVO/ITEM BDI DE 10/10/1986:** NÃO RECUPERADO  
+**DIRETÓRIO BDI HISTÓRICO:** NÃO IDENTIFICADO  
+**CAUSA DA COLISÃO K4:** NÃO RESOLVIDA  
+**RAW COTAHIST:** INALTERADO
+
+## 25. Próxima busca de alta prioridade
+
+A próxima frente deve procurar especificamente a relação entre:
+
+**BDIN/BDI → Pesquisa por Pregão → Cotações do Histórico Regular → Mercado a Termo**
+
+Prioridades:
+
+1. layouts antigos que contenham explicitamente **termos/mercado a termo**;
+2. manuais de arquivos BDI anteriores a 2016;
+3. referências a **BDI** em documentação de sistemas legados;
+4. caminhos HTTP/FTP contendo `bdi`, `BDIN`, `fechamento-pregao` ou `boletim`;
+5. documentação que explique a diferença entre **BDIN** e **Cotações do Histórico Regular — BDI**;
+6. somente após essa separação, testar rotas históricas para 10/10/1986.
+
+**Regra mantida:** a URL secundária não será tratada como prova do arquivo de 1986; nenhum filename será retroprojetado e o RAW COTAHIST permanecerá intocado.
