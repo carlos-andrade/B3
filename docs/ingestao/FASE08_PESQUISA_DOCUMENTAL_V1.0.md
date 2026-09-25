@@ -329,3 +329,28 @@ A busca bibliográfica cruzada confirmou a existência de documentação posteri
 **NÃO RESOLVIDO:** exemplar primário e identificador catalográfico do BDI de 10/10/1986.
 
 **Próxima frente:** FASE 08V — arqueologia de imprensa de 09–14/10/1986 para procurar reproduções parciais da seção Mercado a Termo e eventual dupla ocorrência de Vigor.
+
+
+## 27. FASE 08V — Arqueologia de imprensa 09–14/10/1986
+
+Documento: `docs/ingestao/FASE08V_COTAHIST_1986_ARQUEOLOGIA_IMPRENSA_0914OUT_V1.0.md`
+
+A FASE 08V executou busca dirigida em imprensa e acervos públicos indexados para 09–14/10/1986, procurando Mercado a Termo, Vigor, Vigor PP C05, VGO 2, Tipo, Prazo e eventual reprodução das duas linhas de 10/10/1986.
+
+A pesquisa recuperou novamente a publicação contemporânea do Jornal do Brasil de 05/06/1986, que apresenta a estrutura **Tipo | Prazo | Quant | Fech | Máx | Mín | Méd | N°** e registra Vigor PP C05. A fonte confirma que a notação existia antes do evento de outubro, mas não fornece legenda suficiente para decodificar C05. citeturn1search1
+
+A busca específica do intervalo 09–14/10/1986 não recuperou reprodução pública verificável da tabela Mercado a Termo que mostre as duas linhas Vigor de 10/10/1986. Essa ausência foi classificada como **EVIDÊNCIA AUSENTE**, não como inexistência.
+
+Publicações de 1987 recuperadas na pesquisa mostram novamente Vigor PP C05, servindo como controle de continuidade da convenção, sem provar a regra de agregação de 1986. citeturn1search4turn1search2
+
+O Decreto-Lei nº 2.286/1986 confirma o contexto jurídico contemporâneo das operações a termo, mas não explica C05, Tipo nem a agregação do COTAHIST. citeturn1search0
+
+### Resultado
+
+- **IMPLEMENTADO:** arqueologia de imprensa documentada.
+- **EXECUTADO:** busca dirigida para 09–14/10/1986.
+- **VALIDADO:** existência contemporânea de Vigor PP C05 e separação Tipo × Prazo.
+- **EVIDÊNCIA AUSENTE:** reprodução pública verificável das duas linhas Vigor de 10/10/1986.
+- **NÃO RESOLVIDO:** causa da colisão K4, legenda C05/Tipo e regra histórica de agregação/publicação.
+
+A FASE 08 permanece aberta. A prioridade probatória continua sendo a recuperação do BDI de 10/10/1986 e da documentação Bovespa contemporânea sobre Mercado a Termo, códigos Tipo e regra de publicação.
