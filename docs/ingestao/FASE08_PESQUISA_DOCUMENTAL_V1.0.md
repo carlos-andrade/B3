@@ -253,3 +253,30 @@ RAW preservado; C05 mantido literalmente; nenhuma consolidação das linhas 1408
 **Status:** IMPLEMENTADO / EXECUTADO / VALIDADO quanto à busca e classificação documental; **CAUSA NÃO RESOLVIDA**.
 
 **Próxima frente:** arqueologia institucional dirigida — acervos Bovespa/B3, CVM, Hemeroteca Digital, bibliotecas universitárias e exemplares físicos/digitalizados do BDI de outubro de 1986.
+
+
+## 23. FASE 08R — Arqueologia institucional dirigida
+
+Documento: docs/ingestao/FASE08R_COTAHIST_1986_ARQUEOLOGIA_INSTITUCIONAL_BDI_V1.0.md
+
+A FASE 08R deslocou a investigação da busca web genérica para acervos institucionais. Foi localizada página oficial da B3 sobre o Centro de Memória, que informa guarda e preservação de documentos e objetos da história do mercado de capitais brasileiro e da B3, com acervo superior a 100.000 itens e possibilidade de pesquisa digital ou presencial mediante agendamento.
+
+Essa descoberta estabelece um caminho institucional concreto para tentar recuperar o BDI de outubro de 1986 e documentação Bovespa da época.
+
+A CVM também mantém estrutura institucional de arquivos e Serviço de Informação ao Cidadão. A busca pública desta fase não localizou diretamente o BDI de 10/10/1986 nem legenda histórica de Tipo/C05.
+
+A imprensa digitalizada continua útil como fonte de reconstrução, mas não foi recuperada reprodução verificável do BDI de 09/10, 10/10 ou 13/10/1986.
+
+### Estado
+
+**VALIDADO:** existência de acervo institucional B3 diretamente pertinente e natureza institucional do BDI.
+
+**EVIDÊNCIA AUSENTE:** exemplar primário verificável do BDI de 10/10/1986.
+
+**NÃO RESOLVIDO:** causa da colisão K4, legenda de C05/Tipo e regra exata de agregação/publicação.
+
+### Próxima ação de maior valor probatório
+
+Prioridade máxima: recuperação institucional do BDI de 10/10/1986. Em seguida, BDI de 09/10 e 13/10, BDI de pregões próximos contendo Vigor PP C05, manuais Bovespa de Mercado a Termo de 1985–1987, tabela/legenda de Tipo e circulares/normas contemporâneas.
+
+A FASE 08R permanece aberta até existir cadeia documental rastreável: fonte primária → regra histórica → dimensão publicada → relação com as duas linhas COTAHIST.
