@@ -1,0 +1,9 @@
+{
+  "source_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=5",
+  "final_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=5",
+  "retrieved_at": "2026-09-25T22:27:50.785321+00:00",
+  "sha256": "860788c5244763a35f358c634cbdf445b79312f00f2efeb9e412bee699e20d7c",
+  "bytes": 615,
+  "content_type": "application/json",
+  "timezone": "America/Sao_Paulo"
+}

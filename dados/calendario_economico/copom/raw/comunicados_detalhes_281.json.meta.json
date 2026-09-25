@@ -1,0 +1,9 @@
+{
+  "source_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados_detalhes?nro_reuniao=281",
+  "final_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados_detalhes?nro_reuniao=281",
+  "retrieved_at": "2026-09-25T22:27:52.222801+00:00",
+  "sha256": "c32e5fccaba8d550544472f72f03222eb880fbb543674f77eb89d565d4dc9b66",
+  "bytes": 6503,
+  "content_type": "application/json",
+  "timezone": "America/Sao_Paulo"
+}
