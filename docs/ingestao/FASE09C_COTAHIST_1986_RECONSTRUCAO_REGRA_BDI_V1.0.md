@@ -424,3 +424,55 @@ A busca continua exclusivamente na arqueologia do arquivo legado:
 - qualquer documento que permita solicitar o exemplar de 10/10/1986 por identificação inequívoca.
 
 Não será aceito um filename moderno como substituto da fonte primária de 1986.
+
+
+## 18. Rodada 25/09/2026 — limite da arqueologia pública e formalização da recuperação institucional
+
+### 18.1 Nova busca de infraestrutura legada
+
+Foi realizada nova busca documental especificamente por “Cotações do Histórico Regular”, FTP, DIN/MTA, Market Data, Pesquisa por Pregão, nome de arquivo, diretório e documentação de migração.
+
+O resultado primário relevante continua sendo o Comunicado BM&FBOVESPA nº 031/2016-DO, que identifica expressamente **Cotações do Histórico Regular (BDI — Segmento BOVESPA)** e registra a existência de canais institucionais de distribuição, incluindo Pesquisa por Pregão, FTP e DIN/MTA.
+
+Não foi localizado, em fonte pública indexada, um documento que forneça o filename, caminho de diretório ou identificador persistente do exemplar de 10/10/1986. citeturn1search26
+
+### 18.2 Decisão metodológica
+
+A investigação não continuará gerando URLs por combinação de padrões modernos. O padrão `bdi_00_YYYYMMDD.pdf` permanece classificado como **pista posterior**, sem aplicação retroativa a 1986.
+
+A próxima ação formal é institucional/arquivística: solicitar o item pelo conjunto inequívoco de atributos do pregão e da colisão.
+
+### 18.3 Documento de solicitação criado
+
+Foi criado:
+
+`docs/ingestao/SOLICITACAO_INSTITUCIONAL_BDI_BOVESPA_19861010_V1.0.md`
+
+O documento especifica:
+
+- BDI Segmento BOVESPA / Cotações do Histórico Regular;
+- pregão 10/10/1986;
+- Mercado a Termo;
+- Vigor/VGO2;
+- PP C05;
+- prazo 060;
+- CODBDI 62;
+- TPMERC 030;
+- CODISI VGORACPP;
+- DIMES 104;
+- linhas RAW 140808 e 140809;
+- documentos secundários de 09/10/1986 e 13/10/1986;
+- manual/regulamento vigente em 1986;
+- legenda histórica de Tipo/Cxx.
+
+### 18.4 Estado
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM — quanto ao protocolo e à infraestrutura documental identificada  
+**BDI 10/10/1986 RECUPERADO:** NÃO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO  
+**REGISTROS 140808/140809 FUNDIDOS:** NÃO
+
+A FASE 09C permanece aberta até recuperação da fonte primária ou formalização documental de limite arquivístico suficiente para encerrar a reconstrução como inconclusiva.
