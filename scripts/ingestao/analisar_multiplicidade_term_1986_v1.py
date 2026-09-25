@@ -6,7 +6,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 FIELDS={
-    "dt":(2,9),"codbdi":(11,12),"codneg":(13,24),"tpmerc":(25,27),
+    "dt":(3,10),"codbdi":(11,12),"codneg":(13,24),"tpmerc":(25,27),
     "especi":(40,49),"prazot":(50,52),"preab":(57,69),"premax":(70,82),
     "premin":(83,95),"premed":(96,108),"preult":(109,121),
     "totneg":(148,152),"quatot":(153,170),"voltot":(171,188),
@@ -21,7 +21,6 @@ def get(line,name):
 def k_partial(r):
     return (r["dt"],r["codbdi"],r["codneg"],r["tpmerc"],r["prazot"])
 
-# K4 = 12 structural fields used in the prior FASE 08C/08H validation.
 def k_struct(r):
     return (
         r["dt"],r["codbdi"],r["codneg"],r["tpmerc"],
@@ -58,7 +57,7 @@ def main(path):
             fc.append({"key":k,"rows":len(rows),"distinct_stat_profiles":len(c),"profiles":c})
 
     out={
-        "schema_version":"1.1.0","raw_sha256":sha,"records_type_01":records,
+        "schema_version":"1.2.0","raw_sha256":sha,"records_type_01":records,
         "term_partial_key_groups":len(gp),
         "term_partial_multiple_groups":len(pm),
         "term_partial_multiple_groups_with_stat_difference":sum(x["distinct_stat_profiles"]>1 for x in pm),
