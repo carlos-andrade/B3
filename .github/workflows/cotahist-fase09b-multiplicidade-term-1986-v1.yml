@@ -1,0 +1,57 @@
+name: COTAHIST FASE09B - Multiplicidade Term 1986
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/analisar_multiplicidade_term_1986_v1.py"
+      - ".github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase09b-1986
+  cancel-in-progress: false
+jobs:
+  analise:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Recuperar COTAHIST A1986 e verificar integridade
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/cotahist1986
+          curl -fL --retry 3 --retry-delay 2 "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1986.ZIP" -o /tmp/cotahist1986/COTAHIST_A1986.ZIP
+          echo "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018  /tmp/cotahist1986/COTAHIST_A1986.ZIP" | sha256sum -c -
+          unzip -q /tmp/cotahist1986/COTAHIST_A1986.ZIP -d /tmp/cotahist1986
+          RAW=$(find /tmp/cotahist1986 -maxdepth 1 -type f ! -name "COTAHIST_A1986.ZIP" | head -n 1)
+          test -n "$RAW"
+          printf 'RAW=%s\n' "$RAW" >> "$GITHUB_ENV"
+      - name: Executar FASE 09B
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/analisar_multiplicidade_term_1986_v1.py "$RAW" > dados/cotahist/quality/COTAHIST_1986_FASE09B_MULTIPLICIDADE_TERM_V1.json
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1986_FASE09B_MULTIPLICIDADE_TERM_V1.json"
+          d=json.load(open(p, encoding="utf-8"))
+          assert d["raw_sha256"]=="350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018"
+          print(json.dumps({
+              "records_type_01": d["records_type_01"],
+              "term_partial_multiple_groups": d["term_partial_multiple_groups"],
+              "term_partial_multiple_groups_with_stat_difference": d["term_partial_multiple_groups_with_stat_difference"],
+              "term_full_k4_collisions": d["term_full_k4_collisions"],
+              "term_full_k4_collisions_with_stat_difference": d["term_full_k4_collisions_with_stat_difference"]
+          }, ensure_ascii=False, indent=2))
+          PY
+      - name: Publicar evidencia
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_FASE09B_MULTIPLICIDADE_TERM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: publicar evidencia FASE 09B multiplicidade termo 1986"
+          git pull --rebase origin main
+          git push origin HEAD:main
