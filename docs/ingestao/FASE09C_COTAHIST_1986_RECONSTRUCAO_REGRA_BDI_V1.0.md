@@ -261,3 +261,55 @@ A rodada adicional aumenta a sustentação da hipótese de que:
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **EVIDÊNCIA DECISIVA:** ainda ausente  
 **RAW:** preservado integralmente
+
+
+## 15. Rodada documental adicional — 25/09/2026
+
+### 15.1 Busca orientada por código e nomenclatura
+
+Foi executada nova busca pública com combinações específicas de PP C05, Vigor PP C05, Vigor + mercado a termo, Vigor + Prazo, Vigor + 060, VGO2, BDI + Vigor, C05 + mercado a termo e manuais/regulamentos Bovespa relacionados ao mercado a termo.
+
+O resultado não forneceu o exemplar primário do BDI de 10/10/1986 nem os exemplares adjacentes de 09/10/1986 e 13/10/1986.
+
+### 15.2 Reforço da evidência contemporânea
+
+A edição do Jornal do Brasil de 05/06/1986 continua sendo a evidência contemporânea pública mais útil localizada para a estrutura visual do Mercado a Termo. A publicação apresenta a separação entre Tipo e Prazo e registra Vigor com o código PP C05.
+
+Esse achado permite afirmar com maior segurança que, em junho de 1986, a publicação do mercado a termo continha uma dimensão denominada Tipo, distinta da dimensão Prazo.
+
+Não permite afirmar:
+- que C05 seja o valor do campo Tipo;
+- que C05 seja uma chave de agregação;
+- que a colisão de 10/10/1986 tenha sido causada pelo campo Tipo;
+- que as duas linhas COTAHIST correspondam a dois Tipos diferentes.
+
+### 15.3 Controle de fontes normativas posteriores
+
+Foram localizados manuais/regulamentos posteriores da Bovespa que descrevem codificação e divulgação de operações a termo no BDI. Esses documentos são úteis para compreender a função institucional do BDI, mas permanecem explicitamente classificados como evidência posterior.
+
+A documentação posterior registra que determinadas informações de operações a termo e taxas eram divulgadas no BDI. Isso não é utilizado para reconstruir automaticamente a regra vigente em 1986.
+
+### 15.4 Atualização das hipóteses
+
+| Hipótese | Estado | Atualização |
+|---|---|---|
+| H1 — Tipo | PLAUSÍVEL / NÃO PROVADA | Evidência contemporânea confirma Tipo × Prazo, mas não identifica o Tipo das duas linhas Vigor de 10/10/1986. |
+| H2 — taxa/preço | NÃO PROVADA | Nenhuma documentação contemporânea recuperada demonstra essa chave para o alvo. |
+| H3 — participante/comitente/posição | NÃO PROVADA | Nenhuma documentação contemporânea recuperada demonstra essa chave de agregação para o alvo. |
+| H4 — regra histórica de agregação/publicação | PLAUSÍVEL / NÃO PROVADA | Continua compatível com a existência de dimensão editorial/operacional ausente da K4. |
+| H5 — erro de processamento/publicação | NÃO PROVADA | Não foi localizada errata/correção contemporânea. |
+
+### 15.5 Decisão da rodada
+
+A busca adicional não autoriza conclusão causal.
+
+Estado:
+- IMPLEMENTADO: SIM
+- EXECUTADO: SIM
+- VALIDADO: SIM, quanto à evidência disponível e aos limites da pesquisa
+- CAUSA HISTÓRICA RESOLVIDA: NÃO
+- RAW ALTERADO: NÃO
+- REGISTROS 140808/140809 FUNDIDOS: NÃO
+- ISSUE #4: atualizado com o resultado da rodada
+
+A próxima ação permanece institucional/arquivística: obter o BDI de 10/10/1986 e a documentação operacional efetivamente vigente na Bovespa naquele período.
