@@ -146,3 +146,65 @@ Prosseguir exclusivamente na recuperação do exemplar primário do BDI de 10/10
 - B3 — Centro de Memória. citeturn1search11
 - B3 — Pesquisa por pregão/boletins retroativos. citeturn1search1
 - Decreto-Lei nº 2.286/1986 — contexto normativo do mercado a termo. citeturn0search2
+
+## 13. Pesquisa documental adicional — 25/09/2026
+
+### 13.1 Busca do BDI primário
+
+Foi realizada nova rodada de pesquisa pública direcionada especificamente a:
+
+- BDI / Boletim Diário de Informações Bovespa;
+- pregão de 10/10/1986;
+- pregões adjacentes de 09/10/1986 e 13/10/1986;
+- Mercado a Termo;
+- Vigor / VGO2;
+- PP C05;
+- prazo 060;
+- cópias PDF e referências documentais da Bolsa de Valores de São Paulo.
+
+**Resultado:** o exemplar primário do BDI de 10/10/1986 não foi localizado nas fontes públicas indexadas consultadas nesta etapa.
+
+Isso é um **resultado de busca**, não uma prova de inexistência do documento.
+
+### 13.2 Nova evidência secundária contemporânea
+
+A pesquisa recuperou novamente a edição do Jornal do Brasil de 05/06/1986. O conteúdo mostra, no mercado a termo, a coexistência de campos de **Tipo** e **Prazo**, além de Quant., Fech., Máx., Mín., Méd. e N°. Também aparecem códigos Cxx, inclusive Vigor PP C05. 
+
+Essa fonte reforça a existência histórica de dimensões de publicação que não aparecem explicitamente na K4 do COTAHIST, mas continua sem demonstrar qual delas gerou a duplicidade específica de Vigor em 10/10/1986.
+
+### 13.3 Evidência posterior não retroprojetada
+
+Foram localizados documentos posteriores da Bovespa/B3 que descrevem o BDI e a divulgação de informações do mercado a termo. Eles permanecem classificados apenas como evidência institucional posterior e não são utilizados para afirmar a regra vigente em 1986.
+
+### 13.4 Controle de hipóteses
+
+| Hipótese | Estado após esta etapa | Motivo |
+|---|---|---|
+| H1 — Tipo | PLAUSÍVEL / NÃO PROVADA | Há evidência contemporânea de Tipo × Prazo, mas não da linha Vigor de 10/10/1986 |
+| H2 — taxa/preço | NÃO PROVADA | Nenhuma fonte contemporânea localizada estabelece essa chave para a colisão |
+| H3 — participante/comitente/posição | NÃO PROVADA | Nenhuma fonte contemporânea localizada estabelece essa chave de agregação |
+| H4 — regra histórica de agregação/publicação | PLAUSÍVEL / NÃO PROVADA | Continua compatível com a existência de uma dimensão editorial/operacional perdida na K4 |
+| H5 — erro de processamento/publicação | NÃO PROVADA | Nenhuma errata/correção contemporânea localizada |
+
+### 13.5 Rastro institucional
+
+Foi criado o issue de acompanhamento:
+
+**Issue #4 — FASE 09C — Recuperação do BDI Bovespa de 10/10/1986 — Vigor/VGO2**
+
+Objetivo: manter rastreável a recuperação da fonte primária e impedir que a investigação seja encerrada por inferência.
+
+### 13.6 Decisão desta rodada
+
+A investigação **não avança para uma conclusão causal**.
+
+O estado permanece:
+
+- **IMPLEMENTADO:** SIM
+- **EXECUTADO:** SIM
+- **VALIDADO:** SIM, quanto ao protocolo e à evidência disponível
+- **CAUSA HISTÓRICA RESOLVIDA:** NÃO
+- **RAW ALTERADO:** NÃO
+- **REGISTROS 140808/140809 FUNDIDOS:** NÃO
+
+A próxima frente continua sendo a recuperação institucional/arquivística do BDI de 10/10/1986 e da documentação operacional efetivamente vigente naquele período.
