@@ -280,3 +280,18 @@ A imprensa digitalizada continua útil como fonte de reconstrução, mas não fo
 Prioridade máxima: recuperação institucional do BDI de 10/10/1986. Em seguida, BDI de 09/10 e 13/10, BDI de pregões próximos contendo Vigor PP C05, manuais Bovespa de Mercado a Termo de 1985–1987, tabela/legenda de Tipo e circulares/normas contemporâneas.
 
 A FASE 08R permanece aberta até existir cadeia documental rastreável: fonte primária → regra histórica → dimensão publicada → relação com as duas linhas COTAHIST.
+
+
+## 24. FASE 08S — Recuperação primária dirigida do BDI
+
+Documento: docs/ingestao/FASE08S_COTAHIST_1986_RECUPERACAO_PRIMARIA_BDI_V1.0.md
+
+A FASE 08S concentrou a investigação no acervo institucional identificado na 08R. A página oficial do Centro de Memória B3 confirma acervo histórico superior a 100.000 itens e pesquisa digital ou presencial. O link institucional conduz ao acervo digital do Museu B3, mas sua interface não permitiu, nesta execução, extrair registro catalográfico específico do BDI de 10/10/1986.
+
+A Hemeroteca Digital da Biblioteca Nacional confirma cobertura de periódicos de 1986, porém não foi recuperada nesta execução uma reprodução verificável do BDI de 10/10/1986 nem das duas linhas Vigor.
+
+**VALIDADO:** existência do acervo institucional B3/Museu B3 e cobertura de periódicos de 1986 na Hemeroteca.  
+**NÃO RESOLVIDO:** exemplar primário do BDI de 10/10/1986, legenda de C05/Tipo e causa da colisão.  
+**EVIDÊNCIA AUSENTE:** BDI primário/reprodução verificável do pregão de 10/10/1986.
+
+A próxima frente é a **FASE 08T — pesquisa de catálogo/identificador e solicitação institucional**, buscando identificadores do acervo, número de página/seção do BDI, catálogos bibliográficos e documentação Bovespa de 1985–1987.
