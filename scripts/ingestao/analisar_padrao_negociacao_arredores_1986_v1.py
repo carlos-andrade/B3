@@ -102,7 +102,7 @@ def main():
             "continuity_metrics":{
                 "previous_and_next_both_observed": bool(prev and nxt),
                 "records_previous": before_rows[-1] if before_rows else 0,
-                "records_next": after_rows[0]["records"] if after_rows else 0,
+                "records_next": after_rows[0] if after_rows else 0,
                 "neighbor_record_ratio_next_over_previous": (
                     round(after_rows[0]/before_rows[-1],6) if before_rows and after_rows and before_rows[-1] else None
                 ),
