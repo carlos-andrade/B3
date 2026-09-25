@@ -408,3 +408,96 @@ Prioridades:
 6. somente após essa separação, testar rotas históricas para 10/10/1986.
 
 **Regra mantida:** a URL secundária não será tratada como prova do arquivo de 1986; nenhum filename será retroprojetado e o RAW COTAHIST permanecerá intocado.
+
+
+## 26. Rodada 25/09/2026 — BDIN oficial comprova a presença de Mercado a Termo na camada eletrônica de cotações
+
+Foi recuperado diretamente no domínio histórico da BM&FBovespa o **Layout do Arquivo de Cotações — BDIN**, de 21/03/2011.
+
+O documento oficial define o arquivo como **BDIN_PUB**, gerado diariamente após o encerramento do pregão, e informa que o registro 02 é o **Resumo Diário de Negociações por Papel — Mercado**. citeturn1search0
+
+Mais importante para a FASE 09C, o registro 02 contém explicitamente:
+
+- CODBDI — código BDI;
+- ESPECI — especificação do papel;
+- CODNEG — código de negociação;
+- TPMERC — tipo de mercado;
+- PRAZOT — prazo em dias do mercado a termo;
+- PREABE, PREMAX, PREMIN, PREMED, PREULT;
+- TOTNEG, QUATOT, VOLTOT;
+- PREEXE;
+- DATVEN;
+- INDOPC;
+- FATCOT;
+- PTOEXE;
+- CODISI;
+- DISMES. citeturn2view0
+
+### 26.1 Consequência para a reconstrução
+
+Existe, portanto, uma evidência oficial de que a camada eletrônica de cotações BOVESPA possuía estrutura capaz de representar **Mercado a Termo** e vários dos mesmos campos estruturais presentes no COTAHIST.
+
+Isso aproxima a arquitetura documental do problema Vigor, mas **não resolve a colisão**. O layout BDIN de 2011 não contém, no registro 02 recuperado, um campo explicitamente denominado **Tipo** que corresponda à coluna Tipo observada no Jornal do Brasil de 05/06/1986.
+
+Também não foi localizada, nesta rodada, uma tabela que demonstre que ESPECI, INDCAR, CODBDI, DISMES ou outro campo do BDIN seja semanticamente equivalente à coluna histórica Tipo do jornal.
+
+### 26.2 Relação com os campos do COTAHIST
+
+| BDIN | COTAHIST | Situação |
+|---|---|---|
+| CODBDI | CODBDI | correspondência direta |
+| CODNEG | CODNEG | correspondência direta |
+| TPMERC | TPMERC | correspondência direta |
+| ESPECI | ESPECI | correspondência direta |
+| PRAZOT | PRAZOT | correspondência direta |
+| PREABE/PREMAX/PREMIN/PREMED/PREULT | PREAB/PREMAX/PREMIN/PREMED/PREULT | correspondência funcional |
+| TOTNEG | TOTNEG | correspondência direta |
+| QUATOT | QUATOT | correspondência direta |
+| VOLTOT | VOLTOT | correspondência direta |
+| PREEXE | PREEXE | correspondência direta |
+| DATVEN | DATVEN | correspondência direta |
+| INDOPC | INDOPC | correspondência direta |
+| FATCOT | FATCOT | correspondência direta |
+| PTOEXE | PTOEXE | correspondência direta |
+| CODISI | CODISI | correspondência direta |
+| DISMES | DIMES | correspondência funcional/nominal a confirmar |
+
+A última linha permanece marcada como **a confirmar**: o BDIN usa DISMES e o COTAHIST usa DIMES; a semelhança nominal não basta para afirmar identidade histórica sem documentação de mapeamento.
+
+### 26.3 Evidência histórica anterior a 2011
+
+Foi localizada também uma cópia pública de um layout BDIN atualizado em **07/04/1999**, que mantém o nome **BDIN_PUB** e a estrutura de arquivo de cotações da BOVESPA. Essa cópia não é tratada como fonte primária, mas demonstra a existência da família BDIN em 1999. citeturn3search2
+
+Isso reforça a continuidade documental da família BDIN antes de 2011, sem retroprojetá-la para 1986.
+
+### 26.4 Limite probatório
+
+A nova evidência permite afirmar:
+
+**BDIN oficial → cotações BOVESPA → mercado a termo representado → estrutura parcialmente coincidente com COTAHIST.**
+
+Ainda não permite afirmar:
+
+**BDIN 1999/2011 = BDI Segmento BOVESPA de 1986**, nem que o BDIN explique a existência de duas linhas Vigor no COTAHIST.
+
+A fonte decisiva continua sendo o documento contemporâneo a 1986 ou o exemplar BDI de 10/10/1986.
+
+## 27. Estado atualizado
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**BDIN OFICIAL COM MERCADO A TERMO:** CONFIRMADO  
+**CORRESPONDÊNCIA BDIN↔COTAHIST:** PARCIALMENTE CONFIRMADA  
+**CAMPO HISTÓRICO TIPO:** IDENTIDADE NÃO PROVADA  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA DA COLISÃO K4:** NÃO RESOLVIDA  
+**RAW COTAHIST:** INALTERADO
+
+## 28. Próxima frente
+
+A pesquisa deve agora procurar documentação de **BDIN/BDI anterior a 1999** e, sobretudo, qualquer tabela de códigos que relacione:
+
+**Tipo → ESPECI / INDCAR / CODBDI / DIMES-DISMES / Cxx**
+
+Sem essa tabela, nenhuma dessas colunas será reinterpretada como o Tipo publicado em 1986.
