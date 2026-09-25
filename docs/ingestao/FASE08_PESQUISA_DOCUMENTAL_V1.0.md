@@ -313,3 +313,19 @@ A estratégia passa a ser identificar o **objeto documental**, e não apenas bus
 **NÃO RESOLVIDO:** identificador específico e exemplar primário do BDI de 10/10/1986.
 
 **Próxima frente:** FASE 08U — solicitação institucional formal e busca bibliográfica cruzada.
+
+
+## 26. FASE 08U — Solicitação institucional e busca bibliográfica cruzada
+
+Documento: docs/ingestao/FASE08U_COTAHIST_1986_SOLICITACAO_INSTITUCIONAL_BDI_V1.0.md
+
+A FASE 08U confirmou os canais institucionais para prosseguir com a recuperação documental. O MUB3/Centro de Referência mantém base pública de acervo histórico; a pesquisa desta fase não identificou o item BDI de 10/10/1986. A CVM disponibiliza o SIC integrado ao Fala.BR para pedidos de acesso à informação; o portal público também não apresentou diretamente o BDI-alvo. citeturn0search6turn0search0
+
+A busca bibliográfica cruzada confirmou a existência de documentação posterior que identifica o BDI como veículo de divulgação de informações da Bovespa, mas não recuperou identificador ou exemplar primário verificável de 10/10/1986. 
+
+**IMPLEMENTADO:** protocolo de solicitação institucional e critérios de validação documental.  
+**EXECUTADO:** pesquisa MUB3/CVM e busca bibliográfica cruzada.  
+**VALIDADO:** canais formais de consulta/solicitação.  
+**NÃO RESOLVIDO:** exemplar primário e identificador catalográfico do BDI de 10/10/1986.
+
+**Próxima frente:** FASE 08V — arqueologia de imprensa de 09–14/10/1986 para procurar reproduções parciais da seção Mercado a Termo e eventual dupla ocorrência de Vigor.
