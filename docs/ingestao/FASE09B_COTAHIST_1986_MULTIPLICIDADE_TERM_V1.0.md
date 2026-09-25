@@ -8,116 +8,89 @@
 
 ## 1. Objetivo
 
-A FASE 09B transforma a próxima pergunta da investigação em teste reproduzível sobre o RAW:
+A FASE 09B testa, de forma reproduzível sobre o RAW integral de 1986, se múltiplas linhas de termo com a mesma chave parcial são normalmente separadas pela K4 ou se permanecem colisões estatísticas.
 
-> Existem, em COTAHIST 1986, outras combinações de data + CODBDI + CODNEG + TPMERC + PRAZOT que aparecem em múltiplas linhas, e essas multiplicidades são explicadas por campos estruturais da K4 ou permanecem colisões estatísticas?
+## 2. Execução validada
 
-O teste separa duas chaves:
+Workflow: **COTAHIST FASE09B - Multiplicidade Term 1986**  
+Run: **#6 — 36079369501**  
+Head commit: **7c92ac2f3ec0d27d1cc13f3412bc6ba6074ec1d9**  
+Conclusão: **success**  
+Evidência: `dados/cotahist/quality/COTAHIST_1986_FASE09B_MULTIPLICIDADE_TERM_V1.json`  
+Evidence SHA: **321e76d89cff9cbaf21c92efba1fac4d08e003d4**  
+RAW ZIP SHA-256: **350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018**  
+RAW extraído SHA-256: **c5fe0a62488595ffb93e4a26752cfc63650e17f88110355becde1d7b5fbe685c**
 
-### Chave parcial de investigação
+## 3. Resultado integral de 1986
 
-`DATA + CODBDI + CODNEG + TPMERC + PRAZOT`
+- **177.981** registros tipo 01 processados.
+- **36.595** grupos de termo pela chave parcial DATA + CODBDI + CODNEG + TPMERC + PRAZOT.
+- **1** grupo com multiplicidade na chave parcial.
+- **1** grupo com multiplicidade e estatísticas distintas.
+- **36.595** grupos pela K4 completa.
+- **1** colisão K4.
+- **1** colisão K4 com estatísticas distintas.
 
-Essa chave mantém o ativo, mercado e prazo, mas deliberadamente não inclui CODISI, DIMES e ESPECI.
+A única ocorrência é:
 
-### K4 completa
+`19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060 | 99991231 | 0 | 0 | 0`
 
-`DATA + CODBDI + CODNEG + TPMERC + CODISI + DIMES + ESPECI + PRAZOT`
+Assim, o teste integral reproduz exatamente a exceção Vigor previamente identificada nas FASES 08C e 08H.
 
-O objetivo é verificar se multiplicidades da chave parcial normalmente são resolvidas por campos estruturais adicionais e se alguma permanece como colisão estatística real.
+## 4. Classificação A/B/C
 
-## 2. Implementação
+### Caso A — parcial múltipla, K4 diferente
 
-Foi criado o parser:
+**0 casos observados.**
 
-`scripts/ingestao/analisar_multiplicidade_term_1986_v1.py`
+### Caso B — parcial múltipla, mesma K4 e estatísticas diferentes
 
-O parser:
+**1 caso observado.**
 
-- lê somente registros tipo 01;
-- restringe o teste ao `TPMERC=030`;
-- calcula a chave parcial;
-- calcula a K4;
-- identifica grupos com mais de uma linha;
-- compara os perfis estatísticos;
-- preserva o RAW;
-- não recodifica C05;
-- não consolida registros.
+É o Vigor de 10/10/1986, linhas RAW 140808 e 140809.
 
-## 3. Critério de interpretação
+### Caso C — parcial múltipla, mesma K4 e estatísticas iguais
 
-### Caso A — multiplicidade parcial, K4 diferente
+**0 casos observados.**
 
-Interpretação:
+## 5. Perfis estatísticos da colisão
 
-A chave parcial não é suficiente, mas a K4 contém dimensão adicional capaz de separar as linhas.
+**Linha 140808:** TOTNEG 1; QUATOT 39.000.000; VOLTOT 74.100,00; PREAB/PREMAX/PREMIN/PREMED/PREULT = 1,90.
 
-Isso é **comportamento estrutural normal**, não uma colisão K4.
+**Linha 140809:** TOTNEG 4; QUATOT 190.000.000; VOLTOT 356.460,00; PREAB 1,65; PREMAX 1,91; PREMIN 1,65; PREMED 1,87; PREULT 1,75.
 
-### Caso B — multiplicidade parcial, K4 igual, estatísticas diferentes
+Os perfis são materialmente distintos. A diferença não está nos campos da K4.
 
-Interpretação:
+## 6. Conclusão
 
-Existe uma colisão equivalente à anomalia Vigor e o caso merece investigação documental específica.
+O universo integral de 1986 apresenta **uma única multiplicidade na chave parcial e uma única colisão K4**, exatamente o caso Vigor.
 
-### Caso C — multiplicidade parcial, K4 igual, estatísticas iguais
+Portanto, não há evidência de uma população de colisões K4 em 1986. A anomalia é estatisticamente excepcional dentro do arquivo anual.
 
-Interpretação:
+Esse resultado fortalece a necessidade de investigação documental específica do BDI e das regras operacionais/publicação da época. Ele **não determina a causa histórica**.
 
-Existe duplicação estrutural com perfil estatístico idêntico. Deve ser investigada como possível duplicidade de publicação/registro, mas não deve ser automaticamente consolidada.
-
-## 4. Aplicação ao alvo Vigor
-
-O alvo:
-
-`19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060`
-
-satisfaz simultaneamente:
-
-- mesma chave parcial;
-- mesma K4;
-- dois perfis estatísticos distintos.
-
-Portanto, ele pertence ao **Caso B**.
-
-## 5. Hipótese que o teste pretende verificar
-
-Se o universo de 1986 revelar muitos casos do Caso B, a colisão Vigor poderá fazer parte de uma regra geral de publicação/estruturação histórica.
-
-Se o Caso B permanecer excepcional ou único, a investigação deverá concentrar-se em documentação específica do evento, principalmente BDI e regras operacionais da época.
-
-Nenhuma dessas conclusões será assumida antes da execução do parser sobre o RAW integral.
-
-## 6. Estado da execução
-
-**IMPLEMENTADO:** parser criado e versionado.
-
-**EXECUTADO:** não ainda no ambiente desta etapa, pois o RAW integral de 1986 não está montado como arquivo de trabalho nesta execução.
-
-**VALIDADO:** lógica de campos e separação entre chave parcial e K4, mantendo os offsets fixos já validados nas fases anteriores.
-
-**NÃO RESOLVIDO:** contagem final dos casos A/B/C no universo integral de 1986.
+As hipóteses continuam sendo: dimensão histórica não preservada na K4; regra operacional de agregação/publicação do BDI; outra dimensão operacional ausente da K4; ou erro de processamento/publicação.
 
 ## 7. Governança
 
-- RAW permanece intocado.
-- Nenhuma linha é eliminada.
-- Nenhuma linha é consolidada.
-- Nenhum campo é recodificado.
-- O resultado será somente leitura.
-- O hash SHA-256 do RAW deverá ser publicado juntamente com o resultado da execução.
+- RAW alterado: **não**.
+- Registros excluídos: **não**.
+- Registros consolidados: **não**.
+- Recodificação semântica: **não**.
+- Identidade econômica inferida: **não**.
+- Causa histórica inferida: **não**.
 
-## 8. Próxima execução
+## 8. Status
 
-Executar o parser sobre o RAW COTAHIST 1986 e publicar:
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO
 
-1. quantidade total de registros tipo 01;
-2. grupos de termo pela chave parcial;
-3. grupos parciais com múltiplas linhas;
-4. quantos são resolvidos pela K4;
-5. quantos permanecem colisões K4;
-6. quantos possuem estatísticas diferentes;
-7. exemplos auditáveis dos primeiros casos;
-8. comparação direta com Vigor 140808/140809.
+## 9. Próxima frente
 
-**FASE 09B:** IMPLEMENTADA; execução integral pendente.
+A FASE 09B encerra o teste estatístico de multiplicidade no COTAHIST 1986.
+
+A próxima frente é a reconstrução documental da regra de agregação/publicação do BDI para determinar qual dimensão histórica ou operacional permitia dois agregados sob a mesma K4.
+
+Nenhuma alteração semântica deve ser aplicada ao dado normalizado sem evidência documental.
