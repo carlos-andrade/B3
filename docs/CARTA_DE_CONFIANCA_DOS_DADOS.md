@@ -351,9 +351,30 @@ Este documento estabelece a política de confiança dos dados do projeto **B3 �
 
 ---
 
+## 21. Importação automática e atualização do COTAHIST
+
+A ingestão do COTAHIST deve possuir uma cadeia automática de aquisição, integridade, normalização e validação sempre que a fonte permitir acesso automatizado.
+
+Para a atualização corrente, o projeto utiliza a série diária pública da B3. A B3 informa que as séries históricas são disponibilizadas em ZIP e exigem o layout correspondente para interpretação. citeturn0search0turn0search13
+
+A rotina automática deve: determinar a data de referência; adquirir o arquivo; validar o ZIP; calcular SHA-256; normalizar; executar validações; preservar evidências; publicar somente artefatos aprovados; tratar ausência de pregão como estado operacional conhecido; e falhar explicitamente em caso de corrupção ou erro de validação.
+
+**Automação de aquisição não equivale a validação do conteúdo.** O arquivo somente poderá alimentar a camada oficial após integridade, parsing, normalização e validação.
+
+### Estado atual
+
+- automação de certificação: existente;
+- automação de publicação do Dataset Oficial: existente;
+- automação de aquisição diária do COTAHIST: formalizada e implementada no workflow corrente;
+- disponibilidade da fonte B3: externa ao projeto e sujeita a mudanças.
+
+A perda da fonte automática deve gerar incidente e não autoriza substituição silenciosa por fonte secundária.
+
+---
+
 ## Controle de versão
 
-**Versão:** 1.0  
-**Data:** 24/09/2026  
-**Status:** VIGENTE  
-**Escopo:** dados históricos, dados de mercado, dados econômicos, calendários, datasets derivados e resultados produzidos pelo repositório B3.
+**Versão:** 1.1  
+**Data:** 25/09/2026  
+**Alteração:** inclusão da governança da importação automática e atualização corrente do COTAHIST.  
+**Status:** VIGENTE
