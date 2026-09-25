@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "COTAHIST_OFICIAL",
+  "dataset_version": "1.0.0",
+  "status": "VIGENTE",
+  "generated_at": "2026-09-25",
+  "source": "B3",
+  "periodo": {
+    "inicio": 1986,
+    "fim": 2026
+  },
+  "escopo": "COTAHIST anual normalizado e certificado estruturalmente",
+  "certificacao_source": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
+  "quality_manifest_pattern": "dados/cotahist/normalized/manifests/COTAHIST_A{ano}_quality.json",
+  "normalized_file_pattern": "dados/cotahist/normalized/COTAHIST_A{ano}.csv",
+  "raw_file_pattern": "dados/cotahist/raw/anual/COTAHIST_A{ano}.ZIP",
+  "anos_incluidos": [1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  "criterio_inclusao": {
+    "raw_present": true,
+    "quality_manifest_present": true,
+    "quality_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "campos": 25,
+    "datas_invalidas": 0,
+    "datas_fora_do_ano": 0,
+    "certificacao_permitida": [
+      "CERTIFICADO_NORMALIZACAO",
+      "CERTIFICADO_NORMALIZACAO_COM_EXCECAO_SEMANTICA"
+    ]
+  },
+  "excecoes": {
+    "1986": "CERTIFICADO_NORMALIZACAO_COM_EXCECAO_SEMANTICA",
+    "2026": "ANO_CORRENTE_PARCIAL_CONFORME_QUALITY_MANIFEST"
+  },
+  "regra_consumo": "Aplicações devem consumir este manifesto como catálogo oficial e não descobrir arquivos COTAHIST por varredura livre de diretórios.",
+  "fail_closed": true,
+  "gerado_por": "scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py"
+}
