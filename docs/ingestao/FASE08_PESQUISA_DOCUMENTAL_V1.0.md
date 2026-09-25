@@ -400,3 +400,24 @@ Manual posterior da Bovespa confirma que informações do Mercado a Termo eram d
 - **NÃO RESOLVIDO:** causa da colisão K4.
 
 A investigação deve avançar para a reconstrução documental do mecanismo de publicação do BDI, procurando exemplos de um mesmo título em múltiplas linhas e a relação entre Tipo, Prazo e Cxx.
+
+
+## 30. FASE 08Y — Reconstrução do mecanismo de publicação do BDI
+
+Documento: `docs/ingestao/FASE08Y_COTAHIST_1986_RECONSTRUCAO_PUBLICACAO_BDI_TIPO_PRAZO_CXX_V1.0.md`
+
+A FASE 08Y reexaminou a publicação contemporânea do Jornal do Brasil de 05/06/1986. A fonte apresenta separadamente uma seção **Mercado a Termo**, cujo cabeçalho recuperado é **Tipo | Prazo | Quant | Fech | Máx | Mín | Méd | N°**, e ocorrências de códigos Cxx na identificação de papéis em outra área de cotações, incluindo Vigor PP C05, Weg PP C35, Met Duque PP C45 e Brahma OP C15. citeturn3view0turn4view0turn5view0
+
+Esse resultado fortalece a separação estrutural entre **Tipo**, **Prazo** e **Cxx**. Portanto, C05 não deve ser tratado como sinônimo automático de Tipo ou de Prazo. A evidência não decodifica C05 e não identifica os Tipos das linhas RAW 140808/140809.
+
+A colisão permanece:
+
+`19861010 | 62 | VGO 2 | 030 | VGORACPP | 104 | PP *C05 | 060`
+
+A sequência RAW 09/10 → 10/10 → 13/10 continua `1 → 2 → 1` linhas a termo para a mesma combinação estrutural. A hipótese principal permanece **regra histórica de agregação/publicação ou dimensão operacional não representada na K4**.
+
+**IMPLEMENTADO:** FASE 08Y documentada.  
+**EXECUTADO:** reconstrução documental da relação Tipo × Prazo × Cxx.  
+**VALIDADO:** separação histórica Tipo/Prazo e presença de Cxx na identificação publicada.  
+**EVIDÊNCIA AUSENTE:** BDI primário de 10/10/1986 e Tipos das duas linhas Vigor.  
+**NÃO RESOLVIDO:** causa da colisão K4.
