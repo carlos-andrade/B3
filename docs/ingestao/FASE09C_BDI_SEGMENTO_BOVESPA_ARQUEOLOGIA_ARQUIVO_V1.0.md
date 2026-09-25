@@ -118,3 +118,50 @@ Não utilizar padrões de filename modernos como se fossem válidos para 1986 se
 ## 11. Fonte principal desta nota
 
 - BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn1search11
+
+
+## 12. Rodada adicional — reconstrução do padrão moderno de distribuição
+
+### 12.1 Padrão de URL documentado
+
+Pesquisa histórica independente encontrou referências consistentes ao padrão de publicação:
+
+`/download/BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf`
+
+Exemplos documentados para 2011, 2013, 2014, 2015 e 2020 apontam para a mesma família de diretório/nomenclatura. Fontes públicas reproduzem, por exemplo, o arquivo de 16/10/2015 como `bdi_00_20151016.pdf` e referências acadêmicas citam o mesmo padrão para outros pregões. citeturn2search12turn2search13
+
+### 12.2 Valor probatório
+
+Esse resultado é útil como **pista de continuidade documental**, mas não prova que o padrão `bdi_00_YYYYMMDD.pdf` tenha existido em 1986.
+
+A nomenclatura documentada pertence a uma infraestrutura posterior. Portanto, ela não será utilizada para fabricar ou validar um BDI de 10/10/1986.
+
+### 12.3 Teste direto do endereço hipotético
+
+Foi testado o endereço hipotético correspondente ao padrão moderno:
+
+`https://bvmf.bmfbovespa.com.br/download/BOLETINSDIARIOS/bdi_00_19861010.pdf`
+
+e a variante histórica no domínio `www.bmfbovespa.com.br`.
+
+O mecanismo de acesso utilizado não conseguiu recuperar esses endereços. **Isso não demonstra inexistência do arquivo.** Apenas registra que o teste não produziu uma recuperação verificável.
+
+### 12.4 Nova conclusão operacional
+
+Temos agora três níveis de identificação:
+
+1. **Série institucional:** Cotações do Histórico Regular — BDI — Segmento BOVESPA — CONFIRMADA.
+2. **Padrão moderno de publicação BDI:** `BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf` — CONFIRMADO para períodos posteriores.
+3. **Aplicação do padrão a 1986:** NÃO PROVADA.
+
+Consequentemente, o próximo alvo não é gerar novas URLs por tentativa, mas localizar documentação que ligue explicitamente a série histórica de 1986 a um identificador, catálogo, microfilme, digitalização ou arquivo institucional.
+
+## 13. Estado após esta rodada
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM, quanto às pistas documentais recuperadas  
+**PADRÃO DE ARQUIVO DE 1986:** NÃO IDENTIFICADO  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO
