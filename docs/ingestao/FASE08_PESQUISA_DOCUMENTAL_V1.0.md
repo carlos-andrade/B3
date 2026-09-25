@@ -354,3 +354,28 @@ O Decreto-Lei nº 2.286/1986 confirma o contexto jurídico contemporâneo das op
 - **NÃO RESOLVIDO:** causa da colisão K4, legenda C05/Tipo e regra histórica de agregação/publicação.
 
 A FASE 08 permanece aberta. A prioridade probatória continua sendo a recuperação do BDI de 10/10/1986 e da documentação Bovespa contemporânea sobre Mercado a Termo, códigos Tipo e regra de publicação.
+
+
+## 28. FASE 08W — Documentação técnica e normativa Bovespa 1985–1987
+
+Documento: `docs/ingestao/FASE08W_COTAHIST_1986_DOCUMENTACAO_TECNICA_NORMATIVA_1985_1987_V1.0.md`
+
+A FASE 08W realizou busca dirigida por documentação normativa e técnica do período 1985–1987, incluindo Mercado a Termo, Tipo, C05, Vigor, BDI, COTAHIST, manuais e codificação.
+
+A Instrução CVM nº 36/1984 confirma que Bolsas que operassem mercados a futuro, a termo e de opções deveriam manter controles diários sobre concentração de investidores e disponibilizar esses levantamentos à CVM. citeturn1search0turn1search6
+
+A Instrução CVM nº 51/1986 também confirma o uso dos boletins das Bolsas para divulgação de informações operacionais agregadas, embora o dispositivo recuperado trate especificamente de compras em margem e não da agregação do Mercado a Termo alvo. citeturn2search0turn2search47
+
+A pesquisa não encontrou, em fonte pública indexada e verificável, manual Bovespa contemporâneo de 1985–1987 que decodifique simultaneamente C05, os códigos históricos de Tipo e a regra de agregação que explique as linhas 140808/140809.
+
+Documentação Bovespa posterior mostra que o Mercado a Termo possui múltiplas dimensões operacionais, incluindo tipos de termo, prazo, participantes, comitentes, comprador/vendedor e taxas, além de divulgação de taxas no BDI. Essa documentação foi usada apenas como controle estrutural e **não** foi retroprojetada para 1986. 
+
+### Resultado
+
+- **IMPLEMENTADO:** FASE 08W documentada.
+- **EXECUTADO:** busca normativa/técnica 1985–1987.
+- **VALIDADO:** existência de controles formais do Mercado a Termo e de mecanismos de divulgação em boletins.
+- **EVIDÊNCIA AUSENTE:** legenda primária de Tipo/C05 e regra contemporânea de agregação Bovespa.
+- **NÃO RESOLVIDO:** causa da colisão K4.
+
+A prioridade retorna aos documentos operacionais primários da própria Bovespa/B3: circulares, manuais, tabelas de códigos, documentação do BDI e exemplares de 09, 10 e 13/10/1986.
