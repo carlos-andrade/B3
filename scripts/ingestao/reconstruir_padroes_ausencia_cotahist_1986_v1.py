@@ -3,7 +3,7 @@
 from __future__ import annotations
 import json, zipfile
 from collections import defaultdict
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 RAW = Path("dados/cotahist/raw/anual/COTAHIST_A1986.ZIP")
@@ -84,7 +84,7 @@ def main():
     result = {
         "schema_version": "1.0.0",
         "status": "FASE08C_PADROES_NEGOCIACAO_AUSENCIAS_1986",
-        "generated_at_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "source": {"raw_file": RAW.name, "audit_artifact": str(AUDIT), "window_calendar_days": WINDOW},
         "candidate_count": len(missing),
         "candidates": out,
