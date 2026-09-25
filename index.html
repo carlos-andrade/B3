@@ -25,6 +25,7 @@ input{background:var(--p);border:1px solid var(--line);color:var(--txt);padding:
 </section>
 <div class="cols">
 <section class="box"><h2>Arquivos de mercado detectados</h2><div class="toolbar"><input id="filter" placeholder="Filtrar por nome ou caminho…"><select id="type"><option value="">Todos</option><option value="csv">CSV</option><option value="json">JSON</option><option value="txt">TXT</option><option value="parquet">Parquet</option><option value="other">Outros</option></select><button id="scan">Reexaminar</button></div><div id="fileTable" class="empty">Carregando árvore do repositório…</div></section>
+<section class="box"><h2>Dataset Oficial COTAHIST</h2><div id="official" class="empty">Carregando manifesto oficial…</div></section>
 <section class="box"><h2>Snapshot / indicadores publicados</h2><div id="snapshot" class="empty">Procurando arquivos JSON de indicadores…</div></section>
 </div>
 <section class="box"><h2>Amostra de dados de mercado</h2><div id="sample" class="empty">Selecione um arquivo estruturado compatível para carregar uma amostra.</div></section>
@@ -32,7 +33,7 @@ input{background:var(--p);border:1px solid var(--line);color:var(--txt);padding:
 </main>
 <script>
 const OWNER="carlos-andrade",REPO="B3",BRANCH="main",API="https://api.github.com/repos/"+OWNER+"/"+REPO;
-let allFiles=[],jsonCandidates=[];
+let allFiles=[],jsonCandidates=[],officialDataset=null;
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ext=p=>{let x=p.toLowerCase().split(".").pop();return x==="jsonl"||x==="ndjson"?"json":x};
 function yearFrom(p){let m=p.match(/(?:19|20)\d{2}/g);return m?m.map(Number).filter(y=>y>=1980&&y<=2100)[0]:null}
@@ -63,6 +64,24 @@ function renderJson(j){
  return '<table><thead><tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join("")+'</tr></thead><tbody>'+obj.map(x=>'<tr>'+cols.map(c=>'<td>'+esc(typeof x[c]==="object"?JSON.stringify(x[c]):x[c])+'</td>').join("")+'</tr>').join("")+'</tbody></table>';
 }
 function renderText(s){const lines=s.split(/\r?\n/).filter(Boolean).slice(0,26);return '<pre style="white-space:pre-wrap;overflow:auto;max-height:500px">'+esc(lines.join("\n"))+'</pre>'}
+async function loadOfficial(){
+ const box=document.querySelector("#official");
+ try{
+  const r=await fetch("https://raw.githubusercontent.com/"+OWNER+"/"+REPO+"/"+BRANCH+"/dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json");
+  if(!r.ok)throw Error("HTTP "+r.status);
+  officialDataset=await r.json();
+  const records=officialDataset.records||[];
+  const last=records[records.length-1];
+  const caveat=records.find(x=>x.ano===1986);
+  box.innerHTML='<div class="row"><span>Status</span><strong class="ok">'+esc(officialDataset.status)+'</strong></div>'+
+   '<div class="row"><span>Versão</span><span>'+esc(officialDataset.dataset_version)+'</span></div>'+
+   '<div class="row"><span>Anos certificados</span><strong>'+records.length+'</strong></div>'+
+   '<div class="row"><span>Período</span><span>'+esc(officialDataset.periodo.inicio)+'–'+esc(officialDataset.periodo.fim)+'</span></div>'+
+   '<div class="row"><span>Último ano</span><span>'+esc(last?last.ano:"—")+' · '+esc(last?last.ultima_data:"—")+'</span></div>'+
+   '<div class="row"><span>1986</span><span class="warn">'+esc(caveat?caveat.certificacao:"—")+'</span></div>'+
+   '<div class="small">Catálogo oficial: dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json. O painel não descobre COTAHIST por varredura livre para esta camada.</div>';
+ }catch(e){box.innerHTML='<div class="empty">Falha ao carregar Dataset Oficial: '+esc(e.message)+'</div>'}
+}
 function snapshot(){
  jsonCandidates=allFiles.filter(x=>ext(x.path)==="json"&&/(dashboard|snapshot|result|status|quality|indic|market|cotahist|dados)/i.test(x.path));
  document.querySelector("#snapshot").innerHTML=jsonCandidates.length?jsonCandidates.slice(0,30).map(x=>'<div class="row"><span>'+esc(x.path)+'</span><button data-path="'+encodeURIComponent(x.path)+'" class="openjson">Ler</button></div>').join(""):'<div class="empty">Nenhum JSON de indicadores foi identificado por nome. O painel continua usando a árvore do repositório.</div>';
@@ -76,7 +95,7 @@ async function boot(){
   document.querySelector("#years").textContent=years.length?(years[0]+"–"+years[years.length-1]):"—";
   const structured=allFiles.filter(x=>["csv","json","parquet"].includes(ext(x.path)));document.querySelector("#structured").textContent=new Intl.NumberFormat("pt-BR").format(structured.length);
   const latest=allFiles.reduce((m,x)=>m, null);document.querySelector("#last").textContent=d.sha?d.sha.slice(0,8):"—";
-  render();snapshot();
+  render();loadOfficial();snapshot();
  }catch(e){document.querySelector("#fileTable").innerHTML='<div class="empty">'+esc(e.message)+'</div>'}
 }
 document.querySelector("#filter").oninput=render;document.querySelector("#type").onchange=render;document.querySelector("#refresh").onclick=boot;document.querySelector("#scan").onclick=boot;boot();
