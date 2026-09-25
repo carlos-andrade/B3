@@ -1,0 +1,43 @@
+name: COTAHIST - importacao diaria automatica V1
+
+on:
+  schedule:
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-importacao-diaria-v1
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Importar e validar COTAHIST diário
+        run: python scripts/ingestao/importar_cotahist_diario_v1.py
+
+      - name: Persistir atualização
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario
+          git commit -m "data(cotahist): importacao diaria automatica" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar evidências
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-importacao-diaria-v1
+          path: |
+            dados/cotahist/normalized/manifests/diario/*.json
+          retention-days: 30
