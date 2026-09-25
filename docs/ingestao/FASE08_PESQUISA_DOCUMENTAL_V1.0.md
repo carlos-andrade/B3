@@ -421,3 +421,20 @@ A sequência RAW 09/10 → 10/10 → 13/10 continua `1 → 2 → 1` linhas a ter
 **VALIDADO:** separação histórica Tipo/Prazo e presença de Cxx na identificação publicada.  
 **EVIDÊNCIA AUSENTE:** BDI primário de 10/10/1986 e Tipos das duas linhas Vigor.  
 **NÃO RESOLVIDO:** causa da colisão K4.
+
+
+## 31. FASE 08Z — Múltiplas linhas históricas por Tipo com mesmo Prazo
+
+Documento: `docs/ingestao/FASE08Z_COTAHIST_1986_EXEMPLOS_MULTIPLAS_LINHAS_TIPO_PRAZO_CXX_V1.0.md`
+
+A FASE 08Z encontrou evidência contemporânea particularmente relevante no Jornal do Brasil de 05/06/1986. Na seção Mercado a Termo aparecem `Mendes Júnior PA 030`, `Mendes Júnior PB 030` e `Mendes Júnior PP 030`: mesmo emissor/família de título, mesmo prazo 030, mas Tipos distintos e estatísticas publicadas separadamente. A fonte também mostra variantes de Eluma com prazo 030. citeturn5view0
+
+Isso demonstra que **Tipo era uma dimensão historicamente capaz de separar linhas com o mesmo Prazo**. Portanto, uma dimensão publicacional não preservada na K4 ganha suporte documental adicional.
+
+A evidência não demonstra que as linhas Vigor 140808/140809 tenham Tipos diferentes, nem que Tipo seja a causa da colisão. C05 continua sem decodificação primária. A prova decisiva permanece o BDI de 10/10/1986 ou documentação contemporânea equivalente.
+
+**IMPLEMENTADO:** FASE 08Z documentada.  
+**EXECUTADO:** busca por múltiplas linhas e comparação Tipo × Prazo.  
+**VALIDADO:** multiplicidade por Tipo com mesmo Prazo em fonte contemporânea de 1986.  
+**GANHA SUPORTE:** hipótese de dimensão não preservada na K4.  
+**NÃO RESOLVIDO:** relação causal com as linhas Vigor 140808/140809.
