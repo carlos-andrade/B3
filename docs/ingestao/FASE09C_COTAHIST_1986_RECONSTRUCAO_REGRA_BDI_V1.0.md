@@ -476,3 +476,30 @@ O documento especifica:
 **REGISTROS 140808/140809 FUNDIDOS:** NÃO
 
 A FASE 09C permanece aberta até recuperação da fonte primária ou formalização documental de limite arquivístico suficiente para encerrar a reconstrução como inconclusiva.
+
+
+## 19. Rodada documental — BDIN oficial e Mercado a Termo
+
+O layout oficial BM&FBovespa do arquivo **BDIN_PUB**, de 21/03/2011, demonstra que a camada eletrônica de cotações da BOVESPA continha um registro de resumo diário por papel/mercado com CODBDI, CODNEG, TPMERC, PRAZOT, preços, TOTNEG, QUATOT, VOLTOT, PREEXE, DATVEN, INDOPC, FATCOT, PTOEXE e CODISI. O próprio layout define PRAZOT como prazo em dias do mercado a termo. citeturn1search0turn2view0
+
+Essa evidência é relevante porque confirma que uma publicação eletrônica posterior da BOVESPA representava explicitamente Mercado a Termo e compartilhava grande parte da estrutura de campos encontrada no COTAHIST.
+
+Entretanto, ela **não resolve a colisão Vigor**. O layout recuperado não contém campo explicitamente denominado Tipo correspondente à coluna Tipo observada no Jornal do Brasil de 05/06/1986, e não foi demonstrada equivalência entre Tipo e ESPECI, INDCAR, CODBDI, DISMES ou outro campo.
+
+Também foi encontrada uma cópia pública de layout BDIN atualizada em 07/04/1999, classificada como fonte secundária, que confirma a existência da família BDIN em período anterior a 2011. citeturn3search2
+
+### 19.1 Decisão metodológica
+
+O BDIN passa a ser tratado como **evidência de arquitetura histórica da camada eletrônica de cotações**, mas não como substituto do BDI Segmento BOVESPA de 1986.
+
+A hipótese de que alguma dimensão do BDIN possa explicar a coluna histórica Tipo permanece **não testada** até localização de tabela de códigos/mapeamento contemporânea ou documento do próprio período.
+
+### 19.2 Estado
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**BDIN COM MERCADO A TERMO:** CONFIRMADO  
+**BDI 10/10/1986 RECUPERADO:** NÃO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO
