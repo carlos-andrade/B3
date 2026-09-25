@@ -565,3 +565,81 @@ Até que uma dessas fontes estabeleça a relação histórica, Tipo continua sen
 **BDI 10/10/1986:** NÃO RECUPERADO  
 **CAUSA DA COLISÃO K4:** NÃO RESOLVIDA  
 **RAW COTAHIST:** INALTERADO
+
+
+## 31. Rodada 25/09/2026 — busca dirigida das tabelas associadas NE001, PA020 e PA003
+
+### 31.1 Objetivo
+
+Foi executada a frente documental prioritária definida na seção 29, procurando recuperar as tabelas associadas citadas pelo layout oficial do BDIN:
+
+- **NE001** — tabela associada a CODBDI;
+- **PA020** — tabela associada a INDCAR;
+- **PA003** — tabela associada a TPMERC.
+
+Foram testadas combinações de nomenclatura, incluindo:
+
+- NE001 / NE 001 + CODBDI + BOVESPA;
+- PA020 / PA 020 + INDCAR + BOVESPA;
+- PA003 / PA 003 + TPMERC + BOVESPA;
+- “Tabela Associada NE001/PA020/PA003”;
+- combinações com BM&FBOVESPA e arquivos PDF.
+
+### 31.2 Resultado
+
+**Nenhuma das três tabelas foi recuperada em fonte pública indexada nesta rodada.**
+
+Também não foi localizada, no próprio repositório B3, documentação já armazenada que contenha essas tabelas ou um mapeamento histórico equivalente.
+
+Esse resultado é classificado como **NÃO RECUPERADO**, e não como inexistência.
+
+### 31.3 O que permanece comprovado
+
+O layout oficial do BDIN continua sendo suficiente para estabelecer que:
+
+- CODBDI possui tabela associada NE001;
+- INDCAR possui tabela associada PA020;
+- TPMERC possui tabela associada PA003;
+- PRAZOT representa prazo em dias do Mercado a Termo.
+
+A busca negativa das tabelas **não altera** essas definições já documentadas.
+
+### 31.4 Limite histórico
+
+A ausência das tabelas não permite:
+
+- mapear o **Tipo** do Jornal do Brasil para CODBDI;
+- mapear o **Tipo** para INDCAR;
+- mapear o **Tipo** para TPMERC;
+- interpretar C05 como código de uma dessas dimensões;
+- atribuir a qualquer dessas dimensões a causa da colisão Vigor de 10/10/1986.
+
+A distinção metodológica permanece:
+
+**CODBDI ≠ INDCAR ≠ TPMERC ≠ PRAZOT ≠ Tipo histórico de 1986**, salvo prova documental específica.
+
+### 31.5 Próxima frente
+
+A pesquisa passa para uma busca temporal e documental mais antiga, priorizando:
+
+1. layouts de BOVESPA/BM&FBovespa anteriores a 1999;
+2. manuais técnicos de arquivos eletrônicos;
+3. dicionários de dados e tabelas de domínio;
+4. documentos que contenham simultaneamente CODBDI, INDCAR, TPMERC e referências de tabela;
+5. documentação de Mercado a Termo e códigos Cxx;
+6. versões arquivadas das tabelas NE001, PA020 e PA003.
+
+A prioridade continua sendo recuperar evidência que possa conectar a estrutura eletrônica posterior à nomenclatura histórica, **sem retroprojetar semântica para 1986**.
+
+## 32. Estado após a rodada
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM — busca dirigida executada e resultado negativo registrado  
+**NE001 RECUPERADA:** NÃO  
+**PA020 RECUPERADA:** NÃO  
+**PA003 RECUPERADA:** NÃO  
+**TIPO HISTÓRICO DE 1986 MAPEADO:** NÃO  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA DA COLISÃO K4:** NÃO RESOLVIDA  
+**RAW COTAHIST:** INALTERADO  
