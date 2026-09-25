@@ -379,3 +379,24 @@ Documentação Bovespa posterior mostra que o Mercado a Termo possui múltiplas 
 - **NÃO RESOLVIDO:** causa da colisão K4.
 
 A prioridade retorna aos documentos operacionais primários da própria Bovespa/B3: circulares, manuais, tabelas de códigos, documentação do BDI e exemplares de 09, 10 e 13/10/1986.
+
+
+## 29. FASE 08X — Arqueologia operacional Bovespa
+
+Documento: `docs/ingestao/FASE08X_COTAHIST_1986_ARQUEOLOGIA_OPERACIONAL_BOVESPA_V1.0.md`
+
+A FASE 08X aprofundou a pesquisa sobre CODBDI, TPMERC, ESPECI, PRAZOT, C05 e BDI. A documentação pública localizada descreve CODBDI como código usado para classificar papéis na emissão do BDI, TPMERC como código do mercado cadastrado, ESPECI como especificação do papel e PRAZOT como prazo em dias do Mercado a Termo. Isso confirma a separação estrutural desses campos. citeturn0search2
+
+A publicação contemporânea de 05/06/1986 confirma novamente Vigor PP C05 antes do evento de outubro e a separação histórica entre Tipo e Prazo. citeturn0search0
+
+Manual posterior da Bovespa confirma que informações do Mercado a Termo eram divulgadas no BDI e que taxas podiam ser divulgadas por diferentes tipos de termo; essa fonte foi tratada apenas como controle estrutural, sem retroprojeção para 1986. citeturn0search56
+
+### Resultado
+
+- **IMPLEMENTADO:** FASE 08X documentada.
+- **EXECUTADO:** busca operacional dirigida.
+- **VALIDADO:** distinção CODBDI/TPMERC/ESPECI/PRAZOT e existência anterior de Vigor PP C05.
+- **EVIDÊNCIA AUSENTE:** legenda primária de C05 e regra contemporânea que explique as duas linhas.
+- **NÃO RESOLVIDO:** causa da colisão K4.
+
+A investigação deve avançar para a reconstrução documental do mecanismo de publicação do BDI, procurando exemplos de um mesmo título em múltiplas linhas e a relação entre Tipo, Prazo e Cxx.
