@@ -313,3 +313,39 @@ Estado:
 - ISSUE #4: atualizado com o resultado da rodada
 
 A próxima ação permanece institucional/arquivística: obter o BDI de 10/10/1986 e a documentação operacional efetivamente vigente na Bovespa naquele período.
+
+
+## 16. Rodada 25/09/2026 — verificação do canal institucional B3
+
+### 16.1 Pesquisa por pregão da B3
+
+A página oficial atual da B3 informa explicitamente que a **Pesquisa por pregão** fornece acesso a boletins diários e arquivos emitidos pela B3 e que arquivos retroativos podem ser obtidos selecionando a data desejada. citeturn1search0turn1search1
+
+A própria documentação institucional também registra que, a partir de 2016, o antigo arquivo de Cotações do Histórico Regular, identificado como **BDI — Segmento BOVESPA**, teve sua publicação descontinuada no contexto da integração da pós-negociação. citeturn1search20
+
+Esse achado é relevante porque confirma documentalmente que **BDI Segmento BOVESPA** era uma categoria específica de publicação histórica, distinta do conceito genérico de COTAHIST.
+
+### 16.2 Limitação atual
+
+A interface pública atualmente indexada não expôs diretamente o arquivo histórico de 10/10/1986 durante a pesquisa. Portanto, não é correto afirmar que o arquivo inexiste; apenas que ele não foi recuperado pela interface/indexação pública utilizada nesta etapa.
+
+### 16.3 Consequência metodológica
+
+A investigação passa a distinguir formalmente três camadas:
+
+1. **COTAHIST** — arquivo histórico de cotações utilizado na reconstrução;
+2. **BDI Segmento BOVESPA** — publicação histórica específica da Bolsa;
+3. **Pesquisa por pregão B3** — canal institucional atual para arquivos/boletins retroativos.
+
+A existência da camada 2 não resolve a colisão K4, mas fortalece a necessidade de recuperar o BDI original antes de atribuir semântica às duas linhas Vigor.
+
+### 16.4 Próximo teste
+
+O próximo teste documental será direcionado à recuperação do **BDI Segmento BOVESPA** por referência histórica, procurando:
+- nomenclatura do arquivo;
+- identificador/código do boletim;
+- estrutura de URL ou catálogo histórico;
+- documentação de migração/arquivo legado;
+- referência institucional que permita solicitar especificamente o exemplar de 10/10/1986.
+
+**Estado:** causa histórica ainda NÃO RESOLVIDA.
