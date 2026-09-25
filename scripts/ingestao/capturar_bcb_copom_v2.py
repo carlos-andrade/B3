@@ -15,10 +15,12 @@ BASE = "https://www.bcb.gov.br/api/servico/sitebcb/copom"
 UA = "B3-INGESTAO/2.0 (+https://github.com/carlos-andrade/B3)"
 TZ = "America/Sao_Paulo"
 
+
 def get_json(url: str) -> tuple[bytes, str]:
     req = Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urlopen(req, timeout=45) as r:
         return r.read(), r.geturl()
+
 
 def save_raw(root: Path, name: str, requested: str, payload: bytes, final_url: str) -> dict:
     p = root / name
@@ -38,9 +40,31 @@ def save_raw(root: Path, name: str, requested: str, payload: bytes, final_url: s
     )
     return meta
 
+
 def text_from_html(value: str) -> str:
     value = re.sub(r"<[^>]+>", " ", value or "")
     return re.sub(r"\s+", " ", value).strip()
+
+
+def field(obj: dict, *names):
+    """Retorna o primeiro campo presente e não nulo, tolerando variações do BCB."""
+    for name in names:
+        value = obj.get(name)
+        if value is not None:
+            return value
+    return None
+
+
+def meeting_number(obj: dict):
+    """Extrai nroReuniao sem indexação direta, evitando KeyError."""
+    value = field(obj, "nroReuniao", "nro_reuniao", "numeroReuniao", "numero_reuniao")
+    if value is None:
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -63,10 +87,17 @@ def main() -> int:
 
     atas = captured["atas"].get("conteudo", [])
     comunicados = captured["comunicados"].get("conteudo", [])
+
     meetings = sorted(
-        {int(x["nroReuniao"]) for x in atas + comunicados if x.get("nroReuniao", x.get("nro_reuniao")) is not None},
+        {
+            n
+            for x in atas + comunicados
+            for n in [meeting_number(x)]
+            if n is not None
+        },
         reverse=True,
     )
+
     if not meetings:
         raise RuntimeError("Nenhuma reunião encontrada na API do BCB")
 
@@ -83,15 +114,22 @@ def main() -> int:
 
     ata = (detail["ata"].get("conteudo") or [{}])[0]
     com = (detail["comunicado"].get("conteudo") or [{}])[0]
-    ata_text = text_from_html(ata.get("textoAta", ""))
-    com_text = text_from_html(com.get("textoComunicado", ""))
+    ata_text = text_from_html(field(ata, "textoAta", "texto_ata") or "")
+    com_text = text_from_html(field(com, "textoComunicado", "texto_comunicado") or "")
 
     decision_text = ata_text + " " + com_text
-    m_rate = re.search(r"taxa (?:básica de juros|Selic).*?(?:em|para)\s+(\d+(?:[.,]\d+)?)%\s*a\.?a\.?", decision_text, re.I)
+    m_rate = re.search(
+        r"taxa (?:básica de juros|Selic).*?(?:em|para)\s+(\d+(?:[.,]\d+)?)%\s*a\.?a\.?",
+        decision_text,
+        re.I,
+    )
     rate = float(m_rate.group(1).replace(",", ".")) if m_rate else None
 
-    scheduled_date = ata.get("dataReferencia") or com.get("dataReferencia")
-    published_at = ata.get("dataPublicacao") or None
+    scheduled_date = field(ata, "dataReferencia", "data_referencia") or field(
+        com, "dataReferencia", "data_referencia"
+    )
+    published_at = field(ata, "dataPublicacao", "data_publicacao")
+
     normalized = {
         "schema_version": "2.0",
         "source": "Banco Central do Brasil",
@@ -111,25 +149,39 @@ def main() -> int:
             "information_available_at": published_at,
             "status": "RELEASED",
             "decision_rate_percent_aa": rate,
-            "decision_text": com.get("titulo"),
+            "decision_text": field(com, "titulo", "title"),
             "votes_text": None,
-            "ata_title": ata.get("titulo"),
-            "ata_pdf_url": ata.get("urlPdfAta"),
-            "ata_text": ata.get("textoAta"),
-            "comunicado_text": com.get("textoComunicado"),
+            "ata_title": field(ata, "titulo", "title"),
+            "ata_pdf_url": field(ata, "urlPdfAta", "url_pdf_ata"),
+            "ata_text": field(ata, "textoAta", "texto_ata"),
+            "comunicado_text": field(com, "textoComunicado", "texto_comunicado"),
             "evidence": {
                 "ata_list_sha256": captured.get("atas") and hashlib.sha256(
-                    json.dumps(captured["atas"], ensure_ascii=False, separators=(",", ":")).encode()
+                    json.dumps(
+                        captured["atas"],
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ).encode()
                 ).hexdigest(),
                 "raw_directory": str(raw_dir),
             },
-            "backtest_rule": "information_available_at <= bar_timestamp"
+            "backtest_rule": "information_available_at <= bar_timestamp",
         }]
     }
+
     out = norm_dir / f"copom_{meeting}.json"
-    out.write_text(json.dumps(normalized, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"meeting": meeting, "normalized": str(out), "rate": rate}, ensure_ascii=False))
+    out.write_text(
+        json.dumps(normalized, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        json.dumps(
+            {"meeting": meeting, "normalized": str(out), "rate": rate},
+            ensure_ascii=False,
+        )
+    )
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
