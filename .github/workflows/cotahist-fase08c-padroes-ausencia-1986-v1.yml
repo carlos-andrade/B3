@@ -26,4 +26,5 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_PADROES_AUSENCIA_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "data(cotahist): publicar evidencia fase 08c 1986"
+          git pull --rebase origin main
           git push
