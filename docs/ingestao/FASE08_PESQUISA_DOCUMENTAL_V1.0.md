@@ -224,3 +224,32 @@ RAW preservado; nenhuma linha removida ou consolidada; C05 mantido literalmente;
 **Status:** IMPLEMENTADO / EXECUTADO / VALIDADO quanto à reconstrução da janela; **NÃO RESOLVIDO** quanto à causa histórica.
 
 **Próxima frente:** recuperação documental primária do BDI de 10/10/1986 e da regra de publicação/agregação do Mercado a Termo.
+
+
+## 22. FASE 08Q — Arqueologia primária do BDI e regra de agregação
+
+A FASE 08Q executou busca documental dirigida ao BDI de 09/10, 10/10 e 13/10/1986 e à regra histórica de publicação/agregação do Mercado a Termo.
+
+**Documento:** `docs/ingestao/FASE08Q_COTAHIST_1986_ARQUEOLOGIA_PRIMARIA_BDI_AGREGACAO_V1.0.md`
+
+### Resultado
+
+- Não foi localizada publicamente uma cópia verificável do BDI de 10/10/1986 capaz de explicar diretamente as duas linhas VGO 2.
+- A ausência foi classificada como **EVIDÊNCIA AUSENTE**, não como inexistência.
+- Evidência contemporânea de 1986 já recuperada confirma a separação entre Tipo e Prazo e registra Vigor PP C05.
+- Fontes institucionais/normativas confirmam a existência do BDI e o contexto formal do Mercado a Termo, mas não decodificam C05 nem explicam a colisão.
+- A FASE 08P continua demonstrando a sequência `1 linha → 2 linhas → 1 linha` em 09/10 → 10/10 → 13/10 para VGO 2 / termo 060 / C05 / DIMES 104.
+
+### Estado das hipóteses
+
+A hipótese principal permanece **regra histórica de agregação/publicação ou dimensão operacional não preservada na chave K4**.
+
+Não foi demonstrado que a dimensão oculta seja Tipo, taxa, comprador/vendedor, corretora ou comitente.
+
+### Governança
+
+RAW preservado; C05 mantido literalmente; nenhuma consolidação das linhas 140808/140809; nenhuma causa econômica inferida.
+
+**Status:** IMPLEMENTADO / EXECUTADO / VALIDADO quanto à busca e classificação documental; **CAUSA NÃO RESOLVIDA**.
+
+**Próxima frente:** arqueologia institucional dirigida — acervos Bovespa/B3, CVM, Hemeroteca Digital, bibliotecas universitárias e exemplares físicos/digitalizados do BDI de outubro de 1986.
