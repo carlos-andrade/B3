@@ -295,3 +295,21 @@ A Hemeroteca Digital da Biblioteca Nacional confirma cobertura de periódicos de
 **EVIDÊNCIA AUSENTE:** BDI primário/reprodução verificável do pregão de 10/10/1986.
 
 A próxima frente é a **FASE 08T — pesquisa de catálogo/identificador e solicitação institucional**, buscando identificadores do acervo, número de página/seção do BDI, catálogos bibliográficos e documentação Bovespa de 1985–1987.
+
+
+## 25. FASE 08T — Pesquisa de catálogo e identificador do BDI
+
+Documento: docs/ingestao/FASE08T_COTAHIST_1986_CATALOGO_IDENTIFICADOR_BDI_V1.0.md
+
+A FASE 08T transformou a busca institucional em investigação catalográfica. O acervo oficial do MUB3 permite pesquisa por termos, tipo de registro e intervalo de datas; o Centro de Referência informa mais de 100 mil itens e representa historicamente a Bovespa. Nesta execução, porém, não foi identificado um registro catalográfico específico do BDI de 10/10/1986.
+
+A Hemeroteca Digital da Biblioteca Nacional confirma estrutura de acervo por publicação, ano e página/edição e cobertura de 1986, mas também não forneceu nesta execução o exemplar ou reprodução verificável do BDI-alvo.
+
+A estratégia passa a ser identificar o **objeto documental**, e não apenas buscar o texto da data: título/série, órgão produtor, data, edição, página, ID do acervo, suporte, coleção e restrições de acesso.
+
+**IMPLEMENTADO:** estratégia catalográfica e solicitação institucional preparadas.  
+**EXECUTADO:** pesquisa MUB3 e Hemeroteca Digital.  
+**VALIDADO:** existência dos acervos e de mecanismos de consulta.  
+**NÃO RESOLVIDO:** identificador específico e exemplar primário do BDI de 10/10/1986.
+
+**Próxima frente:** FASE 08U — solicitação institucional formal e busca bibliográfica cruzada.
