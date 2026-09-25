@@ -21,7 +21,7 @@ Comunicado oficial BM&FBOVESPA nº 031/2016-DO informa que os arquivos então ut
 
 O mesmo comunicado registra que a publicação desses arquivos seria descontinuada após a implantação da segunda fase do Projeto de Integração da Pós-Negociação. Também informa que os novos arquivos seriam disponibilizados pela Pesquisa por Pregão, FTP e outros canais institucionais.
 
-Fonte oficial: Comunicado BM&FBOVESPA nº 031/2016-DO. citeturn1search11
+Fonte oficial: Comunicado BM&FBOVESPA nº 031/2016-DO. citeturn1search20
 
 ## 3. Resultado da arqueologia de nomenclatura
 
@@ -117,8 +117,7 @@ Não utilizar padrões de filename modernos como se fossem válidos para 1986 se
 
 ## 11. Fonte principal desta nota
 
-- BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn1search11
-
+- BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn1search20
 
 ## 12. Rodada adicional — reconstrução do padrão moderno de distribuição
 
@@ -166,7 +165,6 @@ Consequentemente, o próximo alvo não é gerar novas URLs por tentativa, mas lo
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
 
-
 ## 14. Rodada 25/09/2026 — fechamento da arqueologia pública e formalização do alvo institucional
 
 ### 14.1 Resultado da busca por canal legado
@@ -181,7 +179,7 @@ Nova rodada de busca foi direcionada especificamente para:
 - nome de arquivo e diretório;
 - documentação de migração e legado.
 
-O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona canais como Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986.
+O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona canais como Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986. citeturn1search20
 
 ### 14.2 Conclusão desta rodada
 
@@ -204,3 +202,60 @@ Foi criado no repositório:
 O documento fixa o alvo arquivístico, os campos COTAHIST da colisão, os documentos prioritários e o critério mínimo de evidência para encerramento da FASE 09C.
 
 **Estado:** BDI 10/10/1986 NÃO RECUPERADO; causa histórica NÃO RESOLVIDA; RAW preservado.
+
+## 15. Rodada 25/09/2026 — teste de recuperação do endereço histórico citado na documentação de migração
+
+### 15.1 Nova pista documental
+
+O Comunicado BM&FBOVESPA nº 031/2016-DO informa que os arquivos de produção seriam disponibilizados pela Pesquisa por Pregão e por **FTP, “no endereço indicado anteriormente”**, além de DIN/MTA. O próprio comunicado, porém, não expõe no trecho recuperado qual era esse endereço anterior. citeturn1search20
+
+### 15.2 Resultado do teste
+
+Foi realizada nova busca orientada pela frase literal **“endereço indicado anteriormente”**, combinada com:
+
+- BDI;
+- FTP;
+- Cotações do Histórico Regular;
+- Segmento BOVESPA;
+- Projeto de Integração da Pós-Negociação;
+- DIN/MTA.
+
+A busca não recuperou, em fonte pública indexada, o documento anterior que contenha de forma inequívoca o endereço FTP legado do BDI Segmento BOVESPA.
+
+### 15.3 Valor probatório
+
+Este resultado é importante porque delimita uma possível rota arquivística:
+
+**Comunicado 031/2016-DO → documento anterior citado → endereço FTP legado → documentação/catálogo do BDI.**
+
+Entretanto, o elo intermediário ainda não foi recuperado. Portanto:
+
+- **FTP legado:** CONFIRMADO como canal histórico;
+- **endereço FTP legado:** NÃO IDENTIFICADO;
+- **BDI 1986 nesse endereço:** NÃO PROVADO;
+- **causa da colisão K4:** NÃO RESOLVIDA.
+
+### 15.4 Próxima frente técnica
+
+A pesquisa deixa de procurar apenas pelo nome do arquivo e passa a procurar o **documento anterior ao Comunicado 031/2016-DO** que estabeleceu o endereço FTP mencionado.
+
+Prioridades:
+
+1. comunicados BM&FBOVESPA imediatamente anteriores a 01/07/2016;
+2. documentos do Projeto de Integração da Pós-Negociação que descrevam Market Data/FTP;
+3. manuais de acesso a arquivos históricos;
+4. documentos que contenham simultaneamente “BDI — Segmento BOVESPA” e “FTP”;
+5. qualquer índice/catalogação de arquivos históricos herdado pela B3.
+
+A regra permanece: nenhum endereço será tratado como rota válida para 1986 sem evidência documental.
+
+## 16. Estado atualizado
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM, quanto à delimitação da pista documental  
+**FTP HISTÓRICO:** CONFIRMADO COMO CANAL  
+**ENDEREÇO FTP HISTÓRICO:** NÃO IDENTIFICADO  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO
