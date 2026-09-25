@@ -165,3 +165,42 @@ Consequentemente, o próximo alvo não é gerar novas URLs por tentativa, mas lo
 **BDI 10/10/1986:** NÃO RECUPERADO  
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
+
+
+## 14. Rodada 25/09/2026 — fechamento da arqueologia pública e formalização do alvo institucional
+
+### 14.1 Resultado da busca por canal legado
+
+Nova rodada de busca foi direcionada especificamente para:
+
+- “Cotações do Histórico Regular” + FTP;
+- “BDI — Segmento BOVESPA” + FTP;
+- DIN/MTA;
+- Market Data;
+- Pesquisa por Pregão;
+- nome de arquivo e diretório;
+- documentação de migração e legado.
+
+O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona canais como Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986.
+
+### 14.2 Conclusão desta rodada
+
+A arqueologia pública atingiu, por enquanto, o seguinte limite:
+
+1. **Identidade da série:** CONFIRMADA — Cotações do Histórico Regular (BDI — Segmento BOVESPA).
+2. **Existência de canais institucionais históricos:** CONFIRMADA — Pesquisa por Pregão/FTP/DIN/MTA em documentação posterior.
+3. **Padrão moderno bdi_00_YYYYMMDD.pdf:** CONFIRMADO apenas para períodos posteriores.
+4. **Filename/ID/URL específico de 10/10/1986:** NÃO IDENTIFICADO.
+5. **BDI primário de 10/10/1986:** NÃO RECUPERADO.
+
+A tentativa direta de uma URL moderna com a data 19861010 não produziu recuperação verificável e não é tratada como prova de inexistência.
+
+### 14.3 Próximo passo formal
+
+Foi criado no repositório:
+
+`docs/ingestao/SOLICITACAO_INSTITUCIONAL_BDI_BOVESPA_19861010_V1.0.md`
+
+O documento fixa o alvo arquivístico, os campos COTAHIST da colisão, os documentos prioritários e o critério mínimo de evidência para encerramento da FASE 09C.
+
+**Estado:** BDI 10/10/1986 NÃO RECUPERADO; causa histórica NÃO RESOLVIDA; RAW preservado.
