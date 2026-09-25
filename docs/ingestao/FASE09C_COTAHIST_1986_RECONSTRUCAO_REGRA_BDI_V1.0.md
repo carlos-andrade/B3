@@ -503,3 +503,54 @@ A hipótese de que alguma dimensão do BDIN possa explicar a coluna histórica T
 **BDI 10/10/1986 RECUPERADO:** NÃO  
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
+
+
+## 20. Rodada 25/09/2026 — busca dirigida das tabelas associadas NE001, PA020 e PA003
+
+Foi executada a frente documental prioritária definida após a identificação da semântica posterior do BDIN. A busca procurou especificamente as tabelas associadas citadas pelo layout oficial:
+
+- **NE001** — tabela associada a CODBDI;
+- **PA020** — tabela associada a INDCAR;
+- **PA003** — tabela associada a TPMERC.
+
+Foram testadas variantes de nomenclatura, códigos com e sem espaço, expressões “Tabela Associada” e combinações com BOVESPA/BM&FBovespa e documentos PDF.
+
+### 20.1 Resultado
+
+As três tabelas **não foram recuperadas em fonte pública indexada nesta rodada**.
+
+Também não existe, no conteúdo atualmente pesquisável do repositório, um documento que já contenha essas tabelas.
+
+O resultado deve ser registrado como **NÃO RECUPERADO**, não como inexistência.
+
+### 20.2 Consequência para a hipótese do Tipo
+
+A ausência das tabelas mantém sem solução o possível elo entre a arquitetura eletrônica posterior e a coluna **Tipo** observada no Jornal do Brasil de 05/06/1986.
+
+Portanto, continua proibido afirmar que:
+
+- Tipo = CODBDI;
+- Tipo = INDCAR;
+- Tipo = TPMERC;
+- Tipo = PRAZOT;
+- C05 = Tipo;
+- C05 = chave de agregação;
+- qualquer uma dessas dimensões explica as duas linhas Vigor de 10/10/1986.
+
+### 20.3 Estado das hipóteses
+
+| Hipótese | Estado | Evidência atual |
+|---|---|---|
+| H1 — Tipo | PLAUSÍVEL / NÃO PROVADA | Tipo × Prazo é documentado em 1986; mapeamento do Tipo para a estrutura eletrônica não recuperado |
+| H2 — taxa/preço | NÃO PROVADA | sem evidência contemporânea suficiente |
+| H3 — participante/comitente/posição | NÃO PROVADA | sem evidência contemporânea suficiente |
+| H4 — regra histórica de agregação/publicação | PLAUSÍVEL / NÃO PROVADA | continua compatível com dimensão editorial/operacional perdida |
+| H5 — erro de processamento/publicação | NÃO PROVADA | sem errata/correção recuperada |
+
+### 20.4 Próxima frente
+
+A pesquisa passa a priorizar documentação anterior a 1999, dicionários de dados, layouts antigos, manuais de arquivos eletrônicos, tabelas de domínio e documentos de Mercado a Termo que possam conter as versões históricas de NE001, PA020 e PA003.
+
+A recuperação do **BDI de 10/10/1986** continua sendo a evidência decisiva.
+
+**Regra mantida:** RAW COTAHIST intocado; nenhuma das linhas 140808/140809 será fundida ou semanticamente reclassificada sem prova.
