@@ -1,0 +1,29 @@
+name: COTAHIST FASE 08C - Padroes de Negociacao Ausencias 1986 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/reconstruir_padroes_ausencia_cotahist_1986_v1.py"
+      - ".github/workflows/cotahist-fase08c-padroes-ausencia-1986-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json"
+
+permissions:
+  contents: write
+
+jobs:
+  analisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Executar FASE 08C
+        run: python scripts/ingestao/reconstruir_padroes_ausencia_cotahist_1986_v1.py
+      - name: Publicar evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_PADROES_AUSENCIA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data(cotahist): publicar evidencia fase 08c 1986"
+          git push
