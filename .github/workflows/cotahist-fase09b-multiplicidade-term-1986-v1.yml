@@ -18,14 +18,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Recuperar COTAHIST A1986 e verificar integridade
+      - name: Usar COTAHIST A1986 do repositório e verificar integridade
         run: |
           set -euo pipefail
+          ZIP="dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+          EXPECTED="350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018"
+          test -f "$ZIP"
+          echo "$EXPECTED  $ZIP" | sha256sum -c -
           mkdir -p /tmp/cotahist1986
-          curl -fL --retry 3 --retry-delay 2 "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1986.ZIP" -o /tmp/cotahist1986/COTAHIST_A1986.ZIP
-          echo "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018  /tmp/cotahist1986/COTAHIST_A1986.ZIP" | sha256sum -c -
-          unzip -q /tmp/cotahist1986/COTAHIST_A1986.ZIP -d /tmp/cotahist1986
-          RAW=$(find /tmp/cotahist1986 -maxdepth 1 -type f ! -name "COTAHIST_A1986.ZIP" | head -n 1)
+          unzip -q "$ZIP" -d /tmp/cotahist1986
+          RAW=$(find /tmp/cotahist1986 -maxdepth 1 -type f | head -n 1)
           test -n "$RAW"
           printf 'RAW=%s\n' "$RAW" >> "$GITHUB_ENV"
       - name: Executar FASE 09B
