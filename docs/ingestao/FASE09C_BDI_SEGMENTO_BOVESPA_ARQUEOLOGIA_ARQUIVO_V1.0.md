@@ -58,14 +58,12 @@ A ausência do arquivo na indexação/interface consultada deve ser registrada c
 
 ## 6. Hipótese operacional de recuperação
 
-A partir desta rodada, a busca passa a ser executada em quatro camadas:
+A busca é executada em quatro camadas:
 
 1. **Nomenclatura:** “Cotações do Histórico Regular”;
 2. **Identidade institucional:** “BDI — Segmento BOVESPA”;
 3. **Canal:** Pesquisa por Pregão / arquivos históricos / legado;
 4. **Documento-alvo:** pregão de 10/10/1986, Mercado a Termo, Vigor/VGO2, PP C05, prazo 060.
-
-A ordem é deliberada: primeiro localizar a identidade documental, depois tentar o exemplar.
 
 ## 7. Critério de evidência
 
@@ -96,7 +94,7 @@ Nenhuma semântica nova será atribuída às duas linhas até que a evidência h
 
 **IMPLEMENTADO:** SIM  
 **EXECUTADO:** SIM  
-**VALIDADO:** SIM, quanto à identificação da nomenclatura institucional e aos limites da busca  
+**VALIDADO:** SIM  
 **BDI 10/10/1986 RECUPERADO:** NÃO  
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
@@ -119,131 +117,132 @@ Não utilizar padrões de filename modernos como se fossem válidos para 1986 se
 
 - BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn3search0
 
-## 12. Rodada adicional — reconstrução do padrão moderno de distribuição
+## 12. Rodada adicional — padrão moderno de distribuição
 
-### 12.1 Padrão de URL documentado
-
-Pesquisa histórica independente encontrou referências consistentes ao padrão de publicação:
+A pesquisa recuperou referências consistentes ao padrão posterior:
 
 `/download/BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf`
 
-Exemplos documentados para períodos posteriores apontam para a mesma família de diretório/nomenclatura. Esses exemplos permanecem classificados como pista de continuidade documental, não como prova de aplicação em 1986.
+Esse padrão é confirmado para períodos posteriores e permanece classificado como pista de continuidade documental, não como prova de aplicação em 1986.
 
-### 12.2 Valor probatório
+O teste hipotético de `bdi_00_19861010.pdf` não produziu recuperação verificável. Isso não demonstra inexistência.
 
-O padrão `bdi_00_YYYYMMDD.pdf` pertence a infraestrutura posterior e não será retroprojetado para 1986.
+## 13. Rodada 25/09/2026 — fechamento parcial da arqueologia pública
 
-### 12.3 Teste direto do endereço hipotético
-
-Foi testado o endereço hipotético correspondente ao padrão moderno:
-
-`https://bvmf.bmfbovespa.com.br/download/BOLETINSDIARIOS/bdi_00_19861010.pdf`
-
-e a variante histórica no domínio `www.bmfbovespa.com.br`.
-
-O teste não produziu recuperação verificável. **Isso não demonstra inexistência do arquivo.**
-
-### 12.4 Conclusão operacional
-
-1. **Série institucional:** Cotações do Histórico Regular — BDI — Segmento BOVESPA — CONFIRMADA.
-2. **Padrão moderno de publicação BDI:** `BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf` — CONFIRMADO para períodos posteriores.
-3. **Aplicação do padrão a 1986:** NÃO PROVADA.
-
-## 13. Estado após esta rodada
-
-**IMPLEMENTADO:** SIM  
-**EXECUTADO:** SIM  
-**VALIDADO:** SIM, quanto às pistas documentais recuperadas  
-**PADRÃO DE ARQUIVO DE 1986:** NÃO IDENTIFICADO  
-**BDI 10/10/1986:** NÃO RECUPERADO  
-**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
-**RAW ALTERADO:** NÃO
-
-## 14. Rodada 25/09/2026 — fechamento da arqueologia pública e formalização do alvo institucional
-
-A busca foi direcionada para “Cotações do Histórico Regular” + FTP, BDI — Segmento BOVESPA + FTP, DIN/MTA, Market Data, Pesquisa por Pregão, nome de arquivo, diretório e documentação de migração.
-
-O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986. citeturn3search0
+A busca por “Cotações do Histórico Regular” + FTP, BDI — Segmento BOVESPA + FTP, DIN/MTA, Market Data, Pesquisa por Pregão, nome de arquivo, diretório e documentação de migração confirmou a série e o canal, mas não o identificador de 1986. citeturn3search0
 
 Foi criado:
 
 `docs/ingestao/SOLICITACAO_INSTITUCIONAL_BDI_BOVESPA_19861010_V1.0.md`
 
-**Estado:** BDI 10/10/1986 NÃO RECUPERADO; causa histórica NÃO RESOLVIDA; RAW preservado.
-
-## 15. Rodada 25/09/2026 — rastreamento do endereço FTP legado
-
-### 15.1 Pista documental
+## 14. Rodada 25/09/2026 — rastreamento do endereço FTP legado
 
 O Comunicado nº 031/2016-DO informa que os arquivos seriam disponibilizados por **FTP, “no endereço indicado anteriormente”**, além de Pesquisa por Pregão e DIN/MTA. O trecho recuperado não apresenta o endereço anterior. citeturn3search0
 
-### 15.2 Teste
+A busca pela frase literal “endereço indicado anteriormente”, combinada com BDI, FTP, Cotações do Histórico Regular, Segmento BOVESPA, IPN e DIN/MTA, não recuperou o documento anterior com o endereço de forma inequívoca.
 
-Foi realizada busca específica pela frase literal “endereço indicado anteriormente”, combinada com BDI, FTP, Cotações do Histórico Regular, Segmento BOVESPA, Projeto de Integração da Pós-Negociação e DIN/MTA.
-
-Não foi localizado, em fonte pública indexada, o documento anterior que identifique inequivocamente o endereço FTP legado.
-
-### 15.3 Valor probatório
-
-Cadeia documental candidata:
+Cadeia candidata:
 
 **Comunicado 031/2016-DO → documento anterior citado → endereço FTP legado → documentação/catálogo BDI → exemplar 10/10/1986.**
 
-Estado:
+## 15. Rodada 25/09/2026 — identificação de um servidor FTP institucional posterior
 
-- FTP histórico: **CONFIRMADO**;
-- endereço FTP histórico: **NÃO IDENTIFICADO**;
-- BDI 1986 nesse endereço: **NÃO PROVADO**;
-- causa da colisão K4: **NÃO RESOLVIDA**.
+### 15.1 Nova evidência oficial
 
-## 16. Rodada 25/09/2026 — busca dos comunicados antecedentes ao 031/2016-DO
+Foi recuperado o **Comunicado Externo B3 nº 011/2018-VPC**, de 29/06/2018, sobre a desativação dos portais e do servidor FTP e a descontinuidade do BD/BDI em PDF.
 
-### 16.1 Objetivo
+O documento identifica nominalmente o servidor:
 
-A busca seguinte foi deslocada do arquivo para a **documentação antecedente** ao Comunicado nº 031/2016-DO, procurando localizar o documento que teria definido o “endereço indicado anteriormente”.
+**ftp.bmf.com.br**
 
-Foram pesquisadas, em fonte oficial B3, referências a:
+e informa que, em 30/11/2018, esse servidor FTP seria desativado, juntamente com a publicação do Boletim Diário (BD) e do Boletim Diário de Informações (BDI) em formato PDF. A partir de 01/12/2018, os dados passariam ao UP2DATA. citeturn1search40
 
-- comunicados BM&FBOVESPA imediatamente anteriores;
-- “Cotações do Histórico Regular”;
-- “BDI — Segmento BOVESPA”;
-- FTP;
-- Pesquisa por Pregão;
-- Boletim Diário de Informações;
-- IPN / Projeto de Integração da Pós-Negociação.
+### 15.2 Valor probatório
 
-### 16.2 Resultado
+Esta é uma melhoria importante na identificação do **canal FTP institucional**, porque agora temos um hostname explicitamente documentado pela própria B3:
 
-A pesquisa oficial recuperou novamente o Comunicado nº 031/2016-DO e documentação institucional sobre o IPN, mas **não recuperou um documento antecedente com o endereço FTP legado exposto de forma verificável**. O material institucional sobre o IPN confirma o contexto de migração, mas não fornece o endereço necessário para fechar a cadeia arquivística. citeturn3search0turn0search0
+**FTP institucional documentado em 2018 = ftp.bmf.com.br**
 
-### 16.3 Consequência metodológica
+Entretanto, o documento é de **2018**, enquanto a referência do Comunicado 031/2016-DO ao “endereço indicado anteriormente” é de 2016.
 
-A busca por “comunicado anterior” não produziu ainda o elo decisivo. Portanto, não é permitido transformar nenhum domínio, diretório ou filename posterior em rota histórica de 1986.
+Portanto, não é permitido afirmar ainda que:
 
-A cadeia continua parcialmente aberta:
+**ftp.bmf.com.br = endereço citado em 2016**
 
-**Série BDI CONFIRMADA → canal FTP CONFIRMADO → endereço FTP NÃO IDENTIFICADO → catálogo/arquivo 1986 NÃO RECUPERADO.**
+sem recuperar um documento que faça essa ligação.
 
-### 16.4 Próxima frente
+Também não é permitido retroprojetar esse hostname para 1986.
 
-A próxima busca deverá priorizar:
+### 15.3 Relação com o BDI
 
-1. documentos técnicos de Market Data anteriores e posteriores a 2016;
-2. manuais de distribuição/recepção de arquivos;
-3. documentação de FTP, DIN/MTA e Secure Client;
-4. índices e catálogos legados da BM&FBOVESPA;
-5. referências ao BDI em documentação de participantes;
-6. eventual documentação arquivística do Centro de Memória B3.
+O Comunicado 011/2018-VPC associa explicitamente o servidor FTP à infraestrutura que seria desativada e menciona a descontinuidade do **BD/BDI em formato PDF**. Isso reforça que o FTP fazia parte da cadeia real de distribuição do BDI em período posterior. citeturn1search40
 
-## 17. Estado atualizado
+A cadeia documental passa a ser:
+
+**BDI Segmento BOVESPA CONFIRMADO → FTP CONFIRMADO → hostname ftp.bmf.com.br CONFIRMADO em 2018 → ligação específica com o endereço de 2016 NÃO PROVADA → ligação com 1986 NÃO PROVADA.**
+
+## 16. Rodada 25/09/2026 — conteúdo normativo do BDI
+
+Foi localizada documentação oficial BM&FBOVESPA sobre o **Boletim Diário de Informações (BDI)**.
+
+O Regulamento de Operações do Segmento BOVESPA, revisão 03 de 16/12/2008, estabelece que a Bolsa editava diariamente o BDI, em papel e/ou forma eletrônica, destinado às Sociedades Corretoras e acessível a outros públicos. Também estabelece que o BDI publicava negociações e posições em aberto nos mercados de liquidação futura, além de opções exercidas. citeturn1search36turn1search37
+
+O Manual de Procedimentos Operacionais, revisão 03 de 07/04/2010, repete que o BDI era editado diariamente e continha operações dos mercados administrados, incluindo negociações e posições em aberto nos mercados de liquidação futura. citeturn1search39
+
+### 16.1 Valor probatório
+
+Esses documentos **não resolvem a colisão Vigor de 1986**, porque são posteriores.
+
+Mas estabelecem documentalmente uma propriedade importante do BDI:
+
+**BDI = publicação institucional diária das operações/posições de mercados administrados, incluindo mercados de liquidação futura.**
+
+Isso fortalece a necessidade de recuperar a publicação histórica do dia específico antes de interpretar por que duas linhas COTAHIST foram produzidas para o mesmo K4.
+
+## 17. O que foi efetivamente aprendido nesta rodada
+
+| Evidência | Período | Estado | O que prova |
+|---|---:|---|---|
+| Cotações do Histórico Regular (BDI — Segmento BOVESPA) | 2016 | CONFIRMADA | Identidade da série |
+| FTP como canal | 2016 | CONFIRMADO | Existência do canal |
+| `ftp.bmf.com.br` | 2018 | CONFIRMADO | Hostname FTP institucional posterior |
+| BD/BDI PDF via infraestrutura FTP | 2018 | CONFIRMADO | Relação do FTP com BD/BDI posterior |
+| BDI diário | 2008/2010 | CONFIRMADO | Natureza institucional diária do BDI |
+| Filename `bdi_00_YYYYMMDD.pdf` | posterior | CONFIRMADO | Padrão posterior |
+| Aplicação de `ftp.bmf.com.br` a 1986 | 1986 | NÃO PROVADA | Nenhuma |
+| Filename de 1986 | 1986 | NÃO IDENTIFICADO | Nenhum |
+| BDI de 10/10/1986 | 1986 | NÃO RECUPERADO | Nenhum |
+| Regra causadora da colisão K4 | 1986 | NÃO RESOLVIDA | Nenhuma |
+
+## 18. Estado atualizado
 
 **IMPLEMENTADO:** SIM  
 **EXECUTADO:** SIM  
 **VALIDADO:** SIM  
 **SÉRIE BDI:** CONFIRMADA  
 **FTP HISTÓRICO:** CONFIRMADO  
-**ENDEREÇO FTP:** NÃO IDENTIFICADO  
+**HOSTNAME FTP POSTERIOR (2018):** `ftp.bmf.com.br` — CONFIRMADO  
+**ENDEREÇO FTP ESPECÍFICO DE 2016:** NÃO IDENTIFICADO  
 **CATÁLOGO/ID DE 1986:** NÃO IDENTIFICADO  
 **BDI 10/10/1986:** NÃO RECUPERADO  
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
+
+## 19. Próxima frente técnica
+
+A pesquisa agora deve tentar fechar especificamente o elo:
+
+**ftp.bmf.com.br (2018) ↔ endereço FTP citado em 2016**
+
+Prioridades:
+
+1. documentos B3/BM&FBOVESPA de 2015–2017 que mencionem `ftp.bmf.com.br`;
+2. manuais técnicos de distribuição de arquivos;
+3. documentação de participantes/vendors sobre o FTP;
+4. referências a diretórios BDI dentro do FTP;
+5. documentos de migração do IPN;
+6. somente depois, tentar reconstruir a possível cadeia histórica anterior.
+
+Mesmo que esse elo seja fechado, **isso ainda não provará a existência do mesmo canal em 1986**. A resolução da causa K4 continuará condicionada à recuperação do BDI histórico ou de documentação primária/normativa contemporânea capaz de explicar a publicação.
+
+**Regra mantida: RAW COTAHIST não será alterado.**
