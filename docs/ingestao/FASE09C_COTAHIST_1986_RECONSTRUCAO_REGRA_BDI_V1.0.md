@@ -349,3 +349,78 @@ O próximo teste documental será direcionado à recuperação do **BDI Segmento
 - referência institucional que permita solicitar especificamente o exemplar de 10/10/1986.
 
 **Estado:** causa histórica ainda NÃO RESOLVIDA.
+
+
+## 17. Rodada 25/09/2026 — arqueologia da nomenclatura do arquivo BDI
+
+### 17.1 Identificação institucional mais precisa
+
+Nova pesquisa documental recuperou o Comunicado oficial BM&FBOVESPA nº 031/2016-DO. O documento identifica expressamente o arquivo histórico como **Cotações do Histórico Regular (BDI — Segmento BOVESPA)** e informa que sua publicação seria descontinuada após a segunda fase do Projeto de Integração da Pós-Negociação. O comunicado também descreve canais de disponibilização de arquivos, incluindo Pesquisa por Pregão e FTP. citeturn1search11
+
+Esse resultado é importante porque fornece uma nomenclatura institucional mais precisa para a busca arquivística. A investigação deixa de procurar apenas “BDI” e passa a procurar especificamente a expressão **Cotações do Histórico Regular / BDI — Segmento BOVESPA**.
+
+### 17.2 Separação entre série BDI e filename moderno
+
+A pesquisa encontrou também PDFs modernos com nomenclatura bdi_00_YYYYMMDD.pdf, identificados como Boletim Diário de Informações — Segmento Bovespa. Esses arquivos comprovam a existência de uma série documental BDI moderna, mas não demonstram que esse padrão de filename ou formato existisse em 1986.
+
+Portanto, o padrão moderno não será retroprojetado para o período histórico.
+
+### 17.3 Resultado da arqueologia
+
+Até esta rodada, não foi recuperado:
+
+- o filename histórico específico de 10/10/1986;
+- um identificador persistente do exemplar;
+- uma URL pública atual que abra diretamente o documento de 10/10/1986;
+- uma especificação pública que prove o padrão de arquivo aplicável a 1986.
+
+Foi criada a nota técnica:
+
+docs/ingestao/FASE09C_BDI_SEGMENTO_BOVESPA_ARQUEOLOGIA_ARQUIVO_V1.0.md
+
+Ela registra a nomenclatura institucional, o critério de evidência e a distinção entre pistas modernas e evidência histórica.
+
+### 17.4 Consequência metodológica
+
+A camada documental agora fica explicitamente separada em:
+
+1. **COTAHIST** — fonte estatística histórica já preservada no repositório;
+2. **Cotações do Histórico Regular / BDI — Segmento BOVESPA** — publicação histórica específica que precisa ser recuperada;
+3. **Pesquisa por Pregão B3** — canal institucional posterior para consulta de arquivos/boletins.
+
+A existência da segunda camada está documentalmente confirmada, mas o exemplar decisivo de 10/10/1986 continua não recuperado.
+
+### 17.5 Estado da hipótese
+
+A nova evidência fortalece a estratégia de recuperação institucional, mas **não resolve a causa da colisão K4**.
+
+Permanece:
+
+- **H1 — Tipo:** PLAUSÍVEL / NÃO PROVADA
+- **H2 — taxa/preço:** NÃO PROVADA
+- **H3 — participante/comitente/posição:** NÃO PROVADA
+- **H4 — regra histórica de agregação/publicação:** PLAUSÍVEL / NÃO PROVADA
+- **H5 — erro de processamento/publicação:** NÃO PROVADA
+
+### 17.6 Estado operacional
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM, quanto à nomenclatura institucional e aos limites da busca  
+**BDI 10/10/1986 RECUPERADO:** NÃO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO  
+**REGISTROS 140808/140809 FUNDIDOS:** NÃO
+
+### 17.7 Próxima frente
+
+A busca continua exclusivamente na arqueologia do arquivo legado:
+
+- documentação de migração para a Pesquisa por Pregão;
+- manuais de Market Data que descrevam o arquivo legado;
+- catálogos e identificadores históricos;
+- referências a FTP/servidores legados;
+- Centro de Memória B3;
+- qualquer documento que permita solicitar o exemplar de 10/10/1986 por identificação inequívoca.
+
+Não será aceito um filename moderno como substituto da fonte primária de 1986.
