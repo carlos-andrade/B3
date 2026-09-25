@@ -246,3 +246,69 @@ Prioridades:
 Mesmo que esse elo seja fechado, **isso ainda não provará a existência do mesmo canal em 1986**. A resolução da causa K4 continuará condicionada à recuperação do BDI histórico ou de documentação primária/normativa contemporânea capaz de explicar a publicação.
 
 **Regra mantida: RAW COTAHIST não será alterado.**
+
+
+## 20. Rodada 25/09/2026 — fechamento do elo do hostname em 2016
+
+Foi localizada uma evidência oficial adicional no próprio **Comunicado 031/2016-DO**: o documento informa que, durante os testes do novo BVBG.086/BVBG.087, o download dos arquivos poderia ser realizado por:
+
+`ftp://ftp.bmf.com.br/IPN/TRS`
+
+A referência é inequívoca quanto ao **hostname `ftp.bmf.com.br` já estar em uso institucional em 2016**. citeturn1search0
+
+### 20.1 O que esta evidência resolve
+
+A cadeia temporal agora fica mais precisa:
+
+**2016:** `ftp.bmf.com.br` CONFIRMADO em documento oficial, com o caminho específico `/IPN/TRS` para os arquivos de teste BVBG.086/BVBG.087. citeturn1search0
+
+**2018:** `ftp.bmf.com.br` CONFIRMADO novamente como servidor FTP institucional, cuja desativação foi anunciada juntamente com a descontinuidade do BD/BDI em PDF. citeturn1search1
+
+Portanto, já não é correto registrar o hostname como apenas “posterior a 2016”. Ele está documentalmente comprovado em **2016 e 2018**.
+
+### 20.2 Limitação importante
+
+O caminho `/IPN/TRS` identificado em 2016 pertence aos arquivos de teste BVBG.086/BVBG.087 e **não foi demonstrado como diretório do BDI Segmento BOVESPA**.
+
+Logo:
+
+- **hostname FTP em 2016:** CONFIRMADO;
+- **caminho `/IPN/TRS` em 2016:** CONFIRMADO para BVBG.086/BVBG.087;
+- **BDI histórico dentro de `/IPN/TRS`:** NÃO PROVADO;
+- **diretório específico do BDI em 2016:** NÃO IDENTIFICADO;
+- **arquivo BDI de 10/10/1986:** NÃO RECUPERADO.
+
+Essa distinção é necessária para evitar transformar uma evidência de infraestrutura em uma identificação indevida do arquivo histórico.
+
+### 20.3 Novo estado da cadeia
+
+A cadeia passa a ser:
+
+**BDI Segmento BOVESPA CONFIRMADO → FTP institucional CONFIRMADO em 2016 → hostname `ftp.bmf.com.br` CONFIRMADO em 2016 → caminho `/IPN/TRS` CONFIRMADO para BVBG de teste → BDI dentro desse caminho NÃO PROVADO → BDI 10/10/1986 NÃO RECUPERADO.**
+
+A evidência de 2018 permanece independente e confirma que o mesmo hostname estava associado à infraestrutura FTP desativada naquele período, juntamente com a descontinuidade do BD/BDI em PDF. citeturn1search1
+
+## 21. Estado atualizado após a rodada
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM  
+**HOSTNAME `ftp.bmf.com.br` EM 2016:** CONFIRMADO  
+**CAMINHO `/IPN/TRS` EM 2016:** CONFIRMADO — BVBG.086/BVBG.087  
+**DIRETÓRIO BDI 2016:** NÃO IDENTIFICADO  
+**CATÁLOGO/ID DE 1986:** NÃO IDENTIFICADO  
+**BDI 10/10/1986:** NÃO RECUPERADO  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**RAW ALTERADO:** NÃO
+
+## 22. Próxima frente
+
+A próxima busca deve abandonar a hipótese de que o caminho `/IPN/TRS` seja automaticamente o diretório do BDI e procurar, de forma específica:
+
+1. documentos oficiais de 2015–2017 com `ftp.bmf.com.br` + **BDI**;
+2. documentos que mencionem **BOLETINSDIARIOS**, **BDI**, **Cotações do Histórico Regular** e diretórios FTP;
+3. catálogos técnicos de arquivos eletrônicos anteriores ao BVBG;
+4. manuais de Market Data/BDI que indiquem diretórios ou nomes de arquivos;
+5. documentação de migração que relacione os antigos arquivos eletrônicos BDI aos novos BVBG.
+
+**Regra mantida:** nenhum filename moderno será retroprojetado para 1986 e o RAW COTAHIST permanecerá intocado.
