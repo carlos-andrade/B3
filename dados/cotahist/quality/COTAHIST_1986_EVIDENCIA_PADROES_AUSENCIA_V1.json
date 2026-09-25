@@ -1,0 +1,643 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE08C_PADROES_NEGOCIACAO_AUSENCIAS_1986",
+  "generated_at_utc": "2026-09-25T12:54:43Z",
+  "source": {
+    "raw_file": "COTAHIST_A1986.ZIP",
+    "audit_artifact": "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
+    "window_calendar_days": 3
+  },
+  "candidate_count": 7,
+  "candidates": [
+    {
+      "missing_date": "1986-02-10",
+      "weekday": "Monday",
+      "previous_observed": {
+        "date": "1986-02-07",
+        "observed": true,
+        "rows": 628,
+        "codbdi": 9,
+        "codneg": 397,
+        "tpmerc": 6
+      },
+      "next_observed": {
+        "date": "1986-02-13",
+        "observed": true,
+        "rows": 571,
+        "codbdi": 9,
+        "codneg": 371,
+        "tpmerc": 6
+      },
+      "calendar_distance_prev_days": 3,
+      "calendar_distance_next_days": 3,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-02-07",
+          "observed": true,
+          "rows": 628,
+          "codbdi": 9,
+          "codneg": 397,
+          "tpmerc": 6
+        },
+        {
+          "date": "1986-02-08",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-09",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-10",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-11",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-12",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-13",
+          "observed": true,
+          "rows": 571,
+          "codbdi": 9,
+          "codneg": 371,
+          "tpmerc": 6
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 2,
+        "row_count_min_observed": 571,
+        "row_count_max_observed": 628,
+        "row_count_prev_next_mean": 599.5,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-02-11",
+      "weekday": "Tuesday",
+      "previous_observed": {
+        "date": "1986-02-07",
+        "observed": true,
+        "rows": 628,
+        "codbdi": 9,
+        "codneg": 397,
+        "tpmerc": 6
+      },
+      "next_observed": {
+        "date": "1986-02-13",
+        "observed": true,
+        "rows": 571,
+        "codbdi": 9,
+        "codneg": 371,
+        "tpmerc": 6
+      },
+      "calendar_distance_prev_days": 4,
+      "calendar_distance_next_days": 2,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-02-08",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-09",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-10",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-11",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-12",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-13",
+          "observed": true,
+          "rows": 571,
+          "codbdi": 9,
+          "codneg": 371,
+          "tpmerc": 6
+        },
+        {
+          "date": "1986-02-14",
+          "observed": true,
+          "rows": 626,
+          "codbdi": 9,
+          "codneg": 399,
+          "tpmerc": 6
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 2,
+        "row_count_min_observed": 571,
+        "row_count_max_observed": 626,
+        "row_count_prev_next_mean": 599.5,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-02-12",
+      "weekday": "Wednesday",
+      "previous_observed": {
+        "date": "1986-02-07",
+        "observed": true,
+        "rows": 628,
+        "codbdi": 9,
+        "codneg": 397,
+        "tpmerc": 6
+      },
+      "next_observed": {
+        "date": "1986-02-13",
+        "observed": true,
+        "rows": 571,
+        "codbdi": 9,
+        "codneg": 371,
+        "tpmerc": 6
+      },
+      "calendar_distance_prev_days": 5,
+      "calendar_distance_next_days": 1,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-02-09",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-10",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-11",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-12",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-02-13",
+          "observed": true,
+          "rows": 571,
+          "codbdi": 9,
+          "codneg": 371,
+          "tpmerc": 6
+        },
+        {
+          "date": "1986-02-14",
+          "observed": true,
+          "rows": 626,
+          "codbdi": 9,
+          "codneg": 399,
+          "tpmerc": 6
+        },
+        {
+          "date": "1986-02-15",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 2,
+        "row_count_min_observed": 571,
+        "row_count_max_observed": 626,
+        "row_count_prev_next_mean": 599.5,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-02-28",
+      "weekday": "Friday",
+      "previous_observed": {
+        "date": "1986-02-27",
+        "observed": true,
+        "rows": 676,
+        "codbdi": 7,
+        "codneg": 436,
+        "tpmerc": 4
+      },
+      "next_observed": {
+        "date": "1986-03-04",
+        "observed": true,
+        "rows": 510,
+        "codbdi": 8,
+        "codneg": 328,
+        "tpmerc": 5
+      },
+      "calendar_distance_prev_days": 1,
+      "calendar_distance_next_days": 4,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-02-25",
+          "observed": true,
+          "rows": 684,
+          "codbdi": 7,
+          "codneg": 409,
+          "tpmerc": 4
+        },
+        {
+          "date": "1986-02-26",
+          "observed": true,
+          "rows": 679,
+          "codbdi": 7,
+          "codneg": 427,
+          "tpmerc": 4
+        },
+        {
+          "date": "1986-02-27",
+          "observed": true,
+          "rows": 676,
+          "codbdi": 7,
+          "codneg": 436,
+          "tpmerc": 4
+        },
+        {
+          "date": "1986-02-28",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-01",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-02",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-03",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 3,
+        "row_count_min_observed": 676,
+        "row_count_max_observed": 684,
+        "row_count_prev_next_mean": 593.0,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-03-03",
+      "weekday": "Monday",
+      "previous_observed": {
+        "date": "1986-02-27",
+        "observed": true,
+        "rows": 676,
+        "codbdi": 7,
+        "codneg": 436,
+        "tpmerc": 4
+      },
+      "next_observed": {
+        "date": "1986-03-04",
+        "observed": true,
+        "rows": 510,
+        "codbdi": 8,
+        "codneg": 328,
+        "tpmerc": 5
+      },
+      "calendar_distance_prev_days": 4,
+      "calendar_distance_next_days": 1,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-02-28",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-01",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-02",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-03",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-04",
+          "observed": true,
+          "rows": 510,
+          "codbdi": 8,
+          "codneg": 328,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-05",
+          "observed": true,
+          "rows": 624,
+          "codbdi": 8,
+          "codneg": 367,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-06",
+          "observed": true,
+          "rows": 551,
+          "codbdi": 8,
+          "codneg": 366,
+          "tpmerc": 5
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 3,
+        "row_count_min_observed": 510,
+        "row_count_max_observed": 624,
+        "row_count_prev_next_mean": 593.0,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-03-27",
+      "weekday": "Thursday",
+      "previous_observed": {
+        "date": "1986-03-26",
+        "observed": true,
+        "rows": 699,
+        "codbdi": 8,
+        "codneg": 437,
+        "tpmerc": 5
+      },
+      "next_observed": {
+        "date": "1986-03-31",
+        "observed": true,
+        "rows": 877,
+        "codbdi": 7,
+        "codneg": 514,
+        "tpmerc": 5
+      },
+      "calendar_distance_prev_days": 1,
+      "calendar_distance_next_days": 4,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-03-24",
+          "observed": true,
+          "rows": 724,
+          "codbdi": 9,
+          "codneg": 445,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-25",
+          "observed": true,
+          "rows": 745,
+          "codbdi": 7,
+          "codneg": 466,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-26",
+          "observed": true,
+          "rows": 699,
+          "codbdi": 8,
+          "codneg": 437,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-27",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-28",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-29",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-30",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 3,
+        "row_count_min_observed": 699,
+        "row_count_max_observed": 745,
+        "row_count_prev_next_mean": 788.0,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    },
+    {
+      "missing_date": "1986-03-28",
+      "weekday": "Friday",
+      "previous_observed": {
+        "date": "1986-03-26",
+        "observed": true,
+        "rows": 699,
+        "codbdi": 8,
+        "codneg": 437,
+        "tpmerc": 5
+      },
+      "next_observed": {
+        "date": "1986-03-31",
+        "observed": true,
+        "rows": 877,
+        "codbdi": 7,
+        "codneg": 514,
+        "tpmerc": 5
+      },
+      "calendar_distance_prev_days": 2,
+      "calendar_distance_next_days": 3,
+      "window_minus_plus_3_calendar_days": [
+        {
+          "date": "1986-03-25",
+          "observed": true,
+          "rows": 745,
+          "codbdi": 7,
+          "codneg": 466,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-26",
+          "observed": true,
+          "rows": 699,
+          "codbdi": 8,
+          "codneg": 437,
+          "tpmerc": 5
+        },
+        {
+          "date": "1986-03-27",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-28",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-29",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-30",
+          "observed": false,
+          "rows": 0,
+          "codbdi": 0,
+          "codneg": 0,
+          "tpmerc": 0
+        },
+        {
+          "date": "1986-03-31",
+          "observed": true,
+          "rows": 877,
+          "codbdi": 7,
+          "codneg": 514,
+          "tpmerc": 5
+        }
+      ],
+      "local_pattern": {
+        "observed_days_in_window": 3,
+        "row_count_min_observed": 699,
+        "row_count_max_observed": 877,
+        "row_count_prev_next_mean": 788.0,
+        "broad_activity_before_after": true
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_AUSENCIA",
+      "session_status": "NAO_DETERMINADO_SEM_FONTE_HISTORICA_OFICIAL"
+    }
+  ],
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "no_historical_calendar_inference": true,
+    "no_missing_session_assertion": true,
+    "evidence_is_observational": true
+  }
+}
