@@ -21,7 +21,7 @@ Comunicado oficial BM&FBOVESPA nº 031/2016-DO informa que os arquivos então ut
 
 O mesmo comunicado registra que a publicação desses arquivos seria descontinuada após a implantação da segunda fase do Projeto de Integração da Pós-Negociação. Também informa que os novos arquivos seriam disponibilizados pela Pesquisa por Pregão, FTP e outros canais institucionais.
 
-Fonte oficial: Comunicado BM&FBOVESPA nº 031/2016-DO. citeturn1search20
+Fonte oficial: Comunicado BM&FBOVESPA nº 031/2016-DO. citeturn3search0
 
 ## 3. Resultado da arqueologia de nomenclatura
 
@@ -117,7 +117,7 @@ Não utilizar padrões de filename modernos como se fossem válidos para 1986 se
 
 ## 11. Fonte principal desta nota
 
-- BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn1search20
+- BM&FBOVESPA, Comunicado nº 031/2016-DO — documento oficial que identifica expressamente “Cotações do Histórico Regular (BDI — Segmento BOVESPA)” e informa sua descontinuação no contexto da integração da pós-negociação. citeturn3search0
 
 ## 12. Rodada adicional — reconstrução do padrão moderno de distribuição
 
@@ -127,13 +127,11 @@ Pesquisa histórica independente encontrou referências consistentes ao padrão 
 
 `/download/BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf`
 
-Exemplos documentados para 2011, 2013, 2014, 2015 e 2020 apontam para a mesma família de diretório/nomenclatura. Fontes públicas reproduzem, por exemplo, o arquivo de 16/10/2015 como `bdi_00_20151016.pdf` e referências acadêmicas citam o mesmo padrão para outros pregões. citeturn2search12turn2search13
+Exemplos documentados para períodos posteriores apontam para a mesma família de diretório/nomenclatura. Esses exemplos permanecem classificados como pista de continuidade documental, não como prova de aplicação em 1986.
 
 ### 12.2 Valor probatório
 
-Esse resultado é útil como **pista de continuidade documental**, mas não prova que o padrão `bdi_00_YYYYMMDD.pdf` tenha existido em 1986.
-
-A nomenclatura documentada pertence a uma infraestrutura posterior. Portanto, ela não será utilizada para fabricar ou validar um BDI de 10/10/1986.
+O padrão `bdi_00_YYYYMMDD.pdf` pertence a infraestrutura posterior e não será retroprojetado para 1986.
 
 ### 12.3 Teste direto do endereço hipotético
 
@@ -143,17 +141,13 @@ Foi testado o endereço hipotético correspondente ao padrão moderno:
 
 e a variante histórica no domínio `www.bmfbovespa.com.br`.
 
-O mecanismo de acesso utilizado não conseguiu recuperar esses endereços. **Isso não demonstra inexistência do arquivo.** Apenas registra que o teste não produziu uma recuperação verificável.
+O teste não produziu recuperação verificável. **Isso não demonstra inexistência do arquivo.**
 
-### 12.4 Nova conclusão operacional
-
-Temos agora três níveis de identificação:
+### 12.4 Conclusão operacional
 
 1. **Série institucional:** Cotações do Histórico Regular — BDI — Segmento BOVESPA — CONFIRMADA.
 2. **Padrão moderno de publicação BDI:** `BOLETINSDIARIOS/bdi_00_YYYYMMDD.pdf` — CONFIRMADO para períodos posteriores.
 3. **Aplicação do padrão a 1986:** NÃO PROVADA.
-
-Consequentemente, o próximo alvo não é gerar novas URLs por tentativa, mas localizar documentação que ligue explicitamente a série histórica de 1986 a um identificador, catálogo, microfilme, digitalização ou arquivo institucional.
 
 ## 13. Estado após esta rodada
 
@@ -167,95 +161,89 @@ Consequentemente, o próximo alvo não é gerar novas URLs por tentativa, mas lo
 
 ## 14. Rodada 25/09/2026 — fechamento da arqueologia pública e formalização do alvo institucional
 
-### 14.1 Resultado da busca por canal legado
+A busca foi direcionada para “Cotações do Histórico Regular” + FTP, BDI — Segmento BOVESPA + FTP, DIN/MTA, Market Data, Pesquisa por Pregão, nome de arquivo, diretório e documentação de migração.
 
-Nova rodada de busca foi direcionada especificamente para:
+O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986. citeturn3search0
 
-- “Cotações do Histórico Regular” + FTP;
-- “BDI — Segmento BOVESPA” + FTP;
-- DIN/MTA;
-- Market Data;
-- Pesquisa por Pregão;
-- nome de arquivo e diretório;
-- documentação de migração e legado.
-
-O resultado relevante permaneceu restrito ao **Comunicado BM&FBOVESPA nº 031/2016-DO**, que confirma a identidade institucional do arquivo e menciona canais como Pesquisa por Pregão, FTP e DIN/MTA. Não foi localizado um documento público que forneça o caminho histórico, filename ou identificador persistente aplicável ao exemplar de 10/10/1986. citeturn1search20
-
-### 14.2 Conclusão desta rodada
-
-A arqueologia pública atingiu, por enquanto, o seguinte limite:
-
-1. **Identidade da série:** CONFIRMADA — Cotações do Histórico Regular (BDI — Segmento BOVESPA).
-2. **Existência de canais institucionais históricos:** CONFIRMADA — Pesquisa por Pregão/FTP/DIN/MTA em documentação posterior.
-3. **Padrão moderno bdi_00_YYYYMMDD.pdf:** CONFIRMADO apenas para períodos posteriores.
-4. **Filename/ID/URL específico de 10/10/1986:** NÃO IDENTIFICADO.
-5. **BDI primário de 10/10/1986:** NÃO RECUPERADO.
-
-A tentativa direta de uma URL moderna com a data 19861010 não produziu recuperação verificável e não é tratada como prova de inexistência.
-
-### 14.3 Próximo passo formal
-
-Foi criado no repositório:
+Foi criado:
 
 `docs/ingestao/SOLICITACAO_INSTITUCIONAL_BDI_BOVESPA_19861010_V1.0.md`
 
-O documento fixa o alvo arquivístico, os campos COTAHIST da colisão, os documentos prioritários e o critério mínimo de evidência para encerramento da FASE 09C.
-
 **Estado:** BDI 10/10/1986 NÃO RECUPERADO; causa histórica NÃO RESOLVIDA; RAW preservado.
 
-## 15. Rodada 25/09/2026 — teste de recuperação do endereço histórico citado na documentação de migração
+## 15. Rodada 25/09/2026 — rastreamento do endereço FTP legado
 
-### 15.1 Nova pista documental
+### 15.1 Pista documental
 
-O Comunicado BM&FBOVESPA nº 031/2016-DO informa que os arquivos de produção seriam disponibilizados pela Pesquisa por Pregão e por **FTP, “no endereço indicado anteriormente”**, além de DIN/MTA. O próprio comunicado, porém, não expõe no trecho recuperado qual era esse endereço anterior. citeturn1search20
+O Comunicado nº 031/2016-DO informa que os arquivos seriam disponibilizados por **FTP, “no endereço indicado anteriormente”**, além de Pesquisa por Pregão e DIN/MTA. O trecho recuperado não apresenta o endereço anterior. citeturn3search0
 
-### 15.2 Resultado do teste
+### 15.2 Teste
 
-Foi realizada nova busca orientada pela frase literal **“endereço indicado anteriormente”**, combinada com:
+Foi realizada busca específica pela frase literal “endereço indicado anteriormente”, combinada com BDI, FTP, Cotações do Histórico Regular, Segmento BOVESPA, Projeto de Integração da Pós-Negociação e DIN/MTA.
 
-- BDI;
-- FTP;
-- Cotações do Histórico Regular;
-- Segmento BOVESPA;
-- Projeto de Integração da Pós-Negociação;
-- DIN/MTA.
-
-A busca não recuperou, em fonte pública indexada, o documento anterior que contenha de forma inequívoca o endereço FTP legado do BDI Segmento BOVESPA.
+Não foi localizado, em fonte pública indexada, o documento anterior que identifique inequivocamente o endereço FTP legado.
 
 ### 15.3 Valor probatório
 
-Este resultado é importante porque delimita uma possível rota arquivística:
+Cadeia documental candidata:
 
-**Comunicado 031/2016-DO → documento anterior citado → endereço FTP legado → documentação/catálogo do BDI.**
+**Comunicado 031/2016-DO → documento anterior citado → endereço FTP legado → documentação/catálogo BDI → exemplar 10/10/1986.**
 
-Entretanto, o elo intermediário ainda não foi recuperado. Portanto:
+Estado:
 
-- **FTP legado:** CONFIRMADO como canal histórico;
-- **endereço FTP legado:** NÃO IDENTIFICADO;
-- **BDI 1986 nesse endereço:** NÃO PROVADO;
-- **causa da colisão K4:** NÃO RESOLVIDA.
+- FTP histórico: **CONFIRMADO**;
+- endereço FTP histórico: **NÃO IDENTIFICADO**;
+- BDI 1986 nesse endereço: **NÃO PROVADO**;
+- causa da colisão K4: **NÃO RESOLVIDA**.
 
-### 15.4 Próxima frente técnica
+## 16. Rodada 25/09/2026 — busca dos comunicados antecedentes ao 031/2016-DO
 
-A pesquisa deixa de procurar apenas pelo nome do arquivo e passa a procurar o **documento anterior ao Comunicado 031/2016-DO** que estabeleceu o endereço FTP mencionado.
+### 16.1 Objetivo
 
-Prioridades:
+A busca seguinte foi deslocada do arquivo para a **documentação antecedente** ao Comunicado nº 031/2016-DO, procurando localizar o documento que teria definido o “endereço indicado anteriormente”.
 
-1. comunicados BM&FBOVESPA imediatamente anteriores a 01/07/2016;
-2. documentos do Projeto de Integração da Pós-Negociação que descrevam Market Data/FTP;
-3. manuais de acesso a arquivos históricos;
-4. documentos que contenham simultaneamente “BDI — Segmento BOVESPA” e “FTP”;
-5. qualquer índice/catalogação de arquivos históricos herdado pela B3.
+Foram pesquisadas, em fonte oficial B3, referências a:
 
-A regra permanece: nenhum endereço será tratado como rota válida para 1986 sem evidência documental.
+- comunicados BM&FBOVESPA imediatamente anteriores;
+- “Cotações do Histórico Regular”;
+- “BDI — Segmento BOVESPA”;
+- FTP;
+- Pesquisa por Pregão;
+- Boletim Diário de Informações;
+- IPN / Projeto de Integração da Pós-Negociação.
 
-## 16. Estado atualizado
+### 16.2 Resultado
+
+A pesquisa oficial recuperou novamente o Comunicado nº 031/2016-DO e documentação institucional sobre o IPN, mas **não recuperou um documento antecedente com o endereço FTP legado exposto de forma verificável**. O material institucional sobre o IPN confirma o contexto de migração, mas não fornece o endereço necessário para fechar a cadeia arquivística. citeturn3search0turn0search0
+
+### 16.3 Consequência metodológica
+
+A busca por “comunicado anterior” não produziu ainda o elo decisivo. Portanto, não é permitido transformar nenhum domínio, diretório ou filename posterior em rota histórica de 1986.
+
+A cadeia continua parcialmente aberta:
+
+**Série BDI CONFIRMADA → canal FTP CONFIRMADO → endereço FTP NÃO IDENTIFICADO → catálogo/arquivo 1986 NÃO RECUPERADO.**
+
+### 16.4 Próxima frente
+
+A próxima busca deverá priorizar:
+
+1. documentos técnicos de Market Data anteriores e posteriores a 2016;
+2. manuais de distribuição/recepção de arquivos;
+3. documentação de FTP, DIN/MTA e Secure Client;
+4. índices e catálogos legados da BM&FBOVESPA;
+5. referências ao BDI em documentação de participantes;
+6. eventual documentação arquivística do Centro de Memória B3.
+
+## 17. Estado atualizado
 
 **IMPLEMENTADO:** SIM  
 **EXECUTADO:** SIM  
-**VALIDADO:** SIM, quanto à delimitação da pista documental  
-**FTP HISTÓRICO:** CONFIRMADO COMO CANAL  
-**ENDEREÇO FTP HISTÓRICO:** NÃO IDENTIFICADO  
+**VALIDADO:** SIM  
+**SÉRIE BDI:** CONFIRMADA  
+**FTP HISTÓRICO:** CONFIRMADO  
+**ENDEREÇO FTP:** NÃO IDENTIFICADO  
+**CATÁLOGO/ID DE 1986:** NÃO IDENTIFICADO  
 **BDI 10/10/1986:** NÃO RECUPERADO  
 **CAUSA HISTÓRICA RESOLVIDA:** NÃO  
 **RAW ALTERADO:** NÃO
