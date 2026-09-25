@@ -89,3 +89,51 @@ https://www.b3.com.br/data/files/EA/21/EB/0F/8E92451090C77145790D8AA8/CE%20031.2
 
 Enviar esta especificação ao canal institucional adequado da B3/Centro de Memória, mantendo o Issue #4 como rastreador público da investigação.
 
+
+
+## 9. Roteiro de solicitação institucional
+
+### 9.1 Identificação mínima a fornecer
+
+A solicitação deve utilizar conjuntamente:
+
+- **10/10/1986** — data do pregão;
+- **BDI — Segmento BOVESPA / Cotações do Histórico Regular** — série documental;
+- **Mercado a Termo** — seção;
+- **Vigor / VGO 2** — ativo;
+- **PP *C05** — especificação;
+- **prazo 060**;
+- **CODBDI 62 / TPMERC 030 / CODISI VGORACPP / DIMES 104** — chaves auxiliares;
+- **linhas RAW 140808 e 140809** — referência interna do COTAHIST.
+
+### 9.2 Pergunta arquivística decisiva
+
+Se o item for localizado, solicitar especificamente que seja informado se existem no documento:
+
+1. duas linhas Vigor no mesmo prazo;
+2. campo **Tipo** com valores diferentes;
+3. campo ou coluna adicional ausente no COTAHIST;
+4. notas/legendas explicando C05;
+5. indicação de agregação, média ou consolidação;
+6. correção, republicação ou observação editorial.
+
+### 9.3 Se o BDI de 10/10/1986 não estiver disponível
+
+Solicitar, nessa ordem:
+
+1. BDI de 09/10/1986;
+2. BDI de 13/10/1986;
+3. BDI de 08/10/1986 e 14/10/1986, se preservados;
+4. documentação normativa/manual vigente em outubro de 1986;
+5. índice ou catálogo que permita localizar a série histórica.
+
+O objetivo dos exemplares adjacentes é reconstruir a convenção documental, não substituir o documento-alvo.
+
+## 10. Resultado da rodada de 25/09/2026
+
+A pesquisa pública adicional confirmou novamente o comunicado institucional que identifica **Cotações do Histórico Regular (BDI — Segmento BOVESPA)** e os canais históricos de distribuição, incluindo Pesquisa por Pregão, FTP e DIN/MTA. citeturn0search21
+
+Não foi encontrado um identificador público inequívoco para o exemplar de 10/10/1986.
+
+**Classificação:** FONTE PRIMÁRIA A RECUPERAR.
+
