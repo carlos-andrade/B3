@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE08B_EVIDENCIA_DIAS_UTEIS_AUSENTES_1986",
+  "audit_sha256": "c5fe0a62488595ffb93e4a26752cfc63650e17f88110355becde1d7b5fbe685c",
+  "candidate_count": 12,
+  "candidates": [
+    {
+      "data": "1986-02-10",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-02-11",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-02-12",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-02-28",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-03-03",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-03-27",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-03-28",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-04-21",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-05-01",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-05-26",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-12-24",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    },
+    {
+      "data": "1986-12-25",
+      "status": "PENDENTE_FONTE_HISTORICA"
+    }
+  ],
+  "weekend_anomaly": {
+    "data": "1986-04-26",
+    "status": "ANOMALIA_DE_DATA_OBSERVADA",
+    "rows": 3
+  },
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "no_modern_calendar_backprojection": true
+  }
+}
