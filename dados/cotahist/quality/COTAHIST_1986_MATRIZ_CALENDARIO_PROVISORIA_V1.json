@@ -1,0 +1,2577 @@
+{
+  "schema_version": "1.0.0",
+  "status": "MATRIZ_CALENDARIO_CANONICO_PROVISORIA_1986",
+  "scope": {
+    "first": "1986-01-02",
+    "last": "1986-12-30"
+  },
+  "source_audit": "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
+  "governance": {
+    "raw_unchanged": true,
+    "no_historical_session_inference": true,
+    "weekday_missing_requires_primary_or_institutional_source": true,
+    "weekend_observation_is_preserved_as_anomaly": true
+  },
+  "summary": {
+    "OBSERVADA_COTAHIST": 248,
+    "NAO_SESSAO_FIM_DE_SEMANA": 103,
+    "PENDENTE_FONTE_HISTORICA": 12
+  },
+  "rows": [
+    {
+      "data": "1986-01-02",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-03",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-04",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-05",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-06",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-07",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-08",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-09",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-10",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-11",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-12",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-13",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-14",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-15",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-16",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-17",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-18",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-19",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-20",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-21",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-22",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-23",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-24",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-25",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-26",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-01-27",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-28",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-29",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-30",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-01-31",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-01",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-02",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-03",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-04",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-05",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-06",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-07",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-08",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-09",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-10",
+      "dia_semana": "Monday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-02-11",
+      "dia_semana": "Tuesday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-02-12",
+      "dia_semana": "Wednesday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-02-13",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-14",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-15",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-16",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-17",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-18",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-19",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-20",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-21",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-22",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-23",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-02-24",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-25",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-26",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-27",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-02-28",
+      "dia_semana": "Friday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-03-01",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-02",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-03",
+      "dia_semana": "Monday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-03-04",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-05",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-06",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-07",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-08",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-09",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-10",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-11",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-12",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-13",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-14",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-15",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-16",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-17",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-18",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-19",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-20",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-21",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-22",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-23",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-24",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-25",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-26",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-03-27",
+      "dia_semana": "Thursday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-03-28",
+      "dia_semana": "Friday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-03-29",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-30",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-03-31",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-01",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-02",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-03",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-04",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-05",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-06",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-07",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-08",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-09",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-10",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-11",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-12",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-13",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-14",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-15",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-16",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-17",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-18",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-19",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-20",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-21",
+      "dia_semana": "Monday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-04-22",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-23",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-24",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-25",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-26",
+      "dia_semana": "Saturday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-27",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-04-28",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-29",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-04-30",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-01",
+      "dia_semana": "Thursday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-05-02",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-03",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-04",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-05",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-06",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-07",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-08",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-09",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-10",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-11",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-12",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-13",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-14",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-15",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-16",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-17",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-18",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-19",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-20",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-21",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-22",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-23",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-24",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-25",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-05-26",
+      "dia_semana": "Monday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-05-27",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-28",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-29",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-30",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-05-31",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-01",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-02",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-03",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-04",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-05",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-06",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-07",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-08",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-09",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-10",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-11",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-12",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-13",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-14",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-15",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-16",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-17",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-18",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-19",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-20",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-21",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-22",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-23",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-24",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-25",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-26",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-27",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-06-28",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-29",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-06-30",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-01",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-02",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-03",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-04",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-05",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-06",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-07",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-08",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-09",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-10",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-11",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-12",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-13",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-14",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-15",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-16",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-17",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-18",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-19",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-20",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-21",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-22",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-23",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-24",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-25",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-26",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-27",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-07-28",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-29",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-30",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-07-31",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-01",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-02",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-03",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-04",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-05",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-06",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-07",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-08",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-09",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-10",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-11",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-12",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-13",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-14",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-15",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-16",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-17",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-18",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-19",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-20",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-21",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-22",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-23",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-24",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-25",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-26",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-27",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-28",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-29",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-08-30",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-08-31",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-01",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-02",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-03",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-04",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-05",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-06",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-07",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-08",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-09",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-10",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-11",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-12",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-13",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-14",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-15",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-16",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-17",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-18",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-19",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-20",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-21",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-22",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-23",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-24",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-25",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-26",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-27",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-28",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-09-29",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-09-30",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-01",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-02",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-03",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-04",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-05",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-06",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-07",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-08",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-09",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-10",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-11",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-12",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-13",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-14",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-15",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-16",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-17",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-18",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-19",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-20",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-21",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-22",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-23",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-24",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-25",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-26",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-10-27",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-28",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-29",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-30",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-10-31",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-01",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-02",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-03",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-04",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-05",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-06",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-07",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-08",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-09",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-10",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-11",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-12",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-13",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-14",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-15",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-16",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-17",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-18",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-19",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-20",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-21",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-22",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-23",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-24",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-25",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-26",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-27",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-28",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-11-29",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-11-30",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-01",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-02",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-03",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-04",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-05",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-06",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-07",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-08",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-09",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-10",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-11",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-12",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-13",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-14",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-15",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-16",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-17",
+      "dia_semana": "Wednesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-18",
+      "dia_semana": "Thursday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-19",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-20",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-21",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-22",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-23",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-24",
+      "dia_semana": "Wednesday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-12-25",
+      "dia_semana": "Thursday",
+      "status": "PENDENTE_FONTE_HISTORICA",
+      "observado_cotahist": false,
+      "justificativa": "Dia útil sem observação; requer calendário histórico aplicável à Bovespa em 1986."
+    },
+    {
+      "data": "1986-12-26",
+      "dia_semana": "Friday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-27",
+      "dia_semana": "Saturday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-28",
+      "dia_semana": "Sunday",
+      "status": "NAO_SESSAO_FIM_DE_SEMANA",
+      "observado_cotahist": false,
+      "justificativa": "Sábado/domingo; não é inferido como pregão."
+    },
+    {
+      "data": "1986-12-29",
+      "dia_semana": "Monday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    },
+    {
+      "data": "1986-12-30",
+      "dia_semana": "Tuesday",
+      "status": "OBSERVADA_COTAHIST",
+      "observado_cotahist": true,
+      "justificativa": "Há registro tipo 01 no RAW."
+    }
+  ],
+  "unresolved_weekdays": [
+    "1986-02-10",
+    "1986-02-11",
+    "1986-02-12",
+    "1986-02-28",
+    "1986-03-03",
+    "1986-03-27",
+    "1986-03-28",
+    "1986-04-21",
+    "1986-05-01",
+    "1986-05-26",
+    "1986-12-24",
+    "1986-12-25"
+  ]
+}
