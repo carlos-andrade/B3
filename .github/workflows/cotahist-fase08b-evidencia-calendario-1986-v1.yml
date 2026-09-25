@@ -1,0 +1,32 @@
+name: COTAHIST FASE 08B - Evidência Calendário 1986 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/validar_evidencia_calendario_1986_v1.py"
+      - ".github/workflows/cotahist-fase08b-evidencia-calendario-1986-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validar candidatos
+        run: |
+          python scripts/ingestao/validar_evidencia_calendario_1986_v1.py \
+            --audit dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json \
+            --output dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.json
+      - name: Persistir evidência
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.json
+          git diff --cached --quiet || git commit -m "data(cotahist): validar dias uteis ausentes 1986"
+          git push
