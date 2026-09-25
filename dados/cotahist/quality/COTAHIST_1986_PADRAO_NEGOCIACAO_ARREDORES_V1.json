@@ -1,0 +1,1145 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE08C_PADRAO_NEGOCIACAO_ARREDORES_1986",
+  "raw_file": "COTAHIST_A1986.ZIP",
+  "raw_sha256_stream": "c5fe0a62488595ffb93e4a26752cfc63650e17f88110355becde1d7b5fbe685c",
+  "evidence_input": "dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.json",
+  "candidate_count": 12,
+  "candidates": [
+    {
+      "data": "1986-02-10",
+      "weekday": "Monday",
+      "observed": false,
+      "previous_observed_date": "1986-02-07",
+      "next_observed_date": "1986-02-13",
+      "calendar_gap_between_observed_neighbors": 6,
+      "days_from_previous_to_candidate": 3,
+      "days_from_candidate_to_next": 3,
+      "previous_observed": {
+        "data": "1986-02-07",
+        "observed": true,
+        "records": 628,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 397
+      },
+      "next_observed": {
+        "data": "1986-02-13",
+        "observed": true,
+        "records": 571,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 371
+      },
+      "window_before": [
+        {
+          "data": "1986-02-05",
+          "observed": true,
+          "records": 663,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 398
+        },
+        {
+          "data": "1986-02-06",
+          "observed": true,
+          "records": 634,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 396
+        },
+        {
+          "data": "1986-02-07",
+          "observed": true,
+          "records": 628,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 397
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-02-13",
+          "observed": true,
+          "records": 571,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 371
+        },
+        {
+          "data": "1986-02-14",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 399
+        },
+        {
+          "data": "1986-02-17",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 408
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 628,
+        "records_next": 571,
+        "neighbor_record_ratio_next_over_previous": 0.909236,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 9,
+        "distinct_tpmerc_previous": 6,
+        "distinct_tpmerc_next": 6,
+        "distinct_codneg_previous": 397,
+        "distinct_codneg_next": 371
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-02-11",
+      "weekday": "Tuesday",
+      "observed": false,
+      "previous_observed_date": "1986-02-07",
+      "next_observed_date": "1986-02-13",
+      "calendar_gap_between_observed_neighbors": 6,
+      "days_from_previous_to_candidate": 4,
+      "days_from_candidate_to_next": 2,
+      "previous_observed": {
+        "data": "1986-02-07",
+        "observed": true,
+        "records": 628,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 397
+      },
+      "next_observed": {
+        "data": "1986-02-13",
+        "observed": true,
+        "records": 571,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 371
+      },
+      "window_before": [
+        {
+          "data": "1986-02-05",
+          "observed": true,
+          "records": 663,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 398
+        },
+        {
+          "data": "1986-02-06",
+          "observed": true,
+          "records": 634,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 396
+        },
+        {
+          "data": "1986-02-07",
+          "observed": true,
+          "records": 628,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 397
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-02-13",
+          "observed": true,
+          "records": 571,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 371
+        },
+        {
+          "data": "1986-02-14",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 399
+        },
+        {
+          "data": "1986-02-17",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 408
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 628,
+        "records_next": 571,
+        "neighbor_record_ratio_next_over_previous": 0.909236,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 9,
+        "distinct_tpmerc_previous": 6,
+        "distinct_tpmerc_next": 6,
+        "distinct_codneg_previous": 397,
+        "distinct_codneg_next": 371
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-02-12",
+      "weekday": "Wednesday",
+      "observed": false,
+      "previous_observed_date": "1986-02-07",
+      "next_observed_date": "1986-02-13",
+      "calendar_gap_between_observed_neighbors": 6,
+      "days_from_previous_to_candidate": 5,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-02-07",
+        "observed": true,
+        "records": 628,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 397
+      },
+      "next_observed": {
+        "data": "1986-02-13",
+        "observed": true,
+        "records": 571,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 371
+      },
+      "window_before": [
+        {
+          "data": "1986-02-05",
+          "observed": true,
+          "records": 663,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 398
+        },
+        {
+          "data": "1986-02-06",
+          "observed": true,
+          "records": 634,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 396
+        },
+        {
+          "data": "1986-02-07",
+          "observed": true,
+          "records": 628,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 397
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-02-13",
+          "observed": true,
+          "records": 571,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 371
+        },
+        {
+          "data": "1986-02-14",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 399
+        },
+        {
+          "data": "1986-02-17",
+          "observed": true,
+          "records": 626,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 408
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 628,
+        "records_next": 571,
+        "neighbor_record_ratio_next_over_previous": 0.909236,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 9,
+        "distinct_tpmerc_previous": 6,
+        "distinct_tpmerc_next": 6,
+        "distinct_codneg_previous": 397,
+        "distinct_codneg_next": 371
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-02-28",
+      "weekday": "Friday",
+      "observed": false,
+      "previous_observed_date": "1986-02-27",
+      "next_observed_date": "1986-03-04",
+      "calendar_gap_between_observed_neighbors": 5,
+      "days_from_previous_to_candidate": 1,
+      "days_from_candidate_to_next": 4,
+      "previous_observed": {
+        "data": "1986-02-27",
+        "observed": true,
+        "records": 676,
+        "distinct_codbdi": 7,
+        "distinct_tpmerc": 4,
+        "distinct_codneg": 436
+      },
+      "next_observed": {
+        "data": "1986-03-04",
+        "observed": true,
+        "records": 510,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 328
+      },
+      "window_before": [
+        {
+          "data": "1986-02-25",
+          "observed": true,
+          "records": 684,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 409
+        },
+        {
+          "data": "1986-02-26",
+          "observed": true,
+          "records": 679,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 427
+        },
+        {
+          "data": "1986-02-27",
+          "observed": true,
+          "records": 676,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 436
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-03-04",
+          "observed": true,
+          "records": 510,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 328
+        },
+        {
+          "data": "1986-03-05",
+          "observed": true,
+          "records": 624,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 367
+        },
+        {
+          "data": "1986-03-06",
+          "observed": true,
+          "records": 551,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 366
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 676,
+        "records_next": 510,
+        "neighbor_record_ratio_next_over_previous": 0.754438,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 7,
+        "distinct_codbdi_next": 8,
+        "distinct_tpmerc_previous": 4,
+        "distinct_tpmerc_next": 5,
+        "distinct_codneg_previous": 436,
+        "distinct_codneg_next": 328
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-03-03",
+      "weekday": "Monday",
+      "observed": false,
+      "previous_observed_date": "1986-02-27",
+      "next_observed_date": "1986-03-04",
+      "calendar_gap_between_observed_neighbors": 5,
+      "days_from_previous_to_candidate": 4,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-02-27",
+        "observed": true,
+        "records": 676,
+        "distinct_codbdi": 7,
+        "distinct_tpmerc": 4,
+        "distinct_codneg": 436
+      },
+      "next_observed": {
+        "data": "1986-03-04",
+        "observed": true,
+        "records": 510,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 328
+      },
+      "window_before": [
+        {
+          "data": "1986-02-25",
+          "observed": true,
+          "records": 684,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 409
+        },
+        {
+          "data": "1986-02-26",
+          "observed": true,
+          "records": 679,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 427
+        },
+        {
+          "data": "1986-02-27",
+          "observed": true,
+          "records": 676,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 436
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-03-04",
+          "observed": true,
+          "records": 510,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 328
+        },
+        {
+          "data": "1986-03-05",
+          "observed": true,
+          "records": 624,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 367
+        },
+        {
+          "data": "1986-03-06",
+          "observed": true,
+          "records": 551,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 366
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 676,
+        "records_next": 510,
+        "neighbor_record_ratio_next_over_previous": 0.754438,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 7,
+        "distinct_codbdi_next": 8,
+        "distinct_tpmerc_previous": 4,
+        "distinct_tpmerc_next": 5,
+        "distinct_codneg_previous": 436,
+        "distinct_codneg_next": 328
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-03-27",
+      "weekday": "Thursday",
+      "observed": false,
+      "previous_observed_date": "1986-03-26",
+      "next_observed_date": "1986-03-31",
+      "calendar_gap_between_observed_neighbors": 5,
+      "days_from_previous_to_candidate": 1,
+      "days_from_candidate_to_next": 4,
+      "previous_observed": {
+        "data": "1986-03-26",
+        "observed": true,
+        "records": 699,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 437
+      },
+      "next_observed": {
+        "data": "1986-03-31",
+        "observed": true,
+        "records": 877,
+        "distinct_codbdi": 7,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 514
+      },
+      "window_before": [
+        {
+          "data": "1986-03-24",
+          "observed": true,
+          "records": 724,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 445
+        },
+        {
+          "data": "1986-03-25",
+          "observed": true,
+          "records": 745,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 466
+        },
+        {
+          "data": "1986-03-26",
+          "observed": true,
+          "records": 699,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 437
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-03-31",
+          "observed": true,
+          "records": 877,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 514
+        },
+        {
+          "data": "1986-04-01",
+          "observed": true,
+          "records": 723,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 435
+        },
+        {
+          "data": "1986-04-02",
+          "observed": true,
+          "records": 723,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 442
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 699,
+        "records_next": 877,
+        "neighbor_record_ratio_next_over_previous": 1.254649,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 8,
+        "distinct_codbdi_next": 7,
+        "distinct_tpmerc_previous": 5,
+        "distinct_tpmerc_next": 5,
+        "distinct_codneg_previous": 437,
+        "distinct_codneg_next": 514
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-03-28",
+      "weekday": "Friday",
+      "observed": false,
+      "previous_observed_date": "1986-03-26",
+      "next_observed_date": "1986-03-31",
+      "calendar_gap_between_observed_neighbors": 5,
+      "days_from_previous_to_candidate": 2,
+      "days_from_candidate_to_next": 3,
+      "previous_observed": {
+        "data": "1986-03-26",
+        "observed": true,
+        "records": 699,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 437
+      },
+      "next_observed": {
+        "data": "1986-03-31",
+        "observed": true,
+        "records": 877,
+        "distinct_codbdi": 7,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 514
+      },
+      "window_before": [
+        {
+          "data": "1986-03-24",
+          "observed": true,
+          "records": 724,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 445
+        },
+        {
+          "data": "1986-03-25",
+          "observed": true,
+          "records": 745,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 466
+        },
+        {
+          "data": "1986-03-26",
+          "observed": true,
+          "records": 699,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 437
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-03-31",
+          "observed": true,
+          "records": 877,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 514
+        },
+        {
+          "data": "1986-04-01",
+          "observed": true,
+          "records": 723,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 435
+        },
+        {
+          "data": "1986-04-02",
+          "observed": true,
+          "records": 723,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 442
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 699,
+        "records_next": 877,
+        "neighbor_record_ratio_next_over_previous": 1.254649,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 8,
+        "distinct_codbdi_next": 7,
+        "distinct_tpmerc_previous": 5,
+        "distinct_tpmerc_next": 5,
+        "distinct_codneg_previous": 437,
+        "distinct_codneg_next": 514
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-04-21",
+      "weekday": "Monday",
+      "observed": false,
+      "previous_observed_date": "1986-04-18",
+      "next_observed_date": "1986-04-22",
+      "calendar_gap_between_observed_neighbors": 4,
+      "days_from_previous_to_candidate": 3,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-04-18",
+        "observed": true,
+        "records": 813,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 6,
+        "distinct_codneg": 472
+      },
+      "next_observed": {
+        "data": "1986-04-22",
+        "observed": true,
+        "records": 826,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 7,
+        "distinct_codneg": 458
+      },
+      "window_before": [
+        {
+          "data": "1986-04-16",
+          "observed": true,
+          "records": 744,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 461
+        },
+        {
+          "data": "1986-04-17",
+          "observed": true,
+          "records": 805,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 445
+        },
+        {
+          "data": "1986-04-18",
+          "observed": true,
+          "records": 813,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 472
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-04-22",
+          "observed": true,
+          "records": 826,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 458
+        },
+        {
+          "data": "1986-04-23",
+          "observed": true,
+          "records": 797,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 473
+        },
+        {
+          "data": "1986-04-24",
+          "observed": true,
+          "records": 833,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 461
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 813,
+        "records_next": 826,
+        "neighbor_record_ratio_next_over_previous": 1.01599,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 8,
+        "distinct_codbdi_next": 9,
+        "distinct_tpmerc_previous": 6,
+        "distinct_tpmerc_next": 7,
+        "distinct_codneg_previous": 472,
+        "distinct_codneg_next": 458
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-05-01",
+      "weekday": "Thursday",
+      "observed": false,
+      "previous_observed_date": "1986-04-30",
+      "next_observed_date": "1986-05-02",
+      "calendar_gap_between_observed_neighbors": 2,
+      "days_from_previous_to_candidate": 1,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-04-30",
+        "observed": true,
+        "records": 780,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 7,
+        "distinct_codneg": 461
+      },
+      "next_observed": {
+        "data": "1986-05-02",
+        "observed": true,
+        "records": 772,
+        "distinct_codbdi": 7,
+        "distinct_tpmerc": 4,
+        "distinct_codneg": 443
+      },
+      "window_before": [
+        {
+          "data": "1986-04-28",
+          "observed": true,
+          "records": 767,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 450
+        },
+        {
+          "data": "1986-04-29",
+          "observed": true,
+          "records": 747,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 6,
+          "distinct_codneg": 435
+        },
+        {
+          "data": "1986-04-30",
+          "observed": true,
+          "records": 780,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 461
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-05-02",
+          "observed": true,
+          "records": 772,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 443
+        },
+        {
+          "data": "1986-05-05",
+          "observed": true,
+          "records": 751,
+          "distinct_codbdi": 7,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 449
+        },
+        {
+          "data": "1986-05-06",
+          "observed": true,
+          "records": 782,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 440
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 780,
+        "records_next": 772,
+        "neighbor_record_ratio_next_over_previous": 0.989744,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 7,
+        "distinct_tpmerc_previous": 7,
+        "distinct_tpmerc_next": 4,
+        "distinct_codneg_previous": 461,
+        "distinct_codneg_next": 443
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-05-26",
+      "weekday": "Monday",
+      "observed": false,
+      "previous_observed_date": "1986-05-23",
+      "next_observed_date": "1986-05-27",
+      "calendar_gap_between_observed_neighbors": 4,
+      "days_from_previous_to_candidate": 3,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-05-23",
+        "observed": true,
+        "records": 813,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 7,
+        "distinct_codneg": 467
+      },
+      "next_observed": {
+        "data": "1986-05-27",
+        "observed": true,
+        "records": 736,
+        "distinct_codbdi": 10,
+        "distinct_tpmerc": 8,
+        "distinct_codneg": 429
+      },
+      "window_before": [
+        {
+          "data": "1986-05-21",
+          "observed": true,
+          "records": 799,
+          "distinct_codbdi": 10,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 448
+        },
+        {
+          "data": "1986-05-22",
+          "observed": true,
+          "records": 823,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 465
+        },
+        {
+          "data": "1986-05-23",
+          "observed": true,
+          "records": 813,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 467
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-05-27",
+          "observed": true,
+          "records": 736,
+          "distinct_codbdi": 10,
+          "distinct_tpmerc": 8,
+          "distinct_codneg": 429
+        },
+        {
+          "data": "1986-05-28",
+          "observed": true,
+          "records": 796,
+          "distinct_codbdi": 10,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 468
+        },
+        {
+          "data": "1986-05-29",
+          "observed": true,
+          "records": 747,
+          "distinct_codbdi": 10,
+          "distinct_tpmerc": 7,
+          "distinct_codneg": 473
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 813,
+        "records_next": 736,
+        "neighbor_record_ratio_next_over_previous": 0.905289,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 10,
+        "distinct_tpmerc_previous": 7,
+        "distinct_tpmerc_next": 8,
+        "distinct_codneg_previous": 467,
+        "distinct_codneg_next": 429
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-12-24",
+      "weekday": "Wednesday",
+      "observed": false,
+      "previous_observed_date": "1986-12-23",
+      "next_observed_date": "1986-12-26",
+      "calendar_gap_between_observed_neighbors": 3,
+      "days_from_previous_to_candidate": 1,
+      "days_from_candidate_to_next": 2,
+      "previous_observed": {
+        "data": "1986-12-23",
+        "observed": true,
+        "records": 651,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 412
+      },
+      "next_observed": {
+        "data": "1986-12-26",
+        "observed": true,
+        "records": 508,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 4,
+        "distinct_codneg": 331
+      },
+      "window_before": [
+        {
+          "data": "1986-12-19",
+          "observed": true,
+          "records": 652,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 391
+        },
+        {
+          "data": "1986-12-22",
+          "observed": true,
+          "records": 597,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 371
+        },
+        {
+          "data": "1986-12-23",
+          "observed": true,
+          "records": 651,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 412
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-12-26",
+          "observed": true,
+          "records": 508,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 331
+        },
+        {
+          "data": "1986-12-29",
+          "observed": true,
+          "records": 577,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 384
+        },
+        {
+          "data": "1986-12-30",
+          "observed": true,
+          "records": 586,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 399
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 651,
+        "records_next": 508,
+        "neighbor_record_ratio_next_over_previous": 0.780338,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 8,
+        "distinct_tpmerc_previous": 5,
+        "distinct_tpmerc_next": 4,
+        "distinct_codneg_previous": 412,
+        "distinct_codneg_next": 331
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    },
+    {
+      "data": "1986-12-25",
+      "weekday": "Thursday",
+      "observed": false,
+      "previous_observed_date": "1986-12-23",
+      "next_observed_date": "1986-12-26",
+      "calendar_gap_between_observed_neighbors": 3,
+      "days_from_previous_to_candidate": 2,
+      "days_from_candidate_to_next": 1,
+      "previous_observed": {
+        "data": "1986-12-23",
+        "observed": true,
+        "records": 651,
+        "distinct_codbdi": 9,
+        "distinct_tpmerc": 5,
+        "distinct_codneg": 412
+      },
+      "next_observed": {
+        "data": "1986-12-26",
+        "observed": true,
+        "records": 508,
+        "distinct_codbdi": 8,
+        "distinct_tpmerc": 4,
+        "distinct_codneg": 331
+      },
+      "window_before": [
+        {
+          "data": "1986-12-19",
+          "observed": true,
+          "records": 652,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 391
+        },
+        {
+          "data": "1986-12-22",
+          "observed": true,
+          "records": 597,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 371
+        },
+        {
+          "data": "1986-12-23",
+          "observed": true,
+          "records": 651,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 412
+        }
+      ],
+      "window_after": [
+        {
+          "data": "1986-12-26",
+          "observed": true,
+          "records": 508,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 331
+        },
+        {
+          "data": "1986-12-29",
+          "observed": true,
+          "records": 577,
+          "distinct_codbdi": 9,
+          "distinct_tpmerc": 5,
+          "distinct_codneg": 384
+        },
+        {
+          "data": "1986-12-30",
+          "observed": true,
+          "records": 586,
+          "distinct_codbdi": 8,
+          "distinct_tpmerc": 4,
+          "distinct_codneg": 399
+        }
+      ],
+      "continuity_metrics": {
+        "previous_and_next_both_observed": true,
+        "records_previous": 651,
+        "records_next": 508,
+        "neighbor_record_ratio_next_over_previous": 0.780338,
+        "broad_activity_before": true,
+        "broad_activity_after": true,
+        "distinct_codbdi_previous": 9,
+        "distinct_codbdi_next": 8,
+        "distinct_tpmerc_previous": 5,
+        "distinct_tpmerc_next": 4,
+        "distinct_codneg_previous": 412,
+        "distinct_codneg_next": 331
+      },
+      "interpretation": "EVIDENCIA_COMPATIVEL_COM_CONTINUIDADE_DE_ATIVIDADE_AO_REDOR_DA_DATA",
+      "classification_authority": "NAO_CLASSIFICA_SESSAO; requer fonte historica externa"
+    }
+  ],
+  "governance": {
+    "raw_unchanged": true,
+    "normalized_unchanged": true,
+    "no_session_inference": true,
+    "no_holiday_inference": true,
+    "internal_pattern_is_supporting_evidence_only": true
+  }
+}
