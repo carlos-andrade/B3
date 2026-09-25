@@ -17,9 +17,9 @@ def parse_date(s):
 def read_rows():
     by_date = defaultdict(lambda: {"rows": 0, "codbdi": set(), "codneg": set(), "tpmerc": set()})
     with zipfile.ZipFile(RAW) as z:
-        names = [n for n in z.namelist() if n.upper().endswith(".TXT")]
+        names = [n for n in z.namelist() if not n.endswith("/")]
         if not names:
-            raise RuntimeError("Nenhum TXT encontrado no ZIP RAW")
+            raise RuntimeError("Nenhum membro de dados encontrado no ZIP RAW")
         with z.open(names[0]) as fh:
             for raw in fh:
                 if not raw.startswith(b"01"):
