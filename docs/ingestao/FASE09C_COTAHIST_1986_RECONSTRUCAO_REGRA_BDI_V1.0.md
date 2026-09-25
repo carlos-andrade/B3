@@ -208,3 +208,56 @@ O estado permanece:
 - **REGISTROS 140808/140809 FUNDIDOS:** NÃO
 
 A próxima frente continua sendo a recuperação institucional/arquivística do BDI de 10/10/1986 e da documentação operacional efetivamente vigente naquele período.
+
+
+## 14. FASE 09C — Rodada documental adicional: natureza e formato do BDI
+
+### 14.1 Evidência histórica da existência do BDI
+
+Foi localizada literatura acadêmica/documental que identifica o **BDI — Boletim Diário de Informações** como publicação diária da Bovespa e como fonte de dados completos sobre o pregão. A documentação consultada também registra o BDI como publicação própria da Bolsa de Valores de São Paulo.
+
+Essa evidência confirma a existência e a função informacional do BDI no período histórico estudado, mas não fornece o exemplar específico de 10/10/1986.
+
+### 14.2 Evidência sobre o arquivo BDI e sua relação com a estrutura de dados
+
+Foi localizada documentação técnica histórica descrevendo o BDI eletrônico da Bovespa como arquivo gerado ao final do pregão. A mesma documentação reproduz o layout conhecido de dados Bovespa, no qual CODBDI é utilizado para classificação na emissão do BDI.
+
+Isso reforça uma distinção importante para a reconstrução:
+
+**COTAHIST não deve ser tratado automaticamente como cópia integral do BDI.**
+
+O próprio layout preserva CODBDI como classificação relacionada à emissão do BDI, enquanto outras dimensões históricas de publicação podem não sobreviver no registro final de cotação.
+
+### 14.3 Evidência contemporânea já recuperada
+
+A edição do Jornal do Brasil de 05/06/1986 continua sendo a principal evidência contemporânea publicamente recuperada para a estrutura visual do mercado a termo. Ela apresenta explicitamente:
+
+`Tipo | Prazo | Quant | Fech | Máx | Mín | Méd | N°`
+
+e registra Vigor como `Vigor PP C05`.
+
+Essa evidência é consistente com a hipótese de que o processo editorial do mercado a termo possuía dimensões que não estão explicitamente representadas na K4.
+
+**Limite:** não existe, nesta etapa, evidência suficiente para mapear `C05` para `Tipo`, nem para afirmar que a dimensão Tipo explica as duas linhas Vigor de 10/10/1986.
+
+### 14.4 Evidência normativa posterior — somente como controle de contexto
+
+Regulamento posterior da Bovespa descreve o BDI como publicação diária das operações dos mercados administrados pela Bolsa e das negociações/posições em mercados de liquidação futura. A fonte é posterior a 1986 e permanece classificada como **contexto institucional**, sem retroprojeção da regra.
+
+### 14.5 Resultado da rodada
+
+A rodada adicional aumenta a sustentação da hipótese de que:
+
+1. o BDI era uma camada de publicação/informação própria da Bovespa;
+2. o COTAHIST possui uma estrutura de dados relacionada ao BDI, mas não necessariamente equivalente;
+3. havia dimensões de apresentação do mercado a termo que não aparecem explicitamente na K4;
+4. a causa específica da colisão Vigor continua dependente do documento primário ou de documentação normativa contemporânea.
+
+### 14.6 Estado após a rodada
+
+**IMPLEMENTADO:** SIM  
+**EXECUTADO:** SIM  
+**VALIDADO:** SIM, quanto à existência/função do BDI e à distinção entre publicação BDI e estrutura COTAHIST  
+**CAUSA HISTÓRICA RESOLVIDA:** NÃO  
+**EVIDÊNCIA DECISIVA:** ainda ausente  
+**RAW:** preservado integralmente
