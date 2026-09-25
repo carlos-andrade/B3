@@ -488,8 +488,39 @@ O que não pode acontecer é transformar incerteza em certeza sem evidência.
 
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
-| 1.0 | 25/09/2026 | Criação do modelo-mestre reutilizável, consolidando as práticas de governança desenvolvidas no Projeto B3. | VIGENTE |
+| 1.0 | 25/09/2026 | Criação do modelo-mestre reutilizável. | VIGENTE |
+| 1.1 | 25/09/2026 | Inclusão dos requisitos de automação de ingestão de fontes externas e atualização recorrente. | VIGENTE |
 
----
+## 29. AUTOMAÇÃO DE INGESTÃO DE FONTES EXTERNAS
 
-**Documento normativo de referência para a criação das Cartas Magnas de Governança dos demais projetos.**
+Quando um projeto depender de uma fonte externa recorrente, a governança deverá definir explicitamente o processo de atualização automática.
+
+A cadeia mínima deverá ser:
+
+**fonte externa → aquisição automática → RAW íntegro → checksum → parsing → normalização → validação → manifest → publicação**
+
+A automação deverá registrar fonte, endpoint, data/hora da tentativa, período, resultado da aquisição, integridade, checksum, versão do parser, resultado dos testes, commit e falhas.
+
+### 29.1 Falha da fonte
+
+Se a fonte primária estiver indisponível, a pipeline deverá permanecer em estado explícito de falha/indisponibilidade. Não poderá substituir automaticamente a fonte por outra sem regra previamente governada.
+
+### 29.2 Dados recorrentes
+
+Para dados diários, mensais ou anuais, a governança deverá definir frequência, janela de atualização, política para dias sem publicação, reprocessamento, correções retroativas, retenção de evidências e alertas.
+
+### 29.3 Aplicação ao COTAHIST
+
+No Projeto B3, o COTAHIST corrente possui processo automático de aquisição diária quando a fonte pública permite. A série anual permanece responsável pelo backfill histórico e certificação. A série diária é a camada incremental corrente.
+
+A existência do workflow automático não transforma, por si só, o arquivo em dado validado. A promoção depende da cadeia completa de confiança.
+
+## 30. REGRA DE ATUALIZAÇÃO SEM CONTAMINAÇÃO
+
+Uma atualização nova não poderá apagar a evidência da versão anterior. Correções retroativas da fonte devem ser registradas como nova evidência e seu impacto nos derivados deve ser determinado.
+
+## 31. REGRA FINAL
+
+> **Se não puder ser rastreado, testado, reproduzido e explicado, não deverá ser tratado como conhecimento validado do projeto.**
+
+O projeto pode avançar com incertezas. O que não pode acontecer é transformar incerteza em certeza sem evidência.
