@@ -1,0 +1,32 @@
+name: COTAHIST FASE 08A - Matriz Calendário 1986 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/construir_matriz_calendario_1986_v1.py"
+      - ".github/workflows/cotahist-fase08a-matriz-calendario-1986-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Construir matriz
+        run: |
+          python scripts/ingestao/construir_matriz_calendario_1986_v1.py \
+            --audit dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json \
+            --output dados/cotahist/quality/COTAHIST_1986_MATRIZ_CALENDARIO_PROVISORIA_V1.json
+      - name: Persistir evidência
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1986_MATRIZ_CALENDARIO_PROVISORIA_V1.json
+          git diff --cached --quiet || git commit -m "data(cotahist): gerar matriz provisoria calendario 1986"
+          git push
