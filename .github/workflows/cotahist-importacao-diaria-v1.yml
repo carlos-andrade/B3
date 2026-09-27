@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario
+          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
           git commit -m "data(cotahist): importacao diaria automatica" || exit 0
           git pull --rebase origin main
           git push origin HEAD:main
