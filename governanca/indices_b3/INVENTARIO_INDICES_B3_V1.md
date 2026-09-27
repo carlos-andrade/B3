@@ -69,3 +69,7 @@ Esta fase certifica **composição de carteira**, não substitui:
 - metodologia histórica completa.
 
 Esses domínios continuam separados até receberem sua própria camada de ingestão e validação.
+
+## Acionamento inicial
+
+A alteração deste inventário após a instalação do workflow serve como gatilho determinístico da primeira execução automática. A execução somente poderá certificar o domínio se todas as capturas forem persistidas e validadas.
