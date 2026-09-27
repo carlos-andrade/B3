@@ -5,7 +5,7 @@
 **Caminho:** governanca/garantia_atualizacao_dados/MATRIZ_GLOBAL_FRESCOR_DADOS_B3_2026-09-27.md  
 **Data da verificação:** 27/09/2026  
 **Repositório:** carlos-andrade/B3  
-**Status global:** **NÃO CERTIFICADA**
+**Status global:** **NÃO CERTIFICADA — COTAHIST DIÁRIO VALIDADO; CAMADA ANUAL AINDA DEFASADA**
 
 ## 1. Regra
 
@@ -19,7 +19,28 @@ Um dataset só recebe **APROVADO** quando houver evidência suficiente de fonte,
 
 Em 27/09/2026, domingo, a última sessão regular anterior é 25/09/2026.
 
-## 3. Correção identificada no COTAHIST
+## 3. Correção operacional executada no COTAHIST
+
+A correção de backfill foi efetivamente executada em GitHub Actions.
+
+- commit disparador: `ba2159a73ff5061e70652ba5d0d0457a42833277`;
+- workflow run: `36320246044`;
+- evento: `push`;
+- resultado do job: **success**;
+- commit de persistência dos dados: `76bd78434ddf2556d0cdd2528db0044cea514043`;
+- 23/09/2026: **VALIDADO**, 15.747 linhas;
+- 24/09/2026: **VALIDADO**, 15.903 linhas;
+- 25/09/2026: **VALIDADO**, 16.593 linhas.
+
+### Evidências SHA-256
+
+| Data | RAW SHA-256 | NORMALIZED SHA-256 |
+|---|---|---|
+| 23/09/2026 | `e2671e6a18e3cf9e628713bf60dc278d5e7e4948026618497156231d3fec2c6f` | `5da9dc290badbd97da2c31aa121b9df2fe4f85a75aff972cb5020a21964cf0de` |
+| 24/09/2026 | `7ef9fb0e832f2c67effaf65be66c736f593fecbe3c4598ad9d0be6ff5e6d5bfc` | `99962bd581e476908b97a5261f73eb973c4ef4d4373a7683a7b88e977a80d464` |
+| 25/09/2026 | `1d62e1d49777c8b85dba3e546a5040d0f78765fb1cd439433c5303f5320ae4a8` | `f195a090d38055951972208c97f5cce49b221e462c60df9bc1c29d62ae8c93cc` |
+
+## 4. Correção identificada no COTAHIST
 
 A investigação mostrou que o projeto já possui **ingestão diária validada até 25/09/2026**:
 
@@ -33,7 +54,7 @@ Portanto, o problema não é ausência total do dado de mercado de 25/09.
 
 O problema é de **convergência entre camadas**: o Dataset Oficial anual de 2026 continua terminando em 22/09, enquanto a camada diária já alcançou 25/09.
 
-## 4. Matriz
+## 5. Matriz
 
 | Dataset / domínio | Fonte | Última observação esperada | Última observação armazenada | Captura/geração | Status |
 |---|---|---:|---:|---:|---|
@@ -45,7 +66,7 @@ O problema é de **convergência entre camadas**: o Dataset Oficial anual de 202
 | Índices/carteiras B3 | B3 | Depende do calendário/metodologia | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
 | Derivativos/futuros/market data além do COTAHIST | B3 | Depende do produto e granularidade | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
 
-## 5. Evidência do Dataset Oficial
+## 6. Evidência do Dataset Oficial
 
 Arquivo:
 
@@ -65,7 +86,7 @@ O manifesto foi atualizado em 27/09/2026 pelo commit:
 
 Esse commit alterou a data de geração do manifesto, mas não incorporou as observações diárias posteriores a 22/09.
 
-## 6. Causa operacional identificada
+## 7. Causa operacional identificada
 
 O workflow diário original importava apenas a data corrente:
 
@@ -83,7 +104,7 @@ Commit da correção:
 
 `3fc2afb82409af9a642541c96ded14a971ecbad7`
 
-## 7. Regra de fail-closed
+## 8. Regra de fail-closed
 
 A camada diária pode estar atualizada enquanto a camada anual/oficial permanece defasada.
 
@@ -95,7 +116,7 @@ Assim:
 
 Nenhum dashboard, backtest ou estudo deve interpretar “workflow executado com sucesso” como sinônimo de “todos os datasets estão atualizados”.
 
-## 8. Próxima execução obrigatória
+## 9. Próxima execução obrigatória
 
 A próxima execução do workflow diário deverá tentar automaticamente recuperar os últimos 7 dias.
 
@@ -108,7 +129,7 @@ Objetivo mínimo:
 5. reconciliar a camada diária com a camada anual/oficial;
 6. atualizar esta matriz somente após evidência verificável.
 
-## 9. Pendências globais
+## 10. Pendências globais
 
 A garantia integral continua bloqueada porque:
 
