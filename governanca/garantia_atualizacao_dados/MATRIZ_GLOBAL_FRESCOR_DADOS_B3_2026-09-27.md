@@ -63,7 +63,7 @@ O problema é de **convergência entre camadas**: o Dataset Oficial anual de 202
 | COTAHIST histórico 1986–2025 | B3 | Encerramento de cada ano | Conforme registros anuais certificados | Atualização histórica | **CONDICIONAL** |
 | Copom 281 | BCB | 16/09/2026; informação disponível 22/09/2026 | 16/09/2026; informação disponível 22/09/2026 | 25/09/2026 | **REGISTRADO** |
 | BCB/SGS núcleo macro | BCB | Conforme inventário SGS 432/11/12/1/433 | **VALIDADO** até 27/09/2026 (432), 25/09 (11/1), 24/09 (12), 01/08 (433) | 27/09/2026 | **CERTIFICADO** |
-| Índices/carteiras B3 | B3 | Depende do calendário/metodologia | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
+| Índices/carteiras B3 | B3 | Depende do calendário/metodologia | Pipeline V1 instalado; captura ainda sem evidência persistida | 27/09/2026 | **EM CERTIFICAÇÃO — NÃO CERTIFICADO** |
 | Derivativos/futuros/market data além do COTAHIST | B3 | Depende do produto e granularidade | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
 
 ## 7. Evidência do Dataset Oficial
@@ -142,6 +142,6 @@ A garantia integral continua bloqueada porque:
 
 1. o snapshot anual 2026 termina em 22/09, mas o Dataset Oficial corrente V1.1 já alcança 25/09 por composição auditável;
 2. os demais datasets obrigatórios ainda não possuem inventário global de frescor;
-3. não há evidência consolidada suficiente para certificar índices, carteiras, derivativos e demais séries macroeconômicas.
+3. índices B3: pipeline V1 instalado, aguardando evidência persistida e manifesto VALIDADO;\n4. não há evidência consolidada suficiente para certificar carteiras separadamente, derivativos e demais séries macroeconômicas.
 
-**Status final em 27/09/2026: NÃO CERTIFICADA. COTAHIST corrente e BCB/SGS núcleo macro estão certificados; a garantia global permanece bloqueada pelos demais domínios.**
+**Status em 27/09/2026: NÃO CERTIFICADA. O domínio Índices B3 entrou formalmente em processo de certificação V1, mas permanece NÃO CERTIFICADO até existir evidência persistida.**
