@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "verification_date": "2026-09-27",
+  "status": "NOT_CERTIFIED",
+  "reference": {
+    "current_date": "2026-09-27",
+    "weekday": "Sunday",
+    "last_regular_session": "2026-09-25"
+  },
+  "datasets": [
+    {
+      "id": "COTAHIST_2026",
+      "source": "B3",
+      "expected_last_date": "2026-09-25",
+      "stored_last_date": "2026-09-22",
+      "gap_trading_sessions": 3,
+      "status": "PENDING"
+    },
+    {
+      "id": "COTAHIST_1986_2025",
+      "source": "B3",
+      "status": "CONDITIONAL"
+    },
+    {
+      "id": "COPOM_281",
+      "source": "BCB",
+      "expected_information_date": "2026-09-22",
+      "stored_information_date": "2026-09-22",
+      "status": "REGISTERED"
+    },
+    {
+      "id": "BCB_OTHER_MACRO",
+      "source": "BCB",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "B3_INDICES_PORTFOLIOS",
+      "source": "B3",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "B3_DERIVATIVES_OTHER_MARKET_DATA",
+      "source": "B3",
+      "status": "NOT_CERTIFIED"
+    }
+  ]
+}
