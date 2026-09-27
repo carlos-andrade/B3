@@ -28,6 +28,9 @@ jobs:
       - name: Importar e validar COTAHIST diário
         run: python scripts/ingestao/importar_cotahist_diario_v1.py
 
+      - name: Reconciliar Dataset Anual 2026
+        run: python scripts/ingestao/reconciliar_cotahist_anual_v1.py
+
       - name: Persistir atualização
         run: |
           git config user.name "github-actions[bot]"
