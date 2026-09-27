@@ -22,7 +22,7 @@ A regra é FAIL-CLOSED: nenhum domínio pode receber o estado CERTIFICADO apenas
 | COTAHIST 1986 | EXCEÇÃO HISTÓRICA NÃO CERTIFICÁVEL | Fase 09C encerrada como exceção documentada; não inventar observações ausentes |
 | Copom 281 | CERTIFICADO | RAW + metadados + NORMALIZED persistidos; evento e data de publicação reconciliados |
 | BCB/SGS núcleo macro | CERTIFICADO | SGS 432/11/12/1/433; manifesto geral VALIDADO; execução #5; índice oficial V1.0 |
-| Índices B3 | NÃO CERTIFICADO | Fonte oficial atual identificada, mas falta captura/manifesto persistido e reconciliação no repositório |
+| Índices B3 | EM CERTIFICAÇÃO — NÃO CERTIFICADO | Inventário, importador e workflow V1 instalados; ainda falta evidência persistida e manifesto VALIDADO |
 | Carteiras B3 | NÃO CERTIFICADO | Carteira definitiva de setembro/2026 identificada na fonte B3, mas falta evidência persistida no repositório |
 | Derivativos/futuros/opções | NÃO CERTIFICADO | Contratos e contrato de ingestão definidos, mas não há evidência suficiente de dataset corrente certificado |
 | Fluxo/mercado intraday | NÃO CERTIFICADO | Contrato definido para WIN/WDO/DI, mas falta camada de dados e evidência corrente |
@@ -107,7 +107,7 @@ A B3 informou oficialmente que a carteira definitiva do Ibovespa válida de 08/0
 
 Isso constitui evidência externa da fonte, mas não constitui, por si só, certificação do dataset do repositório.
 
-A certificação somente ocorrerá depois de persistidos o arquivo oficial, metadados, hash, data de referência e manifesto de qualidade.
+A certificação somente ocorrerá depois de persistidos o arquivo oficial, metadados, hash, data de referência e manifesto de qualidade.\n\n**Execução iniciada em 27/09/2026:** inventário V1, importador e workflow automático foram instalados. O domínio permanece bloqueado até a primeira execução produzir os manifestos e o índice oficial.
 
 ### 4.3 Derivativos, futuros e opções
 
@@ -170,6 +170,6 @@ WORKFLOW_EVIDENCE = PRESENT
 
 A auditoria foi concluída sem promover artificialmente domínios incompletos para CERTIFICADO.
 
-Neste fechamento, COTAHIST corrente e Copom estão efetivamente certificados. Os demais domínios permanecem explicitamente bloqueados até que seus dados sejam capturados e auditados.
+Neste fechamento, COTAHIST corrente, Copom e BCB/SGS núcleo macro estão efetivamente certificados. Índices B3 entrou em processo de certificação, mas continua bloqueado até evidência persistida e auditada.
 
 Esta separação é obrigatória para impedir que backtests, dashboards e estudos quantitativos consumam dados com frescor ou cobertura não comprovados.
