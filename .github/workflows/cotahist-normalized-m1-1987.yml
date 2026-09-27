@@ -1,0 +1,112 @@
+name: COTAHIST - M1 persistencia NORMALIZED anual 1987
+
+on:
+  push:
+    paths:
+      - "docs/ingestao/FASE10A_M1_PERSISTENCIA_NORMALIZED_1987_V1.0.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-normalized-m1-1987
+  cancel-in-progress: false
+
+jobs:
+  persist-1987:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validar precondicoes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
+          test -s "dados/cotahist/normalized/manifests/COTAHIST_A1987_quality.json"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("dados/cotahist/normalized/manifests/COTAHIST_A1987_quality.json")
+          m = json.loads(p.read_text(encoding="utf-8"))
+          assert m["status"] == "VALIDADO"
+          assert m["ano"] == 1987
+          assert m["parser_version"] == "1.1.0"
+          assert m["linhas_normalized"] == 130665
+          assert m["campos"] == 25
+          assert m["normalized_sha256"] == "5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc"
+          print("PRECONDICOES=OK")
+
+      - name: Normalizar 1987 em area temporaria
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/normalized /tmp/quality
+          python scripts/ingestao/normalize_cotahist.py \
+            --zip "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP" \
+            --output "/tmp/normalized/COTAHIST_A1987.csv"
+          sha256sum "/tmp/normalized/COTAHIST_A1987.csv" | awk '{print $1}' > /tmp/quality/normalized.sha256
+
+      - name: Validar contra manifesto
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/validar_normalized.py \
+            "/tmp/normalized/COTAHIST_A1987.csv" \
+            "/tmp/quality/COTAHIST_A1987_quality.json" \
+            1987 \
+            "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d" \
+            "$(cat /tmp/quality/normalized.sha256)"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A1987_quality.json").read_text(encoding="utf-8"))
+          actual = json.loads(Path("/tmp/quality/COTAHIST_A1987_quality.json").read_text(encoding="utf-8"))
+          for k in ("status","ano","parser_version","linhas_normalized","campos","primeira_data","ultima_data","raw_sha256","normalized_sha256"):
+              assert actual[k] == expected[k], f"{k}: {actual[k]!r} != {expected[k]!r}"
+          print("MANIFESTO_VS_REGENERACAO=OK")
+          PY
+
+      - name: Verificar tamanho antes da persistencia
+        shell: bash
+        run: |
+          set -euo pipefail
+          size_bytes="$(stat -c '%s' /tmp/normalized/COTAHIST_A1987.csv)"
+          echo "NORMALIZED_1987_BYTES=$size_bytes"
+          test "$size_bytes" -lt 100000000
+
+      - name: Persistir no caminho canonico
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "dados/cotahist/normalized/anual"
+          cp "/tmp/normalized/COTAHIST_A1987.csv" "dados/cotahist/normalized/anual/COTAHIST_A1987.csv"
+          test -s "dados/cotahist/normalized/anual/COTAHIST_A1987.csv"
+          sha256sum "dados/cotahist/normalized/anual/COTAHIST_A1987.csv"
+          test "$(sha256sum "dados/cotahist/normalized/anual/COTAHIST_A1987.csv" | awk '{print $1}')" = "5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc"
+
+      - name: Commit controlado
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dados/cotahist/normalized/anual/COTAHIST_A1987.csv"
+          git diff --cached --quiet && exit 0
+          git commit -m "data(normalized): persistir COTAHIST A1987 canonico"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar evidencia temporaria
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalized-m1-1987
+          path: |
+            /tmp/normalized/COTAHIST_A1987.csv
+            /tmp/quality/COTAHIST_A1987_quality.json
+            /tmp/quality/normalized.sha256
+          retention-days: 30
