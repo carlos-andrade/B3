@@ -1,4 +1,5 @@
 name: BCB SGS - nucleo macro V1
+# Execucao automatica + manual; certificacao depende de evidencias persistidas.
 
 on:
   push:
