@@ -5,7 +5,7 @@
 **Caminho:** governanca/garantia_atualizacao_dados/MATRIZ_GLOBAL_FRESCOR_DADOS_B3_2026-09-27.md  
 **Data da verificação:** 27/09/2026  
 **Repositório:** carlos-andrade/B3  
-**Status global:** **NÃO CERTIFICADA — COTAHIST DIÁRIO VALIDADO; CAMADA ANUAL AINDA DEFASADA**
+**Status global:** **NÃO CERTIFICADA — COTAHIST E BCB/SGS NÚCLEO CERTIFICADOS; DEMAIS DOMÍNIOS BLOQUEADOS**
 
 ## 1. Regra
 
@@ -62,11 +62,11 @@ O problema é de **convergência entre camadas**: o Dataset Oficial anual de 202
 | COTAHIST anual/oficial 2026 | B3 | **25/09/2026** | **25/09/2026 (dataset corrente composto)** | 27/09/2026 | **VALIDADO — ÍNDICE OFICIAL ATUAL V1.1** |
 | COTAHIST histórico 1986–2025 | B3 | Encerramento de cada ano | Conforme registros anuais certificados | Atualização histórica | **CONDICIONAL** |
 | Copom 281 | BCB | 16/09/2026; informação disponível 22/09/2026 | 16/09/2026; informação disponível 22/09/2026 | 25/09/2026 | **REGISTRADO** |
-| Demais séries macroeconômicas BCB | BCB | Depende de cada série | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
+| BCB/SGS núcleo macro | BCB | Conforme inventário SGS 432/11/12/1/433 | **VALIDADO** até 27/09/2026 (432), 25/09 (11/1), 24/09 (12), 01/08 (433) | 27/09/2026 | **CERTIFICADO** |
 | Índices/carteiras B3 | B3 | Depende do calendário/metodologia | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
 | Derivativos/futuros/market data além do COTAHIST | B3 | Depende do produto e granularidade | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
 
-## 6. Evidência do Dataset Oficial
+## 7. Evidência do Dataset Oficial
 
 Arquivo:
 
@@ -86,7 +86,7 @@ O snapshot anual permanece preservado com última data 22/09/2026. Para não ree
 
 Esse índice comprova a composição do snapshot anual com os incrementos diários VALIDADO de 23/09, 24/09 e 25/09. A última observação corrente passa a ser 25/09/2026.
 
-## 7. Causa operacional identificada
+## 8. Causa operacional identificada
 
 O workflow diário original importava apenas a data corrente:
 
@@ -104,7 +104,7 @@ Commit da correção:
 
 `3fc2afb82409af9a642541c96ded14a971ecbad7`
 
-## 8. Regra de fail-closed
+## 9. Regra de fail-closed
 
 A camada diária pode estar atualizada enquanto a camada anual/oficial permanece defasada.
 
@@ -117,7 +117,7 @@ Assim:
 
 Nenhum dashboard, backtest ou estudo deve interpretar “workflow executado com sucesso” como sinônimo de “todos os datasets estão atualizados”.
 
-## 9. Próxima execução obrigatória
+## 10. Próxima execução obrigatória
 
 A próxima execução do workflow diário deverá tentar automaticamente recuperar os últimos 7 dias.
 
@@ -130,13 +130,13 @@ Objetivo mínimo:
 5. reconciliar a camada diária com a camada anual/oficial;
 6. atualizar esta matriz somente após evidência verificável.
 
-## 10. Implementação da reconciliação anual
+## 11. Implementação da reconciliação anual
 
 A reconciliação anual foi automatizada no workflow diário. O processo preserva o RAW anual da B3 como snapshot imutável e atualiza o NORMALIZED anual por composição com pregões diários `VALIDADO` posteriores ao último pregão do snapshot. A implementação usa processamento em streaming para evitar carregar milhões de registros do COTAHIST anual em memória.
 
 Arquivo: `scripts/ingestao/reconciliar_cotahist_anual_v1.py`
 
-## 11. Pendências globais
+## 12. Pendências globais
 
 A garantia integral continua bloqueada porque:
 
@@ -144,4 +144,4 @@ A garantia integral continua bloqueada porque:
 2. os demais datasets obrigatórios ainda não possuem inventário global de frescor;
 3. não há evidência consolidada suficiente para certificar índices, carteiras, derivativos e demais séries macroeconômicas.
 
-**Status final em 27/09/2026: NÃO CERTIFICADA.**
+**Status final em 27/09/2026: NÃO CERTIFICADA. COTAHIST corrente e BCB/SGS núcleo macro estão certificados; a garantia global permanece bloqueada pelos demais domínios.**
