@@ -5,16 +5,61 @@
   "global_status": "NAO_CERTIFICADA",
   "fail_closed": true,
   "domains": [
-    {"domain":"COTAHIST_DIARIO_2026","status":"CERTIFICADO","last_data":"2026-09-25"},
-    {"domain":"COTAHIST_DATASET_CORRENTE_2026","status":"CERTIFICADO","last_data":"2026-09-25","evidence":"dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"},
-    {"domain":"COTAHIST_HISTORICO_1987_2025","status":"CONDICIONAL"},
-    {"domain":"COTAHIST_1986","status":"EXCECAO_HISTORICA_NAO_CERTIFICAVEL"},
-    {"domain":"BCB_COPOM_281","status":"CERTIFICADO","reference_date":"2026-09-16","published_date":"2026-09-22","capture_date":"2026-09-25"},
-    {"domain":"BCB_DEMAIS_SERIES","status":"NAO_CERTIFICADO"},
-    {"domain":"B3_INDICES","status":"NAO_CERTIFICADO"},
-    {"domain":"B3_CARTEIRAS","status":"NAO_CERTIFICADO"},
-    {"domain":"B3_DERIVATIVOS_FUTUROS_OPCOES","status":"NAO_CERTIFICADO"},
-    {"domain":"B3_INTRADAY_WIN_WDO_DI","status":"NAO_CERTIFICADO"}
+    {
+      "domain": "COTAHIST_DIARIO_2026",
+      "status": "CERTIFICADO",
+      "last_data": "2026-09-25"
+    },
+    {
+      "domain": "COTAHIST_DATASET_CORRENTE_2026",
+      "status": "CERTIFICADO",
+      "last_data": "2026-09-25",
+      "evidence": "dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"
+    },
+    {
+      "domain": "COTAHIST_HISTORICO_1987_2025",
+      "status": "CONDICIONAL"
+    },
+    {
+      "domain": "COTAHIST_1986",
+      "status": "EXCECAO_HISTORICA_NAO_CERTIFICAVEL"
+    },
+    {
+      "domain": "BCB_COPOM_281",
+      "status": "CERTIFICADO",
+      "reference_date": "2026-09-16",
+      "published_date": "2026-09-22",
+      "capture_date": "2026-09-25"
+    },
+    {
+      "domain": "BCB_SGS_NUCLEO_MACRO",
+      "status": "CERTIFICADO",
+      "last_data_by_series": {
+        "1": "2026-09-25",
+        "11": "2026-09-25",
+        "12": "2026-09-24",
+        "432": "2026-09-27",
+        "433": "2026-08-01"
+      },
+      "evidence": "dados/bcb_sgs/oficial/BCB_SGS_DATASET_ATUAL_V1.0.json",
+      "workflow_run": 36322575914
+    },
+    {
+      "domain": "B3_INDICES",
+      "status": "NAO_CERTIFICADO"
+    },
+    {
+      "domain": "B3_CARTEIRAS",
+      "status": "NAO_CERTIFICADO"
+    },
+    {
+      "domain": "B3_DERIVATIVOS_FUTUROS_OPCOES",
+      "status": "NAO_CERTIFICADO"
+    },
+    {
+      "domain": "B3_INTRADAY_WIN_WDO_DI",
+      "status": "NAO_CERTIFICADO"
+    }
   ],
   "certification_gate": {
     "source_date_ok": true,
