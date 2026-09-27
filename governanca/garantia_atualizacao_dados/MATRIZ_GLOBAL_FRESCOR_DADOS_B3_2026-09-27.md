@@ -129,7 +129,13 @@ Objetivo mínimo:
 5. reconciliar a camada diária com a camada anual/oficial;
 6. atualizar esta matriz somente após evidência verificável.
 
-## 10. Pendências globais
+## 10. Implementação da reconciliação anual
+
+A reconciliação anual foi automatizada no workflow diário. O processo preserva o RAW anual da B3 como snapshot imutável e atualiza o NORMALIZED anual por composição com pregões diários `VALIDADO` posteriores ao último pregão do snapshot. A implementação usa processamento em streaming para evitar carregar milhões de registros do COTAHIST anual em memória.
+
+Arquivo: `scripts/ingestao/reconciliar_cotahist_anual_v1.py`
+
+## 11. Pendências globais
 
 A garantia integral continua bloqueada porque:
 
