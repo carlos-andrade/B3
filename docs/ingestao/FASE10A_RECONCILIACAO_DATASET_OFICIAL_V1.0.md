@@ -135,3 +135,39 @@ A próxima verificação deve ser uma **auditoria completa de referências do Da
 Somente após essa auditoria deverá ser tomada a decisão de publicação/correção dos artefatos anuais.
 
 **Status:** FRENTE 10A — RECONCILIAÇÃO INICIAL CONCLUÍDA; AUDITORIA DE REFERÊNCIAS PENDENTE.
+
+
+## 8. Auditoria integral das referências V1.0
+
+Foi realizada uma verificação sobre a árvore Git do branch `main), comparando as 41 entradas do Dataset Oficial V1.0 com os caminhos físicos declarados.
+
+Resultado:
+
+| Componente | Resultado |
+|---|---:|
+| Registros anuais declarados | 41 |
+| RAW anual existente | 41/41 |
+| Manifesto de qualidade existente | 41/41 |
+| CSV normalizado anual no caminho declarado | 0/41 |
+| CSV normalizado anual em `normalized/anual/` | 0/41 |
+
+Portanto, a inconsistência não é exclusiva de 1987.
+
+**Constatação:** o Dataset Oficial V1.0 declara 41 arquivos normalizados anuais como se fossem artefatos físicos permanentes do repositório, mas nenhum dos 41 está atualmente versionado nesses caminhos.
+
+Isso altera a interpretação da FASE 10A: não estamos diante de um problema isolado do COTAHIST 1987, mas de uma **inconsistência arquitetural entre o manifesto do Dataset Oficial V1.0 e a camada física versionada do repositório**.
+
+Os hashes normalizados continuam sendo evidência documental de resultados anteriormente produzidos, mas não podem ser tratados como prova de que os respectivos CSVs estão atualmente disponíveis para consumo direto no Git.
+
+## 9. Decisão técnica provisória
+
+Não regenerar 41 CSVs imediatamente.
+
+Primeiro deve ser identificado qual é o contrato oficial de persistência:
+
+**A.** CSV anual é artefato permanente e consumível → os 41 arquivos precisam existir e seus hashes precisam ser reconfirmados.
+
+**B.** CSV anual é artefato transitório de workflow → o Dataset Oficial V1.0 deve deixar de apontar para arquivos inexistentes e passar a referenciar manifestos/artefatos reproduzíveis de forma explícita.
+
+A decisão deve ser tomada antes da construção de qualquer camada analítica ou dashboard que dependa desses caminhos.
+
