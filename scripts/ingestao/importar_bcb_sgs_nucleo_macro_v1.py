@@ -30,7 +30,7 @@ MANIFEST_ROOT = ROOT / "dados" / "bcb_sgs" / "manifests"
 
 SERIES = {
     432: {"nome": "Meta Selic definida pelo Copom", "inicio": "1999-03-05", "frequencia": "D", "allow_future": True},
-    11: {"nome": "Taxa Selic efetiva", "inicio": "1986-03-06", "frequencia": "D", "allow_future": False},
+    11: {"nome": "Taxa Selic efetiva", "inicio": "1986-06-04", "frequencia": "D", "allow_future": False},
     12: {"nome": "CDI", "inicio": "1986-03-06", "frequencia": "D", "allow_future": False},
     1: {"nome": "Dólar americano venda", "inicio": "1984-11-28", "frequencia": "D", "allow_future": False},
     433: {"nome": "IPCA", "inicio": "1980-01-01", "frequencia": "M", "allow_future": False},
@@ -173,6 +173,12 @@ def main():
             all_records, code, meta["allow_future"], capture_date
         )
 
+        # Regra fail-closed: datas futuras são rejeitadas para séries sem calendário futuro autorizado.
+        if quality["datas_futuras"] > 0 and not meta["allow_future"]:
+            quality["future_rejected"] = True
+        else:
+            quality["future_rejected"] = False
+
         norm_path = norm_dir / f"SGS_{code}.csv"
         with norm_path.open("w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
@@ -183,7 +189,7 @@ def main():
         dates = [x[0] for x in normalized]
         manifest = {
             "schema_version": "1.0.0",
-            "status": "VALIDADO" if quality["datas_invalidas"] == 0 and quality["valores_invalidos"] == 0 and quality["duplicidades"] == 0 else "REJEITADO",
+            "status": "VALIDADO" if quality["datas_invalidas"] == 0 and quality["valores_invalidos"] == 0 and quality["duplicidades"] == 0 and not quality["future_rejected"] else "REJEITADO",
             "source": "Banco Central do Brasil - BCData/SGS",
             "codigo_sgs": code,
             "nome": meta["nome"],
@@ -200,7 +206,8 @@ def main():
             "valores_invalidos": quality["valores_invalidos"],
             "duplicidades": quality["duplicidades"],
             "datas_futuras": quality["datas_futuras"],
-            "future_policy": "ACEITA_CALENDARIO_COPOM" if meta["allow_future"] else "FLAG_SEM_REJEICAO",
+            "future_rejected": quality["future_rejected"],
+            "future_policy": "ACEITA_CALENDARIO_COPOM" if meta["allow_future"] else "REJEITA_FAIL_CLOSED",
             "chunks": chunks_meta,
             "fail_closed": True,
         }
