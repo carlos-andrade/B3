@@ -13,13 +13,13 @@ Este documento estabelece a evidência auditável sobre a atualidade dos dataset
 
 A verificação realizada em 26/09/2026 **não autoriza declarar que todos os últimos dados da B3 disponíveis até a data corrente já foram baixados**.
 
-O motivo objetivo é o COTAHIST: o dataset oficial do projeto foi regenerado em 26/09/2026, porém o registro de 2026 informa **última data de mercado = 22/09/2026**. Portanto, a data de geração do dataset não pode ser confundida com a última data de pregão efetivamente ingerida.
+O motivo objetivo é o COTAHIST: o dataset oficial do projeto foi atualizado novamente em 27/09/2026, porém o registro de 2026 continua informando **última data de mercado = 22/09/2026**. Portanto, a data de geração do dataset não pode ser confundida com a última data de pregão efetivamente ingerida.
 
 ### Evidência COTAHIST
 
 - Dataset: `COTAHIST_OFICIAL` V1.0
 - Arquivo: `dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json`
-- Geração declarada: **2026-09-26**
+- Geração declarada: **2026-09-27**
 - Período: **1986–2026**
 - Última data de mercado no registro de 2026: **2026-09-22**
 - Arquivo bruto de 2026: `dados/cotahist/raw/anual/COTAHIST_A2026.ZIP`
@@ -71,7 +71,7 @@ A próxima versão poderá receber status **CERTIFICADA** somente após:
 
 ## 7. Evidências de repositório
 
-- Commit de atualização COTAHIST: `b159415d33b0be7fef2d1c63426f2b77bbea46ce`.
+- Commit mais recente de atualização COTAHIST: `561888200a6def1c90815e0b5f67c8b1f835fd3e`.
 - Commit de importação diária COTAHIST: `1b2ef358f02c18fb1d1b061a41e97e13f957653e`.
 - Commit de captura Copom RAW/NORMALIZED: `67f53402daacf15cfabca5a30f3a827b3c602c9a`.
 - Carta de confiança dos workflows: `governanca/CARTA_DE_CONFIANCA_WORKFLOWS.md`.
@@ -80,6 +80,6 @@ A próxima versão poderá receber status **CERTIFICADA** somente após:
 
 **Não há, em 26/09/2026, evidência suficiente para afirmar que todos os últimos dados da B3 disponíveis até a data corrente já foram baixados.**
 
-A principal pendência identificada é o intervalo entre **22/09/2026** e a última sessão de mercado disponível que deva constar no COTAHIST. A governança deve permanecer em modo **fail-closed** até a reconciliação dessa lacuna e a certificação dos demais datasets obrigatórios.
+A principal pendência identificada é o intervalo entre **22/09/2026** e **25/09/2026**, a última sessão regular anterior à data desta verificação. A governança deve permanecer em modo **fail-closed** até a reconciliação dessa lacuna e a certificação dos demais datasets obrigatórios.
 
 > Esta carta é uma certificação de estado, não uma declaração de que a cobertura integral já foi atingida.
