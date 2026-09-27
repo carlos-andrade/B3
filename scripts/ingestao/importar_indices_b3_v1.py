@@ -9,6 +9,7 @@ from datetime import date, datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+import base64
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -18,7 +19,8 @@ CODES = [
     "IFIX","IFNC","IGCNM","IGCT","IGCX","IMAT","IMOB","INDX","ISE","ITAG",
     "IVBX2","MLCX","SMLL","UTIL"
 ]
-BASE_URL = "https://sistemaswebb3-listados.b3.com.br/indexPage/day/{code}?language=pt-br"
+API_URL = "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/{encoded}"
+CODE_ALIAS = {"IBRX": "IBXX", "IBRX50": "IBXL", "ISE": "ISEE", "IVBX2": "IVBX"}
 TZ = ZoneInfo("America/Sao_Paulo")
 NOW = datetime.now(TZ)
 TODAY = NOW.date()
@@ -33,27 +35,71 @@ for p in (RAW_DIR, NORM_DIR, MAN_DIR, OFF_DIR):
 def sha256_bytes(b):
     return hashlib.sha256(b).hexdigest()
 
-def fetch(url):
+def fetch(code):
+    api_code = CODE_ALIAS.get(code, code)
+    payload = {"language": "pt-br", "pageNumber": 1, "pageSize": 1000, "index": api_code, "segment": "1"}
+    encoded = base64.b64encode(str(payload).encode("utf-8")).decode("utf-8")
+    url = API_URL.format(encoded=encoded)
     last = None
     for attempt in range(1, 6):
         try:
-            req = Request(url, headers={
-                "User-Agent": "B3-Indices-Ingestao/1.0 (+https://github.com/carlos-andrade/B3)",
-                "Accept": "text/html,application/xhtml+xml"
-            })
+            req = Request(url, headers={"User-Agent": "B3-Indices-Ingestao/1.1 (+https://github.com/carlos-andrade/B3)", "Accept": "application/json"})
             with urlopen(req, timeout=30) as r:
                 data = r.read()
                 ctype = (r.headers.get("Content-Type") or "").lower()
                 if not data:
                     raise ValueError("resposta vazia")
-                if "html" not in ctype and b"<html" not in data[:4096].lower():
-                    raise ValueError(f"conteudo inesperado: {ctype}")
-                return data
+                try:
+                    obj = json.loads(data.decode("utf-8"))
+                except json.JSONDecodeError as e:
+                    raise ValueError(f"resposta nao JSON; content-type={ctype}; preview={data[:200]!r}") from e
+                if not isinstance(obj, dict) or not isinstance(obj.get("results"), list):
+                    raise ValueError("resposta JSON sem lista 'results'")
+                return data, obj, url
         except (HTTPError, URLError, TimeoutError, ValueError) as e:
             last = str(e)
-            if attempt < 5:
-                time.sleep(2 ** (attempt - 1))
+            if attempt < 5: time.sleep(2 ** (attempt - 1))
     raise RuntimeError(last or "falha desconhecida")
+
+def parse_api(code, obj):
+    header = obj.get("header") or {}
+    candidates = []
+    def collect_dates(value):
+        if isinstance(value, dict):
+            for k, v in value.items():
+                if "date" in str(k).lower() or "data" in str(k).lower(): candidates.append(v)
+                collect_dates(v)
+        elif isinstance(value, list):
+            for v in value: collect_dates(v)
+    collect_dates(header)
+    d = None
+    for value in candidates:
+        if isinstance(value, str):
+            for fmt in ("%d/%m/%Y", "%d/%m/%y", "%Y-%m-%d"):
+                try: d = datetime.strptime(value.strip(), fmt).date(); break
+                except ValueError: pass
+        if d: break
+    if d is None: raise ValueError("data de referencia nao encontrada no header da API")
+    if d > TODAY: raise ValueError(f"data futura na fonte: {d.isoformat()} > {TODAY.isoformat()}")
+    rows = []
+    for item in obj["results"]:
+        if not isinstance(item, dict): continue
+        asset_code = str(item.get("cod", "")).strip()
+        asset = str(item.get("asset", "")).strip()
+        typ = str(item.get("type", "")).strip()
+        qty = str(item.get("theoricalQty", "")).strip()
+        part = str(item.get("part", "")).strip()
+        if not asset_code or not re.fullmatch(r"[A-Z0-9]{4,6}", asset_code): continue
+        if not qty or not part: raise ValueError(f"campos obrigatorios ausentes para {asset_code}")
+        rows.append({"index_code": code, "source_index_code": CODE_ALIAS.get(code, code), "reference_date": d.isoformat(), "asset_code": asset_code, "asset_name": asset, "asset_type": typ, "theoretical_quantity": qty.replace(".", "").replace(",", "."), "participation_pct": part.replace(".", "").replace(",", ".")})
+    if not rows: raise ValueError("nenhum componente de carteira encontrado na API")
+    assets = [r["asset_code"] for r in rows]
+    if len(assets) != len(set(assets)): raise ValueError("duplicidade de ativo dentro da carteira")
+    parts = [float(r["participation_pct"]) for r in rows]
+    total = round(sum(parts), 3)
+    if abs(total - 100.0) > 0.02: raise ValueError(f"soma de participacoes invalida: {total}")
+    redutor = header.get("reductor") or header.get("redutor")
+    return d, rows, total, redutor
 
 def strip_html(s):
     s = re.sub(r"<[^>]+>", " ", s)
@@ -111,13 +157,12 @@ def main():
     captured_at = NOW.isoformat()
 
     for code in CODES:
-        url = BASE_URL.format(code=code)
         try:
-            raw = fetch(url)
+            raw, api_obj, url = fetch(code)
             raw_sha = sha256_bytes(raw)
-            ref_date, rows, total, redutor = parse_page(code, raw)
+            ref_date, rows, total, redutor = parse_api(code, api_obj)
 
-            raw_path = RAW_DIR / ref_date[:4] / f"{code}_{ref_date}.html"
+            raw_path = RAW_DIR / ref_date[:4] / f"{code}_{ref_date}.json"
             norm_path = NORM_DIR / ref_date[:4] / f"{code}_{ref_date}.csv"
             raw_path.parent.mkdir(parents=True, exist_ok=True)
             norm_path.parent.mkdir(parents=True, exist_ok=True)
@@ -136,6 +181,7 @@ def main():
                 "index_code": code,
                 "source": "B3",
                 "source_url": url,
+                "source_page_url": f"https://sistemaswebb3-listados.b3.com.br/indexPage/day/{CODE_ALIAS.get(code, code)}?language=pt-br",
                 "captured_at": captured_at,
                 "reference_date": ref_date.isoformat(),
                 "raw_file": str(raw_path.relative_to(ROOT)).replace("\\","/"),
