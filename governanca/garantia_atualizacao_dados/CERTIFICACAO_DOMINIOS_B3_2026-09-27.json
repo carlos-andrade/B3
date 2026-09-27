@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-27",
+  "repository": "carlos-andrade/B3",
+  "global_status": "NAO_CERTIFICADA",
+  "fail_closed": true,
+  "domains": [
+    {"domain":"COTAHIST_DIARIO_2026","status":"CERTIFICADO","last_data":"2026-09-25"},
+    {"domain":"COTAHIST_DATASET_CORRENTE_2026","status":"CERTIFICADO","last_data":"2026-09-25","evidence":"dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"},
+    {"domain":"COTAHIST_HISTORICO_1987_2025","status":"CONDICIONAL"},
+    {"domain":"COTAHIST_1986","status":"EXCECAO_HISTORICA_NAO_CERTIFICAVEL"},
+    {"domain":"BCB_COPOM_281","status":"CERTIFICADO","reference_date":"2026-09-16","published_date":"2026-09-22","capture_date":"2026-09-25"},
+    {"domain":"BCB_DEMAIS_SERIES","status":"NAO_CERTIFICADO"},
+    {"domain":"B3_INDICES","status":"NAO_CERTIFICADO"},
+    {"domain":"B3_CARTEIRAS","status":"NAO_CERTIFICADO"},
+    {"domain":"B3_DERIVATIVOS_FUTUROS_OPCOES","status":"NAO_CERTIFICADO"},
+    {"domain":"B3_INTRADAY_WIN_WDO_DI","status":"NAO_CERTIFICADO"}
+  ],
+  "certification_gate": {
+    "source_date_ok": true,
+    "stored_date_ok": false,
+    "raw_hash_ok": false,
+    "normalized_hash_ok": false,
+    "quality_status_ok": false,
+    "no_critical_gaps": false,
+    "workflow_evidence_ok": false,
+    "global_certified": false
+  }
+}
