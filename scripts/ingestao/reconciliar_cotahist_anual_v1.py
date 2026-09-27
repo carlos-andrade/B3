@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Reconcilia o COTAHIST anual de 2026 com os pregões diários validados.
-
-A camada RAW anual permanece imutável como snapshot da fonte B3. A camada
-NORMALIZED anual passa a representar o dataset consolidado: anual B3 +
-incrementos diários validados posteriores ao último pregão do snapshot.
-"""
+"""Reconcilia COTAHIST anual 2026 com pregões diários validados, em streaming."""
 
 from __future__ import annotations
 
@@ -31,69 +26,79 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def read_csv(path: Path):
-    with path.open(encoding="utf-8", newline="") as f:
+def annual_last_date() -> tuple[list[str], str, int]:
+    with ANNUAL.open(encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
-        return reader.fieldnames, list(reader)
+        fields = reader.fieldnames
+        if not fields or "data_pregao" not in fields:
+            raise SystemExit("SCHEMA_ANUAL_INVALIDO")
+        last = ""
+        rows = 0
+        for row in reader:
+            rows += 1
+            if row["data_pregao"] > last:
+                last = row["data_pregao"]
+        return fields, last, rows
 
 
 def main() -> None:
     if not ANNUAL.exists():
         raise SystemExit(f"ANUAL_AUSENTE: {ANNUAL}")
-    fields, annual_rows = read_csv(ANNUAL)
-    if not fields or "data_pregao" not in fields:
-        raise SystemExit("SCHEMA_ANUAL_INVALIDO")
 
-    annual_last = max(r["data_pregao"] for r in annual_rows)
-    daily_files = sorted(DAILY_DIR.glob("COTAHIST_D*.csv"))
-    increments = []
+    fields, annual_last, annual_rows = annual_last_date()
+    daily_inputs = []
+    increment_rows = 0
     used_manifests = []
 
-    for path in daily_files:
-        _, rows = read_csv(path)
+    for path in sorted(DAILY_DIR.glob("COTAHIST_D*.csv")):
+        with path.open(encoding="utf-8", newline="") as f:
+            reader = csv.DictReader(f)
+            if reader.fieldnames != fields:
+                raise SystemExit(f"SCHEMA_DIARIO_INCOMPATIVEL: {path}")
+            rows = list(reader)
         if not rows:
             continue
-        first = min(r["data_pregao"] for r in rows)
         last = max(r["data_pregao"] for r in rows)
         if last <= annual_last:
             continue
-
         manifest = DAILY_MAN_DIR / f"{path.stem}_quality.json"
         if not manifest.exists():
             raise SystemExit(f"MANIFEST_DIARIO_AUSENTE: {manifest}")
         meta = json.loads(manifest.read_text(encoding="utf-8"))
         if meta.get("status") != "VALIDADO":
             raise SystemExit(f"MANIFEST_DIARIO_NAO_VALIDADO: {manifest}")
-
-        for row in rows:
-            if row["data_pregao"] > annual_last:
-                increments.append(row)
+        daily_inputs.append((path, rows))
+        increment_rows += sum(1 for r in rows if r["data_pregao"] > annual_last)
         used_manifests.append(str(manifest.relative_to(ROOT)).replace("\\", "/"))
 
-    if not increments:
+    if not daily_inputs:
         print(f"SEM_INCREMENTO_ANUAL: ultima_data={annual_last}")
         return
 
-    # Evita duplicidade por chave completa e ordena cronologicamente.
-    seen = {tuple(r.get(k, "") for k in fields) for r in annual_rows}
-    new_rows = []
-    for row in increments:
-        key = tuple(row.get(k, "") for k in fields)
-        if key not in seen:
-            seen.add(key)
-            new_rows.append(row)
-
-    all_rows = annual_rows + new_rows
-    all_rows.sort(key=lambda r: tuple(r.get(k, "") for k in ("data_pregao", "codneg", "tpmerc", "codbdi")))
-
     tmp = ANNUAL.with_suffix(".csv.tmp")
-    with tmp.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
+    total = 0
+    first = None
+    last = None
+    with ANNUAL.open(encoding="utf-8", newline="") as src, tmp.open("w", encoding="utf-8", newline="") as dst:
+        reader = csv.DictReader(src)
+        writer = csv.DictWriter(dst, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerows(all_rows)
+        for row in reader:
+            writer.writerow(row)
+            total += 1
+            d = row["data_pregao"]
+            first = d if first is None else min(first, d)
+            last = d if last is None else max(last, d)
+        for path, rows in daily_inputs:
+            for row in rows:
+                if row["data_pregao"] > annual_last:
+                    writer.writerow(row)
+                    total += 1
+                    d = row["data_pregao"]
+                    first = d if first is None else min(first, d)
+                    last = d if last is None else max(last, d)
     tmp.replace(ANNUAL)
 
-    new_last = max(r["data_pregao"] for r in all_rows)
     manifest = {
         "schema_version": "1.1.0",
         "status": "VALIDADO_CONSOLIDADO",
@@ -103,10 +108,10 @@ def main() -> None:
         "snapshot_anual": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
         "snapshot_ultima_data": annual_last,
         "incrementos_diarios_validados": used_manifests,
-        "incrementos_linhas": len(new_rows),
-        "primeira_data": min(r["data_pregao"] for r in all_rows),
-        "ultima_data": new_last,
-        "linhas_normalized": len(all_rows),
+        "incrementos_linhas": increment_rows,
+        "primeira_data": first,
+        "ultima_data": last,
+        "linhas_normalized": total,
         "campos": len(fields),
         "normalized_sha256": sha256(ANNUAL),
         "consolidado_em_utc": datetime.now(timezone.utc).isoformat(),
@@ -126,8 +131,7 @@ def main() -> None:
             record["incrementos_diarios_validados"] = used_manifests
             break
     SOURCE_DATASET.write_text(json.dumps(dataset, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    print(f"CONSOLIDADO_ANUAL: antes={annual_last} depois={new_last} incrementos={len(new_rows)}")
+    print(f"CONSOLIDADO_ANUAL: antes={annual_last} depois={last} incrementos={increment_rows}")
 
 
 if __name__ == "__main__":
