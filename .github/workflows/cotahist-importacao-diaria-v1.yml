@@ -1,6 +1,9 @@
 name: COTAHIST - importacao diaria automatica V1
 
 on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-importacao-diaria-v1.yml"
   schedule:
     - cron: "30 23 * * *"
   workflow_dispatch:
