@@ -24,6 +24,7 @@ CODE_ALIAS = {"IBRX": "IBXX", "IBRX50": "IBXL", "ISE": "ISEE", "IVBX2": "IVBX"}
 TZ = ZoneInfo("America/Sao_Paulo")
 NOW = datetime.now(TZ)
 TODAY = NOW.date()
+MAX_FUTURE_REFERENCE_DAYS = 3  # permite pre-publicacao da carteira da proxima sessao B3
 
 RAW_DIR = ROOT / "dados" / "indices_b3" / "raw"
 NORM_DIR = ROOT / "dados" / "indices_b3" / "normalized"
@@ -80,7 +81,9 @@ def parse_api(code, obj):
                 except ValueError: pass
         if d: break
     if d is None: raise ValueError("data de referencia nao encontrada no header da API")
-    if d > TODAY: raise ValueError(f"data futura na fonte: {d.isoformat()} > {TODAY.isoformat()}")
+    future_days = (d - TODAY).days
+    if future_days > MAX_FUTURE_REFERENCE_DAYS:
+        raise ValueError(f"data futura fora da janela de pre-publicacao: {d.isoformat()} > {TODAY.isoformat()} + {MAX_FUTURE_REFERENCE_DAYS}d")
     rows = []
     for item in obj["results"]:
         if not isinstance(item, dict): continue
@@ -113,8 +116,9 @@ def parse_page(code, raw):
     if not m:
         raise ValueError("data de referencia nao encontrada")
     d = datetime.strptime(m.group(1), "%d/%m/%y").date()
-    if d > TODAY:
-        raise ValueError(f"data futura na fonte: {d.isoformat()} > {TODAY.isoformat()}")
+    future_days = (d - TODAY).days
+    if future_days > MAX_FUTURE_REFERENCE_DAYS:
+        raise ValueError(f"data futura fora da janela de pre-publicacao: {d.isoformat()} > {TODAY.isoformat()} + {MAX_FUTURE_REFERENCE_DAYS}d")
 
     rows = []
     for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", html, flags=re.I | re.S):
@@ -192,7 +196,9 @@ def main():
                 "participation_sum_pct": total,
                 "redutor": redutor,
                 "duplicates": 0,
-                "future_reference_date": False,
+                "future_reference_date": ref_date > TODAY.isoformat(),
+                "future_reference_days": (datetime.fromisoformat(ref_date).date() - TODAY).days,
+                "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
                 "status": "VALIDADO",
                 "fail_closed": True
             }
