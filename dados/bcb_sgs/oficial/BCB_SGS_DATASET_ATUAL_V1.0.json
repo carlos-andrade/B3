@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "BCB_SGS_NUCLEO_MACRO",
+  "status": "VIGENTE",
+  "status_frescor": "VALIDADO",
+  "generated_at": "2026-09-27T10:29:59.681967-03:00",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "captured_at": "2026-09-27T10:29:59.681967-03:00",
+  "fail_closed": true,
+  "workflow": {"run_id":36322575914,"run_number":5,"head_sha":"baf5318110d986aec2d88d6a2f4e5a001557cc0c","job":"ingest","conclusion":"success"},
+  "series": [
+    {"codigo_sgs":432,"status":"VALIDADO","ultima_data":"2026-09-27","linhas":10069,"manifest":"dados/bcb_sgs/manifests/SGS_432_quality.json","normalized":"dados/bcb_sgs/normalized/SGS_432.csv"},
+    {"codigo_sgs":11,"status":"VALIDADO","ultima_data":"2026-09-25","linhas":10107,"manifest":"dados/bcb_sgs/manifests/SGS_11_quality.json","normalized":"dados/bcb_sgs/normalized/SGS_11.csv"},
+    {"codigo_sgs":12,"status":"VALIDADO","ultima_data":"2026-09-24","linhas":10148,"manifest":"dados/bcb_sgs/manifests/SGS_12_quality.json","normalized":"dados/bcb_sgs/normalized/SGS_12.csv"},
+    {"codigo_sgs":1,"status":"VALIDADO","ultima_data":"2026-09-25","linhas":10482,"manifest":"dados/bcb_sgs/manifests/SGS_1_quality.json","normalized":"dados/bcb_sgs/normalized/SGS_1.csv"},
+    {"codigo_sgs":433,"status":"VALIDADO","ultima_data":"2026-08-01","linhas":560,"manifest":"dados/bcb_sgs/manifests/SGS_433_quality.json","normalized":"dados/bcb_sgs/normalized/SGS_433.csv"}
+  ],
+  "consumo": {"regra":"Consumir somente series com manifesto VALIDADO.","raw_preservado":true,"duplicidades":0,"datas_invalidas":0,"valores_invalidos":0,"datas_futuras_rejeitadas":0}
+}
