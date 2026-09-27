@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "verification_date": "2026-09-27",
   "status": "NOT_CERTIFIED",
   "reference": {
@@ -9,12 +9,21 @@
   },
   "datasets": [
     {
-      "id": "COTAHIST_2026",
+      "id": "COTAHIST_DAILY",
+      "source": "B3",
+      "expected_last_date": "2026-09-25",
+      "stored_last_date": "2026-09-25",
+      "status": "VALIDATED",
+      "evidence_commit": "1b2ef358f02c18fb1d1b061a41e97e13f957653e"
+    },
+    {
+      "id": "COTAHIST_2026_OFFICIAL_ANNUAL",
       "source": "B3",
       "expected_last_date": "2026-09-25",
       "stored_last_date": "2026-09-22",
       "gap_trading_sessions": 3,
-      "status": "PENDING"
+      "status": "PENDING_ANNUAL_RECONCILIATION",
+      "latest_manifest_commit": "561888200a6def1c90815e0b5f67c8b1f835fd3e"
     },
     {
       "id": "COTAHIST_1986_2025",
@@ -43,5 +52,10 @@
       "source": "B3",
       "status": "NOT_CERTIFIED"
     }
-  ]
+  ],
+  "remediation": {
+    "component": "scripts/ingestao/importar_cotahist_diario_v1.py",
+    "backfill_days": 7,
+    "commit": "3fc2afb82409af9a642541c96ded14a971ecbad7"
+  }
 }
