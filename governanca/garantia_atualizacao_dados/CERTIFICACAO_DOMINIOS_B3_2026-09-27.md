@@ -21,7 +21,7 @@ A regra é FAIL-CLOSED: nenhum domínio pode receber o estado CERTIFICADO apenas
 | COTAHIST histórico 1987–2025 | CONDICIONAL | Cobertura histórica existente, sujeita à validação anual por ano |
 | COTAHIST 1986 | EXCEÇÃO HISTÓRICA NÃO CERTIFICÁVEL | Fase 09C encerrada como exceção documentada; não inventar observações ausentes |
 | Copom 281 | CERTIFICADO | RAW + metadados + NORMALIZED persistidos; evento e data de publicação reconciliados |
-| Demais séries BCB/SGS | NÃO CERTIFICADO | Não existe ainda no repositório uma matriz de frescor persistida e completa por série |
+| BCB/SGS núcleo macro | CERTIFICADO | SGS 432/11/12/1/433; manifesto geral VALIDADO; execução #5; índice oficial V1.0 |
 | Índices B3 | NÃO CERTIFICADO | Fonte oficial atual identificada, mas falta captura/manifesto persistido e reconciliação no repositório |
 | Carteiras B3 | NÃO CERTIFICADO | Carteira definitiva de setembro/2026 identificada na fonte B3, mas falta evidência persistida no repositório |
 | Derivativos/futuros/opções | NÃO CERTIFICADO | Contratos e contrato de ingestão definidos, mas não há evidência suficiente de dataset corrente certificado |
@@ -50,7 +50,19 @@ Evidências principais:
 
 Última observação corrente certificada: 25/09/2026.
 
-### 3.2 Copom 281
+### 3.2 BCB/SGS núcleo macro
+
+O núcleo macro foi certificado em 27/09/2026. Evidência principal: `dados/bcb_sgs/oficial/BCB_SGS_DATASET_ATUAL_V1.0.json`.
+
+- SGS 432: VALIDADO, última data 27/09/2026;
+- SGS 11: VALIDADO, última data 25/09/2026;
+- SGS 12: VALIDADO, última data 24/09/2026;
+- SGS 1: VALIDADO, última data 25/09/2026;
+- SGS 433/IPCA: VALIDADO, última data 01/08/2026, 560 observações.
+
+O IPCA teve quatro duplicidades de borda na captura bruta entre chunks. O RAW foi preservado integralmente; a normalização passou a ignorar registros fora da janela solicitada. O manifesto final registra zero duplicidades.
+
+### 3.3 Copom 281
 
 A captura persistida contém RAW, metadados de captura e NORMALIZED.
 
@@ -67,7 +79,7 @@ A captura de 25/09/2026 possui SHA-256 nos metadados RAW e conteúdo normalizado
 
 ## 4. Domínios que permanecem bloqueados
 
-### 4.1 BCB — demais séries
+### 4.1 BCB — séries fora do núcleo certificado
 
 Não é permitido transformar a existência do Copom em certificação de todo o BCB.
 
@@ -124,7 +136,7 @@ A garantia global somente poderá mudar para CERTIFICADA quando todos os seguint
 1. COTAHIST corrente;
 2. histórico COTAHIST dentro do escopo declarado;
 3. Copom;
-4. séries BCB obrigatórias;
+4. núcleo BCB/SGS obrigatório e demais séries BCB definidas no inventário;
 5. índices B3;
 6. carteiras B3;
 7. derivativos/futuros/opções;
