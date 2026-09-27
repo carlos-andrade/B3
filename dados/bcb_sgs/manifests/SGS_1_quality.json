@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "codigo_sgs": 1,
+  "nome": "Dólar americano venda",
+  "frequencia": "D",
+  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "capture_timezone": "America/Sao_Paulo",
+  "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados",
+  "normalized_file": "dados/bcb_sgs/normalized/SGS_1.csv",
+  "normalized_sha256": "22feba1f8258015c88824d539d174f7b6bd70ea7e8e5b6ac5d2fc46821689c42",
+  "linhas_normalized": 10482,
+  "primeira_data": "1984-11-28",
+  "ultima_data": "2026-09-25",
+  "datas_invalidas": 0,
+  "valores_invalidos": 0,
+  "duplicidades": 0,
+  "datas_futuras": 0,
+  "future_rejected": false,
+  "future_policy": "REJEITA_FAIL_CLOSED",
+  "chunks": [
+    {
+      "chunk": 1,
+      "data_inicial": "1984-11-28",
+      "data_final": "1994-11-25",
+      "raw_file": "dados/bcb_sgs/raw/1/SGS_1_1984-11-28_1994-11-25.json",
+      "raw_sha256": "9f928a6be4ab707b13a494335876b0cb8ae85fc23b92c8be69385e6103f99529",
+      "raw_bytes": 101718,
+      "records_api": 2491
+    },
+    {
+      "chunk": 2,
+      "data_inicial": "1994-11-26",
+      "data_final": "2004-11-22",
+      "raw_file": "dados/bcb_sgs/raw/1/SGS_1_1994-11-26_2004-11-22.json",
+      "raw_sha256": "0f80b72e1d6925507b6ad6ca7eca839ca35049248ee05de298b9e4055fc8a058",
+      "raw_bytes": 97696,
+      "records_api": 2505
+    },
+    {
+      "chunk": 3,
+      "data_inicial": "2004-11-23",
+      "data_final": "2014-11-20",
+      "raw_file": "dados/bcb_sgs/raw/1/SGS_1_2004-11-23_2014-11-20.json",
+      "raw_sha256": "ea1ed6c14de009fea14b606cb9d3239738706d881f074c2e2eecd33efb19021c",
+      "raw_bytes": 98047,
+      "records_api": 2514
+    },
+    {
+      "chunk": 4,
+      "data_inicial": "2014-11-21",
+      "data_final": "2024-11-17",
+      "raw_file": "dados/bcb_sgs/raw/1/SGS_1_2014-11-21_2024-11-17.json",
+      "raw_sha256": "b97e1d4fde97e60fa153a5f58c02fa79be58bfd7cc4748c0b1f59e7344b41025",
+      "raw_bytes": 97735,
+      "records_api": 2506
+    },
+    {
+      "chunk": 5,
+      "data_inicial": "2024-11-18",
+      "data_final": "2026-09-27",
+      "raw_file": "dados/bcb_sgs/raw/1/SGS_1_2024-11-18_2026-09-27.json",
+      "raw_sha256": "cd55cf3686588409f4125d18a5b4f1ea8899f7ea4b43cedb71b7b26c3a4f054d",
+      "raw_bytes": 18175,
+      "records_api": 466
+    }
+  ],
+  "fail_closed": true
+}

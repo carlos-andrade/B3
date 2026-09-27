@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "codigo_sgs": 11,
+  "nome": "Taxa Selic efetiva",
+  "frequencia": "D",
+  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "capture_timezone": "America/Sao_Paulo",
+  "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados",
+  "normalized_file": "dados/bcb_sgs/normalized/SGS_11.csv",
+  "normalized_sha256": "8d7d88fa6f578697519a6f123188a49ae22f3cc25466a698b8d200ae27549ca9",
+  "linhas_normalized": 10107,
+  "primeira_data": "1986-06-04",
+  "ultima_data": "2026-09-25",
+  "datas_invalidas": 0,
+  "valores_invalidos": 0,
+  "duplicidades": 0,
+  "datas_futuras": 0,
+  "future_rejected": false,
+  "future_policy": "REJEITA_FAIL_CLOSED",
+  "chunks": [
+    {
+      "chunk": 1,
+      "data_inicial": "1986-06-04",
+      "data_final": "1996-05-31",
+      "raw_file": "dados/bcb_sgs/raw/11/SGS_11_1986-06-04_1996-05-31.json",
+      "raw_sha256": "1218e9beaa3629f85192afcac6e60b0c846b15db177df5f426a6cd368dfc6fc7",
+      "raw_bytes": 102214,
+      "records_api": 2493
+    },
+    {
+      "chunk": 2,
+      "data_inicial": "1996-06-01",
+      "data_final": "2006-05-29",
+      "raw_file": "dados/bcb_sgs/raw/11/SGS_11_1996-06-01_2006-05-29.json",
+      "raw_sha256": "ba4300dc93238a89a03c2ac4773a40ec107b59292770baf0b2ad57e867b91f39",
+      "raw_bytes": 102870,
+      "records_api": 2509
+    },
+    {
+      "chunk": 3,
+      "data_inicial": "2006-05-30",
+      "data_final": "2016-05-26",
+      "raw_file": "dados/bcb_sgs/raw/11/SGS_11_2006-05-30_2016-05-26.json",
+      "raw_sha256": "c54909ed6731d7e7d1a36c01d8a3b8cb28809e49468f5f337376f27684cbd929",
+      "raw_bytes": 102911,
+      "records_api": 2510
+    },
+    {
+      "chunk": 4,
+      "data_inicial": "2016-05-27",
+      "data_final": "2026-05-24",
+      "raw_file": "dados/bcb_sgs/raw/11/SGS_11_2016-05-27_2026-05-24.json",
+      "raw_sha256": "57fa30ef1b3b582e7586131b922e47bf97694132cccc1b8928f178156dd3fe56",
+      "raw_bytes": 102788,
+      "records_api": 2507
+    },
+    {
+      "chunk": 5,
+      "data_inicial": "2026-05-25",
+      "data_final": "2026-09-27",
+      "raw_file": "dados/bcb_sgs/raw/11/SGS_11_2026-05-25_2026-09-27.json",
+      "raw_sha256": "a3f7d79bb292cf08d296997fc1a416fd569a9211442c9499add1d7683f0acfec",
+      "raw_bytes": 3609,
+      "records_api": 88
+    }
+  ],
+  "fail_closed": true
+}

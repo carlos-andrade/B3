@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "codigo_sgs": 432,
+  "nome": "Meta Selic definida pelo Copom",
+  "frequencia": "D",
+  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "capture_timezone": "America/Sao_Paulo",
+  "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados",
+  "normalized_file": "dados/bcb_sgs/normalized/SGS_432.csv",
+  "normalized_sha256": "c3375cc8ad9f613e4a600bf886a26118dbd0e99557e1af10531a21436cc3236c",
+  "linhas_normalized": 10069,
+  "primeira_data": "1999-03-05",
+  "ultima_data": "2026-09-27",
+  "datas_invalidas": 0,
+  "valores_invalidos": 0,
+  "duplicidades": 0,
+  "datas_futuras": 0,
+  "future_rejected": false,
+  "future_policy": "ACEITA_CALENDARIO_COPOM",
+  "chunks": [
+    {
+      "chunk": 1,
+      "data_inicial": "1999-03-05",
+      "data_final": "2009-03-01",
+      "raw_file": "dados/bcb_sgs/raw/432/SGS_432_1999-03-05_2009-03-01.json",
+      "raw_sha256": "ad82072840f50ebb4bb17303a11c913b57304e7c213afed726deb07e2fd81b07",
+      "raw_bytes": 138701,
+      "records_api": 3650
+    },
+    {
+      "chunk": 2,
+      "data_inicial": "2009-03-02",
+      "data_final": "2019-02-27",
+      "raw_file": "dados/bcb_sgs/raw/432/SGS_432_2009-03-02_2019-02-27.json",
+      "raw_sha256": "774d4f8e11bf87600bc0171a834829a987533a03e75f405297e12e707c66f807",
+      "raw_bytes": 137127,
+      "records_api": 3650
+    },
+    {
+      "chunk": 3,
+      "data_inicial": "2019-02-28",
+      "data_final": "2026-09-27",
+      "raw_file": "dados/bcb_sgs/raw/432/SGS_432_2019-02-28_2026-09-27.json",
+      "raw_sha256": "1c34ed446330d0fde3fc68dc39e7ca01ef25feba01adab7b3070cd131ce12591",
+      "raw_bytes": 104152,
+      "records_api": 2769
+    }
+  ],
+  "fail_closed": true
+}

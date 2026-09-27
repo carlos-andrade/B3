@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "status": "REJEITADO",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "codigo_sgs": 433,
+  "nome": "IPCA",
+  "frequencia": "M",
+  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "capture_timezone": "America/Sao_Paulo",
+  "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados",
+  "normalized_file": "dados/bcb_sgs/normalized/SGS_433.csv",
+  "normalized_sha256": "56e5bc53ef752cce4ddafa9fe22105684090a4bbb0ed80afbf0be4dce87f1b24",
+  "linhas_normalized": 564,
+  "primeira_data": "1980-01-01",
+  "ultima_data": "2026-08-01",
+  "datas_invalidas": 0,
+  "valores_invalidos": 0,
+  "duplicidades": 4,
+  "datas_futuras": 0,
+  "future_rejected": false,
+  "future_policy": "REJEITA_FAIL_CLOSED",
+  "chunks": [
+    {
+      "chunk": 1,
+      "data_inicial": "1980-01-01",
+      "data_final": "1989-12-28",
+      "raw_file": "dados/bcb_sgs/raw/433/SGS_433_1980-01-01_1989-12-28.json",
+      "raw_sha256": "132ec09ed672ef51957cc8037f5b5b7fd376f09a4e65bf23802b768f73374dd0",
+      "raw_bytes": 4491,
+      "records_api": 120
+    },
+    {
+      "chunk": 2,
+      "data_inicial": "1989-12-29",
+      "data_final": "1999-12-26",
+      "raw_file": "dados/bcb_sgs/raw/433/SGS_433_1989-12-29_1999-12-26.json",
+      "raw_sha256": "d6d7620b242d0e59ed95a1c40e20f9bb3e4eb3935cddd4f28b70a4e1b629ed96",
+      "raw_bytes": 4535,
+      "records_api": 121
+    },
+    {
+      "chunk": 3,
+      "data_inicial": "1999-12-27",
+      "data_final": "2009-12-23",
+      "raw_file": "dados/bcb_sgs/raw/433/SGS_433_1999-12-27_2009-12-23.json",
+      "raw_sha256": "cdbc2573f4ed5c222dc0602e163e89fbf97f684be2ab452da8ba30cb3edbfe8e",
+      "raw_bytes": 4481,
+      "records_api": 121
+    },
+    {
+      "chunk": 4,
+      "data_inicial": "2009-12-24",
+      "data_final": "2019-12-21",
+      "raw_file": "dados/bcb_sgs/raw/433/SGS_433_2009-12-24_2019-12-21.json",
+      "raw_sha256": "62b0b5534d52cba28267c7d0477e0f9167da1961481f7c8d5934af55c7183d51",
+      "raw_bytes": 4482,
+      "records_api": 121
+    },
+    {
+      "chunk": 5,
+      "data_inicial": "2019-12-22",
+      "data_final": "2026-09-27",
+      "raw_file": "dados/bcb_sgs/raw/433/SGS_433_2019-12-22_2026-09-27.json",
+      "raw_sha256": "0976edd072c42c8183af77b5cc1b0e2bf40f114e6dd3568d0fb89d34551ca56f",
+      "raw_bytes": 3007,
+      "records_api": 81
+    }
+  ],
+  "fail_closed": true
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "source": "Banco Central do Brasil - BCData/SGS",
+  "codigo_sgs": 12,
+  "nome": "CDI",
+  "frequencia": "D",
+  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "capture_timezone": "America/Sao_Paulo",
+  "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados",
+  "normalized_file": "dados/bcb_sgs/normalized/SGS_12.csv",
+  "normalized_sha256": "908f1920c903dc69dbe5cc6e12df5d28dc2962f1b95e0c7a6c35f00ecc59e382",
+  "linhas_normalized": 10148,
+  "primeira_data": "1986-03-06",
+  "ultima_data": "2026-09-24",
+  "datas_invalidas": 0,
+  "valores_invalidos": 0,
+  "duplicidades": 0,
+  "datas_futuras": 0,
+  "future_rejected": false,
+  "future_policy": "REJEITA_FAIL_CLOSED",
+  "chunks": [
+    {
+      "chunk": 1,
+      "data_inicial": "1986-03-06",
+      "data_final": "1996-03-02",
+      "raw_file": "dados/bcb_sgs/raw/12/SGS_12_1986-03-06_1996-03-02.json",
+      "raw_sha256": "cb860f878781157eb6a784bb83724515cff6c01166ae4f3661238ff9a7e6e0dc",
+      "raw_bytes": 101394,
+      "records_api": 2473
+    },
+    {
+      "chunk": 2,
+      "data_inicial": "1996-03-03",
+      "data_final": "2006-02-28",
+      "raw_file": "dados/bcb_sgs/raw/12/SGS_12_1996-03-03_2006-02-28.json",
+      "raw_sha256": "997ec884c353b60c472e2010a280273cba40e2d9aac04d3469d75ed0fb1dbbd5",
+      "raw_bytes": 102911,
+      "records_api": 2510
+    },
+    {
+      "chunk": 3,
+      "data_inicial": "2006-03-01",
+      "data_final": "2016-02-26",
+      "raw_file": "dados/bcb_sgs/raw/12/SGS_12_2006-03-01_2016-02-26.json",
+      "raw_sha256": "f14d85aadbc1aa30a3a822c379b4d17de564721d5dadcb873048c2b8cd6b0ed9",
+      "raw_bytes": 102911,
+      "records_api": 2510
+    },
+    {
+      "chunk": 4,
+      "data_inicial": "2016-02-27",
+      "data_final": "2026-02-23",
+      "raw_file": "dados/bcb_sgs/raw/12/SGS_12_2016-02-27_2026-02-23.json",
+      "raw_sha256": "93156b6d676b10217de95f27bed25be4942de3418f2fcd8dd2be8a5585d8da7f",
+      "raw_bytes": 102788,
+      "records_api": 2507
+    },
+    {
+      "chunk": 5,
+      "data_inicial": "2026-02-24",
+      "data_final": "2026-09-27",
+      "raw_file": "dados/bcb_sgs/raw/12/SGS_12_2026-02-24_2026-09-27.json",
+      "raw_sha256": "09d009aeee7ab215a38d831ba4c0c0b6ab6ba9bd24d9174bbd5a338f05846ca3",
+      "raw_bytes": 6069,
+      "records_api": 148
+    }
+  ],
+  "fail_closed": true
+}
