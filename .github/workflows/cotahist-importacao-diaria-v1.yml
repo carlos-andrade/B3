@@ -1,5 +1,6 @@
 name: COTAHIST - importacao diaria automatica V1
 # reconciliacao anual V1 streaming
+# append incremental validado
 
 on:
   push:
