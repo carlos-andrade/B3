@@ -38,9 +38,18 @@
       "status": "REGISTERED"
     },
     {
-      "id": "BCB_OTHER_MACRO",
+      "id": "BCB_SGS_NUCLEO_MACRO",
       "source": "BCB",
-      "status": "NOT_CERTIFIED"
+      "expected_last_dates": {
+        "1": "2026-09-25",
+        "11": "2026-09-25",
+        "12": "2026-09-24",
+        "432": "2026-09-27",
+        "433": "2026-08-01"
+      },
+      "status": "CERTIFIED",
+      "evidence_commit": "8a62b0a7ee6d0a3a8826abcf1b0987fcc9fa6297",
+      "official_index": "dados/bcb_sgs/oficial/BCB_SGS_DATASET_ATUAL_V1.0.json"
     },
     {
       "id": "B3_INDICES_PORTFOLIOS",
