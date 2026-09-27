@@ -53,17 +53,41 @@ def parse_date_br(value: str) -> date:
 
 
 def fetch(url: str) -> bytes:
-    req = Request(url, headers={"User-Agent": "B3-BancoCentral-Ingestao/1.0"})
+    req = Request(
+        url,
+        headers={
+            "User-Agent": "B3-BancoCentral-Ingestao/1.1 (+https://github.com/carlos-andrade/B3)",
+            "Accept": "application/json",
+        },
+    )
     last_error = None
-    for attempt in range(4):
+    for attempt in range(5):
         try:
             with urlopen(req, timeout=TIMEOUT) as response:
-                return response.read()
-        except (HTTPError, URLError, TimeoutError) as exc:
-            last_error = exc
-            if attempt < 3:
+                payload = response.read()
+                content_type = response.headers.get("Content-Type", "")
+                if not payload.strip():
+                    raise RuntimeError(f"Resposta vazia da API BCB; content-type={content_type}")
+                if "json" not in content_type.lower():
+                    preview = payload[:300].decode("utf-8", errors="replace").replace("\n", " ")
+                    raise RuntimeError(
+                        f"Resposta não-JSON da API BCB; content-type={content_type}; preview={preview!r}"
+                    )
+                return payload
+        except HTTPError as exc:
+            body = exc.read(300).decode("utf-8", errors="replace").replace("\n", " ")
+            last_error = RuntimeError(
+                f"HTTP {exc.code} da API BCB; content-type={exc.headers.get('Content-Type', '')}; body={body!r}"
+            )
+            if exc.code in {429, 500, 502, 503, 504} and attempt < 4:
                 time.sleep(2 ** attempt)
-    raise RuntimeError(f"Falha API BCB após 4 tentativas: {last_error}")
+                continue
+            raise last_error
+        except (URLError, TimeoutError, RuntimeError) as exc:
+            last_error = exc
+            if attempt < 4:
+                time.sleep(2 ** attempt)
+    raise RuntimeError(f"Falha API BCB após 5 tentativas: {last_error}")
 
 
 def chunks(start: date, end: date):
@@ -154,9 +178,18 @@ def main():
             raw_path = raw_dir / f"SGS_{code}_{chunk_start.isoformat()}_{chunk_end.isoformat()}.json"
             raw_path.write_bytes(payload)
 
-            parsed = json.loads(payload.decode("utf-8"))
+            try:
+                parsed = json.loads(payload.decode("utf-8"))
+            except json.JSONDecodeError as exc:
+                preview = payload[:500].decode("utf-8", errors="replace").replace("\n", " ")
+                raise RuntimeError(
+                    f"JSON inválido para SGS {code}, janela {chunk_start.isoformat()}..{chunk_end.isoformat()}; "
+                    f"preview={preview!r}"
+                ) from exc
             if not isinstance(parsed, list):
-                raise RuntimeError(f"Resposta inesperada para SGS {code}: não é lista")
+                raise RuntimeError(
+                    f"Resposta inesperada para SGS {code}: tipo={type(parsed).__name__}"
+                )
 
             all_records.extend(parsed)
             chunks_meta.append({
