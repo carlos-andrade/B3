@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-27T10:27:15.621321-03:00",
-  "status": "REJEITADO",
+  "generated_at": "2026-09-27T10:29:59.681967-03:00",
+  "status": "VALIDADO",
   "series": [
     {
       "codigo_sgs": 432,
@@ -33,9 +33,9 @@
     },
     {
       "codigo_sgs": 433,
-      "status": "REJEITADO",
+      "status": "VALIDADO",
       "ultima_data": "2026-08-01",
-      "linhas": 564,
+      "linhas": 560,
       "manifest": "dados/bcb_sgs/manifests/SGS_433_quality.json"
     }
   ],
