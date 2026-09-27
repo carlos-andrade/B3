@@ -191,7 +191,24 @@ def main():
                     f"Resposta inesperada para SGS {code}: tipo={type(parsed).__name__}"
                 )
 
-            all_records.extend(parsed)
+            # O BCData pode devolver a observação mensal anterior ao início solicitado
+            # (efeito de borda para séries de baixa frequência). O RAW permanece intacto,
+            # mas a NORMALIZAÇÃO aceita somente registros dentro da janela solicitada.
+            filtered = []
+            records_outside_window = 0
+            for row in parsed:
+                try:
+                    row_date = parse_date_br(str(row.get("data", "")).strip())
+                except Exception:
+                    # Datas inválidas continuam sob responsabilidade da validação formal.
+                    filtered.append(row)
+                    continue
+                if chunk_start <= row_date <= chunk_end:
+                    filtered.append(row)
+                else:
+                    records_outside_window += 1
+
+            all_records.extend(filtered)
             chunks_meta.append({
                 "chunk": idx,
                 "data_inicial": chunk_start.isoformat(),
@@ -200,6 +217,8 @@ def main():
                 "raw_sha256": sha256_file(raw_path),
                 "raw_bytes": raw_path.stat().st_size,
                 "records_api": len(parsed),
+                "records_normalized_window": len(filtered),
+                "records_outside_window_ignored": records_outside_window,
             })
 
         normalized, quality = validate_records(
