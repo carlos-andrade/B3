@@ -5,7 +5,7 @@
   "codigo_sgs": 433,
   "nome": "IPCA",
   "frequencia": "M",
-  "captured_at": "2026-09-27T10:20:35.110742-03:00",
+  "captured_at": "2026-09-27T10:27:15.621321-03:00",
   "capture_timezone": "America/Sao_Paulo",
   "source_api": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados",
   "normalized_file": "dados/bcb_sgs/normalized/SGS_433.csv",
