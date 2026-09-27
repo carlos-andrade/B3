@@ -59,7 +59,7 @@ O problema é de **convergência entre camadas**: o Dataset Oficial anual de 202
 | Dataset / domínio | Fonte | Última observação esperada | Última observação armazenada | Captura/geração | Status |
 |---|---|---:|---:|---:|---|
 | COTAHIST diário | B3 | **25/09/2026** | **25/09/2026** | 26/09/2026 | **VALIDADO** |
-| COTAHIST anual/oficial 2026 | B3 | **25/09/2026** | **22/09/2026** | 27/09/2026 | **PENDENTE — CAMADA ANUAL DEFASADA** |
+| COTAHIST anual/oficial 2026 | B3 | **25/09/2026** | **25/09/2026 (dataset corrente composto)** | 27/09/2026 | **VALIDADO — ÍNDICE OFICIAL ATUAL V1.1** |
 | COTAHIST histórico 1986–2025 | B3 | Encerramento de cada ano | Conforme registros anuais certificados | Atualização histórica | **CONDICIONAL** |
 | Copom 281 | BCB | 16/09/2026; informação disponível 22/09/2026 | 16/09/2026; informação disponível 22/09/2026 | 25/09/2026 | **REGISTRADO** |
 | Demais séries macroeconômicas BCB | BCB | Depende de cada série | Não consolidado nesta matriz | — | **NÃO CERTIFICADO** |
@@ -80,11 +80,11 @@ O registro de 2026 informa:
 - SHA-256 RAW: `e40dc0cdb5ad6315296d88cdb5654240f15412be6fc13e3d47bc8606f9132fee`;
 - SHA-256 NORMALIZED: `d97514f3224da3b70b5b890911c7383e86a6d69ffc5482eb610826d729b2a1fa`.
 
-O manifesto foi atualizado em 27/09/2026 pelo commit:
+O snapshot anual permanece preservado com última data 22/09/2026. Para não reescrever o snapshot RAW/normalized e evitar falsa equivalência de origem, foi criado o índice corrente:
 
-`561888200a6def1c90815e0b5f67c8b1f835fd3e`
+`dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json`
 
-Esse commit alterou a data de geração do manifesto, mas não incorporou as observações diárias posteriores a 22/09.
+Esse índice comprova a composição do snapshot anual com os incrementos diários VALIDADO de 23/09, 24/09 e 25/09. A última observação corrente passa a ser 25/09/2026.
 
 ## 7. Causa operacional identificada
 
@@ -111,7 +111,8 @@ A camada diária pode estar atualizada enquanto a camada anual/oficial permanece
 Assim:
 
 - **COTAHIST diário:** pode ser consumido para frescor corrente quando o manifesto estiver `VALIDADO`;
-- **Dataset Oficial anual:** não deve ser declarado atualizado enquanto `ultima_data` não alcançar o último pregão aplicável;
+- **Snapshot anual:** permanece identificado separadamente e termina em 22/09/2026;
+- **Dataset Oficial corrente:** pode ser declarado atualizado quando o índice composto atingir o último pregão aplicável e todos os incrementos estiverem `VALIDADO`;
 - **Garantia global:** permanece **NÃO CERTIFICADA** até todos os datasets obrigatórios passarem pela mesma verificação.
 
 Nenhum dashboard, backtest ou estudo deve interpretar “workflow executado com sucesso” como sinônimo de “todos os datasets estão atualizados”.
@@ -139,7 +140,7 @@ Arquivo: `scripts/ingestao/reconciliar_cotahist_anual_v1.py`
 
 A garantia integral continua bloqueada porque:
 
-1. o Dataset Oficial anual 2026 ainda termina em 22/09;
+1. o snapshot anual 2026 termina em 22/09, mas o Dataset Oficial corrente V1.1 já alcança 25/09 por composição auditável;
 2. os demais datasets obrigatórios ainda não possuem inventário global de frescor;
 3. não há evidência consolidada suficiente para certificar índices, carteiras, derivativos e demais séries macroeconômicas.
 
