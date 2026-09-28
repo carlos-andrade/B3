@@ -1,0 +1,24 @@
+{
+  "schema_version":"3.0.0",
+  "status":"GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
+  "generated_at_utc":"2026-09-28T21:44:13.883Z",
+  "year":1987,
+  "objective":"Localizar uma segunda cópia binária efetivamente acessível do COTAHIST_A1987 para comparação byte a byte dos 34 registros PRAZOT.",
+  "new_search":{
+    "web_exact_queries":[
+      "COTAHIST_A1987.zip download",
+      "COTAHIST_A1987.ZIP 1987 Bovespa",
+      "COTAHIST_A1987.txt download B3"
+    ],
+    "result":"SEM_RESULTADO_BINARIO_ACESSIVEL",
+    "github_exact_search":"Somente referência histórica em diegotremper/b3-api ao nome COTAHIST_A1987.zip; nenhum binário ou cópia textual bruta localizado.",
+    "byte_pattern_search":"Busca GitHub por 000f20 em contexto COTAHIST sem resultados."
+  },
+  "comparison":{
+    "affected_records":34,
+    "byte_to_byte_executed":false,
+    "matching_records":null,
+    "different_records":null
+  },
+  "decision":"Não declarar validação independente por ausência dos bytes. Preservar exceção e bloquear liberação de 1988."
+}
