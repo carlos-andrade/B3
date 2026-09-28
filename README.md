@@ -467,10 +467,10 @@ O repositório **B3 — A BOLSA DO BRASIL** é a fonte de organização e memór
 
 > Este bloco é gerenciado pelo workflow `Atualizar README — B3`.
 
-- **Última alteração relevante:** `c7d78b90539e` — 28/09/2026 18:58 UTC
-- **Commit de referência:** ci: adicionar auditoria da chave logica COTAHIST 1987 v1
-- **Workflows GitHub Actions:** 53
-- **Scripts Python em `scripts/ingestao/`:** 57
+- **Última alteração relevante:** `31e691bc8742` — 28/09/2026 19:09 UTC
+- **Commit de referência:** ci: diagnostico contextual PRAZOT COTAHIST 1987
+- **Workflows GitHub Actions:** 56
+- **Scripts Python em `scripts/ingestao/`:** 60
 - **Diretórios operacionais de primeiro nível:** 7
 
 **Escopo monitorado:**
