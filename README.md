@@ -134,6 +134,30 @@ Os workflows devem ser tratados como parte da infraestrutura do projeto, e não 
 
 ---
 
+### 4.1 Atualização automática do README
+
+O próprio README possui uma rotina de manutenção automatizada para evitar que a documentação operacional fique defasada em relação ao repositório.
+
+Componentes:
+
+- [Workflow de atualização do README](./.github/workflows/atualizar-readme-b3.yml)
+- [Rotina de sincronização](./scripts/ingestao/atualizar_readme_b3.py)
+
+O mecanismo:
+
+1. monitora alterações relevantes em workflows, governança, scripts de ingestão, catálogo de ativos, dados normalizados/certificados e dashboard;
+2. executa também uma verificação programada diária;
+3. recalcula o inventário operacional;
+4. atualiza somente o bloco do README controlado pela automação;
+5. não altera o conteúdo editorial fora desse bloco;
+6. não cria commit quando o README já está sincronizado;
+7. exclui dados RAW volumosos do gatilho automático para evitar commits desnecessários;
+8. permite execução manual por workflow_dispatch.
+
+A automação é **idempotente**: executar novamente sem mudança relevante não deve gerar novo commit.
+
+---
+
 ## 5. Governança e confiança
 
 A camada de governança está em [`governanca/`](./governanca).
