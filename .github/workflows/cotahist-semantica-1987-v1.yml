@@ -1,0 +1,35 @@
+name: COTAHIST 1987 - Auditoria Semantica V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1987.ZIP'
+      - 'dados/cotahist/normalized/anual/COTAHIST_A1987.csv'
+      - 'scripts/ingestao/auditar_semantica_cotahist_1987_v1.py'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Auditoria semantica 1987
+        run: python scripts/ingestao/auditar_semantica_cotahist_1987_v1.py
+
+      - name: Commit evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1987_AUDITORIA_SEMANTICA_V1.json
+          git diff --cached --quiet || git commit -m "audit: COTAHIST 1987 semantic gate v1"
+          git push
