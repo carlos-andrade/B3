@@ -34,7 +34,7 @@ jobs:
         run: |
           rm -rf /tmp/normalized
           mkdir -p /tmp/normalized
-          python scripts/ingestao/normalize_cotahist.py             --input dados/cotahist/raw/anual/COTAHIST_A2026.ZIP             --output /tmp/normalized/COTAHIST_A2026.csv
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A2026.ZIP             --output /tmp/normalized/COTAHIST_A2026.csv
 
       - name: Medir capacidade
         run: |
