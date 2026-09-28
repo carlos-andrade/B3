@@ -31,3 +31,4 @@ result={
 }
 OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"records":stats["records"],"violations":len(stats["violations"]),"zero_ohlc":stats["zero_ohlc"]}))
+# V1.0.1: execução automatizada pelo workflow de auditoria OHLC 1987.
