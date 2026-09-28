@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "status": "OHLC_AUDITORIA_1987",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "records": 130665,
+  "violations": [],
+  "violation_count": 0,
+  "zero_ohlc_count": 0,
+  "gates": {
+    "records_positive": true,
+    "ohlc_order_valid": true
+  },
+  "note": "Auditoria estrutural das relações OHLC sobre valores brutos. Não certifica significado econômico."
+}
