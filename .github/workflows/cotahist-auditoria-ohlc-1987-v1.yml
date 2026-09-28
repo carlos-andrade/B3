@@ -1,0 +1,45 @@
+name: COTAHIST 1987 - Auditoria OHLC V1
+
+on:
+  push:
+    paths:
+      - "scripts/ingestao/auditar_ohlc_cotahist_1987_v1.py"
+      - ".github/workflows/cotahist-auditoria-ohlc-1987-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Executar auditoria OHLC
+        run: python3 scripts/ingestao/auditar_ohlc_cotahist_1987_v1.py
+
+      - name: Validar gates
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          p="dados/cotahist/quality/COTAHIST_1987_AUDITORIA_OHLC_V1.json"
+          d=json.load(open(p,encoding="utf-8"))
+          print(json.dumps(d, ensure_ascii=False, indent=2))
+          if not d["gates"]["records_positive"] or not d["gates"]["ohlc_order_valid"]:
+              sys.exit("FAIL-CLOSED: auditoria OHLC não passou nos gates.")
+          PY
+
+      - name: Publicar evidência no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1987_AUDITORIA_OHLC_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração na evidência."
+          else
+            git commit -m "audit: registrar evidencia OHLC COTAHIST 1987"
+            git push
+          fi
