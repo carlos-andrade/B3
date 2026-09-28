@@ -1,0 +1,174 @@
+name: COTAHIST - Gate histórico 1986 semântico e persistência LFS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-gate-historico-1986.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+      - "scripts/ingestao/auditar_cotahist_historico.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-gate-historico-1986
+  cancel-in-progress: false
+
+jobs:
+  gate-1986:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Pré-condições
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/raw/anual/COTAHIST_A1986.ZIP
+          test -s scripts/ingestao/normalize_cotahist.py
+          test -s scripts/ingestao/validar_normalized.py
+          test -s scripts/ingestao/auditar_cotahist_historico.py
+
+      - name: Normalizar 1986
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/cotahist1986
+          mkdir -p /tmp/cotahist1986
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP             --output /tmp/cotahist1986/COTAHIST_A1986.csv
+
+      - name: Auditoria semântica histórica
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/auditar_cotahist_historico.py             --zip dados/cotahist/raw/anual/COTAHIST_A1986.ZIP             --normalized /tmp/cotahist1986/COTAHIST_A1986.csv             --output /tmp/cotahist1986/semantic_audit.json             --year 1986
+
+      - name: Validação estrutural e SHA
+        run: |
+          set -euo pipefail
+          RAW_SHA="$(sha256sum dados/cotahist/raw/anual/COTAHIST_A1986.ZIP | cut -d' ' -f1)"
+          NORM_SHA="$(sha256sum /tmp/cotahist1986/COTAHIST_A1986.csv | cut -d' ' -f1)"
+          python scripts/ingestao/validar_normalized.py             /tmp/cotahist1986/COTAHIST_A1986.csv             /tmp/cotahist1986/validation.json             1986             "$RAW_SHA"             "$NORM_SHA"
+          cp /tmp/cotahist1986/COTAHIST_A1986.csv /tmp/cotahist1986/COTAHIST_A1986.csv.persist
+          echo "$NORM_SHA  COTAHIST_A1986.csv" > /tmp/cotahist1986/COTAHIST_A1986.csv.sha256
+
+      - name: Persistir NORMALIZED 1986 via Git LFS
+        run: |
+          set -euo pipefail
+          mkdir -p dados/cotahist/normalized/anual dados/cotahist/normalized/manifests dados/cotahist/quality
+          cp /tmp/cotahist1986/COTAHIST_A1986.csv.persist dados/cotahist/normalized/anual/COTAHIST_A1986.csv
+          cp /tmp/cotahist1986/COTAHIST_A1986.csv.sha256 dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256
+          cp /tmp/cotahist1986/semantic_audit.json dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json
+          git lfs track "dados/cotahist/normalized/anual/COTAHIST_A1986.csv"
+          git add .gitattributes             dados/cotahist/normalized/anual/COTAHIST_A1986.csv             dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256             dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json
+          git diff --cached --check
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A1986.csv | awk '{print $3}')" = "lfs"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "PERSISTENCIA=SEM_MUDANCA"
+          else
+            git commit -m "data(cotahist): persistir NORMALIZED 1986 via Git LFS"
+            for tentativa in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo "PUSH_STATUS=SUCESSO"
+                exit 0
+              fi
+              sleep 5
+            done
+            echo "PUSH_STATUS=FALHA_APOS_5_TENTATIVAS"
+            exit 1
+          fi
+
+      - name: Gerar manifestos 1986
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,hashlib,json
+          from pathlib import Path
+          raw=Path("dados/cotahist/raw/anual/COTAHIST_A1986.ZIP")
+          norm=Path("dados/cotahist/normalized/anual/COTAHIST_A1986.csv")
+          audit=json.loads(Path("dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json").read_text())
+          rows=0; first=None; last=None
+          with norm.open(encoding="utf-8",newline="") as f:
+              r=csv.reader(f); h=next(r)
+              assert len(h)==25
+              for row in r:
+                  assert len(row)==25
+                  rows+=1; first=first or row[0]; last=row[0]
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          norm_sha=hashlib.sha256(norm.read_bytes()).hexdigest()
+          q={
+            "schema_version":"1.0.0","status":"VALIDADO","ano":1986,
+            "parser_version":"1.1.0","source":"B3",
+            "raw_file":"COTAHIST_A1986.ZIP","raw_sha256":raw_sha,
+            "normalized_file":"COTAHIST_A1986.csv","normalized_sha256":norm_sha,
+            "linhas_normalized":rows,"campos":25,
+            "primeira_data":first,"ultima_data":last,
+            "datas_invalidas":0,"datas_fora_do_ano":0
+          }
+          Path("dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json").write_text(json.dumps(q,ensure_ascii=False,indent=2)+"\n")
+          o={
+            "schema_version":"1.0.0","status":"OFICIAL",
+            "dataset":"COTAHIST_NORMALIZED_ANUAL","ano":1986,"source":"B3",
+            "raw_file":"dados/cotahist/raw/anual/COTAHIST_A1986.ZIP",
+            "normalized_file":"dados/cotahist/normalized/anual/COTAHIST_A1986.csv",
+            "quality_manifest":"dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json",
+            "checksum_file":"dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256",
+            "semantic_audit":"dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json",
+            "parser_version":"1.1.0","raw_sha256":raw_sha,"normalized_sha256":norm_sha,
+            "linhas_normalized":rows,"campos":25,"primeira_data":first,"ultima_data":last,
+            "storage":"git-lfs","canonical":True,"approved_gate":"HISTORICO_1986_SEMANTICO",
+            "approval_status":"APROVADO"
+          }
+          Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_1986.json").write_text(json.dumps(o,ensure_ascii=False,indent=2)+"\n")
+          print("DATASET_1986_MANIFEST=OK")
+          print(f"ROWS={rows} FIRST={first} LAST={last}")
+          print(f"RAW_SHA={raw_sha}")
+          print(f"NORMALIZED_SHA={norm_sha}")
+          print(f"SEMANTIC_AUDIT_CASES={audit['testes']['casos_ohlc']}")
+
+          PY
+          git add dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json             dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_1986.json
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "cert(cotahist): certificar Dataset Oficial 1986" || true
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "CERTIFICACAO_PUSH=SUCESSO"
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
+
+      - name: Gate final 1986
+        run: |
+          set -euo pipefail
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A1986.csv | awk '{print $3}')" = "lfs"
+          ! grep -q "https://git-lfs.github.com/spec/v1" dados/cotahist/normalized/anual/COTAHIST_A1986.csv
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json").read_text())
+          o=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_1986.json").read_text())
+          assert a["status"]=="VALIDADO"
+          assert a["testes"]["tpmerc"]=="OK"
+          assert a["testes"]["codbdi"]=="OK"
+          assert a["testes"]["chave_logica"]=="OK"
+          assert a["testes"]["casos_ohlc"]==30
+          assert a["testes"]["volume_quantidade"]=="OK"
+          assert o["status"]=="OFICIAL"
+          assert o["approval_status"]=="APROVADO"
+          print("HISTORICO_1986_STATUS=APROVADO")
+          PY
