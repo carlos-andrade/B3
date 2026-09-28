@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PRAZOT_1987_PESQUISA_PRIMARIA_POR_ATIVO_V2",
+  "generated_at_utc": "2026-09-28T21:45:00Z",
+  "scope": {
+    "affected_records": 34,
+    "patterns": {"000f20": 33, "9c0f20": 1, "000720": 1},
+    "codbdi": "96",
+    "tpmerc": "020"
+  },
+  "documented_context": {
+    "codbdi_96": "FRACIONÁRIO",
+    "tpmerc_020": "FRACIONÁRIO",
+    "prazot_definition": "Prazo em dias do mercado a termo",
+    "evidence": [
+      "B3 Layout do Arquivo - Cotações Históricas, tabela CODBDI",
+      "B3 Layout do Arquivo - Cotações Históricas, tabela TPMERC"
+    ]
+  },
+  "affected_asset_clusters": [
+    {"codneg":"CPF 3","codisi":"CPFLACON","dates":["1987-01-13"],"pattern":"000f20"},
+    {"codneg":"BRG 12","codisi":"BRGES1PNA","dates":["1987-01-14"],"pattern":"000f20"},
+    {"codneg":"CTK 1","codisi":"CTKAACOP","dates":["1987-01-16"],"pattern":"9c0f20"},
+    {"codneg":"CMI 5","codisi":"CMIGS1PP","dates":["1987-04-28"],"pattern":"000f20"},
+    {"codneg":"HOO 2","codisi":"HOOTACPP","dates":["1987-05-11"],"pattern":"000f20"},
+    {"codneg":"BEL 4","codisi":"BELGACPN","dates":["1987-05-15"],"pattern":"000f20"},
+    {"codneg":"CPF 4","codisi":"CPFLACPN","dates":["1987-05-15"],"pattern":"000f20"},
+    {"codneg":"SHA 4","codisi":"SHAPACPN","dates":["1987-05-15"],"pattern":"000f20"},
+    {"codneg":"FIB 3","codisi":"FIB ACON","dates":["1987-10-06","1987-10-07","1987-10-08","1987-10-13","1987-10-14","1987-10-21","1987-10-22","1987-10-26","1987-10-27","1987-12-08","1987-12-09","1987-12-11","1987-12-30"],"pattern":"000f20"},
+    {"codneg":"CAU 5","codisi":"CAUEACPNA","dates":["1987-10-14"],"pattern":"000f20"},
+    {"codneg":"GUR 4","codisi":"GURGACPN","dates":["1987-10-15"],"pattern":"000f20"},
+    {"codneg":"CLA 3","codisi":"CLAYACON","dates":["1987-10-29"],"pattern":"000f20"},
+    {"codneg":"MEP 7","codisi":"MEPAACPNC","dates":["1987-11-25"],"pattern":"000f20"},
+    {"codneg":"IBE 3","codisi":"IBESACON","dates":["1987-11-25"],"pattern":"000f20"},
+    {"codneg":"IBE 5","codisi":"IBESACPNA","dates":["1987-11-25"],"pattern":"000f20"},
+    {"codneg":"IBE 6","codisi":"IBESACPNB","dates":["1987-11-25"],"pattern":"000f20"},
+    {"codneg":"FBC 3","codisi":"FBCNACON","dates":["1987-12-11"],"pattern":"000f20"},
+    {"codneg":"NFC 6","codisi":"NFC ACPE","dates":["1987-12-23"],"pattern":"000f20"},
+    {"codneg":"FLC 5","codisi":"FLCLACPNA","dates":["1987-12-28"],"pattern":"000f20"}
+  ],
+  "primary_source_search": {
+    "queries": [
+      "Boletim Diário de Informações Bovespa 1987",
+      "Boletim Diário Bovespa 1987 PDF",
+      "1987 Bovespa mercado fracionário",
+      "FIB 3 BRADESCO FIN 1987",
+      "CPFLACON 1987",
+      "CTKAACOP 1987",
+      "COTAHIST_A1987.txt"
+    ],
+    "result": "Não foi localizada uma reprodução pública verificável dos registros afetados nem uma fonte primária contemporânea que explique os bytes específicos.",
+    "independent_copy_candidate": {
+      "source": "Kaggle dataset B3 (BM&FBovespa) 1986-2019 Equities Price",
+      "asset": "COTAHIST_A1987.txt",
+      "status": "CANDIDATO_SECUNDARIO_NAO_VALIDADO",
+      "limitation": "A página confirma a existência do arquivo, mas não foi usada como prova de identidade byte a byte."
+    }
+  },
+  "interpretation_boundary": {
+    "confirmed": [
+      "CODBDI 96 é classificado como FRACIONÁRIO na documentação B3 consultada.",
+      "TPMERC 020 é classificado como FRACIONÁRIO na documentação B3 consultada.",
+      "PRAZOT é definido estruturalmente como prazo em dias do mercado a termo."
+    ],
+    "not_confirmed": [
+      "significado histórico dos bytes 00 0f 20",
+      "significado histórico dos bytes 9c 0f 20",
+      "significado histórico dos bytes 00 07 20",
+      "se os bytes são corrupção, codificação histórica ou valor válido"
+    ]
+  },
+  "decision": "EXCECAO_DE_INTEGRIDADE_NAO_RESOLVIDA",
+  "release_1988_blocked": true,
+  "next_gate": "OBTER_COPIA_INDEPENDENTE_DO_COTAHIST_1987_E_COMPARAR_OS_34_REGISTROS_BYTE_A_BYTE"
+}
