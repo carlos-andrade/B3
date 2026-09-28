@@ -38,16 +38,13 @@ def gate_reconciliation(x):
     )
 
 def gate_key(x):
-    return x.get("collision_count", 1) == 0 and x.get("exact_duplicate_count", 1) == 0 and x.get("same_key_distinct_statistics_group_count", 1) == 0
+    return x.get("collision_group_count", 1) == 0 and x.get("exact_duplicate_group_count", 1) == 0 and x.get("same_key_distinct_statistics_group_count", 1) == 0
 
 def gate_ohlc(x):
-    return bool(x.get("gates", {}).get("ohlc_order_valid")) and x.get("ohlc_order_violations", 1) == 0
+    return bool(x.get("gates", {}).get("ohlc_order_valid")) and x.get("violation_count", 1) == 0
 
 def gate_qv(x):
-    return all(bool(v) for k, v in x.get("gates", {}).items() if k in {
-        "records_positive", "totneg_valid", "quatot_valid", "voltot_valid",
-        "raw_normalized_reconciliation"
-    })
+    return all(bool(v) for k, v in x.get("gates", {}).items() if k in {"records_positive", "all_numeric", "no_negative", "no_control_bytes", "raw_normalized_mismatch_zero"})
 
 def gate_calendar(x):
     g = x.get("gates", {})
