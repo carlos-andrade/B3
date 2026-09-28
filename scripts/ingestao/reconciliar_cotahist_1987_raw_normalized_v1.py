@@ -73,7 +73,16 @@ def dec(s):
     if not s: return None
     return Decimal(s.replace(",", "."))
 
-def eq(a,b):
+def canonical_date(s):
+    s=(s or "").strip()
+    if not s: return ""
+    if len(s)==8 and s.isdigit():
+        return s[:4]+"-"+s[4:6]+"-"+s[6:8]
+    return s
+
+def eq(a,b,field=None):
+    if field in {"data_pregao","datven"}:
+        return canonical_date(a)==canonical_date(b)
     return (a or "").strip()==(b or "").strip()
 
 raw=raw_rows()
@@ -106,7 +115,7 @@ identity_fields=["data_pregao","codbdi","codneg","tpmerc","codisi","dimes","espe
 identity_mismatches=[]
 for i,(rr,nr) in enumerate(zip(raw,norm_rows)):
     for field in identity_fields:
-        if not eq(rr[field],str(nr[mapping[field]])):
+        if not eq(rr[field],str(nr[mapping[field]]),field):
             identity_mismatches.append({"row":i+1,"field":field,"raw":rr[field],"normalized":str(nr[mapping[field]])})
             if len(identity_mismatches)>=30: break
     if len(identity_mismatches)>=30: break
