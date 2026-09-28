@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "status": "CERTIFICACAO_ESTRUTURAL_1987_COM_EXCECAO_SEMANTICA",
+  "generated_at_utc": "2026-09-28T20:36:29.696989+00:00",
+  "year": 1987,
+  "structural_gates": {
+    "reconciliacao_raw_normalized": true,
+    "chave_logica": true,
+    "ohlc": true,
+    "quantidade_volume": true,
+    "calendario": true
+  },
+  "structural_approval": true,
+  "economic_semantics_certified": false,
+  "prazot_exception": {
+    "status": "EXCECAO_DE_INTEGRIDADE_NAO_RESOLVIDA",
+    "independent_validation": "VALIDACAO_INDEPENDENTE_INCONCLUSIVA",
+    "rule": "Não corrigir, substituir, remover ou reinterpretar PRAZOT sem evidência histórica primária."
+  },
+  "calendar_note": "Os 19 weekday gaps permanecem como candidatos a dias sem pregão; não são classificados como feriados sem fonte histórica primária.",
+  "release_rule": "1988 somente após esta consolidação e resolução documental das pendências exigidas pelo protocolo do projeto.",
+  "evidence_files": {
+    "reconciliacao_raw_normalized": "COTAHIST_1987_RECONCILIACAO_RAW_NORMALIZED_V1.json",
+    "chave_logica": "COTAHIST_1987_AUDITORIA_CHAVE_LOGICA_V1.json",
+    "ohlc": "COTAHIST_1987_AUDITORIA_OHLC_V1.json",
+    "quantidade_volume": "COTAHIST_1987_AUDITORIA_QUANTIDADE_VOLUME_V1.json",
+    "calendario": "COTAHIST_1987_AUDITORIA_CALENDARIO_V1.json",
+    "semantica": "COTAHIST_1987_AUDITORIA_SEMANTICA_V1.json",
+    "prazot_integridade": "COTAHIST_1987_CLASSIFICACAO_PRAZOT_V1.json",
+    "prazot_validacao": "COTAHIST_1987_VALIDACAO_INDEPENDENTE_PRAZOT_V1.json"
+  }
+}
