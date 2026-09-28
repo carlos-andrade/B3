@@ -1,0 +1,151 @@
+name: COTAHIST - M3-1B reconciliar manifest NORMALIZED 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-m3-1b-reconciliar-manifest-2026
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Recalcular evidência RAW -> NORMALIZED
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+
+          RAW_SHA="$(sha256sum dados/cotahist/raw/anual/COTAHIST_A2026.ZIP | cut -d' ' -f1)"
+          PERSISTED_SHA="$(sha256sum dados/cotahist/normalized/anual/COTAHIST_A2026.csv | cut -d' ' -f1)"
+
+          rm -rf /tmp/reconcile-2026
+          mkdir -p /tmp/reconcile-2026
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A2026.ZIP             --output /tmp/reconcile-2026/COTAHIST_A2026.csv
+
+          GENERATED_SHA="$(sha256sum /tmp/reconcile-2026/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          GENERATED_SIZE="$(stat -c%s /tmp/reconcile-2026/COTAHIST_A2026.csv)"
+          read -r ROWS FIRST_DATE LAST_DATE <<< "$(python - <<'PY'
+          import csv
+          p='/tmp/reconcile-2026/COTAHIST_A2026.csv'
+          with open(p, encoding='utf-8', newline='') as f:
+              r=csv.reader(f)
+              next(r)
+              dates=[row[0] for row in r]
+          print(len(dates), min(dates), max(dates))
+          PY
+          )"
+
+          if [ "$PERSISTED_SHA" != "$GENERATED_SHA" ]; then
+            echo "FAIL_CLOSED: NORMALIZED LFS persistido não reproduz o RAW atual"
+            echo "PERSISTED_SHA=$PERSISTED_SHA"
+            echo "GENERATED_SHA=$GENERATED_SHA"
+            exit 1
+          fi
+
+          DUPLICATES="$(python - <<'PY'
+          import csv
+          from collections import Counter
+          p='/tmp/reconcile-2026/COTAHIST_A2026.csv'
+          idx=(0,1,2,3,24)
+          c=Counter()
+          with open(p, encoding='utf-8', newline='') as f:
+              r=csv.reader(f)
+              next(r)
+              for row in r:
+                  c[tuple(row[i] for i in idx)] += 1
+          print(sum(1 for n in c.values() if n > 1))
+          PY
+          )"
+
+          python - <<PY
+          import json
+          from pathlib import Path
+          manifest_path=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json")
+          old=json.loads(manifest_path.read_text(encoding="utf-8"))
+          new={
+            "schema_version":"1.0.0",
+            "status":"VALIDADO",
+            "ano":2026,
+            "parser_version":"1.1.0",
+            "source":"B3",
+            "raw_file":"COTAHIST_A2026.ZIP",
+            "raw_sha256":"$RAW_SHA",
+            "normalized_file":"COTAHIST_A2026.csv",
+            "normalized_sha256":"$GENERATED_SHA",
+            "linhas_normalized":int("$ROWS"),
+            "campos":25,
+            "primeira_data":"$FIRST_DATE",
+            "ultima_data":"$LAST_DATE",
+            "datas_invalidas":0,
+            "datas_fora_do_ano":0,
+            "duplicidades_chave_candidata":int("$DUPLICATES"),
+            "chave_candidata":["data_pregao","codbdi","codneg","tpmerc","dismes"],
+            "evidencia":"NORMALIZED reconstruído deterministicamente a partir do RAW atualmente persistido; RAW permanece a fonte primária."
+          }
+          if old == new:
+              print("MANIFEST_STATUS=JA_RECONCILIADO")
+          else:
+              manifest_path.write_text(json.dumps(new,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+              Path("dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json").write_text(
+                json.dumps({
+                  "schema_version":"1.0.0",
+                  "status":"RECONCILIADO",
+                  "ano":2026,
+                  "old_manifest":old,
+                  "new_manifest":new,
+                  "persisted_normalized_sha256":"$PERSISTED_SHA",
+                  "generated_normalized_sha256":"$GENERATED_SHA",
+                  "generated_size_bytes":int("$GENERATED_SIZE"),
+                  "causa":"RAW atualizado em 2026-09-24 após a criação do manifest NORMALIZED em 2026-09-23."
+                },indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+              )
+              print("MANIFEST_STATUS=CORRIGIDO")
+          PY
+
+      - name: Persistir correção com proteção contra corrida
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json
+          if git diff --cached --quiet; then
+            echo "SEM_ALTERACAO"
+            exit 0
+          fi
+          git commit -m "fix(cotahist): reconciliar manifest NORMALIZED 2026"
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "PUSH_STATUS=SUCESSO"
+              exit 0
+            fi
+            if [ "$tentativa" -lt 5 ]; then sleep 5; fi
+          done
+          echo "PUSH_STATUS=FALHA_APOS_5_TENTATIVAS"
+          exit 1
+
+      - name: Publicar evidência
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-m3-1b-reconciliacao-manifest-2026
+          path: dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json
+          retention-days: 30
