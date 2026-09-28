@@ -22,32 +22,19 @@ FIELDS=[
  ("preexe",189,201),("indopc",202,202),("datven",203,210),
  ("fatcot",211,217),("ptoexe",218,230),("codisi",231,242),("dimes",243,245)
 ]
-PRICE_FIELDS={"preab","premax","premin","premed","preult","preexe","ptoexe"}
-NUM_FIELDS={"totneg","quatot","voltot","fatcot"}
 ALIASES={
  "data_pregao":["data_pregao","data","date","dtpregao"],
- "codbdi":["codbdi","codigo_bdi","bdi"],
- "codneg":["codneg","codigo_negociacao","ticker"],
- "tpmerc":["tpmerc","tipo_mercado","mercado"],
- "nomres":["nomres","nome_resumido"],
- "especi":["especi","especificacao"],
- "prazot":["prazot","prazo_termo"],
- "modref":["modref","mod_referencia"],
- "preab":["preab","preabe","preco_abertura","preco_abert"],
- "premax":["premax","preco_maximo","preco_max"],
- "premin":["premin","preco_minimo","preco_min"],
- "premed":["premed","preco_medio","preco_med"],
- "preult":["preult","preco_ultimo","preco_ult"],
- "totneg":["totneg","numero_negocios","qtd_negocios"],
- "quatot":["quatot","quantidade_total","quantidade"],
- "voltot":["voltot","volume_total","volume"],
- "preexe":["preexe","preco_exercicio"],
- "indopc":["indopc","indicador_opcao"],
- "datven":["datven","data_vencimento"],
- "fatcot":["fatcot","fator_cotacao"],
- "ptoexe":["ptoexe","ponto_exercicio"],
- "codisi":["codisi","codigo_isin"],
- "dimes":["dimes","dismes","distribuicao_mes","distr_mes"],
+ "codbdi":["codbdi","codigo_bdi","bdi"],"codneg":["codneg","codigo_negociacao","ticker"],
+ "tpmerc":["tpmerc","tipo_mercado","mercado"],"nomres":["nomres","nome_resumido"],
+ "especi":["especi","especificacao"],"prazot":["prazot","prazo_termo"],
+ "modref":["modref","mod_referencia"],"preab":["preab","preabe","preco_abertura","preco_abert"],
+ "premax":["premax","preco_maximo","preco_max"],"premin":["premin","preco_minimo","preco_min"],
+ "premed":["premed","preco_medio","preco_med"],"preult":["preult","preco_ultimo","preco_ult"],
+ "totneg":["totneg","numero_negocios","qtd_negocios"],"quatot":["quatot","quantidade_total","quantidade"],
+ "voltot":["voltot","volume_total","volume"],"preexe":["preexe","preco_exercicio"],
+ "indopc":["indopc","indicador_opcao"],"datven":["datven","data_vencimento"],
+ "fatcot":["fatcot","fator_cotacao"],"ptoexe":["ptoexe","ponto_exercicio"],
+ "codisi":["codisi","codigo_isin"],"dimes":["dimes","dismes","distribuicao_mes","distr_mes"],
 }
 
 def norm_name(x):
@@ -104,13 +91,9 @@ checks={}
 checks["raw_count"]=len(raw)
 checks["normalized_count"]=len(norm_rows)
 checks["row_count_equal"]=len(raw)==len(norm_rows)
-checks["header"]= {"columns":original,"mapping":mapping,"all_required_fields_present":not missing}
+checks["header"]={"columns":original,"mapping":mapping,"all_required_fields_present":not missing}
+checks["date_equal"]=all(eq(rr["data_pregao"],str(nr[mapping["data_pregao"]]),"data_pregao") for rr,nr in zip(raw,norm_rows))
 
-# Datas, identidade e métricas de negociação.
-def vals(rows,field):
-    return [str(r.get(field,"")).strip() for r in rows]
-
-checks["date_equal"]=all(eq("data_pregao",rr["data_pregao"],str(nr[mapping["data_pregao"]])) for rr,nr in zip(raw,norm_rows))
 identity_fields=["data_pregao","codbdi","codneg","tpmerc","codisi","dimes","especi","prazot","datven","indopc"]
 identity_mismatches=[]
 for i,(rr,nr) in enumerate(zip(raw,norm_rows)):
@@ -122,14 +105,10 @@ for i,(rr,nr) in enumerate(zip(raw,norm_rows)):
 checks["identity_mismatch_count_sampled"]=len(identity_mismatches)
 checks["identity_mismatches"]=identity_mismatches
 
-# OHLC + quantidade/volume/negócios: aceita representação decimal exata ou escala de 10^n,
-# mas a escala precisa ser única por campo em toda a amostra.
 numeric_fields=["preab","premax","premin","premed","preult","totneg","quatot","voltot"]
 numeric_results={}
 for field in numeric_fields:
-    nfield=mapping[field]
-    scales=Counter()
-    mismatches=[]
+    nfield=mapping[field]; scales=Counter(); mismatches=[]
     for i,(rr,nr) in enumerate(zip(raw,norm_rows)):
         a=dec(rr[field]); b=dec(str(nr[nfield]))
         if a is None or b is None:
@@ -145,7 +124,6 @@ for field in numeric_fields:
     numeric_results[field]={"scales_observed":dict(scales),"mismatch_sample":mismatches,"mismatch_count_sampled":len(mismatches)}
 checks["numeric"]=numeric_results
 
-# 30 amostras OHLC determinísticas: início, fim e pontos uniformemente distribuídos.
 idxs=sorted(set([0,1,2,3,4,len(raw)-1,len(raw)-2,len(raw)-3,len(raw)-4]+[round(i*(len(raw)-1)/29) for i in range(30)]))
 samples=[]
 for i in idxs[:30]:
@@ -154,11 +132,8 @@ for i in idxs[:30]:
 checks["sample_30"]=samples
 
 result={
- "schema_version":"1.0.0",
- "status":"RECONCILIACAO_RAW_NORMALIZED_1987",
- "raw_sha256":hashlib.sha256(RAW.read_bytes()).hexdigest(),
- "normalized_file":str(CSV),
- "checks":checks,
+ "schema_version":"1.0.0","status":"RECONCILIACAO_RAW_NORMALIZED_1987",
+ "raw_sha256":hashlib.sha256(RAW.read_bytes()).hexdigest(),"normalized_file":str(CSV),"checks":checks,
  "fail_closed_gates":{
    "row_count_equal":checks["row_count_equal"],
    "header_complete":checks["header"]["all_required_fields_present"],
