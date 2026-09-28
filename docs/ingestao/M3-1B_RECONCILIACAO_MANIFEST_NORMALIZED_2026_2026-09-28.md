@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/M3-1B_RECONCILIACAO_MANIFEST_NORMALIZED_2026_2026-09-28.md  
 **Data:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** INVESTIGAÇÃO CONCLUÍDA — CORREÇÃO CONTROLADA EM EXECUÇÃO
+**Status:** RECONCILIAÇÃO CONCLUÍDA — MANIFEST CORRIGIDO E AUTOMATIZAÇÃO INSTALADA
 
 ## 1. Objetivo
 
