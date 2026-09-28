@@ -1,0 +1,51 @@
+{
+  "schema_version": "2.0.0",
+  "status": "GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
+  "generated_at_utc": "2026-09-28T21:41:22.777Z",
+  "year": 1987,
+  "objective": "Obter uma cópia independente do COTAHIST_A1987 e comparar byte a byte os 34 registros afetados de PRAZOT.",
+  "search_round": {
+    "expanded": true,
+    "public_sources_checked": [
+      {
+        "source": "Kaggle — Converting Text Files to Pandas DataFrame",
+        "dataset": "B3 (BM&FBovespa) 1986-2019 Equities Price",
+        "file": "COTAHIST_A1987.txt",
+        "status": "EXISTENCIA_PUBLICA_CONFIRMADA",
+        "evidence": "A página lista explicitamente COTAHIST_A1987.txt entre os arquivos de entrada."
+      },
+      {
+        "source": "GitHub Code Search",
+        "status": "REFERENCIAS_SECUNDARIAS_CONFIRMADAS",
+        "findings": [
+          "paccafelipe/mfg-for-financial-market — referências a COTAHIST_A1987.txt em resumos processados",
+          "rogerior/predicao_bovespa — notebook que lista COTAHIST_A1987.TXT como arquivo bruto esperado",
+          "diegotremper/b3-api — teste que referencia COTAHIST_A1987.zip como opção histórica"
+        ]
+      },
+      {
+        "source": "B3 endpoint histórico pesquisado",
+        "status": "CONTEUDO_NAO_ACESSIVEL_NESTE_CANAL",
+        "note": "Foram tentados endpoints históricos públicos conhecidos; o canal web não disponibilizou o binário para extração."
+      }
+    ]
+  },
+  "comparison": {
+    "affected_records": 34,
+    "patterns": {
+      "000f20": 33,
+      "9c0f20": 1,
+      "000720": 1
+    },
+    "byte_to_byte_executed": false,
+    "matching_records": null,
+    "different_records": null
+  },
+  "constraints": [
+    "Não alterar RAW.",
+    "Não substituir bytes do PRAZOT.",
+    "Não reinterpretar o campo sem evidência histórica primária.",
+    "Não liberar 1988 enquanto o protocolo mantiver esta pendência."
+  ],
+  "conclusion": "A pesquisa independente foi ampliada e confirmou múltiplas referências públicas ao COTAHIST_A1987, incluindo uma fonte que declara possuir o arquivo bruto. Contudo, os bytes do arquivo independente não ficaram acessíveis neste canal. Portanto, nenhuma comparação byte a byte foi declarada e a exceção PRAZOT permanece aberta."
+}
