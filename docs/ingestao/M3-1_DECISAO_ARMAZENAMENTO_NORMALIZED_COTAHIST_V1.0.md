@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** M3-1B CONCLUÍDO — LFS APROVADO — MANIFEST 2026 RECONCILIADO — M3-1C LIBERADO
+**Status:** M3-1C CONCLUÍDO — M3-1D IMPLEMENTADO — EXECUÇÃO M3-1D PENDENTE
 
 ## 1. Contexto
 
@@ -22,24 +22,15 @@ Resultado físico:
 - última data: **2026-09-23**
 - decisão M3-0: **GIT_STANDARD_LIMIT**
 
-A interrupção foi deliberada para impedir persistência inadequada em Git convencional.
-
 ## 2. Decisão arquitetural
 
-O mecanismo físico aprovado para NORMALIZED anual acima do limite operacional de Git convencional é **Git LFS**, mantendo:
+O mecanismo físico aprovado para NORMALIZED anual acima do limite operacional de Git convencional é **Git LFS**, mantendo caminho lógico canônico, versionamento, recuperação física, SHA-256, CI e fail-closed.
 
-- caminho lógico canônico;
-- versionamento associado ao repositório;
-- objeto físico recuperável;
-- verificação SHA-256;
-- integração com CI;
-- fail-closed.
-
-A aprovação global de M3-1 continua condicionada às etapas M3-1C, M3-1D e M3-1E.
+A aprovação global de M3-1 continua condicionada à conclusão de M3-1D e M3-1E.
 
 ## 3. M3-1A — Preparação — CONCLUÍDA
 
-Foi criado o tracking LFS:
+Tracking LFS:
 
 `dados/cotahist/normalized/anual/*.csv filter=lfs diff=lfs merge=lfs -text`
 
@@ -62,35 +53,11 @@ Evidência:
 - SHA físico: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
 - LFS materializado fisicamente com sucesso.
 
-Registro:
-
-`docs/ingestao/M3-1B_RESULTADO_PROVA_LFS_2026_2026-09-28.md`
-
 ## 5. Reconciliação do manifest — CONCLUÍDA
 
-A investigação identificou a causa da divergência.
+A divergência anterior foi classificada como **MANIFESTO DEFASADO EM RELAÇÃO AO RAW ATUAL**, após atualização posterior do RAW.
 
-O manifest NORMALIZED original foi criado no commit `ccea173449b70c1f2b95a787a04c2020b06fe1f7`, usando RAW SHA:
-
-`e40dc0cdb5ad6315296d88cdb5654240f15412be6fc13e3d47bc8606f9132fee`
-
-Posteriormente, o RAW COTAHIST 2026 foi atualizado no commit:
-
-`e4598cdcdca6a955b4208109fe2fea5f8699fb4b`
-
-com novo SHA:
-
-`4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
-
-A nova versão do RAW contém dados até **2026-09-23**. O manifest não foi regenerado após essa atualização.
-
-Portanto, a divergência foi classificada como:
-
-**MANIFESTO DEFASADO EM RELAÇÃO AO RAW ATUAL.**
-
-Não há evidência, neste gate, de defeito do parser `1.1.0`.
-
-### Manifest corrigido
+Manifest corrigido:
 
 - RAW SHA: `4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
 - NORMALIZED SHA: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
@@ -99,73 +66,72 @@ Não há evidência, neste gate, de defeito do parser `1.1.0`.
 - primeira data: **2026-01-02**
 - última data: **2026-09-23**
 
-Commits da correção:
-
-- Manifest: `2ee46d6028e1bed8be9d350bfca84ae2e46fcd46`
-- Checksum: `29a953d789da23fda2741601fa6b0349dc1b8cd5`
-- Evidência: `9935e514037a6fb7e9f575dc08307ccfbfcef24b`
-
 Evidência:
 
 `dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json`
 
-## 6. Automação permanente da reconciliação
+## 6. M3-1C — CI — CONCLUÍDO E APROVADO
 
-Foi criado:
+Workflow:
 
-`.github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml`
+`.github/workflows/cotahist-m3-1c-ci-normalized-2026.yml`
 
-A rotina foi configurada para reagir a alterações do:
+Execução oficial:
 
-- RAW COTAHIST 2026;
-- NORMALIZED LFS 2026;
-- parser `normalize_cotahist.py`;
-- próprio workflow.
+- Run: `36428513803`
+- Job: `108948384728`
+- Commit avaliado: `a06d7b9dd55525210cfa2ae878b29dcfbbf025bb`
+- Resultado: `success`
+- Evidência final: `M3-1C_STATUS=CI_INTEGRIDADE_APROVADA`
 
-A rotina:
+Principais evidências:
 
-1. calcula SHA do RAW atual;
-2. reconstrói NORMALIZED;
-3. compara SHA do NORMALIZED físico persistido;
-4. verifica registros, datas e campos;
-5. reconcilia o manifest quando necessário;
-6. protege o push contra concorrência;
-7. mantém o processo fail-closed.
+- reconstrução RAW → NORMALIZED: **OK**;
+- SHA: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`;
+- registros: **2.919.760**;
+- primeira data: **2026-01-02**;
+- última data: **2026-09-23**;
+- 25 campos.
 
-**Observação:** a instalação da automação foi registrada; sua execução automática posterior deverá ser considerada evidência operacional independente.
+Registro:
 
-## 7. M3-1C — CI — LIBERADO
+`docs/ingestao/M3-1C_CI_INTEGRIDADE_NORMALIZED_2026_V1.0.md`
 
-A reconciliação removeu o bloqueio documental que impedia o próximo gate.
+## 7. M3-1D — Dataset Oficial — IMPLEMENTADO
 
-M3-1C deve validar:
+Foi criado o manifesto canônico:
 
-- reconstrução determinística;
-- SHA;
-- existência física;
-- materialização LFS;
-- conteúdo físico versus ponteiro;
-- certificação V2;
-- integridade do manifest;
-- falha fechada em qualquer divergência.
+`dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json`
 
-## 8. M3-1D — Dataset Oficial
+E o gate:
 
-Somente após M3-1C:
+`.github/workflows/cotahist-m3-1d-dataset-oficial-2026.yml`
 
-- validar o Dataset Oficial;
-- confirmar acesso ao CSV materializado;
-- confirmar bloqueio quando o objeto estiver ausente.
+O gate valida:
 
-## 9. M3-1E — Aprovação global
+- acesso físico ao CSV materializado;
+- tracking LFS;
+- canonicalidade do caminho;
+- manifesto oficial;
+- checksum e SHA;
+- alinhamento com o quality manifest;
+- cardinalidade e 25 campos;
+- primeira/última data;
+- validação semântica.
 
-Somente após M3-1C e M3-1D:
+**M3-1D ainda não está aprovado.** A aprovação dependerá da execução real do workflow com:
+
+`M3-1D_STATUS=DATASET_OFICIAL_VALIDADO`
+
+## 8. M3-1E — Aprovação global
+
+Somente após M3-1D aprovado:
 
 **M3-1 = APROVADO**
 
 Antes disso, a migração histórica 1986–2025 permanece bloqueada.
 
-## 10. Governança
+## 9. Governança
 
 É proibido:
 
@@ -174,27 +140,27 @@ Antes disso, a migração histórica 1986–2025 permanece bloqueada.
 - reduzir campos para caber;
 - deduplicar para reduzir volume;
 - alterar RAW para obter um NORMALIZED menor;
-- aprovar um manifest apenas por coincidência de SHA sem verificar o RAW atual.
+- aprovar manifest sem verificar o RAW atual.
 
-A cadeia oficial permanece:
+Cadeia oficial:
 
 `RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE`
 
-## 11. Estado atual
+## 10. Estado atual
 
 - **M3-0:** CONCLUÍDO — GIT_STANDARD_LIMIT
 - **M3-1A:** CONCLUÍDO
 - **M3-1B:** CONCLUÍDO — PROVA FÍSICA LFS 2026
 - **Reconciliação manifest 2026:** CONCLUÍDA
-- **M3-1C:** LIBERADO / PRÓXIMO GATE
-- **M3-1D:** BLOQUEADO ATÉ M3-1C
+- **M3-1C:** CONCLUÍDO — CI_INTEGRIDADE_APROVADA
+- **M3-1D:** IMPLEMENTADO — EXECUÇÃO PENDENTE
 - **M3-1E:** BLOQUEADO ATÉ M3-1D
 - **M3 histórico 1986–2025:** BLOQUEADO
 - **RAW:** PRESERVADO
 - **Parser:** 1.1.0
 - **NORMALIZED 2026:** PERSISTIDO VIA GIT LFS
 
-## 12. Critério de aprovação M3-1
+## 11. Critério de aprovação M3-1
 
 M3-1 somente poderá ser aprovado quando:
 
