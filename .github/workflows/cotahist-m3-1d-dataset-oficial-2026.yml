@@ -1,0 +1,100 @@
+name: COTAHIST - M3-1D validar Dataset Oficial 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-m3-1d-dataset-oficial-2026.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
+      - "dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json"
+      - "scripts/ingestao/validar_normalized.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-m3-1d-2026
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Pré-condições físicas
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+          test -s dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv | awk '{print $3}')" = "lfs"
+          ! grep -q "https://git-lfs.github.com/spec/v1" dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+
+      - name: Validar contrato do Dataset Oficial
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          root=Path(".")
+          official=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
+          quality=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
+
+          assert official["status"] == "OFICIAL"
+          assert official["dataset"] == "COTAHIST_NORMALIZED_ANUAL"
+          assert official["ano"] == 2026
+          assert official["source"] == "B3"
+          assert official["canonical"] is True
+          assert official["storage"] == "git-lfs"
+          assert official["normalized_file"] == "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+          assert official["quality_manifest"] == "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+          assert official["checksum_file"] == "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
+
+          csvp=Path(official["normalized_file"])
+          sha=hashlib.sha256(csvp.read_bytes()).hexdigest()
+          expected=Path(official["checksum_file"]).read_text().strip().split()[0]
+
+          assert sha == expected
+          assert sha == official["normalized_sha256"]
+          assert sha == quality["normalized_sha256"]
+          assert official["raw_sha256"] == quality["raw_sha256"]
+          assert official["linhas_normalized"] == quality["linhas_normalized"]
+          assert official["campos"] == quality["campos"] == 25
+          assert official["primeira_data"] == quality["primeira_data"]
+          assert official["ultima_data"] == quality["ultima_data"]
+
+          print("DATASET_OFICIAL_CANONICO=OK")
+          print(f"SHA={sha}")
+          print(f"ROWS={official['linhas_normalized']}")
+          print(f"FIRST={official['primeira_data']} LAST={official['ultima_data']}")
+          PY
+
+      - name: Validar conteúdo semântico
+        shell: bash
+        run: |
+          set -euo pipefail
+          RAW_SHA="$(sha256sum dados/cotahist/raw/anual/COTAHIST_A2026.ZIP | cut -d' ' -f1)"
+          NORM_SHA="$(sha256sum dados/cotahist/normalized/anual/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          python scripts/ingestao/validar_normalized.py             dados/cotahist/normalized/anual/COTAHIST_A2026.csv             /tmp/COTAHIST_A2026_validation.json             2026             "$RAW_SHA"             "$NORM_SHA"
+          cat /tmp/COTAHIST_A2026_validation.json
+
+      - name: Certificar Dataset Oficial
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO"
+          echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO" >> "$GITHUB_STEP_SUMMARY"
