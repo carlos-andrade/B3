@@ -467,8 +467,8 @@ O repositório **B3 — A BOLSA DO BRASIL** é a fonte de organização e memór
 
 > Este bloco é gerenciado pelo workflow `Atualizar README — B3`.
 
-- **Última alteração relevante:** `88f4500b46c0` — 28/09/2026 18:26 UTC
-- **Commit de referência:** fix: canonizar datas RAW x NORMALIZED na reconciliacao 1987
+- **Última alteração relevante:** `32a82cff2d9e` — 28/09/2026 18:41 UTC
+- **Commit de referência:** fix: usar data canonica no gate completo da reconciliacao 1987
 - **Workflows GitHub Actions:** 52
 - **Scripts Python em `scripts/ingestao/`:** 56
 - **Diretórios operacionais de primeiro nível:** 7
