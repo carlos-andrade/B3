@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** DECISÃO TÉCNICA — GIT LFS COMO CANDIDATO PRINCIPAL — PROVA FÍSICA 2026 PRONTA PARA EXECUÇÃO
+**Status:** M3-1B CONCLUÍDO — PROVA FÍSICA GIT LFS 2026 APROVADA — RECONCILIAÇÃO DO MANIFEST PENDENTE
 
 ## 1. Contexto
 
@@ -120,9 +120,9 @@ A política física será consolidada em nova versão do contrato somente após 
 - RAW preservado;
 - M3 histórico continua bloqueado.
 
-### M3-1B — Prova física 2026 — PRONTA PARA EXECUÇÃO
+### M3-1B — Prova física 2026 — CONCLUÍDO
 
-O workflow executará:
+O workflow executou:
 
 1. checkout com LFS;
 2. validação da instalação do Git LFS;
@@ -197,12 +197,12 @@ M3-1 só será aprovado quando todos forem verdadeiros:
 
 **M3-0:** CONCLUÍDO — `GIT_STANDARD_LIMIT`  
 **M3-1A:** CONCLUÍDO  
-**M3-1B:** WORKFLOW CRIADO — AGUARDANDO EXECUÇÃO  
-**M3-1:** EM PROVA — Git LFS  
+**M3-1B:** CONCLUÍDO — PROVA FÍSICA LFS 2026  
+**M3-1:** EM RECONCILIAÇÃO / CI  
 **M3 histórico:** BLOQUEADO  
 **RAW:** PRESERVADO  
 **Parser:** 1.1.0  
-**NORMALIZED 2026:** AINDA NÃO PERSISTIDO
+**NORMALIZED 2026:** PERSISTIDO VIA GIT LFS — SHA FÍSICO CONFIRMADO
 
 ## 13. Regra fail-closed
 
@@ -227,3 +227,24 @@ Nenhum workflow pode interpretar a criação do workflow M3-1B como autorizaçã
 - GitHub — Git LFS billing.
 
 Estas fontes foram consultadas em 2026-09-28 e devem ser revalidadas antes da implantação definitiva, pois limites e políticas comerciais podem mudar.
+
+
+## 16. Resultado formal M3-1B
+
+Em 2026-09-28, a prova física Git LFS 2026 foi concluída com sucesso.
+
+- Run: `36419262539`
+- Job: `108917764369`
+- Commit de persistência: `dcb7dd16649245d0ac3e9f58a1bca521941e7fb1`
+- NORMALIZED: **392.044.266 bytes**
+- SHA físico: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
+- Status: `PROVA_LFS_FISICA_CONCLUIDA`
+
+Registro detalhado:
+`docs/ingestao/M3-1B_RESULTADO_PROVA_LFS_2026_2026-09-28.md`
+
+### Pendência obrigatória
+
+Foi identificada divergência entre o manifest existente e a reconstrução atual: o manifest registra última data 2026-09-22 e SHA `d97514f...`, enquanto a reconstrução M3-1B produz última data 2026-09-23 e SHA `befcf243...`.
+
+Essa divergência deve ser investigada e reconciliada antes do M3-1C. O manifest não deve ser alterado apenas para eliminar a diferença.
