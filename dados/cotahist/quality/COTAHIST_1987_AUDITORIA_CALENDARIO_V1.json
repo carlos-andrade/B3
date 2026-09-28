@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUDITORIA_CALENDARIO_1987",
+  "records": 130665,
+  "first_date": "1987-01-02",
+  "last_date": "1987-12-30",
+  "valid_date_count": 130665,
+  "invalid_or_weekend_dates": 0,
+  "distinct_trading_dates": 240,
+  "weekday_gaps_candidate_non_trading_days": [
+    "1987-03-02",
+    "1987-03-03",
+    "1987-03-04",
+    "1987-03-25",
+    "1987-03-26",
+    "1987-03-27",
+    "1987-03-30",
+    "1987-03-31",
+    "1987-04-01",
+    "1987-04-16",
+    "1987-04-17",
+    "1987-04-20",
+    "1987-05-01",
+    "1987-06-15",
+    "1987-09-07",
+    "1987-10-12",
+    "1987-11-02",
+    "1987-12-24",
+    "1987-12-25"
+  ],
+  "out_of_order_records": 0,
+  "gates": {
+    "records_positive": true,
+    "all_dates_valid": true,
+    "no_weekend_dates": true,
+    "chronological_bounds": true,
+    "records_chronological": true,
+    "distinct_dates_positive": true
+  },
+  "fail_closed": true,
+  "note": "Datas repetidas entre ativos sao esperadas. Lacunas em dias uteis sao apenas candidatos a dias sem pregao; nao sao classificadas como feriados sem fonte historica primaria."
+}
