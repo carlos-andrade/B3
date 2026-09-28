@@ -110,7 +110,7 @@ checks["header"]= {"columns":original,"mapping":mapping,"all_required_fields_pre
 def vals(rows,field):
     return [str(r.get(field,"")).strip() for r in rows]
 
-checks["date_equal"]=vals(raw,"data_pregao")==[str(r[mapping["data_pregao"]]).strip() for r in norm_rows]
+checks["date_equal"]=all(eq("data_pregao",rr["data_pregao"],str(nr[mapping["data_pregao"]])) for rr,nr in zip(raw,norm_rows))
 identity_fields=["data_pregao","codbdi","codneg","tpmerc","codisi","dimes","especi","prazot","datven","indopc"]
 identity_mismatches=[]
 for i,(rr,nr) in enumerate(zip(raw,norm_rows)):
