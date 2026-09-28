@@ -1,0 +1,75 @@
+name: Atualizar README — B3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - "ativos/**"
+      - "governanca/**"
+      - "scripts/ingestao/**"
+      - "dados/bcb_sgs/**"
+      - "dados/bdi/**"
+      - "dados/calendario_economico/**"
+      - "dados/cotahist/normalized/**"
+      - "dados/cotahist/certificacao/**"
+      - "dados/market_data/**"
+      - "index.html"
+      - "PROMPT_MESTRE_B3_799_CARACTERES.md"
+  schedule:
+    - cron: "20 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-readme-b3
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Atualizar bloco gerenciado do README
+        run: python scripts/ingestao/atualizar_readme_b3.py
+
+      - name: Verificar alterações
+        id: diff
+        shell: bash
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar README
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "B3 README Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && exit 0
+          git commit -m "docs(readme): sincronizar estado operacional do B3"
+          git push origin HEAD:main
+
+      - name: Confirmar estado
+        run: |
+          if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+            echo "README atualizado e versionado."
+          else
+            echo "README já estava sincronizado. Nenhum commit necessário."
+          fi
