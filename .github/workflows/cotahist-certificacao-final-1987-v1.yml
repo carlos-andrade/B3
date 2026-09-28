@@ -1,0 +1,48 @@
+name: COTAHIST 1987 - Consolidacao e Certificacao Final
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/ingestao/consolidar_certificacao_cotahist_1987_v1.py'
+      - '.github/workflows/cotahist-certificacao-final-1987-v1.yml'
+      - 'dados/cotahist/quality/COTAHIST_1987_*.json'
+
+permissions:
+  contents: write
+
+jobs:
+  certificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Consolidar evidencias
+        run: python scripts/ingestao/consolidar_certificacao_cotahist_1987_v1.py
+
+      - name: Publicar evidencia
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração na evidência final."
+            exit 0
+          fi
+          git commit -m "audit: consolidar certificacao final COTAHIST 1987"
+          for i in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort || true; git reset --hard origin/main; git add dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json; git commit -m "audit: consolidar certificacao final COTAHIST 1987" || true; }
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
