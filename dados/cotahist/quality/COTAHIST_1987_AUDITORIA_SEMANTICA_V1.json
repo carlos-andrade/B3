@@ -1,0 +1,706 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_SEMANTICA_INICIAL_1987",
+  "year": 1987,
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "zip_member": "COTAHIST.A1987",
+  "records_type01": 130665,
+  "physical_line_lengths": {
+    "245": 130667
+  },
+  "invalid_trade_date_records": 0,
+  "field_inventory": {
+    "data_pregao": {
+      "start": 3,
+      "end": 10,
+      "width": 8
+    },
+    "codbdi": {
+      "start": 11,
+      "end": 12,
+      "width": 2
+    },
+    "codneg": {
+      "start": 13,
+      "end": 24,
+      "width": 12
+    },
+    "tpmerc": {
+      "start": 25,
+      "end": 27,
+      "width": 3
+    },
+    "nomres": {
+      "start": 28,
+      "end": 39,
+      "width": 12
+    },
+    "especi": {
+      "start": 40,
+      "end": 49,
+      "width": 10
+    },
+    "prazot": {
+      "start": 50,
+      "end": 52,
+      "width": 3
+    },
+    "modref": {
+      "start": 53,
+      "end": 56,
+      "width": 4
+    },
+    "preab": {
+      "start": 57,
+      "end": 69,
+      "width": 13
+    },
+    "premax": {
+      "start": 70,
+      "end": 82,
+      "width": 13
+    },
+    "premin": {
+      "start": 83,
+      "end": 95,
+      "width": 13
+    },
+    "premed": {
+      "start": 96,
+      "end": 108,
+      "width": 13
+    },
+    "preult": {
+      "start": 109,
+      "end": 121,
+      "width": 13
+    },
+    "totneg": {
+      "start": 148,
+      "end": 152,
+      "width": 5
+    },
+    "quatot": {
+      "start": 153,
+      "end": 170,
+      "width": 18
+    },
+    "voltot": {
+      "start": 171,
+      "end": 188,
+      "width": 18
+    },
+    "preexe": {
+      "start": 189,
+      "end": 201,
+      "width": 13
+    },
+    "indopc": {
+      "start": 202,
+      "end": 202,
+      "width": 1
+    },
+    "datven": {
+      "start": 203,
+      "end": 210,
+      "width": 8
+    },
+    "fatcot": {
+      "start": 211,
+      "end": 217,
+      "width": 7
+    },
+    "ptoexe": {
+      "start": 218,
+      "end": 230,
+      "width": 13
+    },
+    "codisi": {
+      "start": 231,
+      "end": 242,
+      "width": 12
+    },
+    "dimes": {
+      "start": 243,
+      "end": 245,
+      "width": 3
+    }
+  },
+  "domains": {
+    "codbdi": {
+      "distinct": 15,
+      "top": [
+        [
+          "02",
+          89398
+        ],
+        [
+          "96",
+          25884
+        ],
+        [
+          "62",
+          8114
+        ],
+        [
+          "78",
+          3357
+        ],
+        [
+          "06",
+          1910
+        ],
+        [
+          "14",
+          839
+        ],
+        [
+          "10",
+          465
+        ],
+        [
+          "58",
+          398
+        ],
+        [
+          "38",
+          187
+        ],
+        [
+          "50",
+          52
+        ],
+        [
+          "42",
+          33
+        ],
+        [
+          "82",
+          20
+        ],
+        [
+          "18",
+          3
+        ],
+        [
+          "54",
+          3
+        ],
+        [
+          "46",
+          2
+        ]
+      ]
+    },
+    "tpmerc": {
+      "distinct": 8,
+      "top": [
+        [
+          "010",
+          92715
+        ],
+        [
+          "020",
+          26182
+        ],
+        [
+          "030",
+          8114
+        ],
+        [
+          "070",
+          3357
+        ],
+        [
+          "012",
+          187
+        ],
+        [
+          "017",
+          57
+        ],
+        [
+          "013",
+          33
+        ],
+        [
+          "080",
+          20
+        ]
+      ]
+    },
+    "codneg": {
+      "distinct": 1598,
+      "top": [
+        [
+          "PET 2",
+          582
+        ],
+        [
+          "PMA 2",
+          579
+        ],
+        [
+          "BB  2",
+          522
+        ],
+        [
+          "SHA 2",
+          504
+        ],
+        [
+          "FNV 6",
+          495
+        ],
+        [
+          "BBD 4",
+          490
+        ],
+        [
+          "TRB 2",
+          485
+        ],
+        [
+          "BES 2",
+          484
+        ],
+        [
+          "DUR 2",
+          459
+        ],
+        [
+          "VAL 2",
+          459
+        ],
+        [
+          "SID 2",
+          458
+        ],
+        [
+          "PRS 2",
+          457
+        ],
+        [
+          "SAG 2",
+          455
+        ],
+        [
+          "VAG 2",
+          455
+        ],
+        [
+          "AVI 2",
+          449
+        ],
+        [
+          "CPF 2",
+          449
+        ],
+        [
+          "AZE 2",
+          444
+        ],
+        [
+          "RPS 2",
+          443
+        ],
+        [
+          "CNF 2",
+          440
+        ],
+        [
+          "ITA 4",
+          440
+        ],
+        [
+          "PMT 2",
+          440
+        ],
+        [
+          "MAN 1",
+          434
+        ],
+        [
+          "ELU 2",
+          431
+        ],
+        [
+          "EST 2",
+          431
+        ],
+        [
+          "WHM 1",
+          431
+        ]
+      ]
+    },
+    "codisi": {
+      "distinct": 1344,
+      "top": [
+        [
+          "PETRACPP",
+          2254
+        ],
+        [
+          "PMAMACPP",
+          1912
+        ],
+        [
+          "SHAPACPP",
+          703
+        ],
+        [
+          "BBASACPP",
+          572
+        ],
+        [
+          "VAGVACPP",
+          513
+        ],
+        [
+          "VALEACPP",
+          509
+        ],
+        [
+          "FNV ACPPA",
+          497
+        ],
+        [
+          "BESPACPP",
+          492
+        ],
+        [
+          "BBDCACPN",
+          490
+        ],
+        [
+          "TRBRACPP",
+          485
+        ],
+        [
+          "CPNEACPPA",
+          476
+        ],
+        [
+          "SAGRACPP",
+          470
+        ],
+        [
+          "DURAACPP",
+          463
+        ],
+        [
+          "AZEVACPP",
+          460
+        ],
+        [
+          "PRSCACPP",
+          459
+        ],
+        [
+          "SIDIACPP",
+          459
+        ],
+        [
+          "AVILACPP",
+          457
+        ],
+        [
+          "CPFLACPP",
+          449
+        ],
+        [
+          "RPSAACPP",
+          449
+        ],
+        [
+          "CNFBACPP",
+          445
+        ],
+        [
+          "ITAUACPN",
+          440
+        ],
+        [
+          "PMTLACPP",
+          440
+        ],
+        [
+          "ESTRACPP",
+          435
+        ],
+        [
+          "MANMACOP",
+          434
+        ],
+        [
+          "ELUMACPP",
+          431
+        ]
+      ]
+    },
+    "dimes": {
+      "distinct": 152,
+      "top": [
+        [
+          "101",
+          6749
+        ],
+        [
+          "100",
+          5597
+        ],
+        [
+          "102",
+          5158
+        ],
+        [
+          "103",
+          4743
+        ],
+        [
+          "104",
+          3533
+        ],
+        [
+          "122",
+          3117
+        ],
+        [
+          "124",
+          3027
+        ],
+        [
+          "010",
+          2991
+        ],
+        [
+          "123",
+          2842
+        ],
+        [
+          "138",
+          2685
+        ],
+        [
+          "130",
+          2464
+        ],
+        [
+          "119",
+          2415
+        ],
+        [
+          "121",
+          2373
+        ],
+        [
+          "016",
+          2331
+        ],
+        [
+          "128",
+          2282
+        ],
+        [
+          "011",
+          2213
+        ],
+        [
+          "118",
+          2150
+        ],
+        [
+          "120",
+          2093
+        ],
+        [
+          "131",
+          2070
+        ],
+        [
+          "136",
+          2060
+        ],
+        [
+          "009",
+          2045
+        ],
+        [
+          "139",
+          2002
+        ],
+        [
+          "142",
+          1958
+        ],
+        [
+          "133",
+          1951
+        ],
+        [
+          "127",
+          1886
+        ]
+      ]
+    },
+    "especi": {
+      "distinct": 450,
+      "top": [
+        [
+          "PP",
+          23348
+        ],
+        [
+          "PP *",
+          14367
+        ],
+        [
+          "PN",
+          9596
+        ],
+        [
+          "PN *",
+          6104
+        ],
+        [
+          "ON",
+          5345
+        ],
+        [
+          "OP",
+          3774
+        ],
+        [
+          "ON *",
+          2894
+        ],
+        [
+          "PPA",
+          2512
+        ],
+        [
+          "OP *",
+          2338
+        ],
+        [
+          "PPA*",
+          1765
+        ],
+        [
+          "PNA",
+          1644
+        ],
+        [
+          "PP *P",
+          1387
+        ],
+        [
+          "PP  EX",
+          1384
+        ],
+        [
+          "PPB",
+          1279
+        ],
+        [
+          "PP *INT",
+          1254
+        ],
+        [
+          "PP  C53",
+          1251
+        ],
+        [
+          "PN *EX",
+          1079
+        ],
+        [
+          "PP  C60",
+          1056
+        ],
+        [
+          "PP *EX",
+          1049
+        ],
+        [
+          "PP *C35",
+          1036
+        ],
+        [
+          "PP  C01",
+          1031
+        ],
+        [
+          "PP  C05",
+          958
+        ],
+        [
+          "PNA*",
+          900
+        ],
+        [
+          "PPB*",
+          876
+        ],
+        [
+          "PP *C04",
+          837
+        ]
+      ]
+    },
+    "prazot": {
+      "distinct": 7,
+      "top": [
+        [
+          "",
+          118920
+        ],
+        [
+          "030",
+          7588
+        ],
+        [
+          "000",
+          3597
+        ],
+        [
+          "060",
+          526
+        ],
+        [
+          "\u0000\u000f",
+          32
+        ],
+        [
+          "\u0000\u0007",
+          1
+        ],
+        [
+          "\u000f",
+          1
+        ]
+      ]
+    }
+  },
+  "semantic_gates": {
+    "record_type_01_245_bytes": true,
+    "trade_date_8_digits": true,
+    "tpmerc_observed": true,
+    "codbdi_observed": true,
+    "logical_identity_not_asserted_without_historical_evidence": true
+  },
+  "assessment": {
+    "status": "OBSERVACIONAL",
+    "economic_meaning_of_codes": "NAO_CERTIFICADO_NESTA_FASE",
+    "next_gate": [
+      "reconciliar amostras RAW x NORMALIZED",
+      "auditar chave logica 1987",
+      "auditar tpmerc e codbdi por distribuicao e contexto",
+      "auditar OHLC, quantidade e volume",
+      "auditar calendario",
+      "documentar evidencia historica contemporanea quando houver interpretacao economica"
+    ]
+  }
+}
