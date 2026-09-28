@@ -438,6 +438,33 @@ O repositório **B3 — A BOLSA DO BRASIL** é a fonte de organização e memór
 
 ---
 
+<!-- B3_README_AUTO_BEGIN -->
+## Atualização automática do README
+
+> Este bloco é gerenciado pelo workflow `Atualizar README — B3`.
+
+- **Última alteração relevante:** `389e3e0e49d0` — 28/09/2026 09:07 UTC
+- **Commit de referência:** fix(readme): tornar rotina idempotente no agendamento
+- **Workflows GitHub Actions:** 41
+- **Scripts Python em `scripts/ingestao/`:** 51
+- **Diretórios operacionais de primeiro nível:** 7
+
+**Escopo monitorado:**
+
+- workflows e automações;
+- catálogo e universo de ativos;
+- governança e certificação;
+- scripts de ingestão;
+- dados normalizados e certificados;
+- dashboard e documentação operacional.
+
+**Excluído do gatilho automático:** dados RAW volumosos, para evitar commits
+desnecessários no README por simples alteração de arquivos brutos.
+
+A automação não substitui a revisão editorial. Ela mantém o inventário operacional
+e a trilha de atualização sincronizados com o estado efetivo do repositório.
+<!-- B3_README_AUTO_END -->
+
 ## Licença e uso
 
 Este repositório é destinado a pesquisa, engenharia de dados, análise de mercado e desenvolvimento de ferramentas.
