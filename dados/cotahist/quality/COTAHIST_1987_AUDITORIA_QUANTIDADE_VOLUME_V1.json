@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "status": "QUANTIDADE_VOLUME_AUDITORIA_1987",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "records": 130665,
+  "raw_field_stats": {
+    "records": 130665,
+    "negative": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "non_numeric": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "zero": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 97
+    },
+    "control_bytes": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "examples": []
+  },
+  "normalized_mismatch_count": {
+    "totneg": 0,
+    "quatot": 0,
+    "voltot": 0
+  },
+  "scales_observed": {
+    "totneg": {},
+    "quatot": {},
+    "voltot": {
+      "100": 85201,
+      "1.0E+2": 21292,
+      "1E+2": 24075
+    }
+  },
+  "gates": {
+    "records_positive": true,
+    "all_numeric": true,
+    "no_negative": true,
+    "no_control_bytes": true,
+    "raw_normalized_mismatch_zero": true
+  },
+  "note": "Auditoria estrutural de TOTNEG, QUATOT e VOLTOT. Não infere significado econômico além da integridade dos campos."
+}
