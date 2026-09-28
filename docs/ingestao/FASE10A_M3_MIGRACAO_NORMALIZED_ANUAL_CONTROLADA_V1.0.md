@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** M3-0 CONCLUÍDO — GIT_STANDARD_LIMIT — M3-1B CONCLUÍDO — MANIFEST 2026 RECONCILIADO — M3-1C LIBERADO
+**Status:** M3-1D CONCLUÍDO — DATASET OFICIAL 2026 VALIDADO — M3-1E PENDENTE
 
 ## 1. Objetivo
 
@@ -13,129 +13,108 @@ Migrar os anos COTAHIST ainda sem NORMALIZED anual físico para o caminho canôn
 
 `dados/cotahist/normalized/anual/COTAHIST_A{ANO}.csv`
 
-mantendo:
+mantendo RAW imutável, parser 1.1.0, SHA-256, quality manifest, certificação física, rastreabilidade por commit e fail-closed.
 
-- RAW imutável;
-- parser 1.1.0;
-- SHA-256;
-- quality manifest;
-- certificação física V2;
-- rastreabilidade por commit;
-- fail-closed.
+## 2. Gates concluídos
 
-## 2. Regra de segurança
+### M3-0 — capacidade
 
-Nenhum lote será iniciado antes do **Gate de Capacidade M3-0**.
-
-Motivo: o tamanho do NORMALIZED pode ser muito superior ao ZIP RAW. A existência do RAW abaixo de 100 MB não prova que o CSV normalizado caberá no armazenamento Git padrão.
-
-O contrato V2.0 exige interromper a migração se o limite de armazenamento/versionamento for atingido.
-
-## 3. M3-0 — Gate de capacidade
-
-Ano de referência:
-
-**2026**
-
-A execução deve:
-
-1. regenerar NORMALIZED 2026 em `/tmp`;
-2. calcular tamanho físico;
-3. calcular SHA-256;
-4. confirmar contagem/campos/datas contra o manifesto;
-5. **não persistir o CSV**;
-6. classificar:
-   - `GIT_STANDARD_OK` se < 100 MB;
-   - `GIT_STANDARD_LIMIT` se >= 100 MB;
-7. registrar evidência.
-
-## 4. Por que 2026 foi escolhido
-
-O RAW 2026 já possui aproximadamente **84,5 MB** no repositório, enquanto 1987 demonstrou que a normalização pode expandir significativamente o volume físico.
-
-Essa relação é apenas indicativa; o valor decisório será o tamanho real medido pela execução M3-0.
-
-## 5. Regra de decisão
-
-### Resultado M3-0 2026
-
-NORMALIZED medido: **392.044.266 bytes**.
+NORMALIZED 2026: **392.044.266 bytes**.
 
 Decisão: **GIT_STANDARD_LIMIT**.
 
-A persistência foi transferida para prova controlada em Git LFS.
+### M3-1A — preparação
 
-### Regra quando NORMALIZED >= 100 MB
+Git LFS configurado para NORMALIZED anual.
 
-**PARAR no Git convencional.**
+### M3-1B — prova física
 
-Não fazer:
+2026 persistido via Git LFS com SHA:
 
-- commit parcial;
-- compressão manual para mascarar o limite;
-- divisão arbitrária do CSV sem contrato;
-- alteração do RAW;
-- redução de campos;
-- deduplicação.
+`befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
 
-Nesse caso foi executada a decisão técnica de Git LFS. A prova física 2026 foi concluída com sucesso e o manifest foi reconciliado.
+### Reconciliação
 
-## 6. Estratégia após aprovação do gate
+Manifest alinhado ao RAW atual.
 
-A migração será feita em lotes pequenos, com preferência inicial para anos históricos de menor volume.
+RAW SHA:
 
-Cada ano:
+`4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
 
-`RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY V2 → RECONCILE`
+### M3-1C — CI
 
-Um ano com falha não autoriza declarar o lote inteiro concluído.
+**APROVADO**
 
-## 7. Critérios de conclusão M3
+Run: `36428513803`
 
-Para cada ano migrado:
+Evidência:
 
-- CSV físico presente;
-- tamanho validado;
-- SHA físico = manifesto;
-- linhas físicas = manifesto;
-- schema = 25;
-- datas coerentes;
-- certificação física V2 = CERTIFICADO;
-- commit de persistência registrado.
+`M3-1C_STATUS=CI_INTEGRIDADE_APROVADA`
 
-Depois dos lotes:
+### M3-1D — Dataset Oficial
 
-- Dataset Oficial V2 deve executar com SUCCESS;
-- 1986 permanece com sua exceção semântica documentada;
-- nenhum RAW é alterado.
+**APROVADO**
 
-## 8. Estado
+Run: `36428988106`
 
-M1 — **APROVADO**  
-M2 — **APROVADO**  
-M3-0 — **CONCLUÍDO — GIT_STANDARD_LIMIT**
-M3-1A — **CONCLUÍDO**
-M3-1B — **CONCLUÍDO — GIT LFS 2026**
-Reconciliação manifest — **CONCLUÍDA**
-M3-1C — **LIBERADO**
-M3 histórico — **BLOQUEADO**
+Evidência:
 
-Próxima etapa: **M3-1C — validação CI do NORMALIZED 2026, seguida de M3-1D Dataset Oficial e M3-1E aprovação global.**
+`M3-1D_STATUS=DATASET_OFICIAL_VALIDADO`
 
-Registro formal: `docs/ingestao/M3-0_RESULTADO_GATE_CAPACIDADE_NORMALIZED_2026_2026-09-28.md`
+Dataset:
 
-Decisão M3-1: `docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md`
+`dados/cotahist/normalized/anual/COTAHIST_A2026.csv`
 
+Registros: **2.919.760**
 
-## 9. Atualização M3-1B — 2026-09-28
+Campos: **25**
 
-A divergência do manifest 2026 foi reconciliada. O RAW havia sido atualizado em 2026-09-24 após a criação do manifest NORMALIZED. O manifest foi alinhado ao RAW atual e ao NORMALIZED LFS fisicamente verificado.
+Primeira data: **2026-01-02**
 
-- RAW SHA atual: `4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
-- NORMALIZED SHA: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
-- Linhas: **2.919.760**
-- Última data: **2026-09-23**
-- M3-1C: **LIBERADO**
-- Migração histórica: **CONTINUA BLOQUEADA ATÉ M3-1E**
+Última data: **2026-09-23**
 
-Registro: `docs/ingestao/M3-1B_RECONCILIACAO_MANIFEST_NORMALIZED_2026_2026-09-28.md`.
+## 3. M3-1E — aprovação global
+
+O próximo gate deverá consolidar formalmente:
+
+- M3-0;
+- M3-1A;
+- M3-1B;
+- reconciliação do manifest;
+- M3-1C;
+- M3-1D;
+- preservação do RAW;
+- integridade do Dataset Oficial;
+- política de Git LFS;
+- documentação de governança.
+
+Somente após M3-1E aprovado poderá ser liberada a migração histórica 1986–2025.
+
+## 4. Regra de segurança
+
+A migração histórica permanece bloqueada até a certificação M3-1E.
+
+Não será iniciado lote histórico antecipadamente.
+
+A cadeia oficial permanece:
+
+`RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE`
+
+## 5. Estado oficial
+
+- M1 — **APROVADO**
+- M2 — **APROVADO**
+- M3-0 — **CONCLUÍDO**
+- M3-1A — **CONCLUÍDO**
+- M3-1B — **CONCLUÍDO**
+- Reconciliação manifest — **CONCLUÍDA**
+- M3-1C — **APROVADO**
+- M3-1D — **APROVADO**
+- M3-1E — **PENDENTE**
+- Migração histórica 1986–2025 — **BLOQUEADA**
+
+## 6. Próxima etapa
+
+**M3-1E — Aprovação global.**
+
+O gate deve ser executável, auditável e fail-closed. A aprovação não será declarada apenas por documentação; deverá existir evidência de execução real.
