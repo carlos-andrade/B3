@@ -149,3 +149,5 @@ jobs:
           name: cotahist-m3-1b-reconciliacao-manifest-2026
           path: dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json
           retention-days: 30
+
+# trigger: reconciliação controlada após publicação do workflow
