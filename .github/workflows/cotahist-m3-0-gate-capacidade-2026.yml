@@ -1,0 +1,64 @@
+name: COTAHIST - M3-0 gate capacidade NORMALIZED 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+      - "docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md"
+      - ".github/workflows/cotahist-m3-0-gate-capacidade-2026.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-m3-0-capacidade-2026
+  cancel-in-progress: false
+
+jobs:
+  capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pré-condições 2026
+        run: |
+          test -f dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -f dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+
+      - name: Normalizar 2026 sem persistir
+        run: |
+          rm -rf /tmp/normalized
+          mkdir -p /tmp/normalized
+          python scripts/ingestao/normalize_cotahist.py             --input dados/cotahist/raw/anual/COTAHIST_A2026.ZIP             --output /tmp/normalized/COTAHIST_A2026.csv
+
+      - name: Medir capacidade
+        run: |
+          BYTES=$(stat -c%s /tmp/normalized/COTAHIST_A2026.csv)
+          SHA=$(sha256sum /tmp/normalized/COTAHIST_A2026.csv | awk '{print $1}')
+          echo "NORMALIZED_2026_BYTES=$BYTES"
+          echo "NORMALIZED_2026_SHA256=$SHA"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json")
+          q = json.loads(p.read_text(encoding="utf-8"))
+          print("MANIFEST_SHA256=", q["normalized_sha256"])
+          print("MANIFEST_LINHAS=", q["linhas_normalized"])
+          print("MANIFEST_CAMPOS=", q["campos"])
+          PY
+          if [ "$BYTES" -ge 100000000 ]; then
+            echo "DECISAO=GIT_STANDARD_LIMIT"
+            echo "O NORMALIZED excede 100 MB. Migração deve parar até decisão de armazenamento versionado."
+            exit 1
+          fi
+          echo "DECISAO=GIT_STANDARD_OK"
+
+      - name: Evidência de não persistência
+        run: |
+          test ! -e dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          echo "NORMALIZED_2026_NAO_PERSISTIDO=OK"
