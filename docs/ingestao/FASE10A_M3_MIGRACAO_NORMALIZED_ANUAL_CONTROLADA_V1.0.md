@@ -3,118 +3,108 @@
 **Arquivo:** FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md  
 **Projeto:** B3 — A Bolsa do Brasil  
 **Caminho:** docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md  
-**Data de criação:** 2026-09-28  
+**Data:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** M3-1D CONCLUÍDO — DATASET OFICIAL 2026 VALIDADO — M3-1E PENDENTE
+**Status:** **M3-1E CONCLUÍDO — FASE HISTÓRICA LIBERADA SOB GATES**
 
 ## 1. Objetivo
 
-Migrar os anos COTAHIST ainda sem NORMALIZED anual físico para o caminho canônico:
+Migrar os anos COTAHIST para:
 
 `dados/cotahist/normalized/anual/COTAHIST_A{ANO}.csv`
 
 mantendo RAW imutável, parser 1.1.0, SHA-256, quality manifest, certificação física, rastreabilidade por commit e fail-closed.
 
-## 2. Gates concluídos
+## 2. M3-1 — armazenamento aprovado
 
-### M3-0 — capacidade
+O gate global M3-1E foi concluído com sucesso.
 
-NORMALIZED 2026: **392.044.266 bytes**.
+- Run: **36429403166**
+- Job: **108951402371**
+- Evidência: `M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA`
+- Git LFS: **VALIDADO**
+- Dataset Oficial 2026: **APROVADO**
 
-Decisão: **GIT_STANDARD_LIMIT**.
+O registro completo está em:
 
-### M3-1A — preparação
+`docs/ingestao/M3-1E_APROVACAO_GLOBAL_COTAHIST_2026_V1.0.md`
 
-Git LFS configurado para NORMALIZED anual.
+## 3. Dataset Oficial 2026
 
-### M3-1B — prova física
+- arquivo: `dados/cotahist/normalized/anual/COTAHIST_A2026.csv`
+- SHA-256: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
+- registros: **2.919.760**
+- campos: **25**
+- primeira data: **2026-01-02**
+- última data: **2026-09-23**
 
-2026 persistido via Git LFS com SHA:
+## 4. Liberação histórica
 
-`befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
+A fase histórica está **LIBERADA SOB GATES**, não como migração irrestrita.
 
-### Reconciliação
-
-Manifest alinhado ao RAW atual.
-
-RAW SHA:
-
-`4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
-
-### M3-1C — CI
-
-**APROVADO**
-
-Run: `36428513803`
-
-Evidência:
-
-`M3-1C_STATUS=CI_INTEGRIDADE_APROVADA`
-
-### M3-1D — Dataset Oficial
-
-**APROVADO**
-
-Run: `36428988106`
-
-Evidência:
-
-`M3-1D_STATUS=DATASET_OFICIAL_VALIDADO`
-
-Dataset:
-
-`dados/cotahist/normalized/anual/COTAHIST_A2026.csv`
-
-Registros: **2.919.760**
-
-Campos: **25**
-
-Primeira data: **2026-01-02**
-
-Última data: **2026-09-23**
-
-## 3. M3-1E — aprovação global
-
-O próximo gate deverá consolidar formalmente:
-
-- M3-0;
-- M3-1A;
-- M3-1B;
-- reconciliação do manifest;
-- M3-1C;
-- M3-1D;
-- preservação do RAW;
-- integridade do Dataset Oficial;
-- política de Git LFS;
-- documentação de governança.
-
-Somente após M3-1E aprovado poderá ser liberada a migração histórica 1986–2025.
-
-## 4. Regra de segurança
-
-A migração histórica permanece bloqueada até a certificação M3-1E.
-
-Não será iniciado lote histórico antecipadamente.
-
-A cadeia oficial permanece:
+Cada ano deverá executar:
 
 `RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE`
 
-## 5. Estado oficial
+Nenhum ano será considerado Oficial apenas porque um CSV já existe no repositório.
 
-- M1 — **APROVADO**
-- M2 — **APROVADO**
+## 5. Regra especial 1986 → 1987
+
+O projeto mantém a regra de que **1986 é o primeiro ano de reconciliação semântica e deve ser concluído antes da liberação de 1987**.
+
+Para 1986 são obrigatórios:
+
+1. `tpmerc`;
+2. `codbdi`;
+3. chave lógica correta;
+4. 30 casos de OHLC;
+5. volume e quantidade;
+6. calendário de pregão;
+7. amostras comparadas diretamente com RAW;
+8. SHA-256;
+9. reconstrução determinística;
+10. persistência via Git LFS;
+11. certificação;
+12. reconciliação.
+
+## 6. Anomalia preexistente 1987
+
+O gate M3-1E identificou no checkout LFS:
+
+`Encountered 1 file that should have been a pointer, but wasn't: dados/cotahist/normalized/anual/COTAHIST_A1987.csv`
+
+Consequência:
+
+**COTAHIST_A1987.csv existente não está certificado como Dataset Oficial.**
+
+A anomalia deve ser tratada em auditoria específica, sem apagar ou alterar RAW.
+
+## 7. Próxima etapa operacional
+
+Criar e executar o gate controlado de **COTAHIST 1986**, produzindo:
+
+- NORMALIZED 1986;
+- quality manifest;
+- checksum;
+- evidência de reconstrução;
+- testes semânticos;
+- certificação;
+- reconciliação;
+- Dataset Oficial 1986 somente após todos os gates.
+
+Somente depois disso poderá ser avaliada a promoção de 1987.
+
+## 8. Estado oficial
+
 - M3-0 — **CONCLUÍDO**
 - M3-1A — **CONCLUÍDO**
 - M3-1B — **CONCLUÍDO**
-- Reconciliação manifest — **CONCLUÍDA**
+- Reconciliação 2026 — **CONCLUÍDA**
 - M3-1C — **APROVADO**
 - M3-1D — **APROVADO**
-- M3-1E — **PENDENTE**
-- Migração histórica 1986–2025 — **BLOQUEADA**
-
-## 6. Próxima etapa
-
-**M3-1E — Aprovação global.**
-
-O gate deve ser executável, auditável e fail-closed. A aprovação não será declarada apenas por documentação; deverá existir evidência de execução real.
+- M3-1E — **APROVADO**
+- M3-1 — **APROVADO**
+- Fase histórica — **LIBERADA SOB GATES**
+- 2026 — **DATASET OFICIAL**
+- 1987 preexistente — **NÃO CERTIFICADO**
+- 1986 — **PRÓXIMO GATE**
