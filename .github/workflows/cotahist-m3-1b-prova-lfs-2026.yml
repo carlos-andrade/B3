@@ -98,7 +98,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "data(cotahist): persistir NORMALIZED 2026 via Git LFS"
-          git push origin HEAD:main
+
+      - name: Push protegido contra corrida de automações
+        shell: bash
+        run: |
+          set -euo pipefail
+          for tentativa in 1 2 3 4 5; do
+            echo "PUSH_TENTATIVA=$tentativa"
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "PUSH_STATUS=SUCESSO"
+              exit 0
+            fi
+            if [ "$tentativa" -lt 5 ]; then
+              sleep 5
+            fi
+          done
+          echo "PUSH_STATUS=FALHA_APOS_5_TENTATIVAS"
+          exit 1
 
       - name: Validar objeto LFS após push
         shell: bash
