@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUDITORIA_INTEGRIDADE_CAMPOS_1987",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "type01_record_count": 130665,
+  "fields_with_control_bytes": {
+    "prazot": 34
+  },
+  "control_byte_sample": [
+    {
+      "line": 4729,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 5344,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 6432,
+      "field": "prazot",
+      "raw_hex": "9c0f20",
+      "bad_bytes": [
+        "0f"
+      ],
+      "decoded_latin1": "\u000f "
+    },
+    {
+      "line": 41775,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 46936,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 49574,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 49676,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 49825,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 95686,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 96394,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 97128,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 98633,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 99366,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 99396,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 100213,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 100895,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 101713,
+      "field": "prazot",
+      "raw_hex": "000720",
+      "bad_bytes": [
+        "00",
+        "07"
+      ],
+      "decoded_latin1": "\u0000\u0007 "
+    },
+    {
+      "line": 102181,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 102741,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 103364,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 104533,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 105111,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 106264,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 117082,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 117085,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 117086,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 117087,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 122204,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 122809,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 123953,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 124006,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 128877,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 129451,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    },
+    {
+      "line": 130496,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ],
+      "decoded_latin1": "\u0000\u000f "
+    }
+  ],
+  "fail_closed_gates": {
+    "records_positive": true,
+    "no_control_bytes_in_fixed_fields": false
+  },
+  "interpretation": "Diagnóstico estrutural. Bytes de controle em campos fixos podem indicar dado histórico válido, deslocamento de layout ou corrupção; não recebem significado econômico automaticamente."
+}
