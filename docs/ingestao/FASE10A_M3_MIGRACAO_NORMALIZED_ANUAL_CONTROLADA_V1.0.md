@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** M3-0 CONCLUÍDO — GIT_STANDARD_LIMIT — M3-1 EM DECISÃO/PROVA
+**Status:** M3-0 CONCLUÍDO — GIT_STANDARD_LIMIT — M3-1B CONCLUÍDO — MANIFEST 2026 RECONCILIADO — M3-1C LIBERADO
 
 ## 1. Objetivo
 
@@ -57,13 +57,17 @@ Essa relação é apenas indicativa; o valor decisório será o tamanho real med
 
 ## 5. Regra de decisão
 
-### Se NORMALIZED 2026 < 100 MB
+### Resultado M3-0 2026
 
-Prosseguir para lotes controlados.
+NORMALIZED medido: **392.044.266 bytes**.
 
-### Se NORMALIZED 2026 >= 100 MB
+Decisão: **GIT_STANDARD_LIMIT**.
 
-**PARAR.**
+A persistência foi transferida para prova controlada em Git LFS.
+
+### Regra quando NORMALIZED >= 100 MB
+
+**PARAR no Git convencional.**
 
 Não fazer:
 
@@ -74,7 +78,7 @@ Não fazer:
 - redução de campos;
 - deduplicação.
 
-Nesse caso será necessário decidir entre Git LFS ou armazenamento externo versionado, atualizar o contrato NORMALIZED V2.0 e somente depois continuar.
+Nesse caso foi executada a decisão técnica de Git LFS. A prova física 2026 foi concluída com sucesso e o manifest foi reconciliado.
 
 ## 6. Estratégia após aprovação do gate
 
@@ -110,11 +114,28 @@ Depois dos lotes:
 M1 — **APROVADO**  
 M2 — **APROVADO**  
 M3-0 — **CONCLUÍDO — GIT_STANDARD_LIMIT**
-M3-1 — **EM DECISÃO/PROVA — GIT LFS**
+M3-1A — **CONCLUÍDO**
+M3-1B — **CONCLUÍDO — GIT LFS 2026**
+Reconciliação manifest — **CONCLUÍDA**
+M3-1C — **LIBERADO**
 M3 histórico — **BLOQUEADO**
 
-Próxima etapa: **prova controlada de armazenamento do NORMALIZED 2026 via Git LFS, seguida de validação física, SHA, certificação V2, CI e Dataset Oficial.**
+Próxima etapa: **M3-1C — validação CI do NORMALIZED 2026, seguida de M3-1D Dataset Oficial e M3-1E aprovação global.**
 
 Registro formal: `docs/ingestao/M3-0_RESULTADO_GATE_CAPACIDADE_NORMALIZED_2026_2026-09-28.md`
 
 Decisão M3-1: `docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md`
+
+
+## 9. Atualização M3-1B — 2026-09-28
+
+A divergência do manifest 2026 foi reconciliada. O RAW havia sido atualizado em 2026-09-24 após a criação do manifest NORMALIZED. O manifest foi alinhado ao RAW atual e ao NORMALIZED LFS fisicamente verificado.
+
+- RAW SHA atual: `4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768`
+- NORMALIZED SHA: `befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9`
+- Linhas: **2.919.760**
+- Última data: **2026-09-23**
+- M3-1C: **LIBERADO**
+- Migração histórica: **CONTINUA BLOQUEADA ATÉ M3-1E**
+
+Registro: `docs/ingestao/M3-1B_RECONCILIACAO_MANIFEST_NORMALIZED_2026_2026-09-28.md`.
