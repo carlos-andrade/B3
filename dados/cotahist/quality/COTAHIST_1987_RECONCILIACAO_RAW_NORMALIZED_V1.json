@@ -1,0 +1,1285 @@
+{
+  "schema_version": "1.0.0",
+  "status": "RECONCILIACAO_RAW_NORMALIZED_1987",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "normalized_file": "dados/cotahist/normalized/anual/COTAHIST_A1987.csv",
+  "checks": {
+    "raw_count": 130665,
+    "normalized_count": 130665,
+    "row_count_equal": true,
+    "header": {
+      "columns": [
+        "data_pregao",
+        "codbdi",
+        "codneg",
+        "tpmerc",
+        "nomres",
+        "especi",
+        "prazot",
+        "modref",
+        "preabe",
+        "premax",
+        "premin",
+        "premed",
+        "preult",
+        "preofc",
+        "preofv",
+        "totneg",
+        "quatot",
+        "voltot",
+        "preexe",
+        "indopc",
+        "datven",
+        "fatcot",
+        "ptoexe",
+        "codisi",
+        "dismes"
+      ],
+      "mapping": {
+        "data_pregao": "data_pregao",
+        "codbdi": "codbdi",
+        "codneg": "codneg",
+        "tpmerc": "tpmerc",
+        "nomres": "nomres",
+        "especi": "especi",
+        "prazot": "prazot",
+        "modref": "modref",
+        "preab": "preabe",
+        "premax": "premax",
+        "premin": "premin",
+        "premed": "premed",
+        "preult": "preult",
+        "totneg": "totneg",
+        "quatot": "quatot",
+        "voltot": "voltot",
+        "preexe": "preexe",
+        "indopc": "indopc",
+        "datven": "datven",
+        "fatcot": "fatcot",
+        "ptoexe": "ptoexe",
+        "codisi": "codisi",
+        "dimes": "dismes"
+      },
+      "all_required_fields_present": true
+    },
+    "date_equal": true,
+    "identity_mismatch_count_sampled": 0,
+    "identity_mismatches": [],
+    "numeric": {
+      "preab": {
+        "scales_observed": {
+          "100": 43681,
+          "1.0E+2": 51573,
+          "1E+2": 35411
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "premax": {
+        "scales_observed": {
+          "100": 42449,
+          "1.0E+2": 50161,
+          "1E+2": 38055
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "premin": {
+        "scales_observed": {
+          "100": 43375,
+          "1.0E+2": 51056,
+          "1E+2": 36234
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "premed": {
+        "scales_observed": {
+          "100": 23902,
+          "1E+2": 78976,
+          "1.0E+2": 27689
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "preult": {
+        "scales_observed": {
+          "100": 42177,
+          "1.0E+2": 49976,
+          "1E+2": 38512
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "totneg": {
+        "scales_observed": {},
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "quatot": {
+        "scales_observed": {},
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      },
+      "voltot": {
+        "scales_observed": {
+          "100": 85201,
+          "1.0E+2": 21292,
+          "1E+2": 24075
+        },
+        "mismatch_sample": [],
+        "mismatch_count_sampled": 0
+      }
+    },
+    "sample_30": [
+      {
+        "normalized_row": 1,
+        "raw_line": 2,
+        "values": {
+          "preab": {
+            "raw": "0000000000400",
+            "normalized": "4"
+          },
+          "premax": {
+            "raw": "0000000000400",
+            "normalized": "4"
+          },
+          "premin": {
+            "raw": "0000000000400",
+            "normalized": "4"
+          },
+          "premed": {
+            "raw": "0000000000400",
+            "normalized": "4"
+          },
+          "preult": {
+            "raw": "0000000000400",
+            "normalized": "4"
+          },
+          "quatot": {
+            "raw": "000000000004550000",
+            "normalized": "4550000"
+          },
+          "voltot": {
+            "raw": "000000000001820000",
+            "normalized": "18200"
+          },
+          "totneg": {
+            "raw": "00003",
+            "normalized": "3"
+          }
+        }
+      },
+      {
+        "normalized_row": 2,
+        "raw_line": 3,
+        "values": {
+          "preab": {
+            "raw": "0000000001070",
+            "normalized": "10.7"
+          },
+          "premax": {
+            "raw": "0000000001070",
+            "normalized": "10.7"
+          },
+          "premin": {
+            "raw": "0000000001030",
+            "normalized": "10.3"
+          },
+          "premed": {
+            "raw": "0000000001048",
+            "normalized": "10.48"
+          },
+          "preult": {
+            "raw": "0000000001070",
+            "normalized": "10.7"
+          },
+          "quatot": {
+            "raw": "000000000078000000",
+            "normalized": "78000000"
+          },
+          "voltot": {
+            "raw": "000000000081744720",
+            "normalized": "817447.2"
+          },
+          "totneg": {
+            "raw": "00017",
+            "normalized": "17"
+          }
+        }
+      },
+      {
+        "normalized_row": 3,
+        "raw_line": 4,
+        "values": {
+          "preab": {
+            "raw": "0000000000120",
+            "normalized": "1.2"
+          },
+          "premax": {
+            "raw": "0000000000120",
+            "normalized": "1.2"
+          },
+          "premin": {
+            "raw": "0000000000110",
+            "normalized": "1.1"
+          },
+          "premed": {
+            "raw": "0000000000115",
+            "normalized": "1.15"
+          },
+          "preult": {
+            "raw": "0000000000120",
+            "normalized": "1.2"
+          },
+          "quatot": {
+            "raw": "000000000071800000",
+            "normalized": "71800000"
+          },
+          "voltot": {
+            "raw": "000000000008327000",
+            "normalized": "83270"
+          },
+          "totneg": {
+            "raw": "00019",
+            "normalized": "19"
+          }
+        }
+      },
+      {
+        "normalized_row": 4,
+        "raw_line": 5,
+        "values": {
+          "preab": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "premax": {
+            "raw": "0000000000650",
+            "normalized": "6.5"
+          },
+          "premin": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "premed": {
+            "raw": "0000000000619",
+            "normalized": "6.19"
+          },
+          "preult": {
+            "raw": "0000000000650",
+            "normalized": "6.5"
+          },
+          "quatot": {
+            "raw": "000000000092750000",
+            "normalized": "92750000"
+          },
+          "voltot": {
+            "raw": "000000000057414000",
+            "normalized": "574140"
+          },
+          "totneg": {
+            "raw": "00025",
+            "normalized": "25"
+          }
+        }
+      },
+      {
+        "normalized_row": 5,
+        "raw_line": 6,
+        "values": {
+          "preab": {
+            "raw": "0000000000150",
+            "normalized": "1.5"
+          },
+          "premax": {
+            "raw": "0000000000150",
+            "normalized": "1.5"
+          },
+          "premin": {
+            "raw": "0000000000150",
+            "normalized": "1.5"
+          },
+          "premed": {
+            "raw": "0000000000150",
+            "normalized": "1.5"
+          },
+          "preult": {
+            "raw": "0000000000150",
+            "normalized": "1.5"
+          },
+          "quatot": {
+            "raw": "000000000001000000",
+            "normalized": "1000000"
+          },
+          "voltot": {
+            "raw": "000000000000150000",
+            "normalized": "1500"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 4507,
+        "raw_line": 4508,
+        "values": {
+          "preab": {
+            "raw": "0000000024999",
+            "normalized": "249.99"
+          },
+          "premax": {
+            "raw": "0000000024999",
+            "normalized": "249.99"
+          },
+          "premin": {
+            "raw": "0000000024999",
+            "normalized": "249.99"
+          },
+          "premed": {
+            "raw": "0000000024999",
+            "normalized": "249.99"
+          },
+          "preult": {
+            "raw": "0000000024999",
+            "normalized": "249.99"
+          },
+          "quatot": {
+            "raw": "000000000000160000",
+            "normalized": "160000"
+          },
+          "voltot": {
+            "raw": "000000000003999840",
+            "normalized": "39998.4"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 9012,
+        "raw_line": 9013,
+        "values": {
+          "preab": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "premax": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "premin": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "premed": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "preult": {
+            "raw": "0000000000600",
+            "normalized": "6"
+          },
+          "quatot": {
+            "raw": "000000000000010000",
+            "normalized": "10000"
+          },
+          "voltot": {
+            "raw": "000000000000006000",
+            "normalized": "60"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 13518,
+        "raw_line": 13519,
+        "values": {
+          "preab": {
+            "raw": "0000000000403",
+            "normalized": "4.03"
+          },
+          "premax": {
+            "raw": "0000000000410",
+            "normalized": "4.1"
+          },
+          "premin": {
+            "raw": "0000000000380",
+            "normalized": "3.8"
+          },
+          "premed": {
+            "raw": "0000000000397",
+            "normalized": "3.97"
+          },
+          "preult": {
+            "raw": "0000000000390",
+            "normalized": "3.9"
+          },
+          "quatot": {
+            "raw": "000000000553017000",
+            "normalized": "553017000"
+          },
+          "voltot": {
+            "raw": "000000000219967660",
+            "normalized": "2199676.6"
+          },
+          "totneg": {
+            "raw": "00064",
+            "normalized": "64"
+          }
+        }
+      },
+      {
+        "normalized_row": 18024,
+        "raw_line": 18025,
+        "values": {
+          "preab": {
+            "raw": "0000000000315",
+            "normalized": "3.15"
+          },
+          "premax": {
+            "raw": "0000000000315",
+            "normalized": "3.15"
+          },
+          "premin": {
+            "raw": "0000000000300",
+            "normalized": "3"
+          },
+          "premed": {
+            "raw": "0000000000307",
+            "normalized": "3.07"
+          },
+          "preult": {
+            "raw": "0000000000305",
+            "normalized": "3.05"
+          },
+          "quatot": {
+            "raw": "000000000021330000",
+            "normalized": "21330000"
+          },
+          "voltot": {
+            "raw": "000000000006559000",
+            "normalized": "65590"
+          },
+          "totneg": {
+            "raw": "00009",
+            "normalized": "9"
+          }
+        }
+      },
+      {
+        "normalized_row": 22529,
+        "raw_line": 22530,
+        "values": {
+          "preab": {
+            "raw": "0000000001110",
+            "normalized": "11.1"
+          },
+          "premax": {
+            "raw": "0000000001211",
+            "normalized": "12.11"
+          },
+          "premin": {
+            "raw": "0000000001110",
+            "normalized": "11.1"
+          },
+          "premed": {
+            "raw": "0000000001122",
+            "normalized": "11.22"
+          },
+          "preult": {
+            "raw": "0000000001211",
+            "normalized": "12.11"
+          },
+          "quatot": {
+            "raw": "000000000006740000",
+            "normalized": "6740000"
+          },
+          "voltot": {
+            "raw": "000000000007566240",
+            "normalized": "75662.4"
+          },
+          "totneg": {
+            "raw": "00002",
+            "normalized": "2"
+          }
+        }
+      },
+      {
+        "normalized_row": 27035,
+        "raw_line": 27036,
+        "values": {
+          "preab": {
+            "raw": "0000000000800",
+            "normalized": "8"
+          },
+          "premax": {
+            "raw": "0000000000870",
+            "normalized": "8.7"
+          },
+          "premin": {
+            "raw": "0000000000755",
+            "normalized": "7.55"
+          },
+          "premed": {
+            "raw": "0000000000852",
+            "normalized": "8.52"
+          },
+          "preult": {
+            "raw": "0000000000860",
+            "normalized": "8.6"
+          },
+          "quatot": {
+            "raw": "000000000075179000",
+            "normalized": "75179000"
+          },
+          "voltot": {
+            "raw": "000000000064105265",
+            "normalized": "641052.65"
+          },
+          "totneg": {
+            "raw": "00036",
+            "normalized": "36"
+          }
+        }
+      },
+      {
+        "normalized_row": 31541,
+        "raw_line": 31542,
+        "values": {
+          "preab": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "premax": {
+            "raw": "0000000000181",
+            "normalized": "1.81"
+          },
+          "premin": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "premed": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "preult": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "quatot": {
+            "raw": "000000000348000000",
+            "normalized": "348000000"
+          },
+          "voltot": {
+            "raw": "000000000062718000",
+            "normalized": "627180"
+          },
+          "totneg": {
+            "raw": "00005",
+            "normalized": "5"
+          }
+        }
+      },
+      {
+        "normalized_row": 36046,
+        "raw_line": 36047,
+        "values": {
+          "preab": {
+            "raw": "0000000000240",
+            "normalized": "2.4"
+          },
+          "premax": {
+            "raw": "0000000000240",
+            "normalized": "2.4"
+          },
+          "premin": {
+            "raw": "0000000000240",
+            "normalized": "2.4"
+          },
+          "premed": {
+            "raw": "0000000000240",
+            "normalized": "2.4"
+          },
+          "preult": {
+            "raw": "0000000000240",
+            "normalized": "2.4"
+          },
+          "quatot": {
+            "raw": "000000000004000000",
+            "normalized": "4000000"
+          },
+          "voltot": {
+            "raw": "000000000000960000",
+            "normalized": "9600"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 40552,
+        "raw_line": 40553,
+        "values": {
+          "preab": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "premax": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "premin": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "premed": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "preult": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "quatot": {
+            "raw": "000000000000000500",
+            "normalized": "500"
+          },
+          "voltot": {
+            "raw": "000000000000000050",
+            "normalized": "0.5"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 45058,
+        "raw_line": 45059,
+        "values": {
+          "preab": {
+            "raw": "0000000000200",
+            "normalized": "2"
+          },
+          "premax": {
+            "raw": "0000000000200",
+            "normalized": "2"
+          },
+          "premin": {
+            "raw": "0000000000200",
+            "normalized": "2"
+          },
+          "premed": {
+            "raw": "0000000000200",
+            "normalized": "2"
+          },
+          "preult": {
+            "raw": "0000000000200",
+            "normalized": "2"
+          },
+          "quatot": {
+            "raw": "000000000000000590",
+            "normalized": "590"
+          },
+          "voltot": {
+            "raw": "000000000000000118",
+            "normalized": "1.18"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 49563,
+        "raw_line": 49564,
+        "values": {
+          "preab": {
+            "raw": "0000000000110",
+            "normalized": "1.1"
+          },
+          "premax": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "premin": {
+            "raw": "0000000000110",
+            "normalized": "1.1"
+          },
+          "premed": {
+            "raw": "0000000000116",
+            "normalized": "1.16"
+          },
+          "preult": {
+            "raw": "0000000000180",
+            "normalized": "1.8"
+          },
+          "quatot": {
+            "raw": "000000000000002310",
+            "normalized": "2310"
+          },
+          "voltot": {
+            "raw": "000000000000000269",
+            "normalized": "2.69"
+          },
+          "totneg": {
+            "raw": "00005",
+            "normalized": "5"
+          }
+        }
+      },
+      {
+        "normalized_row": 54069,
+        "raw_line": 54070,
+        "values": {
+          "preab": {
+            "raw": "0000000000680",
+            "normalized": "6.8"
+          },
+          "premax": {
+            "raw": "0000000000680",
+            "normalized": "6.8"
+          },
+          "premin": {
+            "raw": "0000000000680",
+            "normalized": "6.8"
+          },
+          "premed": {
+            "raw": "0000000000680",
+            "normalized": "6.8"
+          },
+          "preult": {
+            "raw": "0000000000680",
+            "normalized": "6.8"
+          },
+          "quatot": {
+            "raw": "000000000000500000",
+            "normalized": "500000"
+          },
+          "voltot": {
+            "raw": "000000000000340000",
+            "normalized": "3400"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 58575,
+        "raw_line": 58576,
+        "values": {
+          "preab": {
+            "raw": "0000000000750",
+            "normalized": "7.5"
+          },
+          "premax": {
+            "raw": "0000000000780",
+            "normalized": "7.8"
+          },
+          "premin": {
+            "raw": "0000000000700",
+            "normalized": "7"
+          },
+          "premed": {
+            "raw": "0000000000739",
+            "normalized": "7.39"
+          },
+          "preult": {
+            "raw": "0000000000750",
+            "normalized": "7.5"
+          },
+          "quatot": {
+            "raw": "000000000001756564",
+            "normalized": "1756564"
+          },
+          "voltot": {
+            "raw": "000000001299592222",
+            "normalized": "12995922.22"
+          },
+          "totneg": {
+            "raw": "00178",
+            "normalized": "178"
+          }
+        }
+      },
+      {
+        "normalized_row": 63080,
+        "raw_line": 63081,
+        "values": {
+          "preab": {
+            "raw": "0000000001100",
+            "normalized": "11"
+          },
+          "premax": {
+            "raw": "0000000001100",
+            "normalized": "11"
+          },
+          "premin": {
+            "raw": "0000000001100",
+            "normalized": "11"
+          },
+          "premed": {
+            "raw": "0000000001100",
+            "normalized": "11"
+          },
+          "preult": {
+            "raw": "0000000001100",
+            "normalized": "11"
+          },
+          "quatot": {
+            "raw": "000000000000000021",
+            "normalized": "21"
+          },
+          "voltot": {
+            "raw": "000000000000023100",
+            "normalized": "231"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 67586,
+        "raw_line": 67587,
+        "values": {
+          "preab": {
+            "raw": "0000000001155",
+            "normalized": "11.55"
+          },
+          "premax": {
+            "raw": "0000000001210",
+            "normalized": "12.1"
+          },
+          "premin": {
+            "raw": "0000000001155",
+            "normalized": "11.55"
+          },
+          "premed": {
+            "raw": "0000000001199",
+            "normalized": "11.99"
+          },
+          "preult": {
+            "raw": "0000000001200",
+            "normalized": "12"
+          },
+          "quatot": {
+            "raw": "000000000000709466",
+            "normalized": "709466"
+          },
+          "voltot": {
+            "raw": "000000000851306445",
+            "normalized": "8513064.45"
+          },
+          "totneg": {
+            "raw": "00080",
+            "normalized": "80"
+          }
+        }
+      },
+      {
+        "normalized_row": 72091,
+        "raw_line": 72092,
+        "values": {
+          "preab": {
+            "raw": "0000000000510",
+            "normalized": "5.1"
+          },
+          "premax": {
+            "raw": "0000000000510",
+            "normalized": "5.1"
+          },
+          "premin": {
+            "raw": "0000000000510",
+            "normalized": "5.1"
+          },
+          "premed": {
+            "raw": "0000000000510",
+            "normalized": "5.1"
+          },
+          "preult": {
+            "raw": "0000000000510",
+            "normalized": "5.1"
+          },
+          "quatot": {
+            "raw": "000000000000001000",
+            "normalized": "1000"
+          },
+          "voltot": {
+            "raw": "000000000000510000",
+            "normalized": "5100"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 76597,
+        "raw_line": 76598,
+        "values": {
+          "preab": {
+            "raw": "0000000000090",
+            "normalized": "0.9"
+          },
+          "premax": {
+            "raw": "0000000000096",
+            "normalized": "0.96"
+          },
+          "premin": {
+            "raw": "0000000000090",
+            "normalized": "0.9"
+          },
+          "premed": {
+            "raw": "0000000000095",
+            "normalized": "0.95"
+          },
+          "preult": {
+            "raw": "0000000000096",
+            "normalized": "0.96"
+          },
+          "quatot": {
+            "raw": "000000000000100000",
+            "normalized": "100000"
+          },
+          "voltot": {
+            "raw": "000000000009513000",
+            "normalized": "95130"
+          },
+          "totneg": {
+            "raw": "00008",
+            "normalized": "8"
+          }
+        }
+      },
+      {
+        "normalized_row": 81103,
+        "raw_line": 81104,
+        "values": {
+          "preab": {
+            "raw": "0000000000085",
+            "normalized": "0.85"
+          },
+          "premax": {
+            "raw": "0000000000085",
+            "normalized": "0.85"
+          },
+          "premin": {
+            "raw": "0000000000079",
+            "normalized": "0.79"
+          },
+          "premed": {
+            "raw": "0000000000082",
+            "normalized": "0.82"
+          },
+          "preult": {
+            "raw": "0000000000084",
+            "normalized": "0.84"
+          },
+          "quatot": {
+            "raw": "000000000000956980",
+            "normalized": "956980"
+          },
+          "voltot": {
+            "raw": "000000000078766820",
+            "normalized": "787668.2"
+          },
+          "totneg": {
+            "raw": "00034",
+            "normalized": "34"
+          }
+        }
+      },
+      {
+        "normalized_row": 85608,
+        "raw_line": 85609,
+        "values": {
+          "preab": {
+            "raw": "0000000001500",
+            "normalized": "15"
+          },
+          "premax": {
+            "raw": "0000000001500",
+            "normalized": "15"
+          },
+          "premin": {
+            "raw": "0000000001495",
+            "normalized": "14.95"
+          },
+          "premed": {
+            "raw": "0000000001497",
+            "normalized": "14.97"
+          },
+          "preult": {
+            "raw": "0000000001495",
+            "normalized": "14.95"
+          },
+          "quatot": {
+            "raw": "000000000000202215",
+            "normalized": "202215"
+          },
+          "voltot": {
+            "raw": "000000000302840760",
+            "normalized": "3028407.6"
+          },
+          "totneg": {
+            "raw": "00004",
+            "normalized": "4"
+          }
+        }
+      },
+      {
+        "normalized_row": 90114,
+        "raw_line": 90115,
+        "values": {
+          "preab": {
+            "raw": "0000000006400",
+            "normalized": "64"
+          },
+          "premax": {
+            "raw": "0000000006400",
+            "normalized": "64"
+          },
+          "premin": {
+            "raw": "0000000006400",
+            "normalized": "64"
+          },
+          "premed": {
+            "raw": "0000000006400",
+            "normalized": "64"
+          },
+          "preult": {
+            "raw": "0000000006400",
+            "normalized": "64"
+          },
+          "quatot": {
+            "raw": "000000000000000010",
+            "normalized": "10"
+          },
+          "voltot": {
+            "raw": "000000000000064000",
+            "normalized": "640"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      },
+      {
+        "normalized_row": 94620,
+        "raw_line": 94621,
+        "values": {
+          "preab": {
+            "raw": "0000000006100",
+            "normalized": "61"
+          },
+          "premax": {
+            "raw": "0000000006150",
+            "normalized": "61.5"
+          },
+          "premin": {
+            "raw": "0000000006100",
+            "normalized": "61"
+          },
+          "premed": {
+            "raw": "0000000006100",
+            "normalized": "61"
+          },
+          "preult": {
+            "raw": "0000000006100",
+            "normalized": "61"
+          },
+          "quatot": {
+            "raw": "000000000000191000",
+            "normalized": "191000"
+          },
+          "voltot": {
+            "raw": "000000001165116200",
+            "normalized": "11651162"
+          },
+          "totneg": {
+            "raw": "00036",
+            "normalized": "36"
+          }
+        }
+      },
+      {
+        "normalized_row": 99125,
+        "raw_line": 99126,
+        "values": {
+          "preab": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "premax": {
+            "raw": "0000000000120",
+            "normalized": "1.2"
+          },
+          "premin": {
+            "raw": "0000000000100",
+            "normalized": "1"
+          },
+          "premed": {
+            "raw": "0000000000103",
+            "normalized": "1.03"
+          },
+          "preult": {
+            "raw": "0000000000120",
+            "normalized": "1.2"
+          },
+          "quatot": {
+            "raw": "000000000000010000",
+            "normalized": "10000"
+          },
+          "voltot": {
+            "raw": "000000000001032000",
+            "normalized": "10320"
+          },
+          "totneg": {
+            "raw": "00002",
+            "normalized": "2"
+          }
+        }
+      },
+      {
+        "normalized_row": 103631,
+        "raw_line": 103632,
+        "values": {
+          "preab": {
+            "raw": "0000000000330",
+            "normalized": "3.3"
+          },
+          "premax": {
+            "raw": "0000000000330",
+            "normalized": "3.3"
+          },
+          "premin": {
+            "raw": "0000000000310",
+            "normalized": "3.1"
+          },
+          "premed": {
+            "raw": "0000000000315",
+            "normalized": "3.15"
+          },
+          "preult": {
+            "raw": "0000000000310",
+            "normalized": "3.1"
+          },
+          "quatot": {
+            "raw": "000000000000103000",
+            "normalized": "103000"
+          },
+          "voltot": {
+            "raw": "000000000032450000",
+            "normalized": "324500"
+          },
+          "totneg": {
+            "raw": "00010",
+            "normalized": "10"
+          }
+        }
+      },
+      {
+        "normalized_row": 108137,
+        "raw_line": 108138,
+        "values": {
+          "preab": {
+            "raw": "0000000000830",
+            "normalized": "8.3"
+          },
+          "premax": {
+            "raw": "0000000000900",
+            "normalized": "9"
+          },
+          "premin": {
+            "raw": "0000000000800",
+            "normalized": "8"
+          },
+          "premed": {
+            "raw": "0000000000867",
+            "normalized": "8.67"
+          },
+          "preult": {
+            "raw": "0000000000850",
+            "normalized": "8.5"
+          },
+          "quatot": {
+            "raw": "000000000000000922",
+            "normalized": "922"
+          },
+          "voltot": {
+            "raw": "000000000000800220",
+            "normalized": "8002.2"
+          },
+          "totneg": {
+            "raw": "00019",
+            "normalized": "19"
+          }
+        }
+      },
+      {
+        "normalized_row": 112642,
+        "raw_line": 112643,
+        "values": {
+          "preab": {
+            "raw": "0000000000420",
+            "normalized": "4.2"
+          },
+          "premax": {
+            "raw": "0000000000420",
+            "normalized": "4.2"
+          },
+          "premin": {
+            "raw": "0000000000420",
+            "normalized": "4.2"
+          },
+          "premed": {
+            "raw": "0000000000420",
+            "normalized": "4.2"
+          },
+          "preult": {
+            "raw": "0000000000420",
+            "normalized": "4.2"
+          },
+          "quatot": {
+            "raw": "000000000000069300",
+            "normalized": "69300"
+          },
+          "voltot": {
+            "raw": "000000000029106000",
+            "normalized": "291060"
+          },
+          "totneg": {
+            "raw": "00001",
+            "normalized": "1"
+          }
+        }
+      }
+    ]
+  },
+  "fail_closed_gates": {
+    "row_count_equal": true,
+    "header_complete": true,
+    "dates_equal": true,
+    "identity_no_sampled_mismatch": true,
+    "numeric_no_sampled_mismatch": true,
+    "sample_30_present": true
+  }
+}
