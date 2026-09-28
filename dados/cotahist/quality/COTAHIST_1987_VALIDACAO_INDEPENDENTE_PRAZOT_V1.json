@@ -1,0 +1,22 @@
+{
+  "schema_version":"1.0.0",
+  "status":"VALIDACAO_INDEPENDENTE_INCONCLUSIVA",
+  "data":"2026-09-28",
+  "year":1987,
+  "field":"PRAZOT",
+  "affected_records":34,
+  "external_validation":{
+    "layout_245_bytes":true,
+    "prazot_positions":"50-52",
+    "prazot_type":"X(03)",
+    "tpmerc_020":"FRACIONARIO",
+    "specific_byte_patterns_found_publicly":false
+  },
+  "sources_consulted":[
+    "B3/COTAHIST layout documentation",
+    "Independent historical COTAHIST dataset/index containing COTAHIST_A1987"
+  ],
+  "decision":"No byte-level correction or semantic reinterpretation is authorized.",
+  "certification_gate":"OPEN",
+  "next_step":"Proceed with independent structural/semantic audits while preserving the 34 PRAZOT anomalies as explicit exceptions. Final certification of 1987 must retain this exception unless primary historical evidence resolves it."
+}
