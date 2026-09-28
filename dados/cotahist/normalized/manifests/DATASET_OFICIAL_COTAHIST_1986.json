@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "status": "OFICIAL",
+  "dataset": "COTAHIST_NORMALIZED_ANUAL",
+  "ano": 1986,
+  "source": "B3",
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP",
+  "normalized_file": "dados/cotahist/normalized/anual/COTAHIST_A1986.csv",
+  "quality_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A1986_quality.json",
+  "checksum_file": "dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256",
+  "semantic_audit": "dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json",
+  "parser_version": "1.1.0",
+  "raw_sha256": "350e6086c8f991484832ca3cd23e900b692769bfd3311017800231fd896c8018",
+  "normalized_sha256": "fbd00ff5b24075813132193dc794e29015df20b7dc6bedadba7e896b30406329",
+  "linhas_normalized": 177981,
+  "campos": 25,
+  "primeira_data": "1986-01-02",
+  "ultima_data": "1986-12-30",
+  "storage": "git-lfs",
+  "canonical": true,
+  "approved_gate": "HISTORICO_1986_SEMANTICO",
+  "approval_status": "APROVADO"
+}
