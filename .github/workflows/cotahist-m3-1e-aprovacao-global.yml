@@ -1,0 +1,106 @@
+name: COTAHIST - M3-1E aprovação global
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-m3-1e-aprovacao-global.yml"
+      - ".gitattributes"
+      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
+      - "dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+      - "docs/ingestao/M3-1*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-m3-1e-2026
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Pré-condições
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+          test -s dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv | awk '{print $3}')" = "lfs"
+          ! grep -q "https://git-lfs.github.com/spec/v1" dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+
+      - name: Revalidar cadeia criptográfica
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          q=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
+          o=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
+          p=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
+          sha=hashlib.sha256(p.read_bytes()).hexdigest()
+          checksum=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256").read_text().split()[0]
+          raw=hashlib.sha256(Path("dados/cotahist/raw/anual/COTAHIST_A2026.ZIP").read_bytes()).hexdigest()
+          assert sha == checksum == q["normalized_sha256"] == o["normalized_sha256"]
+          assert raw == q["raw_sha256"] == o["raw_sha256"]
+          assert o["status"] == "OFICIAL"
+          assert o["canonical"] is True
+          assert o["storage"] == "git-lfs"
+          assert q["parser_version"] == o["parser_version"] == "1.1.0"
+          print("M3-1E_CRYPTO_CHAIN=OK")
+          print(f"RAW_SHA={raw}")
+          print(f"NORMALIZED_SHA={sha}")
+          PY
+
+      - name: Revalidar conteúdo semântico
+        shell: bash
+        run: |
+          set -euo pipefail
+          RAW_SHA="$(sha256sum dados/cotahist/raw/anual/COTAHIST_A2026.ZIP | cut -d' ' -f1)"
+          NORM_SHA="$(sha256sum dados/cotahist/normalized/anual/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          python scripts/ingestao/validar_normalized.py             dados/cotahist/normalized/anual/COTAHIST_A2026.csv             /tmp/COTAHIST_A2026_validation.json             2026             "$RAW_SHA"             "$NORM_SHA"
+
+      - name: Revalidar Dataset Oficial
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,csv
+          from pathlib import Path
+          o=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
+          q=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
+          n=0; first=None; last=None
+          with Path(o["normalized_file"]).open(encoding="utf-8",newline="") as f:
+              r=csv.reader(f); h=next(r); assert len(h)==25
+              for row in r:
+                  assert len(row)==25
+                  n+=1; first=first or row[0]; last=row[0]
+          assert n==o["linhas_normalized"]==q["linhas_normalized"]
+          assert first==o["primeira_data"]==q["primeira_data"]
+          assert last==o["ultima_data"]==q["ultima_data"]
+          print(f"ROWS={n} FIRST={first} LAST={last}")
+          PY
+
+      - name: Aprovar M3-1E
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA"
+          echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA" >> "$GITHUB_STEP_SUMMARY"
