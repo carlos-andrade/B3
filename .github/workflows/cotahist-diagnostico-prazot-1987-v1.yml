@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/ingestao/diagnosticar_prazot_cotahist_1987_v1.py"
       - "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
+      - ".github/workflows/cotahist-diagnostico-prazot-1987-v1.yml"
 jobs:
   diagnosticar:
     runs-on: ubuntu-latest
