@@ -1,0 +1,36 @@
+{
+  "schema_version": "2.0.0",
+  "status": "EXCECAO_DE_INTEGRIDADE_NAO_RESOLVIDA",
+  "year": 1987,
+  "field": "PRAZOT",
+  "affected_record_count": 34,
+  "patterns": {
+    "000f20": 33,
+    "9c0f20": 1,
+    "000720": 1
+  },
+  "context": {
+    "codbdi": "96",
+    "tpmerc": "020"
+  },
+  "documentary_research": {
+    "status": "INCONCLUSIVA",
+    "evidence_file": "COTAHIST_1987_PRAZOT_PESQUISA_DOCUMENTAL_V1.json",
+    "primary_evidence_found_for_exact_bytes": false,
+    "structural_definition_confirmed": true,
+    "economic_interpretation_confirmed": false
+  },
+  "decision": {
+    "correct": false,
+    "replace": false,
+    "remove": false,
+    "reinterpret": false,
+    "preserve_raw": true,
+    "preserve_normalized": true
+  },
+  "rule": "Não corrigir, substituir, remover ou reinterpretar PRAZOT sem evidência histórica primária suficiente.",
+  "release_block": {
+    "1988": true
+  },
+  "next_gate": "PESQUISA_DOCUMENTAL_PRIMARIA_POR_PREGÃO_E_ATIVO"
+}
