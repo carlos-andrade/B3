@@ -1,0 +1,37 @@
+name: COTAHIST 1987 - Reconciliacao RAW x NORMALIZED V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1987.ZIP'
+      - 'dados/cotahist/normalized/anual/COTAHIST_A1987.csv'
+      - 'scripts/ingestao/reconciliar_cotahist_1987_raw_normalized_v1.py'
+      - '.github/workflows/cotahist-reconciliacao-1987-v1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-1987-reconciliacao
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconciliacao RAW x NORMALIZED
+        run: python scripts/ingestao/reconciliar_cotahist_1987_raw_normalized_v1.py
+      - name: Commit evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1987_RECONCILIACAO_RAW_NORMALIZED_V1.json
+          git diff --cached --quiet || git commit -m "audit: COTAHIST 1987 raw normalized reconciliation v1"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
