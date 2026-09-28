@@ -33,7 +33,7 @@ ALIASES={
  "especi":["especi","especificacao"],
  "prazot":["prazot","prazo_termo"],
  "modref":["modref","mod_referencia"],
- "preab":["preab","preco_abertura","preco_abert"],
+ "preab":["preab","preabe","preco_abertura","preco_abert"],
  "premax":["premax","preco_maximo","preco_max"],
  "premin":["premin","preco_minimo","preco_min"],
  "premed":["premed","preco_medio","preco_med"],
@@ -47,7 +47,7 @@ ALIASES={
  "fatcot":["fatcot","fator_cotacao"],
  "ptoexe":["ptoexe","ponto_exercicio"],
  "codisi":["codisi","codigo_isin"],
- "dimes":["dimes","distribuicao_mes","distr_mes"],
+ "dimes":["dimes","dismes","distribuicao_mes","distr_mes"],
 }
 
 def norm_name(x):
