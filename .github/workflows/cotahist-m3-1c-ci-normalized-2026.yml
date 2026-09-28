@@ -1,0 +1,130 @@
+name: COTAHIST - M3-1C CI integridade NORMALIZED 2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-m3-1c-ci-normalized-2026.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-m3-1c-ci-2026
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Pré-condições
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+          test -s dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+          git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv | awk '{print $3}')" = "lfs"
+          FILETYPE="$(file dados/cotahist/normalized/anual/COTAHIST_A2026.csv)"
+          echo "$FILETYPE"
+          echo "$FILETYPE" | grep -qi "CSV\|ASCII\|UTF-8"
+
+      - name: SHA e manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          csvp=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
+          shp=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256")
+          mp=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json")
+          sha=hashlib.sha256(csvp.read_bytes()).hexdigest()
+          expected=shp.read_text().strip().split()[0]
+          m=json.loads(mp.read_text())
+          checks={
+            "sha_vs_checksum": sha==expected,
+            "sha_vs_manifest": sha==m["normalized_sha256"],
+            "manifest_raw_sha_present": bool(m.get("raw_sha256")),
+            "manifest_rows": m["linhas_normalized"],
+            "manifest_fields": m["campos"],
+            "manifest_last_date": m["ultima_data"],
+          }
+          print(json.dumps(checks,indent=2,ensure_ascii=False))
+          assert checks["sha_vs_checksum"]
+          assert checks["sha_vs_manifest"]
+          assert m["campos"] == 25
+          assert m["raw_sha256"] == "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768"
+          assert m["normalized_sha256"] == "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9"
+          assert m["linhas_normalized"] == 2919760
+          assert m["ultima_data"] == "2026-09-23"
+          PY
+
+      - name: Validação semântica
+        shell: bash
+        run: |
+          set -euo pipefail
+          RAW_SHA="$(sha256sum dados/cotahist/raw/anual/COTAHIST_A2026.ZIP | cut -d' ' -f1)"
+          NORM_SHA="$(sha256sum dados/cotahist/normalized/anual/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          python scripts/ingestao/validar_normalized.py             dados/cotahist/normalized/anual/COTAHIST_A2026.csv             /tmp/COTAHIST_A2026_validation.json             2026             "$RAW_SHA"             "$NORM_SHA"
+          cat /tmp/COTAHIST_A2026_validation.json
+
+      - name: Reprodutibilidade RAW -> NORMALIZED
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m3-1c
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A2026.ZIP             --output /tmp/m3-1c/COTAHIST_A2026.csv
+          GENERATED_SHA="$(sha256sum /tmp/m3-1c/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          PERSISTED_SHA="$(sha256sum dados/cotahist/normalized/anual/COTAHIST_A2026.csv | cut -d' ' -f1)"
+          test "$GENERATED_SHA" = "$PERSISTED_SHA"
+          test "$(wc -c < /tmp/m3-1c/COTAHIST_A2026.csv)" = "$(wc -c < dados/cotahist/normalized/anual/COTAHIST_A2026.csv)"
+          echo "M3-1C_REPRODUCIBILIDADE=OK"
+          echo "SHA=$PERSISTED_SHA"
+
+      - name: Contagem e datas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          p=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
+          m=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
+          n=0; first=None; last=None
+          with p.open(encoding="utf-8",newline="") as f:
+              r=csv.reader(f)
+              header=next(r)
+              assert len(header)==25
+              for row in r:
+                  assert len(row)==25
+                  n+=1
+                  first=first or row[0]
+                  last=row[0]
+          assert n == m["linhas_normalized"]
+          assert first == m["primeira_data"]
+          assert last == m["ultima_data"]
+          print(f"ROWS={n} FIRST={first} LAST={last}")
+          PY
+
+      - name: Certificar estado final
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "M3-1C_STATUS=CI_INTEGRIDADE_APROVADA"
+          echo "M3-1C_STATUS=CI_INTEGRIDADE_APROVADA" >> "$GITHUB_STEP_SUMMARY"
