@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PRAZOT_1987_CLASSIFICACAO_PRELIMINAR",
+  "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+  "affected_records": 34,
+  "field": "prazot",
+  "positions_1_based": "50-52",
+  "observed_patterns": {
+    "000f20": 33,
+    "9c0f20": 1,
+    "000720": 1
+  },
+  "context": {
+    "all_occurrences_field_only": true,
+    "all_occurrences_codbdi_96": true,
+    "all_occurrences_tpmerc_020": true,
+    "other_fixed_fields_control_bytes_detected": false,
+    "records_remain_245_bytes": true,
+    "raw_normalized_reconciliation_passed": true,
+    "logical_key_audit_passed": true
+  },
+  "official_layout_reference": {
+    "record_size_bytes": 245,
+    "prazot_positions": "50-52",
+    "prazot_type": "X(03)",
+    "source": "B3 - Layout do Arquivo – Cotações Históricas (COTAHIST.AAAA.TXT)"
+  },
+  "classification": "EXCECAO_DE_INTEGRIDADE_NAO_RESOLVIDA",
+  "decision": "Do not normalize, replace, strip, or reinterpret the bytes without primary historical evidence. Preserve RAW and retain the anomaly in the audit trail.",
+  "next_gate": "Compare the affected records with an independent primary historical Bovespa/B3 source or an independently obtained copy of COTAHIST 1987 before semantic certification.",
+  "interpretation": "The recurring byte patterns are localized to PRAZOT and structurally consistent records, which argues against a global offset error. However, the official layout only establishes PRAZOT as a 3-byte alphanumeric field; it does not, by itself, establish that control-byte sequences are valid historical values."
+}
