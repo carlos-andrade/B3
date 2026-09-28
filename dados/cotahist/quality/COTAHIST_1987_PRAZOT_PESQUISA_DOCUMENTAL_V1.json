@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PRAZOT_PESQUISA_DOCUMENTAL_1987_V1",
+  "generated_at_utc": "2026-09-28T21:30:00Z",
+  "scope": {
+    "year": 1987,
+    "field": "PRAZOT",
+    "position": "50-52",
+    "affected_records": 34,
+    "raw_sha256": "16db2bbda8cf770ad177af762c6e651422dee7b1dc7a62ea75fa10e5760f517d",
+    "patterns": ["000f20", "9c0f20", "000720"],
+    "context": {
+      "codbdi": "96",
+      "tpmerc": "020"
+    }
+  },
+  "documentary_findings": [
+    {
+      "source_type": "PRIMARY_OFFICIAL_CURRENT_LAYOUT",
+      "institution": "B3",
+      "title": "Layout do Arquivo - Cotações Históricas",
+      "url": "https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf",
+      "finding": "O layout oficial publicado pela B3 define PRAZOT como 'Prazo em dias do mercado a termo', tipo X(03), posições 50-52 do registro 01. O documento consultado é uma especificação posterior e não prova, isoladamente, a semântica byte a byte dos registros de 1987.",
+      "use": "Confirma posição, tamanho e descrição atual do campo; não autoriza correção histórica."
+    },
+    {
+      "source_type": "PRIMARY_OFFICIAL_B3_DATA_ACCESS",
+      "institution": "B3",
+      "title": "Pesquisa por pregão",
+      "url": "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/",
+      "finding": "A B3 mantém uma interface oficial para acesso a boletins diários e arquivos emitidos pela B3, inclusive com pesquisa retroativa por data. A página atual não forneceu, nesta pesquisa, uma cópia diretamente recuperável do BDI de 1987 contendo os 34 registros afetados.",
+      "use": "Fonte primária candidata para aprofundamento documental."
+    },
+    {
+      "source_type": "PRIMARY_OFFICIAL_REGULATORY_1987",
+      "institution": "CVM",
+      "title": "Decisões do Colegiado de 1987",
+      "url": "https://conteudo.cvm.gov.br/export/sites/cvm/publicacao/decisoes_antigas/anexos/decisoes-1987.pdf",
+      "finding": "A documentação oficial da CVM confirma a existência de processos e fluxo de informações relacionados às bolsas em 1987, mas a pesquisa realizada não localizou nesse documento a definição dos bytes anômalos de PRAZOT.",
+      "use": "Contexto regulatório; não resolve a anomalia."
+    },
+    {
+      "source_type": "PRIMARY_ARCHIVAL_CANDIDATE",
+      "institution": "Biblioteca Nacional Digital",
+      "title": "Hemeroteca Digital Brasileira",
+      "url": "https://bndigital.bn.gov.br/acervo-digital/diario/028711",
+      "finding": "A Hemeroteca disponibiliza acervo digitalizado com itens de 1987 e pode ser utilizada para localizar publicações contemporâneas. A pesquisa atual não encontrou uma reprodução verificável dos registros COTAHIST afetados.",
+      "use": "Fonte arquivística candidata para busca por pregão, Bovespa, mercado fracionário e códigos dos ativos."
+    }
+  ],
+  "exact_pattern_search": {
+    "queries": ["000f20 COTAHIST", "9c0f20 COTAHIST", "000720 COTAHIST", "PRAZOT 1987 Bovespa", "mercado fracionário Bovespa 1987"],
+    "result": "Nenhuma fonte pública primária encontrada que explique os três padrões byte a byte.",
+    "decision": "INCONCLUSIVO"
+  },
+  "control_rules": {
+    "raw_preserved": true,
+    "normalized_not_modified": true,
+    "no_byte_replacement_authorized": true,
+    "no_semantic_reinterpretation_authorized": true,
+    "release_1988_blocked": true
+  },
+  "next_research_step": [
+    "Pesquisar BDI/Bovespa contemporâneo por datas e códigos dos 34 registros.",
+    "Priorizar registros FIB 3 / Bradesco Financeira e demais ativos afetados.",
+    "Pesquisar documentação histórica específica do mercado fracionário de 1987.",
+    "Comparar eventuais reproduções contemporâneas com os bytes originais.",
+    "Somente reclassificar PRAZOT se houver evidência histórica primária suficiente."
+  ],
+  "conclusion": "A pesquisa documental reforçou a definição estrutural do campo PRAZOT, mas NÃO resolveu a origem ou o significado dos bytes 000f20, 9c0f20 e 000720 encontrados em 34 registros de 1987. A exceção permanece aberta e o gate de certificação econômica continua bloqueado."
+}
