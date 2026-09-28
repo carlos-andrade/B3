@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** PLANEJAMENTO — GATE DE CAPACIDADE PENDENTE
+**Status:** M3-0 CONCLUÍDO — GIT_STANDARD_LIMIT — M3-1 EM DECISÃO/PROVA
 
 ## 1. Objetivo
 
@@ -109,6 +109,12 @@ Depois dos lotes:
 
 M1 — **APROVADO**  
 M2 — **APROVADO**  
-M3-0 — **PENDENTE**
+M3-0 — **CONCLUÍDO — GIT_STANDARD_LIMIT**
+M3-1 — **EM DECISÃO/PROVA — GIT LFS**
+M3 histórico — **BLOQUEADO**
 
-Próxima execução: **Gate de Capacidade M3-0 para 2026.**
+Próxima etapa: **prova controlada de armazenamento do NORMALIZED 2026 via Git LFS, seguida de validação física, SHA, certificação V2, CI e Dataset Oficial.**
+
+Registro formal: `docs/ingestao/M3-0_RESULTADO_GATE_CAPACIDADE_NORMALIZED_2026_2026-09-28.md`
+
+Decisão M3-1: `docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md`
