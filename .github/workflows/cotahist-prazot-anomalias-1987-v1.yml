@@ -1,0 +1,40 @@
+name: Reconciliacao das anomalias PRAZOT COTAHIST 1987 v1
+
+on:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1987.ZIP'
+      - 'dados/cotahist/normalized/anual/COTAHIST_A1987.csv'
+      - 'scripts/ingestao/reconciliar_prazot_anomalias_cotahist_1987_v1.py'
+      - '.github/workflows/cotahist-prazot-anomalias-1987-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-1987-prazot-anomalias
+  cancel-in-progress: false
+
+jobs:
+  reconciliar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Executar reconciliacao
+        run: python scripts/ingestao/reconciliar_prazot_anomalias_cotahist_1987_v1.py
+      - name: Commitar evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1987_PRAZOT_ANOMALIAS_V1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "audit: reconciliacao anomalas PRAZOT COTAHIST 1987"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
