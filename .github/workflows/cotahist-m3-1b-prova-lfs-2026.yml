@@ -1,0 +1,109 @@
+name: COTAHIST - M3-1B prova física Git LFS NORMALIZED 2026
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-m3-1b-lfs-2026
+  cancel-in-progress: false
+
+jobs:
+  prova-lfs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout com Git LFS
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          lfs: true
+
+      - name: Instalar e validar Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs version
+          git lfs install --local
+
+      - name: Verificar pré-condições
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+          test -f dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+          test -f scripts/ingestao/normalize_cotahist.py
+          test -f scripts/ingestao/validar_normalized.py
+
+      - name: Gerar NORMALIZED 2026 em área temporária
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/normalized
+          mkdir -p /tmp/normalized
+          python scripts/ingestao/normalize_cotahist.py \
+            --zip dados/cotahist/raw/anual/COTAHIST_A2026.ZIP \
+            --output /tmp/normalized/COTAHIST_A2026.csv
+
+      - name: Validar NORMALIZED antes da persistência
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/validar_normalized.py \
+            --csv /tmp/normalized/COTAHIST_A2026.csv \
+            --manifest dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+
+      - name: Calcular SHA-256 de referência
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum /tmp/normalized/COTAHIST_A2026.csv | tee /tmp/normalized/COTAHIST_A2026.sha256
+          stat -c 'BYTES=%s' /tmp/normalized/COTAHIST_A2026.csv
+
+      - name: Persistir NORMALIZED no caminho canônico via Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dados/cotahist/normalized/anual
+          cp /tmp/normalized/COTAHIST_A2026.csv dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          git lfs track "dados/cotahist/normalized/anual/*.csv"
+          git add .gitattributes dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          git diff --cached --check
+          git status --short
+
+      - name: Confirmar que CSV está sendo tratado por LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git check-attr filter diff merge -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A2026.csv | awk '{print $3}')" = "lfs"
+
+      - name: Commit da prova M3-1B
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data(cotahist): persistir NORMALIZED 2026 via Git LFS"
+          git push origin HEAD:main
+
+      - name: Validar objeto LFS após push
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs ls-files --long
+          git lfs pull
+          test -f dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          sha256sum -c /tmp/normalized/COTAHIST_A2026.sha256
+
+      - name: Certificar tamanho e presença física
+        shell: bash
+        run: |
+          set -euo pipefail
+          BYTES="$(stat -c '%s' dados/cotahist/normalized/anual/COTAHIST_A2026.csv)"
+          test "$BYTES" -eq "$(stat -c '%s' /tmp/normalized/COTAHIST_A2026.csv)"
+          echo "M3-1B_STATUS=PROVA_LFS_FISICA_CONCLUIDA"
+          echo "NORMALIZED_2026_BYTES=$BYTES"
