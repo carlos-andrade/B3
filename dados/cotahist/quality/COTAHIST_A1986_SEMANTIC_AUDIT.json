@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "ano": 1986,
+  "testes": {
+    "tpmerc": "OK",
+    "codbdi": "OK",
+    "chave_logica": "OK",
+    "casos_ohlc": 30,
+    "volume_quantidade": "OK",
+    "comparacao_raw_normalized": "OK",
+    "ordenacao_data": "OK"
+  },
+  "linhas": 177981,
+  "primeira_data": "1986-01-02",
+  "ultima_data": "1986-12-30",
+  "duplicidades_chave_logica": 5182
+}

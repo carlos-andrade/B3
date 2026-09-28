@@ -1,3 +1,4 @@
 # B3 — política de Git LFS para dados NORMALIZED anuais do COTAHIST
 # Regra canônica: arquivos CSV NORMALIZED anuais devem ser armazenados como objetos Git LFS.
 dados/cotahist/normalized/anual/*.csv filter=lfs diff=lfs merge=lfs -text
+dados/cotahist/normalized/anual/COTAHIST_A1986.csv filter=lfs diff=lfs merge=lfs -text
