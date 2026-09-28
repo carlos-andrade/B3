@@ -2,6 +2,11 @@ name: COTAHIST - M3-1B prova física Git LFS NORMALIZED 2026
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml"
 
 permissions:
   contents: write
