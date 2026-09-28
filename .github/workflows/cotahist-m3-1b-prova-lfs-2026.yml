@@ -53,20 +53,25 @@ jobs:
             --zip dados/cotahist/raw/anual/COTAHIST_A2026.ZIP \
             --output /tmp/normalized/COTAHIST_A2026.csv
 
-      - name: Validar NORMALIZED antes da persistência
-        shell: bash
-        run: |
-          set -euo pipefail
-          python scripts/ingestao/validar_normalized.py \
-            --csv /tmp/normalized/COTAHIST_A2026.csv \
-            --manifest dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
-
       - name: Calcular SHA-256 de referência
         shell: bash
         run: |
           set -euo pipefail
           sha256sum /tmp/normalized/COTAHIST_A2026.csv | tee /tmp/normalized/COTAHIST_A2026.sha256
           stat -c 'BYTES=%s' /tmp/normalized/COTAHIST_A2026.csv
+
+      - name: Validar NORMALIZED antes da persistência
+        shell: bash
+        run: |
+          set -euo pipefail
+          RAW_SHA="$(python -c 'import json; print(json.load(open("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json", encoding="utf-8"))["raw_sha256"])')"
+          NORM_SHA="$(cut -d " " -f1 /tmp/normalized/COTAHIST_A2026.sha256)"
+          python scripts/ingestao/validar_normalized.py \
+            /tmp/normalized/COTAHIST_A2026.csv \
+            /tmp/normalized/COTAHIST_A2026_validation.json \
+            2026 \
+            "$RAW_SHA" \
+            "$NORM_SHA"
 
       - name: Persistir NORMALIZED no caminho canônico via Git LFS
         shell: bash
