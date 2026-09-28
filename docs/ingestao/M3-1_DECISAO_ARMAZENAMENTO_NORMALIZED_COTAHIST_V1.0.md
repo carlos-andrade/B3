@@ -5,7 +5,7 @@
 **Caminho:** docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md  
 **Data de criação:** 2026-09-28  
 **Repositório:** carlos-andrade/B3  
-**Status:** DECISÃO TÉCNICA — GIT LFS A VALIDAR/IMPLANTAR
+**Status:** DECISÃO TÉCNICA — GIT LFS COMO CANDIDATO PRINCIPAL — PROVA 2026 PENDENTE
 
 ## 1. Contexto
 
