@@ -30,11 +30,25 @@ def load(name: str):
     return json.loads(p.read_text(encoding="utf-8"))
 
 def gate_reconciliation(x):
-    return all(bool(x.get(k)) for k in (
-        "row_count_equal", "date_equal", "all_required_headers_present",
-        "sample_30_present", "fail_closed"
-    )) and x.get("identity_mismatch_count_sampled", 1) == 0 and all(
-        v == 0 for v in x.get("numeric_mismatch_sample_counts", {}).values()
+    checks = x.get("checks", {})
+    numeric = checks.get("numeric", {})
+    numeric_ok = all(
+        item.get("mismatch_count_sampled", 1) == 0
+        for item in numeric.values()
+    )
+    return (
+        bool(checks.get("row_count_equal"))
+        and bool(checks.get("date_equal"))
+        and bool(checks.get("header", {}).get("all_required_fields_present"))
+        and checks.get("identity_mismatch_count_sampled", 1) == 0
+        and bool(checks.get("sample_30"))
+        and numeric_ok
+        and bool(x.get("fail_closed_gates", {}).get("row_count_equal"))
+        and bool(x.get("fail_closed_gates", {}).get("header_complete"))
+        and bool(x.get("fail_closed_gates", {}).get("dates_equal"))
+        and bool(x.get("fail_closed_gates", {}).get("identity_no_sampled_mismatch"))
+        and bool(x.get("fail_closed_gates", {}).get("numeric_no_sampled_mismatch"))
+        and bool(x.get("fail_closed_gates", {}).get("sample_30_present"))
     )
 
 def gate_key(x):
@@ -44,7 +58,9 @@ def gate_ohlc(x):
     return bool(x.get("gates", {}).get("ohlc_order_valid")) and x.get("violation_count", 1) == 0
 
 def gate_qv(x):
-    return all(bool(v) for k, v in x.get("gates", {}).items() if k in {"records_positive", "all_numeric", "no_negative", "no_control_bytes", "raw_normalized_mismatch_zero"})
+    required = {"records_positive", "all_numeric", "no_negative", "no_control_bytes", "raw_normalized_mismatch_zero"}
+    gates = x.get("gates", {})
+    return all(bool(gates.get(k)) for k in required)
 
 def gate_calendar(x):
     g = x.get("gates", {})
