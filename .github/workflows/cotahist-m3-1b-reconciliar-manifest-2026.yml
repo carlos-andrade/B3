@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "scripts/ingestao/normalize_cotahist.py"
 
 permissions:
   contents: write
