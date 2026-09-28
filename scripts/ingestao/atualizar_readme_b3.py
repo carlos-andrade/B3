@@ -7,8 +7,6 @@ explicitamente gerenciado pela automação, preservando o conteúdo editorial.
 
 from __future__ import annotations
 
-import json
-import os
 import re
 import subprocess
 from datetime import datetime, timezone
@@ -35,7 +33,6 @@ RELEVANT_PREFIXES = (
     "PROMPT_MESTRE_B3_799_CARACTERES.md",
 )
 
-# Dados RAW volumosos não devem, isoladamente, provocar commit do README.
 IGNORED_PREFIXES = (
     "dados/cotahist/raw/",
     "dados/market_data/raw/",
@@ -56,26 +53,6 @@ def relevant(path: str) -> bool:
     if any(path.startswith(p) for p in IGNORED_PREFIXES):
         return False
     return path in RELEVANT_PREFIXES or any(path.startswith(p) for p in RELEVANT_PREFIXES)
-
-
-def event_paths() -> list[str]:
-    event_path = os.environ.get("GITHUB_EVENT_PATH")
-    if event_path and Path(event_path).exists():
-        try:
-            event = json.loads(Path(event_path).read_text(encoding="utf-8"))
-            paths: list[str] = []
-            for commit in event.get("commits", []):
-                paths.extend(commit.get("added", []))
-                paths.extend(commit.get("modified", []))
-                paths.extend(commit.get("removed", []))
-            return sorted(set(paths))
-        except (OSError, json.JSONDecodeError):
-            pass
-
-    try:
-        return git("diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD").splitlines()
-    except subprocess.CalledProcessError:
-        return []
 
 
 def latest_relevant_commit() -> tuple[str, str, str]:
@@ -110,23 +87,17 @@ def ingestion_script_count() -> int:
 
 
 def top_level_dirs() -> list[str]:
-    dirs = []
-    for p in ROOT.iterdir():
-        if p.is_dir() and not p.name.startswith("."):
-            dirs.append(p.name)
-    return sorted(dirs)
+    return sorted(
+        p.name
+        for p in ROOT.iterdir()
+        if p.is_dir() and not p.name.startswith(".")
+    )
 
 
-def build_block(changed_paths: list[str]) -> str:
+def build_block() -> str:
     sha, committed_at, subject = latest_relevant_commit()
     dt = datetime.fromisoformat(committed_at.replace("Z", "+00:00"))
-    date_pt = dt.astimezone(timezone.utc).strftime("%d/%m/%Y %H:%M UTC")
-
-    changed = [p for p in changed_paths if relevant(p)]
-    if len(changed) > 12:
-        changed_display = changed[:12] + [f"... +{len(changed) - 12} arquivo(s)"]
-    else:
-        changed_display = changed
+    date_utc = dt.astimezone(timezone.utc).strftime("%d/%m/%Y %H:%M UTC")
 
     lines = [
         BEGIN,
@@ -134,33 +105,28 @@ def build_block(changed_paths: list[str]) -> str:
         "",
         "> Este bloco é gerenciado pelo workflow `Atualizar README — B3`.",
         "",
-        f"- **Última alteração relevante detectada:** `{sha[:12]}` — {date_pt}",
+        f"- **Última alteração relevante:** `{sha[:12]}` — {date_utc}",
         f"- **Commit de referência:** {subject}",
         f"- **Workflows GitHub Actions:** {workflow_count()}",
         f"- **Scripts Python em `scripts/ingestao/`:** {ingestion_script_count()}",
         f"- **Diretórios operacionais de primeiro nível:** {len(top_level_dirs())}",
-    ]
-
-    if changed_display:
-        lines.extend([
-            "",
-            "**Arquivos relevantes que acionaram esta atualização:**",
-            "",
-        ])
-        lines.extend(f"- `{p}`" for p in changed_display)
-    else:
-        lines.extend([
-            "",
-            "**Modo de verificação:** execução programada/manual; nenhuma alteração relevante",
-            "foi necessária no README além da sincronização do inventário.",
-        ])
-
-    lines.extend([
+        "",
+        "**Escopo monitorado:**",
+        "",
+        "- workflows e automações;",
+        "- catálogo e universo de ativos;",
+        "- governança e certificação;",
+        "- scripts de ingestão;",
+        "- dados normalizados e certificados;",
+        "- dashboard e documentação operacional.",
+        "",
+        "**Excluído do gatilho automático:** dados RAW volumosos, para evitar commits",
+        "desnecessários no README por simples alteração de arquivos brutos.",
         "",
         "A automação não substitui a revisão editorial. Ela mantém o inventário operacional",
         "e a trilha de atualização sincronizados com o estado efetivo do repositório.",
         END,
-    ])
+    ]
     return "\n".join(lines)
 
 
@@ -184,9 +150,7 @@ def main() -> int:
         raise SystemExit("README.md não encontrado.")
 
     original = README.read_text(encoding="utf-8")
-    paths = event_paths()
-    block = build_block(paths)
-    updated = replace_block(original, block)
+    updated = replace_block(original, build_block())
 
     if updated == original:
         print("README_SEM_MUDANCA")
