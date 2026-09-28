@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "status": "GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
+  "generated_at_utc": "2026-09-28T21:37:06.149Z",
+  "year": 1987,
+  "objective": "Comparar byte a byte os 34 registros afetados de PRAZOT contra uma cópia independente do COTAHIST_A1987.txt.",
+  "sources": [
+    {
+      "type": "secondary_dataset",
+      "name": "Kaggle — B3 (BM&FBovespa) 1986-2019 Equities Price",
+      "file": "COTAHIST_A1987.txt",
+      "status": "confirmada_existencia_publica",
+      "note": "A página pública lista o arquivo, mas o conteúdo bruto não ficou acessível por este canal para extração byte a byte."
+    },
+    {
+      "type": "github_search",
+      "name": "GitHub Code Search",
+      "status": "sem_copia_bruta_identificada",
+      "note": "Foram encontrados referências/artefatos que mencionam COTAHIST_A1987.txt, mas não uma cópia bruta acessível do arquivo completo."
+    }
+  ],
+  "comparison_status": "PENDENTE",
+  "affected_records": 34,
+  "patterns": {
+    "000f20": 33,
+    "9c0f20": 1,
+    "000720": 1
+  },
+  "constraints": [
+    "Não alterar RAW.",
+    "Não substituir bytes do PRAZOT.",
+    "Não reinterpretar o campo sem evidência histórica primária.",
+    "Não liberar 1988 enquanto o protocolo de certificação mantiver esta pendência."
+  ],
+  "conclusion": "A existência pública de uma segunda fonte do COTAHIST_A1987 foi confirmada, mas a comparação independente byte a byte ainda não pode ser executada. A exceção permanece aberta."
+}
