@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "status": "CERTIFICACAO_ESTRUTURAL_1987_COM_EXCECAO_SEMANTICA",
-  "generated_at_utc": "2026-09-28T21:37:37.554196+00:00",
+  "generated_at_utc": "2026-09-28T21:41:52.231990+00:00",
   "year": 1987,
   "structural_gates": {
     "reconciliacao_raw_normalized": true,
