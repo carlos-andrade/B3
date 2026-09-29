@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-29",
+  "status": "INVENTARIO_INICIAL",
+  "canonical_order": [
+    "00_governanca",
+    "01_aquisicao_raw",
+    "02_integridade_fonte",
+    "03_parsing",
+    "04_normalizacao",
+    "05_manifesto_checksum",
+    "06_reconciliacao",
+    "07_identidade_chaves_campos",
+    "08_semantica_calendario_consistencia",
+    "09_pre_release",
+    "10_validacao_independente",
+    "11_certificacao_promocao",
+    "12_fechamento_transicao"
+  ],
+  "policy_file": "docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md",
+  "observed_cotahist_workflows": [
+    {
+      "path": ".github/workflows/cotahist-importacao-diaria-v1.yml",
+      "stage": "01",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-normalizacao-controlada-v7.yml",
+      "stage": "04",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-certificacao-anual-v1.yml",
+      "stage": "11",
+      "status": "ATIVO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1988-v1.yml",
+      "stage": "10",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1989-v1.yml",
+      "stage": "10",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1990-v1.yml",
+      "stage": "10",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1991-v1.yml",
+      "stage": "10",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1992-v1.yml",
+      "stage": "10",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase10-integridade-1993-v1.yml",
+      "stage": "10",
+      "status": "ATIVO"
+    },
+    {
+      "path": ".github/workflows/cotahist-materializar-normalized-1989-v1.yml",
+      "stage": "04",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-materializar-normalized-1990-v1.yml",
+      "stage": "04",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-materializar-normalized-1991-v1.yml",
+      "stage": "04",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-materializar-normalized-1992-v1.yml",
+      "stage": "04",
+      "status": "ATIVO_HISTORICO"
+    },
+    {
+      "path": ".github/workflows/cotahist-materializar-normalized-1993-v1.yml",
+      "stage": "04",
+      "status": "ATIVO"
+    }
+  ],
+  "migration_rule": "Não renomear ou remover workflows históricos em massa antes do inventário completo e teste de dependências."
+}
