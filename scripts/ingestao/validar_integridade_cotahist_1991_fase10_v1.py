@@ -50,3 +50,5 @@ def main():
  EVIDENCE.parent.mkdir(parents=True,exist_ok=True); EVIDENCE.write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  if failures: raise SystemExit("FAIL-CLOSED: "+json.dumps(failures,ensure_ascii=False))
 if __name__=="__main__": main()
+
+# Retrigger FASE10 1991 apos materializacao NORMALIZED.
