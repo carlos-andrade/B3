@@ -49,3 +49,5 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1989_FASE10_INTEGRIDADE_V1.json
           git diff --cached --quiet || git commit -m "data(cotahist): certifica integridade independente de 1989"
           git push origin HEAD:main
+
+# FASE 10: disparo explícito após materialização NORMALIZED de 1989.
