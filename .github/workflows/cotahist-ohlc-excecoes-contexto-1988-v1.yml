@@ -1,0 +1,25 @@
+name: COTAHIST 1988 - Contexto Excecoes OHLC V1
+on:
+  workflow_dispatch:
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -c "from pathlib import Path; p=Path('scripts/ingestao/auditar_ohlc_excecoes_contexto_1988_v1.py'); exec(p.read_text())"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-ohlc-excecoes-contexto-1988
+          path: dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json
+          retention-days: 30
+      - name: Commit evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit: contexto excecoes OHLC COTAHIST 1988"
+          git push origin HEAD:main
