@@ -29,6 +29,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhuma alteração."
           else
+            git commit -m "audit: registrar evidencia quantidade volume COTAHIST 1988"
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
