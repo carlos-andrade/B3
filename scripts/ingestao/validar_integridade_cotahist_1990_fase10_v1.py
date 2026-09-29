@@ -58,7 +58,7 @@ def main() -> None:
         and bool(pointer_size)
         and attr.endswith("filter: lfs")
     )
-    entry = f"HEAD:{pathspec} oid sha256:{pointer_oid} size {pointer_size}" if tracked else ""
+    entry = f"HEAD:{pathspec} oid {pointer_oid} size {pointer_size}" if tracked else ""
     if not tracked: failures.append("normalized not tracked by Git LFS")
 
     with zipfile.ZipFile(RAW) as z:
@@ -97,7 +97,7 @@ def main() -> None:
 
     evidence = {
       "schema_version": "1.0.0", "phase": "FASE_10", "year": YEAR,
-      "raw_path": RAW.as_posix(), "normalized_path": NORM.as_posix(), "manifest_path": MANIFEST.as_posix(),
+      "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1990.ZIP", "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1990.csv", "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1990_quality.json",
       "raw_immutable": True, "correction_applied": False,
       "hashes": {"raw_sha256_actual": raw_hash, "raw_sha256_manifest": m.get("raw_sha256"), "normalized_sha256_actual": norm_hash, "normalized_sha256_manifest": m.get("normalized_sha256")},
       "raw_zip": {"member_count": len(members), "members": members, "type01_records": raw_type01, "type01_bad_length_records": bad_len},
