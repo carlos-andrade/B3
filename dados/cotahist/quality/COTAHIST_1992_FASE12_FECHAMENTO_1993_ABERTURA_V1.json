@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_12",
+  "transition": "1992_FECHAMENTO_1993_ABERTURA",
+  "year_closed": 1992,
+  "year_opened": 1993,
+  "closed": {
+    "status": "FECHADO_E_CERTIFICADO",
+    "phase10_evidence": "dados/cotahist/quality/COTAHIST_1992_FASE10_INTEGRIDADE_V1.json",
+    "phase10_status": "VALIDADO",
+    "annual_certification_matrix": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
+    "annual_certification_run": 36608155405,
+    "annual_certification_status": "CERTIFICADO_NORMALIZACAO",
+    "rows_normalized": 105918,
+    "fields": 25
+  },
+  "next_year": {
+    "raw_present": true,
+    "manifest_present": true,
+    "manifest_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "rows_normalized": 0,
+    "fields": 25,
+    "invalid_dates": 0,
+    "dates_outside_year": 0
+  },
+  "gate": "FASE_10_1993_REQUIRED_BEFORE_RELEASE",
+  "decision": "1993_ABERTO_SOB_CONTROLE"
+}
