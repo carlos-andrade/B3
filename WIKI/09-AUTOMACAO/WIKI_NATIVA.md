@@ -6,11 +6,11 @@ A documentação versionada em `WIKI/` é a fonte de verdade.
 
 O workflow detecta alterações relevantes, executa reconciliação periódica e publica os documentos selecionados no Wiki nativo, que é um repositório Git separado.
 
-O GitHub documenta que cada Wiki pode ser clonado e atualizado por Git. citeturn0search10turn0search12
+A documentação oficial do GitHub confirma que a Wiki pode ser clonada e atualizada localmente por Git.
 
 ## Frequência
 
-O GitHub Actions permite agendamento mínimo de **5 minutos**, e execuções agendadas podem sofrer atraso sob alta carga. citeturn0search0turn0search6
+O GitHub Actions permite agendamento mínimo de **5 minutos**, e execuções agendadas podem sofrer atraso sob alta carga.
 
 Portanto:
 
