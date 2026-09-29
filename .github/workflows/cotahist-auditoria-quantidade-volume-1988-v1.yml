@@ -1,0 +1,35 @@
+name: COTAHIST 1988 - Auditoria Quantidade Volume V1
+
+on:
+  push:
+    paths:
+      - "scripts/ingestao/auditar_quantidade_volume_cotahist_1988_v1.py"
+      - ".github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1988.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Executar auditoria
+        run: python3 scripts/ingestao/auditar_quantidade_volume_cotahist_1988_v1.py
+      - name: Publicar evidência
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_AUDITORIA_QUANTIDADE_VOLUME_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração."
+          else
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
