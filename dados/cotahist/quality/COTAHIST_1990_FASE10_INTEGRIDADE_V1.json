@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "phase": "FASE_10",
   "year": 1990,
-  "raw_path": "/home/runner/work/B3/B3/dados/cotahist/raw/anual/COTAHIST_A1990.ZIP",
-  "normalized_path": "/home/runner/work/B3/B3/dados/cotahist/normalized/anual/COTAHIST_A1990.csv",
-  "manifest_path": "/home/runner/work/B3/B3/dados/cotahist/normalized/manifests/COTAHIST_A1990_quality.json",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1990.ZIP",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1990.csv",
+  "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1990_quality.json",
   "raw_immutable": true,
   "correction_applied": false,
   "hashes": {
@@ -60,7 +60,7 @@
   },
   "git_lfs": {
     "tracked": true,
-    "entry": "HEAD:dados/cotahist/normalized/anual/COTAHIST_A1990.csv oid sha256:sha256:8f7e8231e913c173c81e9cbb7ba6ab0084a7447b4beeaf0819c2de570cd86f46 size 13500189",
+    "entry": "HEAD:dados/cotahist/normalized/anual/COTAHIST_A1990.csv oid sha256:8f7e8231e913c173c81e9cbb7ba6ab0084a7447b4beeaf0819c2de570cd86f46 size 13500189",
     "filter_attribute": "dados/cotahist/normalized/anual/COTAHIST_A1990.csv: filter: lfs",
     "pointer_oid": "sha256:8f7e8231e913c173c81e9cbb7ba6ab0084a7447b4beeaf0819c2de570cd86f46",
     "pointer_size": "13500189"
