@@ -1,7 +1,7 @@
 {
-  "schema_version": "4.0.0",
+  "schema_version": "5.0.0",
   "status": "GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
-  "generated_at_utc": "2026-09-29T07:09:21.045Z",
+  "generated_at_utc": "2026-09-29T07:12:58.783Z",
   "year": 1987,
   "objective": "Recuperar bytes independentes do COTAHIST_A1987 para comparação byte a byte dos 34 registros PRAZOT afetados, sem alterar o RAW do projeto.",
   "archival_recovery": {
@@ -36,6 +36,16 @@
       {
         "route": "historical B3 endpoint references",
         "result": "BINARIO_NAO_DISPONIBILIZADO_NESTE_CANAL"
+      },
+      {
+        "route": "Direct download attempt from Kaggle API",
+        "result": "BLOQUEADO_NO_AMBIENTE_POR_FALHA_DE_RESOLUCAO_DNS",
+        "note": "Nenhum arquivo foi obtido; nenhum byte foi usado na validação."
+      },
+      {
+        "route": "Search engine expansion for archival/cloud mirrors",
+        "result": "SEM_COPIA_BINARIA_ACESSIVEL",
+        "note": "Resultados reproduziram a existência do dataset Kaggle, sem disponibilizar o objeto bruto."
       }
     ],
     "independent_copy": {
@@ -59,6 +69,6 @@
     "Nenhum registro foi removido.",
     "A existência de uma cópia secundária não é tratada como prova primária da semântica histórica."
   ],
-  "conclusion": "A pesquisa arquivística foi ampliada, mas não produziu os bytes de uma segunda cópia utilizável. A validação independente permanece inconclusiva e a exceção PRAZOT continua aberta.",
-  "next_gate": "RECUPERACAO_DE_BINARIO_POR_ARQUIVO_ARQUIVISTICO_OU_COPIA_LOCAL_FORNECIDA_PELO_USUARIO"
+  "conclusion": "A rodada adicional confirmou a existência documentada do COTAHIST_A1987.txt em dataset secundário, mas não produziu uma segunda cópia byte-level acessível. A tentativa direta de download não obteve o arquivo devido à indisponibilidade de resolução DNS no ambiente. Portanto, a comparação dos 34 registros não foi executada e a exceção PRAZOT permanece aberta.",
+  "next_gate": "OBTER_ARQUIVO_INDEPENDENTE_LOCAL_OU_ACESSO_DIRETO_AO_DATASET_ARQUIVISTICO"
 }
