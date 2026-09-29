@@ -1,0 +1,67 @@
+name: Sincronizar Wiki nativa — B3
+
+on:
+  push:
+    paths:
+      - 'WIKI/**'
+      - '.github/workflows/sincronizar-wiki-b3.yml'
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: b3-wiki-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout B3
+        uses: actions/checkout@v4
+
+      - name: Verificar credencial da Wiki
+        id: credential
+        env:
+          B3_WIKI_TOKEN: ${{ secrets.B3_WIKI_TOKEN }}
+        run: |
+          if [ -z "$B3_WIKI_TOKEN" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::B3_WIKI_TOKEN não configurado; publicação da Wiki nativa foi ignorada."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configurar Git
+        if: steps.credential.outputs.configured == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Clonar Wiki nativa
+        if: steps.credential.outputs.configured == 'true'
+        env:
+          B3_WIKI_TOKEN: ${{ secrets.B3_WIKI_TOKEN }}
+        run: |
+          rm -rf /tmp/b3-wiki
+          git clone "https://x-access-token:$B3_WIKI_TOKEN@github.com/carlos-andrade/B3.wiki.git" /tmp/b3-wiki
+
+      - name: Publicar documentação versionada
+        if: steps.credential.outputs.configured == 'true'
+        run: |
+          python scripts/ingestao/sincronizar_wiki_b3.py /tmp/b3-wiki
+
+      - name: Commit e publicação
+        if: steps.credential.outputs.configured == 'true'
+        working-directory: /tmp/b3-wiki
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Wiki já sincronizada."
+            exit 0
+          fi
+          git commit -m "docs(wiki): sincronizar documentação do repositório B3"
+          git push origin HEAD:master || git push origin HEAD:main
