@@ -1,0 +1,11 @@
+{
+  "schema_version":"1.0.0","year":1988,"phase":5,
+  "status":"FASE_5_CONCLUIDA_COM_EXCECOES_OHLC",
+  "workflow":{"path":".github/workflows/cotahist-auditoria-ohlc-1988-v1.yml","run_id":36586656044,"conclusion":"success","commit":"076e31480028291da31d9ee1cf5bf503ce78c1a8"},
+  "result":{"records":167674,"violations":4,"zero_ohlc":0,"nondigit_ohlc":0,"negative_ohlc":0,
+    "premed_anomalies":3,"preult_above_premax":1},
+  "classification":"dados/cotahist/quality/COTAHIST_1988_CLASSIFICACAO_OHLC_V1.json",
+  "context":"dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json",
+  "governance":{"raw_immutable":true,"no_correction":true,"fail_closed":true,"independent_validation_pending":true},
+  "decision":{"phase_5":"CONCLUIDA_COM_EXCECOES","release_to_phase_6":true,"next_gate":"QUANTIDADE_VOLUME_NEGOCIOS_COTAHIST_1988"}
+}
