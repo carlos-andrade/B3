@@ -56,3 +56,5 @@ jobs:
           name: cotahist-certificacao-anual-v1
           path: dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
           retention-days: 30
+
+# Auditoria: reexecucao explicita apos evidencias FASE10.
