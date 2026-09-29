@@ -76,18 +76,37 @@ jobs:
           check("P04", "04_NORMALIZACAO",
                 f"dados/cotahist/normalized/anual/COTAHIST_A{year}.csv")
 
+          contract = "docs/cotahist/CONTRATOS_EVIDENCIA_FASES_06_09_V1.md"
+          mapping = "docs/cotahist/MAPEAMENTO_RETROSPECTIVO_1987_1988_FASES_06_09_V1.md"
+          check("P06C", "06_CONTRATO", contract)
+          check("P07C", "07_CONTRATO", contract)
+          check("P08C", "08_CONTRATO", contract)
+          check("P09C", "09_CONTRATO", contract)
+          check("P06M", "06_EQUIVALENCIA_RETROSPECTIVA", mapping, required=False)
+          check("P07M", "07_EQUIVALENCIA_RETROSPECTIVA", mapping, required=False)
+          check("P08M", "08_EQUIVALENCIA_RETROSPECTIVA", mapping, required=False)
+          check("P09M", "09_EQUIVALENCIA_RETROSPECTIVA", mapping, required=False)
+
+          evidence_paths = {
+              "P06": f"dados/cotahist/quality/COTAHIST_{year}_FASE06_RECONCILIACAO_V1.json",
+              "P07": f"dados/cotahist/quality/COTAHIST_{year}_FASE07_IDENTIDADE_CHAVES_V1.json",
+              "P08": f"dados/cotahist/quality/COTAHIST_{year}_FASE08_SEMANTICA_CALENDARIO_V1.json",
+              "P09": f"dados/cotahist/quality/COTAHIST_{year}_FASE09_PRE_RELEASE_V1.json",
+          }
           for code, phase in [
               ("P06", "06_RECONCILIACAO"),
               ("P07", "07_IDENTIDADE_CHAVES"),
               ("P08", "08_SEMANTICA_CALENDARIO"),
               ("P09", "09_PRE_RELEASE"),
           ]:
+              p = evidence_paths[code]
+              exists = (root / p).is_file()
               checks.append({
                   "code": code,
                   "phase": phase,
-                  "path": "",
-                  "status": "AUSENTE",
-                  "reason": "evidência específica ainda não formalizada",
+                  "path": p,
+                  "status": "OK" if exists else "AUSENTE",
+                  "reason": None if exists else "evidência específica do ano não localizada",
               })
 
           blocking = [
