@@ -1,0 +1,36 @@
+{
+  "schema_version":"1.0.0",
+  "year":1988,
+  "phase":2,
+  "status":"FASE_2_CONCLUIDA_LIBERADO_PARA_FASE_3",
+  "gate":"CHAVE_LOGICA_COTAHIST_1988",
+  "workflow":{
+    "path":".github/workflows/cotahist-chave-logica-1988-v1.yml",
+    "run_id":36585332025,
+    "run_number":1,
+    "conclusion":"success",
+    "commit":"9d4a5dc2ffeb5acfa9e8139893c0f41ad79bcd4f"
+  },
+  "result":{
+    "rows":167674,
+    "candidate_key_fields":["data_pregao","codbdi","codneg","tpmerc","codisi","dimes","especi","prazot","datven","indopc","preexe","ptoexe"],
+    "distinct_key_count":167674,
+    "collision_group_count":0,
+    "collision_row_count":0,
+    "exact_duplicate_group_count":0,
+    "same_key_distinct_statistics_group_count":0
+  },
+  "evidence":"dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CHAVE_LOGICA_V1.json",
+  "governance":{
+    "structural_certification":true,
+    "economic_semantics_certified":false,
+    "1987_exception_inherited":false,
+    "raw_immutable":true,
+    "fail_closed":true
+  },
+  "decision":{
+    "phase_2":"CONCLUIDA",
+    "release_to_phase_3":true,
+    "next_gate":"SEMANTICA_ECONOMICA_COTAHIST_1988"
+  }
+}
