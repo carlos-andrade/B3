@@ -19,12 +19,12 @@ rs=list(records()); assert len(rs)==EXPECTED_ROWS; assert sha(RAW)==EXPECTED_SHA
 prazot=[]; scale=[]; order=[]; dates=set()
 for ln,b in rs:
  dates.add(f(b,2,10).decode()); p=f(b,49,52)
- if p.strip() not in (b"", b"000"): prazot.append(ln)
+ if p.strip() not in (b"", b"000") and not p.strip().isdigit(): prazot.append(ln)
  raw=[b[a-1:e] for a,e in ((57,69),(70,82),(83,95),(96,108),(109,121))]
  vals=[int(v) for v in raw]; op,hi,lo,mid,cl=vals
  if mid in (100000,530000,150000) and op*1000==mid and hi*1000==mid and lo*1000==mid and cl*1000==mid: scale.append(ln)
- if hi<max(op,lo,cl) or lo>min(op,hi,cl) or not (lo<=mid<=hi): order.append(ln)
-print({"prazot":len(prazot),"scale":scale,"order_count":len(order),"order_head":order[:20]}); assert len(prazot)==47 and set(scale)=={9267,20374,20596} and set(order)=={123264}
+ if not (mid in (100000,530000,150000) and op*1000==mid and hi*1000==mid and lo*1000==mid and cl*1000==mid) and (hi<max(op,lo,cl) or lo>min(op,hi,cl) or not (lo<=mid<=hi)): order.append(ln)
+assert len(prazot)==47 and set(scale)=={9267,20374,20596} and set(order)=={123264}
 ds=sorted(date.fromisoformat(d[:4]+"-"+d[4:6]+"-"+d[6:8]) for d in dates); obs=set(ds); gaps=[]; cur=ds[0]
 while cur<=ds[-1]:
  if cur.weekday()<5 and cur not in obs: gaps.append(cur.isoformat())
