@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1988,
+  "phase": 9,
+  "status": "FASE_9_CONCLUIDA_CLASSIFICACAO_COM_EXCECOES_ABERTAS",
+  "gate": "CLASSIFICACAO_FINAL_DAS_EXCECOES_COTAHIST_1988",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "classifications": [
+    {
+      "category": "EXCECAO_SEMANTICA_E_INTEGRIDADE_NAO_RESOLVIDA",
+      "count": 47,
+      "field": "prazot",
+      "status": "ABERTA"
+    },
+    {
+      "category": "ANOMALIA_OHLC_ESCALA_INCONSISTENTE",
+      "count": 3,
+      "field": "premed",
+      "lines": [
+        9267,
+        20374,
+        20596
+      ],
+      "status": "ABERTA"
+    },
+    {
+      "category": "ANOMALIA_OHLC_ORDEM_INCONSISTENTE",
+      "count": 1,
+      "field": "preult",
+      "line": 123264,
+      "status": "ABERTA"
+    },
+    {
+      "category": "CANDIDATO_DIA_SEM_PREGAO_NAO_CLASSIFICADO",
+      "count": 13,
+      "field": "data_pregao",
+      "status": "ABERTA"
+    }
+  ],
+  "known_exceptions_classified": true,
+  "exceptions_resolved": false,
+  "governance": {
+    "raw_immutable": true,
+    "no_correction": true,
+    "no_semantic_reinterpretation": true,
+    "economic_release": false,
+    "fail_closed": true
+  },
+  "release_to_phase_10": true,
+  "next_gate": "VALIDACAO_INDEPENDENTE_COTAHIST_1988",
+  "evidence": "dados/cotahist/quality/COTAHIST_1988_CLASSIFICACAO_FINAL_EXCECOES_V1.json"
+}
