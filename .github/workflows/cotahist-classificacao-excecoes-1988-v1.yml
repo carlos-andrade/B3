@@ -1,0 +1,42 @@
+name: COTAHIST 1988 - Classificacao Final das Excecoes
+on:
+  push:
+    paths:
+      - 'scripts/ingestao/classificar_excecoes_cotahist_1988_v1.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Executar classificacao
+        run: python scripts/ingestao/classificar_excecoes_cotahist_1988_v1.py
+      - name: Validar registro
+        run: |
+          python - <<'PY'
+          import json
+          p='dados/cotahist/quality/COTAHIST_1988_CLASSIFICACAO_FINAL_EXCECOES_V1.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['gates']['all_known_exceptions_classified']
+          assert d['gates']['evidence_pointer_for_each_class']
+          assert d['gates']['unresolved_items_preserved']
+          assert d['governance']['raw_immutable']
+          assert d['governance']['no_correction']
+          print('PHASE9_CLASSIFICATION_OK')
+          PY
+      - name: Commit evidencia
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dados/cotahist/quality/COTAHIST_1988_CLASSIFICACAO_FINAL_EXCECOES_V1.json
+          git diff --cached --quiet || git commit -m 'quality(cotahist-1988): classificar excecoes finais fase 9'
+      - name: Sincronizar e publicar
+        run: |
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
