@@ -1,0 +1,56 @@
+{
+  "schema_version": "2.0.0",
+  "year": 1988,
+  "status": "FASE_0_CONCLUIDA_LIBERADO_PARA_FASE_1",
+  "audit_timestamp_utc": "2026-09-29T14:10:20Z",
+  "workflow": {
+    "path": ".github/workflows/cotahist-normalizacao-1988-v1.yml",
+    "run_id": 36580552969,
+    "run_number": 2,
+    "conclusion": "success",
+    "head_sha": "727ca73380ada07dc47da87710eb554ef9ce3c41"
+  },
+  "raw": {
+    "path": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+    "exists": true,
+    "size_bytes": 8122653,
+    "sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+    "zip_members": ["COTAHIST.A1988"],
+    "type01_count": 167674,
+    "type01_record_lengths": [245],
+    "non_type01_lines": 2,
+    "first_date_raw": "19880104",
+    "last_date_raw": "19881229",
+    "raw_mutation": false
+  },
+  "normalized": {
+    "path": "dados/cotahist/normalized/anual/COTAHIST_A1988.csv",
+    "exists": true,
+    "sha256": "d4d9ae5cd4106967a195567278b44a9a71d788203d10a7372b98ce6fb1691a03",
+    "rows_type01": 167674,
+    "columns": 25,
+    "first_date": "1988-01-04",
+    "last_date": "1988-12-29",
+    "parser_version": "1.1.0",
+    "invalid_dates": 0,
+    "dates_outside_year": 0
+  },
+  "manifest": {
+    "path": "dados/cotahist/normalized/manifests/COTAHIST_A1988_quality.json",
+    "status": "VALIDADO",
+    "git_sha": "1b6a2001c0098b58002fda2aa5806fec73982f74"
+  },
+  "governance": {
+    "1987_exception_inherited": false,
+    "note": "A excecao PRAZOT de 1987 permanece registrada e nao e herdada como excecao de 1988.",
+    "raw_must_remain_immutable": true,
+    "no_semantic_interpretation_at_opening": true,
+    "fail_closed": true
+  },
+  "decision": {
+    "phase_0": "CONCLUIDA",
+    "release_to_phase_1": true,
+    "next_gate": "RECONCILIACAO_RAW_NORMALIZED_COTAHIST_1988",
+    "rule": "Nenhuma certificacao semantica e nenhuma liberacao economica foi feita nesta fase."
+  }
+}
