@@ -1,0 +1,115 @@
+name: COTAHIST - Normalização controlada 1988
+
+on:
+  push:
+    paths:
+      - ".github/workflows/cotahist-normalizacao-1988-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/validar_normalized.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-normalizacao-1988
+  cancel-in-progress: false
+
+jobs:
+  normalizar-1988:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validar RAW
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
+          python - <<'PY'
+          import hashlib, zipfile
+          from pathlib import Path
+          p=Path("dados/cotahist/raw/anual/COTAHIST_A1988.ZIP")
+          sha=hashlib.sha256(p.read_bytes()).hexdigest()
+          print("RAW_SHA256="+sha)
+          with zipfile.ZipFile(p) as z:
+              members=[n for n in z.namelist() if not n.endswith("/")]
+              print("ZIP_MEMBERS="+repr(members))
+              assert len(members)==1, members
+              with z.open(members[0]) as f:
+                  count=0
+                  lengths=set()
+                  first=None
+                  last=None
+                  non01=0
+                  for line in f:
+                      line=line.rstrip(b"\r\n")
+                      if line[:2]==b"01":
+                          count+=1
+                          lengths.add(len(line))
+                          d=line[2:10].decode("ascii")
+                          first=d if first is None else min(first,d)
+                          last=d if last is None else max(last,d)
+                      else:
+                          non01+=1
+                  print(f"TYPE01_COUNT={count}")
+                  print(f"TYPE01_LENGTHS={sorted(lengths)}")
+                  print(f"NON_TYPE01_LINES={non01}")
+                  print(f"FIRST_DATE_RAW={first}")
+                  print(f"LAST_DATE_RAW={last}")
+                  assert lengths == {245}, lengths
+                  assert count > 0
+                  assert first.startswith("1988-") and last.startswith("1988-")
+          PY
+
+      - name: Normalizar em area temporaria
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/normalized /tmp/quality
+          python scripts/ingestao/normalize_cotahist.py             --zip "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"             --output "/tmp/normalized/COTAHIST_A1988.csv"
+          sha256sum "/tmp/normalized/COTAHIST_A1988.csv" | awk '{print $1}' > /tmp/quality/normalized.sha256
+
+      - name: Validar NORMALIZED
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw_sha="$(sha256sum "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP" | awk '{print $1}')"
+          norm_sha="$(cat /tmp/quality/normalized.sha256)"
+          python scripts/ingestao/validar_normalized.py             "/tmp/normalized/COTAHIST_A1988.csv"             "/tmp/quality/COTAHIST_A1988_quality.json"             1988             "$raw_sha"             "$norm_sha"
+
+      - name: Persistir NORMALIZED canonico
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "dados/cotahist/normalized/anual" "dados/cotahist/normalized/manifests"
+          cp "/tmp/normalized/COTAHIST_A1988.csv" "dados/cotahist/normalized/anual/COTAHIST_A1988.csv"
+          cp "/tmp/quality/COTAHIST_A1988_quality.json" "dados/cotahist/normalized/manifests/COTAHIST_A1988_quality.json"
+          test -s "dados/cotahist/normalized/anual/COTAHIST_A1988.csv"
+          sha256sum "dados/cotahist/normalized/anual/COTAHIST_A1988.csv"
+
+      - name: Commit controlado
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "dados/cotahist/normalized/anual/COTAHIST_A1988.csv" "dados/cotahist/normalized/manifests/COTAHIST_A1988_quality.json"
+          git diff --cached --quiet && exit 0
+          git commit -m "data(normalized): persistir COTAHIST A1988 canonico"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar evidencias
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-normalizacao-1988
+          path: |
+            /tmp/normalized/COTAHIST_A1988.csv
+            /tmp/quality/COTAHIST_A1988_quality.json
+            /tmp/quality/normalized.sha256
+          retention-days: 30
