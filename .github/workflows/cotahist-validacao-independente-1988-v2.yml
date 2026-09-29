@@ -1,0 +1,44 @@
+name: COTAHIST 1988 - Validacao Independente V2
+on:
+  push:
+    paths:
+      - 'scripts/ingestao/validar_independente_cotahist_1988_v1.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Executar validacao independente
+        run: python scripts/ingestao/validar_independente_cotahist_1988_v1.py
+      - name: Validar gates
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json',encoding='utf-8'))
+          assert all(d['validation_gates'].values())
+          assert d['decision']['independent_validation_passed']
+          assert d['governance']['raw_immutable']
+          assert d['governance']['no_correction']
+          assert not d['decision']['exceptions_resolved']
+          print('PHASE10_GATES_OK')
+          PY
+      - name: Commit evidencia
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json
+          git diff --cached --quiet || git commit -m 'quality(cotahist-1988): registrar validacao independente fase 10'
+      - name: Sincronizar e publicar
+        run: |
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
