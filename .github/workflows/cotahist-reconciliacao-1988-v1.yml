@@ -1,0 +1,48 @@
+name: COTAHIST 1988 - Reconciliacao RAW x NORMALIZED V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
+      - 'dados/cotahist/normalized/anual/COTAHIST_A1988.csv'
+      - 'scripts/ingestao/reconciliar_cotahist_1988_raw_normalized_v1.py'
+      - '.github/workflows/cotahist-reconciliacao-1988-v1.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-1988-reconciliacao
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconciliacao integral RAW x NORMALIZED
+        run: python scripts/ingestao/reconciliar_cotahist_1988_raw_normalized_v1.py
+      - name: Publicar evidencia
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-reconciliacao-1988
+          path: dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_RAW_NORMALIZED_V1.json
+          retention-days: 30
+      - name: Commit evidencia
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_RAW_NORMALIZED_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit: COTAHIST 1988 raw normalized reconciliation v1"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
