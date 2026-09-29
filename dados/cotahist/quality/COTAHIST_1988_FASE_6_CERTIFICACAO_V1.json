@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "certificate_id": "COTAHIST_1988_FASE_6_CERTIFICACAO_V1",
+  "year": 1988,
+  "phase": 6,
+  "phase_name": "QUANTIDADE_VOLUME_NEGOCIOS",
+  "status": "FASE_6_CONCLUIDA",
+  "workflow": {
+    "path": ".github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml",
+    "run_id": 36588022273,
+    "run_number": 2,
+    "conclusion": "success",
+    "head_sha": "5e1117c11159922d56b6d404b20c2db3ac89c131"
+  },
+  "evidence": {
+    "path": "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_QUANTIDADE_VOLUME_V1.json",
+    "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+    "records": 167674,
+    "totneg": {
+      "negative": 0,
+      "non_numeric": 0,
+      "control_bytes": 0,
+      "zero": 0
+    },
+    "quatot": {
+      "negative": 0,
+      "non_numeric": 0,
+      "control_bytes": 0,
+      "zero": 0
+    },
+    "voltot": {
+      "negative": 0,
+      "non_numeric": 0,
+      "control_bytes": 0,
+      "zero": 0
+    },
+    "normalized_mismatch": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "cross_field_patterns": {
+      "totneg_zero_qty_nonzero": 0,
+      "totneg_zero_volume_nonzero": 0,
+      "totneg_positive_qty_zero": 0,
+      "totneg_positive_volume_zero": 0,
+      "qty_positive_volume_zero": 0,
+      "qty_zero_volume_positive": 0
+    }
+  },
+  "observations": [
+    "Todos os 167674 registros tipo 01 foram processados.",
+    "TOTNEG, QUATOT e VOLTOT apresentaram zero ocorrencias negativas, nao numericas ou com bytes de controle.",
+    "Nao foram observados registros com valor zero em qualquer dos tres campos.",
+    "A reconciliacao RAW x NORMALIZED desses tres campos apresentou zero divergencias.",
+    "Os padroes cruzados auditados nao apresentaram ocorrencias.",
+    "As escalas observadas em VOLTOT foram preservadas como evidencias de normalizacao e nao foram reinterpretadas economicamente."
+  ],
+  "governance": {
+    "raw_immutable": true,
+    "correction_applied": false,
+    "semantic_interpretation": false,
+    "fail_closed": true,
+    "exception_inherited_from_1987": false,
+    "economic_release": false
+  },
+  "decision": {
+    "phase_6_complete": true,
+    "release_to_phase_7": true,
+    "next_gate": "CALENDARIO_PREGAO_COTAHIST_1988",
+    "structural_certification": "PASSED_FOR_PHASE_6",
+    "economic_semantics_certified": false
+  },
+  "roadmap": {
+    "completed": [
+      "0 Abertura do ano",
+      "1 RAW x NORMALIZED",
+      "2 Chave logica",
+      "3 Semantica economica — com excecao PRAZOT",
+      "4 Integridade de campos — com excecao PRAZOT",
+      "5 OHLC — 4 excecoes documentadas",
+      "6 Quantidade/volume/negocios"
+    ],
+    "next": [
+      "7 Calendario de pregao",
+      "8 Reconciliacao final",
+      "9 Classificacao de excecoes",
+      "10 Validacao independente",
+      "11 Certificacao final",
+      "12 Encerramento e liberacao para 1989"
+    ]
+  }
+}
