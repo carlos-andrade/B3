@@ -23,7 +23,7 @@ for ln,b in rs:
  a,mn,mx,med,u=(int(f(b,a,a+13)) for a in (56,69,82,95,108))
  if med in (100000,530000,150000) and a*1000==med and mn*1000==med and mx*1000==med and u*1000==med: scale.append(ln)
  if u>mx: order.append(ln)
-assert len(prazot)==47 and set(scale)=={9267,20374,20596} and set(order)=={123264}
+print({"prazot":len(prazot),"scale":scale[:20],"scale_count":len(scale),"order":order[:20],"order_count":len(order)}); assert len(prazot)==47 and set(scale)=={9267,20374,20596} and set(order)=={123264}
 ds=sorted(date.fromisoformat(d[:4]+"-"+d[4:6]+"-"+d[6:8]) for d in dates); obs=set(ds); gaps=[]; cur=ds[0]
 while cur<=ds[-1]:
  if cur.weekday()<5 and cur not in obs: gaps.append(cur.isoformat())
