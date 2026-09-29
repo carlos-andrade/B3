@@ -67,13 +67,25 @@ def main() -> None:
     }
 
     try:
-        lfs = subprocess.run(
-            ["git", "lfs", "ls-files", "-l", "--", str(NORMALIZED.relative_to(ROOT))],
+        rel = str(NORMALIZED.relative_to(ROOT))
+        lfs_all = subprocess.run(
+            ["git", "lfs", "ls-files", "-l"],
+            cwd=ROOT, text=True, capture_output=True, check=True
+        ).stdout.splitlines()
+        matching = [line for line in lfs_all if rel in line]
+        attr = subprocess.run(
+            ["git", "check-attr", "filter", "--", rel],
             cwd=ROOT, text=True, capture_output=True, check=True
         ).stdout.strip()
-        evidence["git_lfs"] = {"tracked": bool(lfs), "entry": lfs}
+        evidence["git_lfs"] = {
+            "tracked": bool(matching),
+            "entry": matching[0] if matching else "",
+            "tracked_entries_count": len(lfs_all),
+            "filter_attribute": attr,
+        }
     except Exception as exc:
         evidence["git_lfs"] = {"tracked": False, "error": str(exc)}
+
 
     with zipfile.ZipFile(RAW) as z:
         members = [n for n in z.namelist() if not n.endswith("/")]
