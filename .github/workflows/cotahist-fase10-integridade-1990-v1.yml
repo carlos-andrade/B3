@@ -1,4 +1,5 @@
 name: COTAHIST 1990 - FASE 10 integridade independente V1
+# Trigger de reexecucao apos materializacao NORMALIZED 1990.
 on:
   workflow_dispatch:
   push:
