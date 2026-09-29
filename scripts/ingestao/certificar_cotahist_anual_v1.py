@@ -95,3 +95,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Retrigger: evidencia FASE10 1991 materializada no main.
