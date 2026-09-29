@@ -52,3 +52,5 @@ def main():
 if __name__=="__main__": main()
 
 # Retrigger FASE10 1992 apos materializacao NORMALIZED.
+
+# Retrigger FASE10 1992 apos materializacao NORMALIZED confirmada.
