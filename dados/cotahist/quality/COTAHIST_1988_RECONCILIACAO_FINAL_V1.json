@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "status": "RECONCILIACAO_FINAL_ESTRUTURAL_1988",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "raw_type01_records": 167674,
+  "raw_type01_record_lengths": [
+    245
+  ],
+  "normalized_rows": 167674,
+  "normalized_columns": 25,
+  "checks": {
+    "raw_exists": true,
+    "normalized_exists": true,
+    "raw_sha_expected": true,
+    "raw_type01_167674": true,
+    "raw_record_length_245": true,
+    "normalized_rows_167674": true,
+    "normalized_columns_25": true,
+    "normalized_first_date_1988": true,
+    "normalized_last_date_1988": true,
+    "phase1_reconciled": true,
+    "logical_key_unique": true,
+    "quantity_volume_reconciled": true,
+    "calendar_structural_valid": true,
+    "ohlc_structural_gate": true,
+    "semantic_exception_preserved": true
+  },
+  "open_exceptions": {
+    "prazot_records": 47,
+    "ohlc_violations": 4,
+    "calendar_candidate_weekday_gaps": 13
+  },
+  "governance": {
+    "raw_immutable": true,
+    "no_correction": true,
+    "no_semantic_reinterpretation": true,
+    "economic_release": false,
+    "fail_closed": true
+  },
+  "decision": {
+    "reconciliation_passed": true,
+    "release_to_phase_9": true,
+    "next_gate": "CLASSIFICACAO_FINAL_DAS_EXCECOES_COTAHIST_1988"
+  },
+  "note": "Reconciliação final integra gates já certificados. Exceções permanecem abertas e não são apagadas pelo fechamento estrutural."
+}
