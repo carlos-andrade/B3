@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_12",
+  "source_year": 1989,
+  "target_year": 1990,
+  "source_year_status": "FECHADO_E_CERTIFICADO",
+  "source_year_certification": "CERTIFICADO_NORMALIZACAO",
+  "source_phase10_evidence": "dados/cotahist/quality/COTAHIST_1989_FASE10_INTEGRIDADE_V1.json",
+  "certification_matrix": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
+  "target_year_prerequisites": {
+    "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1990.ZIP",
+    "raw_present": true,
+    "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1990_quality.json",
+    "manifest_present": true,
+    "manifest_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "normalized_rows_manifest": 108626,
+    "fields_manifest": 25,
+    "first_date_manifest": "1990-01-02",
+    "last_date_manifest": "1990-12-28",
+    "invalid_dates_manifest": 0,
+    "dates_outside_year_manifest": 0,
+    "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1990.csv",
+    "normalized_present": false,
+    "independent_phase10_integrity_evidence_present": false
+  },
+  "gate": "FASE_10_1990_REQUIRED_BEFORE_RELEASE",
+  "decision": "1990_ABERTO_SOB_CONTROLE",
+  "release_status": "BLOQUEADO_ATE_MATERIALIZACAO_NORMALIZED_E_FASE10_INDEPENDENTE",
+  "notes": [
+    "O manifesto de 1990 existe e está estruturalmente VALIDADO.",
+    "O NORMALIZED de 1990 ainda não foi confirmado materializado no branch main.",
+    "Nenhum release de 1990 deve ser considerado autorizado antes da evidência independente da FASE_10."
+  ]
+}
