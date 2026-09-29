@@ -1,0 +1,36 @@
+name: COTAHIST 1988 - Integridade dos Campos V1
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
+      - 'scripts/ingestao/auditar_integridade_campos_cotahist_1988_v1.py'
+      - '.github/workflows/cotahist-integridade-campos-1988-v1.yml'
+permissions: {contents: write}
+concurrency: {group: cotahist-1988-integridade, cancel-in-progress: false}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Auditar integridade
+        run: python scripts/ingestao/auditar_integridade_campos_cotahist_1988_v1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-integridade-1988
+          path: dados/cotahist/quality/COTAHIST_1988_AUDITORIA_INTEGRIDADE_CAMPOS_V1.json
+          retention-days: 30
+      - name: Commitar evidência
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_AUDITORIA_INTEGRIDADE_CAMPOS_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit: COTAHIST 1988 field integrity v1"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
