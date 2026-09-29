@@ -6,6 +6,7 @@ on:
     paths:
       - "dados/cotahist/raw/anual/**"
       - "dados/cotahist/normalized/manifests/**"
+      - "dados/cotahist/quality/COTAHIST_*_FASE10_INTEGRIDADE_V1.json"
       - "scripts/ingestao/certificar_cotahist_anual_v1.py"
       - ".github/workflows/cotahist-certificacao-anual-v1.yml"
   schedule:
