@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'scripts/ingestao/validar_independente_cotahist_1988_v1.py'
+      - '.github/workflows/cotahist-validacao-independente-1988-v2.yml'
   workflow_dispatch:
 permissions:
   contents: write
