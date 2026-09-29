@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_12",
+  "title": "Fechamento 1988 e abertura controlada 1989",
+  "generated_at": "2026-09-29",
+  "repository": "carlos-andrade/B3",
+  "closed_year": 1988,
+  "opening_year": 1989,
+  "closed_year_status": "FECHADO_E_CERTIFICADO",
+  "closed_year_evidence": {
+    "phase10_integrity": "dados/cotahist/quality/COTAHIST_1988_FASE10_INTEGRIDADE_V1.json",
+    "certification_matrix": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
+    "certification_status": "CERTIFICADO_NORMALIZACAO",
+    "release_authorized": true
+  },
+  "opening_year_preflight": {
+    "raw_present": true,
+    "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1989.ZIP",
+    "quality_manifest_present": true,
+    "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1989_quality.json",
+    "manifest_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "normalized_rows": 152236,
+    "fields": 25,
+    "first_date": "1989-01-02",
+    "last_date": "1989-12-28",
+    "invalid_dates": 0,
+    "dates_outside_year": 0,
+    "independent_phase10_integrity_evidence_present": false,
+    "gate": "FASE_10_1989_REQUIRED_BEFORE_RELEASE"
+  },
+  "decision": {
+    "1988": "ENCERRADO",
+    "1989": "ABERTO_SOB_CONTROLE",
+    "advance_to_1989_release": false,
+    "reason": "1989 possui RAW e manifesto estruturalmente validados, mas ainda requer evidência independente da FASE_10 antes de ser considerado liberado."
+  },
+  "rules": [
+    "RAW permanece imutável.",
+    "Nenhuma correção silenciosa é permitida.",
+    "A certificação anual não substitui a integridade independente da FASE_10.",
+    "1989 somente poderá ser liberado após FASE_10 concluída com status VALIDADO.",
+    "Após FASE_10, a certificação anual deverá ser reexecutada."
+  ]
+}
