@@ -38,11 +38,15 @@ def main() -> None:
     if raw_hash != m.get("raw_sha256"): failures.append("raw_sha256 mismatch")
     if norm_hash != m.get("normalized_sha256"): failures.append("normalized_sha256 mismatch")
 
-    lfs=subprocess.run(["git","lfs","ls-files","-l"],capture_output=True,text=True,check=True).stdout
-    entry=next((line for line in lfs.splitlines() if f" {NORM.as_posix()}" in line), "")
-    tracked=bool(entry)
-    attr=subprocess.run(["git","check-attr","filter","--",NORM.as_posix()],capture_output=True,text=True,check=True).stdout.strip()
-    if not tracked or not attr.endswith("filter: lfs"): failures.append("normalized not tracked by Git LFS")
+    pathspec=NORM.as_posix()
+    attr=subprocess.run(["git","check-attr","filter","--",pathspec],capture_output=True,text=True,check=True).stdout.strip()
+    pointer=subprocess.run(["git","cat-file","-p",f"HEAD:{pathspec}"],capture_output=True,text=True,check=True).stdout.strip()
+    pointer_lines=pointer.splitlines()
+    pointer_oid=next((line.split(" ",1)[1] for line in pointer_lines if line.startswith("oid sha256:")), "")
+    pointer_size=next((line.split(" ",1)[1] for line in pointer_lines if line.startswith("size ")), "")
+    tracked=pointer.startswith("version https://git-lfs.github.com/spec/v1") and bool(pointer_oid) and bool(pointer_size) and attr.endswith("filter: lfs")
+    entry=f"HEAD:{pathspec} oid sha256:{pointer_oid} size {pointer_size}" if tracked else ""
+    if not tracked: failures.append("normalized not tracked by Git LFS")
 
     with zipfile.ZipFile(RAW) as z:
         members=z.namelist()
@@ -84,7 +88,7 @@ def main() -> None:
       "hashes":{"raw_sha256_actual":raw_hash,"raw_sha256_manifest":m.get("raw_sha256"),"normalized_sha256_actual":norm_hash,"normalized_sha256_manifest":m.get("normalized_sha256")},
       "raw_zip":{"member_count":len(members),"members":members,"type01_records":raw_type01,"type01_bad_length_records":bad_len},
       "normalized":{"header":header,"column_count":len(header),"row_count":len(data_rows),"first_date":dates[0] if dates else None,"last_date":dates[-1] if dates else None,"invalid_dates":len(invalid),"dates_outside_year":len(outside),"manifest_row_count":m.get("linhas_normalized"),"manifest_field_count":m.get("campos")},
-      "git_lfs":{"tracked":tracked,"entry":entry,"filter_attribute":attr},
+      "git_lfs":{"tracked":tracked,"entry":entry,"filter_attribute":attr,"pointer_oid":pointer_oid,"pointer_size":pointer_size},
       "checks":{"manifest_status_validated":m.get("status")=="VALIDADO","parser_version_1_1_0":m.get("parser_version")=="1.1.0","raw_hash_matches_manifest":raw_hash==m.get("raw_sha256"),"normalized_hash_matches_manifest":norm_hash==m.get("normalized_sha256"),"raw_zip_single_member":len(members)==1,"raw_type01_positive":raw_type01>0,"raw_type01_length_245":bad_len==0,"normalized_header_25":len(header)==25 and header==EXPECTED_FIELDS,"normalized_rows_match_manifest":len(data_rows)==m.get("linhas_normalized"),"normalized_invalid_dates_zero":len(invalid)==0,"normalized_dates_inside_1990":len(outside)==0,"normalized_lfs_tracked":tracked and attr.endswith("filter: lfs")},
       "status":"VALIDADO" if not failures else "INVALIDADO","failures":failures,
       "decision":"FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO" if not failures else "FASE_10_BLOQUEADA"
