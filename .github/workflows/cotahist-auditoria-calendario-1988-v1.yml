@@ -1,0 +1,34 @@
+name: COTAHIST 1988 - Auditoria Calendario V1
+on:
+  push:
+    paths:
+      - "dados/cotahist/normalized/anual/COTAHIST_A1988.csv"
+      - "scripts/ingestao/auditar_calendario_cotahist_1988_v1.py"
+      - ".github/workflows/cotahist-auditoria-calendario-1988-v1.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Executar auditoria
+        run: python3 scripts/ingestao/auditar_calendario_cotahist_1988_v1.py
+      - name: Publicar evidencia
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json
+          git diff --cached --quiet || git commit -m "chore(cotahist): publicar evidencia calendario 1988"
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; git reset --hard origin/main; git add dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json; git diff --cached --quiet || git commit -m "chore(cotahist): publicar evidencia calendario 1988"; }
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 2
+          done
+          echo "Falha ao publicar evidencia apos 5 tentativas."
+          exit 1
