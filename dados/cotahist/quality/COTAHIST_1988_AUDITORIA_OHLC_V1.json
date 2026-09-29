@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "status": "OHLC_AUDITORIA_1988",
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "records": 167674,
+  "violation_count": 4,
+  "violations": [
+    {
+      "line": 9267,
+      "open": 100,
+      "high": 100,
+      "low": 100,
+      "mid": 100000,
+      "close": 100
+    },
+    {
+      "line": 20374,
+      "open": 530,
+      "high": 530,
+      "low": 530,
+      "mid": 530000,
+      "close": 530
+    },
+    {
+      "line": 20596,
+      "open": 150,
+      "high": 150,
+      "low": 150,
+      "mid": 150000,
+      "close": 150
+    },
+    {
+      "line": 123264,
+      "open": 1800,
+      "high": 1900,
+      "low": 1800,
+      "mid": 1868,
+      "close": 1915
+    }
+  ],
+  "zero_ohlc_count": 0,
+  "nondigit_ohlc_records": 0,
+  "negative_ohlc_records": 0,
+  "gates": {
+    "records_positive": true,
+    "ohlc_order_valid": false,
+    "ohlc_numeric_clean": true,
+    "no_negative_ohlc": true
+  },
+  "note": "Auditoria estrutural das relações OHLC sobre valores brutos; nao certifica significado economico e nao altera o RAW."
+}
