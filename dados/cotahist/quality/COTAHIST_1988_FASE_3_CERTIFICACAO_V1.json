@@ -1,0 +1,41 @@
+{
+  "schema_version":"1.0.0",
+  "year":1988,
+  "phase":3,
+  "status":"FASE_3_CONCLUIDA_COM_EXCECAO_SEMANTICA",
+  "gate":"SEMANTICA_ECONOMICA_COTAHIST_1988",
+  "workflow":{"path":".github/workflows/cotahist-semantica-1988-v1.yml","run_id":36585624675,"run_number":1,"conclusion":"success","commit":"d6ecbb02feb72b0ca382a07056363b6f7416421a"},
+  "result":{
+    "records_type01":167674,
+    "invalid_trade_dates":0,
+    "tpmmerc_distinct":8,
+    "codbdi_distinct":16,
+    "prazot_distinct":7,
+    "prazot_nonstandard_records":47,
+    "prazot_nonstandard_context":"TPMERC=020 and CODBDI=96",
+    "economic_semantics":"PARCIALMENTE_DOCUMENTADA"
+  },
+  "evidence":{
+    "observational":"dados/cotahist/quality/COTAHIST_1988_AUDITORIA_SEMANTICA_V1.json",
+    "primary_documentation":"dados/cotahist/quality/COTAHIST_1988_SEMANTICA_EVIDENCIA_PRIMARIA_V1.json"
+  },
+  "external_source":{
+    "issuer":"B3",
+    "document":"Layout do Arquivo – Cotações Históricas, revisão 02, 05/10/2020",
+    "url":"https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf",
+    "limitation":"documento posterior a 1988; usado como documentação estrutural, não como prova histórica suficiente"
+  },
+  "governance":{
+    "raw_immutable":true,
+    "no_historical_correction":true,
+    "no_prazot_reinterpretation":true,
+    "1987_exception_inherited":false,
+    "fail_closed":true
+  },
+  "decision":{
+    "phase_3":"CONCLUIDA_COM_EXCECAO",
+    "release_to_phase_4":true,
+    "next_gate":"INTEGRIDADE_DOS_CAMPOS_COTAHIST_1988",
+    "exception_reopenable_with":"evidencia primaria contemporanea ou segunda copia byte-a-byte independente"
+  }
+}
