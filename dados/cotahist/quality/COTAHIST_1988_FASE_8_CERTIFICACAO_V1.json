@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "certificate_id": "COTAHIST_1988_FASE_8_CERTIFICACAO_V1",
+  "year": 1988,
+  "phase": 8,
+  "status": "FASE_8_CONCLUIDA_RECONCILIACAO_FINAL_ESTRUTURAL",
+  "workflow": {
+    "path": ".github/workflows/cotahist-reconciliacao-final-1988-v1.yml",
+    "run_id": 36589187685,
+    "run_number": 1,
+    "conclusion": "success",
+    "head_sha": "8989d41c6adbd96cfd60bb7ad78e84ab00cb78fe"
+  },
+  "evidence": "dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_FINAL_V1.json",
+  "result": {
+    "reconciliation_passed": true,
+    "raw_type01_records": 167674,
+    "normalized_rows": 167674,
+    "normalized_columns": 25,
+    "raw_record_length": 245,
+    "open_exceptions": {
+      "prazot": 47,
+      "ohlc": 4,
+      "calendar_candidate_gaps": 13
+    }
+  },
+  "governance": {
+    "raw_immutable": true,
+    "no_correction": true,
+    "no_semantic_reinterpretation": true,
+    "economic_release": false,
+    "fail_closed": true
+  },
+  "decision": {
+    "phase_8_complete": true,
+    "release_to_phase_9": true,
+    "next_gate": "CLASSIFICACAO_FINAL_DAS_EXCECOES_COTAHIST_1988"
+  },
+  "roadmap": {
+    "completed": [
+      "0 Abertura",
+      "1 RAW x NORMALIZED",
+      "2 Chave logica",
+      "3 Semantica",
+      "4 Integridade",
+      "5 OHLC",
+      "6 Quantidade/Volume/Negocios",
+      "7 Calendario",
+      "8 Reconciliacao final"
+    ],
+    "next": [
+      "9 Classificacao das excecoes",
+      "10 Validacao independente",
+      "11 Certificacao final",
+      "12 Encerramento -> 1989"
+    ]
+  }
+}
