@@ -1,0 +1,39 @@
+name: COTAHIST 1988 - Auditoria Semantica V1
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
+      - 'dados/cotahist/normalized/anual/COTAHIST_A1988.csv'
+      - 'scripts/ingestao/auditar_semantica_cotahist_1988_v1.py'
+      - '.github/workflows/cotahist-semantica-1988-v1.yml'
+permissions: {contents: write}
+concurrency: {group: cotahist-1988-semantica, cancel-in-progress: false}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Auditoria semantica 1988
+        run: python scripts/ingestao/auditar_semantica_cotahist_1988_v1.py
+      - name: Publicar evidencia
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-semantica-1988
+          path: dados/cotahist/quality/COTAHIST_1988_AUDITORIA_SEMANTICA_V1.json
+          retention-days: 30
+      - name: Commit evidencia
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1988_AUDITORIA_SEMANTICA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit: COTAHIST 1988 semantic gate v1"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
