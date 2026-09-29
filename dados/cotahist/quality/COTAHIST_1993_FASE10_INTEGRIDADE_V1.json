@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_10",
+  "year": 1993,
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1993.csv",
+  "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json",
+  "raw_immutable": true,
+  "correction_applied": false,
+  "hashes": {
+    "raw_sha256_actual": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
+    "raw_sha256_manifest": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
+    "normalized_sha256_actual": "6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb",
+    "normalized_sha256_manifest": "6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb"
+  },
+  "raw_zip": {
+    "member_count": 1,
+    "members": [
+      "COTAHIST.A1993"
+    ],
+    "type01_records": 116198,
+    "type01_bad_length_records": 0
+  },
+  "normalized": {
+    "header": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "nomres",
+      "especi",
+      "prazot",
+      "modref",
+      "preabe",
+      "premax",
+      "premin",
+      "premed",
+      "preult",
+      "preofc",
+      "preofv",
+      "totneg",
+      "quatot",
+      "voltot",
+      "preexe",
+      "indopc",
+      "datven",
+      "fatcot",
+      "ptoexe",
+      "codisi",
+      "dismes"
+    ],
+    "column_count": 25,
+    "row_count": 116198,
+    "first_date": "1993-01-04",
+    "last_date": "1993-12-30",
+    "invalid_dates": 0,
+    "dates_outside_year": 0,
+    "manifest_row_count": 116198,
+    "manifest_field_count": 25
+  },
+  "git_lfs": {
+    "tracked": true,
+    "entry": "HEAD:dados/cotahist/normalized/anual/COTAHIST_A1993.csv oid sha256:6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb size 14478595",
+    "filter_attribute": "dados/cotahist/normalized/anual/COTAHIST_A1993.csv: filter: lfs",
+    "pointer_oid": "sha256:6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb",
+    "pointer_size": "14478595"
+  },
+  "checks": {
+    "manifest_status_validated": true,
+    "parser_version_1_1_0": true,
+    "raw_hash_matches_manifest": true,
+    "normalized_hash_matches_manifest": true,
+    "raw_zip_single_member": true,
+    "raw_type01_positive": true,
+    "raw_type01_length_245": true,
+    "normalized_header_25": true,
+    "normalized_rows_match_manifest": true,
+    "normalized_invalid_dates_zero": true,
+    "normalized_dates_inside_1993": true,
+    "normalized_lfs_tracked": true
+  },
+  "status": "VALIDADO",
+  "failures": [],
+  "decision": "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO"
+}
