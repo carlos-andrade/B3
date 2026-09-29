@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1988,
+  "status": "LIBERADO_PARA_INICIO_DA_CERTIFICACAO",
+  "predecessor": {
+    "year": 1987,
+    "status": "ENCERRADO_ESTRUTURAL_COM_EXCECAO_DOCUMENTAL",
+    "exception": "PRAZOT_1987_NAO_RESOLVIDO",
+    "economic_semantics_certified": false
+  },
+  "rules": [
+    "1988 possui certificação independente.",
+    "A exceção de 1987 não é apagada nem considerada resolvida.",
+    "Nenhuma alteração no RAW de 1987 é permitida como condição para iniciar 1988.",
+    "O protocolo de 1987 e seus aprendizados devem ser reutilizados.",
+    "Qualquer exceção de 1988 deve ser classificada e registrada antes de interpretação."
+  ],
+  "next_gate": "INGESTAO_E_CERTIFICACAO_COTAHIST_1988"
+}
