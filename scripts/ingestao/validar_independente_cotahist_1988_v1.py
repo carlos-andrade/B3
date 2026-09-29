@@ -18,7 +18,7 @@ def f(b,a,z): return b[a:z]
 rs=list(records()); assert len(rs)==EXPECTED_ROWS; assert sha(RAW)==EXPECTED_SHA; assert all(len(b)==245 for _,b in rs)
 prazot=[]; scale=[]; order=[]; dates=set()
 for ln,b in rs:
- dates.add(f(b,2,10).decode()); p=f(b,185,198)
+ dates.add(f(b,2,10).decode()); p=f(b,49,52)
  if not p.isdigit(): prazot.append(ln)
  a,mn,mx,med,u=(int(f(b,a,a+13)) for a in (56,69,82,95,108))
  if med in (100000,530000,150000) and a*1000==med and mn*1000==med and mx*1000==med and u*1000==med: scale.append(ln)
