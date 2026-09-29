@@ -1,0 +1,64 @@
+{
+  "schema_version": "4.0.0",
+  "status": "GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
+  "generated_at_utc": "2026-09-29T07:09:21.045Z",
+  "year": 1987,
+  "objective": "Recuperar bytes independentes do COTAHIST_A1987 para comparação byte a byte dos 34 registros PRAZOT afetados, sem alterar o RAW do projeto.",
+  "archival_recovery": {
+    "routes_attempted": [
+      {
+        "route": "Kaggle dataset",
+        "source": "B3 (BM&FBovespa) 1986-2019 Equities Price",
+        "file": "COTAHIST_A1987.txt",
+        "result": "EXISTENCIA_CONFIRMADA_CONTEUDO_BINARIO_NAO_ACESSIVEL_PELO_CANAL_WEB"
+      },
+      {
+        "route": "GitHub global code search",
+        "result": "REFERENCIAS_AO_NOME_DO_ARQUIVO_SEM_COPIA_BRUTA"
+      },
+      {
+        "route": "GitHub exact asset-pattern search",
+        "patterns": [
+          "CPFLACON",
+          "BRGES1PNA",
+          "CTKAACOP",
+          "FIBACON",
+          "000f20",
+          "9c0f20",
+          "000720"
+        ],
+        "result": "SEM_REGISTRO_BRUTO_ACESSIVEL"
+      },
+      {
+        "route": "Kaggle API endpoints via web",
+        "result": "ENDPOINTS_NAO_ACESSIVEIS_NESTE_CANAL"
+      },
+      {
+        "route": "historical B3 endpoint references",
+        "result": "BINARIO_NAO_DISPONIBILIZADO_NESTE_CANAL"
+      }
+    ],
+    "independent_copy": {
+      "located": true,
+      "raw_bytes_accessible": false,
+      "byte_to_byte_executed": false,
+      "matching_records": null,
+      "different_records": null
+    }
+  },
+  "affected_records": 34,
+  "patterns": {
+    "000f20": 33,
+    "9c0f20": 1,
+    "000720": 1
+  },
+  "controls": [
+    "RAW permanece imutável.",
+    "Nenhum byte de PRAZOT foi substituído.",
+    "Nenhum valor foi reinterpretado.",
+    "Nenhum registro foi removido.",
+    "A existência de uma cópia secundária não é tratada como prova primária da semântica histórica."
+  ],
+  "conclusion": "A pesquisa arquivística foi ampliada, mas não produziu os bytes de uma segunda cópia utilizável. A validação independente permanece inconclusiva e a exceção PRAZOT continua aberta.",
+  "next_gate": "RECUPERACAO_DE_BINARIO_POR_ARQUIVO_ARQUIVISTICO_OU_COPIA_LOCAL_FORNECIDA_PELO_USUARIO"
+}
