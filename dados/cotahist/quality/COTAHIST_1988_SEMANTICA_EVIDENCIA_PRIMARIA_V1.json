@@ -1,0 +1,49 @@
+{
+  "schema_version":"1.0.0",
+  "year":1988,
+  "status":"SEMANTICA_OBSERVACIONAL_COM_EXCECAO_PRAZOT",
+  "research_date":"2026-09-29",
+  "primary_documentation":{
+    "issuer":"B3",
+    "title":"Layout do Arquivo – Cotações Históricas",
+    "revision":"02",
+    "document_date":"2020-10-05",
+    "url":"https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf",
+    "limitation":"Documento oficial posterior ao ano de 1988; utilizado nesta etapa como documentação estrutural do formato COTAHIST, não como prova suficiente de semântica histórica específica de 1988."
+  },
+  "officially_documented_fields":{
+    "CODBDI":"código utilizado para classificar papéis na emissão do Boletim Diário de Informações",
+    "TPMERC":"código do mercado em que o papel está cadastrado",
+    "PRAZOT":"prazo em dias do mercado a termo",
+    "ESPECI":"especificação do papel",
+    "DATVEN":"data de vencimento para opções ou termo secundário",
+    "PREEXE":"preço de exercício para opções ou valor do contrato para termo secundário",
+    "PTOEXE":"preço de exercício em pontos para opções ou valor de contrato em pontos para termo secundário",
+    "DISMES":"número de distribuição do papel / sequência correspondente ao estado de direito vigente"
+  },
+  "observed_1988":{
+    "TPMERC_distinct":["010","012","013","017","020","030","070","080"],
+    "TPMERC_current_table_match":true,
+    "CODBDI_distinct":["02","06","10","14","18","22","38","42","46","50","54","58","62","78","82","96"],
+    "CODBDI_current_table_match":true,
+    "PRAZOT_distinct_count":7,
+    "PRAZOT_blank":159564,
+    "PRAZOT_000":5095,
+    "PRAZOT_nonstandard_bytes":47,
+    "PRAZOT_nonstandard_context":"Todos os 47 registros estão em TPMERC=020 e CODBDI=96.",
+    "PRAZOT_nonstandard_patterns":{"00 0f":43,"02 0f":2,"00":1,"22":1}
+  },
+  "classification":{
+    "TPMERC":"SEMANTICAMENTE_COMPATIVEL_COM_TABELA_OFICIAL_ATUAL; nao prova que a tabela tenha sido identica em 1988.",
+    "CODBDI":"SEMANTICAMENTE_COMPATIVEL_COM_TABELA_OFICIAL_ATUAL; nao prova que a tabela tenha sido identica em 1988.",
+    "PRAZOT":"EXCECAO_HISTORICA_NAO_RESOLVIDA",
+    "economic_semantics_1988":"PARCIALMENTE_DOCUMENTADA"
+  },
+  "fail_closed":{
+    "no_historical_correction":true,
+    "no_reinterpretation_of_nonstandard_prazot":true,
+    "no_economic_release_from_this_gate":true,
+    "primary_historical_evidence_required_for_exception":true
+  },
+  "next_action":"Pesquisar evidência primária contemporânea a 1988 ou segunda cópia byte-a-byte independente para classificar os 47 registros PRAZOT sem alterar o RAW."
+}
