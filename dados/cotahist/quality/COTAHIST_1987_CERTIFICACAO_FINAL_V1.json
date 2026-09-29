@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "status": "CERTIFICACAO_ESTRUTURAL_1987_COM_EXCECAO_SEMANTICA",
+  "schema_version": "2.0.0",
+  "status": "ENCERRAMENTO_1987_CERTIFICACAO_ESTRUTURAL_COM_EXCECAO_DOCUMENTAL",
   "generated_at_utc": "2026-09-29T07:16:36.060664+00:00",
   "year": 1987,
   "structural_gates": {
@@ -18,7 +18,7 @@
     "rule": "Não corrigir, substituir, remover ou reinterpretar PRAZOT sem evidência histórica primária."
   },
   "calendar_note": "Os 19 weekday gaps permanecem como candidatos a dias sem pregão; não são classificados como feriados sem fonte histórica primária.",
-  "release_rule": "1988 somente após esta consolidação e resolução documental das pendências exigidas pelo protocolo do projeto.",
+  "release_rule": "1987 encerrado operacionalmente como certificação estrutural com exceção documental. 1988 pode iniciar sua própria certificação independente, sem alterar nem apagar as pendências de 1987.",
   "evidence_files": {
     "reconciliacao_raw_normalized": "COTAHIST_1987_RECONCILIACAO_RAW_NORMALIZED_V1.json",
     "chave_logica": "COTAHIST_1987_AUDITORIA_CHAVE_LOGICA_V1.json",
@@ -28,5 +28,14 @@
     "semantica": "COTAHIST_1987_AUDITORIA_SEMANTICA_V1.json",
     "prazot_integridade": "COTAHIST_1987_CLASSIFICACAO_PRAZOT_V1.json",
     "prazot_validacao": "COTAHIST_1987_VALIDACAO_INDEPENDENTE_PRAZOT_V1.json"
+  },
+  "closure": {
+    "decision": "ENCERRAR_ANO_E_AVANCAR_PARA_1988",
+    "structural_certification": true,
+    "economic_semantics_certified": false,
+    "prazot_exception": "PERMANENTE_NAO_RESOLVIDA",
+    "future_reopening_allowed": true,
+    "reopening_condition": "Somente mediante nova evidência primária ou cópia independente byte-level verificável.",
+    "operational_rule": "A exceção de 1987 não bloqueia o início da certificação de 1988; ela permanece registrada e não deve ser tratada como resolvida."
   }
 }
