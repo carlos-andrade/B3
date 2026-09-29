@@ -1,0 +1,125 @@
+name: COTAHIST - orquestrador anual canônico DRY-RUN V1
+
+on:
+  workflow_dispatch:
+    inputs:
+      ano:
+        description: "Ano COTAHIST para auditoria de precedência"
+        required: true
+        default: "1993"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-orquestrador-anual-dryrun-v1-${{ inputs.ano }}
+  cancel-in-progress: false
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout com Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+
+      - name: Executar DRY-RUN de precedência
+        env:
+          ANO: ${{ inputs.ano }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          year = int(os.environ["ANO"])
+          root = Path(".")
+
+          if year != 1993:
+              raise SystemExit(
+                  "DRY-RUN V1 controlado: o primeiro caso de teste permitido é 1993."
+              )
+
+          checks = []
+
+          def check(code, phase, path, required=True):
+              p = root / path
+              exists = p.is_file()
+              status = "OK" if exists else ("AUSENTE" if required else "NAO_APLICAVEL")
+              checks.append({
+                  "code": code,
+                  "phase": phase,
+                  "path": path,
+                  "status": status,
+              })
+              return exists
+
+          check("P00", "00_GOVERNANCA",
+                "docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md")
+          check("P01", "01_RAW",
+                f"dados/cotahist/raw/anual/COTAHIST_A{year}.ZIP")
+          check("P05", "05_MANIFESTO",
+                f"dados/cotahist/normalized/manifests/COTAHIST_A{year}_quality.json")
+          check("P10", "10_FASE10",
+                f"dados/cotahist/quality/COTAHIST_{year}_FASE10_INTEGRIDADE_V1.json")
+
+          check("P02", "02_INTEGRIDADE_FONTE",
+                f"dados/cotahist/quality/COTAHIST_{year}_FASE10_INTEGRIDADE_V1.json")
+          check("P03", "03_PARSING",
+                "scripts/ingestao/normalize_cotahist.py")
+          check("P04", "04_NORMALIZACAO",
+                f"dados/cotahist/normalized/anual/COTAHIST_A{year}.csv")
+
+          for code, phase in [
+              ("P06", "06_RECONCILIACAO"),
+              ("P07", "07_IDENTIDADE_CHAVES"),
+              ("P08", "08_SEMANTICA_CALENDARIO"),
+              ("P09", "09_PRE_RELEASE"),
+          ]:
+              checks.append({
+                  "code": code,
+                  "phase": phase,
+                  "path": "",
+                  "status": "AUSENTE",
+                  "reason": "evidência específica ainda não formalizada",
+              })
+
+          blocking = [
+              c for c in checks
+              if c["status"] == "AUSENTE" and c["code"] in
+              {"P01","P02","P03","P04","P05","P06","P07","P08","P09"}
+          ]
+
+          result = {
+              "schema_version": "1.0.0",
+              "workflow": "cotahist-orquestrador-anual-dryrun-v1",
+              "mode": "DRY_RUN",
+              "year": year,
+              "checks": checks,
+              "promotion": "BLOQUEADA" if blocking else "LIBERADA_PARA_FASE10",
+              "blocking_codes": [c["code"] for c in blocking],
+              "mutations": False,
+              "commit": False,
+              "push": False,
+          }
+
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+
+          if blocking:
+              print("RESULTADO: DRY-RUN CONCLUIDO — PROMOCAO BLOQUEADA.")
+          else:
+              print("RESULTADO: DRY-RUN CONCLUIDO — PRE-CONDIÇÕES SATISFEITAS.")
+          PY
+
+      - name: Garantia de não mutação
+        run: |
+          if ! git diff --quiet; then
+            echo "FAIL-CLOSED: DRY-RUN produziu alteração no working tree."
+            git diff --stat
+            exit 1
+          fi
+          echo "DRY-RUN sem alterações no working tree."
