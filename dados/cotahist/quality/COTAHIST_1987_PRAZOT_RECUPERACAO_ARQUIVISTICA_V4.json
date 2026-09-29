@@ -1,7 +1,7 @@
 {
-  "schema_version": "5.0.0",
+  "schema_version": "6.0.0",
   "status": "GATE_INDEPENDENT_COPY_NAO_CONCLUIDO",
-  "generated_at_utc": "2026-09-29T07:12:58.783Z",
+  "generated_at_utc": "2026-09-29T07:16:06.976Z",
   "year": 1987,
   "objective": "Recuperar bytes independentes do COTAHIST_A1987 para comparação byte a byte dos 34 registros PRAZOT afetados, sem alterar o RAW do projeto.",
   "archival_recovery": {
@@ -46,6 +46,25 @@
         "route": "Search engine expansion for archival/cloud mirrors",
         "result": "SEM_COPIA_BINARIA_ACESSIVEL",
         "note": "Resultados reproduziram a existência do dataset Kaggle, sem disponibilizar o objeto bruto."
+      },
+      {
+        "route": "Search engine exact affected records",
+        "result": "SEM_RESULTADOS_INDEXADOS",
+        "patterns": [
+          "CPFLACON 1987-01-13",
+          "BRGES1PNA 1987-01-14",
+          "CTKAACOP 1987-01-16",
+          "FIBACON 1987-10-06"
+        ]
+      },
+      {
+        "route": "Search engine exact byte patterns",
+        "result": "SEM_COPIA_BRUTA_INDEXADA",
+        "patterns": [
+          "000f20",
+          "9c0f20",
+          "000720"
+        ]
       }
     ],
     "independent_copy": {
@@ -69,6 +88,6 @@
     "Nenhum registro foi removido.",
     "A existência de uma cópia secundária não é tratada como prova primária da semântica histórica."
   ],
-  "conclusion": "A rodada adicional confirmou a existência documentada do COTAHIST_A1987.txt em dataset secundário, mas não produziu uma segunda cópia byte-level acessível. A tentativa direta de download não obteve o arquivo devido à indisponibilidade de resolução DNS no ambiente. Portanto, a comparação dos 34 registros não foi executada e a exceção PRAZOT permanece aberta.",
-  "next_gate": "OBTER_ARQUIVO_INDEPENDENTE_LOCAL_OU_ACESSO_DIRETO_AO_DATASET_ARQUIVISTICO"
+  "conclusion": "Nova rodada de recuperação concluída. A fonte Kaggle continua confirmando a existência do arquivo COTAHIST_A1987.txt, mas não foi possível obter seus bytes. Buscas por registros/ativos afetados e pelos padrões exatos também não localizaram uma cópia textual bruta. Nenhuma comparação byte a byte foi declarada. A exceção PRAZOT permanece aberta.",
+  "next_gate": "OBTER_COPIA_BINARIA_INDEPENDENTE_ACESSIVEL"
 }
