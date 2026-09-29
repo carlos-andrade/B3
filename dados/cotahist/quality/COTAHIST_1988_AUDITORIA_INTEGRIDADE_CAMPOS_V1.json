@@ -1,0 +1,447 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUDITORIA_INTEGRIDADE_CAMPOS_1988",
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "type01_record_count": 167674,
+  "fields_with_control_bytes": {
+    "prazot": 47
+  },
+  "control_byte_sample": [
+    {
+      "line": 1881,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 6559,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 9710,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 9781,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 9887,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 9888,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 10400,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 15709,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 17730,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 32087,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 32776,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 34256,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 34366,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 35102,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 42616,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 43978,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 43979,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 44820,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 45492,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 46301,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 46302,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 47668,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 73492,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 80508,
+      "field": "prazot",
+      "raw_hex": "092220",
+      "bad_bytes": [
+        "09"
+      ]
+    },
+    {
+      "line": 83994,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 88214,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 95125,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 96282,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 107078,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 107137,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 108616,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 111451,
+      "field": "prazot",
+      "raw_hex": "020f20",
+      "bad_bytes": [
+        "02",
+        "0f"
+      ]
+    },
+    {
+      "line": 114918,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 121438,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 123668,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 125146,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 125147,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 125192,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 128213,
+      "field": "prazot",
+      "raw_hex": "001f20",
+      "bad_bytes": [
+        "00",
+        "1f"
+      ]
+    },
+    {
+      "line": 148013,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 149525,
+      "field": "prazot",
+      "raw_hex": "020f20",
+      "bad_bytes": [
+        "02",
+        "0f"
+      ]
+    },
+    {
+      "line": 152125,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 152126,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 152127,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 152813,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 157766,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    },
+    {
+      "line": 162924,
+      "field": "prazot",
+      "raw_hex": "000f20",
+      "bad_bytes": [
+        "00",
+        "0f"
+      ]
+    }
+  ],
+  "numeric_fields_non_digit": {
+    "prazot": 47
+  },
+  "numeric_fields_blank": {
+    "prazot": 159564
+  },
+  "fail_closed_gates": {
+    "records_positive": true,
+    "fixed_record_length_245": true,
+    "no_control_bytes": false,
+    "numeric_fields_clean": false
+  },
+  "interpretation": "Diagnostico estrutural. Anomalias de bytes ou campos numericos nao recebem significado economico nem sao corrigidas automaticamente."
+}
