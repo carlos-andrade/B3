@@ -66,9 +66,11 @@ jobs:
                 f"dados/cotahist/normalized/manifests/COTAHIST_A{year}_quality.json")
           check("P10", "10_FASE10",
                 f"dados/cotahist/quality/COTAHIST_{year}_FASE10_INTEGRIDADE_V1.json")
+          check("P11", "11_CERTIFICACAO",
+                "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv")
 
           check("P02", "02_INTEGRIDADE_FONTE",
-                f"dados/cotahist/quality/COTAHIST_{year}_FASE10_INTEGRIDADE_V1.json")
+                f"dados/cotahist/quality/COTAHIST_{year}_FASE02_INTEGRIDADE_FONTE_V1.json")
           check("P03", "03_PARSING",
                 "scripts/ingestao/normalize_cotahist.py")
           check("P04", "04_NORMALIZACAO",
@@ -91,7 +93,7 @@ jobs:
           blocking = [
               c for c in checks
               if c["status"] == "AUSENTE" and c["code"] in
-              {"P01","P02","P03","P04","P05","P06","P07","P08","P09"}
+              {"P01","P02","P03","P04","P05","P06","P07","P08","P09","P10","P11"}
           ]
 
           result = {
