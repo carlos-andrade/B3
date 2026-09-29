@@ -27,4 +27,6 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit: contexto excecoes OHLC COTAHIST 1988"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
