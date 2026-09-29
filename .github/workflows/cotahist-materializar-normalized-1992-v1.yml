@@ -1,0 +1,59 @@
+name: COTAHIST 1992 - materializar NORMALIZED V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/raw/anual/COTAHIST_A1992.ZIP"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - ".github/workflows/cotahist-materializar-normalized-1992-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-materializar-normalized-1992-v1
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout com LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Normalizar 1992
+        run: |
+          python scripts/ingestao/normalize_cotahist.py \
+            --zip dados/cotahist/raw/anual/COTAHIST_A1992.ZIP \
+            --output dados/cotahist/normalized/anual/COTAHIST_A1992.csv
+      - name: Verificar hash contra manifesto
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root=Path(".")
+          p=root/"dados/cotahist/normalized/anual/COTAHIST_A1992.csv"
+          m=json.loads((root/"dados/cotahist/normalized/manifests/COTAHIST_A1992_quality.json").read_text())
+          h=hashlib.sha256(p.read_bytes()).hexdigest()
+          print("NORMALIZED_SHA256_ACTUAL="+h)
+          print("NORMALIZED_SHA256_MANIFEST="+str(m.get("normalized_sha256")))
+          if h != m.get("normalized_sha256"):
+              raise SystemExit("FAIL-CLOSED: hash normalizado difere do manifesto")
+          PY
+      - name: Commitar NORMALIZED
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/anual/COTAHIST_A1992.csv
+          git diff --cached --quiet || git commit -m "data(cotahist): materializa normalized de 1992"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
