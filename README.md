@@ -489,6 +489,36 @@ A automação não substitui a revisão editorial. Ela mantém o inventário ope
 e a trilha de atualização sincronizados com o estado efetivo do repositório.
 <!-- B3_README_AUTO_END -->
 
+## 17. Wiki técnica
+
+A documentação técnica versionada do projeto está em WIKI/.
+
+A estrutura atual inclui:
+
+- visão geral e estado atual;
+- governança e política de evidências;
+- arquitetura;
+- automação da Wiki nativa;
+- documentação incremental dos pipelines e decisões.
+
+A Wiki nativa do GitHub (/wiki) é tratada como camada de publicação, enquanto WIKI/ permanece como fonte de verdade versionada.
+
+### Sincronização
+
+- evento de push em WIKI/: publicação orientada a evento;
+- reconciliação programada: a cada 5 minutos;
+- execução manual: workflow_dispatch;
+- credencial necessária para publicar na Wiki nativa: B3_WIKI_TOKEN.
+
+O intervalo de 5 minutos é uma reconciliação, não um mecanismo de latência mínima. O caminho principal é o evento de alteração.
+
+Referências:
+
+- WIKI/README.md
+- .github/workflows/sincronizar-wiki-b3.yml
+- scripts/ingestao/sincronizar_wiki_b3.py
+- WIKI/09-AUTOMACAO/WIKI_NATIVA.md
+
 ## Licença e uso
 
 Este repositório é destinado a pesquisa, engenharia de dados, análise de mercado e desenvolvimento de ferramentas.
