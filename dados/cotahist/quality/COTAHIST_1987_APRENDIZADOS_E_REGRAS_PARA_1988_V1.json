@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1987,
+  "status": "APRENDIZADO_CONSOLIDADO_PARA_PROXIMAS_CERTIFICACOES",
+  "lessons": [
+    "Não permanecer indefinidamente em uma pendência documental quando os gates estruturais já foram certificados.",
+    "Separar certificação estrutural de certificação semântica/econômica.",
+    "Nunca corrigir PRAZOT ou outro campo histórico sem evidência primária.",
+    "Cópia secundária que apenas declara a existência do arquivo não substitui comparação byte-level.",
+    "Gaps de calendário devem permanecer como candidatos quando não houver fonte histórica primária.",
+    "Repetição de datas entre ativos não constitui duplicidade de pregão.",
+    "Toda exceção deve permanecer reabrível e rastreável."
+  ],
+  "protocol_for_1988": [
+    "Executar gates estruturais normalmente.",
+    "Registrar exceções sem bloquear indefinidamente o fluxo quando não afetarem integridade estrutural.",
+    "Manter arquivo de exceções por ano.",
+    "Encerrar cada ano com certificado operacional explícito."
+  ],
+  "inherited_exception": "PRAZOT 1987: 34 registros; padrões 000f20=33, 9c0f20=1, 000720=1; sem interpretação/correção.",
+  "next_year": "1988"
+}
