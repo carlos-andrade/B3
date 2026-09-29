@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1988,
+  "status": "ABERTURA_FASE_0_CONCLUIDA_COM_VALIDACAO_PRELIMINAR",
+  "audit_timestamp_utc": "2026-09-29T13:55:00Z",
+  "repository_head_at_audit": "241949086957b555ceee9d88d080b958de026365",
+  "raw": {
+    "path": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+    "exists": true,
+    "git_blob_sha": "b18ab2f71cd719bc7beafd2ab7a5d621638890ab",
+    "size_bytes": 8122653,
+    "binary_sha256": null,
+    "binary_sha256_status": "NAO_CALCULADO_NESTA_ETAPA_POR_LIMITACAO_DE_ACESSO_BINARIO_DO_CONECTOR",
+    "raw_mutation": false
+  },
+  "normalized": {
+    "path": "dados/cotahist/normalized/anual/COTAHIST_A1988.csv",
+    "exists": false,
+    "status": "AINDA_NAO_NORMALIZADO"
+  },
+  "checks": {
+    "raw_presence": true,
+    "raw_git_object_identified": true,
+    "raw_size_recorded": true,
+    "normalized_presence": false,
+    "zip_member_verified": false,
+    "record_length_verified": false,
+    "header_trailer_verified": false,
+    "date_range_verified": false
+  },
+  "governance": {
+    "1987_exception_inherited": false,
+    "note": "A excecao PRAZOT de 1987 permanece registrada e nao e herdada como excecao de 1988.",
+    "raw_must_remain_immutable": true,
+    "no_semantic_interpretation_at_opening": true,
+    "fail_closed": true
+  },
+  "decision": {
+    "phase_0": "PARCIALMENTE_CONCLUIDA",
+    "reason": "O RAW de 1988 foi identificado no repositorio, mas a normalizacao ainda nao existe e a validacao interna do ZIP/estrutura binaria ainda nao foi executada.",
+    "next_gate": "NORMALIZACAO_CONTROLADA_COTAHIST_1988",
+    "release_to_phase_1": false
+  }
+}
