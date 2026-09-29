@@ -37,6 +37,7 @@ jobs:
         run: python scripts/ingestao/validar_integridade_cotahist_1988_fase10_v1.py
 
       - name: Publicar evidencia
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: cotahist-1988-fase10-integridade
@@ -44,6 +45,7 @@ jobs:
           retention-days: 30
 
       - name: Commitar evidencia
+        if: ${{ always() && hashFiles('dados/cotahist/quality/COTAHIST_1988_FASE10_INTEGRIDADE_V1.json') != '' }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
