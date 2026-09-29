@@ -63,7 +63,7 @@ jobs:
                   print(f"LAST_DATE_RAW={last}")
                   assert lengths == {245}, lengths
                   assert count > 0
-                  assert first.startswith("1988-") and last.startswith("1988-")
+                  assert first[:4] == "1988" and last[:4] == "1988"
           PY
 
       - name: Normalizar em area temporaria
