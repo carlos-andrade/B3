@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "status": "QUANTIDADE_VOLUME_AUDITORIA_1988",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "records": 167674,
+  "raw_field_stats": {
+    "records": 167674,
+    "negative": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "non_numeric": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "zero": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "control_bytes": {
+      "totneg": 0,
+      "quatot": 0,
+      "voltot": 0
+    },
+    "cross_field_patterns": {
+      "totneg_zero_qty_nonzero": 0,
+      "totneg_zero_volume_nonzero": 0,
+      "totneg_positive_qty_zero": 0,
+      "totneg_positive_volume_zero": 0,
+      "qty_positive_volume_zero": 0,
+      "qty_zero_volume_positive": 0
+    },
+    "examples": []
+  },
+  "normalized_mismatch_count": {
+    "totneg": 0,
+    "quatot": 0,
+    "voltot": 0
+  },
+  "scales_observed": {
+    "totneg": {},
+    "quatot": {},
+    "voltot": {
+      "100": 142146,
+      "1E+2": 8314,
+      "1.0E+2": 17214
+    }
+  },
+  "gates": {
+    "records_positive": true,
+    "all_numeric": true,
+    "no_negative": true,
+    "no_control_bytes": true,
+    "raw_normalized_mismatch_zero": true
+  },
+  "semantic_interpretation": false,
+  "correction_applied": false,
+  "fail_closed": true,
+  "note": "Auditoria estrutural de TOTNEG, QUATOT e VOLTOT. Padrões cruzados são observacionais e não são classificados como erro econômico sem evidência primária."
+}
