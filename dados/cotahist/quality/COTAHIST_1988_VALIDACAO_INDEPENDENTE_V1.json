@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1988,
+  "phase": 10,
+  "status": "VALIDACAO_INDEPENDENTE_CONCLUIDA_COM_EXCECOES_PRESERVADAS",
+  "method": "Releitura independente do RAW ZIP; SHA-256, contagem, fingerprints das excecoes e calendario derivados sem reutilizar os auditores anteriores.",
+  "raw": {
+    "sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+    "expected_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+    "sha_match": true,
+    "type01_rows": 167674,
+    "record_length_unique": [
+      245
+    ]
+  },
+  "independent_findings": {
+    "prazot_nonstandard_count": 47,
+    "premed_scale_lines": [
+      9267,
+      20374,
+      20596
+    ],
+    "ohlc_order_lines": [
+      123264
+    ],
+    "calendar_candidate_gaps": [
+      "1988-01-25",
+      "1988-02-15",
+      "1988-02-16",
+      "1988-02-17",
+      "1988-03-31",
+      "1988-04-01",
+      "1988-04-18",
+      "1988-05-13",
+      "1988-05-30",
+      "1988-09-07",
+      "1988-10-10",
+      "1988-10-31",
+      "1988-11-15"
+    ]
+  },
+  "validation_gates": {
+    "raw_identity": true,
+    "row_count": true,
+    "fixed_record_length": true,
+    "prazot_fingerprint_reproduced": true,
+    "ohlc_scale_fingerprint_reproduced": true,
+    "ohlc_order_fingerprint_reproduced": true,
+    "calendar_gaps_reproduced": true
+  },
+  "governance": {
+    "raw_immutable": true,
+    "no_correction": true,
+    "no_semantic_reinterpretation": true,
+    "economic_release": false,
+    "fail_closed": true
+  },
+  "decision": {
+    "independent_validation_passed": true,
+    "exceptions_resolved": false,
+    "release_to_phase_11": true,
+    "next_gate": "CERTIFICACAO_FINAL_COTAHIST_1988"
+  }
+}
