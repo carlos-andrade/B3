@@ -1,6 +1,11 @@
 name: COTAHIST 1988 - Contexto Excecoes OHLC V1
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/ingestao/auditar_ohlc_excecoes_contexto_1988_v1.py'
+      - '.github/workflows/cotahist-ohlc-excecoes-contexto-1988-v1.yml'
+      - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
 permissions: {contents: write}
 jobs:
   audit:
