@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1988,
+  "phase": 1,
+  "status": "FASE_1_CONCLUIDA_LIBERADO_PARA_FASE_2",
+  "gate": "RECONCILIACAO_RAW_NORMALIZED_COTAHIST_1988",
+  "workflow": {
+    "path": ".github/workflows/cotahist-reconciliacao-1988-v1.yml",
+    "final_run_id": 36581910111,
+    "final_run_number": 4,
+    "final_conclusion": "success",
+    "trigger_sha": "724cc91ef08c58a367ac7908843bd9005b48f262",
+    "evidence_commit": "c51a945d76108dc7fcc60db92cb3b9d61511ffad"
+  },
+  "reconciliation": {
+    "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+    "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+    "raw_type01_records": 167674,
+    "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1988.csv",
+    "normalized_sha256": "d4d9ae5cd4106967a195567278b44a9a71d788203d10a7372b98ce6fb1691a03",
+    "normalized_rows": 167674,
+    "columns": 25,
+    "row_count_equal": true,
+    "field_mismatches_all_records": 0,
+    "sample_30_count": 30,
+    "sample_30_mismatches": 0
+  },
+  "engineering_attempts": [
+    {
+      "run_id": 36581359365,
+      "run_number": 1,
+      "conclusion": "failure",
+      "cause": "NORMALIZED CSV em Git LFS foi lido como ponteiro porque o checkout não habilitava LFS."
+    },
+    {
+      "run_id": 36581468393,
+      "run_number": 2,
+      "conclusion": "failure",
+      "cause": "Após habilitar LFS, a reconciliação encontrou todos os 25 campos sem divergência, mas a montagem da amostra determinística gerou 29 posições únicas."
+    },
+    {
+      "run_id": 36581682086,
+      "run_number": 3,
+      "conclusion": "failure",
+      "cause": "Correção da amostra truncou o script durante atualização do arquivo; o job executou sem produzir a evidência esperada."
+    },
+    {
+      "run_id": 36581910111,
+      "run_number": 4,
+      "conclusion": "success",
+      "cause": "Script integral restaurado, amostra determinística fixada em 30 posições e checkout LFS mantido."
+    }
+  ],
+  "governance": {
+    "raw_immutable": true,
+    "semantic_interpretation": false,
+    "economic_release": false,
+    "1987_exception_inherited": false,
+    "fail_closed": true,
+    "failed_attempts_preserved": true
+  },
+  "evidence": {
+    "path": "dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_RAW_NORMALIZED_V1.json",
+    "status": "RECONCILIACAO_CONCLUIDA"
+  },
+  "decision": {
+    "phase_1": "CONCLUIDA",
+    "release_to_phase_2": true,
+    "next_gate": "CHAVE_LOGICA_COTAHIST_1988",
+    "rule": "Nenhuma interpretacao semantica ou liberacao economica foi feita nesta fase."
+  }
+}
