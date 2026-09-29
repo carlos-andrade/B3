@@ -1,0 +1,16 @@
+{
+  "schema_version":"1.0.0","year":1988,"phase":5,
+  "status":"EXCECOES_OHLC_CLASSIFICADAS_SEM_CORRECAO",
+  "raw_sha256":"b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "finding":{"total_violations":4,"premed_outside_ohlc":3,"true_ohlc_order_violation":1,
+    "premed_scale_anomaly_lines":[9267,20374,20596],"valid_order_anomaly_line":123264},
+  "records":[
+    {"line":9267,"date":"19880126","codneg":"CSN 6","tpmerc":"020","codbdi":"96","preab":100,"premax":100,"premin":100,"premed_raw":100000,"preult":100,"classification":"PREMED_INCOMPATIVEL_COM_FAIXA_OHLC; padrao 1000x observado; sem correcao"},
+    {"line":20374,"date":"19880223","codneg":"CSN 6","tpmerc":"010","codbdi":"58","preab":530,"premax":530,"premin":530,"premed_raw":530000,"preult":530,"classification":"PREMED_INCOMPATIVEL_COM_FAIXA_OHLC; padrao 1000x observado; sem correcao"},
+    {"line":20596,"date":"19880223","codneg":"CSN 6","tpmerc":"020","codbdi":"96","preab":150,"premax":150,"premin":150,"premed_raw":150000,"preult":150,"classification":"PREMED_INCOMPATIVEL_COM_FAIXA_OHLC; padrao 1000x observado; sem correcao"},
+    {"line":123264,"date":"19880927","codneg":"CLD 2","tpmerc":"010","codbdi":"02","preab":1800,"premax":1900,"premin":1800,"premed":1868,"preult":1915,"classification":"ORDEM_OHLC_INCONSISTENTE; PREULT ACIMA DO PREMAX"}
+  ],
+  "evidence":{"context_file":"dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json","official_layout":"https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf"},
+  "governance":{"raw_immutable":true,"no_correction":true,"economic_reinterpretation":false,"fail_closed":true},
+  "next_action":"prosseguir para auditoria de quantidade, volume e negocios; excecoes OHLC permanecem reabertas para validacao independente."
+}
