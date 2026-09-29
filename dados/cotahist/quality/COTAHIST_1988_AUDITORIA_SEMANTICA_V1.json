@@ -1,0 +1,997 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_SEMANTICA_INICIAL_1988",
+  "year": 1988,
+  "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP",
+  "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
+  "zip_member": "COTAHIST.A1988",
+  "records_type01": 167674,
+  "physical_line_lengths": {
+    "245": 167676
+  },
+  "invalid_trade_date_records": 0,
+  "field_inventory": {
+    "data_pregao": {
+      "start": 3,
+      "end": 10,
+      "width": 8
+    },
+    "codbdi": {
+      "start": 11,
+      "end": 12,
+      "width": 2
+    },
+    "codneg": {
+      "start": 13,
+      "end": 24,
+      "width": 12
+    },
+    "tpmerc": {
+      "start": 25,
+      "end": 27,
+      "width": 3
+    },
+    "nomres": {
+      "start": 28,
+      "end": 39,
+      "width": 12
+    },
+    "especi": {
+      "start": 40,
+      "end": 49,
+      "width": 10
+    },
+    "prazot": {
+      "start": 50,
+      "end": 52,
+      "width": 3
+    },
+    "modref": {
+      "start": 53,
+      "end": 56,
+      "width": 4
+    },
+    "preab": {
+      "start": 57,
+      "end": 69,
+      "width": 13
+    },
+    "premax": {
+      "start": 70,
+      "end": 82,
+      "width": 13
+    },
+    "premin": {
+      "start": 83,
+      "end": 95,
+      "width": 13
+    },
+    "premed": {
+      "start": 96,
+      "end": 108,
+      "width": 13
+    },
+    "preult": {
+      "start": 109,
+      "end": 121,
+      "width": 13
+    },
+    "totneg": {
+      "start": 148,
+      "end": 152,
+      "width": 5
+    },
+    "quatot": {
+      "start": 153,
+      "end": 170,
+      "width": 18
+    },
+    "voltot": {
+      "start": 171,
+      "end": 188,
+      "width": 18
+    },
+    "preexe": {
+      "start": 189,
+      "end": 201,
+      "width": 13
+    },
+    "indopc": {
+      "start": 202,
+      "end": 202,
+      "width": 1
+    },
+    "datven": {
+      "start": 203,
+      "end": 210,
+      "width": 8
+    },
+    "fatcot": {
+      "start": 211,
+      "end": 217,
+      "width": 7
+    },
+    "ptoexe": {
+      "start": 218,
+      "end": 230,
+      "width": 13
+    },
+    "codisi": {
+      "start": 231,
+      "end": 242,
+      "width": 12
+    },
+    "dimes": {
+      "start": 243,
+      "end": 245,
+      "width": 3
+    }
+  },
+  "domains": {
+    "codbdi": {
+      "distinct": 16,
+      "top": [
+        [
+          "02",
+          97061
+        ],
+        [
+          "96",
+          57955
+        ],
+        [
+          "78",
+          4732
+        ],
+        [
+          "62",
+          2968
+        ],
+        [
+          "06",
+          1999
+        ],
+        [
+          "10",
+          1462
+        ],
+        [
+          "14",
+          1024
+        ],
+        [
+          "38",
+          356
+        ],
+        [
+          "22",
+          41
+        ],
+        [
+          "58",
+          37
+        ],
+        [
+          "50",
+          28
+        ],
+        [
+          "82",
+          6
+        ],
+        [
+          "46",
+          2
+        ],
+        [
+          "18",
+          1
+        ],
+        [
+          "42",
+          1
+        ],
+        [
+          "54",
+          1
+        ]
+      ]
+    },
+    "tpmerc": {
+      "distinct": 8,
+      "top": [
+        [
+          "010",
+          101130
+        ],
+        [
+          "020",
+          58450
+        ],
+        [
+          "070",
+          4732
+        ],
+        [
+          "030",
+          2968
+        ],
+        [
+          "012",
+          356
+        ],
+        [
+          "017",
+          31
+        ],
+        [
+          "080",
+          6
+        ],
+        [
+          "013",
+          1
+        ]
+      ]
+    },
+    "codneg": {
+      "distinct": 1639,
+      "top": [
+        [
+          "PMA 2",
+          654
+        ],
+        [
+          "BES 2",
+          601
+        ],
+        [
+          "PET 2",
+          600
+        ],
+        [
+          "CPN 7",
+          578
+        ],
+        [
+          "FNV 6",
+          570
+        ],
+        [
+          "SHA 2",
+          560
+        ],
+        [
+          "BB  2",
+          548
+        ],
+        [
+          "BBD 4",
+          545
+        ],
+        [
+          "IVI 4",
+          533
+        ],
+        [
+          "VAL 2",
+          530
+        ],
+        [
+          "CPF 2",
+          529
+        ],
+        [
+          "PET 3",
+          529
+        ],
+        [
+          "UNI 8",
+          529
+        ],
+        [
+          "SAG 2",
+          526
+        ],
+        [
+          "VAG 2",
+          526
+        ],
+        [
+          "DUR 2",
+          520
+        ],
+        [
+          "MAN 1",
+          519
+        ],
+        [
+          "ITA 4",
+          518
+        ],
+        [
+          "AVI 2",
+          512
+        ],
+        [
+          "EST 2",
+          509
+        ],
+        [
+          "RPS 2",
+          509
+        ],
+        [
+          "WHM 1",
+          507
+        ],
+        [
+          "BB  3",
+          505
+        ],
+        [
+          "HER 2",
+          504
+        ],
+        [
+          "LEV 2",
+          504
+        ]
+      ]
+    },
+    "codisi": {
+      "distinct": 1354,
+      "top": [
+        [
+          "PMAMACPP",
+          2663
+        ],
+        [
+          "PETRACPP",
+          1972
+        ],
+        [
+          "SHAPACPP",
+          1115
+        ],
+        [
+          "BBASACPP",
+          689
+        ],
+        [
+          "BESPACPP",
+          678
+        ],
+        [
+          "CPNEACPPA",
+          653
+        ],
+        [
+          "VALEACPP",
+          634
+        ],
+        [
+          "SAGRACPP",
+          611
+        ],
+        [
+          "FNV ACPPA",
+          604
+        ],
+        [
+          "RPSAACPP",
+          559
+        ],
+        [
+          "BBDCACPN",
+          545
+        ],
+        [
+          "DURAACPP",
+          545
+        ],
+        [
+          "VAGVACPP",
+          545
+        ],
+        [
+          "IVILACPN",
+          533
+        ],
+        [
+          "UNIPACPPB",
+          530
+        ],
+        [
+          "CPFLACPP",
+          529
+        ],
+        [
+          "PETRACON",
+          529
+        ],
+        [
+          "LEVEACPP",
+          527
+        ],
+        [
+          "AVILACPP",
+          523
+        ],
+        [
+          "MANMACOP",
+          522
+        ],
+        [
+          "ITAUACPN",
+          518
+        ],
+        [
+          "ESTRACPP",
+          511
+        ],
+        [
+          "WHMTACOP",
+          509
+        ],
+        [
+          "HERIACPP",
+          508
+        ],
+        [
+          "PRSCACPP",
+          506
+        ]
+      ]
+    },
+    "dimes": {
+      "distinct": 169,
+      "top": [
+        [
+          "103",
+          5643
+        ],
+        [
+          "104",
+          5475
+        ],
+        [
+          "102",
+          4970
+        ],
+        [
+          "106",
+          4926
+        ],
+        [
+          "101",
+          4874
+        ],
+        [
+          "105",
+          4284
+        ],
+        [
+          "125",
+          3774
+        ],
+        [
+          "013",
+          3567
+        ],
+        [
+          "121",
+          3513
+        ],
+        [
+          "124",
+          3163
+        ],
+        [
+          "128",
+          3053
+        ],
+        [
+          "123",
+          2885
+        ],
+        [
+          "122",
+          2852
+        ],
+        [
+          "136",
+          2814
+        ],
+        [
+          "132",
+          2802
+        ],
+        [
+          "107",
+          2784
+        ],
+        [
+          "135",
+          2659
+        ],
+        [
+          "139",
+          2659
+        ],
+        [
+          "131",
+          2644
+        ],
+        [
+          "012",
+          2596
+        ],
+        [
+          "140",
+          2510
+        ],
+        [
+          "119",
+          2503
+        ],
+        [
+          "143",
+          2493
+        ],
+        [
+          "117",
+          2485
+        ],
+        [
+          "126",
+          2466
+        ]
+      ]
+    },
+    "especi": {
+      "distinct": 334,
+      "top": [
+        [
+          "PP",
+          46967
+        ],
+        [
+          "PN",
+          19970
+        ],
+        [
+          "ON",
+          13072
+        ],
+        [
+          "OP",
+          7726
+        ],
+        [
+          "PP  C01",
+          6243
+        ],
+        [
+          "PPA",
+          4759
+        ],
+        [
+          "PNA",
+          3703
+        ],
+        [
+          "PP  C02",
+          3183
+        ],
+        [
+          "PPB",
+          2984
+        ],
+        [
+          "PNB",
+          2244
+        ],
+        [
+          "OP  C01",
+          2040
+        ],
+        [
+          "PP  C03",
+          1992
+        ],
+        [
+          "PP  REC",
+          1695
+        ],
+        [
+          "PP  ED",
+          1667
+        ],
+        [
+          "PP  C06",
+          1485
+        ],
+        [
+          "PP  C04",
+          1407
+        ],
+        [
+          "PP  INT",
+          1381
+        ],
+        [
+          "PP  C65",
+          1284
+        ],
+        [
+          "PN  ED",
+          1250
+        ],
+        [
+          "PP  C05",
+          1233
+        ],
+        [
+          "ON  ED",
+          1093
+        ],
+        [
+          "PP  C53",
+          1073
+        ],
+        [
+          "CI",
+          1024
+        ],
+        [
+          "PP  C17",
+          990
+        ],
+        [
+          "OP  C03",
+          981
+        ]
+      ]
+    },
+    "prazot": {
+      "distinct": 7,
+      "top": [
+        [
+          "",
+          159564
+        ],
+        [
+          "000",
+          5095
+        ],
+        [
+          "030",
+          2968
+        ],
+        [
+          "\u0000\u000f",
+          43
+        ],
+        [
+          "\u0002\u000f",
+          2
+        ],
+        [
+          "\u0000",
+          1
+        ],
+        [
+          "\"",
+          1
+        ]
+      ]
+    },
+    "indopc": {
+      "distinct": 1,
+      "top": [
+        [
+          "0",
+          167674
+        ]
+      ]
+    }
+  },
+  "observed_context": {
+    "tpmerc_codbdi_distinct": 17,
+    "tpmerc_codbdi_top": [
+      {
+        "tpmerc": "010",
+        "codbdi": "02",
+        "count": 97061
+      },
+      {
+        "tpmerc": "020",
+        "codbdi": "96",
+        "count": 57955
+      },
+      {
+        "tpmerc": "070",
+        "codbdi": "78",
+        "count": 4732
+      },
+      {
+        "tpmerc": "030",
+        "codbdi": "62",
+        "count": 2968
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "06",
+        "count": 1999
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "10",
+        "count": 1462
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "14",
+        "count": 529
+      },
+      {
+        "tpmerc": "020",
+        "codbdi": "14",
+        "count": 495
+      },
+      {
+        "tpmerc": "012",
+        "codbdi": "38",
+        "count": 356
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "22",
+        "count": 41
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "58",
+        "count": 37
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "50",
+        "count": 28
+      },
+      {
+        "tpmerc": "080",
+        "codbdi": "82",
+        "count": 6
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "46",
+        "count": 2
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "54",
+        "count": 1
+      },
+      {
+        "tpmerc": "013",
+        "codbdi": "42",
+        "count": 1
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "18",
+        "count": 1
+      }
+    ],
+    "prazot_by_tpmerc_codbdi": [
+      {
+        "tpmerc": "010",
+        "codbdi": "02",
+        "prazot_top": [
+          [
+            "",
+            97061
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "06",
+        "prazot_top": [
+          [
+            "",
+            1999
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "10",
+        "prazot_top": [
+          [
+            "",
+            1462
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "14",
+        "prazot_top": [
+          [
+            "",
+            529
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "18",
+        "prazot_top": [
+          [
+            "",
+            1
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "22",
+        "prazot_top": [
+          [
+            "",
+            41
+          ]
+        ]
+      },
+      {
+        "tpmerc": "010",
+        "codbdi": "58",
+        "prazot_top": [
+          [
+            "",
+            37
+          ]
+        ]
+      },
+      {
+        "tpmerc": "012",
+        "codbdi": "38",
+        "prazot_top": [
+          [
+            "000",
+            356
+          ]
+        ]
+      },
+      {
+        "tpmerc": "013",
+        "codbdi": "42",
+        "prazot_top": [
+          [
+            "000",
+            1
+          ]
+        ]
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "46",
+        "prazot_top": [
+          [
+            "",
+            2
+          ]
+        ]
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "50",
+        "prazot_top": [
+          [
+            "",
+            28
+          ]
+        ]
+      },
+      {
+        "tpmerc": "017",
+        "codbdi": "54",
+        "prazot_top": [
+          [
+            "",
+            1
+          ]
+        ]
+      },
+      {
+        "tpmerc": "020",
+        "codbdi": "14",
+        "prazot_top": [
+          [
+            "",
+            495
+          ]
+        ]
+      },
+      {
+        "tpmerc": "020",
+        "codbdi": "96",
+        "prazot_top": [
+          [
+            "",
+            57908
+          ],
+          [
+            "\u0000\u000f",
+            43
+          ],
+          [
+            "\u0002\u000f",
+            2
+          ],
+          [
+            "\"",
+            1
+          ],
+          [
+            "\u0000",
+            1
+          ]
+        ]
+      },
+      {
+        "tpmerc": "030",
+        "codbdi": "62",
+        "prazot_top": [
+          [
+            "030",
+            2968
+          ]
+        ]
+      },
+      {
+        "tpmerc": "070",
+        "codbdi": "78",
+        "prazot_top": [
+          [
+            "000",
+            4732
+          ]
+        ]
+      },
+      {
+        "tpmerc": "080",
+        "codbdi": "82",
+        "prazot_top": [
+          [
+            "000",
+            6
+          ]
+        ]
+      }
+    ]
+  },
+  "semantic_gates": {
+    "record_type_01_245_bytes": true,
+    "trade_date_valid": true,
+    "tpmerc_observed": true,
+    "codbdi_observed": true,
+    "economic_meaning_not_asserted": true
+  },
+  "assessment": {
+    "status": "OBSERVACIONAL",
+    "economic_meaning_of_codes": "NAO_CERTIFICADO_NESTA_FASE",
+    "primary_historical_evidence_required_for_interpretation": true,
+    "next_gate": [
+      "integridade dos campos",
+      "OHLC",
+      "quantidade/volume",
+      "calendario",
+      "evidencia historica primaria para interpretacoes economicas"
+    ]
+  }
+}
