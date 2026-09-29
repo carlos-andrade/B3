@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "certificate_id": "COTAHIST_1988_FASE_7_CERTIFICACAO_V1",
+  "year": 1988,
+  "phase": 7,
+  "phase_name": "CALENDARIO_PREGAO",
+  "status": "FASE_7_CONCLUIDA",
+  "workflow": {
+    "path": ".github/workflows/cotahist-auditoria-calendario-1988-v1.yml",
+    "run_id": 36588636609,
+    "run_number": 1,
+    "conclusion": "success",
+    "head_sha": "825da50b9cc521195a8c2fb1d91aa3d33c83ad3e"
+  },
+  "evidence": {
+    "path": "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json",
+    "records": 167674,
+    "first_date": "1988-01-04",
+    "last_date": "1988-12-29",
+    "distinct_trading_dates": 246,
+    "invalid_or_weekend_dates": 0,
+    "out_of_order_records": 0,
+    "candidate_weekday_gaps": 13
+  },
+  "governance": {
+    "raw_immutable": true,
+    "semantic_interpretation": false,
+    "holiday_classification": false,
+    "correction_applied": false,
+    "fail_closed": true,
+    "exception_inherited_from_1987": false
+  },
+  "decision": {
+    "phase_7_complete": true,
+    "release_to_phase_8": true,
+    "next_gate": "RECONCILIACAO_FINAL_COTAHIST_1988",
+    "structural_certification": "PASSED_FOR_PHASE_7",
+    "economic_semantics_certified": false
+  },
+  "note": "As 13 lacunas em dias uteis permanecem como candidatos a dias sem pregao. Nenhuma foi classificada como feriado ou ausencia de pregao sem fonte historica primaria."
+}
