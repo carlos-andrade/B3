@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1994,
+  "phase": "FASE03",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE04",
+  "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP",
+  "raw_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
+  "zip_member_count": 1,
+  "zip_member": "COTAHIST.A1994",
+  "record_length_bytes": 245,
+  "total_records": 119099,
+  "record_type_counts": {
+    "00": 1,
+    "01": 119097,
+    "99": 1
+  },
+  "quote_records_type_01": 119097,
+  "invalid_record_lengths": 0,
+  "invalid_dates": 0,
+  "first_quote_date": "1994-01-03",
+  "last_quote_date": "1994-12-29",
+  "validated_at_utc": "2026-09-30T15:14:30.758253+00:00",
+  "parsing_statement": "Parsing estrutural do membro COTAHIST concluído sem registros fora de 245 bytes e sem datas inválidas nos registros tipo 01."
+}
