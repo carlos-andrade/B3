@@ -524,3 +524,43 @@ Uma atualização nova não poderá apagar a evidência da versão anterior. Cor
 > **Se não puder ser rastreado, testado, reproduzido e explicado, não deverá ser tratado como conhecimento validado do projeto.**
 
 O projeto pode avançar com incertezas. O que não pode acontecer é transformar incerteza em certeza sem evidência.
+
+
+## 32. FECHAMENTO, CERTIFICAÇÃO E TRANSIÇÃO
+
+A governança do projeto passa a reconhecer explicitamente um estágio posterior à validação e publicação: **certificação, fechamento formal do ciclo e autorização controlada de transição**.
+
+A cadeia de referência para processos históricos governados é:
+
+**FONTE → RAW → PROCESSADO → NORMALIZADO → VALIDADO → PRÉ-RELEASE → VALIDAÇÃO INDEPENDENTE → CERTIFICAÇÃO → FECHAMENTO → TRANSIÇÃO**
+
+A conclusão técnica de uma etapa não implica autorização automática para iniciar a etapa seguinte quando existir requisito de fechamento formal.
+
+Para ciclos anuais ou equivalentes, a transição somente pode ocorrer quando:
+- os artefatos obrigatórios existirem;
+- as validações críticas estiverem registradas;
+- a certificação aplicável estiver registrada;
+- bloqueios e exceções estiverem explicitamente classificados;
+- houver evidência de fechamento;
+- a autorização de transição estiver registrada;
+- o histórico anterior permanecer preservado.
+
+O fechamento de um período não deve ser confundido com garantia de frescor dos dados correntes nem com certificação de períodos diferentes.
+
+### 32.1 Regra regente de existência e validação
+
+Quando um fluxo B3/COTAHIST adotar a REGRA GERAL — EXISTÊNCIA E VALIDAÇÃO DE EVIDÊNCIAS, essa regra é normativa para a existência física, identificabilidade, validação, registro Git, avanço de fase e fechamento anual. Documentos operacionais devem complementar a regra, não contradizê-la.
+
+### 32.2 Não retrocertificação
+
+A certificação de um período não certifica automaticamente períodos anteriores ou posteriores. Evidência retrospectiva deve ser identificada como retrospectiva e submetida aos testes correspondentes.
+
+## 33. CRITÉRIO DE REVISÃO APÓS INCIDENTES
+
+Uma falha estrutural, descoberta de evidência relevante ou mudança de contrato pode exigir revisão extraordinária da governança, inclusive após um ciclo já certificado. Revisão posterior não apaga a certificação histórica; deve registrar o novo estado, seu alcance e eventual impacto sobre derivados.
+
+## 34. HISTÓRICO DE VERSÕES — ATUALIZAÇÃO
+
+| Versão | Data | Alteração | Status |
+|---|---|---|---|
+| 1.2 | 30/09/2026 | Inclusão formal de certificação, fechamento, transição controlada, não retrocertificação e precedência da regra regente de existência/validação. | VIGENTE |
