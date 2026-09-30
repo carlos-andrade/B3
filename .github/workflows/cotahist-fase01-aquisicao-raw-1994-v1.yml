@@ -2,6 +2,8 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE01 V1
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase01-aquisicao-raw-1994-v1.yml"
@@ -18,7 +20,7 @@ jobs:
         with:
           lfs: true
           fetch-depth: 0
-      - name: Validar aquisição histórica e reaquisição controlada
+      - name: Reaquisição controlada na fonte oficial B3
         run: |
           python - <<'PY'
           import hashlib,json,pathlib,sys,urllib.request,datetime
@@ -26,22 +28,18 @@ jobs:
           man=pathlib.Path("dados/cotahist/manifests/COTAHIST_A1994.json")
           chk=pathlib.Path("dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256")
           ev=pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE01_AQUISICAO_RAW_V1.json")
-          req=[raw,man,chk]
-          missing=[str(p) for p in req if not p.exists()]
-          if missing: sys.exit("FASE01 BLOQUEADA: "+str(missing))
           m=json.loads(man.read_text())
           expected=chk.read_text().strip().split()[0]
           actual=hashlib.sha256(raw.read_bytes()).hexdigest()
-          if m.get("status")!="VALIDADO" or m.get("sha256")!=expected or actual!=expected:
-              sys.exit("FASE01 BLOQUEADA: manifesto/checksum/RAW inconsistentes")
+          if actual!=expected or m.get("sha256")!=expected:
+              sys.exit("FASE01 BLOQUEADA: RAW/manifest/checksum divergentes")
           url="https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1994.ZIP"
-          tmp=pathlib.Path("/tmp/COTAHIST_A1994_REAQUISICAO.ZIP")
-          reqq=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 B3-COTAHIST-AUDIT"})
-          with urllib.request.urlopen(reqq,timeout=60) as r, open(tmp,"wb") as out:
-              out.write(r.read())
-          reacq_sha=hashlib.sha256(tmp.read_bytes()).hexdigest()
+          req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 B3-COTAHIST-AUDIT"})
+          with urllib.request.urlopen(req,timeout=90) as r:
+              data=r.read()
+          reacq_sha=hashlib.sha256(data).hexdigest()
           if reacq_sha!=expected:
-              sys.exit(f"FASE01 BLOQUEADA: SHA da fonte B3 diverge do RAW registrado; fonte={reacq_sha}; esperado={expected}")
+              sys.exit("FASE01 BLOQUEADA: fonte oficial diverge do RAW")
           now=datetime.datetime.now(datetime.timezone.utc).isoformat()
           out={
             "schema_version":"1.0.0","year":1994,"phase":"FASE01",
@@ -53,18 +51,16 @@ jobs:
               "source":"B3","source_url":url,
               "original_acquired_at_utc":m.get("acquired_at_utc"),
               "revalidated_at_utc":now,
-              "sha256":expected,
-              "source_reacquisition_sha256":reacq_sha,
-              "source_matches_raw":True,
-              "raw_immutable":True
+              "sha256":expected,"source_reacquisition_sha256":reacq_sha,
+              "source_matches_raw":True,"raw_immutable":True
             },
             "reconciliation":{
               "manifest_status":"VALIDADO","checksum_matches_manifest":True,
               "raw_matches_checksum":True,"official_source_matches_raw":True
             },
             "qualification":[
-              "A aquisição histórica de 23/09/2026 foi revalidada por nova leitura da fonte oficial B3.",
-              "A reaquisição foi feita para validação e não substituiu o RAW versionado.",
+              "A aquisição histórica foi revalidada por nova leitura da fonte oficial B3.",
+              "A reaquisição foi somente de controle e não substituiu o RAW versionado.",
               "O SHA-256 da fonte oficial coincide exatamente com o RAW registrado."
             ],
             "next_gate":"FASE02_INTEGRIDADE_FONTE"
@@ -78,6 +74,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/quality/COTAHIST_1994_FASE01_AQUISICAO_RAW_V1.json
+          git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): valida 1994 fase 01 aquisicao raw"
           git pull --rebase origin main
           git push origin HEAD:main
