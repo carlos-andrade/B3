@@ -67,8 +67,8 @@ checks={
  "manifest_validated":manifest.get("status")=="VALIDADO",
  "raw_sha256_matches_manifest":raw_sha==manifest.get("raw_sha256"),
  "normalized_sha256_matches_manifest":norm_sha==manifest.get("normalized_sha256"),
- "normalized_rows_match_manifest":manifest.get("row_count")==119097,
- "normalized_fields_match_manifest":manifest.get("field_count")==25,
+ "normalized_rows_match_manifest":manifest.get("linhas_normalized")==119097,
+ "normalized_fields_match_manifest":manifest.get("campos")==25,
  "raw_immutable":True,
  "correction_applied":False
 }
