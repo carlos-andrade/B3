@@ -95,7 +95,7 @@ aliases = {
     "dimes": ("dimes", "dismes"),
     "datven": ("datven", "data_vencimento"),
     "indopc": ("indopc",),
-    "preab": ("preabe", "preab", "preco_abertura"),
+    "preabe": ("preabe", "preab", "preco_abertura"),
     "premax": ("premax", "preco_maximo"),
     "premin": ("premin", "preco_minimo"),
     "premed": ("premed", "preco_medio"),
@@ -283,7 +283,7 @@ for row in raw:
     try:
         op, hi, lo, mid, close = [
             Decimal(row[key])
-            for key in ("preab", "premax", "premin", "premed", "preult")
+            for key in ("preabe", "premax", "premin", "premed", "preult")
         ]
         if min(op, hi, lo, close) == 0:
             ohlc_ignored_zero_rows += 1
@@ -299,7 +299,7 @@ for row in raw:
                     "tpmerc": row["tpmerc"],
                     "codbdi": row["codbdi"],
                     "codneg": row["codneg"],
-                    "preab": row["preab"],
+                    "preabe": row["preabe"],
                     "premax": row["premax"],
                     "premin": row["premin"],
                     "premed": row["premed"],
