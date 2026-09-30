@@ -13,7 +13,7 @@
     "source": "B3",
     "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1994.ZIP",
     "original_acquired_at_utc": "2026-09-23T13:31:34.600678+00:00",
-    "revalidated_at_utc": "2026-09-30T15:09:31.641940+00:00",
+    "revalidated_at_utc": "2026-09-30T20:00:20.976566+00:00",
     "sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
     "source_reacquisition_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
     "source_matches_raw": true,
@@ -26,8 +26,8 @@
     "official_source_matches_raw": true
   },
   "qualification": [
-    "A aquisição histórica de 23/09/2026 foi revalidada por nova leitura da fonte oficial B3.",
-    "A reaquisição foi feita para validação e não substituiu o RAW versionado.",
+    "A aquisição histórica foi revalidada por nova leitura da fonte oficial B3.",
+    "A reaquisição foi somente de controle e não substituiu o RAW versionado.",
     "O SHA-256 da fonte oficial coincide exatamente com o RAW registrado."
   ],
   "next_gate": "FASE02_INTEGRIDADE_FONTE"
