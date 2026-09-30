@@ -83,3 +83,24 @@ A próxima versão poderá receber status **CERTIFICADA** somente após:
 A principal pendência identificada é o intervalo entre **22/09/2026** e **25/09/2026**, a última sessão regular anterior à data desta verificação. A governança deve permanecer em modo **fail-closed** até a reconciliação dessa lacuna e a certificação dos demais datasets obrigatórios.
 
 > Esta carta é uma certificação de estado, não uma declaração de que a cobertura integral já foi atingida.
+
+
+## 9. DISTINÇÃO ENTRE FRESCOR E FECHAMENTO HISTÓRICO
+
+O fechamento e a certificação de um período histórico não alteram automaticamente o estado desta Carta.
+
+A certificação de 1993, por exemplo, comprova o cumprimento dos gates definidos para o escopo histórico de 1993; ela **não** constitui prova de que os dados correntes de 2026 estejam atualizados até a última sessão disponível.
+
+Da mesma forma, uma futura certificação de frescor corrente não deve ser usada como prova retroativa da cadeia semântica de um ano histórico específico.
+
+## 10. REGRA DE ESTADO
+
+Esta Carta é uma **fotografia auditável de frescor**, e não uma carta de certificação histórica anual.
+
+Seu estado somente deve mudar mediante nova verificação da matriz de datasets obrigatórios, fontes, última observação disponível, última observação armazenada e evidências correspondentes.
+
+## 11. Histórico de versões — atualização
+
+| Versão | Data | Alteração | Status |
+|---|---|---|---|
+| 1.1 | 30/09/2026 | Inclusão da separação formal entre frescor corrente e fechamento/certificação histórica; preservação do status da fotografia original. | NÃO CERTIFICADA — PENDÊNCIA DE FRESCOR |
