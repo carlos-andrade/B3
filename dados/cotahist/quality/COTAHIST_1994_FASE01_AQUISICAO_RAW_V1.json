@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1994,
+  "phase": "FASE01",
+  "status": "VALIDADO_COM_RESSALVA",
+  "decision": "LIBERADO_PARA_FASE02",
+  "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+  "acquisition": {
+    "type": "historical_acquisition_reconciled",
+    "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP",
+    "manifest_path": "dados/cotahist/manifests/COTAHIST_A1994.json",
+    "checksum_path": "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256",
+    "source": "B3",
+    "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1994.ZIP",
+    "acquired_at_utc": "2026-09-23T13:31:34.600678+00:00",
+    "sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
+    "validation_statement": "manifesto histórico registra ZIP íntegro, 1 arquivo COTAHIST, registros de 245 bytes, header 00, cotações 01 e trailer 99"
+  },
+  "reconciliation": {
+    "manifest_status": "VALIDADO",
+    "checksum_matches_manifest": true,
+    "raw_exists": true,
+    "normalized_exists": true,
+    "normalized_manifest_status": "VALIDADO"
+  },
+  "qualification": [
+    "Esta FASE01 não representa uma nova captura executada em 30/09/2026.",
+    "A evidência da aquisição de 23/09/2026 foi reconciliada com o contrato 00–12.",
+    "Uma futura reaquisição deve ser tratada como nova captura e não substituir silenciosamente o RAW atual."
+  ],
+  "next_gate": "FASE02_INTEGRIDADE_FONTE"
+}
