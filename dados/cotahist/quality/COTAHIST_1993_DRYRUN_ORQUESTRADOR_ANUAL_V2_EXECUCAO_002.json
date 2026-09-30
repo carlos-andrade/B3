@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "workflow": "cotahist-orquestrador-anual-dryrun-v2",
+  "mode": "DRY_RUN",
+  "year": 1993,
+  "run_number": 2,
+  "run_id": 36704169669,
+  "job_id": 109850368684,
+  "head_sha": "ecf91b345bac971c8891d7d5c0fcaf4bcd7e8fd7",
+  "started_at": "2026-09-30T10:43:46Z",
+  "completed_at": "2026-09-30T10:45:12Z",
+  "conclusion": "success",
+  "phase_results": [
+    [
+      "F00",
+      "OK"
+    ],
+    [
+      "F01",
+      "OK"
+    ],
+    [
+      "F02",
+      "AUSENTE"
+    ],
+    [
+      "F03",
+      "OK"
+    ],
+    [
+      "F04",
+      "OK"
+    ],
+    [
+      "F05",
+      "OK"
+    ],
+    [
+      "F06",
+      "AUSENTE"
+    ],
+    [
+      "F07",
+      "AUSENTE"
+    ],
+    [
+      "F08",
+      "AUSENTE"
+    ],
+    [
+      "F09",
+      "BLOQUEADO"
+    ],
+    [
+      "F10",
+      "OK"
+    ],
+    [
+      "F11",
+      "OK"
+    ],
+    [
+      "F12",
+      "OK"
+    ]
+  ],
+  "blocking_codes": [
+    "F02",
+    "F06",
+    "F07",
+    "F08",
+    "F09"
+  ],
+  "promotion": "BLOQUEADA",
+  "mutations": false,
+  "commit": false,
+  "push": false,
+  "publication": false,
+  "deactivation": false,
+  "infrastructure_notes": [
+    "Checkout uses actions/checkout@v4 and GitHub emitted Node.js 20 deprecation warning.",
+    "Runner executed on Ubuntu 24.04.5 LTS; ubuntu-latest migration notice was not a functional failure.",
+    "Git LFS checkout emitted the known historical 1987 pointer inconsistency; this was not a 1993 phase result and did not alter the DRY-RUN decision."
+  ],
+  "conclusion_text": "DRY-RUN FASE 00-12 executado com sucesso técnico e promoção corretamente bloqueada pelas pré-condições ausentes/bloqueadas."
+}
