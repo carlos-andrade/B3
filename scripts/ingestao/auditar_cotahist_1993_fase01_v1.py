@@ -3,6 +3,8 @@ import json
 import zipfile
 from pathlib import Path
 
+# FASE01 V1 — execução retrospectiva reproduzível; trigger de auditoria 2026-09-30.
+
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
 MANIFEST = ROOT / "dados/cotahist/manifests/COTAHIST_A1993.json"
