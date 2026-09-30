@@ -21,5 +21,7 @@
     "member_nonempty": true
   },
   "decision": "VALIDADO",
-  "note": "Integridade da fonte: existencia, SHA-256, ZIP legivel e membro unico nao vazio. Nao certifica semantica do conteudo."
+  "note": "Integridade da fonte: existencia, SHA-256, ZIP legivel e membro unico nao vazio. Nao certifica semantica do conteudo.",
+  "reexecution_trigger": "2026-09-30",
+  "reexecution_note": "Reavaliacao FASE09 apos validacao FASE00 e FASE01; nenhum dado de integridade alterado."
 }
