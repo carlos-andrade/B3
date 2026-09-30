@@ -13,6 +13,7 @@ on:
       - "dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json"
       - "dados/cotahist/normalized/anual/COTAHIST_A1993.csv"
       - "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
+      - "dados/cotahist/quality/FASE09_REEXEC_TRIGGER_1993.txt"
   workflow_dispatch:
 permissions:
   contents: write
