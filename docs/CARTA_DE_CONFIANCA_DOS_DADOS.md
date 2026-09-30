@@ -378,3 +378,61 @@ A perda da fonte automática deve gerar incidente e não autoriza substituição
 **Data:** 25/09/2026  
 **Alteração:** inclusão da governança da importação automática e atualização corrente do COTAHIST.  
 **Status:** VIGENTE
+
+
+## 22. CICLO DE CONFIANÇA, CERTIFICAÇÃO E FECHAMENTO
+
+A confiança de um dataset histórico deve ser distinguida de sua simples existência, validação técnica e atualidade.
+
+Para processos que adotem o ciclo formal COTAHIST, a cadeia passa a ser:
+
+**RAW → PARSED → NORMALIZED → VALIDATED → PRÉ-RELEASE → VALIDAÇÃO INDEPENDENTE → CERTIFICADO → FECHADO → TRANSIÇÃO AUTORIZADA**
+
+Cada estado exige evidência própria. Um estado posterior não deve ser usado como prova primária de um estado anterior quando o contrato exigir evidência específica.
+
+### 22.1 CERTIFICADO
+**CERTIFICADO** significa que o processo de certificação aplicável foi concluído e o escopo certificado está explicitamente identificado. Não significa que todos os demais períodos, datasets ou dados correntes estejam certificados.
+
+### 22.2 FECHADO
+**FECHADO** significa que o período cumpriu o conjunto de gates de encerramento definidos para o ciclo e possui evidência persistida de fechamento.
+
+### 22.3 TRANSIÇÃO AUTORIZADA
+A autorização para o próximo período é uma decisão de governança baseada em evidência. Ela não retrocertifica o próximo período e não substitui suas próprias validações.
+
+### 22.4 Não retrocertificação
+A certificação ou o fechamento de um ano não pode ser usado para declarar automaticamente como válidas as evidências de outro ano. Cada período deve manter sua própria cadeia de evidências.
+
+## 23. Regra de confiança para dados correntes
+
+A certificação histórica e a garantia de frescor são controles diferentes.
+
+Um ano histórico pode estar **CERTIFICADO/FECHADO** enquanto a garantia de atualização dos dados correntes permanece **NÃO CERTIFICADA**. Nenhum dos estados invalida automaticamente o outro.
+
+A utilização de dados correntes deve obedecer à matriz de frescor e às regras específicas de disponibilidade temporal.
+
+## 24. Evidência de fechamento
+
+Quando o processo possuir FASE12 ou equivalente, a evidência de fechamento deve registrar, no mínimo:
+- período encerrado;
+- fases e artefatos exigidos;
+- resultado dos gates;
+- certificação aplicável;
+- bloqueios/exceções;
+- hashes relevantes;
+- decisão de fechamento;
+- autorização ou bloqueio da transição;
+- commit e workflow quando disponíveis.
+
+## 25. Atualização da cadeia de confiança
+
+A cadeia normativa passa a reconhecer que validação não é necessariamente o último estado operacional:
+
+**fonte → aquisição → RAW → integridade → parsing → normalização → validação → reconciliação → pré-release → validação independente → certificação → fechamento → transição controlada → auditoria.**
+
+A promoção deve permanecer fail-closed quando um gate crítico estiver ausente ou não comprovado.
+
+## 26. Histórico de versões — atualização
+
+| Versão | Data | Alteração | Status |
+|---|---|---|---|
+| 1.2 | 30/09/2026 | Inclusão do ciclo formal de certificação, fechamento, transição controlada, distinção entre confiança histórica e frescor corrente e evidência mínima de fechamento. | VIGENTE |
