@@ -467,8 +467,8 @@ O repositório **B3 — A BOLSA DO BRASIL** é a fonte de organização e memór
 
 > Este bloco é gerenciado pelo workflow `Atualizar README — B3`.
 
-- **Última alteração relevante:** `2e62d07c973d` — 30/09/2026 10:34 UTC
-- **Commit de referência:** fix(cotahist): separar resultado do dry-run de bloqueio de promocao
+- **Última alteração relevante:** `6ef3c79b381d` — 30/09/2026 11:53 UTC
+- **Commit de referência:** fix(cotahist): corrigir script da FASE02 1993
 - **Workflows GitHub Actions:** 91
 - **Scripts Python em `scripts/ingestao/`:** 85
 - **Diretórios operacionais de primeiro nível:** 8
