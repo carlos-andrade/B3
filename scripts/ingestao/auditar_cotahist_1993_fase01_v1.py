@@ -27,6 +27,7 @@ if not missing:
     checksum_sha = CHECKSUM.read_text(encoding="utf-8").split()[0]
     observed["manifest_sha256"] = expected_sha
     observed["checksum_sha256"] = checksum_sha
+    observed["acquired_at_utc"] = manifest.get("acquired_at_utc")
     if observed["raw_sha256"] != expected_sha:
         errors.append("RAW_SHA256_DIVERGENTE_DO_MANIFESTO")
     if observed["raw_sha256"] != checksum_sha:
