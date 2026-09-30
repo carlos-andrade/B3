@@ -664,3 +664,46 @@ Estabelecidos:
 ---
 
 **Fim da Carta de Confiança dos Workflows — B3**
+
+
+## 30. GATE DE FECHAMENTO E TRANSIÇÃO
+
+Workflows que participem de ciclos anuais ou equivalentes devem distinguir **execução técnica**, **validação**, **certificação** e **fechamento**.
+
+Um workflow pode terminar com sucesso técnico sem, por isso, autorizar a transição do ciclo. A autorização depende dos gates definidos pelo contrato do processo.
+
+Para o COTAHIST histórico, a cadeia operacional de referência é:
+
+**FASE00 → FASE01 → FASE02 → FASE03 → FASE04 → FASE05 → FASE06 → FASE07 → FASE08 → FASE09 → FASE10 → FASE11 → FASE12**
+
+A FASE12 deve verificar a existência e o estado das evidências obrigatórias, a integridade dos artefatos críticos, a certificação do período e a ausência de bloqueios não declarados antes de autorizar a transição.
+
+### 30.1 Fail-closed de transição
+Se qualquer pré-condição crítica de fechamento estiver ausente, inválida ou não auditada, o workflow deve bloquear a transição e registrar a causa. Não é permitido interpretar o simples sucesso da FASE11 como autorização automática do próximo ano.
+
+### 30.2 Evidência persistente
+O workflow de fechamento deve produzir evidência persistida no repositório contendo, quando aplicável:
+- período encerrado;
+- artefatos exigidos;
+- estados das fases;
+- hashes relevantes;
+- decisão de fechamento;
+- autorização ou bloqueio da transição;
+- exceções/bloqueios;
+- commit e execução do workflow.
+
+### 30.3 Separação de escopos
+Certificação histórica, fechamento anual e frescor corrente são controles independentes. O workflow não deve promover um desses estados para os demais sem evidência específica.
+
+## 31. REGRA REGENTE DE EXISTÊNCIA E VALIDAÇÃO
+
+Quando aplicável ao COTAHIST, a docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md é a regra normativa para existência física, identificabilidade, validação, registro Git, avanço de fase e fechamento. Esta Carta define o contrato operacional dos workflows e deve ser interpretada de forma compatível com a regra regente.
+
+## 32. NÃO RETROCERTIFICAÇÃO
+
+Uma execução bem-sucedida, uma certificação ou um fechamento de um período não pode ser usado como prova automática de outro período. Cada ano deve possuir evidência própria ou equivalência retrospectiva formalmente documentada e testada.
+
+## 33. Histórico de versões — atualização
+
+### V1.1 — 30/09/2026
+Atualização do contrato para incluir gate de fechamento/transição, FASE12, fail-closed de transição, evidência persistente de fechamento e separação entre certificação histórica e frescor corrente.
