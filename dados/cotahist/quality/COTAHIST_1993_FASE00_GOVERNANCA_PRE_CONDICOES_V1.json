@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "ano": 1993,
+  "phase": "FASE00",
+  "status": "VALIDADO",
+  "natureza": "governanca_e_pre_condicoes",
+  "escopo": "COTAHIST anual 1993",
+  "fonte_esperada": "B3",
+  "pipeline_canonico": "00->01->02->03->04->05->06->07->08->09->10->11->12",
+  "checks": {
+    "docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md": true,
+    "docs/cotahist/WORKFLOW_CATALOGO_V1.json": true,
+    "docs/cotahist/MATRIZ_DEPENDENCIAS_COTAHIST_V1.md": true,
+    "dados/cotahist/manifests/COTAHIST_A1993.json": true,
+    "dados/cotahist/checksums/COTAHIST_A1993.ZIP.sha256": true
+  },
+  "missing": [],
+  "criterio": "A fase 00 confirma que a governanca, a ordem canonica e a identificacao da fonte/ano estao documentadas antes da promocao das fases de dados.",
+  "decision": "VALIDADO"
+}
