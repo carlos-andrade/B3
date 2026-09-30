@@ -3,8 +3,6 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE02 V1
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase02-integridade-1994-v1.yml"
@@ -40,7 +38,8 @@ jobs:
               if info.file_size==0: sys.exit("MEMBRO ZIP VAZIO")
           import datetime
           out={"schema_version":"1.0.0","year":1994,"phase":"FASE02","status":"VALIDADO","decision":"LIBERADO_PARA_FASE03","raw_path":str(raw),"manifest_path":str(man),"checksum_path":str(chk),"sha256":actual,"zip_member_count":len(names),"zip_member":names[0],"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
-          pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+          pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"
+")
           print(json.dumps(out,ensure_ascii=False))
           PY
 
