@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE12",
+  "year": 1993,
+  "next_year": 1994,
+  "status": "VALIDADO",
+  "decision": "ANO_1993_FECHADO_TRANSICAO_1994_AUTORIZADA",
+  "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+  "validation_method": "AUDITORIA_REPOSITORY_CONNECTOR_EVIDENCIAS_EXISTENTES",
+  "required_artifacts": {
+    "FASE00": "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json",
+    "FASE01": "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json",
+    "FASE02": "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json",
+    "FASE03_05": "dados/cotahist/normalized/anual/COTAHIST_A1993.csv + dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json",
+    "FASE06": "dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json",
+    "FASE07": "dados/cotahist/quality/COTAHIST_1993_FASE07_IDENTIDADE_CHAVES_V1.json",
+    "FASE08": "dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json",
+    "FASE09": "dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json",
+    "FASE10": "dados/cotahist/quality/COTAHIST_1993_FASE10_INTEGRIDADE_V1.json",
+    "FASE11": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
+    "RAW": "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
+  },
+  "gates": {
+    "phases_00_02_06_08_status": "VALIDADO",
+    "phase_09_decision": "LIBERADO_PARA_FASE10",
+    "phase_10_status": "VALIDADO",
+    "phase_10_release": "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO",
+    "certification_1993": "CERTIFICADO_NORMALIZACAO",
+    "raw_immutable": true,
+    "correction_applied": false,
+    "unresolved_blockers": [],
+    "missing_required_artifacts": []
+  },
+  "hashes": {
+    "raw_sha256": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
+    "normalized_sha256": "6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb",
+    "phase10_evidence_sha256": "8301cf7455e0580ad4753fc89d0dd5f5d508f45e",
+    "phase09_evidence_sha256": "2da615a183c54a6ed538cd54c27b3297a9fa6f7d"
+  },
+  "transition": {
+    "1993_closed": true,
+    "1994_authorized_to_start": true,
+    "1994_not_retrocertified": true,
+    "note": "A autorização refere-se somente ao início do ciclo de 1994; não certifica previamente qualquer dado ou fase de 1994."
+  },
+  "automation": {
+    "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
+    "status": "CRIADO",
+    "automated_run_observed": false,
+    "note": "A evidência desta FASE12 foi validada por auditoria dos artefatos persistidos. O workflow automatizado foi criado para repetir o gate; o conector GitHub disponível não expõe disparo manual de workflow."
+  }
+}
