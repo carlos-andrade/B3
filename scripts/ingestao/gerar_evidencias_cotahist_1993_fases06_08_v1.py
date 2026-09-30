@@ -207,9 +207,10 @@ for key, rows in collisions.items():
             "lines": [row["_line"] for row in rows[:20]],
         })
 
+mandatory_key_fields = ("data_pregao", "codbdi", "codneg", "tpmerc", "dimes")
 required_empty = {
     key: sum(1 for row in raw if not row[key])
-    for key in KEY
+    for key in mandatory_key_fields
 }
 
 f07_valid = (
@@ -224,6 +225,7 @@ f07 = {
     "phase": "FASE07",
     "status": "VALIDADO" if f07_valid else "BLOQUEADO",
     "candidate_key_fields": list(KEY),
+    "mandatory_key_fields": list(mandatory_key_fields),
     "row_count": len(raw),
     "distinct_key_count": len(groups),
     "collision_group_count": len(collisions),
@@ -272,20 +274,49 @@ codbdi_distribution = Counter(row["codbdi"] for row in raw)
 dimes_distribution = Counter(row["dimes"] for row in raw)
 
 ohlc_bad = 0
+ohlc_violation_samples = []
+ohlc_violation_by_tpmerc = Counter()
+ohlc_violation_by_codbdi = Counter()
+ohlc_ignored_zero_rows = 0
 for row in raw:
     try:
         op, hi, lo, mid, close = [
             Decimal(row[key])
             for key in ("preab", "premax", "premin", "premed", "preult")
         ]
+        if min(op, hi, lo, mid, close) == 0:
+            ohlc_ignored_zero_rows += 1
+            continue
         if (
             hi < max(op, lo, close)
             or lo > min(op, hi, close)
             or not (lo <= mid <= hi)
         ):
             ohlc_bad += 1
+            ohlc_violation_by_tpmerc[row["tpmerc"]] += 1
+            ohlc_violation_by_codbdi[row["codbdi"]] += 1
+            if len(ohlc_violation_samples) < 30:
+                ohlc_violation_samples.append({
+                    "line": row["_line"],
+                    "tpmerc": row["tpmerc"],
+                    "codbdi": row["codbdi"],
+                    "codneg": row["codneg"],
+                    "preab": row["preab"],
+                    "premax": row["premax"],
+                    "premin": row["premin"],
+                    "premed": row["premed"],
+                    "preult": row["preult"],
+                })
     except Exception:
         ohlc_bad += 1
+        if len(ohlc_violation_samples) < 30:
+            ohlc_violation_samples.append({
+                "line": row["_line"],
+                "tpmerc": row["tpmerc"],
+                "codbdi": row["codbdi"],
+                "codneg": row["codneg"],
+                "error": "numeric_parse_or_semantic_error",
+            })
 
 f08_gates = {
     "all_dates_valid": len(valid_dates) == len(dates),
@@ -316,6 +347,10 @@ f08 = {
     "codbdi_distribution": dict(codbdi_distribution),
     "dimes_distribution": dict(dimes_distribution),
     "ohlc_relation_violations": ohlc_bad,
+    "ohlc_ignored_zero_rows": ohlc_ignored_zero_rows,
+    "ohlc_violation_by_tpmerc": dict(ohlc_violation_by_tpmerc),
+    "ohlc_violation_by_codbdi": dict(ohlc_violation_by_codbdi),
+    "ohlc_violation_samples": ohlc_violation_samples,
     "gates": f08_gates,
     "raw_sha256": sha(RAW),
     "decision": "VALIDADO" if f08_valid else "BLOQUEADO",
