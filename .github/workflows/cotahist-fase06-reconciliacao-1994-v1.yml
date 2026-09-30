@@ -1,0 +1,79 @@
+name: COTAHIST - auditoria retrospectiva 1994 FASE06 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
+      - "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
+
+permissions:
+  contents: write
+
+jobs:
+  reconciliacao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Reconciliar RAW e normalizado
+        run: |
+          python - <<'PY'
+          import csv,datetime,hashlib,json,pathlib,sys,zipfile
+          from decimal import Decimal
+          root=pathlib.Path(".")
+          raw=root/"dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+          norm=root/"dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
+          f5=root/"dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
+          ev=root/"dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json"
+          for p in (raw,norm,f5):
+              if not p.exists(): sys.exit(f"FASE06 BLOQUEADA: ausente {p}")
+          e5=json.loads(f5.read_text())
+          if e5.get("status")!="VALIDADO" or e5.get("decision")!="LIBERADO_PARA_FASE06": sys.exit("FASE06 BLOQUEADA: FASE05 não liberou")
+          def fixed(rec,a,b,scale=1):
+              s=rec[a:b].decode("ascii").strip()
+              if not s: return ""
+              return str(Decimal(s)/Decimal(scale)) if scale else s
+          critical=[
+            ("data_pregao",9,17,1),("codbdi",18,21,1),("codneg",12,24,1),
+            ("tpmerc",25,27,1),("preabe",57,69,100),("premax",70,82,100),
+            ("premin",83,95,100),("premed",96,108,100),("preult",109,121,100),
+            ("totneg",153,170,1),("quatot",171,188,1),("voltot",189,202,100)
+          ]
+          with zipfile.ZipFile(raw) as z:
+              members=z.namelist()
+              if len(members)!=1: sys.exit("FASE06 BLOQUEADA: ZIP não possui exatamente um membro")
+              data=z.read(members[0])
+          raw_rows=[]
+          for line in data.splitlines():
+              if len(line)==245 and line[2:4]==b"01":
+                  raw_rows.append(tuple(fixed(line,a-1,b-1,s) for _,a,b,s in critical))
+          with norm.open("r",encoding="utf-8",newline="") as fh:
+              rd=csv.DictReader(fh); norm_rows=[]
+              for r in rd:
+                  norm_rows.append(tuple(str(r[k]) for k,_,_,_ in critical))
+          if len(raw_rows)!=len(norm_rows): sys.exit(f"FASE06 BLOQUEADA: contagens divergentes RAW={len(raw_rows)} NORMALIZED={len(norm_rows)}")
+          mismatches=[]
+          for i,(a,b) in enumerate(zip(raw_rows,norm_rows),1):
+              if a!=b: mismatches.append({"row":i,"raw":a,"normalized":b})
+              if len(mismatches)>=20: break
+          out={"schema_version":"1.0.0","year":1994,"phase":"FASE06","status":"VALIDADO" if not mismatches else "BLOQUEADO","decision":"LIBERADO_PARA_FASE07" if not mismatches else "BLOQUEADO","raw_sha256":hashlib.sha256(raw.read_bytes()).hexdigest(),"normalized_sha256":hashlib.sha256(norm.read_bytes()).hexdigest(),"raw_records":len(raw_rows),"normalized_records":len(norm_rows),"critical_fields_checked":[x[0] for x in critical],"mismatch_count":len(mismatches),"mismatch_sample":mismatches,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          ev.parent.mkdir(parents=True,exist_ok=True); ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+          if mismatches: sys.exit("FASE06 BLOQUEADA: divergências encontradas")
+          PY
+      - name: Publicar evidência
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): valida 1994 fase 06 reconciliacao"
+          git pull --rebase origin main
+          git push origin HEAD:main
