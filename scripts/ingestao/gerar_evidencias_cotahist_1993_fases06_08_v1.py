@@ -278,20 +278,18 @@ ohlc_violation_samples = []
 ohlc_violation_by_tpmerc = Counter()
 ohlc_violation_by_codbdi = Counter()
 ohlc_ignored_zero_rows = 0
+premed_outside_range = 0
 for row in raw:
     try:
         op, hi, lo, mid, close = [
             Decimal(row[key])
             for key in ("preab", "premax", "premin", "premed", "preult")
         ]
-        if min(op, hi, lo, mid, close) == 0:
+        if min(op, hi, lo, close) == 0:
             ohlc_ignored_zero_rows += 1
             continue
-        if (
-            hi < max(op, lo, close)
-            or lo > min(op, hi, close)
-            or not (lo <= mid <= hi)
-        ):
+        if not (lo <= hi and hi >= max(op, close) and lo <= min(op, close)):
+
             ohlc_bad += 1
             ohlc_violation_by_tpmerc[row["tpmerc"]] += 1
             ohlc_violation_by_codbdi[row["codbdi"]] += 1
@@ -307,6 +305,8 @@ for row in raw:
                     "premed": row["premed"],
                     "preult": row["preult"],
                 })
+        if not (lo <= mid <= hi):
+            premed_outside_range += 1
     except Exception:
         ohlc_bad += 1
         if len(ohlc_violation_samples) < 30:
@@ -348,6 +348,7 @@ f08 = {
     "dimes_distribution": dict(dimes_distribution),
     "ohlc_relation_violations": ohlc_bad,
     "ohlc_ignored_zero_rows": ohlc_ignored_zero_rows,
+    "premed_outside_range": premed_outside_range,
     "ohlc_violation_by_tpmerc": dict(ohlc_violation_by_tpmerc),
     "ohlc_violation_by_codbdi": dict(ohlc_violation_by_codbdi),
     "ohlc_violation_samples": ohlc_violation_samples,
