@@ -48,3 +48,7 @@ Para um ano YYYY, a transição para YYYY+1 somente pode ser autorizada quando:
 ## Auditoria
 
 Esta regra deve ser usada como critério permanente nas futuras fases COTAHIST e nos demais fluxos de ingestão B3 que adotem este contrato.
+
+## Registro de ativação FASE12
+
+A criação da FASE12 deve provocar execução automática do workflow de fechamento/transição de 1993.
