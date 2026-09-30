@@ -113,3 +113,5 @@ jobs:
           git commit -m "audit(cotahist): restaura normalizacao LFS 1994 fase 04"
           git lfs push origin HEAD
           git push origin HEAD:main
+          
+          # gatilho de auditoria: execução solicitada após verificação de 2026-09-30
