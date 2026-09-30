@@ -1,0 +1,39 @@
+name: COTAHIST - auditoria retrospectiva 1994 FASE02 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/cotahist-fase02-integridade-1994-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1994.json"
+      - "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"
+permissions:
+  contents: write
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: Validar integridade do RAW
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,zipfile,sys
+          raw=pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1994.ZIP")
+          man=pathlib.Path("dados/cotahist/manifests/COTAHIST_A1994.json")
+          chk=pathlib.Path("dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256")
+          if not all(p.exists() for p in (raw,man,chk)): sys.exit("ARTEFATO AUSENTE")
+          actual=hashlib.sha256(raw.read_bytes()).hexdigest()
+          expected=chk.read_text().split()[0]
+          m=json.loads(man.read_text())
+          if actual!=expected or actual!=m.get("sha256"): sys.exit("SHA256 INCONSISTENTE")
+          with zipfile.ZipFile(raw) as z:
+              names=z.namelist()
+              if len(names)!=1: sys.exit("ZIP COM MAIS DE UM MEMBRO")
+              info=z.getinfo(names[0])
+              if info.file_size==0: sys.exit("MEMBRO ZIP VAZIO")
+          print("FASE02 1994 VALIDADA", actual)
+          PY
