@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1993,
+  "phase": "FASE02",
+  "status": "VALIDADO",
+  "raw_file": "/home/runner/work/B3/B3/dados/cotahist/raw/anual/COTAHIST_A1993.ZIP",
+  "raw_sha256": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
+  "raw_size_bytes": 5893559,
+  "zip_testzip_error": null,
+  "zip_file_count": 1,
+  "zip_members": [
+    "COTAHIST.A1993"
+  ],
+  "uncompressed_member_sizes": [
+    28701400
+  ],
+  "gates": {
+    "raw_exists": true,
+    "zip_integrity": true,
+    "single_data_member": true,
+    "member_nonempty": true
+  },
+  "decision": "VALIDADO",
+  "note": "Integridade da fonte: existencia, SHA-256, ZIP legivel e membro unico nao vazio. Nao certifica semantica do conteudo."
+}
