@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1993,
+  "phase": "FASE07",
+  "status": "BLOQUEADO",
+  "candidate_key_fields": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "codisi",
+    "dimes",
+    "especi",
+    "prazot",
+    "datven",
+    "indopc",
+    "preexe",
+    "ptoexe"
+  ],
+  "row_count": 116198,
+  "distinct_key_count": 116198,
+  "collision_group_count": 0,
+  "collision_row_count": 0,
+  "same_key_distinct_statistics_group_count": 0,
+  "sample": [],
+  "required_empty_counts": {
+    "data_pregao": 0,
+    "codbdi": 0,
+    "codneg": 0,
+    "tpmerc": 0,
+    "codisi": 0,
+    "dimes": 0,
+    "especi": 0,
+    "prazot": 111141,
+    "datven": 0,
+    "indopc": 0,
+    "preexe": 0,
+    "ptoexe": 0
+  },
+  "raw_sha256": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
+  "decision": "BLOQUEADO"
+}
