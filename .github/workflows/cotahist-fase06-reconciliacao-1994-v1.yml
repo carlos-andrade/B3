@@ -134,3 +134,5 @@ jobs:
           git commit -m "audit(cotahist): valida 1994 fase 06 reconciliacao"
           git pull --rebase origin main
           git push origin HEAD:main
+
+# Trigger controlado FASE06: verificar reconciliacao apos materializacao LFS 1994.
