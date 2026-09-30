@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+# FASE00 V1 — execução retrospectiva reproduzível; trigger de auditoria 2026-09-30.
+
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json"
 
@@ -35,4 +37,4 @@ print(json.dumps(out, ensure_ascii=False))
 if missing:
     raise SystemExit(1)
 
-# FASE00: evidencia produzida por execucao reprodutivel do workflow dedicado.\n
+# FASE00: evidencia produzida por execucao reprodutivel do workflow dedicado.
