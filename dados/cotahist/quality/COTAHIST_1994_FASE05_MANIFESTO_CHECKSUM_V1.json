@@ -14,5 +14,6 @@
   "checksum_matches_raw": true,
   "normalized_manifest_status": "VALIDADO",
   "fase04_status": "VALIDADO",
-  "validated_at_utc": "2026-09-30T22:04:25.187249+00:00"
+  "validated_at_utc": "2026-09-30T22:04:25.187249+00:00",
+  "revalidation_trigger_for_fase06": "2026-09-30 FASE06 apos FASE05 revalidada e CSV materializado"
 }
