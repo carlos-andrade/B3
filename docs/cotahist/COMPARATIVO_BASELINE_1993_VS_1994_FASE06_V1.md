@@ -80,9 +80,9 @@ A evidência de 1993 registra preab na lista de campos críticos, enquanto o cab
 
 A evidência de 1993 declara que datas são comparadas em representação canônica YYYYMMDD e que escalas decimais de 10^n são aceitas quando a razão é inteira e limitada.
 
-O workflow de 1994 converte os campos numéricos com Decimal e depois compara as representações resultantes. Isso é uma implementação mais estrita do que simplesmente comparar texto bruto, mas não reproduz literalmente toda a regra documental de equivalência registrada em 1993.
+A nova implementação de 1994 foi alinhada ao executor retrospectivo de 1993: usa Decimal, normalização canônica de datas, escalas decimais limitadas e alias explícito para preabe/preab.
 
-**Conclusão:** antes da certificação de 1994, a regra de equivalência deve ser formalmente alinhada entre evidência e executor.
+**Conclusão:** a divergência de implementação identificada na auditoria anterior foi corrigida na cadeia V2; o resultado ainda depende da execução real.
 
 ### 5.3 Decisão da FASE06
 
@@ -92,15 +92,15 @@ O workflow de 1994 converte os campos numéricos com Decimal e depois compara as
 
 ### 5.4 Execução
 
-Não foi encontrada uma execução comprovada da FASE06 de 1994 nem a evidência final correspondente. Portanto, não há base auditável para afirmar que a reconciliação 1994 foi executada.
+A cadeia V2 de 1994 agora possui executor equivalente ao modelo retrospectivo de 1993 para FASE06–08 e executor sequencial para FASE09–12. A execução ainda precisa ser comprovada pelo runner e pelas evidências produzidas.
 
 ## 6. Decisão técnica deste comparativo
 
 1. 1993 permanece intacto e certificado.
 2. 1994 permanece bloqueado na FASE06.
 3. Não usar novos gatilhos como substituto de evidência.
-4. Alinhar a implementação 1994 ao baseline documental 1993 antes de promover a FASE07.
-5. A próxima execução deve produzir a evidência FASE06 de 1994 no repositório e permitir auditoria do resultado.
+4. Executar a nova cadeia 1994 V2 e verificar FASE06–12.
+5. Não promover FASE07 até a evidência FASE06 estar VALIDADO.
 
 ## 7. Evidências de referência
 
