@@ -3,6 +3,12 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE02 V1
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/cotahist-fase02-integridade-1994-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1994.json"
+      - "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"
   push:
     paths:
       - ".github/workflows/cotahist-fase02-integridade-1994-v1.yml"
@@ -50,4 +56,4 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json
           git commit -m "audit(cotahist): publica 1994 fase 02 integridade"
           git pull --rebase origin main
-          git push origin HEAD:main
+          git push origin HEAD:${{ github.head_ref || github.ref_name }}
