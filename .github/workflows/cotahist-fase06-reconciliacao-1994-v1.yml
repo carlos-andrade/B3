@@ -2,6 +2,8 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE06 V1
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml"
@@ -135,4 +137,5 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
 
-# Trigger controlado FASE06: verificar reconciliacao apos materializacao LFS 1994.
+
+# Execucao controlada: schedule temporario para garantir disparo observavel.
