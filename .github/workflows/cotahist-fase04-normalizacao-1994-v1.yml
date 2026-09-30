@@ -1,0 +1,123 @@
+name: COTAHIST - auditoria retrospectiva 1994 FASE04 V1
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+  push:
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-1994-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
+      - "dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
+
+permissions:
+  contents: write
+
+jobs:
+  normalizacao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Validar normalização existente
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, sys, datetime
+
+          root=pathlib.Path(".")
+          raw=root/"dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
+          norm=root/"dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
+          manifest=root/"dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
+          f3=root/"dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
+          ev=root/"dados/cotahist/quality/COTAHIST_1994_FASE04_NORMALIZACAO_V1.json"
+
+          for p in (raw,norm,manifest,f3):
+              if not p.exists():
+                  sys.exit(f"FASE04 BLOQUEADA: arquivo ausente: {p}")
+
+          e3=json.loads(f3.read_text())
+          m=json.loads(manifest.read_text())
+          if e3.get("status")!="VALIDADO" or e3.get("decision")!="LIBERADO_PARA_FASE04":
+              sys.exit("FASE04 BLOQUEADA: FASE03 não liberou a normalização")
+          if m.get("status")!="VALIDADO" or m.get("ano")!=1994:
+              sys.exit("FASE04 BLOQUEADA: manifesto de normalização inválido")
+
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          if raw_sha!=m.get("raw_sha256"):
+              sys.exit("FASE04 BLOQUEADA: RAW diverge do manifesto de normalização")
+
+          norm_sha=hashlib.sha256(norm.read_bytes()).hexdigest()
+          if norm_sha!=m.get("normalized_sha256"):
+              sys.exit("FASE04 BLOQUEADA: SHA da normalização diverge do manifesto")
+
+          rows=0
+          fields=None
+          bad_dates=0
+          first_date=None
+          last_date=None
+          with norm.open("r",encoding="utf-8",newline="") as fh:
+              reader=csv.reader(fh)
+              header=next(reader,None)
+              if header is None:
+                  sys.exit("FASE04 BLOQUEADA: CSV sem cabeçalho")
+              fields=len(header)
+              for row in reader:
+                  rows+=1
+                  if len(row)!=fields:
+                      sys.exit(f"FASE04 BLOQUEADA: linha {rows+1} com quantidade de campos divergente")
+                  d=row[0]
+                  if len(d)!=10:
+                      bad_dates+=1
+                  else:
+                      try:
+                          datetime.date.fromisoformat(d)
+                          first_date=d if first_date is None else min(first_date,d)
+                          last_date=d if last_date is None else max(last_date,d)
+                      except ValueError:
+                          bad_dates+=1
+
+          expected_rows=int(m.get("linhas_normalized", -1))
+          expected_fields=int(m.get("campos", -1))
+          if rows!=expected_rows or fields!=expected_fields:
+              sys.exit(f"FASE04 BLOQUEADA: contagem divergente rows={rows}/{expected_rows}, fields={fields}/{expected_fields}")
+          if bad_dates!=int(m.get("datas_invalidas",0)):
+              sys.exit("FASE04 BLOQUEADA: contagem de datas inválidas divergente")
+          if first_date!=m.get("primeira_data") or last_date!=m.get("ultima_data"):
+              sys.exit("FASE04 BLOQUEADA: intervalo de datas divergente")
+
+          out={
+            "schema_version":"1.0.0","year":1994,"phase":"FASE04",
+            "status":"VALIDADO","decision":"LIBERADO_PARA_FASE05",
+            "rule":"docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+            "raw_path":str(raw),"raw_sha256":raw_sha,
+            "normalized_path":str(norm),"normalized_sha256":norm_sha,
+            "normalized_manifest_path":str(manifest),
+            "parser_version":m.get("parser_version"),
+            "rows":rows,"fields":fields,
+            "invalid_dates":bad_dates,
+            "first_date":first_date,"last_date":last_date,
+            "manifest_matches_computed":True,
+            "raw_matches_manifest":True,
+            "normalization_is_deterministically_reconciled":True,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.parent.mkdir(parents=True,exist_ok=True)
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+
+      - name: Publicar evidência FASE04
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1994_FASE04_NORMALIZACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): valida 1994 fase 04 normalizacao"
+          git pull --rebase origin main
+          git push origin HEAD:main
