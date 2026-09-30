@@ -1,0 +1,217 @@
+name: COTAHIST - orquestrador anual canônico DRY-RUN V2 (FASE 00-12)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ano:
+        description: "Ano COTAHIST para auditoria completa FASE 00-12"
+        required: true
+        default: "1993"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotahist-orquestrador-anual-dryrun-v2-${{ inputs.ano }}
+  cancel-in-progress: false
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout com Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+
+      - name: Executar DRY-RUN canônico FASE 00-12
+        env:
+          ANO: ${{ inputs.ano }}
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          import os
+          from pathlib import Path
+
+          year = int(os.environ["ANO"])
+          next_year = year + 1
+          root = Path(".")
+          checks = []
+
+          ACCEPTABLE = {"OK", "EXCECAO_CONTROLADA", "NAO_APLICAVEL"}
+          BLOCKING = {"AUSENTE", "BLOQUEADO"}
+
+          def add(code, phase, description, path=None, status="OK", detail=None, blocking=False):
+              item = {
+                  "code": code,
+                  "phase": phase,
+                  "description": description,
+                  "path": path,
+                  "status": status,
+                  "blocking": blocking,
+              }
+              if detail is not None:
+                  item["detail"] = detail
+              checks.append(item)
+              return status
+
+          def file_check(code, phase, description, path, required=True):
+              exists = (root / path).is_file()
+              return add(
+                  code, phase, description, path,
+                  "OK" if exists else ("AUSENTE" if required else "NAO_APLICAVEL"),
+                  None if exists else "arquivo não localizado",
+                  blocking=(required and not exists),
+              )
+
+          # FASE 00 — Governança / pré-condições
+          file_check("F00", "FASE_00", "governança e ordem canônica",
+                     "docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md")
+
+          # FASE 01 — Aquisição / RAW
+          raw = f"dados/cotahist/raw/anual/COTAHIST_A{year}.ZIP"
+          file_check("F01", "FASE_01", "fonte RAW anual", raw)
+
+          # FASE 02 — Integridade da fonte
+          f02 = f"dados/cotahist/quality/COTAHIST_{year}_FASE02_INTEGRIDADE_FONTE_V1.json"
+          if file_check("F02", "FASE_02", "evidência de integridade da fonte", f02) == "OK":
+              data = json.loads((root / f02).read_text(encoding="utf-8"))
+              status = data.get("status")
+              if status not in {"VALIDADO", "VALIDADO_COM_EXCECAO"}:
+                  checks[-1]["status"] = "BLOQUEADO"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = f"status da evidência: {status!r}"
+
+          # FASE 03 — Parsing
+          parser = "scripts/ingestao/normalize_cotahist.py"
+          parser_ok = file_check("F03", "FASE_03", "parser COTAHIST versionado", parser)
+          manifest_path = f"dados/cotahist/normalized/manifests/COTAHIST_A{year}_quality.json"
+          if parser_ok == "OK" and (root / manifest_path).is_file():
+              manifest = json.loads((root / manifest_path).read_text(encoding="utf-8"))
+              if manifest.get("parser_version") != "1.1.0":
+                  checks[-1]["status"] = "BLOQUEADO"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = f"manifest parser_version={manifest.get('parser_version')!r}; esperado 1.1.0"
+
+          # FASE 04 — Normalização
+          normalized = f"dados/cotahist/normalized/anual/COTAHIST_A{year}.csv"
+          file_check("F04", "FASE_04", "dataset anual normalizado", normalized)
+
+          # FASE 05 — Manifesto / checksum
+          if file_check("F05", "FASE_05", "manifesto de qualidade e checksums", manifest_path) == "OK":
+              manifest = json.loads((root / manifest_path).read_text(encoding="utf-8"))
+              status = manifest.get("status")
+              if status not in {"VALIDADO", "VALIDADO_COM_EXCECAO"}:
+                  checks[-1]["status"] = "BLOQUEADO"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = f"manifest status={status!r}"
+
+          # FASE 06 — Reconciliação
+          for code, phase, desc, suffix in [
+              ("F06", "FASE_06", "reconciliação RAW x normalizado", "FASE06_RECONCILIACAO_V1.json"),
+              ("F07", "FASE_07", "identidade, chaves e campos", "FASE07_IDENTIDADE_CHAVES_V1.json"),
+              ("F08", "FASE_08", "semântica, calendário e consistência", "FASE08_SEMANTICA_CALENDARIO_V1.json"),
+              ("F09", "FASE_09", "pré-release", "FASE09_PRE_RELEASE_V1.json"),
+          ]:
+              p = f"dados/cotahist/quality/COTAHIST_{year}_{suffix}"
+              status = file_check(code, phase, desc, p)
+              if status == "OK":
+                  try:
+                      evidence = json.loads((root / p).read_text(encoding="utf-8"))
+                      ev_status = evidence.get("status")
+                      if ev_status not in {"VALIDADO", "VALIDADO_COM_EXCECAO", "LIBERADO_PARA_FASE10"}:
+                          checks[-1]["status"] = "BLOQUEADO"
+                          checks[-1]["blocking"] = True
+                          checks[-1]["detail"] = f"status da evidência={ev_status!r}"
+                  except Exception as exc:
+                      checks[-1]["status"] = "BLOQUEADO"
+                      checks[-1]["blocking"] = True
+                      checks[-1]["detail"] = f"JSON inválido: {exc}"
+
+          # FASE 10 — Validação independente
+          f10 = f"dados/cotahist/quality/COTAHIST_{year}_FASE10_INTEGRIDADE_V1.json"
+          if file_check("F10", "FASE_10", "validação independente", f10) == "OK":
+              evidence = json.loads((root / f10).read_text(encoding="utf-8"))
+              if evidence.get("status") not in {"VALIDADO", "VALIDADO_COM_EXCECAO"}:
+                  checks[-1]["status"] = "BLOQUEADO"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = f"status={evidence.get('status')!r}"
+              elif evidence.get("decision") != "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO":
+                  checks[-1]["status"] = "BLOQUEADO"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = f"decision={evidence.get('decision')!r}"
+
+          # FASE 11 — Certificação / promoção
+          cert = "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
+          if file_check("F11", "FASE_11", "matriz anual de certificação", cert) == "OK":
+              rows = list(csv.DictReader((root / cert).open(encoding="utf-8", newline="")))
+              matches = [r for r in rows if r.get("ano") == str(year)]
+              if not matches:
+                  checks[-1]["status"] = "AUSENTE"
+                  checks[-1]["blocking"] = True
+                  checks[-1]["detail"] = "ano não encontrado na matriz"
+              else:
+                  row = matches[0]
+                  cert_status = row.get("status_certificacao", "")
+                  if cert_status not in {"CERTIFICADO_NORMALIZACAO", "CERTIFICADO"}:
+                      checks[-1]["status"] = "BLOQUEADO"
+                      checks[-1]["blocking"] = True
+                      checks[-1]["detail"] = f"status_certificacao={cert_status!r}"
+
+          # FASE 12 — Fechamento do ano / abertura do próximo
+          if year >= 2026:
+              add("F12", "FASE_12", "fechamento/abertura do próximo ano",
+                  None, "NAO_APLICAVEL", "2026 é o limite atual da matriz anual; 2027 não faz parte do escopo", False)
+          else:
+              f12 = f"dados/cotahist/quality/COTAHIST_{year}_FASE12_FECHAMENTO_{next_year}_ABERTURA_V1.json"
+              if file_check("F12", "FASE_12", "fechamento do ano e abertura do próximo", f12) == "OK":
+                  evidence = json.loads((root / f12).read_text(encoding="utf-8"))
+                  if evidence.get("year_closed") != year or evidence.get("year_opened") != next_year:
+                      checks[-1]["status"] = "BLOQUEADO"
+                      checks[-1]["blocking"] = True
+                      checks[-1]["detail"] = "transição não corresponde ao ano auditado"
+                  elif evidence.get("closed", {}).get("status") not in {"FECHADO_E_CERTIFICADO"}:
+                      checks[-1]["status"] = "BLOQUEADO"
+                      checks[-1]["blocking"] = True
+                      checks[-1]["detail"] = f"closed.status={evidence.get('closed', {}).get('status')!r}"
+
+          blockers = [c for c in checks if c["blocking"] or c["status"] in BLOCKING]
+          result = {
+              "schema_version": "2.0.0",
+              "workflow": "cotahist-orquestrador-anual-dryrun-v2",
+              "mode": "DRY_RUN",
+              "year": year,
+              "phases": list(range(13)),
+              "checks": checks,
+              "promotion": "BLOQUEADA" if blockers else "LIBERADA_PARA_PROMOCAO_CONTROLADA",
+              "blocking_codes": [c["code"] for c in blockers],
+              "mutations": False,
+              "commit": False,
+              "push": False,
+              "publication": False,
+              "deactivation": False,
+          }
+
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          print(
+              "RESULTADO: DRY-RUN FASE 00-12 — " +
+              ("PROMOCAO BLOQUEADA." if blockers else "TODAS AS PRE-CONDIÇÕES SATISFEITAS.")
+          )
+
+          if blockers:
+              raise SystemExit(2)
+          PY
+
+      - name: Garantia de não mutação
+        if: always()
+        run: |
+          if ! git diff --quiet; then
+            echo "FAIL-CLOSED: DRY-RUN produziu alteração no working tree."
+            git diff --stat
+            exit 1
+          fi
+          echo "DRY-RUN sem alterações no working tree."
