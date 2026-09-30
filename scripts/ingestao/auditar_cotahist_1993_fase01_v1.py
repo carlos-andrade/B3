@@ -21,7 +21,8 @@ errors = []
 observed = {}
 
 if not missing:
-    observed["raw_sha256"] = sha256(RAW)\n    observed["raw_size_bytes"] = RAW.stat().st_size
+    observed["raw_sha256"] = sha256(RAW)
+    observed["raw_size_bytes"] = RAW.stat().st_size
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     expected_sha = manifest.get("sha256")
     checksum_sha = CHECKSUM.read_text(encoding="utf-8").split()[0]
