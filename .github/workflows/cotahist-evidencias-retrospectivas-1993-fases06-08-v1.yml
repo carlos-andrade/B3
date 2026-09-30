@@ -1,0 +1,42 @@
+name: COTAHIST - gerar evidencias retrospectivas 1993 FASES 06-08 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/ingestao/gerar_evidencias_cotahist_1993_fases06_08_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1993.csv"
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Executar auditorias FASE06-08
+        run: python scripts/ingestao/gerar_evidencias_cotahist_1993_fases06_08_v1.py
+
+      - name: Publicar evidencias
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json
+          git add dados/cotahist/quality/COTAHIST_1993_FASE07_IDENTIDADE_CHAVES_V1.json
+          git add dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma evidencia nova."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): evidencia retrospectiva 1993 fases 06-08"
+          git push
