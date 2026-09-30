@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "ano": 1993,
+  "scope": "FASES 00-09",
+  "snapshot_date": "2026-09-30",
+  "status_global": "BLOQUEADO_AGUARDANDO_EXECUCAO_FASE00_FASE01",
+  "gates": {
+    "FASE00": "PENDENTE_EXECUCAO_WORKFLOW",
+    "FASE01": "PENDENTE_EXECUCAO_WORKFLOW",
+    "FASE02": "VALIDADO",
+    "FASE03": "EVIDENCIA_EXISTENTE",
+    "FASE04": "EVIDENCIA_EXISTENTE",
+    "FASE05": "EVIDENCIA_EXISTENTE",
+    "FASE06": "VALIDADO",
+    "FASE07": "VALIDADO",
+    "FASE08": "VALIDADO",
+    "FASE09": "BLOQUEADO_ATUALIZADO_PARA_EXIGIR_00_E_01"
+  },
+  "decision": "Nao executar/promover FASE09 ate que as evidencias especificas das FASES00 e 01 sejam produzidas e validadas.",
+  "new_workflows": [
+    ".github/workflows/cotahist-fase00-governanca-1993-v1.yml",
+    ".github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml"
+  ],
+  "new_scripts": [
+    "scripts/ingestao/auditar_cotahist_1993_fase00_v1.py",
+    "scripts/ingestao/auditar_cotahist_1993_fase01_v1.py"
+  ],
+  "contract": "docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md"
+}
