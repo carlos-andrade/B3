@@ -1,0 +1,40 @@
+name: COTAHIST - auditoria retrospectiva 1994 FASE00 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/cotahist-fase00-governanca-1994-v1.yml"
+      - "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json"
+      - "dados/cotahist/manifests/COTAHIST_A1994.json"
+      - "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
+permissions:
+  contents: write
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {lfs: true, fetch-depth: 0}
+      - name: Validar FASE00
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          y="1994"; q=pathlib.Path("dados/cotahist/quality")
+          req=[
+            pathlib.Path("docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md"),
+            q/"COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json",
+            pathlib.Path("dados/cotahist/manifests/COTAHIST_A1994.json"),
+            pathlib.Path("dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"),
+            pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"),
+            pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"),
+            pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A1994.csv"),
+          ]
+          missing=[str(p) for p in req if not p.exists()]
+          closure=json.loads((q/"COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json").read_text())
+          ok=not missing and closure.get("decision")=="ANO_1993_FECHADO_TRANSICAO_1994_AUTORIZADA"
+          if not ok: sys.exit("FASE00 BLOQUEADA: "+str(missing))
+          print("FASE00 1994 VALIDADA")
+          PY
