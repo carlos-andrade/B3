@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1993,
+  "phase": "FASE09",
+  "status": "BLOQUEADO",
+  "preconditions": {
+    "P02": "AUSENTE",
+    "P06": "AUSENTE",
+    "P07": "AUSENTE",
+    "P08": "AUSENTE",
+    "P05": "OK",
+    "P04": "OK",
+    "P01": "OK"
+  },
+  "evidence_statuses": {},
+  "missing": [
+    "P02",
+    "P06",
+    "P07",
+    "P08"
+  ],
+  "blocked": [],
+  "decision": "BLOQUEADO",
+  "note": "Pre-release somente consolida evidencias anteriores; nao retrocertifica fases ausentes."
+}
