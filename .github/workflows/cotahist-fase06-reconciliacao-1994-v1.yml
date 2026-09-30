@@ -1,16 +1,13 @@
-name: COTAHIST - auditoria retrospectiva 1994 FASE06 V1
+name: COTAHIST - auditoria retrospectiva 1994 FASE06 V2
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml"
       - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
       - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
       - "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
 
 permissions:
   contents: write
@@ -44,17 +41,11 @@ jobs:
           if e5.get("status")!="VALIDADO" or e5.get("decision")!="LIBERADO_PARA_FASE06":
               sys.exit("FASE06 BLOQUEADA: FASE05 não liberou")
 
-          # COTAHIST usa posições 1-based inclusivas.
-          # Em Python, converter para slice [inicio-1:fim].
-          # Layout oficial B3:
-          # DATA 03-10 | CODBDI 11-12 | CODNEG 13-24 | TPMERC 25-27
-          # PREABE 57-69 | PREMAX 70-82 | PREMIN 83-95 | PREMED 96-108
-          # PREULT 109-121 | TOTNEG 148-152 | QUATOT 153-170 | VOLTOT 171-188.
           def fixed(rec,a,b,scale=1):
               s=rec[a-1:b].decode("ascii").strip()
               if not s:
                   return ""
-              return str(Decimal(s)/Decimal(scale)) if scale else s
+              return str(Decimal(s)/Decimal(scale))
 
           critical=[
             ("data_pregao",3,10,1),
@@ -84,13 +75,13 @@ jobs:
 
           with norm.open("r",encoding="utf-8",newline="") as fh:
               rd=csv.DictReader(fh)
-              norm_rows=[]
               required=[x[0] for x in critical]
               missing=[k for k in required if k not in (rd.fieldnames or [])]
               if missing:
                   sys.exit(f"FASE06 BLOQUEADA: campos ausentes no normalizado: {missing}")
+              norm_rows=[]
               for r in rd:
-                  norm_rows.append(tuple(str(r[k]) for k in required))
+                  norm_rows.append(tuple(str(r[k]).strip() for k in required))
 
           if len(raw_rows)!=len(norm_rows):
               sys.exit(f"FASE06 BLOQUEADA: contagens divergentes RAW={len(raw_rows)} NORMALIZED={len(norm_rows)}")
@@ -107,13 +98,14 @@ jobs:
             "year":1994,
             "phase":"FASE06",
             "status":"VALIDADO" if not mismatches else "BLOQUEADO",
-            "decision":"LIBERADO_PARA_FASE07" if not mismatches else "BLOQUEADO",
+            "decision":"VALIDADO" if not mismatches else "BLOQUEADO",
             "raw_sha256":hashlib.sha256(raw.read_bytes()).hexdigest(),
             "normalized_sha256":hashlib.sha256(norm.read_bytes()).hexdigest(),
             "raw_records":len(raw_rows),
             "normalized_records":len(norm_rows),
             "critical_fields_checked":[x[0] for x in critical],
-            "layout_reference":"B3 COTAHIST layout oficial: posições 1-based inclusivas convertidas para slices Python [inicio-1:fim]",
+            "normalized_header_aliases":{"preab":"preabe"},
+            "layout_reference":"B3 COTAHIST: posições 1-based inclusivas convertidas para slices Python [inicio-1:fim]",
             "mismatch_count":len(mismatches),
             "mismatch_sample":mismatches,
             "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -121,7 +113,6 @@ jobs:
 
           ev.parent.mkdir(parents=True,exist_ok=True)
           ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
-
           if mismatches:
               sys.exit("FASE06 BLOQUEADA: divergências encontradas")
           PY
@@ -136,6 +127,3 @@ jobs:
           git commit -m "audit(cotahist): valida 1994 fase 06 reconciliacao"
           git pull --rebase origin main
           git push origin HEAD:main
-
-
-# Execucao controlada: disparo manual via commit 2026-09-30T22:16:45.906Z.
