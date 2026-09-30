@@ -92,10 +92,10 @@ aliases = {
     "especi": ("especi", "especificacao"),
     "prazot": ("prazot",),
     "codisi": ("codisi", "cod_isi"),
-    "dimes": ("dimes",),
+    "dimes": ("dimes", "dismes"),
     "datven": ("datven", "data_vencimento"),
     "indopc": ("indopc",),
-    "preab": ("preab", "preco_abertura"),
+    "preab": ("preab", "preabe", "preco_abertura"),
     "premax": ("premax", "preco_maximo"),
     "premin": ("premin", "preco_minimo"),
     "premed": ("premed", "preco_medio"),
@@ -114,6 +114,13 @@ def decimal(value):
     return Decimal(value) if value else None
 
 
+def canonical_text(key, value):
+    value = str(value).strip()
+    if key == "data_pregao" and len(value) == 10 and value[4] == "-" and value[7] == "-":
+        return value.replace("-", "")
+    return value
+
+
 # F06 — RAW x NORMALIZED
 critical = (
     "data_pregao", "codbdi", "codneg", "tpmerc",
@@ -125,8 +132,8 @@ mismatches = []
 for raw_row, norm_row in zip(raw, norm):
     bad = {}
     for key in critical:
-        raw_value = raw_row[key]
-        normalized_value = str(norm_row[nm[key]]).strip()
+        raw_value = canonical_text(key, raw_row[key])
+        normalized_value = canonical_text(key, norm_row[nm[key]])
 
         if key in NUMERIC:
             try:
@@ -170,9 +177,11 @@ f06 = {
     "mismatch_count": len(mismatches),
     "mismatch_sample": mismatches,
     "decision": "VALIDADO" if not mismatches else "BLOQUEADO",
+    "normalized_header_aliases": {key: nm[key] for key in critical},
     "note": (
-        "Comparacao reproduzivel RAW/NORMALIZED; escalas decimais numericas "
-        "de 10^n sao aceitas apenas quando a razao e inteira e limitada."
+        "Comparacao reproduzivel RAW/NORMALIZED; datas sao comparadas em "
+        "representacao canonica YYYYMMDD e escalas decimais numericas de "
+        "10^n sao aceitas apenas quando a razao e inteira e limitada."
     ),
 }
 (Q / "COTAHIST_1993_FASE06_RECONCILIACAO_V1.json").write_text(
