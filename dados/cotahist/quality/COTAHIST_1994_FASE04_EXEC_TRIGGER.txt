@@ -1,0 +1,5 @@
+FASE04_1994_EXEC_TRIGGER
+
+Gatilho auditável para execução da normalização determinística do COTAHIST_A1994 a partir do RAW oficial.
+Criado exclusivamente para disparar o workflow .github/workflows/cotahist-fase04-normalizacao-1994-v1.yml.
+Não altera o RAW e não representa conclusão da FASE04.
