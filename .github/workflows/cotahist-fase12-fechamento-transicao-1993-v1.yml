@@ -1,0 +1,181 @@
+name: COTAHIST - fechamento e transicao 1993 FASE12 V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml"
+      - "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1993_FASE10_INTEGRIDADE_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1993.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
+      - "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase12-1993
+  cancel-in-progress: false
+
+jobs:
+  fechamento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Validar fechamento e transicao
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          import pathlib
+          import sys
+
+          y = "1993"
+          q = pathlib.Path("dados/cotahist/quality")
+          raw = pathlib.Path(f"dados/cotahist/raw/anual/COTAHIST_A{y}.ZIP")
+          normalized = pathlib.Path(f"dados/cotahist/normalized/anual/COTAHIST_A{y}.csv")
+          manifest = pathlib.Path(f"dados/cotahist/normalized/manifests/COTAHIST_A{y}_quality.json")
+          cert = pathlib.Path("dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv")
+
+          phase_files = {
+              "FASE00": q / f"COTAHIST_{y}_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json",
+              "FASE01": q / f"COTAHIST_{y}_FASE01_AQUISICAO_RAW_V1.json",
+              "FASE02": q / f"COTAHIST_{y}_FASE02_INTEGRIDADE_FONTE_V1.json",
+              "FASE06": q / f"COTAHIST_{y}_FASE06_RECONCILIACAO_V1.json",
+              "FASE07": q / f"COTAHIST_{y}_FASE07_IDENTIDADE_CHAVES_V1.json",
+              "FASE08": q / f"COTAHIST_{y}_FASE08_SEMANTICA_CALENDARIO_V1.json",
+              "FASE09": q / f"COTAHIST_{y}_FASE09_PRE_RELEASE_V1.json",
+              "FASE10": q / f"COTAHIST_{y}_FASE10_INTEGRIDADE_V1.json",
+          }
+
+          required = {**phase_files, "RAW": raw, "NORMALIZED": normalized, "MANIFEST": manifest, "CERTIFICACAO": cert}
+          missing = [k for k, p in required.items() if not p.exists()]
+          evidence = {}
+          blocked = []
+
+          for name, path in phase_files.items():
+              if path.exists():
+                  try:
+                      obj = json.loads(path.read_text(encoding="utf-8"))
+                      status = obj.get("status") or obj.get("decision")
+                      evidence[name] = {"status": status, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+                      accepted = {"VALIDADO", "VALIDADO_COM_EXCECAO", "LIBERADO_PARA_FASE10", "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO"}
+                      if name in {"FASE00","FASE01","FASE02","FASE06","FASE07","FASE08"} and obj.get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
+                          blocked.append(name)
+                      if name == "FASE09" and obj.get("decision") != "LIBERADO_PARA_FASE10":
+                          blocked.append(name)
+                      if name == "FASE10" and obj.get("status") != "VALIDADO":
+                          blocked.append(name)
+                  except Exception as exc:
+                      evidence[name] = {"status": "INVALID_JSON", "error": str(exc)}
+                      blocked.append(name)
+
+          cert_row = None
+          if cert.exists():
+              with cert.open(encoding="utf-8", newline="") as f:
+                  for row in csv.DictReader(f):
+                      if row.get("ano") == y:
+                          cert_row = row
+                          break
+              if not cert_row:
+                  blocked.append("CERTIFICACAO_1993_AUSENTE")
+              else:
+                  if cert_row.get("quality_status") != "VALIDADO": blocked.append("CERTIFICACAO_STATUS")
+                  if cert_row.get("certificacao") != "CERTIFICADO_NORMALIZACAO": blocked.append("CERTIFICACAO_DECISAO")
+
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest() if raw.exists() else None
+          normalized_sha = hashlib.sha256(normalized.read_bytes()).hexdigest() if normalized.exists() else None
+
+          manifest_obj = {}
+          if manifest.exists():
+              try: manifest_obj = json.loads(manifest.read_text(encoding="utf-8"))
+              except Exception: blocked.append("MANIFEST_INVALID_JSON")
+
+          f10 = json.loads(phase_files["FASE10"].read_text(encoding="utf-8")) if phase_files["FASE10"].exists() else {}
+          checks = {
+              "raw_exists": raw.exists(),
+              "normalized_exists": normalized.exists(),
+              "manifest_exists": manifest.exists(),
+              "raw_immutable": f10.get("raw_immutable") is True,
+              "correction_applied": f10.get("correction_applied") is False,
+              "raw_hash_matches_fase10": raw_sha == f10.get("hashes", {}).get("raw_sha256_actual") if raw_sha else False,
+              "normalized_hash_matches_fase10": normalized_sha == f10.get("hashes", {}).get("normalized_sha256_actual") if normalized_sha else False,
+              "normalized_rows_match": f10.get("normalized", {}).get("row_count") == f10.get("normalized", {}).get("manifest_row_count"),
+          }
+          for k, v in checks.items():
+              if not v: blocked.append(k)
+
+          # FASE03-05 são representadas pelos artefatos de parsing/normalização/manifesto
+          # já validados pela FASE10; não se cria uma falsa evidência retroativa.
+          phase_representation = {
+              "FASE03_parsing": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+              "FASE04_normalizacao": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+              "FASE05_manifesto_checksum": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+              "FASE11_certificacao": "REPRESENTADA_PELA_MATRIZ_ANUAL",
+          }
+
+          ok = not missing and not blocked
+          out = {
+              "schema_version": "1.0.0",
+              "phase": "FASE12",
+              "year": 1993,
+              "next_year": 1994,
+              "status": "CONCLUIDA" if ok else "BLOQUEADA",
+              "decision": "ANO_1993_FECHADO_TRANSICAO_1994_AUTORIZADA" if ok else "TRANSICAO_1994_NAO_AUTORIZADA",
+              "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+              "required_artifacts": {k: str(v) for k, v in required.items()},
+              "missing": missing,
+              "blocked": sorted(set(blocked)),
+              "phase_evidence": evidence,
+              "phase_representation": phase_representation,
+              "certification_row": cert_row,
+              "checks": checks,
+              "hashes": {"raw_sha256": raw_sha, "normalized_sha256": normalized_sha},
+              "transition_policy": "1994 pode iniciar ingestao somente apos este fechamento; FASE12 nao libera dados inexistentes nem retrocertifica fases.",
+          }
+
+          target = q / f"COTAHIST_{y}_FASE12_FECHAMENTO_TRANSICAO_V1.json"
+          target.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not ok:
+              sys.exit(1)
+          PY
+
+      - name: Publicar evidência FASE12
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "audit(cotahist): fecha 1993 e registra transicao fase 12"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 2
+          done
+          exit 1
+
+      - name: Publicar artefato de auditoria
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-1993-fase12-evidencia
+          path: dados/cotahist/quality/COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json
+          retention-days: 30
