@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "COTAHIST_1993_DRYRUN_ORQUESTRADOR_ANUAL_V1",
+  "workflow": "cotahist-orquestrador-anual-dryrun-v1",
+  "run": "#2",
+  "mode": "DRY_RUN",
+  "year": 1993,
+  "commit": "629070c85558a1cc9d0d4723177db0935125e4a0",
+  "result": "SUCESSO_TECNICO",
+  "promotion": "BLOQUEADA",
+  "blocking_codes": ["P02", "P06", "P07", "P08", "P09"],
+  "checks": {
+    "P00": "OK",
+    "P01": "OK",
+    "P02": "AUSENTE",
+    "P03": "OK",
+    "P04": "OK",
+    "P05": "OK",
+    "P06": "AUSENTE",
+    "P07": "AUSENTE",
+    "P08": "AUSENTE",
+    "P09": "AUSENTE",
+    "P10": "OK",
+    "P11": "OK",
+    "P06C": "OK",
+    "P07C": "OK",
+    "P08C": "OK",
+    "P09C": "OK",
+    "P06M": "OK",
+    "P07M": "OK",
+    "P08M": "OK",
+    "P09M": "OK"
+  },
+  "specific_missing_evidence": [
+    "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json",
+    "dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json",
+    "dados/cotahist/quality/COTAHIST_1993_FASE07_IDENTIDADE_CHAVES_V1.json",
+    "dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json",
+    "dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json"
+  ],
+  "workflow_integrity": {
+    "mutations": false,
+    "commit": false,
+    "push": false,
+    "working_tree": "CLEAN"
+  },
+  "infrastructure": {
+    "runner": "2.337.0",
+    "checkout": "actions/checkout@v4",
+    "node_warning": "Node.js 20 deprecation warning; informational, not a data-quality failure"
+  },
+  "interpretation": {
+    "technical_execution": "workflow completed successfully",
+    "data_release": "not authorized by this DRY-RUN",
+    "next_gate": "produce or locate year-specific evidence for P02 and P06-P09, then rerun DRY-RUN"
+  }
+}
