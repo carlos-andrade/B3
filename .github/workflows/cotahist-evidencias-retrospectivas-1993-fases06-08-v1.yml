@@ -7,6 +7,7 @@ on:
       - "scripts/ingestao/gerar_evidencias_cotahist_1993_fases06_08_v1.py"
       - "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
       - "dados/cotahist/normalized/anual/COTAHIST_A1993.csv"
+      - ".github/workflows/cotahist-evidencias-retrospectivas-1993-fases06-08-v1.yml"
 
 permissions:
   contents: write
