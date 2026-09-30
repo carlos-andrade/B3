@@ -9,15 +9,19 @@
   "manifest_status": "VALIDADO",
   "checksum_file": "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256",
   "workflow": ".github/workflows/cotahist-fase02-integridade-1994-v1.yml",
-  "workflow_commit": "8051f24f6cf7e80bc154d3e973f8c90846cb7cdb",
+  "workflow_commit": "1eefcb7aba5a675d95ef297b3b713887952c25cd",
   "automated_run_observed": false,
-  "reason": "O workflow de FASE02 foi criado/atualizado, mas a integração disponível não expõe execução manual e nenhum run automático foi observado para o commit. Para manter o contrato fail-closed, FASE03 não é liberada.",
+  "reexecution_triggered": true,
+  "reexecution_trigger_commit": "1eefcb7aba5a675d95ef297b3b713887952c25cd",
+  "reason": "O workflow foi reacionado por push controlado no próprio arquivo, pois a integração disponível não expõe workflow_dispatch. A consulta disponível de runs por commit filtra execuções de pull request e não confirmou um run do push. Portanto a execução do gate permanece não observada e FASE03 continua bloqueada.",
   "external_source": "B3 Cotações Históricas",
   "external_source_verified": true,
   "notes": [
     "A B3 informa que a série histórica cobre desde 1986 e que os arquivos são ZIP interpretados por layout.",
     "A evidência histórica do manifesto 1994 registra ZIP com 1 arquivo COTAHIST e registros de 245 bytes.",
-    "A validação criptográfica do conteúdo binário atual deve ser concluída pelo workflow FASE02."
+    "A validação criptográfica do conteúdo binário atual deve ser concluída pelo workflow FASE02.",
+    "Nenhuma promoção de fase foi realizada nesta reexecução."
   ],
-  "created_at": "2026-09-30"
+  "created_at": "2026-09-30",
+  "updated_at": "2026-09-30"
 }
