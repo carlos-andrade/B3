@@ -1,32 +1,29 @@
-name: COTAHIST 1994 - cadeia FASE06-12 V1
+name: COTAHIST 1994 - cadeia FASE06-12 V2
 
 on:
   workflow_dispatch:
   push:
     paths:
       - ".github/workflows/cotahist-cadeia-1994-06-12-v1.yml"
+      - "scripts/ingestao/gerar_evidencias_cotahist_1994_fases06_08_v1.py"
+      - "scripts/ingestao/gerar_cadeia_cotahist_1994_fases09_12_v1.py"
       - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
       - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
       - "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE09_PRE_RELEASE_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE10_INTEGRIDADE_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE11_CERTIFICACAO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE12_FECHAMENTO_TRANSICAO_V1.json"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: cotahist-cadeia-1994-06-12
   cancel-in-progress: false
 
 jobs:
-  run-start:
-    name: "00 - RUN_START / reconhecimento da cadeia"
+  cadeia:
+    name: "1994 — FASE06→FASE12"
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: RUN_START
         run: |
@@ -37,119 +34,44 @@ jobs:
           echo "sha=${{ github.sha }}"
           date -u +"utc=%Y-%m-%dT%H:%M:%SZ"
 
-  fase06:
-    name: "06 - Reconciliação"
-    needs: run-start
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
-      - name: Validar FASE05 e reconciliar RAW x NORMALIZED
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: FASE06-08 — evidências retrospectivas
+        run: python scripts/ingestao/gerar_evidencias_cotahist_1994_fases06_08_v1.py
+
+      - name: FASE09-12 — pre-release, integridade, certificação e fechamento
+        run: python scripts/ingestao/gerar_cadeia_cotahist_1994_fases09_12_v1.py
+
+      - name: Publicar evidências 1994
+        if: always()
         run: |
-          python - <<'PY'
-          import csv,datetime,hashlib,json,pathlib,sys,zipfile
-          from decimal import Decimal
-          root=pathlib.Path(".")
-          raw=root/"dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
-          norm=root/"dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
-          f5=root/"dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
-          for p in (raw,norm,f5):
-              if not p.exists(): sys.exit(f"FASE06 BLOQUEADA: ausente {p}")
-          e5=json.loads(f5.read_text())
-          if e5.get("status")!="VALIDADO" or e5.get("decision")!="LIBERADO_PARA_FASE06":
-              sys.exit("FASE06 BLOQUEADA: FASE05 não liberou")
-          def fixed(rec,a,b,scale=1):
-              s=rec[a-1:b].decode("ascii").strip()
-              return "" if not s else str(Decimal(s)/Decimal(scale))
-          critical=[
-            ("data_pregao",3,10,1),("codbdi",11,12,1),("codneg",13,24,1),("tpmerc",25,27,1),
-            ("preabe",57,69,100),("premax",70,82,100),("premin",83,95,100),("premed",96,108,100),
-            ("preult",109,121,100),("totneg",148,152,1),("quatot",153,170,1),("voltot",171,188,100)]
-          with zipfile.ZipFile(raw) as z:
-              members=z.namelist()
-              if len(members)!=1: sys.exit("FASE06 BLOQUEADA: ZIP deve possuir exatamente um membro")
-              data=z.read(members[0])
-          raw_rows=[tuple(fixed(line,a,b,s) for _,a,b,s in critical)
-                    for line in data.splitlines() if len(line)==245 and line[0:2]==b"01"]
-          with norm.open("r",encoding="utf-8",newline="") as fh:
-              rd=csv.DictReader(fh)
-              names=[x[0] for x in critical]
-              missing=[k for k in names if k not in (rd.fieldnames or [])]
-              if missing: sys.exit(f"FASE06 BLOQUEADA: campos ausentes {missing}")
-              norm_rows=[tuple(str(r[k]) for k in names) for r in rd]
-          if len(raw_rows)!=len(norm_rows):
-              sys.exit(f"FASE06 BLOQUEADA: contagens divergentes RAW={len(raw_rows)} NORMALIZED={len(norm_rows)}")
-          for i,(a,b) in enumerate(zip(raw_rows,norm_rows),1):
-              if a!=b: sys.exit(f"FASE06 BLOQUEADA: divergência na linha {i}: RAW={a} NORMALIZED={b}")
-          print(f"FASE06 RECONCILIADA: {len(raw_rows)} registros tipo 01; 12 campos críticos; divergências=0")
-          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE09_PRE_RELEASE_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE10_INTEGRIDADE_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE11_CERTIFICACAO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE12_FECHAMENTO_TRANSICAO_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma evidência nova."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): cadeia 1994 fases 06-12"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 2
+          done
+          exit 1
 
-  fase07:
-    name: "07 - Identidade / chaves"
-    needs: fase06
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with: {fetch-depth: 1}
-      - name: Gate FASE07
-        run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json || {
-            echo "FASE07 BLOQUEADA: evidência FASE06 ainda não publicada pela cadeia oficial."; exit 1; }
-          echo "FASE07 liberada para implementação/execução oficial."
-
-  fase08:
-    name: "08 - Semântica / calendário"
-    needs: fase07
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json || {
-            echo "FASE08 BLOQUEADA: FASE07 sem evidência certificada."; exit 1; }
-          echo "FASE08 liberada."
-
-  fase09:
-    name: "09 - Pré-release"
-    needs: fase08
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json || {
-            echo "FASE09 BLOQUEADA: FASE08 sem evidência certificada."; exit 1; }
-          echo "FASE09 liberada."
-
-  fase10:
-    name: "10 - Validação independente"
-    needs: fase09
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE09_PRE_RELEASE_V1.json || {
-            echo "FASE10 BLOQUEADA: FASE09 sem evidência certificada."; exit 1; }
-          echo "FASE10 liberada."
-
-  fase11:
-    name: "11 - Certificação / promoção"
-    needs: fase10
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE10_INTEGRIDADE_V1.json || {
-            echo "FASE11 BLOQUEADA: FASE10 sem evidência certificada."; exit 1; }
-          echo "FASE11 liberada."
-
-  fase12:
-    name: "12 - Fechamento / transição"
-    needs: fase11
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          test -f dados/cotahist/quality/COTAHIST_1994_FASE11_CERTIFICACAO_V1.json || {
-            echo "FASE12 BLOQUEADA: FASE11 sem evidência certificada."; exit 1; }
-          echo "FASE12 liberada para fechamento oficial."
+      - name: Publicar artefato da cadeia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-1994-cadeia-fases06-12
+          path: dados/cotahist/quality/COTAHIST_1994_FASE*.json
+          retention-days: 30
