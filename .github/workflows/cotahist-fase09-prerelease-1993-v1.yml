@@ -2,6 +2,7 @@ name: COTAHIST - pre-release retrospectivo 1993 FASE09 V2
 on:
   push:
     paths:
+      - ".github/workflows/cotahist-fase09-prerelease-1993-v1.yml"
       - "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json"
       - "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json"
       - "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json"
@@ -28,26 +29,44 @@ jobs:
           python - <<'PY'
           import json, pathlib, sys
           y="1993"; q=pathlib.Path("dados/cotahist/quality")
-          paths={
+          evidence={
             "P00":q/f"COTAHIST_{y}_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json",
             "P01":q/f"COTAHIST_{y}_FASE01_AQUISICAO_RAW_V1.json",
             "P02":q/f"COTAHIST_{y}_FASE02_INTEGRIDADE_FONTE_V1.json",
             "P06":q/f"COTAHIST_{y}_FASE06_RECONCILIACAO_V1.json",
             "P07":q/f"COTAHIST_{y}_FASE07_IDENTIDADE_CHAVES_V1.json",
             "P08":q/f"COTAHIST_{y}_FASE08_SEMANTICA_CALENDARIO_V1.json",
-            "P05":pathlib.Path(f"dados/cotahist/normalized/manifests/COTAHIST_A{y}_quality.json"),
+          }
+          required_files={
+            "RAW":pathlib.Path(f"dados/cotahist/raw/anual/COTAHIST_A{y}.ZIP"),
             "P04":pathlib.Path(f"dados/cotahist/normalized/anual/COTAHIST_A{y}.csv"),
-            "P01":pathlib.Path(f"dados/cotahist/raw/anual/COTAHIST_A{y}.ZIP")}
-          missing=[k for k,p in paths.items() if not p.exists()]
+            "P05":pathlib.Path(f"dados/cotahist/normalized/manifests/COTAHIST_A{y}_quality.json"),
+          }
+          missing=[k for k,p in {**evidence,**required_files}.items() if not p.exists()]
           statuses={}
-          for k in ("P00","P01","P02","P06","P07","P08"):
+          for k,p in evidence.items():
             if k not in missing:
-              try: statuses[k]=json.loads(paths[k].read_text(encoding="utf-8")).get("status")
-              except Exception: statuses[k]="INVALID_JSON"
+              try:
+                statuses[k]=json.loads(p.read_text(encoding="utf-8")).get("status")
+              except Exception:
+                statuses[k]="INVALID_JSON"
           blocked=[k for k,v in statuses.items() if v not in ("VALIDADO","VALIDADO_COM_EXCECAO")]
           ok=not missing and not blocked
-          out={"schema_version":"1.0.0","year":1993,"phase":"FASE09","contract":"docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md","status":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO","preconditions":{k:("OK" if k not in missing else "AUSENTE") for k in paths},"evidence_statuses":statuses,"missing":missing,"blocked":blocked,"decision":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO","note":"Pre-release somente consolida evidencias anteriores; nao retrocertifica fases ausentes."}
-          (q/f"COTAHIST_{y}_FASE09_PRE_RELEASE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          out={
+            "schema_version":"1.0.0",
+            "year":1993,
+            "phase":"FASE09",
+            "contract":"docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md",
+            "status":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "preconditions":{k:("OK" if k not in missing else "AUSENTE") for k in {**evidence,**required_files}},
+            "evidence_statuses":statuses,
+            "missing":missing,
+            "blocked":blocked,
+            "decision":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "note":"Pre-release somente consolida evidencias anteriores; nao retrocertifica fases ausentes."
+          }
+          (q/f"COTAHIST_{y}_FASE09_PRE_RELEASE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"
+",encoding="utf-8")
           print(json.dumps(out,ensure_ascii=False))
           if not ok: sys.exit(1)
           PY
@@ -59,4 +78,8 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "audit(cotahist): pre-release retrospectivo 1993 fase 09 v2"
-          git push
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 2
+          done
+          exit 1
