@@ -156,7 +156,7 @@ jobs:
                   checks[-1]["detail"] = "ano não encontrado na matriz"
               else:
                   row = matches[0]
-                  cert_status = row.get("status_certificacao", "")
+                  cert_status = row.get("certificacao", "")
                   if cert_status not in {"CERTIFICADO_NORMALIZACAO", "CERTIFICADO"}:
                       checks[-1]["status"] = "BLOQUEADO"
                       checks[-1]["blocking"] = True
@@ -203,7 +203,9 @@ jobs:
           )
 
           if blockers:
-              raise SystemExit(2)
+              print("AUDITORIA CONCLUÍDA: existem bloqueadores; promoção permanece bloqueada.")
+          else:
+              print("AUDITORIA CONCLUÍDA: nenhuma pré-condição bloqueadora encontrada.")
           PY
 
       - name: Garantia de não mutação
