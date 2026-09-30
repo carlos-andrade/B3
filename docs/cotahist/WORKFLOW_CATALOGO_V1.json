@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-29",
-  "status": "INVENTARIO_INICIAL",
+  "generated_at": "2026-09-30",
+  "status": "INVENTARIO_ATUALIZADO",
   "canonical_order": [
     "00_governanca",
     "01_aquisicao_raw",
@@ -88,7 +88,33 @@
       "path": ".github/workflows/cotahist-materializar-normalized-1993-v1.yml",
       "stage": "04",
       "status": "ATIVO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase00-governanca-1993-v1.yml",
+      "stage": "00",
+      "status": "RETROSPECTIVO_1993_NOVO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml",
+      "stage": "01",
+      "status": "RETROSPECTIVO_1993_NOVO"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase02-evidencia-1993-v1.yml",
+      "stage": "02",
+      "status": "RETROSPECTIVO_1993"
+    },
+    {
+      "path": ".github/workflows/cotahist-evidencias-retrospectivas-1993-fases06-08-v1.yml",
+      "stage": "06-08",
+      "status": "RETROSPECTIVO_1993"
+    },
+    {
+      "path": ".github/workflows/cotahist-fase09-prerelease-1993-v1.yml",
+      "stage": "09",
+      "status": "RETROSPECTIVO_1993_V2"
     }
   ],
-  "migration_rule": "Não renomear ou remover workflows históricos em massa antes do inventário completo e teste de dependências."
+  "migration_rule": "Não renomear ou remover workflows históricos em massa antes do inventário completo e teste de dependências.",
+  "notes": "Em 2026-09-30 foram adicionados os workflows dedicados de auditoria retrospectiva 1993 das FASES 00 e 01. A FASE09 foi ajustada para exigir explicitamente P00 e P01. As evidencias 00/01 ainda dependem de execucao do workflow."
 }
