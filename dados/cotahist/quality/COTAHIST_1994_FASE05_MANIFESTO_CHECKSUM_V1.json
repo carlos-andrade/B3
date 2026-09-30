@@ -5,7 +5,6 @@
   "status": "VALIDADO",
   "decision": "LIBERADO_PARA_FASE06",
   "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
-  "validation_method": "reconciliacao_manifesto_checksum_raw",
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP",
   "raw_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
   "manifest_path": "dados/cotahist/manifests/COTAHIST_A1994.json",
@@ -15,6 +14,5 @@
   "checksum_matches_raw": true,
   "normalized_manifest_status": "VALIDADO",
   "fase04_status": "VALIDADO",
-  "validated_at_utc": "2026-09-30T15:00:00Z",
-  "execution_trigger": "2026-09-30 FASE06 validation trigger 2"
+  "validated_at_utc": "2026-09-30T22:04:25.187249+00:00"
 }
