@@ -35,5 +35,18 @@ jobs:
               if len(names)!=1: sys.exit("ZIP COM MAIS DE UM MEMBRO")
               info=z.getinfo(names[0])
               if info.file_size==0: sys.exit("MEMBRO ZIP VAZIO")
-          print("FASE02 1994 VALIDADA", actual)
+          import datetime
+          out={"schema_version":"1.0.0","year":1994,"phase":"FASE02","status":"VALIDADO","decision":"LIBERADO_PARA_FASE03","raw_path":str(raw),"manifest_path":str(man),"checksum_path":str(chk),"sha256":actual,"zip_member_count":len(names),"zip_member":names[0],"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\\n")
+          print(json.dumps(out,ensure_ascii=False))
           PY
+
+      - name: Publicar evidencia FASE02
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json
+          git commit -m "audit(cotahist): publica 1994 fase 02 integridade"
+          git pull --rebase origin main
+          git push origin HEAD:main
