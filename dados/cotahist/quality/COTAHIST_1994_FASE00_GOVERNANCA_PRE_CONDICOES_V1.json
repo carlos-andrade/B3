@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1994,
+  "phase": "FASE00",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE01",
+  "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+  "preconditions": {
+    "1993_fechado": true,
+    "1993_transition_authorized": true,
+    "raw_1994_exists": true,
+    "manifest_1994_exists": true,
+    "checksum_1994_exists": true,
+    "normalized_1994_exists": true,
+    "normalized_manifest_1994_exists": true
+  },
+  "evidence": {
+    "closure_1993": "dados/cotahist/quality/COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json",
+    "raw_manifest": "dados/cotahist/manifests/COTAHIST_A1994.json",
+    "raw_checksum": "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256",
+    "normalized_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json",
+    "duplicate_audit": "dados/cotahist/normalized/manifests/COTAHIST_A1994_duplicate_audit.json"
+  },
+  "source": {
+    "name": "B3",
+    "historical_series_scope": "desde 1986",
+    "raw_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1994.ZIP",
+    "official_reference": "B3 Cotações Históricas"
+  },
+  "notes": [
+    "FASE00 valida as pré-condições do ciclo 1994 e não certifica o conteúdo do ano.",
+    "O RAW de 1994 já estava persistido no repositório antes da abertura formal deste ciclo; a aquisição será tratada como evidência histórica e submetida ao contrato atual.",
+    "Não há promoção automática para FASE02: a FASE01 deve produzir sua própria evidência."
+  ],
+  "timestamp": "2026-09-30"
+}
