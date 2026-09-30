@@ -28,6 +28,7 @@ jobs:
         run: python scripts/ingestao/gerar_evidencias_cotahist_1993_fases06_08_v1.py
 
       - name: Publicar evidencias
+        if: ${{ always() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
