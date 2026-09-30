@@ -3,10 +3,10 @@
   "ano": 1993,
   "scope": "FASES 00-09",
   "snapshot_date": "2026-09-30",
-  "status_global": "BLOQUEADO_AGUARDANDO_EXECUCAO_FASE00_FASE01",
+  "status_global": "FASE00_FASE01_VALIDADAS_FASE09_AGUARDA_REEXECUCAO",
   "gates": {
-    "FASE00": "PENDENTE_EXECUCAO_WORKFLOW",
-    "FASE01": "PENDENTE_EXECUCAO_WORKFLOW",
+    "FASE00": "VALIDADO",
+    "FASE01": "VALIDADO",
     "FASE02": "VALIDADO",
     "FASE03": "EVIDENCIA_EXISTENTE",
     "FASE04": "EVIDENCIA_EXISTENTE",
@@ -14,9 +14,9 @@
     "FASE06": "VALIDADO",
     "FASE07": "VALIDADO",
     "FASE08": "VALIDADO",
-    "FASE09": "BLOQUEADO_ATUALIZADO_PARA_EXIGIR_00_E_01"
+    "FASE09": "BLOQUEADO_AGUARDANDO_REEXECUCAO_COM_P02_P06_P07_P08_PRESENTES"
   },
-  "decision": "Nao executar/promover FASE09 ate que as evidencias especificas das FASES00 e 01 sejam produzidas e validadas.",
+  "decision": "FASE00 e FASE01 possuem evidencias especificas validas. A FASE09 nao pode ser promovida enquanto sua evidencia publicada permanecer desatualizada/bloqueada; e necessario reexecutar o pre-release contra as evidencias 00-08 atualmente presentes.",
   "new_workflows": [
     ".github/workflows/cotahist-fase00-governanca-1993-v1.yml",
     ".github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml"
@@ -25,5 +25,11 @@
     "scripts/ingestao/auditar_cotahist_1993_fase00_v1.py",
     "scripts/ingestao/auditar_cotahist_1993_fase01_v1.py"
   ],
-  "contract": "docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md"
+  "contract": "docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md",
+  "evidence": {
+    "FASE00": "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json",
+    "FASE01": "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json",
+    "FASE09": "dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json"
+  },
+  "last_update_reason": "Execucao retrospectiva 1993 FASE00/01 concluida; FASE02 e FASE06-08 ja presentes como VALIDADO. FASE09 deve ser reavaliada sem retrocertificacao."
 }
