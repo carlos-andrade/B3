@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1993,
+  "workflow": "COTAHIST - gerar evidencias retrospectivas 1993 FASES 06-08 V1",
+  "run_id": 36712047524,
+  "run_number": 4,
+  "run_attempt": 2,
+  "job_id": 109876871254,
+  "head_sha": "a81c1b12169faf35d6b548a982bb4f08eeb73692",
+  "status": "FALHA_TECNICA",
+  "failed_step": "Executar auditorias FASE06-08",
+  "error": "RuntimeError: coluna ausente: ('dimes',)",
+  "root_cause": "O normalizador canonico usa os campos preabe e dismes, enquanto a auditoria aceitava apenas preab e dimes como nomes normalizados.",
+  "corrective_commit": "70af8f74b96f9ebb259c00d3b8fbe6ddd5c05a6e",
+  "corrective_changes": [
+    "alias preab -> preabe",
+    "alias dimes -> dismes",
+    "comparacao canonica de data_pregao YYYYMMDD vs YYYY-MM-DD"
+  ],
+  "publication_step": "SKIPPED",
+  "recorded_at": "2026-09-30T12:00:00Z"
+}
