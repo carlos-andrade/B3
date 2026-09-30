@@ -34,3 +34,5 @@ OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="u
 print(json.dumps(out, ensure_ascii=False))
 if missing:
     raise SystemExit(1)
+
+# FASE00: evidencia produzida por execucao reprodutivel do workflow dedicado.\n
