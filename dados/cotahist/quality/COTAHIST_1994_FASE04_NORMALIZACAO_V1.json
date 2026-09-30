@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "year": 1994,
   "phase": "FASE04",
-  "status": "VALIDADO",
-  "decision": "LIBERADO_PARA_FASE05",
+  "status": "PENDENTE_REVALIDACAO",
+  "decision": "BLOQUEADO_AGUARDANDO_EXECUCAO_VERIFICAVEL",
   "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
-  "validation_method": "reconciliacao_do_manifesto_de_normalizacao_existente",
+  "validation_method": "revalidacao_deterministica_a_partir_do_RAW_com_publicacao_LFS",
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP",
   "raw_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1994.csv",
@@ -23,5 +23,7 @@
   "normalized_identity_matches_manifest": true,
   "deterministic_normalization_reconciled": true,
   "note": "A normalizacao existente foi reconciliada contra o manifesto de qualidade ja versionado. O arquivo CSV normalizado e mantido em Git LFS; o SHA-256 de conteudo registrado no manifesto e a identidade de release da normalizacao.",
-  "validated_at_utc": "2026-09-30T15:00:00Z"
+  "validated_at_utc": null,
+  "blocker": "O CSV normalizado de 1994 nao esta materialmente disponivel no checkout/repo; a evidencia anterior nao deve permanecer como VALIDADO sem nova execucao verificavel.",
+  "revalidation_trigger_commit": "f1f3a32fdd4195c161cc673aa0c6ee055427c93c"
 }
