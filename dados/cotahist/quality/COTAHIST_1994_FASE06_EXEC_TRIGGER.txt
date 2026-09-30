@@ -1,0 +1,2 @@
+EXECUCAO_REAL_FASE06_1994
+Solicitada em 2026-09-30 para disparar o workflow por push, apos alinhamento com baseline 1993.
