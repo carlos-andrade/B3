@@ -2,15 +2,12 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE04 V1
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase04-normalizacao-1994-v1.yml"
       - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
-      - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
       - "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
-      - "dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1994_FASE04_EXEC_TRIGGER.txt"
 
 permissions:
   contents: write
