@@ -29,116 +29,87 @@ jobs:
           python - <<'PY'
           import csv, datetime, hashlib, json, pathlib, sys, zipfile
           from decimal import Decimal
-
           root=pathlib.Path(".")
           raw=root/"dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
           norm=root/"dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
           manifest=root/"dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
           f3=root/"dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json"
           ev=root/"dados/cotahist/quality/COTAHIST_1994_FASE04_NORMALIZACAO_V1.json"
-
           for p in (raw,manifest,f3):
-              if not p.exists():
-                  sys.exit(f"FASE04 BLOQUEADA: arquivo ausente: {p}")
-
-          e3=json.loads(f3.read_text())
-          m=json.loads(manifest.read_text())
+              if not p.exists(): sys.exit(f"FASE04 BLOQUEADA: arquivo ausente: {p}")
+          e3=json.loads(f3.read_text()); m=json.loads(manifest.read_text())
           if e3.get("status")!="VALIDADO" or e3.get("decision")!="LIBERADO_PARA_FASE04":
               sys.exit("FASE04 BLOQUEADA: FASE03 não liberou a normalização")
           if m.get("status")!="VALIDADO" or m.get("ano")!=1994:
               sys.exit("FASE04 BLOQUEADA: manifesto de normalização inválido")
-
           raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
-          if raw_sha!=m.get("raw_sha256"):
-              sys.exit("FASE04 BLOQUEADA: RAW diverge do manifesto de normalização")
-
+          if raw_sha!=m.get("raw_sha256"): sys.exit("FASE04 BLOQUEADA: RAW diverge do manifesto")
           expected_norm_sha=m.get("normalized_sha256")
           if (not norm.exists()) or norm.read_text(errors="replace").startswith("version https://git-lfs.github.com/spec/v1"):
               norm.parent.mkdir(parents=True,exist_ok=True)
-              header=[
-                "data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref",
-                "preabe","premax","premin","premed","preult","preofc","preofv","totneg",
-                "quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dismes"
-              ]
+              header=["data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref","preabe","premax","premin","premed","preult","preofc","preofv","totneg","quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dismes"]
               fields=[
-                ("data_pregao",3,10,1,True),("codbdi",11,12,1,False),("codneg",13,24,1,False),
-                ("tpmerc",25,27,1,False),("nomres",28,39,1,False),("especi",40,49,1,False),
-                ("prazot",50,52,1,False),("modref",53,56,1,False),("preabe",57,69,100,False),
-                ("premax",70,82,100,False),("premin",83,95,100,False),("premed",96,108,100,False),
-                ("preult",109,121,100,False),("preofc",122,134,100,False),("preofv",135,147,100,False),
-                ("totneg",148,152,1,False),("quatot",153,170,1,False),("voltot",171,188,100,False),
-                ("preexe",189,201,100,False),("indopc",202,202,1,False),("datven",203,210,1,True),
-                ("fatcot",211,216,1,False),("ptoexe",217,228,100,False),("codisi",229,240,1,False),
-                ("dismes",241,242,1,False)
-              ]
+                ("data_pregao",3,10,1,True),("codbdi",11,12,1,False),("codneg",13,24,1,False),("tpmerc",25,27,1,False),
+                ("nomres",28,39,1,False),("especi",40,49,1,False),("prazot",50,52,1,False),("modref",53,56,1,False),
+                ("preabe",57,69,100,False),("premax",70,82,100,False),("premin",83,95,100,False),("premed",96,108,100,False),
+                ("preult",109,121,100,False),("preofc",122,134,100,False),("preofv",135,147,100,False),("totneg",148,152,1,False),
+                ("quatot",153,170,1,False),("voltot",171,188,100,False),("preexe",189,201,100,False),("indopc",202,202,1,False),
+                ("datven",203,210,1,True),("fatcot",211,216,1,False),("ptoexe",217,228,100,False),("codisi",229,240,1,False),("dismes",241,242,1,False)]
               def value(rec,a,b,scale,date=False):
                   s=rec[a-1:b].decode("ascii").strip()
-                  if not s: return ""
+                  if not s:return ""
                   if date:
-                      if len(s)==8: return f"{s[:4]}-{s[4:6]}-{s[6:]}"
+                      if len(s)==8:return f"{s[:4]}-{s[4:6]}-{s[6:]}"
                       raise ValueError(f"data inválida: {s}")
                   return s if scale==1 else format(Decimal(s)/Decimal(scale),"f")
               with zipfile.ZipFile(raw) as z:
                   members=z.namelist()
-                  if len(members)!=1: sys.exit("FASE04 BLOQUEADA: ZIP não possui exatamente um membro")
+                  if len(members)!=1:sys.exit("FASE04 BLOQUEADA: ZIP não possui exatamente um membro")
                   data=z.read(members[0])
               rows=0
               with norm.open("w",encoding="utf-8",newline="") as fh:
-                  wr=csv.writer(fh,lineterminator="\n")
-                  wr.writerow(header)
+                  wr=csv.writer(fh,lineterminator="\n"); wr.writerow(header)
                   for line in data.splitlines():
-                      if len(line)!=245: sys.exit("FASE04 BLOQUEADA: registro fora de 245 bytes")
-                      if line[0:2]!=b"01": continue
+                      if len(line)!=245:sys.exit("FASE04 BLOQUEADA: registro fora de 245 bytes")
+                      if line[0:2]!=b"01":continue
                       row=[value(line,a,b,s,date) for _,a,b,s,date in fields]
                       if row[0][:4]!="1994" or (row[20] and row[20][:4]!="1994"):
                           sys.exit("FASE04 BLOQUEADA: data fora de 1994")
                       wr.writerow(row); rows+=1
               print(f"FASE04: normalização reconstruída; linhas={rows}")
-
           norm_sha=hashlib.sha256(norm.read_bytes()).hexdigest()
-          if norm_sha!=expected_norm_sha:
-              sys.exit(f"FASE04 BLOQUEADA: SHA divergente {norm_sha} != {expected_norm_sha}")
-
+          print(f"normalized_sha256={norm_sha}")
+          if norm_sha!=expected_norm_sha:sys.exit(f"FASE04 BLOQUEADA: SHA divergente {norm_sha} != {expected_norm_sha}")
           rows=0; bad_dates=0; first_date=None; last_date=None
           with norm.open("r",encoding="utf-8",newline="") as fh:
               reader=csv.reader(fh); header=next(reader,None)
-              if header is None or len(header)!=25: sys.exit("FASE04 BLOQUEADA: cabeçalho não possui 25 campos")
+              if header is None or len(header)!=25:sys.exit("FASE04 BLOQUEADA: cabeçalho não possui 25 campos")
               for row in reader:
                   rows+=1
-                  if len(row)!=25: sys.exit(f"FASE04 BLOQUEADA: linha {rows+1} com campos divergentes")
+                  if len(row)!=25:sys.exit(f"FASE04 BLOQUEADA: linha {rows+1} com campos divergentes")
                   try:
                       datetime.date.fromisoformat(row[0])
                       first_date=row[0] if first_date is None else min(first_date,row[0])
                       last_date=row[0] if last_date is None else max(last_date,row[0])
-                  except ValueError: bad_dates+=1
-
+                  except ValueError:bad_dates+=1
           if rows!=int(m["linhas_normalized"]) or bad_dates!=int(m["datas_invalidas"]):
               sys.exit("FASE04 BLOQUEADA: contagem de linhas ou datas divergente")
           if first_date!=m["primeira_data"] or last_date!=m["ultima_data"]:
               sys.exit("FASE04 BLOQUEADA: intervalo de datas divergente")
-
-          out={
-            "schema_version":"1.0.0","year":1994,"phase":"FASE04","status":"VALIDADO",
-            "decision":"LIBERADO_PARA_FASE05","rule":"docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
-            "validation_method":"reconstrucao_deterministica_a_partir_do_RAW_quando_objeto_LFS_ausente",
-            "raw_path":str(raw),"raw_sha256":raw_sha,"normalized_path":str(norm),
-            "normalized_manifest_path":str(manifest),"normalized_sha256":norm_sha,
-            "parser_version":m.get("parser_version"),"rows":rows,"fields":25,"invalid_dates":bad_dates,
-            "first_date":first_date,"last_date":last_date,"manifest_matches_computed":True,
-            "raw_matches_manifest":True,"normalization_is_deterministically_reconciled":True,
-            "lfs_rehydrated":True,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
-          }
+          out={"schema_version":"1.0.0","year":1994,"phase":"FASE04","status":"VALIDADO","decision":"LIBERADO_PARA_FASE05","rule":"docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md","validation_method":"reconstrucao_deterministica_a_partir_do_RAW_quando_objeto_LFS_ausente","raw_path":str(raw),"raw_sha256":raw_sha,"normalized_path":str(norm),"normalized_manifest_path":str(manifest),"normalized_sha256":norm_sha,"parser_version":m.get("parser_version"),"rows":rows,"fields":25,"invalid_dates":bad_dates,"first_date":first_date,"last_date":last_date,"manifest_matches_computed":True,"raw_matches_manifest":True,"normalization_is_deterministically_reconciled":True,"lfs_rehydrated":True,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
           ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n")
-          print(json.dumps(out,ensure_ascii=False))
           PY
 
-      - name: Publicar normalização e evidência
+      - name: Validar e publicar objeto Git LFS
         if: success()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          set -euo pipefail
+          git lfs install --local
+          test -f dados/cotahist/normalized/anual/COTAHIST_A1994.csv
+          git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A1994.csv
+          git lfs track --no-recurse dados/cotahist/normalized/anual/COTAHIST_A1994.csv >/dev/null || true
           git add dados/cotahist/normalized/anual/COTAHIST_A1994.csv dados/cotahist/quality/COTAHIST_1994_FASE04_NORMALIZACAO_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): restaura normalizacao LFS 1994 fase 04"
-          git pull --rebase origin main
+          git lfs push origin HEAD
           git push origin HEAD:main
