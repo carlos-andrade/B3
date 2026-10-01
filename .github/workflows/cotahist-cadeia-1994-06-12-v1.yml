@@ -1,6 +1,7 @@
 name: COTAHIST 1994 - cadeia FASE06-12 V2
 
 # DISPARO AUDITAVEL 2026-09-30: replica controlada do gatilho push; RUN_ID e gerado pelo GitHub Actions.
+# FASE13 2026-10-01: revalidacao da cadeia 1994 FASE06->FASE12 apos correcao da FASE02.
 
 on:
   workflow_dispatch:
