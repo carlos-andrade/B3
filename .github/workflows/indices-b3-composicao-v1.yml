@@ -46,3 +46,13 @@ jobs:
           name: indices-b3-composicao-v1
           path: dados/indices_b3/manifests/*.json
           retention-days: 30
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: indices-b3-composicao-v1.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
