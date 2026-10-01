@@ -140,4 +140,4 @@ jobs:
           git commit -m "cert(cotahist): valida fase 06 semantica 1995"
           git push
 
-# Retrigger auditavel da FASE06 apos criacao do validador semantico.
+# Retrigger auditavel FASE06: segunda execucao apos verificacao de gatilho.
