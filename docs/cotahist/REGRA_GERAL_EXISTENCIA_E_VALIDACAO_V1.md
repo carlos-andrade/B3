@@ -84,3 +84,14 @@ Falha de workflow deve ser diagnosticada separadamente de falha do dado. Os inci
 
 1995 possui RAW, manifesto e checksum no caminho canônico e deve iniciar sua cadeia própria sem nova aquisição.
 
+
+
+## Aditivo anti-regressão — 2026-10-01
+
+Uma chave candidata não é uma chave canônica apenas porque pode ser calculada.
+
+Duplicidade observada em FASE06 deve ser registrada e encaminhada para FASE07. A FASE06 não deve rejeitar o dataset somente pela repetição de uma chave candidata.
+
+Para promover uma chave a regra de unicidade são obrigatórios: layout aplicável, definição dos campos, teste histórico, amostragem das colisões, análise dos registros colidentes e decisão normativa registrada.
+
+Este requisito é permanente e vale para todos os anos, inclusive anos já certificados, evitando regressão por introdução de validadores mais rígidos sem reconciliação.
