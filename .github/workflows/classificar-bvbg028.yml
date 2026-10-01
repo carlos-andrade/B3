@@ -24,3 +24,13 @@ jobs:
           git add ativos/catalogo/classificacao/
           git commit -m "data(b3): gerar classificacao estrutural BVBG028" || echo "Sem alterações"
           git push
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: classificar-bvbg028.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
