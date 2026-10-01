@@ -203,3 +203,24 @@ Workflows de uma fase concluída não devem ser disparados por alterações gen�
 
 **Regra de governança:** descobrir algo numa fase posterior não autoriza essa fase a executar o trabalho de uma fase anterior.
 
+
+
+## Aditivo — integração formal do GATE 06–08 — 2026-10-01
+
+O DRY-RUN deve reconhecer o GATE 06–08 como barreira explícita entre FASE08 e FASE09.
+
+O contrato específico está em 'docs/cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md'.
+
+Para o Gate, o DRY-RUN deve verificar, sem mutação:
+
+1. evidência FASE06 identificável e com status permitido;
+2. evidência FASE07 identificável e com status permitido;
+3. evidência FASE08 identificável e com status permitido;
+4. ano/ciclo coerente nas três evidências;
+5. ausência de bloqueadores;
+6. isolamento das responsabilidades FASE06/07/08;
+7. decisão do Gate compatível com a regra fail-closed.
+
+O DRY-RUN não emite a promoção produtiva. Ele apenas verifica se a cadeia e o contrato estão satisfeitos.
+
+Estados de incerteza ou evidência ausente não podem ser promovidos por inferência. Duplicidades de chave candidatas da FASE06 continuam sendo responsabilidade analítica da FASE07.
