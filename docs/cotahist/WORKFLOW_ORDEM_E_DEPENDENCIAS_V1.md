@@ -26,7 +26,7 @@ A ordem operacional não deve depender da ordem alfabética apresentada pelo Git
         ↓
 05 MANIFESTO / CHECKSUM
         ↓
-06 RECONCILIAÇÃO
+06 SEMÂNTICA / INVARIANTES
         ↓
 07 IDENTIDADE / CHAVES / CAMPOS
         ↓
