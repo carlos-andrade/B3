@@ -265,3 +265,10 @@ Antes de criar ou baixar qualquer artefato:
 - 1996+: NÃO INICIAR ATÉ FECHAMENTO FORMAL DE 1995.
 - 1986: EXCEÇÃO HISTÓRICA CONTROLADA.
 
+
+
+## Aditivo de execução — 2026-10-01 — prevenção de regressão
+
+O incidente da FASE06/1995 mostrou que a existência de certificações anteriores não impede a introdução de uma regra nova incorreta. Portanto, antes de criar ou alterar um gate, deve-se consultar certificações, incidentes, contratos de chaves e evidências históricas.
+
+A responsabilidade foi separada: FASE06 valida semântica e invariantes; FASE07 valida identidade, chaves e cardinalidade. Uma duplicidade de chave candidata observada em FASE06 é evidência para FASE07, não reprovação automática da FASE06.
