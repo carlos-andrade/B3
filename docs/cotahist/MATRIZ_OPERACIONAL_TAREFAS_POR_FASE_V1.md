@@ -673,3 +673,58 @@ FASE14 — PRESENÇA/INTEGRIDADE
 Este documento é o catálogo operacional de referência para novas execuções COTAHIST.
 
 Qualquer novo workflow deve ser comparado a esta matriz antes de ser criado ou alterado.
+
+
+---
+
+# 25. REGRA ESPECÍFICA — ATUALIZAÇÃO DE README
+
+A partir de 2026-10-01, **todos os arquivos README do projeto B3 somente podem ser atualizados às 23:55, horário de Brasília (America/Sao_Paulo)**.
+
+Durante a execução normal das fases:
+
+- não atualizar README;
+- não usar README como mecanismo de sincronização intermediária;
+- não disparar fases por alteração de README;
+- não inserir resultados parciais no README;
+- não alterar README para registrar uma correção antes da conclusão da respectiva fase.
+
+O README é um **artefato de consolidação**, não um artefato operacional de execução.
+
+## Ordem obrigatória de consolidação
+
+Durante uma fase, a ordem é:
+
+**execução → evidência → correção, se necessária → governança/cartas, quando aplicável → validação → consolidação no README somente às 23:55.**
+
+A atualização do README deve refletir somente estados já persistidos e verificáveis no repositório.
+
+## Regra de horário
+
+O horário oficial é:
+
+**23:55 — America/Sao_Paulo (Brasília)**
+
+A automação deve tratar o fuso explicitamente e não depender do fuso padrão do runner do GitHub Actions.
+
+## Regra de conteúdo
+
+O README das 23:55 deve ser produzido a partir das evidências efetivamente existentes no repositório naquele momento.
+
+É proibido utilizar o README para:
+
+- criar uma evidência que ainda não existe;
+- antecipar uma fase;
+- fechar uma fase;
+- corrigir retroativamente outra fase;
+- substituir um manifesto;
+- substituir uma certificação;
+- mascarar falha de workflow.
+
+## Regra de idempotência
+
+A rotina das 23:55 deve ser idempotente:
+
+- se não houver alteração real, não criar commit desnecessário;
+- se houver alteração, produzir um único commit de consolidação;
+- preservar o histórico e os hashes das evidências que fundamentaram o README.
