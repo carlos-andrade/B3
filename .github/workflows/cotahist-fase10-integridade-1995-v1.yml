@@ -1,0 +1,75 @@
+name: COTAHIST - FASE10 Integridade 1995 V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase10-integridade-1995-v1.yml"
+      - "scripts/ingestao/validar_integridade_cotahist_1995_fase10_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1995.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1995_quality.json"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE09_PRE_RELEASE_V1.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase10-1995
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Verificar gate FASE09
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("dados/cotahist/quality/COTAHIST_1995_FASE09_PRE_RELEASE_V1.json")
+          if not p.exists():
+              raise SystemExit("FAIL-CLOSED: evidencia FASE09 ausente")
+          e = json.loads(p.read_text(encoding="utf-8"))
+          if e.get("status") != "LIBERADO_PARA_FASE10" or e.get("decision") != "LIBERADO_PARA_FASE10":
+              raise SystemExit(f"FAIL-CLOSED: FASE09 nao liberada: {e.get('status')} / {e.get('decision')}")
+          if e.get("missing") or e.get("blocked"):
+              raise SystemExit(f"FAIL-CLOSED: FASE09 possui bloqueios: {e.get('missing')} / {e.get('blocked')}")
+          if e.get("raw_sha256") != "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc":
+              raise SystemExit("FAIL-CLOSED: RAW SHA256 da FASE09 diverge")
+          print("FASE09 gate: OK")
+          PY
+
+      - name: Executar FASE10
+        run: python scripts/ingestao/validar_integridade_cotahist_1995_fase10_v1.py
+
+      - name: Publicar evidencia FASE10
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1995_FASE10_INTEGRIDADE_V1.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "audit(cotahist): publicar integridade fase 10 1995"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## FASE10 — COTAHIST 1995"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- Evidencia: dados/cotahist/quality/COTAHIST_1995_FASE10_INTEGRIDADE_V1.json"
+          } >> "$GITHUB_STEP_SUMMARY"
