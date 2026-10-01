@@ -728,3 +728,39 @@ A rotina das 23:55 deve ser idempotente:
 - se não houver alteração real, não criar commit desnecessário;
 - se houver alteração, produzir um único commit de consolidação;
 - preservar o histórico e os hashes das evidências que fundamentaram o README.
+
+
+# 26. CONTRATO EXECUTÁVEL — GATE 06–08
+
+A partir de 2026-10-01, o GATE 06–08 passa a possuir contrato executável próprio em 'docs/cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md'.
+
+O Gate é uma barreira de promoção, não uma nova fase técnica. Ele somente consome as evidências finais das FASE06, FASE07 e FASE08 e decide 'LIBERADO_PARA_FASE09' ou 'BLOQUEADO_PARA_FASE09'.
+
+### 26.1 Evidências e estados
+
+O Gate deve identificar explicitamente a evidência de cada fase, confirmar ano/ciclo, status, decisão, rastreabilidade e exceções. São estados de promoção: 'VALIDADO' e 'VALIDADO_COM_EXCECAO' quando a exceção for formal e não bloqueadora. Ausência, falha, invalidade ou estado desconhecido bloqueiam.
+
+### 26.2 Responsabilidade
+
+- FASE06: semântica/invariantes; não exige unicidade de chave.
+- FASE07: identidade, chave e cardinalidade.
+- FASE08: calendário, consistência e semântica avançada.
+- GATE: somente verifica os três contratos, isolamento e bloqueadores.
+- FASE09: somente consome a decisão do Gate.
+
+### 26.3 Fail-closed
+
+A liberação somente existe quando FASE06, FASE07 e FASE08 estão válidas, o isolamento está comprovado e não há bloqueadores. Qualquer condição ausente, falsa ou indeterminada bloqueia a promoção.
+
+O Gate não corrige fases, não executa análise técnica nova e não usa README como fonte operacional.
+
+### 26.4 Evidência própria
+
+O Gate deve produzir evidência própria e auditável, preferencialmente em:
+'dados/cotahist/quality/COTAHIST_<AAAA>_GATE_06_08_PROMOCAO_TECNICA_V1.json'.
+
+A evidência deve registrar fases avaliadas, estados, caminhos das evidências, isolamento, bloqueadores, exceções não bloqueadoras, commits-fonte, timestamp e versão do contrato.
+
+### 26.5 Correção e reexecução
+
+Problemas encontrados pelo Gate são corrigidos na fase de origem. O fluxo é: bloqueio → incidente → correção na origem → nova evidência → novo Gate. README, documentação sem impacto e fases posteriores não podem disparar retroativamente uma fase concluída.
