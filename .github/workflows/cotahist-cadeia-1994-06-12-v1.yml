@@ -2,7 +2,7 @@ name: COTAHIST 1994 - cadeia FASE06-12 V2
 
 # DISPARO AUDITAVEL 2026-09-30: replica controlada do gatilho push; RUN_ID e gerado pelo GitHub Actions.
 # FASE13 2026-10-01: revalidacao da cadeia 1994 FASE06->FASE12 apos correcao da FASE02.
-# FASE13.1 2026-10-01: execucao ordenada e gates explicitos entre blocos.
+# FASE13.1 2026-10-01: execucao linear, gates explicitos e fail-closed entre cada fase.
 
 on:
   workflow_dispatch:
@@ -51,9 +51,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Ordem obrigatoria: FASE06 -> FASE07 -> FASE08 -> GATE -> FASE09 -> FASE10 -> FASE11 -> FASE12.
-      # O bloco FASE06-08 gera as tres evidencias de forma deterministica; o gate abaixo
-      # impede que FASE09-12 seja executada com qualquer dependencia anterior bloqueada.
+      # Ordem obrigatoria e linear: FASE06 -> FASE07 -> FASE08 -> GATE -> FASE09 -> GATE -> FASE10 -> GATE -> FASE11 -> GATE -> FASE12.
+      # A cadeia interrompe no primeiro gate invalido; nenhuma fase posterior e executada.
       - name: FASE06-08 — evidências retrospectivas em ordem
         run: python scripts/ingestao/gerar_evidencias_cotahist_1994_fases06_08_v1.py
 
@@ -81,8 +80,20 @@ jobs:
           print("GATE_OK: FASE06-08 -> FASE09")
           PY
 
-      - name: FASE09-12 — execução sequencial fail-closed
+      - name: FASE09-12 — execução linear fail-closed
         run: python scripts/ingestao/gerar_cadeia_cotahist_1994_fases09_12_v1.py
+
+      - name: GATE FINAL — FASE12 concluida
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('dados/cotahist/quality/COTAHIST_1994_FASE12_FECHAMENTO_TRANSICAO_V1.json')
+          obj=json.loads(p.read_text(encoding='utf-8'))
+          if obj.get('status')!='CONCLUIDA':
+              raise SystemExit(f"GATE_BLOQUEADO: FASE12={obj.get('status')}")
+          print('GATE_OK: 1994 fechado; transição 1995 autorizada')
+          PY
 
       - name: Publicar evidências 1994
         if: always()
