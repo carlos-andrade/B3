@@ -54,7 +54,7 @@ def push_paths(text: str) -> list[str]:
         if in_paths:
             if re.match(r"^\s*[A-Za-z0-9_.-]+:\s*", line) and not re.match(r"^\s*-\s*", line):
                 break
-            m = re.match(r'^\s*-\s*[\'"]?(.*?)[\'"]?\s*
+            m = re.match(r"^\s*-\s*(.*?)\s*$", line)
             if m:
                 paths.append(m.group(1))
     return paths
