@@ -48,7 +48,7 @@ jobs:
           criticos = counts.get("DIVERGENTE_CRITICA", 0)
           conformes = counts.get("CONFORME", 0) + counts.get("CONFORME_COM_OBSERVACAO", 0)
           resultado = "FAVORAVEL" if criticos == 0 else "NAO_FAVORAVEL"
-          decisao = "AVANCAR" if d["divergente"] == 0 else "INVESTIGAR"
+          total_criticos = counts.get("DIVERGENTE_CRITICA", 0)\n          divergentes_observacionais = counts.get("CONFORME_COM_OBSERVACAO", 0)\n          decisao = "AVANCAR" if total_criticos == 0 else "INVESTIGAR"
           lines=[
             "# Auditoria de conformidade dos workflows B3",
             "",
