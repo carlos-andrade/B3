@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-01T18:42:39.205287+00:00
+Gerado em UTC: 2026-10-01T18:47:50.664333+00:00
 Workflows auditados: 109
 
 ## Regra de decisão
@@ -137,4 +137,4 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/sincronizar-wiki-b3.yml | — | **CONFORME** | — | — |
 | .github/workflows/sincronizar-wiki.yml | — | **CONFORME** | — | — |
 | .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/validar-bvbg02802.yml | — | **CONFORME_COM_OBSERVACAO** | — | IDEMPOTENCE_SIGNAL |
+| .github/workflows/validar-bvbg02802.yml | — | **CONFORME** | — | — |
