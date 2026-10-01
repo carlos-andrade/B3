@@ -62,3 +62,13 @@ jobs:
         run: |
           test ! -e dados/cotahist/normalized/anual/COTAHIST_A2026.csv
           echo "NORMALIZED_2026_NAO_PERSISTIDO=OK"
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-m3-0-gate-capacidade-2026.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
