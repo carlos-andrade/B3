@@ -33,7 +33,7 @@ def section(text: str, key: str) -> str:
     out = []
     active = False
     base_indent = None
-    key_re = re.compile(rf"^(\\s*){re.escape(key)}:\\s*$")
+    key_re = re.compile(rf"^(\s*){re.escape(key)}:\s*$")
     for line in lines:
         m = key_re.match(line)
         if not active and m:
@@ -46,7 +46,7 @@ def section(text: str, key: str) -> str:
                 out.append(line)
                 continue
             indent = len(line) - len(line.lstrip(" "))
-            if indent <= base_indent and re.match(r"^[A-Za-z0-9_.-]+:\\s*", stripped):
+            if indent <= base_indent and re.match(r"^[A-Za-z0-9_.-]+:\s*", stripped):
                 break
             out.append(line)
     return "".join(out)
