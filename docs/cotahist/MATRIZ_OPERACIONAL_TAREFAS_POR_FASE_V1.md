@@ -764,3 +764,16 @@ A evidência deve registrar fases avaliadas, estados, caminhos das evidências, 
 ### 26.5 Correção e reexecução
 
 Problemas encontrados pelo Gate são corrigidos na fase de origem. O fluxo é: bloqueio → incidente → correção na origem → nova evidência → novo Gate. README, documentação sem impacto e fases posteriores não podem disparar retroativamente uma fase concluída.
+
+
+## Aditivo — execução independente e retorno verificável — 2026-10-01
+
+O contrato geral está em docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md.
+
+Cada workflow deve operar como unidade independente, sem chamar ou reexecutar outro workflow. Dependências entre fases são exclusivamente direcionais e baseadas em evidências autorizadas.
+
+Cada execução deve registrar no GITHUB_STEP_SUMMARY: workflow, fase/tarefa, run, entrada, evidência, status, decisão, bloqueadores, exceções, commit, próxima ação e indicação de reexecução.
+
+O monitor permanente .github/workflows/b3-monitor-execucoes-v1.yml verifica execuções a cada 15 minutos e não dispara reexecuções. Seu objetivo é detectar FAVORÁVEL, NÃO_FAVORÁVEL ou EM_EXECUÇÃO.
+
+A decisão de reexecutar deve ser baseada em mudança real da entrada, correção pendente ou alteração normativa aplicável. Sucesso, falha já registrada ou alteração de documentação não autorizam reexecução por si só.
