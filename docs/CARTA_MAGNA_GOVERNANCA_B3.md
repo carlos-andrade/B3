@@ -158,3 +158,54 @@ O projeto pode continuar avançando em trilhas independentes, mas somente dentro
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
 | 1.0 | 01/10/2026 | Criação da Carta Magna específica do Projeto B3, consolidando governança, localização canônica, execução linear, estados de confiança, incidentes e fechamento anual. | VIGENTE |
+
+
+## ADITIVO DE GOVERNANÇA — 2026-10-01 — FASE06/1995
+
+### Regra permanente de reconciliação de chaves
+
+A experiência da FASE06/1995 demonstrou que uma chave candidata não pode ser promovida automaticamente a chave lógica única apenas por conveniência de implementação.
+
+A partir deste aditivo:
+
+1. **Existência de duplicidade de chave candidata não é, isoladamente, corrupção do dado.**
+2. A FASE06 deve registrar duplicidades como **observação diagnóstica**, sem reprovar o dataset exclusivamente por esse motivo.
+3. A definição e o teste de unicidade da chave lógica pertencem ao contrato de **identidade/chaves da FASE07**, onde devem ser reconciliados com o layout oficial, o período histórico e os campos efetivamente disponíveis.
+4. Uma chave somente pode ser declarada **canônica/única** quando houver evidência documental e empírica suficiente.
+5. O validador não pode transformar uma hipótese de chave em regra de rejeição.
+6. Duplicidades observadas devem permanecer quantificadas e auditáveis na evidência.
+7. Se uma regra nova de validação contradizer dados históricos já certificados, a regra deve entrar em **reconciliação** antes de bloquear o ciclo.
+8. Uma certificação anterior não substitui a investigação atual, mas também não pode ser ignorada sem análise de compatibilidade.
+
+### Regra anti-regressão
+
+Nenhum novo validador COTAHIST poderá introduzir uma condição de bloqueio baseada em:
+- chave candidata não documentada;
+- cardinalidade presumida;
+- unicidade presumida;
+- interpretação semântica não reconciliada;
+
+sem antes possuir:
+**fonte/layout → hipótese → amostra → teste histórico → decisão normativa → implementação → evidência.**
+
+A FASE06/1995 passa a ser referência de incidente para impedir a repetição desse padrão.
+
+### Incidente de referência
+
+A execução comprovada da FASE06/1995 no workflow **Run 36859032714** identificou duplicidades na chave candidata data+codbdi+codneg+tpmerc. O incidente foi classificado como **falha do contrato do validador**, não como prova de corrupção do RAW.
+
+O incidente permanece preservado e deve ser considerado em futuras certificações.
+
+### Regra de não repetição de certificação
+
+Antes de criar uma nova regra de certificação, o processo deve consultar:
+- certificações anteriores;
+- evidências das fases anteriores;
+- incidentes históricos;
+- contratos de chaves;
+- layouts aplicáveis;
+- exceções controladas.
+
+A ausência dessa consulta é considerada falha de governança.
+
+**Atualização normativa:** 2026-10-01 — inclusão da regra anti-regressão de chaves, classificação de duplicidades e obrigação de reconciliação antes de promover uma hipótese a critério de certificação.
