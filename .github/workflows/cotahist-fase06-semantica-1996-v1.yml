@@ -1,0 +1,105 @@
+name: COTAHIST - FASE06 semantica 1996 V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/quality/COTAHIST_1996_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A1996.ZIP"
+      - ".github/workflows/cotahist-fase06-semantica-1996-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase06-1996
+  cancel-in-progress: false
+
+jobs:
+  semantica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: FASE06 — validacao semantica
+        env:
+          RAW: dados/cotahist/raw/anual/COTAHIST_A1996.ZIP
+          FASE05: dados/cotahist/quality/COTAHIST_1996_FASE05_MANIFESTO_CHECKSUM_V1.json
+          OUT: dados/cotahist/quality/COTAHIST_1996_FASE06_SEMANTICA_V1.json
+        run: |
+          python - <<'PY'
+          import collections, datetime, hashlib, json, os, zipfile
+          raw=os.environ["RAW"]; f05=os.environ["FASE05"]; out=os.environ["OUT"]
+          e=json.load(open(f05,encoding="utf-8"))
+          if e.get("status")!="VALIDADO" or e.get("decision")!="LIBERADO_PARA_FASE06":
+              raise SystemExit("FAIL-CLOSED: FASE05 nao liberou a FASE06")
+          actual=hashlib.sha256(open(raw,"rb").read()).hexdigest()
+          if actual != e["raw_sha256"]: raise SystemExit("FAIL-CLOSED: SHA-256 RAW diverge da FASE05")
+          with zipfile.ZipFile(raw) as z:
+              members=z.namelist()
+              if len(members)!=1: raise SystemExit(f"ZIP com {len(members)} membros; esperado 1")
+              payload=z.read(members[0])
+          lines=payload.splitlines()
+          quotes=[x for x in lines if x[:2]==b"01"]
+          if not quotes: raise SystemExit("Nenhum registro tipo 01")
+          def s(b,a,z): return b[a-1:z].decode("latin-1").strip()
+          def num(b,a,z):
+              v=s(b,a,z)
+              return float(v)/100 if v else 0.0
+          invalid=[]; keys=collections.Counter(); exact_records=collections.Counter(); dates=set()
+          for i,b in enumerate(quotes):
+              if len(b)!=245: invalid.append(("length",i,len(b))); continue
+              d=s(b,3,10)
+              try: dt=datetime.datetime.strptime(d,"%Y%m%d").date()
+              except Exception: invalid.append(("date",i,d)); continue
+              if dt.year!=1996: invalid.append(("year",i,d))
+              dates.add(d)
+              codneg=s(b,13,24); codbdi=s(b,11,12); tpmerc=s(b,25,27)
+              key=(d,codbdi,codneg,tpmerc); keys[key]+=1; exact_records[b]+=1
+              vals=[num(b,57,69),num(b,70,82),num(b,83,95),num(b,96,108),num(b,109,121)]
+              op,hi,lo,med,cl=vals
+              if any(v<0 for v in vals): invalid.append(("negative_price",i,vals))
+              if hi and lo and hi < lo: invalid.append(("high_lt_low",i,vals))
+              if cl and hi and cl>hi: invalid.append(("close_gt_high",i,vals))
+              if cl and lo and cl<lo: invalid.append(("close_lt_low",i,vals))
+              qty=s(b,153,170); vol=s(b,171,188)
+              if qty and not qty.isdigit(): invalid.append(("quantity",i,qty))
+              if vol and not vol.isdigit(): invalid.append(("volume",i,vol))
+              if not codneg or not codbdi or not tpmerc: invalid.append(("key_field_empty",i,key))
+          if invalid: raise SystemExit("FAIL-CLOSED: inconsistencias semanticas: "+repr(invalid[:10]))
+          duplicate_keys={str(k):v for k,v in keys.items() if v>1}
+          duplicate_exact_records=sum(v-1 for v in exact_records.values() if v>1)
+          idxs=[round(i*(len(quotes)-1)/29) for i in range(30)]
+          ohlc=[]
+          for idx in idxs:
+              b=quotes[idx]
+              ohlc.append({"record_index":idx,"date":s(b,3,10),"codbdi":s(b,11,12),"codneg":s(b,13,24),"tpmerc":s(b,25,27),
+                "preabe":num(b,57,69),"premax":num(b,70,82),"premin":num(b,83,95),"premed":num(b,96,108),"preult":num(b,109,121),
+                "quatot":s(b,153,170),"voltot":s(b,171,188)})
+          evidence={"schema_version":"1.0.0","year":1996,"phase":"FASE06","status":"VALIDADO","decision":"LIBERADO_PARA_FASE07",
+            "entry_gate":"FASE05","raw_path":raw,"raw_sha256":actual,"quote_records_type_01":len(quotes),
+            "logical_key":"data+codbdi+codneg+tpmerc","logical_key_uniqueness_assessment":"DEFERRED_TO_FASE07",
+            "duplicate_logical_keys_observed":len(duplicate_keys),"duplicate_logical_key_rows":sum(v-1 for v in duplicate_keys.values()),
+            "duplicate_exact_record_rows":duplicate_exact_records,"trading_dates_observed":len(dates),"semantic_errors":0,
+            "semantic_checks":{"tpmerc_present":True,"codbdi_present":True,"logical_key_unique":"NOT_ASSESSED_IN_FASE06",
+            "duplicate_keys_deferred_to_fase07":True,"ohlc_relationships_valid":True,"quantity_numeric":True,"volume_numeric":True,"ohlc_sample_cases":30},
+            "ohlc_sample_cases":ohlc,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          os.makedirs(os.path.dirname(out),exist_ok=True)
+          json.dump(evidence,open(out,"w",encoding="utf-8"),ensure_ascii=False,indent=2)
+          print(json.dumps(evidence,ensure_ascii=False,indent=2))
+          PY
+      - name: Publicar evidencia FASE06
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1996_FASE06_SEMANTICA_V1.json
+          git diff --cached --quiet || git commit -m "cert(cotahist): valida fase 06 semantica 1996"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
