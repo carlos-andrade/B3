@@ -48,3 +48,13 @@ jobs:
           name: bcb-sgs-nucleo-macro-v1
           path: dados/bcb_sgs/manifests/*.json
           retention-days: 30
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: bcb-sgs-nucleo-macro-v1.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
