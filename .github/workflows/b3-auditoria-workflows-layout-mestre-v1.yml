@@ -1,4 +1,5 @@
 name: B3 - Auditoria de conformidade dos workflows pelo Layout Mestre V1
+# Casos especiais são verificados sem reexecução automática: README, monitor e publicador único da Wiki.
 
 on:
   push:
