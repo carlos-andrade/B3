@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-01T17:22:51.580206+00:00
+Gerado em UTC: 2026-10-01T17:25:33.275405+00:00
 Workflows auditados: 109
 
 ## Regra de decisão
@@ -29,7 +29,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 
 | Workflow | Fase | Status | Bloqueadores | Alertas |
 |---|---:|---|---|---|
-| .github/workflows/atualizar-catalogo-b3.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/atualizar-catalogo-b3.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/atualizar-readme-b3.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-monitor-execucoes-v1.yml | — | **CONFORME** | — | — |
@@ -44,16 +44,16 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-auditoria-quantidade-volume-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-cadeia-1994-06-12-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-calendario-1986-v1.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-calendario-1986-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-certificacao-anual-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-certificacao-final-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-chave-logica-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-chave-logica-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-chaves-logicas-1986-v2.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-chaves-logicas-1986-v2.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-classificacao-excecoes-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-dataset-oficial-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-dataset-oficial-v2.yml | — | **CONFORME** | — | — |
-| .github/workflows/cotahist-diagnostico-prazot-1987-v1.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-diagnostico-prazot-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-evidencias-retrospectivas-1993-fases06-08-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase00-governanca-1993-v1.yml | 0 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase00-governanca-1994-v1.yml | 0 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
@@ -77,8 +77,8 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase07f-colisao-k4-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07g-matriz-identidade-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase08a-matriz-calendario-1986-v1.yml | 8 | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
-| .github/workflows/cotahist-fase08b-evidencia-calendario-1986-v1.yml | 8 | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-fase08a-matriz-calendario-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase08b-evidencia-calendario-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08c-duplicidades-k4-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08c-padrao-negociacao-arredores-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08c-padroes-ausencia-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -117,12 +117,12 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-normalizacao-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-normalizacao-controlada-v7.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-normalized-m1-1987.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-ohlc-1986-v2.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-ohlc-1986-v2.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-ohlc-excecoes-contexto-1988-v1.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
 | .github/workflows/cotahist-orquestrador-anual-dryrun-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-orquestrador-anual-dryrun-v2.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-prazot-anomalias-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-quantidade-volume-preco-1986-v1.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
+| .github/workflows/cotahist-quantidade-volume-preco-1986-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-reconciliacao-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-reconciliacao-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-reconciliacao-final-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -133,7 +133,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-validacao-independente-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-validacao-independente-1988-v2.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/indices-b3-composicao-v1.yml | — | **CONFORME** | — | — |
-| .github/workflows/processar-inventario-bvbg028.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
+| .github/workflows/processar-inventario-bvbg028.yml | — | **CONFORME** | — | — |
 | .github/workflows/sincronizar-wiki-b3.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
 | .github/workflows/sincronizar-wiki.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
 | .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
