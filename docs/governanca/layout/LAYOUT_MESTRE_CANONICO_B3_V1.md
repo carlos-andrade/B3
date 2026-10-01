@@ -678,6 +678,31 @@ Falha antiga também não autoriza reexecução cega: primeiro identificar a cau
 
 ---
 
+# 24.1 CASOS ESPECIAIS — PUBLICAÇÃO DA WIKI NATIVA
+
+A Wiki nativa possui **um único publicador canônico** no repositório.
+
+O workflow vigente é:
+
+`.github/workflows/sincronizar-wiki-b3.yml`
+
+É proibido manter dois workflows concorrentes com a mesma responsabilidade de publicação da Wiki nativa.
+
+Regras:
+
+- `WIKI/` é a fonte versionada da documentação da Wiki;
+- o publicador da Wiki não participa da execução das fases COTAHIST;
+- a publicação é independente das fases técnicas;
+- a ausência do segredo da Wiki deve ser tratada explicitamente;
+- a publicação deve ser idempotente;
+- a publicação não pode reexecutar outro workflow;
+- alterações na Wiki não podem servir como gatilho operacional de fases;
+- workflows legados ou duplicados devem ser removidos, não mantidos em paralelo.
+
+**Decisão registrada em 2026-10-01:** `.github/workflows/sincronizar-wiki.yml` foi classificado como publicador duplicado e removido. A responsabilidade permanece em `sincronizar-wiki-b3.yml`.
+
+---
+
 # 25. README
 
 README é artefato de consolidação.
