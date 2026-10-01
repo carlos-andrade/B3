@@ -200,3 +200,26 @@ Antes de criar uma nova regra de certificação, o processo deve consultar:
 A ausência dessa consulta é considerada falha de governança.
 
 **Atualização normativa:** 2026-10-01 — inclusão da regra anti-regressão de chaves, classificação de duplicidades e obrigação de reconciliação antes de promover uma hipótese a critério de certificação.
+
+## ADITIVO DE GARANTIA — 2026-10-01 — NÃO REPETIÇÃO DE ERROS E AUDITORIA POR LAYOUT
+
+### Garantia 1 — Cartas antes do README
+
+Depois de qualquer correção relevante, as cartas normativas devem ser atualizadas e verificadas antes da atualização do README. O README somente refletirá um estado já consolidado na governança.
+
+### Garantia 2 — Layout antes do bloqueio
+
+Nenhum workflow de auditoria poderá transformar uma hipótese sobre chave, unicidade, cardinalidade ou semântica em condição de reprovação antes da identificação e reconciliação do layout oficial aplicável.
+
+### Garantia 3 — Memória de incidentes
+
+Cada nova auditoria deve verificar os incidentes e correções anteriores antes de criar suas regras. Em particular, devem ser evitadas regressões relacionadas a localização de arquivos, publicação concorrente, scripts de geração de evidência, gates booleanos incorretos, execução fora de ordem e chaves candidatas não comprovadas.
+
+### Garantia 4 — Estado seguro diante de incerteza
+
+Se a documentação do layout for insuficiente para definir a regra, a auditoria deve registrar a pendência e impedir a promoção, sem classificar o RAW como inválido por uma hipótese não comprovada.
+
+### Garantia 5 — Evidência antes de comunicação
+
+A documentação normativa e os artefatos de evidência constituem a memória técnica primária. O README só deve ser atualizado depois que essa memória estiver consistente.
+
