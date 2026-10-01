@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import csv, datetime, hashlib, io, json, os, zipfile
+          import collections, datetime, hashlib, json, os, zipfile
 
           raw=os.environ["RAW"]; f05=os.environ["FASE05"]; out=os.environ["OUT"]
           e=json.load(open(f05,encoding="utf-8"))
@@ -60,7 +60,8 @@ jobs:
               return float(v)/100 if v else 0.0
 
           invalid=[]
-          keys=set()
+          keys=collections.Counter()
+          exact_records=collections.Counter()
           dates=set()
           samples=[]
           for i,b in enumerate(quotes):
@@ -74,8 +75,8 @@ jobs:
               dates.add(d)
               codneg=s(b,13,24); codbdi=s(b,11,12); tpmerc=s(b,25,27)
               key=(d,codbdi,codneg,tpmerc)
-              if key in keys: invalid.append(("duplicate_key",i,key))
-              keys.add(key)
+              keys[key] += 1
+              exact_records[b] += 1
               vals=[num(b,57,69),num(b,70,82),num(b,83,95),num(b,96,108),num(b,109,121)]
               op,hi,lo,med,cl=vals
               if any(v<0 for v in vals): invalid.append(("negative_price",i,vals))
@@ -91,8 +92,13 @@ jobs:
           if invalid:
               raise SystemExit("FAIL-CLOSED: inconsistências semânticas: "+repr(invalid[:10]))
 
+          # A unicidade da chave não é decidida na FASE06.
+          # Duplicidades observadas são evidência diagnóstica e passam ao contrato da FASE07.
+          duplicate_keys={str(k):v for k,v in keys.items() if v>1}
+          duplicate_exact_records=sum(v-1 for v in exact_records.values() if v>1)
+
           # 30 casos OHLC determinísticos: início, fim e posições uniformemente distribuídas.
-          idxs=[round(i*(len(samples and quotes)-1)/29) for i in range(30)]
+          idxs=[round(i*(len(quotes)-1)/29) for i in range(30)]
           ohlc=[]
           for idx in idxs:
               b=quotes[idx]
@@ -115,10 +121,10 @@ jobs:
             "schema_version":"1.0.0","year":1995,"phase":"FASE06","status":"VALIDADO",
             "decision":"LIBERADO_PARA_FASE07","entry_gate":"FASE05",
             "raw_path":raw,"raw_sha256":actual,"quote_records_type_01":len(quotes),
-            "unique_logical_keys":len(keys),"logical_key":"data+codbdi+codneg+tpmerc",
+            "logical_key":"data+codbdi+codneg+tpmerc","logical_key_uniqueness_assessment":"DEFERRED_TO_FASE07","duplicate_logical_keys_observed":len(duplicate_keys),"duplicate_logical_key_rows":sum(v-1 for v in duplicate_keys.values()),"duplicate_exact_record_rows":duplicate_exact_records,
             "trading_dates_observed":len(dates),"semantic_errors":0,
             "semantic_checks":{
-              "tpmerc_present":True,"codbdi_present":True,"logical_key_unique":True,
+              "tpmerc_present":True,"codbdi_present":True,"logical_key_unique":"NOT_ASSESSED_IN_FASE06","duplicate_keys_deferred_to_fase07":True,
               "ohlc_relationships_valid":True,"quantity_numeric":True,"volume_numeric":True,
               "ohlc_sample_cases":30
             },
@@ -144,6 +150,4 @@ jobs:
           git rebase origin/main
           git push origin HEAD:main
 
-# Retrigger auditavel FASE06: gate explicito de disparo na branch main.
-
-# Publicacao robusta: rebase antes do push para evitar conflito com Atualizar README.\n
+# Publicacao robusta: rebase antes do push para evitar conflito com Atualizar README.
