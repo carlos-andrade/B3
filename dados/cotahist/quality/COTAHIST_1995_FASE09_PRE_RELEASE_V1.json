@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1995,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "F03": "OK",
+    "F04": "OK",
+    "F05": "OK",
+    "F06": "OK",
+    "F07": "OK",
+    "F08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "F03": "VALIDADO",
+    "F04": "VALIDADO",
+    "F05": "VALIDADO",
+    "F06": "VALIDADO",
+    "F07": "FASE_07_IDENTIDADE_HISTORICA_1995_ANALISE",
+    "F08": "VALIDADO"
+  },
+  "missing": [],
+  "blocked": [],
+  "raw_sha256": "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc",
+  "expected_raw_sha256": "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc",
+  "f07_treatment": "F07 is accepted as completed analysis because its successful Run #2 evidence has analysis status rather than a terminal VALIDADO label.",
+  "decision": "LIBERADO_PARA_FASE10",
+  "note": "FASE09 consolidates existing evidence; it does not retrocertify missing phases."
+}
