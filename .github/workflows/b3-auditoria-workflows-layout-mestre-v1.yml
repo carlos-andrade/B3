@@ -12,6 +12,7 @@ on:
     - cron: "15 3 * * *"
 
 permissions:
+  # auditoria completa pós-reorganização do Layout
   contents: write
 
 concurrency:
