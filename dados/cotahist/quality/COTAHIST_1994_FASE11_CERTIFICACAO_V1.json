@@ -8,7 +8,7 @@
   "source_evidence": {
     "FASE06": "VALIDADO",
     "FASE07": "VALIDADO",
-    "FASE08": "VALIDADO",
+    "FASE08": "VALIDADO_COM_EXCECAO",
     "FASE09": "LIBERADO_PARA_FASE10",
     "FASE10": "BLOQUEADO"
   },

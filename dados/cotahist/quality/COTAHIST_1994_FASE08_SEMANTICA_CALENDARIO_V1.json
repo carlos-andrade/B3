@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "year": 1994,
   "phase": "FASE08",
-  "status": "VALIDADO",
+  "status": "VALIDADO_COM_EXCECAO",
   "records": 119097,
   "first_date": "19940103",
   "last_date": "19941229",
