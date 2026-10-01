@@ -52,3 +52,35 @@ Esta regra deve ser usada como critério permanente nas futuras fases COTAHIST e
 ## Registro de ativação FASE12
 
 A criação da FASE12 deve provocar execução automática do workflow de fechamento/transição de 1993.
+
+
+## Atualização normativa — 2026-10-01
+
+### 1. Localização canônica
+
+Para COTAHIST anual, a existência deve ser resolvida pelo caminho:
+
+`dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP`
+
+A ausência de resultado em busca ampla não constitui evidência de ausência.
+
+### 2. Execução linear
+
+A sequência de dependência é:
+
+**00 → 01 → 02 → 03–05 → 06 → 07 → 08 → GATE → 09 → GATE → 10 → GATE → 11 → GATE → 12.**
+
+### 3. Separação de estados
+
+`EXISTE`, `ÍNTEGRO`, `VALIDADO`, `CERTIFICADO` e `FECHADO` são estados distintos.
+
+### 4. Incidentes
+
+Falha de workflow deve ser diagnosticada separadamente de falha do dado. Os incidentes de 1994 permanecem preservados como evidência.
+
+### 5. Estado de referência
+
+1994 está fechado e autorizou a transição para 1995.
+
+1995 possui RAW, manifesto e checksum no caminho canônico e deve iniciar sua cadeia própria sem nova aquisição.
+
