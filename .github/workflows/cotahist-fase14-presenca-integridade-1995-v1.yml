@@ -51,8 +51,23 @@ jobs:
           MEMBER=$(unzip -Z1 "$RAW")
           MEMBER_BYTES=$(unzip -p "$RAW" "$MEMBER" | wc -c | tr -d ' ')
           test "$MEMBER_BYTES" -gt 0
-          BAD_LINES=$(unzip -p "$RAW" "$MEMBER" | awk 'length($0)!=245 {n++} END{print n+0}')
-          test "$BAD_LINES" = "0"
+
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+
+          raw = Path("dados/cotahist/raw/anual/COTAHIST_A1995.ZIP")
+          with zipfile.ZipFile(raw) as z:
+              names = z.namelist()
+              payload = z.read(names[0])
+
+          lines = payload.splitlines()
+          bad = [len(line) for line in lines if len(line) != 245]
+          if bad:
+              raise SystemExit(f"FASE14: registros com tamanho != 245 bytes: {len(bad)} ocorrencias; amostras={bad[:10]}")
+          if not lines:
+              raise SystemExit("FASE14: membro ZIP sem registros")
+          PY
 
           python - <<'PY'
           import json, hashlib, zipfile
