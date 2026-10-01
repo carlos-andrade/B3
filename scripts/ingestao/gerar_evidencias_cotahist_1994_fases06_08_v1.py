@@ -411,11 +411,6 @@ f08 = {
         "como campo preservado; este teste nao atribui significado economico adicional."
     ),
 }
-(Q / "COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json").write_text(
-    json.dumps(f08, ensure_ascii=False, indent=2) + "\n",
-    encoding="utf-8",
-)
-
 failed = []
 if mismatches:
     failed.append("FASE06")
@@ -429,6 +424,11 @@ if not f08_valid:
 if f08_valid and ohlc_controlled_exceptions:
     f08["status"] = "VALIDADO_COM_EXCECAO"
     f08["decision"] = "VALIDADO_COM_EXCECAO"
+
+(Q / "COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json").write_text(
+    json.dumps(f08, ensure_ascii=False, indent=2) + "\n",
+    encoding="utf-8",
+)
 
 print(json.dumps({
     "year": 1994,
