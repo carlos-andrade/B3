@@ -135,3 +135,13 @@ jobs:
           test "$BYTES" -eq "$(stat -c '%s' /tmp/normalized/COTAHIST_A2026.csv)"
           echo "M3-1B_STATUS=PROVA_LFS_FISICA_CONCLUIDA"
           echo "NORMALIZED_2026_BYTES=$BYTES"
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-m3-1b-prova-lfs-2026.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
