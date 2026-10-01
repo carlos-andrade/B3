@@ -218,3 +218,20 @@ Workflows de uma fase concluída não devem ser disparados por alterações gen�
 
 **Regra de governança:** descobrir algo numa fase posterior não autoriza essa fase a executar o trabalho de uma fase anterior.
 
+
+
+## Aditivo normativo — GATE 06–08 — 2026-10-01
+
+O GATE 06–08 passa a ser uma barreira formal de promoção técnica, com contrato específico em 'docs/cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md'.
+
+Sequência obrigatória:
+
+**FASE06 → FASE07 → FASE08 → GATE 06–08 → FASE09.**
+
+O Gate deve verificar as três evidências separadamente, seus estados permitidos, o ano/ciclo, exceções, bloqueadores e o isolamento de responsabilidades. A decisão é fail-closed:
+
+**LIBERADO_PARA_FASE09** somente quando todas as condições estiverem satisfeitas; caso contrário, **BLOQUEADO_PARA_FASE09**.
+
+O Gate não executa análise técnica, não corrige fases e não substitui evidências. Problemas são corrigidos na fase de origem.
+
+README e documentação genérica não constituem gatilhos operacionais para reexecutar fases concluídas.
