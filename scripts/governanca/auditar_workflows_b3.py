@@ -17,7 +17,7 @@ MASTER = "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
 OUT_JSON = ROOT / "docs/governanca" / "auditorias" / "WORKFLOWS_CONFORMIDADE_B3_ATUAL.json"
 OUT_MD = ROOT / "docs" / "governanca" / "auditorias" / "WORKFLOWS_CONFORMIDADE_B3_ATUAL.md"
 
-PHASE_RE = re.compile(r"FASE(?:0?([0-9]))|FASE([0-9]{2})", re.I)
+PHASE_RE = re.compile(r"FASE(?:([0-9]{2})|0?([0-9]))", re.I)
 
 def phase_numbers(text: str) -> list[int]:
     vals = []
