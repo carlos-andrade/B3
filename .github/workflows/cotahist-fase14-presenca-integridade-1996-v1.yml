@@ -1,0 +1,109 @@
+name: COTAHIST 1996 - FASE14 Presenca e Integridade RAW V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/raw/anual/COTAHIST_A1996.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1996.json"
+      - "dados/cotahist/checksums/COTAHIST_A1996.ZIP.sha256"
+      - ".github/workflows/cotahist-fase14-presenca-integridade-1996-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase14-1996
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: FASE14 — validar presença, checksum e estrutura
+        run: |
+          set -euo pipefail
+          RAW="dados/cotahist/raw/anual/COTAHIST_A1996.ZIP"
+          MANIFEST="dados/cotahist/manifests/COTAHIST_A1996.json"
+          CHECKSUM="dados/cotahist/checksums/COTAHIST_A1996.ZIP.sha256"
+          test -f "$RAW"
+          test -f "$MANIFEST"
+          test -f "$CHECKSUM"
+
+          EXPECTED=$(python - <<'PY'
+          import json
+          print(json.load(open("dados/cotahist/manifests/COTAHIST_A1996.json", encoding="utf-8"))["sha256"])
+          PY
+          )
+          ACTUAL=$(sha256sum "$RAW" | awk '{print $1}')
+          test "$EXPECTED" = "$ACTUAL"
+
+          ZIP_COUNT=$(unzip -Z1 "$RAW" | wc -l | tr -d ' ')
+          test "$ZIP_COUNT" = "1"
+          MEMBER=$(unzip -Z1 "$RAW")
+          MEMBER_BYTES=$(unzip -p "$RAW" "$MEMBER" | wc -c | tr -d ' ')
+          test "$MEMBER_BYTES" -gt 0
+
+          python - <<'PY'
+          import json, hashlib, zipfile
+          from pathlib import Path
+          raw=Path("dados/cotahist/raw/anual/COTAHIST_A1996.ZIP")
+          manifest=json.loads(Path("dados/cotahist/manifests/COTAHIST_A1996.json").read_text(encoding="utf-8"))
+          sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          with zipfile.ZipFile(raw) as z:
+              names=z.namelist()
+              payload=z.read(names[0])
+          lines=payload.splitlines()
+          if not lines:
+              raise SystemExit("FASE14: membro ZIP sem registros")
+          bad=[len(line) for line in lines if len(line)!=245]
+          if bad:
+              raise SystemExit(f"FASE14: registros com tamanho != 245 bytes: {len(bad)}")
+          types={line[:2].decode("latin-1") for line in lines if len(line)==245}
+          if "00" not in types or "01" not in types or "99" not in types:
+              raise SystemExit("FASE14: tipos estruturais 00/01/99 incompletos")
+          evidence={
+            "versao":"1.0",
+            "fase":"FASE14",
+            "ano":1996,
+            "status":"VALIDADO",
+            "presenca_raw":True,
+            "manifesto_presente":True,
+            "checksum_presente":True,
+            "sha256_manifesto":manifest["sha256"],
+            "sha256_calculado":sha,
+            "sha256_coerente":sha==manifest["sha256"],
+            "zip_membros":len(names),
+            "zip_membro":names[0],
+            "bytes_membro":len(payload),
+            "registros_245_bytes":len(lines),
+            "tipos_registro_observados":sorted(types),
+            "correction_required":False,
+            "correction_applied":False,
+            "correction_contract_valid":True,
+            "decisao":"LIBERADO_PARA_FASE03_05",
+            "regra":"RAW existente; nenhuma nova aquisicao realizada."
+          }
+          Path("dados/cotahist/quality/COTAHIST_1996_FASE14_PRESENCA_INTEGRIDADE_V1.json").write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+"
+",encoding="utf-8")
+          PY
+      - name: Persistir evidência FASE14
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1996_FASE14_PRESENCA_INTEGRIDADE_V1.json
+          if git diff --cached --quiet; then
+            echo "Sem alteração."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): valida 1996 fase 14 raw"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
