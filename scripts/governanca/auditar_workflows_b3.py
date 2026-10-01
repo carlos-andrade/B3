@@ -180,11 +180,10 @@ def audit_workflow(path: pathlib.Path) -> dict:
                             "MEDIA"))
 
     # Permissões mínimas: escrita somente quando há sinais de publicação no repo.
+    # A declaração de permissions pode estar no nível do workflow ou do job.
     writes_repo = has_git_write(text)
-    permissions_match = re.search(r"(?ms)^permissions:\s*\n((?:^[ \t]+.*\n?)*)", text)
-    perm_block = permissions_match.group(1) if permissions_match else ""
-    contents_write = bool(re.search(r"contents:\s*write", perm_block))
-    contents_read = bool(re.search(r"contents:\s*read", perm_block))
+    contents_write = bool(re.search(r"(?m)^\s+contents:\s*write\s*$", text))
+    contents_read = bool(re.search(r"(?m)^\s+contents:\s*read\s*$", text))
     if writes_repo:
         checks.append(check("PERMISSIONS_MATCH_WRITE", contents_write,
                             "publicação no repositório exige contents: write"
