@@ -9,6 +9,8 @@ on:
       - ".github/workflows/cotahist-fase06-semantica-1995-v1.yml"
       - "docs/cotahist/**"
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
