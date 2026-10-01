@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-01T18:47:50.664333+00:00
+Gerado em UTC: 2026-10-01T18:50:13.788043+00:00
 Workflows auditados: 109
 
 ## Regra de decisão
@@ -36,7 +36,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/bcb-sgs-nucleo-macro-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/capturar-bcb-copom.yml | — | **CONFORME** | — | — |
 | .github/workflows/capturar-pesquisa-pregao.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/classificar-bvbg028.yml | — | **CONFORME_COM_OBSERVACAO** | — | IDEMPOTENCE_SIGNAL |
+| .github/workflows/classificar-bvbg028.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-auditoria-calendario-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-auditoria-calendario-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-auditoria-ohlc-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |

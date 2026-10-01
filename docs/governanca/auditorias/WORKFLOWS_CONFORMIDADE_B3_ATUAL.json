@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T18:47:50.664333+00:00",
+  "generated_at_utc": "2026-10-01T18:50:13.788043+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 85,
-    "CONFORME": 24
+    "CONFORME_COM_OBSERVACAO": 84,
+    "CONFORME": 25
   },
   "results": [
     {
@@ -552,7 +552,7 @@
     {
       "workflow": ".github/workflows/classificar-bvbg028.yml",
       "current_phase": null,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -616,15 +616,13 @@
         },
         {
           "code": "IDEMPOTENCE_SIGNAL",
-          "ok": false,
-          "detail": "sem padrão estático forte de idempotência; requer validação funcional",
+          "ok": true,
+          "detail": "padrão de idempotência/deduplicação detectado",
           "severity": "BAIXA"
         }
       ],
       "blocking_divergences": [],
-      "observability_or_advisory": [
-        "IDEMPOTENCE_SIGNAL"
-      ]
+      "observability_or_advisory": []
     },
     {
       "workflow": ".github/workflows/cotahist-auditoria-calendario-1987-v1.yml",
