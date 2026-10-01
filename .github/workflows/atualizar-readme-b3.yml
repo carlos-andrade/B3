@@ -73,3 +73,175 @@ jobs:
           else
             echo "README já estava sincronizado. Nenhum commit necessário."
           fi
+
+  validar_fase06_1995:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Validar semântica COTAHIST 1995 — FASE06
+        env:
+          RAW: dados/cotahist/raw/anual/COTAHIST_A1995.ZIP
+          FASE05: dados/cotahist/quality/COTAHIST_1995_FASE05_MANIFESTO_CHECKSUM_V1.json
+          OUT: dados/cotahist/quality/COTAHIST_1995_FASE06_SEMANTICA_V1.json
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import datetime, hashlib, json, os, pathlib, zipfile
+
+          raw = pathlib.Path(os.environ["RAW"])
+          f05 = pathlib.Path(os.environ["FASE05"])
+          out = pathlib.Path(os.environ["OUT"])
+
+          e = json.loads(f05.read_text(encoding="utf-8"))
+          if e.get("status") != "VALIDADO" or e.get("decision") != "LIBERADO_PARA_FASE06":
+              raise SystemExit("FAIL-CLOSED: FASE05 não liberou a FASE06")
+
+          actual = hashlib.sha256(raw.read_bytes()).hexdigest()
+          if actual != e["raw_sha256"]:
+              raise SystemExit("FAIL-CLOSED: SHA-256 RAW diverge da FASE05")
+
+          with zipfile.ZipFile(raw) as z:
+              members = z.namelist()
+              if len(members) != 1:
+                  raise SystemExit(f"FAIL-CLOSED: ZIP com {len(members)} membros; esperado 1")
+              payload = z.read(members[0])
+
+          lines = payload.splitlines()
+          quotes = [x for x in lines if x[:2] == b"01"]
+          if not quotes:
+              raise SystemExit("FAIL-CLOSED: nenhum registro tipo 01")
+
+          def field(b, a, z):
+              return b[a-1:z].decode("latin-1").strip()
+
+          def price(b, a, z):
+              v = field(b, a, z)
+              return float(v) / 100.0 if v else 0.0
+
+          errors = []
+          keys = set()
+          dates = set()
+
+          for i, b in enumerate(quotes):
+              if len(b) != 245:
+                  errors.append(("record_length", i, len(b)))
+                  continue
+
+              d = field(b, 3, 10)
+              try:
+                  dt = datetime.datetime.strptime(d, "%Y%m%d").date()
+              except Exception:
+                  errors.append(("invalid_date", i, d))
+                  continue
+
+              if dt.year != 1995:
+                  errors.append(("out_of_year", i, d))
+
+              codbdi = field(b, 11, 12)
+              codneg = field(b, 13, 24)
+              tpmerc = field(b, 25, 27)
+              if not codbdi or not codneg or not tpmerc:
+                  errors.append(("empty_key_field", i, (d, codbdi, codneg, tpmerc)))
+
+              key = (d, codbdi, codneg, tpmerc)
+              if key in keys:
+                  errors.append(("duplicate_logical_key", i, key))
+              keys.add(key)
+              dates.add(d)
+
+              vals = [
+                  price(b, 57, 69),
+                  price(b, 70, 82),
+                  price(b, 83, 95),
+                  price(b, 96, 108),
+                  price(b, 109, 121),
+              ]
+              op, hi, lo, med, cl = vals
+              if any(v < 0 for v in vals):
+                  errors.append(("negative_price", i, vals))
+              if hi < lo:
+                  errors.append(("high_lt_low", i, vals))
+              if cl > hi:
+                  errors.append(("close_gt_high", i, vals))
+              if cl < lo:
+                  errors.append(("close_lt_low", i, vals))
+
+              qty = field(b, 153, 170)
+              vol = field(b, 171, 188)
+              if qty and not qty.isdigit():
+                  errors.append(("quantity_not_numeric", i, qty))
+              if vol and not vol.isdigit():
+                  errors.append(("volume_not_numeric", i, vol))
+
+          if errors:
+              raise SystemExit("FAIL-CLOSED: inconsistências semânticas: " + repr(errors[:10]))
+
+          idxs = [round(i * (len(quotes) - 1) / 29) for i in range(30)]
+          ohlc = []
+          for idx in idxs:
+              b = quotes[idx]
+              ohlc.append({
+                  "record_index": idx,
+                  "date": field(b, 3, 10),
+                  "codbdi": field(b, 11, 12),
+                  "codneg": field(b, 13, 24),
+                  "tpmerc": field(b, 25, 27),
+                  "preabe": price(b, 57, 69),
+                  "premax": price(b, 70, 82),
+                  "premin": price(b, 83, 95),
+                  "premed": price(b, 96, 108),
+                  "preult": price(b, 109, 121),
+                  "quatot": field(b, 153, 170),
+                  "voltot": field(b, 171, 188)
+              })
+
+          evidence = {
+              "schema_version": "1.0.0",
+              "year": 1995,
+              "phase": "FASE06",
+              "status": "VALIDADO",
+              "decision": "LIBERADO_PARA_FASE07",
+              "entry_gate": "FASE05",
+              "raw_path": str(raw),
+              "raw_sha256": actual,
+              "quote_records_type_01": len(quotes),
+              "unique_logical_keys": len(keys),
+              "logical_key": "data+codbdi+codneg+tpmerc",
+              "trading_dates_observed": len(dates),
+              "semantic_errors": 0,
+              "semantic_checks": {
+                  "tpmerc_present": True,
+                  "codbdi_present": True,
+                  "logical_key_unique": True,
+                  "ohlc_relationships_valid": True,
+                  "quantity_numeric": True,
+                  "volume_numeric": True,
+                  "ohlc_sample_cases": 30
+              },
+              "ohlc_sample_cases": ohlc,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(evidence, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Publicar evidência FASE06
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1995_FASE06_SEMANTICA_V1.json
+          if git diff --cached --quiet; then
+            echo "FASE06 sem alterações para publicar."
+            exit 0
+          fi
+          git commit -m "cert(cotahist): valida fase 06 semantica 1995"
+          git push origin HEAD:main
