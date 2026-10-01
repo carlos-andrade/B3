@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T18:50:13.788043+00:00",
+  "generated_at_utc": "2026-10-01T22:43:56.661284+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
-  "workflow_count": 109,
+  "workflow_count": 108,
   "status_counts": {
     "CONFORME_COM_OBSERVACAO": 84,
-    "CONFORME": 25
+    "CONFORME": 24
   },
   "results": [
     {
@@ -8286,81 +8286,6 @@
     },
     {
       "workflow": ".github/workflows/sincronizar-wiki-b3.yml",
-      "current_phase": null,
-      "status": "CONFORME",
-      "checks": [
-        {
-          "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
-          "severity": "CRITICA"
-        },
-        {
-          "code": "TRIGGER_DECLARED",
-          "ok": true,
-          "detail": "declaração on presente",
-          "severity": "ALTA"
-        },
-        {
-          "code": "NO_CROSS_WORKFLOW_EXECUTION",
-          "ok": true,
-          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
-          "severity": "CRITICA"
-        },
-        {
-          "code": "NO_README_TRIGGER",
-          "ok": true,
-          "detail": "sem README em gatilho",
-          "severity": "ALTA"
-        },
-        {
-          "code": "NO_GENERIC_DOCS_TRIGGER",
-          "ok": true,
-          "detail": "sem docs/ genérico em gatilho",
-          "severity": "MEDIA"
-        },
-        {
-          "code": "STEP_SUMMARY",
-          "ok": true,
-          "detail": "GITHUB_STEP_SUMMARY encontrado",
-          "severity": "BAIXA"
-        },
-        {
-          "code": "NO_POSTERIOR_PHASE_TRIGGER",
-          "ok": true,
-          "detail": "nenhum gatilho explícito de fase posterior",
-          "severity": "CRITICA"
-        },
-        {
-          "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": true,
-          "detail": "publicação possui credencial/permissão compatível",
-          "severity": "ALTA"
-        },
-        {
-          "code": "EVIDENCE_PERSISTENCE_SIGNAL",
-          "ok": true,
-          "detail": "há sinal de persistência/evidência",
-          "severity": "MEDIA"
-        },
-        {
-          "code": "DECISION_SIGNAL",
-          "ok": true,
-          "detail": "há sinal de status/decisão/fail-closed",
-          "severity": "MEDIA"
-        },
-        {
-          "code": "IDEMPOTENCE_SIGNAL",
-          "ok": true,
-          "detail": "padrão de idempotência/deduplicação detectado",
-          "severity": "BAIXA"
-        }
-      ],
-      "blocking_divergences": [],
-      "observability_or_advisory": []
-    },
-    {
-      "workflow": ".github/workflows/sincronizar-wiki.yml",
       "current_phase": null,
       "status": "CONFORME",
       "checks": [
