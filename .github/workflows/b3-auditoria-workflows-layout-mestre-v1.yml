@@ -1,0 +1,73 @@
+name: B3 - Auditoria de conformidade dos workflows pelo Layout Mestre V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+      - "scripts/governanca/auditar_workflows_b3.py"
+  workflow_dispatch:
+  schedule:
+    - cron: "15 3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-auditoria-workflows-layout-mestre
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Executar auditoria estática
+        run: python scripts/governanca/auditar_workflows_b3.py
+
+      - name: Publicar resultado no Step Summary
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path("docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json")
+          d=json.loads(p.read_text(encoding="utf-8"))
+          resultado = "FAVORAVEL" if d["divergente"] == 0 else "NAO_FAVORAVEL"
+          decisao = "AVANCAR" if d["divergente"] == 0 else "INVESTIGAR"
+          lines=[
+            "# Auditoria de conformidade dos workflows B3",
+            "",
+            f"**Resultado:** {resultado}",
+            f"**Workflows auditados:** {d['workflow_count']}",
+            f"**Conformes:** {d['conforme']}",
+            f"**Divergentes:** {d['divergente']}",
+            f"**Decisão:** {decisao}",
+            "**REEXECUTAR:** NÃO — o auditor não reexecuta workflows.",
+          ]
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("\\n".join(lines)+"\\n",encoding="utf-8")
+          print("\\n".join(lines))
+          PY
+
+      - name: Persistir auditoria
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md
+          if git diff --cached --quiet; then
+            echo "Sem alteração de auditoria. Nenhum commit necessário."
+            exit 0
+          fi
+          git commit -m "audit(governanca): atualiza conformidade dos workflows"
+          git pull --rebase origin main
+          git push origin HEAD:main
