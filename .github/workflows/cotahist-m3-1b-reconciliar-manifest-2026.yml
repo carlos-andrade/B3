@@ -154,3 +154,13 @@ jobs:
           retention-days: 30
 
 # trigger: reconciliação controlada após publicação do workflow
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-m3-1b-reconciliar-manifest-2026.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
