@@ -8,7 +8,7 @@ import re
 
 ROOT = pathlib.Path(".")
 WORKFLOW_DIR = ROOT / ".github" / "workflows"
-MASTER = "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+MASTER = "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
 OUT_JSON = ROOT / "docs" / "governanca" / "auditorias" / "WORKFLOWS_CONFORMIDADE_B3_ATUAL.json"
 OUT_MD = ROOT / "docs" / "governanca" / "auditorias" / "WORKFLOWS_CONFORMIDADE_B3_ATUAL.md"
 
