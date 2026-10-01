@@ -143,3 +143,16 @@ Se o Gate bloquear, a correção permanece na fase de origem. Depois da nova evi
 ### Regra fail-closed
 
 A existência de arquivos, sucesso de workflow isolado ou resultado de fase posterior nunca substitui uma evidência válida das FASE06–08.
+
+
+## Aditivo — execução independente e retorno verificável — 2026-10-01
+
+O contrato geral está em docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md.
+
+Cada workflow deve operar como unidade independente, sem chamar ou reexecutar outro workflow. Dependências entre fases são exclusivamente direcionais e baseadas em evidências autorizadas.
+
+Cada execução deve registrar no GITHUB_STEP_SUMMARY: workflow, fase/tarefa, run, entrada, evidência, status, decisão, bloqueadores, exceções, commit, próxima ação e indicação de reexecução.
+
+O monitor permanente .github/workflows/b3-monitor-execucoes-v1.yml verifica execuções a cada 15 minutos e não dispara reexecuções. Seu objetivo é detectar FAVORÁVEL, NÃO_FAVORÁVEL ou EM_EXECUÇÃO.
+
+A decisão de reexecutar deve ser baseada em mudança real da entrada, correção pendente ou alteração normativa aplicável. Sucesso, falha já registrada ou alteração de documentação não autorizam reexecução por si só.
