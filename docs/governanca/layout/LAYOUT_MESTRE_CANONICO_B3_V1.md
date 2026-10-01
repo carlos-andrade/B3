@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** carlos-andrade/B3  
-**Arquivo canônico:** `docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`  
+**Arquivo canônico:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-01  
 **Status:** VIGENTE  
