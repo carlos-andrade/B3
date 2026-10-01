@@ -44,15 +44,18 @@ jobs:
           from pathlib import Path
           p=Path("docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json")
           d=json.loads(p.read_text(encoding="utf-8"))
-          resultado = "FAVORAVEL" if d["divergente"] == 0 else "NAO_FAVORAVEL"
+          counts = d.get("status_counts", {})
+          criticos = counts.get("DIVERGENTE_CRITICA", 0)
+          conformes = counts.get("CONFORME", 0) + counts.get("CONFORME_COM_OBSERVACAO", 0)
+          resultado = "FAVORAVEL" if criticos == 0 else "NAO_FAVORAVEL"
           decisao = "AVANCAR" if d["divergente"] == 0 else "INVESTIGAR"
           lines=[
             "# Auditoria de conformidade dos workflows B3",
             "",
             f"**Resultado:** {resultado}",
             f"**Workflows auditados:** {d['workflow_count']}",
-            f"**Conformes:** {d['conforme']}",
-            f"**Divergentes:** {d['divergente']}",
+            f"**Conformes:** {conformes}",
+            f"**Divergentes críticas:** {criticos}",
             f"**Decisão:** {decisao}",
             "**REEXECUTAR:** NÃO — o auditor não reexecuta workflows.",
           ]
