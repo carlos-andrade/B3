@@ -1,5 +1,7 @@
 name: COTAHIST 1994 - cadeia FASE06-12 V2
 
+# DISPARO AUDITAVEL 2026-09-30: replica controlada do gatilho push; RUN_ID e gerado pelo GitHub Actions.
+
 on:
   workflow_dispatch:
   push:
@@ -56,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add             dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE09_PRE_RELEASE_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE10_INTEGRIDADE_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE11_CERTIFICACAO_V1.json             dados/cotahist/quality/COTAHIST_1994_FASE12_FECHAMENTO_TRANSICAO_V1.json
+          git add dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json dados/cotahist/quality/COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json dados/cotahist/quality/COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json dados/cotahist/quality/COTAHIST_1994_FASE09_PRE_RELEASE_V1.json dados/cotahist/quality/COTAHIST_1994_FASE10_INTEGRIDADE_V1.json dados/cotahist/quality/COTAHIST_1994_FASE11_CERTIFICACAO_V1.json dados/cotahist/quality/COTAHIST_1994_FASE12_FECHAMENTO_TRANSICAO_V1.json
           if git diff --cached --quiet; then
             echo "Nenhuma evidência nova."
             exit 0
