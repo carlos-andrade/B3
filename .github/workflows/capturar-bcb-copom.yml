@@ -52,3 +52,13 @@ jobs:
             git commit -m "data(bcb): captura Copom RAW e NORMALIZED"
             git push
           fi
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: capturar-bcb-copom.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
