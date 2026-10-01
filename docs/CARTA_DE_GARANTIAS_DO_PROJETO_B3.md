@@ -271,3 +271,25 @@ Fluxo obrigatório:
 A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
+
+## ADITIVO — GARANTIA DE AUDITORIA E NÃO REEXECUÇÃO — 2026-10-01
+
+A garantia de integridade do projeto passa a incluir:
+
+1. auditoria semântica dos workflows;
+2. classificação de severidade;
+3. isolamento entre fases;
+4. dependência somente direcional;
+5. preservação de históricos fechados;
+6. permissões compatíveis;
+7. persistência de evidências;
+8. idempotência quando aplicável;
+9. decisão explícita;
+10. proibição de correção automática pelo auditor.
+
+A garantia não significa que todos os workflows devam ser classificados como perfeitos. Significa que divergências são detectadas, classificadas, preservadas e encaminhadas para correção na origem.
+
+A ausência de observabilidade, isoladamente, não deve ser confundida com corrupção do dado.
+
+**Fluxo:** auditoria → evidência → classificação → correção na origem → nova validação.
+
