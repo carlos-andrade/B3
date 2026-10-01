@@ -714,3 +714,36 @@ Antes de criar uma nova regra de certificação, o processo deve consultar:
 A ausência dessa consulta é considerada falha de governança.
 
 **Atualização normativa:** 2026-10-01 — inclusão da regra anti-regressão de chaves, classificação de duplicidades e obrigação de reconciliação antes de promover uma hipótese a critério de certificação.
+
+## 42. REGRA-MESTRE DE PRECEDÊNCIA DOCUMENTAL E AUDITORIA ORIENTADA POR LAYOUT
+
+A experiência do Projeto B3 incorpora ao modelo reutilizável uma regra de não regressão para qualquer projeto que utilize pipelines auditáveis.
+
+### 42.1 Ordem após correções
+
+Quando uma correção alterar uma regra, implementação, contrato ou evidência, a ordem deve ser:
+
+**corrigir → atualizar documentos normativos → registrar evidência/decisão → verificar coerência → atualizar documentação de comunicação/inventário.**
+
+No Projeto B3, isso significa que as Cartas devem ser atualizadas antes do README. Em outros projetos, aplica-se a mesma lógica: a norma deve preceder a camada de comunicação.
+
+### 42.2 Layout como pré-condição de auditoria
+
+Quando uma auditoria depender de estrutura ou semântica de dados, a regra de validação somente poderá ser promovida após identificar a especificação aplicável:
+
+**fonte → layout → campos/offsets → semântica → hipótese → amostra → teste histórico → decisão normativa → implementação → evidência.**
+
+Uma combinação de campos que produza uma chave aparentemente útil não é, por si só, uma chave canônica.
+
+### 42.3 Memória de incidentes como pré-condição
+
+Antes de introduzir uma nova regra, o projeto deve consultar falhas e correções anteriores relevantes. A repetição de um erro já corrigido é tratada como falha de governança e deve gerar revisão do contrato antes da promoção.
+
+### 42.4 Incerteza não é corrupção
+
+Quando o layout ou a semântica não forem suficientes para determinar uma regra, o estado apropriado é **NÃO RECONCILIADO / AGUARDANDO EVIDÊNCIA**. Não se deve converter uma hipótese não comprovada em rejeição do dado.
+
+### 42.5 Regra de aplicação futura
+
+Este aditivo é parte do modelo reutilizável e deve ser considerado ao adaptar a governança para novos projetos.
+
