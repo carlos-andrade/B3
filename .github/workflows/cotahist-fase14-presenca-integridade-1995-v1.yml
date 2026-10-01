@@ -1,3 +1,4 @@
+# Retrigger auditavel da FASE14 apos correcao do validador.
 name: COTAHIST 1995 - FASE14 Presenca e Integridade RAW V1
 
 on:
@@ -31,7 +32,6 @@ jobs:
           RAW="dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
           MANIFEST="dados/cotahist/manifests/COTAHIST_A1995.json"
           CHECKSUM="dados/cotahist/checksums/COTAHIST_A1995.ZIP.sha256"
-          EVID="dados/cotahist/quality/COTAHIST_1995_FASE14_PRESENCA_INTEGRIDADE_V1.json"
 
           test -f "$RAW"
           test -f "$MANIFEST"
@@ -55,12 +55,10 @@ jobs:
           python - <<'PY'
           import zipfile
           from pathlib import Path
-
           raw = Path("dados/cotahist/raw/anual/COTAHIST_A1995.ZIP")
           with zipfile.ZipFile(raw) as z:
               names = z.namelist()
               payload = z.read(names[0])
-
           lines = payload.splitlines()
           bad = [len(line) for line in lines if len(line) != 245]
           if bad:
