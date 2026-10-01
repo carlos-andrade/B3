@@ -286,10 +286,6 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-, line)
-            if m:
-                paths.append(m.group(1))
-    return paths
 
 def check(code: str, ok: bool, detail: str, severity: str = "INFO") -> dict:
     return {"code": code, "ok": bool(ok), "detail": detail, "severity": severity}
