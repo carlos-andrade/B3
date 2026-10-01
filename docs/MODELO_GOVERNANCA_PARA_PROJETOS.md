@@ -5,7 +5,7 @@
 **Caminho:** docs/MODELO_GOVERNANCA_PARA_PROJETOS.md  
 **Data de criação:** 25/09/2026  
 **Repositório:** carlos-andrade/B3  
-**Versão:** 1.0  
+**Versão:** 1.3  
 **Status:** VIGENTE  
 **Natureza:** Norma-modelo reutilizável
 
@@ -564,3 +564,102 @@ Uma falha estrutural, descoberta de evidência relevante ou mudança de contrato
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
 | 1.2 | 30/09/2026 | Inclusão formal de certificação, fechamento, transição controlada, não retrocertificação e precedência da regra regente de existência/validação. | VIGENTE |
+
+
+## 35. REGRA CANÔNICA DE LOCALIZAÇÃO E EXISTÊNCIA
+
+No Projeto B3, existência e localização de artefatos devem ser verificadas por caminhos canônicos e não inferidas por buscas incompletas.
+
+Para COTAHIST anual:
+
+- RAW: `dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP`
+- manifesto: `dados/cotahist/manifests/COTAHIST_A<AAAA>.json`
+- checksum: `dados/cotahist/checksums/COTAHIST_A<AAAA>.ZIP.sha256`
+- qualidade/evidências: `dados/cotahist/quality/`
+- certificação: `dados/cotahist/certificacao/`
+
+A regra é determinística:
+
+**ANO → caminho canônico.**
+
+Uma busca que não localize um arquivo não autoriza concluir que o arquivo inexiste. Deve-se verificar o caminho canônico, a árvore do repositório e a matriz de certificação quando disponível.
+
+## 36. EXECUÇÃO LINEAR E FAIL-CLOSED
+
+A governança passa a exigir precedência explícita entre fases dependentes:
+
+**pré-condição válida → execução → evidência → gate → próxima fase.**
+
+Para o ciclo anual COTAHIST:
+
+**00 → 01 → 02 → 03–05 → 06 → 07 → 08 → GATE → 09 → GATE → 10 → GATE → 11 → GATE → 12 → transição.**
+
+Falha de uma fase bloqueia suas dependências. A existência de uma evidência posterior não retrocertifica a etapa anterior.
+
+## 37. CONTRATO DE CORREÇÃO
+
+Campos `correction_required` e `correction_applied` não devem ser usados como condição booleana de sucesso quando forem indicadores informativos.
+
+O contrato deve distinguir:
+
+- correção necessária;
+- correção aplicada;
+- contrato de correção válido.
+
+Quando não houver correção de dados necessária:
+
+`correction_required=false`, `correction_applied=false`, `correction_contract_valid=true`.
+
+É proibido modificar artificialmente indicadores para satisfazer um gate.
+
+## 38. INCIDENTES COMO EVIDÊNCIA DE GOVERNANÇA
+
+Falhas devem ser classificadas antes de qualquer decisão de reprocessamento.
+
+Classes mínimas:
+
+- falha da fonte;
+- falha do RAW;
+- falha de parsing;
+- falha de normalização;
+- falha de evidência;
+- falha de workflow;
+- falha lógica de gate;
+- falha de validação do dado.
+
+Um workflow quebrado não deve ser interpretado automaticamente como dado inválido.
+
+Os incidentes dos Runs #59, #8 e #10 de 1994 demonstraram a necessidade desse diagnóstico separado e permanecem preservados no Git.
+
+## 39. EXISTÊNCIA NÃO É VALIDAÇÃO
+
+A governança deve distinguir:
+
+**EXISTE** → artefato fisicamente localizado.
+
+**ÍNTEGRO** → integridade comprovada.
+
+**VALIDADO** → testes e critérios atendidos.
+
+**CERTIFICADO** → certificação formal concluída.
+
+**FECHADO** → ciclo anual encerrado.
+
+**TRANSIÇÃO AUTORIZADA** → próximo ciclo liberado para iniciar.
+
+Nenhum estado deve ser inferido automaticamente de outro.
+
+## 40. FECHAMENTO ANUAL
+
+A conclusão de uma fase não encerra o ano.
+
+O fechamento exige evidência de FASE12, classificação das exceções, preservação do histórico e autorização explícita da transição.
+
+O próximo ano permanece com cadeia própria.
+
+## 41. HISTÓRICO DE VERSÕES — ATUALIZAÇÃO
+
+| Versão | Data | Alteração | Status |
+|---|---|---|---|
+| 1.2 | 30/09/2026 | Certificação, fechamento, transição controlada e revisão após incidentes. | SUPERADA |
+| 1.3 | 01/10/2026 | Localização canônica, execução linear, contrato de correção, classificação de incidentes e distinção formal entre existência, validação, certificação e fechamento. | VIGENTE |
