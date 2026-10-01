@@ -5,7 +5,7 @@
 **Caminho:** docs/MODELO_GOVERNANCA_PARA_PROJETOS.md  
 **Data de criação:** 25/09/2026  
 **Repositório:** carlos-andrade/B3  
-**Versão:** 1.3  
+**Versão:** 1.4  
 **Status:** VIGENTE  
 **Natureza:** Norma-modelo reutilizável
 
@@ -746,4 +746,10 @@ Quando o layout ou a semântica não forem suficientes para determinar uma regra
 ### 42.5 Regra de aplicação futura
 
 Este aditivo é parte do modelo reutilizável e deve ser considerado ao adaptar a governança para novos projetos.
+
+## CONTROLE DE VERSÃO — 2026-10-01
+
+**Versão vigente:** 1.4  
+**Alteração:** consolidação da regra de precedência documental, layout como pré-condição de auditoria e não repetição de erros já corrigidos.  
+**Status:** VIGENTE
 
