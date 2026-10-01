@@ -55,6 +55,8 @@ f09={
  "note":"Pré-release reproduz o gate documental de 1993: consolida evidências anteriores e não retrocertifica fase ausente."
 }
 (Q/f"COTAHIST_{YEAR}_FASE09_PRE_RELEASE_V1.json").write_text(json.dumps(f09,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+if not f09_ok:
+    sys.exit("FAIL-CLOSED: FASE09 bloqueada; FASE10 não executada")
 
 manifest={}
 if MANIFEST.exists():
@@ -91,6 +93,8 @@ f10={
  "decision":"FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO" if f10_ok else "BLOQUEADO"
 }
 (Q/f"COTAHIST_{YEAR}_FASE10_INTEGRIDADE_V1.json").write_text(json.dumps(f10,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+if not f10_ok:
+    sys.exit("FAIL-CLOSED: FASE10 bloqueada; FASE11 não executada")
 
 f11_ok=f10_ok
 f11={
@@ -109,6 +113,8 @@ f11={
  "note":"Certificação somente é emitida após os gates 06-10 passarem."
 }
 (Q/f"COTAHIST_{YEAR}_FASE11_CERTIFICACAO_V1.json").write_text(json.dumps(f11,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+if not f11_ok:
+    sys.exit("FAIL-CLOSED: FASE11 bloqueada; FASE12 não executada")
 
 f12_ok=f11_ok
 f12={
