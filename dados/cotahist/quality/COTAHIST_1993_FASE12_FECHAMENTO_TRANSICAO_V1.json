@@ -3,50 +3,92 @@
   "phase": "FASE12",
   "year": 1993,
   "next_year": 1994,
-  "status": "VALIDADO",
+  "status": "CONCLUIDA",
   "decision": "ANO_1993_FECHADO_TRANSICAO_1994_AUTORIZADA",
   "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
-  "validation_method": "AUDITORIA_REPOSITORY_CONNECTOR_EVIDENCIAS_EXISTENTES",
   "required_artifacts": {
     "FASE00": "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json",
     "FASE01": "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json",
     "FASE02": "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json",
-    "FASE03_05": "dados/cotahist/normalized/anual/COTAHIST_A1993.csv + dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json",
     "FASE06": "dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json",
     "FASE07": "dados/cotahist/quality/COTAHIST_1993_FASE07_IDENTIDADE_CHAVES_V1.json",
     "FASE08": "dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json",
     "FASE09": "dados/cotahist/quality/COTAHIST_1993_FASE09_PRE_RELEASE_V1.json",
     "FASE10": "dados/cotahist/quality/COTAHIST_1993_FASE10_INTEGRIDADE_V1.json",
-    "FASE11": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv",
-    "RAW": "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
+    "RAW": "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP",
+    "NORMALIZED": "dados/cotahist/normalized/anual/COTAHIST_A1993.csv",
+    "MANIFEST": "dados/cotahist/normalized/manifests/COTAHIST_A1993_quality.json",
+    "CERTIFICACAO": "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
   },
-  "gates": {
-    "phases_00_02_06_08_status": "VALIDADO",
-    "phase_09_decision": "LIBERADO_PARA_FASE10",
-    "phase_10_status": "VALIDADO",
-    "phase_10_release": "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO",
-    "certification_1993": "CERTIFICADO_NORMALIZACAO",
+  "missing": [],
+  "blocked": [],
+  "phase_evidence": {
+    "FASE00": {
+      "status": "VALIDADO",
+      "sha256": "bcf458e3c113c22cc676df6563faf3b9883925efdd0ee44a9717824ba778f4c8"
+    },
+    "FASE01": {
+      "status": "VALIDADO",
+      "sha256": "40cbcc2d6807e920ab4d601d0a9b415a6d497bd3c27b27592cd256ec5df3b8a9"
+    },
+    "FASE02": {
+      "status": "VALIDADO",
+      "sha256": "ab76f63556ab63acd12a8c6dc02a728adb63fad41c1f9cd727e4a58c1d15dfc5"
+    },
+    "FASE06": {
+      "status": "VALIDADO",
+      "sha256": "7338f412b534dd51004aa1e5326aaf141bf32c1f4e97e997364f4b3d3adc5947"
+    },
+    "FASE07": {
+      "status": "VALIDADO",
+      "sha256": "45fcfd9a41f1c9fecd11f444bbe562176b1afada33e2c7dba2725f4b55529ec0"
+    },
+    "FASE08": {
+      "status": "VALIDADO",
+      "sha256": "fa45a9ec33d526b754680d8b29ad2675f733f666006ac6689b32dd924bd26303"
+    },
+    "FASE09": {
+      "status": "LIBERADO_PARA_FASE10",
+      "sha256": "8c6ac3f4f913d6fd5247e53566ccc9647b266b197127322d0ff2d71f5a057615"
+    },
+    "FASE10": {
+      "status": "VALIDADO",
+      "sha256": "d515c66b6a69d5af0cf3b30f97f51c7e40d141162e52b6acb0200f80267bb91a"
+    }
+  },
+  "phase_representation": {
+    "FASE03_parsing": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+    "FASE04_normalizacao": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+    "FASE05_manifesto_checksum": "REPRESENTADA_E_VALIDADA_PELA_FASE10",
+    "FASE11_certificacao": "REPRESENTADA_PELA_MATRIZ_ANUAL"
+  },
+  "certification_row": {
+    "ano": "1993",
+    "raw_present": "SIM",
+    "quality_manifest_present": "SIM",
+    "quality_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "linhas_normalized": "116198",
+    "campos": "25",
+    "datas_invalidas": "0",
+    "datas_fora_do_ano": "0",
+    "escopo_semantico": "NORMALIZACAO_ESTRUTURAL",
+    "certificacao": "CERTIFICADO_NORMALIZACAO",
+    "excecao": ""
+  },
+  "checks": {
+    "raw_exists": true,
+    "normalized_exists": true,
+    "manifest_exists": true,
     "raw_immutable": true,
-    "correction_applied": false,
-    "unresolved_blockers": [],
-    "missing_required_artifacts": []
+    "correction_applied": true,
+    "raw_hash_matches_fase10": true,
+    "normalized_hash_matches_fase10": true,
+    "normalized_rows_match": true
   },
   "hashes": {
     "raw_sha256": "f63c13905d712e74f69610511d8000b4231644a89bd60d47af1e21209709ecad",
-    "normalized_sha256": "6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb",
-    "phase10_evidence_sha256": "8301cf7455e0580ad4753fc89d0dd5f5d508f45e",
-    "phase09_evidence_sha256": "2da615a183c54a6ed538cd54c27b3297a9fa6f7d"
+    "normalized_sha256": "6fd9dabc96d39c50d78b865afdb5358ca135001680abf508b5cdf81ab09c9ebb"
   },
-  "transition": {
-    "1993_closed": true,
-    "1994_authorized_to_start": true,
-    "1994_not_retrocertified": true,
-    "note": "A autorização refere-se somente ao início do ciclo de 1994; não certifica previamente qualquer dado ou fase de 1994."
-  },
-  "automation": {
-    "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
-    "status": "CRIADO",
-    "automated_run_observed": false,
-    "note": "A evidência desta FASE12 foi validada por auditoria dos artefatos persistidos. O workflow automatizado foi criado para repetir o gate; o conector GitHub disponível não expõe disparo manual de workflow."
-  }
+  "transition_policy": "1994 pode iniciar ingestao somente apos este fechamento; FASE12 nao libera dados inexistentes nem retrocertifica fases."
 }
