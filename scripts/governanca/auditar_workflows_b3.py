@@ -143,9 +143,15 @@ def audit_workflow(path: pathlib.Path) -> dict:
     trigger_text = push
     posterior = []
     if current_phase is not None:
-        for p in phase_numbers(trigger_text):
-            if p > current_phase:
-                posterior.append(p)
+        # Somente uma referência explícita a OUTRO workflow de fase posterior
+        # constitui gatilho posterior. Evidências/artefatos com FASEnn no nome
+        # são entradas de dados e não representam reexecução da fase posterior.
+        for pth in paths:
+            if not re.search(r"^\.github/workflows/", pth.strip(), re.I):
+                continue
+            for p in phase_numbers(pth):
+                if p > current_phase:
+                    posterior.append(p)
     checks.append(check(
         "NO_POSTERIOR_PHASE_TRIGGER", not posterior,
         "nenhum gatilho explícito de fase posterior"
