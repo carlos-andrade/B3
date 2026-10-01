@@ -217,3 +217,13 @@ jobs:
             exit 1
           fi
           echo "DRY-RUN sem alterações no working tree."
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-orquestrador-anual-dryrun-v2.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
