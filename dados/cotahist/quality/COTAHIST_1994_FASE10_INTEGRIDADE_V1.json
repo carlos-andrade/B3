@@ -6,7 +6,9 @@
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1994.csv",
   "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json",
   "raw_immutable": true,
+  "correction_required": false,
   "correction_applied": false,
+  "correction_contract_valid": true,
   "hashes": {
     "raw_sha256_actual": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
     "normalized_sha256_actual": "f657bf43b6d8c73edf3b3e1672ac2466531f9a00b26bb778c24ed5f26baf84ff"
@@ -21,10 +23,13 @@
     "normalized_rows_match_manifest": true,
     "normalized_fields_match_manifest": true,
     "raw_immutable": true,
-    "correction_applied": false
+    "correction_required": false,
+    "correction_applied": false,
+    "correction_contract_valid": true
   },
   "status": "BLOQUEADO",
   "failures": [
+    "correction_required",
     "correction_applied"
   ],
   "decision": "BLOQUEADO"
