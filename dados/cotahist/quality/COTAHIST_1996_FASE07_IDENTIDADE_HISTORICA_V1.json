@@ -1,0 +1,1452 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FASE_07_IDENTIDADE_HISTORICA_1996_ANALISE",
+  "raw_file": "COTAHIST_A1996.ZIP",
+  "rows": 110685,
+  "key_candidates": {
+    "K1_data_codneg_tpmerc": [
+      "data_pregao",
+      "codneg",
+      "tpmerc"
+    ],
+    "K2_data_codbdi_codneg_tpmerc": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc"
+    ],
+    "K3_data_codbdi_codneg_tpmerc_codisi_dismes": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "codisi",
+      "dismes"
+    ],
+    "K4_contractual": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "codisi",
+      "dismes",
+      "especi",
+      "prazot",
+      "datven",
+      "preexe",
+      "indopc",
+      "ptoexe"
+    ]
+  },
+  "key_metrics": {
+    "K1_data_codneg_tpmerc": {
+      "groups": 110247,
+      "unique_groups": 109825,
+      "repeated_groups": 422,
+      "rows_in_repeated_groups": 860,
+      "max_group_size": 3,
+      "rows": 110685
+    },
+    "K2_data_codbdi_codneg_tpmerc": {
+      "groups": 110247,
+      "unique_groups": 109825,
+      "repeated_groups": 422,
+      "rows_in_repeated_groups": 860,
+      "max_group_size": 3,
+      "rows": 110685
+    },
+    "K3_data_codbdi_codneg_tpmerc_codisi_dismes": {
+      "groups": 110248,
+      "unique_groups": 109827,
+      "repeated_groups": 421,
+      "rows_in_repeated_groups": 858,
+      "max_group_size": 3,
+      "rows": 110685
+    },
+    "K4_contractual": {
+      "groups": 110685,
+      "unique_groups": 110685,
+      "repeated_groups": 0,
+      "rows_in_repeated_groups": 0,
+      "max_group_size": 1,
+      "rows": 110685
+    }
+  },
+  "repeated_key_examples": {
+    "K1_data_codneg_tpmerc": [
+      {
+        "key": [
+          "19960508",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960531",
+          "CST 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960603",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960718",
+          "ELE 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960807",
+          "ELE 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960815",
+          "CSN 3",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960918",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960925",
+          "BBD 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961001",
+          "USI 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961023",
+          "TEL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "TEL 3",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "TEL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961112",
+          "VAL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961127",
+          "BCN 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961203",
+          "TAM 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961219",
+          "BBD 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960102",
+          "CSI 6",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960102",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "LIG 3",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "SHA 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960112",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "BB  4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "BES 4",
+          "030"
+        ],
+        "count": 2
+      }
+    ],
+    "K2_data_codbdi_codneg_tpmerc": [
+      {
+        "key": [
+          "19960508",
+          "62",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960531",
+          "62",
+          "CST 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960603",
+          "62",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960718",
+          "62",
+          "ELE 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960807",
+          "62",
+          "ELE 6",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960815",
+          "62",
+          "CSN 3",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960918",
+          "62",
+          "BB  4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960925",
+          "62",
+          "BBD 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961001",
+          "62",
+          "USI 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961023",
+          "62",
+          "TEL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "62",
+          "TEL 3",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "62",
+          "TEL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961112",
+          "62",
+          "VAL 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961127",
+          "62",
+          "BCN 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961203",
+          "62",
+          "TAM 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961219",
+          "62",
+          "BBD 4",
+          "030"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960102",
+          "62",
+          "CSI 6",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960102",
+          "62",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "62",
+          "LIG 3",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "62",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "62",
+          "SHA 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "62",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960112",
+          "62",
+          "USI 4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "62",
+          "BB  4",
+          "030"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "62",
+          "BES 4",
+          "030"
+        ],
+        "count": 2
+      }
+    ],
+    "K3_data_codbdi_codneg_tpmerc_codisi_dismes": [
+      {
+        "key": [
+          "19960508",
+          "62",
+          "BB  4",
+          "030",
+          "BRBBASACNPR0",
+          "157"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960531",
+          "62",
+          "CST 6",
+          "030",
+          "BRCSTBACNPB2",
+          "105"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960603",
+          "62",
+          "BB  4",
+          "030",
+          "BRBBASACNPR0",
+          "157"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960718",
+          "62",
+          "ELE 6",
+          "030",
+          "BRELETACNPB7",
+          "042"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960807",
+          "62",
+          "ELE 6",
+          "030",
+          "BRELETACNPB7",
+          "042"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960815",
+          "62",
+          "CSN 3",
+          "030",
+          "BRCSNAACNOR6",
+          "204"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960918",
+          "62",
+          "BB  4",
+          "030",
+          "BRBBASACNPR0",
+          "160"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960925",
+          "62",
+          "BBD 4",
+          "030",
+          "BRBBDCACNPR8",
+          "341"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961001",
+          "62",
+          "USI 4",
+          "030",
+          "BRUSIMACNPR0",
+          "111"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961023",
+          "62",
+          "TEL 4",
+          "030",
+          "BRTELBACNPR9",
+          "126"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "62",
+          "TEL 3",
+          "030",
+          "BRTELBACNOR2",
+          "126"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961025",
+          "62",
+          "TEL 4",
+          "030",
+          "BRTELBACNPR9",
+          "126"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961112",
+          "62",
+          "VAL 4",
+          "030",
+          "BRVALEACNPR7",
+          "148"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961127",
+          "62",
+          "BCN 4",
+          "030",
+          "BRBCNAACNPR9",
+          "168"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961203",
+          "62",
+          "TAM 4",
+          "030",
+          "BRTAMRACNPR1",
+          "108"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19961219",
+          "62",
+          "BBD 4",
+          "030",
+          "BRBBDCACNPR8",
+          "344"
+        ],
+        "count": 3
+      },
+      {
+        "key": [
+          "19960102",
+          "62",
+          "CSI 6",
+          "030",
+          "BRCSIPACNPB5",
+          "101"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960102",
+          "62",
+          "USI 4",
+          "030",
+          "BRUSIMACNPR0",
+          "109"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "62",
+          "LIG 3",
+          "030",
+          "BRLIGHACNOR7",
+          "139"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960103",
+          "62",
+          "USI 4",
+          "030",
+          "BRUSIMACNPR0",
+          "109"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "62",
+          "SHA 4",
+          "030",
+          "BRSHAPACNPR7",
+          "128"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960110",
+          "62",
+          "USI 4",
+          "030",
+          "BRUSIMACNPR0",
+          "109"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960112",
+          "62",
+          "USI 4",
+          "030",
+          "BRUSIMACNPR0",
+          "109"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "62",
+          "BB  4",
+          "030",
+          "BRBBASACNPR0",
+          "156"
+        ],
+        "count": 2
+      },
+      {
+        "key": [
+          "19960117",
+          "62",
+          "BES 4",
+          "030",
+          "BRBESPACNPR2",
+          "154"
+        ],
+        "count": 2
+      }
+    ],
+    "K4_contractual": []
+  },
+  "codneg_reuse_analysis": {
+    "distinct_codneg": 1325,
+    "codneg_with_multiple_attribute_values": 1325,
+    "examples": [
+      {
+        "codneg": "BBD 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "332",
+            "333",
+            "334",
+            "335",
+            "336",
+            "337",
+            "338",
+            "339",
+            "340",
+            "341",
+            "342",
+            "343",
+            "344"
+          ],
+          "especi": [
+            "ON *",
+            "ON *EBD",
+            "ON *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "BBD 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "332",
+            "333",
+            "334",
+            "335",
+            "336",
+            "337",
+            "338",
+            "339",
+            "340",
+            "341",
+            "342",
+            "343",
+            "344"
+          ],
+          "especi": [
+            "PN *",
+            "PN *EBD",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "BRD 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "104",
+            "105"
+          ],
+          "especi": [
+            "PN *",
+            "PN *EBD"
+          ]
+        }
+      },
+      {
+        "codneg": "BRH 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020"
+          ],
+          "codbdi": [
+            "02",
+            "96"
+          ],
+          "dismes": [
+            "153",
+            "155",
+            "156",
+            "157"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED",
+            "PN *EDS",
+            "PN *INT"
+          ]
+        }
+      },
+      {
+        "codneg": "CMI 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "164",
+            "166"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "CMI 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "164",
+            "166"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "CPN 5",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "069",
+            "071",
+            "072",
+            "073",
+            "074"
+          ],
+          "especi": [
+            "PNA*",
+            "PNA*ED"
+          ]
+        }
+      },
+      {
+        "codneg": "CSI 6",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ]
+        }
+      },
+      {
+        "codneg": "CSN 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "203",
+            "204",
+            "205"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "CST 6",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "104",
+            "105",
+            "106"
+          ],
+          "especi": [
+            "PNB*",
+            "PNB*ED"
+          ]
+        }
+      },
+      {
+        "codneg": "DUR 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "166",
+            "167",
+            "168"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "ELE 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "126",
+            "127"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "ELE 6",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "041",
+            "042"
+          ],
+          "especi": [
+            "PNB*",
+            "PNB*ED"
+          ]
+        }
+      },
+      {
+        "codneg": "INE 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "120",
+            "121",
+            "122",
+            "123",
+            "125"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED",
+            "PN *ES"
+          ]
+        }
+      },
+      {
+        "codneg": "ITA 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "308",
+            "309",
+            "310",
+            "311",
+            "312",
+            "313",
+            "314",
+            "315",
+            "316",
+            "317",
+            "318",
+            "319",
+            "320",
+            "321"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "ITS 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "223",
+            "225",
+            "226",
+            "227",
+            "228",
+            "229"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ]
+        }
+      },
+      {
+        "codneg": "KLA 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "040",
+            "041",
+            "042"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ]
+        }
+      },
+      {
+        "codneg": "LIG 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "139",
+            "140",
+            "141"
+          ],
+          "especi": [
+            "ON *",
+            "ON *EB",
+            "ON *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "PAL 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "139",
+            "140"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ES"
+          ]
+        }
+      },
+      {
+        "codneg": "PDG 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "138",
+            "139"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "PTI 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "154",
+            "156",
+            "157"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "REA 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "162",
+            "163",
+            "164"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ]
+        }
+      },
+      {
+        "codneg": "RHD 3",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "101",
+            "102"
+          ],
+          "especi": [
+            "ON",
+            "ON  ED"
+          ]
+        }
+      },
+      {
+        "codneg": "SCO 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "173",
+            "174",
+            "175",
+            "176"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ]
+        }
+      },
+      {
+        "codneg": "SHA 4",
+        "dates": 248,
+        "variants": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "especi": [
+            "PN *",
+            "PN *INT"
+          ]
+        }
+      }
+    ]
+  },
+  "code_cardinality": {
+    "codneg": 1325,
+    "codisi": 916,
+    "tpmerc": 8,
+    "codbdi": 16,
+    "dismes": 216,
+    "especi": 119
+  },
+  "governance": [
+    "Nenhuma chave candidata e declarada como chave economica definitiva apenas por unicidade.",
+    "CODNEG e identificador de negociacao; sua reutilizacao exige contexto temporal e contratual.",
+    "CODBDI e TPMERC permanecem atributos classificatorios.",
+    "Atributos contratuais como DATVEN, PREEXE, INDOPC, PTOEXE, PRAZOT e ESPECI podem ser materialmente relevantes.",
+    "RAW e NORMALIZED nao sao alterados por esta analise."
+  ]
+}
