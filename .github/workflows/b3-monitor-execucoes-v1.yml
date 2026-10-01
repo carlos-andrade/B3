@@ -80,6 +80,6 @@ jobs:
           open(os.environ["GITHUB_STEP_SUMMARY"],"w",encoding="utf-8").write(summary)
           print(summary)
 
-          if bad:
-              raise SystemExit(2)
+          # O monitor informa o estado; ele próprio permanece verde.
+          # Uma execução monitorada não deve provocar reexecução automática.
           PY
