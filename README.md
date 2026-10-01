@@ -4,7 +4,7 @@ Repositório central de pesquisa, ingestão, normalização, certificação e di
 
 > **Estado do projeto:** ativo e em evolução contínua.  
 > **Branch principal:** `main`  
-> **Última atualização deste README:** 28/09/2026
+> **Última atualização deste README:** 01/10/2026
 
 ---
 
@@ -519,6 +519,27 @@ Referências:
 - scripts/ingestao/sincronizar_wiki_b3.py
 - WIKI/09-AUTOMACAO/WIKI_NATIVA.md
 
+
+## 18. Regra de atualização após correções de auditoria
+
+A documentação do projeto segue uma ordem obrigatória para evitar que o README registre um estado antes de a governança estar consolidada.
+
+**Ordem vigente:**
+
+**CORREÇÃO → CARTAS NORMATIVAS → EVIDÊNCIAS/INCIDENTES → VERIFICAÇÃO → README.**
+
+As Cartas de Confiança, Carta Magna, Carta de Garantias e Modelo-Mestre devem refletir a correção antes de o README ser atualizado.
+
+### Auditoria COTAHIST — próxima etapa
+
+Antes da execução da próxima auditoria, o projeto deverá estabelecer o **layout aplicável ao período** e suas regras de interpretação. A definição de chave, cardinalidade, unicidade ou qualquer outro critério de bloqueio deverá nascer de:
+
+**fonte oficial → layout → campos/offsets → semântica → hipótese → amostra → teste histórico → decisão normativa → implementação → evidência.**
+
+Erros já corrigidos em auditorias anteriores não podem reaparecer como regras de validação. Os incidentes e suas correções devem ser consultados antes de cada nova fase.
+
+O README documenta o estado consolidado; ele não substitui as cartas nem os artefatos de evidência.
+
 ## Licença e uso
 
 Este repositório é destinado a pesquisa, engenharia de dados, análise de mercado e desenvolvimento de ferramentas.
@@ -530,4 +551,4 @@ Dados de terceiros permanecem sujeitos às respectivas fontes, licenças, termos
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** [carlos-andrade/B3](https://github.com/carlos-andrade/B3)  
 **Branch principal:** `main`  
-**Última revisão do README:** 28/09/2026
+**Última revisão do README:** 01/10/2026
