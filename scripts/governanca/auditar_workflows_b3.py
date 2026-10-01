@@ -84,6 +84,8 @@ def has_decision_signal(text: str) -> bool:
         r"\b(?:status|decision|liberado|validado|bloqueado|conclu[ií]da|fail-closed|FAIL-CLOSED)\b",
         r"GITHUB_STEP_SUMMARY.{0,500}\b(?:PASS|FAIL|OK|NOK|APROVADO|REPROVADO|BLOQUEADO|VALIDADO|LIBERADO)\b",
         r"\b(?:sys\.exit|raise\s+(?:SystemExit|RuntimeError|ValueError))\b",
+        r"(?m)^\s*set\s+-e(?:uo\s+pipefail|\s+e|\s*)\s*$",
+        r"(?m)^\s*if:\s*\$\{?\{?\s*(?:success|failure|cancelled|always)\s*\(\)\s*\}?\}?\s*$",
         r"\b(?:exit\s+[1-9]|exit\s+0)\b",
         r"\b(?:if|unless)\b.{0,250}\b(?:missing|invalid|error|failed|failure|ok|valid)\b.{0,250}\b(?:sys\.exit|exit\s+[01]|fail|PASS|FAIL)\b",
         r"\b(?:decision|status)\s*[:=]\s*['\"]?[A-Z_]+",
