@@ -1,23 +1,10 @@
 name: Atualizar README — B3
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/**"
-      - "ativos/**"
-      - "governanca/**"
-      - "scripts/ingestao/**"
-      - "dados/bcb_sgs/**"
-      - "dados/bdi/**"
-      - "dados/calendario_economico/**"
-      - "dados/cotahist/normalized/**"
-      - "dados/cotahist/certificacao/**"
-      - "dados/market_data/**"
-      - "index.html"
-      - "PROMPT_MESTRE_B3_799_CARACTERES.md"
+  # README é artefato de consolidação. Não é gatilho operacional de fases.
+  # 23:55 America/Sao_Paulo = 02:55 UTC.
   schedule:
-    - cron: "20 3 * * *"
+    - cron: "55 2 * * *"
   workflow_dispatch:
 
 permissions:
