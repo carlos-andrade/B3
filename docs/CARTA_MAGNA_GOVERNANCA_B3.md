@@ -1,6 +1,6 @@
 # CARTA MAGNA DE GOVERNANÇA — B3
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data:** 2026-10-01  
 **Status:** VIGENTE  
 **Repositório:** carlos-andrade/B3
@@ -239,4 +239,10 @@ Antes de executar uma nova fase, deve ser feita verificação explícita contra 
 Quando a regra de auditoria depender de layout ainda não reconciliado, o estado correto é **BLOQUEADO POR GOVERNANÇA / AGUARDANDO LAYOUT**, e não **DADO INVÁLIDO**.
 
 Essa regra é permanente e passa a integrar a autoridade normativa da Carta Magna.
+
+## CONTROLE DE VERSÃO — 2026-10-01
+
+**Versão vigente:** 1.1  
+**Alteração:** consolidação da regra de precedência documental, layout como pré-condição de auditoria e não repetição de erros já corrigidos.  
+**Status:** VIGENTE
 
