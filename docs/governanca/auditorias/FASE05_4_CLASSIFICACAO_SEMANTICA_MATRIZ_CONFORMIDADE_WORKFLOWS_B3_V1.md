@@ -189,3 +189,63 @@ O auditor deverá passar de uma verificação estrutural simples para uma verifi
 - política de reexecução.
 
 Nenhuma correção em massa deve ser feita antes dessa melhoria.
+
+
+## 13. Melhoria do auditor — conclusão
+
+A etapa seguinte foi executada sem alterar retrospectivamente os workflows históricos.
+
+O auditor `scripts/governanca/auditar_workflows_b3.py` foi evoluído para a versão **2.0.0**, passando a distinguir:
+
+- conformidade;
+- conformidade com observação;
+- divergência crítica;
+- alertas de média/baixa severidade.
+
+Além da estrutura anterior, passou a verificar sinais de:
+
+1. trigger causal;
+2. trigger de fase posterior;
+3. dependência direcional;
+4. permissões compatíveis com escrita real;
+5. persistência de evidência;
+6. decisão/status;
+7. idempotência/deduplicação;
+8. isolamento e ausência de reexecução;
+9. política especial do README;
+10. comportamento somente-leitura do monitor.
+
+A ausência isolada de `GITHUB_STEP_SUMMARY` foi formalmente reclassificada como **observabilidade**, não como defeito funcional de dados.
+
+### Commits da melhoria
+
+- Auditor v2: `47ff09231564d71187cfc96aa1804652a6e0cd77`
+- Workflow adaptado ao schema v2: `944706915327604352a8893bbd6f7410084d992d`
+
+### Regra de não automação
+
+O auditor continua estritamente diagnóstico. Ele não corrige, reexecuta ou promove workflows.
+
+## 14. Consolidação normativa nas Cartas
+
+Após a melhoria do auditor, as regras foram gravadas também nas quatro fontes de governança subordinadas ao Layout Mestre:
+
+- `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md`
+  - commit `78a149d123dd4b5df6e5fb892b2ab1225b446808`
+- `docs/CARTA_MAGNA_GOVERNANCA_B3.md`
+  - commit `1e12daddc76d341a40dd45d1eaba074a6892f83b`
+- `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md`
+  - commit `2682466fb5f59ee16358aaff09de58e34b751dd3`
+- `docs/MODELO_GOVERNANCA_PARA_PROJETOS.md`
+  - commit `62a0a4392c083c805b87a20780b72136eb25d4a9`
+
+O próprio Layout Mestre também recebeu a regra:
+
+- `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+  - commit `5c53cee3503c7102eb1e6dce0b15593960144da9`
+
+A hierarquia permanece:
+
+**CARTAS/DOCUMENTOS DE ENTRADA → LAYOUT MESTRE → CÓDIGO → EVIDÊNCIA → VALIDAÇÃO → DECISÃO**
+
+As Cartas foram atualizadas como fontes de entrada/histórico; o Layout Mestre permanece a autoridade operacional única.
