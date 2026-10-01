@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-01T15:56:29.729118+00:00
+Gerado em UTC: 2026-10-01T16:16:04.166508+00:00
 Workflows auditados: 109
 
 ## Regra de decisão
@@ -56,19 +56,19 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-diagnostico-prazot-1987-v1.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | STEP_SUMMARY |
 | .github/workflows/cotahist-evidencias-retrospectivas-1993-fases06-08-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase00-governanca-1993-v1.yml | 0 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase00-governanca-1994-v1.yml | 0 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
+| .github/workflows/cotahist-fase00-governanca-1994-v1.yml | 0 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
 | .github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase01-aquisicao-raw-1994-v1.yml | 1 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
+| .github/workflows/cotahist-fase01-aquisicao-raw-1994-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase02-evidencia-1993-v1.yml | 2 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase02-integridade-1994-v1.yml | 2 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase03-parsing-1994-v1.yml | 3 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase03-parsing-1995-v1.yml | 3 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase04-normalizacao-1994-v1.yml | 4 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase04-normalizacao-1995-v1.yml | 4 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml | 5 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml | 5 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
+| .github/workflows/cotahist-fase02-integridade-1994-v1.yml | 2 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase03-parsing-1994-v1.yml | 3 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase03-parsing-1995-v1.yml | 3 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase04-normalizacao-1994-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase04-normalizacao-1995-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase06-semantica-1995-v1.yml | 6 | **DIVERGENTE_CRITICA** | NO_README_TRIGGER, NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
+| .github/workflows/cotahist-fase06-semantica-1995-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07-identidade-historica-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07b-tpmerc-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07c-codbdi-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -96,8 +96,8 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase10-integridade-1991-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1992-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1993-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
-| .github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml | 1 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
-| .github/workflows/cotahist-fase14-presenca-integridade-1995-v1.yml | 1 | **DIVERGENTE_CRITICA** | NO_POSTERIOR_PHASE_TRIGGER | STEP_SUMMARY |
+| .github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase14-presenca-integridade-1995-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-gate-historico-1986.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-importacao-diaria-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-integridade-campos-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -135,6 +135,6 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/indices-b3-composicao-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/processar-inventario-bvbg028.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
 | .github/workflows/sincronizar-wiki-b3.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
-| .github/workflows/sincronizar-wiki.yml | — | **DIVERGENTE_CRITICA** | NO_README_TRIGGER, PERMISSIONS_MATCH_WRITE | — |
+| .github/workflows/sincronizar-wiki.yml | — | **DIVERGENTE_CRITICA** | PERMISSIONS_MATCH_WRITE | — |
 | .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/validar-bvbg02802.yml | — | **CONFORME_COM_OBSERVACAO** | — | IDEMPOTENCE_SIGNAL |
