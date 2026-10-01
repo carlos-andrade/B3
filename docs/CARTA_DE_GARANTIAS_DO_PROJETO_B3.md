@@ -1,6 +1,6 @@
 # CARTA DE GARANTIAS DO PROJETO B3
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data:** 2026-10-01  
 **Status:** VIGENTE  
 **Repositório:** carlos-andrade/B3
@@ -222,4 +222,10 @@ Se a documentação do layout for insuficiente para definir a regra, a auditoria
 ### Garantia 5 — Evidência antes de comunicação
 
 A documentação normativa e os artefatos de evidência constituem a memória técnica primária. O README só deve ser atualizado depois que essa memória estiver consistente.
+
+## CONTROLE DE VERSÃO — 2026-10-01
+
+**Versão vigente:** 1.1  
+**Alteração:** consolidação da regra de precedência documental, layout como pré-condição de auditoria e não repetição de erros já corrigidos.  
+**Status:** VIGENTE
 
