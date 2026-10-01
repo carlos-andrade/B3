@@ -1,0 +1,26 @@
+{
+  "versao": "1.0",
+  "fase": "FASE14",
+  "ano": 1995,
+  "status": "VALIDADO",
+  "presenca_raw": true,
+  "manifesto_presente": true,
+  "checksum_presente": true,
+  "sha256_manifesto": "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc",
+  "sha256_calculado": "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc",
+  "sha256_coerente": true,
+  "zip_membros": 1,
+  "zip_membro": "COTAHIST.A1995",
+  "bytes_membro": 25883871,
+  "registros_245_bytes": 104793,
+  "tipos_registro_observados": [
+    "00",
+    "01",
+    "99"
+  ],
+  "correction_required": false,
+  "correction_applied": false,
+  "correction_contract_valid": true,
+  "decisao": "LIBERADO_PARA_FASE03_05",
+  "regra": "RAW existente; nenhuma nova aquisicao realizada."
+}
