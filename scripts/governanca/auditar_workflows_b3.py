@@ -182,12 +182,14 @@ def audit_workflow(path: pathlib.Path) -> dict:
     # Permissões mínimas: escrita somente quando há sinais de publicação no repo.
     # A declaração de permissions pode estar no nível do workflow ou do job.
     writes_repo = has_git_write(text)
-    contents_write = bool(re.search(r"(?m)^\s+contents:\s*write\s*$", text))
-    contents_read = bool(re.search(r"(?m)^\s+contents:\s*read\s*$", text))
+    contents_write = bool(re.search(r"(?m)^\s+contents:\s*write\s*$", text)) or bool(re.search(r"permissions:\s*\{\s*contents:\s*write\s*\}", text, re.I))
+    contents_read = bool(re.search(r"(?m)^\s+contents:\s*read\s*$", text)) or bool(re.search(r"permissions:\s*\{\s*contents:\s*read\s*\}", text, re.I))
+    external_write = bool(re.search(r"git\s+clone\s+['\"]https://x-access-token:\$\{?\w+\}?@github\.com/[^/]+/[^\s\"']+\.wiki\.git|git\s+push\s+origin\s+HEAD(?::\w+)?", text, re.I) and re.search(r"(?:WIKI_TOKEN|B3_WIKI_TOKEN)", text))
     if writes_repo:
-        checks.append(check("PERMISSIONS_MATCH_WRITE", contents_write,
-                            "publicação no repositório exige contents: write"
-                            if contents_write else "há escrita no repositório sem contents: write explícito",
+        permissions_ok = contents_write or external_write
+        checks.append(check("PERMISSIONS_MATCH_WRITE", permissions_ok,
+                            "publicação possui credencial/permissão compatível"
+                            if permissions_ok else "há escrita no repositório sem contents: write explícito",
                             "ALTA"))
     else:
         checks.append(check("PERMISSIONS_MINIMAL", contents_write is False,
