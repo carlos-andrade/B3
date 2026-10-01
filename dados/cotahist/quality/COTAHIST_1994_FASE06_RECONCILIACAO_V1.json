@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1994,
+  "phase": "FASE06",
+  "status": "VALIDADO",
+  "raw_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
+  "normalized_sha256": "f657bf43b6d8c73edf3b3e1672ac2466531f9a00b26bb778c24ed5f26baf84ff",
+  "raw_records": 119097,
+  "normalized_records": 119097,
+  "critical_fields_checked": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "preabe",
+    "premax",
+    "premin",
+    "premed",
+    "preult",
+    "totneg",
+    "quatot",
+    "voltot"
+  ],
+  "mismatch_count": 0,
+  "mismatch_sample": [],
+  "decision": "VALIDADO",
+  "normalized_header_aliases": {
+    "data_pregao": "data_pregao",
+    "codbdi": "codbdi",
+    "codneg": "codneg",
+    "tpmerc": "tpmerc",
+    "preabe": "preabe",
+    "premax": "premax",
+    "premin": "premin",
+    "premed": "premed",
+    "preult": "preult",
+    "totneg": "totneg",
+    "quatot": "quatot",
+    "voltot": "voltot"
+  },
+  "note": "Comparacao reproduzivel RAW/NORMALIZED; datas sao comparadas em representacao canonica YYYYMMDD e escalas decimais numericas de 10^n sao aceitas apenas quando a razao e inteira e limitada."
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_10",
+  "year": 1994,
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1994.csv",
+  "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json",
+  "raw_immutable": true,
+  "correction_applied": false,
+  "hashes": {
+    "raw_sha256_actual": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
+    "normalized_sha256_actual": "f657bf43b6d8c73edf3b3e1672ac2466531f9a00b26bb778c24ed5f26baf84ff"
+  },
+  "checks": {
+    "raw_exists": true,
+    "normalized_exists": true,
+    "manifest_exists": true,
+    "manifest_validated": true,
+    "raw_sha256_matches_manifest": true,
+    "normalized_sha256_matches_manifest": true,
+    "normalized_rows_match_manifest": true,
+    "normalized_fields_match_manifest": true,
+    "raw_immutable": true,
+    "correction_applied": false
+  },
+  "status": "BLOQUEADO",
+  "failures": [
+    "correction_applied"
+  ],
+  "decision": "BLOQUEADO"
+}

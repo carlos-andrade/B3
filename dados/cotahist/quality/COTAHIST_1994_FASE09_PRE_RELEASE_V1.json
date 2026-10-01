@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1994,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "FASE00": "OK",
+    "FASE01": "OK",
+    "FASE02": "OK",
+    "FASE06": "OK",
+    "FASE07": "OK",
+    "FASE08": "OK"
+  },
+  "required_files": {
+    "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP": true,
+    "dados/cotahist/normalized/anual/COTAHIST_A1994.csv": true,
+    "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json": true
+  },
+  "missing": [],
+  "blocked": [],
+  "decision": "LIBERADO_PARA_FASE10",
+  "note": "Pré-release reproduz o gate documental de 1993: consolida evidências anteriores e não retrocertifica fase ausente."
+}
