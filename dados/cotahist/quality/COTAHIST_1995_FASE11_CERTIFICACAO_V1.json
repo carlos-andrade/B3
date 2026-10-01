@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1995,
+  "phase": "FASE11",
+  "status": "VALIDADO",
+  "certificacao": "CERTIFICADO_NORMALIZACAO",
+  "decision": "CERTIFICADO_NORMALIZACAO_1995",
+  "source_evidence": {
+    "FASE06": "VALIDADO",
+    "FASE07": "FASE_07_IDENTIDADE_HISTORICA_1995_ANALISE",
+    "FASE08": "VALIDADO",
+    "FASE09": "LIBERADO_PARA_FASE10",
+    "FASE10": "VALIDADO"
+  },
+  "raw_sha256": "de553f41a3ce15ec8a082ed1c2d451df58520a447d3f39417f45e7feb5a995fc",
+  "normalized_sha256": "04af4d58d6c625dce4836b2ef04b53ff80001d2424fc870fd503ab2661ddf62b",
+  "checks": {
+    "FASE06_validada": true,
+    "FASE07_analise_concluida": true,
+    "FASE08_validada": true,
+    "FASE09_liberada": true,
+    "FASE10_validada": true,
+    "raw_hash_consistente_F10": true,
+    "normalized_hash_consistente_F10": true,
+    "manifest_validado": true
+  },
+  "failures": [],
+  "note": "Certificação emitida somente após os gates 06-10 passarem. FASE07 é aceita como análise concluída porque seu artefato histórico usa status analítico, enquanto FASE09 registra explicitamente esse tratamento."
+}
