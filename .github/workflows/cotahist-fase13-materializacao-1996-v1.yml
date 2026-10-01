@@ -1,0 +1,54 @@
+name: COTAHIST - FASE13 Materializacao 1996 V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase13-materializacao-1996-v1.yml"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/verificar_materializacao_cotahist_1996_fase13_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1996.ZIP"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1996_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase13-materializacao-1996
+  cancel-in-progress: false
+
+jobs:
+  materializar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Configurar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Materializar NORMALIZED 1996
+        run: |
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A1996.ZIP             --output dados/cotahist/normalized/anual/COTAHIST_A1996.csv
+      - name: Verificar materializacao FASE13
+        run: python scripts/ingestao/verificar_materializacao_cotahist_1996_fase13_v1.py
+      - name: Publicar evidencia e NORMALIZED
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/anual/COTAHIST_A1996.csv dados/cotahist/quality/COTAHIST_1996_FASE13_MATERIALIZACAO_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): materializar normalized 1996 fase 13"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - name: Resumo
+        if: always()
+        run: |
+          echo "FASE13 1996: materializacao e verificacao do NORMALIZED"
+          echo "Evidencia: dados/cotahist/quality/COTAHIST_1996_FASE13_MATERIALIZACAO_V1.json"
