@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0.0",
+  "fase": "05.4",
+  "title": "Classificação semântica e matriz de conformidade dos workflows B3",
+  "status": "CONCLUIDA_COM_PONTOS_DE_CONTROLE",
+  "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "inputs": [
+    "docs/governanca/auditorias/FASE05_2_CLASSIFICACAO_FUNCIONAL_WORKFLOWS_B3_V1.json",
+    "docs/governanca/auditorias/FASE05_3_VALIDACAO_HISTORICOS_CASOS_AMBIGUOS_V1.json",
+    "docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json"
+  ],
+  "workflow_count": 109,
+  "semantic_scope": "A classificação abaixo combina a triagem funcional existente com inspeção direta dos casos ambíguos e pontos de controle. Não reabre históricos e não altera workflows.",
+  "counts": {
+    "by_functional_category": {
+      "COTAHIST": 95,
+      "BCB_MACRO": 2,
+      "BVBG": 3,
+      "GOVERNANCA_MONITORAMENTO": 2,
+      "WIKI": 2,
+      "README": 1,
+      "INDICES": 1,
+      "TESTE_AUXILIAR": 1,
+      "MARKET_DATA_PREGAO": 1,
+      "OUTROS": 1
+    },
+    "by_operational_state": {
+      "HISTORICO": 81,
+      "ATIVO": 25,
+      "AUXILIAR": 1,
+      "A_VALIDAR": 2
+    },
+    "current_auditor": {
+      "CONFORME": 5,
+      "DIVERGENTE": 104
+    },
+    "divergence_semantic_interpretation": {
+      "OBSERVABILIDADE": 102,
+      "TRIGGER": 2,
+      "CONFORME": 5
+    }
+  },
+  "semantic_overrides": [
+    {
+      "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
+      "previous_category": "OUTROS",
+      "semantic_category": "BVBG",
+      "state": "ATIVO",
+      "basis": "Conteúdo executa ferramentas/importar_bvbg028.py e publica ativos/catalogo e ativos/instrumentos.",
+      "conformity": "DIVERGENTE_OBSERVABILIDADE",
+      "severity": "BAIXA",
+      "note": "A divergência registrada pelo auditor é ausência de GITHUB_STEP_SUMMARY; não foi identificada, nesta fase, violação funcional de isolamento."
+    },
+    {
+      "workflow": ".github/workflows/capturar-pesquisa-pregao.yml",
+      "previous_category": "OUTROS",
+      "semantic_category": "MARKET_DATA_PREGAO",
+      "state": "ATIVO",
+      "basis": "Conteúdo captura dados por pregão e persiste em dados/market_data/raw e manifests.",
+      "conformity": "DIVERGENTE_OBSERVABILIDADE",
+      "severity": "BAIXA",
+      "note": "A divergência registrada pelo auditor é ausência de GITHUB_STEP_SUMMARY. O trigger por push está restrito ao próprio workflow e ferramenta."
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase06-semantica-1995-v1.yml",
+      "semantic_category": "COTAHIST",
+      "state": "HISTORICO",
+      "conformity": "PONTO_DE_CONTROLE_ORIGEM",
+      "severity": "MEDIA",
+      "finding": "O conteúdo atual apresenta isolamento compatível: FASE05 + RAW 1995 + próprio workflow. A ocorrência histórica de NO_README_TRIGGER deve permanecer registrada como incidente de origem; não deve haver correção retroativa nesta fase."
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
+      "semantic_category": "COTAHIST",
+      "state": "HISTORICO",
+      "conformity": "PONTO_DE_CONTROLE",
+      "severity": "MEDIA",
+      "finding": "O workflow fechado inclui no trigger a matriz anual 1986-2026 e múltiplas evidências. Isto merece revisão arquitetural futura quanto à causalidade do gatilho, mas não autoriza reexecução do 1993."
+    },
+    {
+      "workflow": ".github/workflows/cotahist-certificacao-anual-v1.yml",
+      "semantic_category": "COTAHIST",
+      "state": "ATIVO_MULTIANUAL",
+      "conformity": "A_VALIDAR",
+      "severity": "MEDIA",
+      "finding": "Workflow ativo multianual possui schedule e gatilhos por artefatos; precisa validação específica de causalidade, idempotência e janela operacional antes de qualquer correção."
+    },
+    {
+      "workflow": ".github/workflows/sincronizar-wiki.yml",
+      "semantic_category": "WIKI",
+      "state": "ATIVO",
+      "conformity": "DIVERGENTE_TRIGGER",
+      "severity": "MEDIA",
+      "finding": "Auditor registra NO_README_TRIGGER. O conteúdo observado usa WIKI/** e o próprio workflow, além de schedule frequente; não deve ser alterado nesta fase sem contrato específico da Wiki."
+    }
+  ],
+  "semantic_matrix": [
+    {
+      "category": "COTAHIST",
+      "count": 95,
+      "primary_state": "81 históricos + 14 ativos/multianuais",
+      "priority": "CONTROLAR_ISOLAMENTO_E_OBSERVABILIDADE",
+      "decision": "Não corrigir históricos; revisar ativos por grupo."
+    },
+    {
+      "category": "BCB_MACRO",
+      "count": 2,
+      "primary_state": "ATIVO",
+      "priority": "OBSERVABILIDADE",
+      "decision": "Correção posterior agrupada; sem retrigger por docs genérico."
+    },
+    {
+      "category": "BVBG",
+      "count": 3,
+      "primary_state": "ATIVO",
+      "priority": "OBSERVABILIDADE/RESPONSABILIDADE",
+      "decision": "Manter categoria semântica; revisar contratos de entrada/saída."
+    },
+    {
+      "category": "GOVERNANCA_MONITORAMENTO",
+      "count": 2,
+      "primary_state": "ATIVO",
+      "priority": "CONFORMIDADE",
+      "decision": "Referência estrutural; não reexecuta outros workflows."
+    },
+    {
+      "category": "WIKI",
+      "count": 2,
+      "primary_state": "ATIVO",
+      "priority": "TRIGGER",
+      "decision": "Revisão separada do contrato Wiki."
+    },
+    {
+      "category": "README",
+      "count": 1,
+      "primary_state": "ATIVO",
+      "priority": "CONFORMIDADE_2355",
+      "decision": "Manter regra 23:55; ausência de STEP_SUMMARY é observabilidade."
+    },
+    {
+      "category": "INDICES",
+      "count": 1,
+      "primary_state": "ATIVO",
+      "priority": "OBSERVABILIDADE",
+      "decision": "Revisão posterior."
+    },
+    {
+      "category": "TESTE_AUXILIAR",
+      "count": 1,
+      "primary_state": "AUXILIAR",
+      "priority": "OBSERVABILIDADE",
+      "decision": "Não promover a workflow operacional."
+    },
+    {
+      "category": "MARKET_DATA_PREGAO",
+      "count": 1,
+      "primary_state": "ATIVO",
+      "priority": "OBSERVABILIDADE",
+      "decision": "Categoria semanticamente reconhecida; revisão posterior."
+    },
+    {
+      "category": "OUTROS",
+      "count": 1,
+      "primary_state": "A_VALIDAR",
+      "priority": "CLASSIFICAÇÃO",
+      "decision": "Nenhum OUTROS adicional identificado após inspeção dos dois casos ambíguos."
+    }
+  ],
+  "conformity_rules": {
+    "functional_conformity": "Responsabilidade, entrada, saída e categoria semântica compatíveis com o Layout Mestre.",
+    "trigger_conformity": "Gatilho deve ter relação causal com a entrada; README e docs genéricos não são entradas operacionais.",
+    "isolation": "Workflow não chama/reexecuta outro workflow e não depende de fase posterior.",
+    "observability": "GITHUB_STEP_SUMMARY é requisito de observabilidade; ausência não é, isoladamente, defeito funcional de dados.",
+    "historical_policy": "Workflow histórico fechado pode ser divergente sem ser reaberto; correção somente por incidente e na origem."
+  },
+  "conclusions": [
+    "A auditoria simplista 5/109 versus 104/109 não deve ser interpretada como 104 defeitos funcionais.",
+    "102 divergências são de observabilidade segundo o auditor atual; isso é uma classe de conformidade, não evidência de corrupção ou quebra da cadeia.",
+    "As duas classificações funcionais ambíguas foram resolvidas semanticamente: BVBG e MARKET_DATA_PREGAO.",
+    "Foram preservados pontos de controle em FASE06 1995, FASE12 1993, certificação anual e Wiki.",
+    "Nenhum workflow operacional foi alterado nesta fase.",
+    "Nenhuma cadeia histórica COTAHIST foi reaberta, reexecutada ou retrocertificada.",
+    "A próxima etapa deve melhorar o auditor para detectar causalidade, isolamento, dependências direcionais, permissões e idempotência; somente depois devem ocorrer correções por grupos."
+  ],
+  "next": "MELHORIA DO AUDITOR"
+}
