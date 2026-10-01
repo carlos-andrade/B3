@@ -374,8 +374,8 @@ A perda da fonte automática deve gerar incidente e não autoriza substituição
 
 ## Controle de versão
 
-**Versão:** 1.3  
-**Data:** 25/09/2026  
+**Versão:** 1.4  
+**Data:** 01/10/2026  
 **Alteração:** inclusão da governança da importação automática e atualização corrente do COTAHIST.  
 **Status:** VIGENTE
 
@@ -599,4 +599,10 @@ não podem ser reintroduzidos por um novo workflow.
 Se o layout aplicável não estiver identificado, ou se a regra proposta contradisser evidência histórica anterior, a auditoria deve parar em estado **AGUARDANDO RECONCILIAÇÃO**, e não transformar a incerteza em falha do dado.
 
 **Regra permanente:** nenhum erro já corrigido deve voltar a ser convertido em critério de auditoria por falta de memória documental.
+
+## CONTROLE DE VERSÃO — 2026-10-01
+
+**Versão vigente:** 1.4  
+**Alteração:** consolidação da regra de precedência documental, layout como pré-condição de auditoria e não repetição de erros já corrigidos.  
+**Status:** VIGENTE
 
