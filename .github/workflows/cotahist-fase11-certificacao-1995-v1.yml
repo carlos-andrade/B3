@@ -1,0 +1,51 @@
+name: COTAHIST - FASE11 Certificacao 1995 V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase11-certificacao-1995-v1.yml"
+      - "scripts/ingestao/certificar_cotahist_1995_fase11_v1.py"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE06_SEMANTICA_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE07_IDENTIDADE_HISTORICA_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE08_SEMANTICA_K4_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE09_PRE_RELEASE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1995_FASE10_INTEGRIDADE_V1.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1995_quality.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1995.csv"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase11-1995
+  cancel-in-progress: false
+
+jobs:
+  certificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Executar certificacao FASE11
+        run: python3 scripts/ingestao/certificar_cotahist_1995_fase11_v1.py
+      - name: Publicar certificacao
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1995_FASE11_CERTIFICACAO_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): publicar certificacao fase 11 1995"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - name: Resumo
+        if: always()
+        run: |
+          echo "FASE11 1995: certificacao da normalizacao"
+          echo "Evidencia: dados/cotahist/quality/COTAHIST_1995_FASE11_CERTIFICACAO_V1.json"
