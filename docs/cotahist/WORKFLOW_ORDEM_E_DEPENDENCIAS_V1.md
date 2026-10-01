@@ -149,3 +149,18 @@ Não declarar ausência com base em busca incompleta.
 - próximo ciclo: 1995.
 - 1996+: aguardando fechamento de 1995.
 
+
+
+## Aditivo normativo — FASE06/FASE07 — 2026-10-01
+
+A experiência da FASE06/1995 estabelece que **semântica não pode assumir unicidade de chave**.
+
+A FASE06 verifica presença e consistência semântica dos campos e invariantes OHLC/quantidade/volume. Duplicidades de uma chave candidata são registradas como observação diagnóstica.
+
+A decisão sobre a chave lógica, sua cardinalidade e sua unicidade pertence à FASE07 — IDENTIDADE / CHAVES / CAMPOS — e deve ser fundamentada no layout aplicável e em evidência histórica.
+
+Assim, a sequência passa a ter o seguinte contrato explícito:
+
+**FASE06 = semântica/invariantes; FASE07 = identidade/chaves/cardinalidade.**
+
+Nenhum workflow pode duplicar essa responsabilidade ou introduzir uma regra de unicidade fora da FASE07.
