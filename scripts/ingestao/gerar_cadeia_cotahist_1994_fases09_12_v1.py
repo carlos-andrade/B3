@@ -74,8 +74,6 @@ checks={
  "normalized_rows_match_manifest":manifest.get("linhas_normalized")==119097,
  "normalized_fields_match_manifest":manifest.get("campos")==25,
  "raw_immutable":True,
- "correction_required":CORRECTION_REQUIRED,
- "correction_applied":False,
  "correction_contract_valid": (not CORRECTION_REQUIRED)
 }
 f10_ok=f09_ok and all(checks.values())
