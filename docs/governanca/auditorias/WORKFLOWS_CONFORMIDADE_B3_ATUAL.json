@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-10-01T14:57:16.608090+00:00",
+  "generated_at_utc": "2026-10-01T14:59:03.219780+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
-  "conforme": 0,
-  "divergente": 109,
+  "conforme": 5,
+  "divergente": 104,
   "results": [
     {
       "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
@@ -12,7 +12,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -48,7 +48,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -80,11 +80,11 @@
     },
     {
       "workflow": ".github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml",
-      "status": "DIVERGENTE",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -116,11 +116,11 @@
     },
     {
       "workflow": ".github/workflows/b3-monitor-execucoes-v1.yml",
-      "status": "DIVERGENTE",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -166,7 +166,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -202,7 +202,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -238,7 +238,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -274,7 +274,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -310,7 +310,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -346,7 +346,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -382,7 +382,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -418,7 +418,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -454,7 +454,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -490,7 +490,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -526,7 +526,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -562,7 +562,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -598,7 +598,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -634,7 +634,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -670,7 +670,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -706,7 +706,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -742,7 +742,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -778,7 +778,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -814,7 +814,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -850,7 +850,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -886,7 +886,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -922,7 +922,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -958,7 +958,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -994,7 +994,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1030,7 +1030,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1066,7 +1066,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1102,7 +1102,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1138,7 +1138,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1174,7 +1174,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1210,7 +1210,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1246,7 +1246,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1282,7 +1282,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1318,7 +1318,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1354,7 +1354,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1390,7 +1390,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1426,7 +1426,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1462,7 +1462,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1498,7 +1498,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1534,7 +1534,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1570,7 +1570,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1606,7 +1606,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1642,7 +1642,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1678,7 +1678,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1714,7 +1714,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1750,7 +1750,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1786,7 +1786,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1822,7 +1822,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1858,7 +1858,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1894,7 +1894,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1930,7 +1930,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -1966,7 +1966,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2002,7 +2002,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2038,7 +2038,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2074,7 +2074,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2110,7 +2110,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2146,7 +2146,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2182,7 +2182,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2218,7 +2218,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2254,7 +2254,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2290,7 +2290,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2326,7 +2326,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2362,7 +2362,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2398,7 +2398,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2434,7 +2434,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2470,7 +2470,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2506,7 +2506,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2542,7 +2542,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2578,7 +2578,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2614,7 +2614,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2650,7 +2650,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2686,7 +2686,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2722,7 +2722,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2758,7 +2758,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2790,11 +2790,11 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1c-ci-normalized-2026.yml",
-      "status": "DIVERGENTE",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2826,11 +2826,11 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1d-dataset-oficial-2026.yml",
-      "status": "DIVERGENTE",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2862,11 +2862,11 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1e-aprovacao-global.yml",
-      "status": "DIVERGENTE",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2902,7 +2902,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2938,7 +2938,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -2974,7 +2974,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3010,7 +3010,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3046,7 +3046,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3082,7 +3082,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3118,7 +3118,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3154,7 +3154,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3190,7 +3190,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3226,7 +3226,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3262,7 +3262,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3298,7 +3298,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3334,7 +3334,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3370,7 +3370,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3406,7 +3406,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3442,7 +3442,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3478,7 +3478,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3514,7 +3514,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3550,7 +3550,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3586,7 +3586,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3622,7 +3622,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3658,7 +3658,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3694,7 +3694,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3730,7 +3730,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3766,7 +3766,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3802,7 +3802,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3838,7 +3838,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3874,7 +3874,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
@@ -3910,7 +3910,7 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": false,
+          "ok": true,
           "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
