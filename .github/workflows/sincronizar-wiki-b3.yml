@@ -65,3 +65,13 @@ jobs:
           fi
           git commit -m "docs(wiki): sincronizar documentação do repositório B3"
           git push origin HEAD:master || git push origin HEAD:main
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: sincronizar-wiki-b3.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
