@@ -288,3 +288,26 @@ Fluxo obrigatório:
 A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
+
+## ADITIVO — GOVERNANÇA SEMÂNTICA DOS WORKFLOWS — 2026-10-01
+
+A Carta Magna incorpora a regra de que workflows são unidades operacionais independentes.
+
+É vedado:
+
+- chamar ou reexecutar outro workflow;
+- depender de README para operação;
+- usar documentação genérica como gatilho operacional;
+- reagir explicitamente a fase posterior;
+- utilizar permissões superiores à necessidade operacional sem justificativa;
+- promover execução sem evidência/decisão exigida pelo contrato.
+
+A auditoria deve separar bloqueadores de alertas de observabilidade. Histórico fechado permanece fechado até que exista incidente e procedimento formal de origem.
+
+### Subordinação ao Layout Mestre
+
+Esta regra é contribuição normativa. O documento executável continua sendo:
+
+`docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+
+Nenhuma implementação deve nascer diretamente desta Carta.
