@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "fase": "05.3",
+  "status": "CONCLUIDA_COM_PONTOS_DE_CONTROLE",
+  "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "input": "docs/governanca/auditorias/FASE05_2_CLASSIFICACAO_FUNCIONAL_WORKFLOWS_B3_V1.json",
+  "workflow_count": 109,
+  "historical_triage_count": 81,
+  "historical_by_year": {
+    "1986": 26,
+    "1987": 12,
+    "1988": 14,
+    "1989": 2,
+    "1990": 2,
+    "1991": 2,
+    "1992": 2,
+    "1993": 8,
+    "1994": 8,
+    "1995": 5
+  },
+  "ambiguous_cases": [
+    {
+      "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
+      "finding": "Nome não contém BVBG/COTAHIST, mas o conteúdo importa BVBG.028.02 e publica inventário de ativos/instrumentos.",
+      "proposed_functional_category": "BVBG",
+      "operational_state": "ATIVO",
+      "evidence_level": "CONTEUDO_DIRETO"
+    },
+    {
+      "workflow": ".github/workflows/capturar-pesquisa-pregao.yml",
+      "finding": "Captura dados de mercado por pregão em dados/market_data/raw e manifests; não pertence às categorias nominais existentes.",
+      "proposed_functional_category": "MARKET_DATA_PREGAO",
+      "operational_state": "ATIVO",
+      "evidence_level": "CONTEUDO_DIRETO"
+    }
+  ],
+  "spot_checks": [
+    {
+      "workflow": ".github/workflows/cotahist-fase14-presenca-integridade-1995-v1.yml",
+      "result": "CONSISTENTE_COM_HISTORICO_1995",
+      "details": "trigger restrito a RAW/manifest/checksum/workflow da própria FASE14; sem README/documentação genérica."
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase06-semantica-1995-v1.yml",
+      "result": "CONSISTENTE_COM_ISOLAMENTO",
+      "details": "depende de FASE05, RAW 1995 e próprio workflow; decisão LIBERADO_PARA_FASE07; não depende de fase posterior."
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
+      "result": "PONTO_DE_CONTROLE",
+      "details": "workflow histórico fechado, mas o gatilho inclui matriz anual de certificação 1986-2026 e vários artefatos; deve ser avaliado na FASE05.4 quanto à monotonicidade/isolamento, sem reexecução do histórico."
+    }
+  ],
+  "conclusions": [
+    "Os 81 workflows históricos são identificáveis nominalmente por ano e permanecem classificados como históricos para fins de auditoria.",
+    "A classificação nominal da FASE05.2 não deve ser reescrita retroativamente; os achados desta fase são evidência de validação semântica.",
+    "Existem pelo menos duas funções ativas que não podem ser inferidas corretamente apenas pelo nome.",
+    "Não há base nesta fase para alterar ou reabrir qualquer cadeia COTAHIST histórica."
+  ],
+  "next": "FASE05.4 — CLASSIFICAÇÃO SEMÂNTICA E MATRIZ DE CONFORMIDADE"
+}
