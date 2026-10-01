@@ -122,3 +122,21 @@ O workflow possui:
 - verificação final de working tree limpo.
 
 Os workflows legados permanecem ativos.
+
+
+## 12. Atualização de operação — 2026-10-01
+
+O DRY-RUN continua sendo somente leitura e não substitui os workflows de produção.
+
+A experiência da cadeia 1994 adiciona um requisito: quando o orquestrador for usado para promoção, a dependência deve ser verificada em sequência e não apenas por coexistência de artefatos.
+
+Para o ciclo produtivo, a ordem obrigatória é:
+
+**00 → 01 → 02 → 03–05 → 06 → 07 → 08 → GATE → 09 → GATE → 10 → GATE → 11 → GATE → 12.**
+
+O caminho canônico do RAW anual deve ser resolvido antes de qualquer operação de aquisição:
+
+`dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP`
+
+A matriz de certificação e os manifestos devem ser consultados para evitar reaquisição, duplicação ou falsa conclusão de ausência.
+
