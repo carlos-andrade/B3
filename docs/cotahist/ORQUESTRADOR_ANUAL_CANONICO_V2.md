@@ -140,3 +140,12 @@ O caminho canônico do RAW anual deve ser resolvido antes de qualquer operação
 
 A matriz de certificação e os manifestos devem ser consultados para evitar reaquisição, duplicação ou falsa conclusão de ausência.
 
+
+
+## Aditivo — separação de responsabilidades FASE06/FASE07 — 2026-10-01
+
+O DRY-RUN deve interpretar FASE06 como **reconciliação semântica e invariantes**, não como prova automática de unicidade de chave.
+
+A análise de chaves e cardinalidade pertence à FASE07. Uma evidência FASE06 pode conter `logical_key_uniqueness_assessment=DEFERRED_TO_FASE07` e continuar válida quando todas as demais condições semânticas forem satisfeitas.
+
+O DRY-RUN deve tratar essa condição como estado esperado de dependência, e não como bloqueio, enquanto a FASE07 ainda não tiver sido executada.
