@@ -12,7 +12,6 @@ on:
     - cron: "15 3 * * *"
 
 permissions:
-  # auditoria completa pós-reorganização do Layout — verificação final
   contents: write
 
 concurrency:
@@ -42,25 +41,32 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-          p=Path("docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json")
-          d=json.loads(p.read_text(encoding="utf-8"))
+
+          p = Path("docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
           counts = d.get("status_counts", {})
           criticos = counts.get("DIVERGENTE_CRITICA", 0)
           conformes = counts.get("CONFORME", 0) + counts.get("CONFORME_COM_OBSERVACAO", 0)
           resultado = "FAVORAVEL" if criticos == 0 else "NAO_FAVORAVEL"
-          total_criticos = counts.get("DIVERGENTE_CRITICA", 0)\n          divergentes_observacionais = counts.get("CONFORME_COM_OBSERVACAO", 0)\n          decisao = "AVANCAR" if total_criticos == 0 else "INVESTIGAR"
-          lines=[
+          total_criticos = counts.get("DIVERGENTE_CRITICA", 0)
+          divergentes_observacionais = counts.get("CONFORME_COM_OBSERVACAO", 0)
+          decisao = "AVANCAR" if total_criticos == 0 else "INVESTIGAR"
+
+          lines = [
             "# Auditoria de conformidade dos workflows B3",
             "",
             f"**Resultado:** {resultado}",
             f"**Workflows auditados:** {d['workflow_count']}",
             f"**Conformes:** {conformes}",
             f"**Divergentes críticas:** {criticos}",
+            f"**Observações:** {divergentes_observacionais}",
             f"**Decisão:** {decisao}",
             "**REEXECUTAR:** NÃO — o auditor não reexecuta workflows.",
           ]
-          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text("\\n".join(lines)+"\\n",encoding="utf-8")
-          print("\\n".join(lines))
+
+          summary = "\n".join(lines) + "\n"
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(summary, encoding="utf-8")
+          print(summary)
           PY
 
       - name: Persistir auditoria
