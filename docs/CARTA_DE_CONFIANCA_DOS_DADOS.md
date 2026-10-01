@@ -648,3 +648,20 @@ Fluxo obrigatório:
 A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
+
+## ADITIVO — AUDITORIA SEMÂNTICA E ISOLAMENTO DOS WORKFLOWS — 2026-10-01
+
+Esta Carta passa a incorporar, como requisito de confiança operacional, a distinção entre **defeito funcional**, **divergência de trigger**, **falha de isolamento**, **falha de permissão**, **falha de persistência/decisão** e **problema de observabilidade**.
+
+A ausência isolada de `GITHUB_STEP_SUMMARY` não constitui, por si só, evidência de dado incorreto.
+
+A confiança exige que o workflow tenha entrada causal identificável, responsabilidade definida, dependências direcionais, persistência de evidência e decisão explícita quando a tarefa exigir promoção.
+
+O auditor deve ser diagnóstico e não pode corrigir ou reexecutar workflows automaticamente.
+
+### Regra de precedência
+
+Este aditivo alimenta o Layout Mestre. A implementação executável deve obedecer:
+
+**Carta → reconciliação → Layout Mestre → código → evidência → validação.**
+
