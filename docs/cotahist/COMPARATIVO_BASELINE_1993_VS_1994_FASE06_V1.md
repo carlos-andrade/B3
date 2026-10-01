@@ -1,7 +1,7 @@
 # Comparativo 1993 × 1994 — FASE06 COTAHIST
 
-**Versão:** V1.0  
-**Data:** 2026-09-30  
+**Versão:** V2.0  
+**Data:** 2026-10-01  
 **Escopo:** reconciliação RAW × NORMALIZED
 
 ## 1. Objetivo
@@ -94,22 +94,45 @@ A nova implementação de 1994 foi alinhada ao executor retrospectivo de 1993: u
 
 A cadeia V2 de 1994 agora possui executor equivalente ao modelo retrospectivo de 1993 para FASE06–08 e executor sequencial para FASE09–12. A execução ainda precisa ser comprovada pelo runner e pelas evidências produzidas.
 
-## 6. Decisão técnica deste comparativo
+## 6. Resultado da execução real 1994
+
+O RUN_ID **36832779037** comprovou:
+- FASE06 = VALIDADO;
+- FASE07 = VALIDADO;
+- FASE08 = BLOQUEADO.
+
+A FASE08 identificou exatamente duas violações OHLC, ambas em registros de opções de venda (TPMERC=080, CODBDI=82):
+- linha 35516 / OTC 55;
+- linha 39735 / OTC 89.
+
+A FASE06 confirmou reconciliação RAW × NORMALIZED sem divergências nos campos críticos. Portanto, a anomalia não foi introduzida pela normalização.
+
+## 7. Decisão técnica
 
 1. 1993 permanece intacto e certificado.
-2. 1994 permanece bloqueado na FASE06.
-3. Não usar novos gatilhos como substituto de evidência.
-4. Executar a nova cadeia 1994 V2 e verificar FASE06–12.
-5. Não promover FASE07 até a evidência FASE06 estar VALIDADO.
+2. Os dois registros de 1994 não serão alterados.
+3. As duas ocorrências serão tratadas como exceções semânticas controladas, vinculadas ao SHA do RAW de 1994.
+4. Qualquer ocorrência adicional continua sendo bloqueadora.
+5. FASE08 poderá assumir VALIDADO_COM_EXCECAO somente quando o registro corresponder exatamente ao catálogo de exceções.
+6. A cadeia FASE09–12 continua condicionada aos gates anteriores.
+7. O tratamento passa a ser referência para os próximos anos.
 
-## 7. Evidências de referência
+## 8. Regra aprendida para as próximas certificações
+
+1993 demonstrou o comportamento normal da FASE08: nenhuma violação OHLC.
+
+1994 acrescentou uma situação importante: a fonte histórica pode conter uma ocorrência semanticamente anômala que é preservada corretamente pela normalização. Nesse caso, a certificação não deve alterar a fonte, alterar o preço normalizado, esconder a ocorrência ou ampliar a exceção para toda uma classe de registros.
+
+A classificação correta é uma exceção determinística, reproduzível e vinculada ao RAW exato.
+
+## 9. Evidências de referência
 
 - dados/cotahist/quality/COTAHIST_1993_FASE06_RECONCILIACAO_V1.json
 - dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json — ausente no momento desta auditoria
 - .github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml
 - docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md
 
-## 8. Status oficial
+## 10. Status oficial
 
 **1993:** CERTIFICADO / FECHADO.  
 **1994 FASE00–05:** VALIDADO.  
