@@ -246,3 +246,15 @@ Essa regra é permanente e passa a integrar a autoridade normativa da Carta Magn
 **Alteração:** consolidação da regra de precedência documental, layout como pré-condição de auditoria e não repetição de erros já corrigidos.  
 **Status:** VIGENTE
 
+## REGRA PERMANENTE — ISOLAMENTO E MONOTONICIDADE DAS FASES — 2026-10-01
+
+As fases são executadas em fluxo unidirecional e possuem responsabilidade própria. Uma fase posterior pode consumir evidência anterior em modo somente leitura, mas não pode reabrir, corrigir, substituir ou reescrever uma fase anterior. Uma fase anterior também não pode executar critérios pertencentes a uma fase posterior.
+
+A regra operacional é:
+
+**FASE N-1 → evidência → FASE N → evidência → FASE N+1.**
+
+Correções pertencem à fase que originou o erro. Descoberta posterior gera incidente/impacto e revisão controlada, não correção silenciosa retroativa. Workflows concluídos não devem possuir gatilhos genéricos que os façam reexecutar por mudanças de README, documentação ou fases posteriores.
+
+A matriz de responsabilidade vigente deve ser consultada antes da criação de qualquer novo workflow. Em particular, FASE06 é semântica/invariantes; FASE07 é identidade/chaves/cardinalidade; FASE08 é semântica/calendário/consistência; FASE09–12 não substituem essas fases.
+
