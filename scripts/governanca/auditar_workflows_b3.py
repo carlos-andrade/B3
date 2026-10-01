@@ -28,8 +28,36 @@ def phase_numbers(text: str) -> list[int]:
     return sorted(set(vals))
 
 def section(text: str, key: str) -> str:
-    m = re.search(rf"(?ms)^\s*{re.escape(key)}:\s*$\n((?:^[ \t]+.*\n?)*)", text)
-    return m.group(1) if m else ""
+    """Extrai somente o bloco YAML top-level de uma chave, sem vazar para jobs/steps."""
+    lines = text.splitlines(True)
+    out = []
+    active = False
+    for line in lines:
+        if re.match(rf"^{re.escape(key)}:\s*$", line):
+            active = True
+            continue
+        if active and line and not line[0].isspace() and re.match(r"^[A-Za-z0-9_.-]+:\s*", line):
+            break
+        if active:
+            out.append(line)
+    return "".join(out)
+
+def push_paths(text: str) -> list[str]:
+    """Retorna apenas valores de paths dentro do bloco push."""
+    block = section(text, "push")
+    paths = []
+    in_paths = False
+    for line in block.splitlines():
+        if re.match(r"^\s*paths:\s*$", line):
+            in_paths = True
+            continue
+        if in_paths:
+            if re.match(r"^\s*[A-Za-z0-9_.-]+:\s*", line) and not re.match(r"^\s*-\s*", line):
+                break
+            m = re.match(r"^\s*-\s*['"]?(.*?)['"]?\s*$", line)
+            if m:
+                paths.append(m.group(1))
+    return paths
 
 def check(code: str, ok: bool, detail: str, severity: str = "INFO") -> dict:
     return {"code": code, "ok": bool(ok), "detail": detail, "severity": severity}
@@ -77,10 +105,11 @@ def audit_workflow(path: pathlib.Path) -> dict:
         if not forbidden else "; ".join(forbidden), "CRITICA"))
 
     push = section(text, "push")
-    readme_path = bool(re.search(r'(?mi)^\s*-?\s*["\']?[^"\']*README[^"\']*["\']?\s*$', push))
-    generic_docs = bool(
-        re.search(r'(?mi)^\s*-?\s*["\']?docs/(?:\*\*|\*)?["\']?\s*$', push)
-        or re.search(r"(?mi)^\s*paths:.*docs/", push)
+    paths = push_paths(text)
+    readme_path = any("README" in p.upper() for p in paths)
+    generic_docs = any(
+        re.fullmatch(r"docs/(?:\\*\\*|\\*)?", p.strip(), flags=re.I)
+        for p in paths
     )
     if not is_readme:
         checks.append(check("NO_README_TRIGGER", not readme_path,
