@@ -60,3 +60,13 @@ jobs:
           else
             echo "README já estava sincronizado. Nenhum commit necessário."
           fi
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: atualizar-readme-b3.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
