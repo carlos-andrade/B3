@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1996,
+  "phase": "FASE05",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE06",
+  "entry_gate": "FASE04",
+  "rule": "docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1996.ZIP",
+  "raw_sha256": "911a993548931f56b1b3dc18d2994c67f5d011cf7a85986029384298f17d6800",
+  "manifest_path": "dados/cotahist/manifests/COTAHIST_A1996.json",
+  "checksum_path": "dados/cotahist/checksums/COTAHIST_A1996.ZIP.sha256",
+  "normalized_manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1996_quality.json",
+  "manifest_sha256_matches_raw": true,
+  "checksum_matches_raw": true,
+  "normalized_manifest_status": "VALIDADO",
+  "fase04_status": "VALIDADO",
+  "validated_at_utc": "2026-10-01T23:55:13.592446+00:00"
+}
