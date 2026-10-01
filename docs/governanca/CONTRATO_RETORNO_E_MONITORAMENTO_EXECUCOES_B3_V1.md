@@ -107,3 +107,16 @@ EXECUTAR UMA VEZ → REGISTRAR → VERIFICAR → DECIDIR → AVANÇAR.
 Não:
 
 EXECUTAR → PERDER O RESULTADO → EXECUTAR NOVAMENTE PARA DESCOBRIR O RESULTADO.
+
+
+---
+
+## FONTE NORMATIVA CANÔNICA — 2026-10-01
+
+Este documento é **derivado/operacional** e não constitui fonte independente para geração de código. As regras executáveis devem ser reconciliadas com:
+
+`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+
+**Regra:** Layout Mestre → especificação da tarefa → código/workflow → evidência.
+
+Se houver divergência, o Layout Mestre prevalece até reconciliação e versionamento formal.
