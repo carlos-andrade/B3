@@ -78,8 +78,17 @@ def has_persist_step(text: str) -> bool:
     return bool(re.search(r"GITHUB_STEP_SUMMARY|upload-artifact|git\s+(?:add|commit|push)|write_text\(|to_csv\(|json\.dump|cat\s+>", text, re.I))
 
 def has_decision_signal(text: str) -> bool:
-    return bool(re.search(r"\b(?:status|decision|liberado|validado|bloqueado|conclu[ií]da|fail-closed|FAIL-CLOSED)\b", text, re.I))
-
+    # Detecta decisão explícita ou fail-closed, inclusive quando o workflow
+    # materializa a decisão por código de saída/Step Summary.
+    patterns = (
+        r"\b(?:status|decision|liberado|validado|bloqueado|conclu[ií]da|fail-closed|FAIL-CLOSED)\b",
+        r"GITHUB_STEP_SUMMARY.{0,500}\b(?:PASS|FAIL|OK|NOK|APROVADO|REPROVADO|BLOQUEADO|VALIDADO|LIBERADO)\b",
+        r"\b(?:sys\.exit|raise\s+(?:SystemExit|RuntimeError|ValueError))\b",
+        r"\b(?:exit\s+[1-9]|exit\s+0)\b",
+        r"\b(?:if|unless)\b.{0,250}\b(?:missing|invalid|error|failed|failure|ok|valid)\b.{0,250}\b(?:sys\.exit|exit\s+[01]|fail|PASS|FAIL)\b",
+        r"\b(?:decision|status)\s*[:=]\s*['\"]?[A-Z_]+",
+    )
+    return any(re.search(p, text, re.I | re.S) for p in patterns)
 def audit_workflow(path: pathlib.Path) -> dict:
     text = path.read_text(encoding="utf-8", errors="replace")
     rel = str(path.relative_to(ROOT)).replace("\\", "/")
