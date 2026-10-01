@@ -374,7 +374,7 @@ A perda da fonte automática deve gerar incidente e não autoriza substituição
 
 ## Controle de versão
 
-**Versão:** 1.1  
+**Versão:** 1.3  
 **Data:** 25/09/2026  
 **Alteração:** inclusão da governança da importação automática e atualização corrente do COTAHIST.  
 **Status:** VIGENTE
@@ -436,3 +436,73 @@ A promoção deve permanecer fail-closed quando um gate crítico estiver ausente
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
 | 1.2 | 30/09/2026 | Inclusão do ciclo formal de certificação, fechamento, transição controlada, distinção entre confiança histórica e frescor corrente e evidência mínima de fechamento. | VIGENTE |
+
+
+## 27. Regra canônica de localização
+
+Para COTAHIST anual, a localização é determinística:
+
+- RAW: `dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP`
+- manifesto: `dados/cotahist/manifests/COTAHIST_A<AAAA>.json`
+- checksum: `dados/cotahist/checksums/COTAHIST_A<AAAA>.ZIP.sha256`
+- evidências: `dados/cotahist/quality/`
+- certificação: `dados/cotahist/certificacao/`
+
+**Regra:** ano → caminho canônico.
+
+Uma busca ampla que não encontre um arquivo não constitui evidência de ausência. A verificação deve consultar o caminho canônico e, quando aplicável, a matriz de certificação.
+
+Em 2026-10-01, o RAW de 1995 foi confirmado em `dados/cotahist/raw/anual/COTAHIST_A1995.ZIP`. Portanto, nenhum processo deve tentar baixá-lo ou duplicá-lo novamente apenas por uma busca incompleta.
+
+## 28. Execução linear fail-closed
+
+A ordem normativa do ciclo anual é:
+
+**00 → 01 → 02 → 03–05 → 06 → 07 → 08 → GATE → 09 → GATE → 10 → GATE → 11 → GATE → 12 → transição autorizada.**
+
+A regra operacional é:
+
+**pré-condição válida → execução → evidência → gate → próxima fase.**
+
+Falha em uma fase bloqueia as fases dependentes. Uma fase posterior não pode retrocertificar uma fase anterior.
+
+## 29. Contrato de correção
+
+`correction_required` e `correction_applied` são indicadores informativos. O gate deve avaliar o contrato por `correction_contract_valid`.
+
+Quando nenhuma correção de dados é necessária:
+
+- `correction_required=false`;
+- `correction_applied=false`;
+- `correction_contract_valid=true`.
+
+É proibido alterar artificialmente indicadores para satisfazer um gate.
+
+## 30. Incidentes de pipeline
+
+Falha de workflow, falha de gate e falha de integridade do dado são classes distintas.
+
+O Run #59 da FASE02/1994 foi classificado como falha do workflow, pois RAW, manifesto e checksum permaneciam coerentes. Os Runs #8 e #10 da cadeia 1994 demonstraram falhas lógicas de gate. Todos permanecem preservados como evidência histórica.
+
+Uma correção posterior não apaga o incidente original.
+
+## 31. Existência não é validação
+
+A existência física de um arquivo prova apenas sua existência.
+
+Validação exige evidência de integridade, processamento, testes e cumprimento do contrato aplicável.
+
+A certificação anual 1986–2026 atualmente registrada demonstra presença de RAW para cada ano do intervalo, mas isso não elimina a necessidade de executar a cadeia própria de cada período quando o processo exigir fechamento formal.
+
+## 32. Fechamento e transição
+
+Um ano somente é formalmente fechado quando a FASE12 estiver concluída e sua evidência estiver persistida.
+
+A transição para o ano seguinte não certifica o novo ano. O novo ano deve iniciar sua própria cadeia.
+
+## 33. Histórico de versões — atualização
+
+| Versão | Data | Alteração | Status |
+|---|---|---|---|
+| 1.2 | 30/09/2026 | Certificação, fechamento, transição controlada e distinção entre confiança histórica e frescor corrente. | SUPERADA |
+| 1.3 | 01/10/2026 | Localização canônica, execução linear, contrato de correção, distinção entre falha de workflow e falha de dado, existência versus validação e preservação dos incidentes 1994. | VIGENTE |
