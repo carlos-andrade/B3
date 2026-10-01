@@ -224,3 +224,16 @@ Para o Gate, o DRY-RUN deve verificar, sem mutação:
 O DRY-RUN não emite a promoção produtiva. Ele apenas verifica se a cadeia e o contrato estão satisfeitos.
 
 Estados de incerteza ou evidência ausente não podem ser promovidos por inferência. Duplicidades de chave candidatas da FASE06 continuam sendo responsabilidade analítica da FASE07.
+
+
+## Aditivo — execução independente e retorno verificável — 2026-10-01
+
+O contrato geral está em docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md.
+
+Cada workflow deve operar como unidade independente, sem chamar ou reexecutar outro workflow. Dependências entre fases são exclusivamente direcionais e baseadas em evidências autorizadas.
+
+Cada execução deve registrar no GITHUB_STEP_SUMMARY: workflow, fase/tarefa, run, entrada, evidência, status, decisão, bloqueadores, exceções, commit, próxima ação e indicação de reexecução.
+
+O monitor permanente .github/workflows/b3-monitor-execucoes-v1.yml verifica execuções a cada 15 minutos e não dispara reexecuções. Seu objetivo é detectar FAVORÁVEL, NÃO_FAVORÁVEL ou EM_EXECUÇÃO.
+
+A decisão de reexecutar deve ser baseada em mudança real da entrada, correção pendente ou alteração normativa aplicável. Sucesso, falha já registrada ou alteração de documentação não autorizam reexecução por si só.
