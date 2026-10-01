@@ -1,0 +1,3945 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-10-01T14:41:17.284482+00:00",
+  "normative_source": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "workflow_count": 109,
+  "conforme": 5,
+  "divergente": 104,
+  "results": [
+    {
+      "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/atualizar-readme-b3.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "README_2355_BRT",
+          "ok": true,
+          "detail": "cron 55 2 UTC"
+        },
+        {
+          "code": "README_NO_PUSH",
+          "ok": true,
+          "detail": "README sem push trigger"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml",
+      "status": "CONFORME",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/b3-monitor-execucoes-v1.yml",
+      "status": "CONFORME",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado"
+        },
+        {
+          "code": "MONITOR_READONLY",
+          "ok": true,
+          "detail": "monitor com permissões de leitura"
+        },
+        {
+          "code": "MONITOR_NO_REEXECUTION",
+          "ok": true,
+          "detail": "monitor não contém reexecução"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/bcb-sgs-nucleo-macro-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/capturar-bcb-copom.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/capturar-pesquisa-pregao.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/classificar-bvbg028.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-calendario-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-calendario-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-ohlc-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-ohlc-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-quantidade-volume-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-cadeia-1994-06-12-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-calendario-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-certificacao-anual-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-certificacao-final-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-chave-logica-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-chave-logica-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-chaves-logicas-1986-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-classificacao-excecoes-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-dataset-oficial-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-dataset-oficial-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-diagnostico-prazot-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-evidencias-retrospectivas-1993-fases06-08-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase00-governanca-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase00-governanca-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase01-aquisicao-raw-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase02-evidencia-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase02-integridade-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase03-parsing-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase03-parsing-1995-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase04-normalizacao-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase04-normalizacao-1995-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase06-semantica-1995-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": false,
+          "detail": "README aparece nos paths do push"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07-identidade-historica-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07b-tpmerc-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07c-codbdi-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07d-codisi-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07e-dimes-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07f-colisao-k4-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase07g-matriz-identidade-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08a-matriz-calendario-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08b-evidencia-calendario-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08c-duplicidades-k4-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08c-padrao-negociacao-arredores-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08c-padroes-ausencia-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08e-cronologia-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08f-estrutura-estatistica-k4-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08g-recorrencia-perfis-k4-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08h-recurrencia-k4-multianos-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase08p-transicao-vigor-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase09-prerelease-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1989-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1990-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1991-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1992-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase10-integridade-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase14-presenca-integridade-1995-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-gate-historico-1986.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-importacao-diaria-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-integridade-campos-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-integridade-campos-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m2-certificacao-fisica-1987-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-0-gate-capacidade-2026.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-1c-ci-normalized-2026.yml",
+      "status": "CONFORME",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-1d-dataset-oficial-2026.yml",
+      "status": "CONFORME",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-m3-1e-aprovacao-global.yml",
+      "status": "CONFORME",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-materializar-normalized-1989-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-materializar-normalized-1990-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-materializar-normalized-1991-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-materializar-normalized-1992-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-materializar-normalized-1993-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-normalizacao-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-normalizacao-controlada-v7.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-normalized-m1-1987.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-ohlc-1986-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-ohlc-excecoes-contexto-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-orquestrador-anual-dryrun-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-orquestrador-anual-dryrun-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-prazot-anomalias-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-quantidade-volume-preco-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-final-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-raw-normalized-1986-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-semantica-1986.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-semantica-1987-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-semantica-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-validacao-independente-1988-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-validacao-independente-1988-v2.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/indices-b3-composicao-v1.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/processar-inventario-bvbg028.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/sincronizar-wiki-b3.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/sincronizar-wiki.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": false,
+          "detail": "README aparece nos paths do push"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/testar-captura-bdi.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    },
+    {
+      "workflow": ".github/workflows/validar-bvbg02802.yml",
+      "status": "DIVERGENTE",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente"
+        }
+      ]
+    }
+  ],
+  "rule": "O auditor identifica divergências; não altera workflows automaticamente."
+}
