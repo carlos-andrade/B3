@@ -217,3 +217,16 @@ O resultado do Gate deve ser reproduzível a partir das evidências referenciada
 ## 15. Estado do contrato
 
 Este contrato passa a ser a referência normativa específica do GATE 06–08 para novas execuções COTAHIST.
+
+
+---
+
+## FONTE NORMATIVA CANÔNICA — 2026-10-01
+
+Este documento é **derivado/operacional** e não constitui fonte independente para geração de código. As regras executáveis devem ser reconciliadas com:
+
+`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+
+**Regra:** Layout Mestre → especificação da tarefa → código/workflow → evidência.
+
+Se houver divergência, o Layout Mestre prevalece até reconciliação e versionamento formal.
