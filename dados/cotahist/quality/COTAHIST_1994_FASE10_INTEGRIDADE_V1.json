@@ -23,14 +23,9 @@
     "normalized_rows_match_manifest": true,
     "normalized_fields_match_manifest": true,
     "raw_immutable": true,
-    "correction_required": false,
-    "correction_applied": false,
     "correction_contract_valid": true
   },
-  "status": "BLOQUEADO",
-  "failures": [
-    "correction_required",
-    "correction_applied"
-  ],
-  "decision": "BLOQUEADO"
+  "status": "VALIDADO",
+  "failures": [],
+  "decision": "FASE_10_CONCLUIDA_E_RELEASE_NORMALIZADO_AUTORIZADO"
 }

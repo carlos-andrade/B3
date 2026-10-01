@@ -3,15 +3,15 @@
   "phase": "FASE12",
   "year": 1994,
   "next_year": 1995,
-  "status": "BLOQUEADA",
-  "decision": "TRANSICAO_1995_NAO_AUTORIZADA",
+  "status": "CONCLUIDA",
+  "decision": "ANO_1994_FECHADO_TRANSICAO_1995_AUTORIZADA",
   "required_evidence": {
     "FASE06": "VALIDADO",
     "FASE07": "VALIDADO",
     "FASE08": "VALIDADO_COM_EXCECAO",
     "FASE09": "LIBERADO_PARA_FASE10",
-    "FASE10": "BLOQUEADO",
-    "FASE11": "BLOQUEADO"
+    "FASE10": "VALIDADO",
+    "FASE11": "VALIDADO"
   },
   "raw_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
   "normalized_sha256": "f657bf43b6d8c73edf3b3e1672ac2466531f9a00b26bb778c24ed5f26baf84ff",
