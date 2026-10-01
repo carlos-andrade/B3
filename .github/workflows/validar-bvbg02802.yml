@@ -43,3 +43,13 @@ jobs:
           git add ativos/catalogo/raw/IN${DATA:2:2}${DATA:5:2}${DATA:8:2}.zip ativos/catalogo/fontes/INSTRUMENTOS_BVBG028_02_${DATA}.json
           git commit -m "data(b3): manifesto BVBG.028.02 $DATA"
           git push
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: validar-bvbg02802.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
