@@ -557,3 +557,46 @@ Antes de criar uma nova regra de certificação, o processo deve consultar:
 A ausência dessa consulta é considerada falha de governança.
 
 **Atualização normativa:** 2026-10-01 — inclusão da regra anti-regressão de chaves, classificação de duplicidades e obrigação de reconciliação antes de promover uma hipótese a critério de certificação.
+
+## ADITIVO DE GOVERNANÇA — 2026-10-01 — ORDEM DE CORREÇÃO E AUDITORIA POR LAYOUT
+
+A experiência acumulada nas auditorias de 1994 e 1995 passa a estabelecer uma ordem obrigatória para qualquer nova certificação COTAHIST.
+
+### 1. Cartas antes do README
+
+Após qualquer correção de regra, workflow, contrato ou evidência que altere a governança do projeto, a sequência obrigatória é:
+
+**corrigir → atualizar as cartas normativas → registrar o incidente/evidência → verificar coerência documental → somente então atualizar o README.**
+
+O README é camada de comunicação e inventário; não é a autoridade normativa. A atualização automática do README não pode antecipar nem substituir a atualização das cartas.
+
+### 2. Layout antes da regra de auditoria
+
+Antes de criar ou alterar um validador que dependa do significado, cardinalidade, identidade ou unicidade de campos COTAHIST, deve existir um contrato de layout aplicável ao período auditado.
+
+A sequência mínima é:
+
+**fonte oficial → layout aplicável → mapeamento de campos → hipótese de regra → amostra histórica → teste → decisão normativa → implementação → evidência → promoção.**
+
+Nenhum critério de bloqueio deve ser criado apenas porque uma combinação de campos parece funcionar como chave.
+
+### 3. Memória obrigatória das auditorias anteriores
+
+Antes de executar uma nova fase, o processo deve consultar os incidentes e correções já registrados para evitar regressão. Em especial, os problemas de:
+
+- busca incompleta de arquivos;
+- confusão entre existência e validação;
+- corrida de publicação;
+- erro de heredoc/script;
+- gates que avaliavam indicadores informativos como booleanos;
+- execução não linear;
+- unicidade presumida de chave;
+
+não podem ser reintroduzidos por um novo workflow.
+
+### 4. Regra de bloqueio preventivo
+
+Se o layout aplicável não estiver identificado, ou se a regra proposta contradisser evidência histórica anterior, a auditoria deve parar em estado **AGUARDANDO RECONCILIAÇÃO**, e não transformar a incerteza em falha do dado.
+
+**Regra permanente:** nenhum erro já corrigido deve voltar a ser convertido em critério de auditoria por falta de memória documental.
+
