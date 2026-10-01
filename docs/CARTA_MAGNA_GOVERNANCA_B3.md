@@ -209,3 +209,34 @@ Antes de criar uma nova regra de certificação, o processo deve consultar:
 A ausência dessa consulta é considerada falha de governança.
 
 **Atualização normativa:** 2026-10-01 — inclusão da regra anti-regressão de chaves, classificação de duplicidades e obrigação de reconciliação antes de promover uma hipótese a critério de certificação.
+
+## ADITIVO DE GOVERNANÇA — 2026-10-01 — PRECEDÊNCIA DAS CARTAS E CONTRATO DE LAYOUT
+
+A governança passa a estabelecer explicitamente uma ordem de precedência operacional para novas auditorias COTAHIST.
+
+### 1. Ordem documental obrigatória
+
+Toda correção que altere regra, workflow, contrato ou classificação deve seguir:
+
+**CORREÇÃO → CARTAS → EVIDÊNCIA/INCIDENTE → VERIFICAÇÃO → README.**
+
+As Cartas são documentos normativos. O README é documento de divulgação/inventário e nunca poderá ser utilizado como substituto de uma atualização normativa.
+
+### 2. Auditoria orientada por layout
+
+Nenhum validador poderá impor cardinalidade, chave, unicidade ou interpretação semântica sem identificar previamente o layout oficial aplicável ao período.
+
+O contrato obrigatório é:
+
+**layout oficial → campos/offsets → semântica documentada → hipótese → amostra → teste histórico → decisão normativa → implementação → evidência.**
+
+### 3. Controle de regressão
+
+Antes de executar uma nova fase, deve ser feita verificação explícita contra incidentes e correções anteriores. Um workflow novo não pode reintroduzir uma regra já rejeitada sem apresentar nova evidência e decisão normativa.
+
+### 4. Estado de suspensão
+
+Quando a regra de auditoria depender de layout ainda não reconciliado, o estado correto é **BLOQUEADO POR GOVERNANÇA / AGUARDANDO LAYOUT**, e não **DADO INVÁLIDO**.
+
+Essa regra é permanente e passa a integrar a autoridade normativa da Carta Magna.
+
