@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "fase": "05.5",
+  "grupo": "01_OBSERVABILIDADE",
+  "status": "CONCLUIDA_PARA_VALIDACAO_POS_CORRECAO",
+  "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "corrected_active_workflows": 19,
+  "additional_wiki_workflow": ".github/workflows/sincronizar-wiki.yml",
+  "runtime_validation": "PENDENTE_GITHUB_ACTIONS",
+  "local_execution": "INDISPONIVEL_SEM_REDE_GITHUB",
+  "historical_workflows_changed": 0,
+  "data_artifacts_changed": 0,
+  "rule": "Correção somente em workflows ATIVOS; auditoria não corrige nem reexecuta; ausência de STEP_SUMMARY isolada é observabilidade."
+}
