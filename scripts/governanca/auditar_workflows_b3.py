@@ -28,17 +28,26 @@ def phase_numbers(text: str) -> list[int]:
     return sorted(set(vals))
 
 def section(text: str, key: str) -> str:
-    """Extrai somente o bloco YAML top-level de uma chave, sem vazar para jobs/steps."""
+    """Extrai um bloco YAML por chave, respeitando a indentação real do documento."""
     lines = text.splitlines(True)
     out = []
     active = False
+    base_indent = None
+    key_re = re.compile(rf"^(\\s*){re.escape(key)}:\\s*$")
     for line in lines:
-        if re.match(rf"^{re.escape(key)}:\s*$", line):
+        m = key_re.match(line)
+        if not active and m:
             active = True
+            base_indent = len(m.group(1))
             continue
-        if active and line and not line[0].isspace() and re.match(r"^[A-Za-z0-9_.-]+:\s*", line):
-            break
         if active:
+            stripped = line.strip()
+            if not stripped:
+                out.append(line)
+                continue
+            indent = len(line) - len(line.lstrip(" "))
+            if indent <= base_indent and re.match(r"^[A-Za-z0-9_.-]+:\\s*", stripped):
+                break
             out.append(line)
     return "".join(out)
 
