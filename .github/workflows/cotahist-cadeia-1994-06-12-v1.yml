@@ -13,6 +13,8 @@ on:
       - "dados/cotahist/normalized/anual/COTAHIST_A1994.csv"
       - "dados/cotahist/normalized/manifests/COTAHIST_A1994_quality.json"
       - "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "docs/cotahist/MODELO_CERTIFICACAO_ANUAL_COTAHIST_V1.md"
+      - "docs/cotahist/COMPARATIVO_BASELINE_1993_VS_1994_FASE06_V1.md"
 
 permissions:
   contents: write
