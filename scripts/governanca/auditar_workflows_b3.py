@@ -153,7 +153,7 @@ def audit_workflow(path: pathlib.Path) -> dict:
         causal_paths = [
             p.strip().strip("'\"")
             for p in paths
-            p.strip().strip("'\"")
+            if p.strip().strip("'\"") != workflow_path
         ]
         has_input = any(
             re.search(r"^(?:dados/cotahist/(?:raw|quality|normalized|manifests)|scripts/|\.github/workflows/)", p, re.I)
