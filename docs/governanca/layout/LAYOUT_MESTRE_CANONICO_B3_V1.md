@@ -1106,3 +1106,57 @@ Qualquer processo futuro deve ser enquadrado neste fluxo antes de ser implementa
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
 | 1.0.0 | 2026-10-01 | Consolidação das cartas, contratos, matriz operacional, governança de workflows, monitoramento, README, gates, fases e regra única de geração de código. | VIGENTE |
+
+
+## 40. AUDITORIA SEMÂNTICA DOS WORKFLOWS — REGRA VIGENTE
+
+A auditoria de workflows deve distinguir conformidade funcional de observabilidade.
+
+O auditor canônico deve verificar, além da existência do trigger e do Layout Mestre:
+
+1. responsabilidade do workflow;
+2. causalidade do trigger;
+3. isolamento;
+4. dependências direcionais;
+5. ausência de gatilho explícito de fase posterior;
+6. permissões compatíveis com a operação real;
+7. persistência da evidência;
+8. existência de decisão/status explícito;
+9. sinais de idempotência/deduplicação quando aplicável;
+10. regra especial do README;
+11. comportamento somente-leitura do monitor;
+12. ausência de reexecução de outro workflow.
+
+A ausência isolada de `GITHUB_STEP_SUMMARY` é classificada como **observabilidade** e não deve ser interpretada automaticamente como falha funcional dos dados.
+
+O auditor é exclusivamente diagnóstico:
+
+**auditar → classificar → evidenciar → decidir correção**
+
+Nunca:
+
+**auditar → alterar automaticamente → reexecutar → promover**
+
+### 40.1 Severidade
+
+- **CRITICA/ALTA:** potencial bloqueador funcional ou de governança.
+- **MEDIA:** alerta que exige revisão.
+- **BAIXA:** observabilidade ou melhoria recomendada.
+
+Workflow histórico não deve ser reaberto somente porque a auditoria atual encontrou uma divergência estrutural. A correção, quando necessária, deve ocorrer na origem e respeitar o contrato de fechamento histórico.
+
+### 40.2 Auditor canônico
+
+O auditor vigente é:
+
+`scripts/governanca/auditar_workflows_b3.py`
+
+A saída é:
+
+`docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json`
+
+e
+
+`docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md`
+
+A implementação deve permanecer alinhada a este Layout Mestre.
