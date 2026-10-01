@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T17:25:33.275405+00:00",
+  "generated_at_utc": "2026-10-01T17:28:14.973435+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 81,
-    "CONFORME": 21,
-    "DIVERGENTE_CRITICA": 7
+    "CONFORME_COM_OBSERVACAO": 85,
+    "CONFORME": 23,
+    "DIVERGENTE_CRITICA": 1
   },
   "results": [
     {
@@ -59,7 +59,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -136,7 +136,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -211,7 +211,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -373,7 +373,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -448,7 +448,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -523,7 +523,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -679,7 +679,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -756,7 +756,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -833,7 +833,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -863,7 +863,7 @@
     {
       "workflow": ".github/workflows/cotahist-auditoria-ohlc-1988-v1.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -909,8 +909,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -932,9 +932,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
@@ -989,7 +987,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1066,7 +1064,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1143,7 +1141,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1220,7 +1218,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1297,7 +1295,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1372,7 +1370,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1449,7 +1447,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1526,7 +1524,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1603,7 +1601,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1680,7 +1678,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1757,7 +1755,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1832,7 +1830,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1907,7 +1905,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -1984,7 +1982,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2061,7 +2059,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2216,7 +2214,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2293,7 +2291,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2370,7 +2368,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2447,7 +2445,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2530,7 +2528,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2613,7 +2611,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2696,7 +2694,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2779,7 +2777,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2862,7 +2860,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -2945,7 +2943,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3028,7 +3026,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3111,7 +3109,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3194,7 +3192,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3277,7 +3275,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3360,7 +3358,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3443,7 +3441,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3526,7 +3524,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3609,7 +3607,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3692,7 +3690,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3775,7 +3773,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3858,7 +3856,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -3941,7 +3939,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4024,7 +4022,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4107,7 +4105,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4190,7 +4188,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4273,7 +4271,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4356,7 +4354,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4439,7 +4437,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4522,7 +4520,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4603,7 +4601,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4686,7 +4684,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4769,7 +4767,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4852,7 +4850,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -4935,7 +4933,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5018,7 +5016,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5101,7 +5099,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5184,7 +5182,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5267,7 +5265,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5350,7 +5348,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5433,7 +5431,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5516,7 +5514,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5593,7 +5591,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5670,7 +5668,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5745,7 +5743,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5775,7 +5773,7 @@
     {
       "workflow": ".github/workflows/cotahist-integridade-campos-1988-v1.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -5821,8 +5819,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -5844,9 +5842,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
@@ -5901,7 +5897,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6053,7 +6049,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6128,7 +6124,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6428,7 +6424,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6505,7 +6501,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6582,7 +6578,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6659,7 +6655,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6736,7 +6732,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6813,7 +6809,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6890,7 +6886,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -6965,7 +6961,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7042,7 +7038,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7072,7 +7068,7 @@
     {
       "workflow": ".github/workflows/cotahist-ohlc-excecoes-contexto-1988-v1.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -7118,8 +7114,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7141,9 +7137,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
@@ -7348,7 +7342,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7425,7 +7419,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7502,7 +7496,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7579,7 +7573,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7656,7 +7650,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7733,7 +7727,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7810,7 +7804,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7887,7 +7881,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7917,7 +7911,7 @@
     {
       "workflow": ".github/workflows/cotahist-semantica-1988-v1.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -7963,8 +7957,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -7986,9 +7980,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
@@ -8043,7 +8035,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8120,7 +8112,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8197,7 +8189,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8272,7 +8264,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8300,7 +8292,7 @@
     {
       "workflow": ".github/workflows/sincronizar-wiki-b3.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -8346,8 +8338,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8369,15 +8361,13 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": []
     },
     {
       "workflow": ".github/workflows/sincronizar-wiki.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -8423,8 +8413,8 @@
         },
         {
           "code": "PERMISSIONS_MATCH_WRITE",
-          "ok": false,
-          "detail": "há escrita no repositório sem contents: write explícito",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8446,9 +8436,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "PERMISSIONS_MATCH_WRITE"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": []
     },
     {
@@ -8501,7 +8489,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
@@ -8578,7 +8566,7 @@
         {
           "code": "PERMISSIONS_MATCH_WRITE",
           "ok": true,
-          "detail": "publicação no repositório exige contents: write",
+          "detail": "publicação possui credencial/permissão compatível",
           "severity": "ALTA"
         },
         {
