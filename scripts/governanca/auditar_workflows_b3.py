@@ -151,9 +151,9 @@ def audit_workflow(path: pathlib.Path) -> dict:
         # evita classificar o próprio arquivo do workflow como entrada causal.
         workflow_path = rel
         causal_paths = [
-            p.strip().strip("\"'")
+            p.strip().strip("'\"")
             for p in paths
-            if p.strip().strip('"\\'') != workflow_path
+            p.strip().strip("'\"")
         ]
         has_input = any(
             re.search(r"^(?:dados/cotahist/(?:raw|quality|normalized|manifests)|scripts/|\.github/workflows/)", p, re.I)
