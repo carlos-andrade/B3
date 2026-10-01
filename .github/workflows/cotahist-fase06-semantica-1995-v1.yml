@@ -7,7 +7,6 @@ on:
       - "dados/cotahist/quality/COTAHIST_1995_FASE05_MANIFESTO_CHECKSUM_V1.json"
       - "dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
       - ".github/workflows/cotahist-fase06-semantica-1995-v1.yml"
-      - "docs/cotahist/**"
   workflow_dispatch:
 
 permissions:
@@ -150,4 +149,4 @@ jobs:
           git rebase origin/main
           git push origin HEAD:main
 
-# Publicacao robusta: rebase antes do push para evitar conflito com Atualizar README.
+# Regra de isolamento: a FASE06 somente reage às suas entradas e ao próprio workflow.\n# Alterações de README/documentação/fases posteriores não reexecutam a FASE06.\n# Publicacao robusta: rebase antes do push para evitar conflito com Atualizar README.
