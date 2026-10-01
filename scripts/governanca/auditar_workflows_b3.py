@@ -146,9 +146,19 @@ def audit_workflow(path: pathlib.Path) -> dict:
     # Sinal de entrada causal para workflows de fase. Não bloqueia workflows
     # manuais/auxiliares, mas registra ausência de evidência de entrada.
     if current_phase is not None and current_phase >= 3 and not is_readme:
-        has_input = bool(re.search(
-            r"FASE\d{1,2}|dados/cotahist/(?:raw|quality|normalized|manifests)|scripts/|\.github/workflows/[^\n]+\.yml",
-            trigger_text, re.I))
+        # Avalia somente paths do push, excluindo o próprio workflow.
+        # Isso evita falso negativo causado por parsing de blocos YAML e
+        # evita classificar o próprio arquivo do workflow como entrada causal.
+        workflow_path = rel
+        causal_paths = [
+            p.strip().strip('"\\'')
+            for p in paths
+            if p.strip().strip('"\\'') != workflow_path
+        ]
+        has_input = any(
+            re.search(r"^(?:dados/cotahist/(?:raw|quality|normalized|manifests)|scripts/|\.github/workflows/)", p, re.I)
+            for p in causal_paths
+        )
         checks.append(check("DIRECTIONAL_INPUT_SIGNAL", has_input,
                             "há sinal de entrada/evidência no trigger"
                             if has_input else "não foi identificado sinal de entrada causal no trigger",
