@@ -63,3 +63,13 @@ jobs:
 # Retrigger apos FASE10 1993 VALIDADO.
 # Retrigger: FASE11 reexecutada apos FASE09 1993 VALIDADA.
 # PARTE13: retrigger auditavel apos validacao da FASE09 1993.
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-certificacao-anual-v1.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
