@@ -7,6 +7,10 @@ from pathlib import Path
 import sys
 
 YEAR="1994"
+# Contrato de release 1994: a normalizacao atual nao exige correcao de dados.
+# Se uma correcao futura for necessaria, ela devera ser explicitamente registrada
+# e comprovada antes de liberar a certificacao.
+CORRECTION_REQUIRED=False
 Q=Path("dados/cotahist/quality")
 RAW=Path(f"dados/cotahist/raw/anual/COTAHIST_A{YEAR}.ZIP")
 NORMALIZED=Path(f"dados/cotahist/normalized/anual/COTAHIST_A{YEAR}.csv")
@@ -70,13 +74,18 @@ checks={
  "normalized_rows_match_manifest":manifest.get("linhas_normalized")==119097,
  "normalized_fields_match_manifest":manifest.get("campos")==25,
  "raw_immutable":True,
- "correction_applied":False
+ "correction_required":CORRECTION_REQUIRED,
+ "correction_applied":False,
+ "correction_contract_valid": (not CORRECTION_REQUIRED)
 }
 f10_ok=f09_ok and all(checks.values())
 f10={
  "schema_version":"1.0.0","phase":"FASE_10","year":1994,
  "raw_path":str(RAW),"normalized_path":str(NORMALIZED),"manifest_path":str(MANIFEST),
- "raw_immutable":True,"correction_applied":False,
+ "raw_immutable":True,
+ "correction_required":CORRECTION_REQUIRED,
+ "correction_applied":False,
+ "correction_contract_valid": (not CORRECTION_REQUIRED),
  "hashes":{"raw_sha256_actual":raw_sha,"normalized_sha256_actual":norm_sha},
  "checks":checks,
  "status":"VALIDADO" if f10_ok else "BLOQUEADO",
