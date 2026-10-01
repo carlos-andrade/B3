@@ -9,8 +9,6 @@ on:
       - ".github/workflows/cotahist-fase06-semantica-1995-v1.yml"
       - "docs/cotahist/**"
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -142,6 +140,10 @@ jobs:
             exit 0
           fi
           git commit -m "cert(cotahist): valida fase 06 semantica 1995"
-          git push
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
 
 # Retrigger auditavel FASE06: gate explicito de disparo na branch main.
+
+# Publicacao robusta: rebase antes do push para evitar conflito com Atualizar README.\n
