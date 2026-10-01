@@ -1,0 +1,105 @@
+name: COTAHIST 1995 - FASE14 Presenca e Integridade RAW V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1995.json"
+      - "dados/cotahist/checksums/COTAHIST_A1995.ZIP.sha256"
+      - ".github/workflows/cotahist-fase14-presenca-integridade-1995-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase14-1995
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FASE14 — validar presença, checksum e estrutura
+        run: |
+          set -euo pipefail
+          RAW="dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
+          MANIFEST="dados/cotahist/manifests/COTAHIST_A1995.json"
+          CHECKSUM="dados/cotahist/checksums/COTAHIST_A1995.ZIP.sha256"
+          EVID="dados/cotahist/quality/COTAHIST_1995_FASE14_PRESENCA_INTEGRIDADE_V1.json"
+
+          test -f "$RAW"
+          test -f "$MANIFEST"
+          test -f "$CHECKSUM"
+
+          EXPECTED=$(python - <<'PY'
+          import json
+          print(json.load(open("dados/cotahist/manifests/COTAHIST_A1995.json", encoding="utf-8"))["sha256"])
+          PY
+          )
+          ACTUAL=$(sha256sum "$RAW" | awk '{print $1}')
+          test "$EXPECTED" = "$ACTUAL"
+
+          ZIP_COUNT=$(unzip -Z1 "$RAW" | wc -l | tr -d ' ')
+          test "$ZIP_COUNT" = "1"
+
+          MEMBER=$(unzip -Z1 "$RAW")
+          MEMBER_BYTES=$(unzip -p "$RAW" "$MEMBER" | wc -c | tr -d ' ')
+          test "$MEMBER_BYTES" -gt 0
+          BAD_LINES=$(unzip -p "$RAW" "$MEMBER" | awk 'length($0)!=245 {n++} END{print n+0}')
+          test "$BAD_LINES" = "0"
+
+          python - <<'PY'
+          import json, hashlib, zipfile
+          from pathlib import Path
+          raw=Path("dados/cotahist/raw/anual/COTAHIST_A1995.ZIP")
+          manifest=json.loads(Path("dados/cotahist/manifests/COTAHIST_A1995.json").read_text(encoding="utf-8"))
+          sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          with zipfile.ZipFile(raw) as z:
+              names=z.namelist()
+              member=names[0]
+              payload=z.read(member)
+          lines=payload.splitlines()
+          types={line[:2].decode("latin-1") for line in lines if len(line)==245}
+          evidence={
+            "versao":"1.0",
+            "fase":"FASE14",
+            "ano":1995,
+            "status":"VALIDADO",
+            "presenca_raw":True,
+            "manifesto_presente":True,
+            "checksum_presente":True,
+            "sha256_manifesto":manifest["sha256"],
+            "sha256_calculado":sha,
+            "sha256_coerente":sha==manifest["sha256"],
+            "zip_membros":len(names),
+            "zip_membro":member,
+            "bytes_membro":len(payload),
+            "registros_245_bytes":len(lines),
+            "tipos_registro_observados":sorted(types),
+            "correction_required":False,
+            "correction_applied":False,
+            "correction_contract_valid":True,
+            "decisao":"LIBERADO_PARA_FASE03_05",
+            "regra":"RAW existente; nenhuma nova aquisicao realizada."
+          }
+          Path("dados/cotahist/quality/COTAHIST_1995_FASE14_PRESENCA_INTEGRIDADE_V1.json").write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Persistir evidência FASE14
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1995_FASE14_PRESENCA_INTEGRIDADE_V1.json
+          if git diff --cached --quiet; then
+            echo "Sem alteração."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): valida 1995 fase 14 raw"
+          git pull --rebase origin main
+          git push origin HEAD:main
