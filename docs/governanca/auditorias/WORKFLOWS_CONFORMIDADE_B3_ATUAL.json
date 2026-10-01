@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T17:21:06.752764+00:00",
+  "generated_at_utc": "2026-10-01T17:22:51.580206+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
   "status_counts": {
-    "DIVERGENTE_CRITICA": 18,
+    "DIVERGENTE_CRITICA": 16,
     "CONFORME": 20,
-    "CONFORME_COM_OBSERVACAO": 71
+    "CONFORME_COM_OBSERVACAO": 73
   },
   "results": [
     {
@@ -2099,7 +2099,7 @@
     {
       "workflow": ".github/workflows/cotahist-fase00-governanca-1994-v1.yml",
       "current_phase": 0,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -2139,8 +2139,8 @@
         },
         {
           "code": "NO_POSTERIOR_PHASE_TRIGGER",
-          "ok": false,
-          "detail": "gatilho contém fases posteriores: [12]",
+          "ok": true,
+          "detail": "nenhum gatilho explícito de fase posterior",
           "severity": "CRITICA"
         },
         {
@@ -2168,9 +2168,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "NO_POSTERIOR_PHASE_TRIGGER"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY",
         "IDEMPOTENCE_SIGNAL"
@@ -2570,7 +2568,7 @@
     {
       "workflow": ".github/workflows/cotahist-fase03-parsing-1995-v1.yml",
       "current_phase": 3,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -2610,8 +2608,8 @@
         },
         {
           "code": "NO_POSTERIOR_PHASE_TRIGGER",
-          "ok": false,
-          "detail": "gatilho contém fases posteriores: [14]",
+          "ok": true,
+          "detail": "nenhum gatilho explícito de fase posterior",
           "severity": "CRITICA"
         },
         {
@@ -2645,9 +2643,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "NO_POSTERIOR_PHASE_TRIGGER"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
