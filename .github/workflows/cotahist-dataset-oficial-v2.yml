@@ -44,3 +44,13 @@ jobs:
           name: cotahist-dataset-oficial-v2
           path: dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
           retention-days: 30
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: cotahist-dataset-oficial-v2.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "\$GITHUB_STEP_SUMMARY"
