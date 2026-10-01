@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/**"
-      - "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+      - "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
       - "scripts/governanca/auditar_workflows_b3.py"
   workflow_dispatch:
   schedule:
