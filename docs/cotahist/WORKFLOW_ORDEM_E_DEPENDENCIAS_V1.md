@@ -120,3 +120,32 @@ Nenhum workflow deve promover um ano para estado superior apenas porque um workf
 | Versão | Data | Alteração |
 |---|---|---|
 | 1.0 | 2026-09-29 | Criação da ordem canônica e política de migração controlada. |
+
+
+## 10. Atualização após a cadeia 1994 — 2026-10-01
+
+A regra de dependência foi operacionalizada no ciclo 1994.
+
+A sequência passou a ser explicitamente linear:
+
+**FASE06 → FASE07 → FASE08 → GATE → FASE09 → GATE → FASE10 → GATE → FASE11 → GATE → FASE12.**
+
+O workflow de cadeia 1994 foi ajustado para fail-closed e a própria rotina de FASE09–12 interrompe as fases dependentes quando uma fase anterior falha.
+
+A experiência dos Runs #8 e #10 demonstrou que o gate também precisa distinguir campos informativos de condições reais de aprovação. O contrato de correção agora utiliza `correction_contract_valid` como condição do contrato.
+
+### 10.1 Regra de localização
+
+A existência do RAW deve ser verificada pelo caminho canônico:
+
+`dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP`
+
+Não declarar ausência com base em busca incompleta.
+
+### 10.2 Estado atual
+
+- 1994: cadeia FASE06–12 concluída no Run #13.
+- 1995: RAW, manifesto e checksum confirmados.
+- próximo ciclo: 1995.
+- 1996+: aguardando fechamento de 1995.
+
