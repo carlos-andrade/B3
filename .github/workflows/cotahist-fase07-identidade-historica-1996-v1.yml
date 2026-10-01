@@ -1,0 +1,48 @@
+name: COTAHIST 1996 - FASE07 Identidade Historica V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/analisar_identidade_historica_cotahist_1996_v1.py"
+      - ".github/workflows/cotahist-fase07-identidade-historica-1996-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE06_SEMANTICA_V1.json"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase07-1996
+  cancel-in-progress: false
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verificar FASE06
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1996_FASE06_SEMANTICA_V1.json"
+          e=json.load(open(p,encoding="utf-8"))
+          if e.get("status")!="VALIDADO" or e.get("decision")!="LIBERADO_PARA_FASE07":
+              raise SystemExit("FAIL-CLOSED: FASE06 nao liberou FASE07")
+          PY
+      - name: Executar FASE07
+        run: |
+          python scripts/ingestao/analisar_identidade_historica_cotahist_1996_v1.py             --zip dados/cotahist/raw/anual/COTAHIST_A1996.ZIP             --output dados/cotahist/quality/COTAHIST_1996_FASE07_IDENTIDADE_HISTORICA_V1.json
+      - name: Persistir evidencia
+        if: success()
+        run: |
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1996_FASE07_IDENTIDADE_HISTORICA_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): executar fase 07 identidade historica 1996"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
