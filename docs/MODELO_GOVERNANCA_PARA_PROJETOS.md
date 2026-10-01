@@ -795,3 +795,39 @@ Fluxo obrigatório:
 A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
+
+## ADITIVO REUTILIZÁVEL — AUDITORIA SEMÂNTICA DE AUTOMAÇÕES — 2026-10-01
+
+Para qualquer projeto que reutilize este modelo, a auditoria de automações deve verificar:
+
+- responsabilidade;
+- entrada causal;
+- saída/evidência;
+- dependência direcional;
+- isolamento;
+- permissões;
+- persistência;
+- decisão;
+- idempotência;
+- reexecução;
+- observabilidade.
+
+A auditoria deve produzir diagnóstico, não alteração automática.
+
+A classificação recomendada é:
+
+- CONFORME;
+- CONFORME_COM_OBSERVAÇÃO;
+- DIVERGENTE_CRÍTICA;
+- PONTO_DE_CONTROLE;
+- A_VALIDAR.
+
+Uma ausência de mecanismo de observabilidade não deve, sozinha, ser tratada como falha de integridade dos dados.
+
+### Regra de arquitetura
+
+O modelo reutilizável deve preservar a hierarquia:
+
+**DOCUMENTOS DE ENTRADA → LAYOUT MESTRE → CÓDIGO → EVIDÊNCIA → VALIDAÇÃO → DECISÃO.**
+
+As Cartas alimentam o Layout Mestre; não substituem o Layout Mestre como fonte de geração de código.
