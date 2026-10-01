@@ -69,4 +69,4 @@ jobs:
             echo "- Workflow: atualizar-readme-b3.yml"
             echo "- Resultado do job: ${{ job.status }}"
             echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "\$GITHUB_STEP_SUMMARY"
+          } >> "$GITHUB_STEP_SUMMARY"
