@@ -31,3 +31,13 @@ jobs:
           git add ativos/catalogo/INVENTARIO_B3_*.csv ativos/catalogo/estatisticas/ ativos/catalogo/logs/
           git diff --cached --quiet || git commit -m "data(b3): gerar inventario BVBG.028.02"
           git push
+
+      - name: Resumo de execução — observabilidade
+        if: always()
+        run: |
+          {
+            echo "## Observabilidade"
+            echo "- Workflow: processar-inventario-bvbg028.yml"
+            echo "- Resultado do job: ${{ job.status }}"
+            echo "- GITHUB_STEP_SUMMARY: habilitado"
+          } >> "$GITHUB_STEP_SUMMARY"
