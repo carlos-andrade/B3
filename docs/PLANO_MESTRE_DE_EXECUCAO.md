@@ -231,3 +231,37 @@ A etapa de ingestão será considerada estabilizada quando:
 ---
 
 Regra-mestra: avançar continuamente, mas nunca transformar dado não validado em dado confiável apenas para acelerar o projeto.
+
+
+## 13. Atualização de governança — 2026-10-01
+
+A execução histórica do projeto passou a adotar um contrato explícito de execução linear e fail-closed para o COTAHIST.
+
+A cadeia anual de referência é:
+
+**00 → 01 → 02 → 03–05 → 06 → 07 → 08 → GATE → 09 → GATE → 10 → GATE → 11 → GATE → 12 → transição.**
+
+A existência de RAW não implica necessidade de nova aquisição. O repositório deve ser consultado pelo caminho canônico antes de qualquer tentativa de download ou duplicação.
+
+A série anual 1986–2026 possui RAW presente na matriz de certificação atual. O próximo ciclo operacional após o fechamento de 1994 é 1995, cujo RAW já existe no caminho canônico.
+
+O objetivo operacional agora é executar 1995 usando os artefatos existentes, sem reaquisição desnecessária, preservando a mesma disciplina linear aplicada a 1994.
+
+### 13.1 Regra anti-repetição
+
+Antes de criar ou baixar qualquer artefato:
+
+1. consultar o caminho canônico;
+2. consultar manifesto;
+3. consultar checksum;
+4. consultar evidências existentes;
+5. consultar matriz de certificação;
+6. somente então decidir se existe lacuna real.
+
+### 13.2 Estado de referência
+
+- 1994: FECHADO / TRANSIÇÃO PARA 1995 AUTORIZADA.
+- 1995: RAW PRESENTE / PRÓXIMO CICLO.
+- 1996+: NÃO INICIAR ATÉ FECHAMENTO FORMAL DE 1995.
+- 1986: EXCEÇÃO HISTÓRICA CONTROLADA.
+
