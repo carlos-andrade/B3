@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-10-01T14:41:17.284482+00:00",
-  "normative_source": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "generated_at_utc": "2026-10-01T14:53:12.636273+00:00",
+  "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
-  "conforme": 5,
-  "divergente": 104,
+  "conforme": 0,
+  "divergente": 109,
   "results": [
     {
       "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
@@ -12,8 +12,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -48,8 +48,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -80,12 +80,12 @@
     },
     {
       "workflow": ".github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml",
-      "status": "CONFORME",
+      "status": "DIVERGENTE",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -116,12 +116,12 @@
     },
     {
       "workflow": ".github/workflows/b3-monitor-execucoes-v1.yml",
-      "status": "CONFORME",
+      "status": "DIVERGENTE",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -166,8 +166,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -202,8 +202,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -238,8 +238,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -274,8 +274,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -310,8 +310,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -346,8 +346,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -382,8 +382,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -418,8 +418,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -454,8 +454,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -490,8 +490,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -526,8 +526,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -562,8 +562,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -598,8 +598,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -634,8 +634,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -670,8 +670,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -706,8 +706,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -742,8 +742,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -778,8 +778,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -814,8 +814,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -850,8 +850,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -886,8 +886,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -922,8 +922,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -958,8 +958,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -994,8 +994,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1030,8 +1030,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1066,8 +1066,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1102,8 +1102,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1138,8 +1138,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1174,8 +1174,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1210,8 +1210,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1246,8 +1246,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1282,8 +1282,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1318,8 +1318,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1354,8 +1354,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1390,8 +1390,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1426,8 +1426,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1462,8 +1462,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1498,8 +1498,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1534,8 +1534,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1570,8 +1570,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1606,8 +1606,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1642,8 +1642,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1678,8 +1678,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1714,8 +1714,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1750,8 +1750,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1786,8 +1786,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1822,8 +1822,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1858,8 +1858,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1894,8 +1894,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1930,8 +1930,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -1966,8 +1966,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2002,8 +2002,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2038,8 +2038,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2074,8 +2074,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2110,8 +2110,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2146,8 +2146,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2182,8 +2182,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2218,8 +2218,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2254,8 +2254,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2290,8 +2290,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2326,8 +2326,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2362,8 +2362,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2398,8 +2398,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2434,8 +2434,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2470,8 +2470,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2506,8 +2506,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2542,8 +2542,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2578,8 +2578,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2614,8 +2614,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2650,8 +2650,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2686,8 +2686,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2722,8 +2722,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2758,8 +2758,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2790,12 +2790,12 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1c-ci-normalized-2026.yml",
-      "status": "CONFORME",
+      "status": "DIVERGENTE",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2826,12 +2826,12 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1d-dataset-oficial-2026.yml",
-      "status": "CONFORME",
+      "status": "DIVERGENTE",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2862,12 +2862,12 @@
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1e-aprovacao-global.yml",
-      "status": "CONFORME",
+      "status": "DIVERGENTE",
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2902,8 +2902,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2938,8 +2938,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -2974,8 +2974,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3010,8 +3010,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3046,8 +3046,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3082,8 +3082,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3118,8 +3118,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3154,8 +3154,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3190,8 +3190,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3226,8 +3226,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3262,8 +3262,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3298,8 +3298,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3334,8 +3334,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3370,8 +3370,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3406,8 +3406,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3442,8 +3442,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3478,8 +3478,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3514,8 +3514,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3550,8 +3550,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3586,8 +3586,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3622,8 +3622,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3658,8 +3658,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3694,8 +3694,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3730,8 +3730,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3766,8 +3766,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3802,8 +3802,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3838,8 +3838,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3874,8 +3874,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
@@ -3910,8 +3910,8 @@
       "checks": [
         {
           "code": "MASTER_PRESENT",
-          "ok": true,
-          "detail": "docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md"
+          "ok": false,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
         },
         {
           "code": "TRIGGER_DECLARED",
