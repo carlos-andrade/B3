@@ -220,7 +220,7 @@ def audit_workflow(path: pathlib.Path) -> dict:
 
     # Idempotência: reconhece padrões fortes; UNKNOWN não reprova o workflow.
     idem = bool(re.search(
-        r"git\s+diff\s+(?:--cached\s+)?--quiet|if \[ -f|if \[ -e|changed=false|cmp\s+|cancel-in-progress:\s*false|already (?:exists|synced|validated)|Nenhuma alteração|já está",
+        r"git\s+diff\s+(?:--cached\s+)?--quiet|if \[ -f|if \[ -e|changed=false|cmp\s+|cancel-in-progress:\s*false|already (?:exists|synced|validated)|Nenhuma alteração|Sem alterações|já está",
         text, re.I))
     checks.append(check("IDEMPOTENCE_SIGNAL", idem,
                         "padrão de idempotência/deduplicação detectado"
