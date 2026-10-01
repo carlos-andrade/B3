@@ -269,3 +269,22 @@ O Gate não é fase técnica e não pode corrigir, reexecutar ou substituir FASE
 A promoção é **fail-closed**: somente 'LIBERADO_PARA_FASE09' quando todas as condições obrigatórias forem satisfeitas; qualquer ausência, estado inválido ou condição indeterminada produz 'BLOQUEADO_PARA_FASE09'.
 
 Correções permanecem na fase de origem. README e documentação genérica não são fontes operacionais do Gate e não podem provocar reexecução retroativa de fases concluídas.
+
+
+---
+
+## REGRA DE CONSOLIDAÇÃO NO LAYOUT MESTRE — 2026-10-01
+
+Esta carta é **documento de entrada e histórico de governança**. Ela não é uma especificação independente para geração de código.
+
+Toda regra operacional desta carta que deva produzir ou alterar código deve ser consolidada no documento canônico:
+
+`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+
+Fluxo obrigatório:
+
+**CARTA → PROPOSTA/CONTRIBUIÇÃO → RECONCILIAÇÃO → LAYOUT MESTRE → CÓDIGO → EVIDÊNCIA → VALIDAÇÃO.**
+
+A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
+
+**Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
