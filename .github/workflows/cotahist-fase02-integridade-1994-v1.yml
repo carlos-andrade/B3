@@ -1,5 +1,5 @@
 name: COTAHIST - auditoria retrospectiva 1994 FASE02 V1
-# Reexecucao controlada do gate FASE02 em 2026-09-30.
+# Reexecucao controlada do gate FASE02 em 2026-10-01.
 
 on:
   workflow_dispatch:
@@ -9,8 +9,10 @@ on:
       - "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
       - "dados/cotahist/manifests/COTAHIST_A1994.json"
       - "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"
+
 permissions:
   contents: write
+
 jobs:
   validar:
     runs-on: ubuntu-latest
@@ -19,28 +21,53 @@ jobs:
         with:
           lfs: true
           fetch-depth: 0
+
       - name: Validar integridade do RAW
         run: |
           python - <<'PY'
-          import hashlib,json,pathlib,zipfile,sys
-          raw=pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1994.ZIP")
-          man=pathlib.Path("dados/cotahist/manifests/COTAHIST_A1994.json")
-          chk=pathlib.Path("dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256")
-          if not all(p.exists() for p in (raw,man,chk)): sys.exit("ARTEFATO AUSENTE")
-          actual=hashlib.sha256(raw.read_bytes()).hexdigest()
-          expected=chk.read_text().split()[0]
-          m=json.loads(man.read_text())
-          if actual!=expected or actual!=m.get("sha256"): sys.exit("SHA256 INCONSISTENTE")
+          import hashlib, json, pathlib, zipfile, sys, datetime
+
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1994.ZIP")
+          man = pathlib.Path("dados/cotahist/manifests/COTAHIST_A1994.json")
+          chk = pathlib.Path("dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256")
+
+          if not all(p.exists() for p in (raw, man, chk)):
+              sys.exit("ARTEFATO AUSENTE")
+
+          actual = hashlib.sha256(raw.read_bytes()).hexdigest()
+          expected = chk.read_text().split()[0]
+          m = json.loads(man.read_text())
+
+          if actual != expected or actual != m.get("sha256"):
+              sys.exit("SHA256 INCONSISTENTE")
+
           with zipfile.ZipFile(raw) as z:
-              names=z.namelist()
-              if len(names)!=1: sys.exit("ZIP COM MAIS DE UM MEMBRO")
-              info=z.getinfo(names[0])
-              if info.file_size==0: sys.exit("MEMBRO ZIP VAZIO")
-          import datetime
-          out={"schema_version":"1.0.0","year":1994,"phase":"FASE02","status":"VALIDADO","decision":"LIBERADO_PARA_FASE03","raw_path":str(raw),"manifest_path":str(man),"checksum_path":str(chk),"sha256":actual,"zip_member_count":len(names),"zip_member":names[0],"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
-          pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"
-")
-          print(json.dumps(out,ensure_ascii=False))
+              names = z.namelist()
+              if len(names) != 1:
+                  sys.exit("ZIP COM MAIS DE UM MEMBRO")
+              info = z.getinfo(names[0])
+              if info.file_size == 0:
+                  sys.exit("MEMBRO ZIP VAZIO")
+
+          out = {
+              "schema_version": "1.0.0",
+              "year": 1994,
+              "phase": "FASE02",
+              "status": "VALIDADO",
+              "decision": "LIBERADO_PARA_FASE03",
+              "raw_path": str(raw),
+              "manifest_path": str(man),
+              "checksum_path": str(chk),
+              "sha256": actual,
+              "zip_member_count": len(names),
+              "zip_member": names[0],
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+
+          pathlib.Path("dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json").write_text(
+              json.dumps(out, ensure_ascii=False, indent=2) + "\n"
+          )
+          print(json.dumps(out, ensure_ascii=False))
           PY
 
       - name: Publicar evidencia FASE02
@@ -49,6 +76,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json
+          git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): publica 1994 fase 02 integridade"
           git pull --rebase origin main
           git push origin HEAD:main
