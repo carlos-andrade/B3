@@ -69,3 +69,23 @@ Importante: não liberar 1995 para FASE07 com base apenas nesta execução.
 3. Corrigir o contrato do validador somente após essa reconciliação.
 4. Reexecutar FASE06.
 5. Somente com evidência VALIDADO e decisão LIBERADO_PARA_FASE07 liberar a FASE07.
+
+
+## RESOLUÇÃO — 2026-10-01
+
+A FASE06 foi corrigida para não tratar a chave candidata como única. Nova execução produziu evidência `VALIDADO` e `LIBERADO_PARA_FASE07`.
+
+Resultado observado:
+- registros tipo 01: 104.791;
+- chaves candidatas duplicadas: 258;
+- linhas adicionais decorrentes dessas colisões: 258;
+- registros exatamente idênticos entre si: 0;
+- erros semânticos: 0;
+- amostras OHLC: 30;
+- decisão: `LIBERADO_PARA_FASE07`.
+
+A presença de 258 colisões de chave candidata, sem registros exatamente idênticos, confirma que a unicidade dessa composição não pode ser presumida. A resolução da identidade/cardinalidade fica formalmente transferida para a FASE07.
+
+**Evidência final:** `dados/cotahist/quality/COTAHIST_1995_FASE06_SEMANTICA_V1.json`
+
+**Regra permanente:** FASE06 = semântica/invariantes; FASE07 = identidade/chaves/cardinalidade.
