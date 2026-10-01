@@ -552,3 +552,19 @@ Dados de terceiros permanecem sujeitos às respectivas fontes, licenças, termos
 **Repositório:** [carlos-andrade/B3](https://github.com/carlos-andrade/B3)  
 **Branch principal:** `main`  
 **Última revisão do README:** 01/10/2026
+
+## Regra estrutural das fases — 2026-10-01
+
+As fases COTAHIST são **unidirecionais, monotônicas e isoladas**.
+
+- uma fase posterior **não retorna** para executar, corrigir ou reescrever uma fase anterior;
+- uma fase anterior **não executa** responsabilidades pertencentes a fases posteriores;
+- uma fase posterior consome evidências anteriores em modo somente leitura;
+- uma correção permanece na fase que originou o erro;
+- descoberta posterior gera incidente/impacto e revisão controlada, sem retrocertificação silenciosa;
+- workflows de fases concluídas não devem disparar por alterações genéricas de README/documentação ou por fases posteriores.
+
+**Fluxo obrigatório:** FASE N-1 → evidência → FASE N → evidência → FASE N+1.
+
+A matriz vigente define, entre outras responsabilidades, **FASE06 = semântica/invariantes**, **FASE07 = identidade/chaves/cardinalidade** e **FASE08 = semântica/calendário/consistência**. O ciclo 1994 já fechado permanece preservado como histórico e não deve ser reexecutado apenas para alinhar nomenclatura; novas auditorias devem seguir o contrato atual.
+
