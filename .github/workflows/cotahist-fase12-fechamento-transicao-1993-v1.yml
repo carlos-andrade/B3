@@ -179,3 +179,4 @@ jobs:
           name: cotahist-1993-fase12-evidencia
           path: dados/cotahist/quality/COTAHIST_1993_FASE12_FECHAMENTO_TRANSICAO_V1.json
           retention-days: 30
+# Retrigger auditavel da FASE12 apos validacao da FASE02/1994.
