@@ -1,0 +1,85 @@
+name: B3 - Monitor independente de execuções V1
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: b3-monitor-execucoes
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Monitorar execuções recentes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, subprocess, datetime
+          from collections import Counter
+
+          repo=os.environ["GITHUB_REPOSITORY"]
+          raw=subprocess.check_output([
+            "gh","api",f"repos/{repo}/actions/runs",
+            "-f","per_page=100"
+          ],text=True)
+          data=json.loads(raw)
+          runs=data.get("workflow_runs",[])
+          now=datetime.datetime.now(datetime.timezone.utc)
+          cutoff=now-datetime.timedelta(hours=24)
+          recent=[]
+          for r in runs:
+              created=datetime.datetime.fromisoformat(r["created_at"].replace("Z","+00:00"))
+              if created>=cutoff:
+                  recent.append(r)
+
+          counts=Counter(r["conclusion"] or r["status"] for r in recent)
+          unfavorable={"failure","cancelled","timed_out","action_required","stale"}
+          bad=[r for r in recent if (r["conclusion"] or r["status"]) in unfavorable]
+          active=[r for r in recent if r["status"] in {"queued","in_progress","waiting","requested","pending"}]
+
+          if bad:
+              overall="NAO_FAVORAVEL"
+          elif active:
+              overall="EM_EXECUCAO"
+          else:
+              overall="FAVORAVEL"
+
+          lines=[]
+          lines.append("# Resultado do monitor B3")
+          lines.append("")
+          lines.append(f"**Resultado:** {overall}")
+          lines.append(f"**Janela:** últimas 24h — {now.isoformat()}")
+          lines.append(f"**Execuções observadas:** {len(recent)}")
+          lines.append(f"**Distribuição:** {dict(counts)}")
+          lines.append("")
+          lines.append("## Execuções não favoráveis")
+          if bad:
+              for r in bad[:30]:
+                  lines.append(f"- {r['name']} | run #{r['run_number']} | {r['conclusion'] or r['status']} | {r['html_url']}")
+          else:
+              lines.append("- Nenhuma.")
+          lines.append("")
+          lines.append("## Execuções em andamento")
+          if active:
+              for r in active[:30]:
+                  lines.append(f"- {r['name']} | run #{r['run_number']} | {r['status']} | {r['html_url']}")
+          else:
+              lines.append("- Nenhuma.")
+
+          summary="\n".join(lines)
+          open(os.environ["GITHUB_STEP_SUMMARY"],"w",encoding="utf-8").write(summary)
+          print(summary)
+
+          if bad:
+              raise SystemExit(2)
+          PY
