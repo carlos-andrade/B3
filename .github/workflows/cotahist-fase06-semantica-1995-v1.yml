@@ -2,10 +2,12 @@ name: COTAHIST - FASE06 semantica 1995 V1
 
 on:
   push:
+    branches: [main]
     paths:
       - "dados/cotahist/quality/COTAHIST_1995_FASE05_MANIFESTO_CHECKSUM_V1.json"
       - "dados/cotahist/raw/anual/COTAHIST_A1995.ZIP"
       - ".github/workflows/cotahist-fase06-semantica-1995-v1.yml"
+      - "docs/cotahist/**"
   workflow_dispatch:
 
 permissions:
@@ -140,4 +142,4 @@ jobs:
           git commit -m "cert(cotahist): valida fase 06 semantica 1995"
           git push
 
-# Retrigger auditavel FASE06: segunda execucao apos verificacao de gatilho.
+# Retrigger auditavel FASE06: gate explicito de disparo na branch main.
