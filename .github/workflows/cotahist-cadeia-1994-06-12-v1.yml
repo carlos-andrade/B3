@@ -2,6 +2,7 @@ name: COTAHIST 1994 - cadeia FASE06-12 V2
 
 # DISPARO AUDITAVEL 2026-09-30: replica controlada do gatilho push; RUN_ID e gerado pelo GitHub Actions.
 # FASE13 2026-10-01: revalidacao da cadeia 1994 FASE06->FASE12 apos correcao da FASE02.
+# FASE13.1 2026-10-01: execucao ordenada e gates explicitos entre blocos.
 
 on:
   workflow_dispatch:
@@ -50,10 +51,37 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: FASE06-08 — evidências retrospectivas
+      # Ordem obrigatoria: FASE06 -> FASE07 -> FASE08 -> GATE -> FASE09 -> FASE10 -> FASE11 -> FASE12.
+      # O bloco FASE06-08 gera as tres evidencias de forma deterministica; o gate abaixo
+      # impede que FASE09-12 seja executada com qualquer dependencia anterior bloqueada.
+      - name: FASE06-08 — evidências retrospectivas em ordem
         run: python scripts/ingestao/gerar_evidencias_cotahist_1994_fases06_08_v1.py
 
-      - name: FASE09-12 — pre-release, integridade, certificação e fechamento
+      - name: GATE — FASE06-08 antes de FASE09
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("dados/cotahist/quality")
+          expected={
+            "FASE06":"COTAHIST_1994_FASE06_RECONCILIACAO_V1.json",
+            "FASE07":"COTAHIST_1994_FASE07_IDENTIDADE_CHAVES_V1.json",
+            "FASE08":"COTAHIST_1994_FASE08_SEMANTICA_CALENDARIO_V1.json",
+          }
+          allowed={"VALIDADO","VALIDADO_COM_EXCECAO"}
+          for phase, filename in expected.items():
+              p=base/filename
+              if not p.exists():
+                  raise SystemExit(f"GATE_BLOQUEADO: {phase}: evidencia ausente: {p}")
+              obj=json.loads(p.read_text(encoding="utf-8"))
+              status=obj.get("status")
+              print(f"{phase}={status}")
+              if status not in allowed:
+                  raise SystemExit(f"GATE_BLOQUEADO: {phase}={status}")
+          print("GATE_OK: FASE06-08 -> FASE09")
+          PY
+
+      - name: FASE09-12 — execução sequencial fail-closed
         run: python scripts/ingestao/gerar_cadeia_cotahist_1994_fases09_12_v1.py
 
       - name: Publicar evidências 1994
