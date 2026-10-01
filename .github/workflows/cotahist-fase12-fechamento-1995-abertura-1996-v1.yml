@@ -1,9 +1,9 @@
 name: COTAHIST - FASE12 Fechamento 1995 Abertura 1996 V1
+
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - ".github/workflows/cotahist-fase12-fechamento-1995-abertura-1996-v1.yml"
       - "scripts/ingestao/fechar_cotahist_1995_abrir_1996_fase12_v1.py"
@@ -28,15 +28,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-
-      - name: Configurar Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
       - name: Executar FASE12
-        run: python scripts/ingestao/fechar_cotahist_1995_abrir_1996_fase12_v1.py
-
+        run: python3 scripts/ingestao/fechar_cotahist_1995_abrir_1996_fase12_v1.py
       - name: Publicar transicao
         if: success()
         run: |
@@ -47,7 +40,8 @@ jobs:
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
-
       - name: Resumo
         if: always()
-        run: echo "FASE12 1995->1996: fechamento e abertura sob controle"
+        run: |
+          echo "FASE12 1995->1996: fechamento e abertura sob controle"
+          echo "Evidencia: dados/cotahist/quality/COTAHIST_1995_FASE12_FECHAMENTO_1996_ABERTURA_V1.json"
