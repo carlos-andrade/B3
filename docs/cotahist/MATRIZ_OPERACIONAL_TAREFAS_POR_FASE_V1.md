@@ -777,3 +777,16 @@ Cada execução deve registrar no GITHUB_STEP_SUMMARY: workflow, fase/tarefa, ru
 O monitor permanente .github/workflows/b3-monitor-execucoes-v1.yml verifica execuções a cada 15 minutos e não dispara reexecuções. Seu objetivo é detectar FAVORÁVEL, NÃO_FAVORÁVEL ou EM_EXECUÇÃO.
 
 A decisão de reexecutar deve ser baseada em mudança real da entrada, correção pendente ou alteração normativa aplicável. Sucesso, falha já registrada ou alteração de documentação não autorizam reexecução por si só.
+
+
+---
+
+## FONTE NORMATIVA CANÔNICA — 2026-10-01
+
+Este documento é **derivado/operacional** e não constitui fonte independente para geração de código. As regras executáveis devem ser reconciliadas com:
+
+`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+
+**Regra:** Layout Mestre → especificação da tarefa → código/workflow → evidência.
+
+Se houver divergência, o Layout Mestre prevalece até reconciliação e versionamento formal.
