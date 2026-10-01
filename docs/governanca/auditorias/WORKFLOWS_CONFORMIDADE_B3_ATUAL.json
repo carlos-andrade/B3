@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T17:31:59.309623+00:00",
+  "generated_at_utc": "2026-10-01T18:24:46.040302+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
   "status_counts": {
@@ -221,8 +221,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -687,8 +687,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -764,8 +764,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -918,8 +918,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -1378,8 +1378,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -1455,8 +1455,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -1532,8 +1532,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -1990,8 +1990,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -2067,8 +2067,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -2222,8 +2222,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -2376,8 +2376,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -3532,8 +3532,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -3615,8 +3615,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -3698,8 +3698,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -3781,8 +3781,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4030,8 +4030,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4113,8 +4113,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4196,8 +4196,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4279,8 +4279,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4362,8 +4362,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4445,8 +4445,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4609,8 +4609,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4858,8 +4858,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -4941,8 +4941,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -5751,8 +5751,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -5828,8 +5828,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -6817,8 +6817,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7123,8 +7123,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7350,8 +7350,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7581,8 +7581,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7658,8 +7658,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7735,8 +7735,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -7966,8 +7966,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
