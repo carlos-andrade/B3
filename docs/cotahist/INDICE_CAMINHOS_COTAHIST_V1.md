@@ -79,3 +79,5 @@ O índice deve ser consultado antes de:
 ## 8. Regra final
 
 > **Primeiro localizar. Depois validar. Só então adquirir, corrigir ou avançar.**
+
+<!-- FASE06 gate retrigger auditavel 2026-10-01 -->
