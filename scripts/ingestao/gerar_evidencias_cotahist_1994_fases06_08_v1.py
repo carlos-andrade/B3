@@ -274,11 +274,42 @@ codbdi_distribution = Counter(row["codbdi"] for row in raw)
 dimes_distribution = Counter(row["dimes"] for row in raw)
 
 ohlc_bad = 0
+ohlc_raw_violations = 0
+ohlc_controlled_exceptions = []
 ohlc_violation_samples = []
 ohlc_violation_by_tpmerc = Counter()
 ohlc_violation_by_codbdi = Counter()
 ohlc_ignored_zero_rows = 0
 premed_outside_range = 0
+
+# Excecoes controladas: anomalias semanticas observadas na propria fonte oficial
+# de 1994. A excecao so e aceita se o SHA do RAW permanecer exatamente igual
+# e se linha + identificacao + cinco precos coincidirem. Nenhuma correcao e
+# aplicada ao RAW ou ao NORMALIZED.
+CONTROLLED_OHLC_EXCEPTIONS = {
+    35516: {
+        "tpmerc": "080", "codbdi": "82", "codneg": "OTC 55",
+        "preabe": "0000000001732", "premax": "0000000001733",
+        "premin": "0000000001732", "premed": "0000000001732",
+        "preult": "0000000001632",
+    },
+    39735: {
+        "tpmerc": "080", "codbdi": "82", "codneg": "OTC 89",
+        "preabe": "0000000003250", "premax": "0000000003250",
+        "premin": "0000000003250", "premed": "0000000003250",
+        "preult": "0000000003175",
+    },
+}
+
+RAW_SHA_FOR_CONTROLLED_EXCEPTIONS = "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb"
+
+def controlled_ohlc_exception(row):
+    expected = CONTROLLED_OHLC_EXCEPTIONS.get(row["_line"])
+    if not expected:
+        return False
+    if sha(RAW) != RAW_SHA_FOR_CONTROLLED_EXCEPTIONS:
+        return False
+    return all(row.get(key) == value for key, value in expected.items())
 for row in raw:
     try:
         op, hi, lo, mid, close = [
@@ -290,24 +321,30 @@ for row in raw:
             continue
         if not (lo <= hi and hi >= max(op, close) and lo <= min(op, close)):
 
-            ohlc_bad += 1
-            ohlc_violation_by_tpmerc[row["tpmerc"]] += 1
-            ohlc_violation_by_codbdi[row["codbdi"]] += 1
-            if len(ohlc_violation_samples) < 30:
-                ohlc_violation_samples.append({
-                    "line": row["_line"],
-                    "tpmerc": row["tpmerc"],
-                    "codbdi": row["codbdi"],
-                    "codneg": row["codneg"],
-                    "preabe": row["preabe"],
-                    "premax": row["premax"],
-                    "premin": row["premin"],
-                    "premed": row["premed"],
-                    "preult": row["preult"],
-                })
+            ohlc_raw_violations += 1
+            violation = {
+                "line": row["_line"],
+                "tpmerc": row["tpmerc"],
+                "codbdi": row["codbdi"],
+                "codneg": row["codneg"],
+                "preabe": row["preabe"],
+                "premax": row["premax"],
+                "premin": row["premin"],
+                "premed": row["premed"],
+                "preult": row["preult"],
+            }
+            if controlled_ohlc_exception(row):
+                ohlc_controlled_exceptions.append(violation)
+            else:
+                ohlc_bad += 1
+                ohlc_violation_by_tpmerc[row["tpmerc"]] += 1
+                ohlc_violation_by_codbdi[row["codbdi"]] += 1
+                if len(ohlc_violation_samples) < 30:
+                    ohlc_violation_samples.append(violation)
         if not (lo <= mid <= hi):
             premed_outside_range += 1
     except Exception:
+        ohlc_raw_violations += 1
         ohlc_bad += 1
         if len(ohlc_violation_samples) < 30:
             ohlc_violation_samples.append({
@@ -347,6 +384,9 @@ f08 = {
     "codbdi_distribution": dict(codbdi_distribution),
     "dimes_distribution": dict(dimes_distribution),
     "ohlc_relation_violations": ohlc_bad,
+    "ohlc_raw_violations": ohlc_raw_violations,
+    "ohlc_controlled_exceptions": ohlc_controlled_exceptions,
+    "ohlc_controlled_exception_count": len(ohlc_controlled_exceptions),
     "ohlc_ignored_zero_rows": ohlc_ignored_zero_rows,
     "premed_outside_range": premed_outside_range,
     "ohlc_violation_by_tpmerc": dict(ohlc_violation_by_tpmerc),
@@ -354,7 +394,17 @@ f08 = {
     "ohlc_violation_samples": ohlc_violation_samples,
     "gates": f08_gates,
     "raw_sha256": sha(RAW),
-    "decision": "VALIDADO" if f08_valid else "BLOQUEADO",
+    "exception_policy": {
+        "raw_sha256": RAW_SHA_FOR_CONTROLLED_EXCEPTIONS,
+        "registry_size": len(CONTROLLED_OHLC_EXCEPTIONS),
+        "controlled_exception_count": len(ohlc_controlled_exceptions),
+        "unclassified_violation_count": ohlc_bad,
+    },
+    "decision": (
+        "VALIDADO_COM_EXCECAO"
+        if f08_valid and ohlc_controlled_exceptions
+        else ("VALIDADO" if f08_valid else "BLOQUEADO")
+    ),
     "note": (
         "Lacunas em dias uteis sao apenas candidatas a nao-pregao; nao sao "
         "classificadas como feriados sem fonte primaria. PRAZOT e avaliado "
@@ -373,6 +423,12 @@ if not f07_valid:
     failed.append("FASE07")
 if not f08_valid:
     failed.append("FASE08")
+
+# Status controlado: os gates passam, mas a evidencia preserva explicitamente
+# as anomalias de fonte que foram aceitas por registro deterministico.
+if f08_valid and ohlc_controlled_exceptions:
+    f08["status"] = "VALIDADO_COM_EXCECAO"
+    f08["decision"] = "VALIDADO_COM_EXCECAO"
 
 print(json.dumps({
     "year": 1994,
