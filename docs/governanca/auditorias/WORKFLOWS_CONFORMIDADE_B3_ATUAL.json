@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-01T17:06:28.694274+00:00",
+  "generated_at_utc": "2026-10-01T17:19:17.461404+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 109,
   "status_counts": {
-    "DIVERGENTE_CRITICA": 16,
+    "DIVERGENTE_CRITICA": 18,
     "CONFORME": 20,
-    "CONFORME_COM_OBSERVACAO": 73
+    "CONFORME_COM_OBSERVACAO": 71
   },
   "results": [
     {
@@ -2099,7 +2099,7 @@
     {
       "workflow": ".github/workflows/cotahist-fase00-governanca-1994-v1.yml",
       "current_phase": 0,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "DIVERGENTE_CRITICA",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -2139,8 +2139,8 @@
         },
         {
           "code": "NO_POSTERIOR_PHASE_TRIGGER",
-          "ok": true,
-          "detail": "nenhum gatilho explícito de fase posterior",
+          "ok": false,
+          "detail": "gatilho contém fases posteriores: [1]",
           "severity": "CRITICA"
         },
         {
@@ -2168,7 +2168,9 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [],
+      "blocking_divergences": [
+        "NO_POSTERIOR_PHASE_TRIGGER"
+      ],
       "observability_or_advisory": [
         "STEP_SUMMARY",
         "IDEMPOTENCE_SIGNAL"
@@ -2531,8 +2533,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -2614,8 +2616,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -2697,8 +2699,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -2780,8 +2782,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -2863,8 +2865,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -2946,8 +2948,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3029,8 +3031,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3112,8 +3114,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3195,8 +3197,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3278,8 +3280,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3361,8 +3363,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3444,8 +3446,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3527,8 +3529,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3610,8 +3612,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3693,8 +3695,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3776,8 +3778,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3859,8 +3861,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -3944,8 +3946,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4029,8 +4031,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4112,8 +4114,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4195,8 +4197,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4278,8 +4280,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4361,8 +4363,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4444,8 +4446,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4527,8 +4529,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4608,8 +4610,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4691,8 +4693,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4774,8 +4776,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -4857,8 +4859,8 @@
         },
         {
           "code": "DIRECTIONAL_INPUT_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal de entrada causal no trigger",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
           "severity": "MEDIA"
         },
         {
@@ -5356,7 +5358,7 @@
     {
       "workflow": ".github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml",
       "current_phase": 1,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "DIVERGENTE_CRITICA",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -5396,8 +5398,8 @@
         },
         {
           "code": "NO_POSTERIOR_PHASE_TRIGGER",
-          "ok": true,
-          "detail": "nenhum gatilho explícito de fase posterior",
+          "ok": false,
+          "detail": "gatilho contém fases posteriores: [2, 6, 7, 8, 9]",
           "severity": "CRITICA"
         },
         {
@@ -5425,7 +5427,9 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [],
+      "blocking_divergences": [
+        "NO_POSTERIOR_PHASE_TRIGGER"
+      ],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
