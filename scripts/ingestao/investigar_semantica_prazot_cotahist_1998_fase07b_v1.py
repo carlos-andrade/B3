@@ -7,7 +7,7 @@ ZIP_PATH = Path(sys.argv[1])
 OUT_PATH = Path(sys.argv[2])
 
 FIELDS = [
-    "data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref",
+    "tipreg","data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref",
     "preabe","premax","premin","premed","preult","preofc","preofv","totneg",
     "quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dismes"
 ]
