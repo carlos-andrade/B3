@@ -59,7 +59,7 @@ def parse(b, kind, a, z):
     if kind == "volume":
         return f"{int(v) / 100:.2f}"
     if kind == "date":
-        return v
+        return f"{v[:4]}-{v[4:6]}-{v[6:8]}" if len(v) == 8 and v.isdigit() else v
     return v
 
 def normalized_value(row, field):
