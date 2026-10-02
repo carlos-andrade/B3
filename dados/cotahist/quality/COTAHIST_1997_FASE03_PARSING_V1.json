@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1997,
+  "phase": "FASE03",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE04",
+  "entry_gate": "FASE14",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP",
+  "raw_sha256": "f6bd380e753ec8024857b739b7d9b010c7467a5fd967e82d01186a46f5e33fc3",
+  "zip_member_count": 1,
+  "zip_member": "COTAHIST.A1997",
+  "record_length_bytes": 245,
+  "total_records": 119274,
+  "record_type_counts": {
+    "00": 1,
+    "01": 119272,
+    "99": 1
+  },
+  "quote_records_type_01": 119272,
+  "invalid_record_lengths": 0,
+  "invalid_dates": 0,
+  "first_quote_date": "1997-01-02",
+  "last_quote_date": "1997-12-30",
+  "validated_at_utc": "2026-10-02T00:15:39.638475+00:00",
+  "parsing_statement": "Parsing estrutural concluido sem registros fora de 245 bytes e sem datas invalidas nos registros tipo 01."
+}
