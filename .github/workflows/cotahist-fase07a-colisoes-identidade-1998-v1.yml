@@ -1,0 +1,61 @@
+name: COTAHIST 1998 - FASE07A Colisoes Identidade V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/investigar_colisoes_identidade_cotahist_1998_fase07a_v1.py"
+      - ".github/workflows/cotahist-fase07a-colisoes-identidade-1998-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1998_FASE07_IDENTIDADE_HISTORICA_V1.json"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase07a-1998
+  cancel-in-progress: false
+jobs:
+  investigate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verificar gate FASE07
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1998_FASE07_IDENTIDADE_HISTORICA_V1.json"
+          e=json.load(open(p,encoding="utf-8"))
+          if e.get("status")!="FASE_07_IDENTIDADE_HISTORICA_1998_ANALISE":
+              raise SystemExit("FAIL-CLOSED: evidencia FASE07 ausente/invalida")
+          if e.get("rows",0) <= 0:
+              raise SystemExit("FAIL-CLOSED: FASE07 sem registros")
+          PY
+      - name: Executar FASE07A
+        run: |
+          python scripts/ingestao/investigar_colisoes_identidade_cotahist_1998_fase07a_v1.py             --zip dados/cotahist/raw/anual/COTAHIST_A1998.ZIP             --output dados/cotahist/quality/COTAHIST_1998_FASE07A_COLISOES_IDENTIDADE_V1.json
+      - name: Validar evidencia
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1998_FASE07A_COLISOES_IDENTIDADE_V1.json"
+          e=json.load(open(p,encoding="utf-8"))
+          if e.get("rows",0)<=0: raise SystemExit("FAIL: nenhuma linha analisada")
+          m=e["collision_metrics"]
+          if m["collision_groups"]<=0: raise SystemExit("FAIL: FASE07A nao encontrou colisoes para investigar")
+          if m["rows_in_collision_groups"] < m["collision_groups"]: raise SystemExit("FAIL: metricas de colisao inconsistentes")
+          PY
+      - name: Persistir evidencia
+        if: success()
+        run: |
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE07A_COLISOES_IDENTIDADE_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): executar FASE07A colisoes identidade 1998"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
