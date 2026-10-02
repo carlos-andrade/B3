@@ -1,0 +1,44 @@
+name: COTAHIST - FASE07C Validacao chave PRAZOT 1997-1999 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/ingestao/validar_chave_prazot_cotahist_1997_1999_fase07c_v1.py
+      - .github/workflows/cotahist-fase07c-validacao-chave-prazot-1997-1999-v1.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase07c-prazot-adjacentes
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Executar FASE07C
+        run: |
+          python scripts/ingestao/validar_chave_prazot_cotahist_1997_1999_fase07c_v1.py             dados/cotahist/raw/anual/COTAHIST_A1997.ZIP             dados/cotahist/raw/anual/COTAHIST_A1998.ZIP             dados/cotahist/raw/anual/COTAHIST_A1999.ZIP             dados/cotahist/quality/COTAHIST_1998_FASE07C_VALIDACAO_CHAVE_PRAZOT_1997_1999_V1.json
+      - name: Validar gate
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1998_FASE07C_VALIDACAO_CHAVE_PRAZOT_1997_1999_V1.json"
+          d=json.load(open(p,encoding="utf-8"))
+          assert d["decision"]=="CANDIDATA_SEM_DUPLICIDADE_NOS_ANOS_TESTADOS"
+          assert all(v["candidate_duplicate_groups"]==0 for v in d["years"].values())
+          assert all(not v["invalid_prazot"] for v in d["years"].values())
+          print("Gate FASE07C OK")
+          PY
+      - name: Persistir evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE07C_VALIDACAO_CHAVE_PRAZOT_1997_1999_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): valida chave PRAZOT em anos adjacentes"
+          git push
