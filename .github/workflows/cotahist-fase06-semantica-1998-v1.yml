@@ -1,0 +1,68 @@
+name: COTAHIST 1998 - FASE06 Semantica V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase06-semantica-1998-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1998_FASE05_MANIFESTO_CHECKSUM_V1.json"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase06-1998
+  cancel-in-progress: false
+jobs:
+  semantica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with: {fetch-depth: 0, lfs: true}
+      - name: Validar semantica
+        run: |
+          python - <<'PY'
+          import collections,datetime,hashlib,json,zipfile,os
+          raw="dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"; f5="dados/cotahist/quality/COTAHIST_1998_FASE05_MANIFESTO_CHECKSUM_V1.json"; out="dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json"
+          e=json.load(open(f5,encoding="utf-8"))
+          if e.get("status")!="VALIDADO" or e.get("decision")!="LIBERADO_PARA_FASE06": raise SystemExit("FAIL-CLOSED: FASE05 nao liberou")
+          sha=hashlib.sha256(open(raw,"rb").read()).hexdigest()
+          if sha!=e["raw_sha256"]: raise SystemExit("FAIL-CLOSED: SHA divergente")
+          with zipfile.ZipFile(raw) as z: lines=z.read(z.namelist()[0]).splitlines()
+          q=[x for x in lines if x[:2]==b"01"]
+          def s(b,a,z): return b[a-1:z].decode("latin-1").strip()
+          def num(b,a,z):
+              v=s(b,a,z); return float(v)/100 if v else 0.0
+          invalid=[]; keys=collections.Counter(); exact=collections.Counter(); dates=set()
+          for i,b in enumerate(q):
+              if len(b)!=245: invalid.append(("length",i)); continue
+              d=s(b,3,10)
+              try: dt=datetime.datetime.strptime(d,"%Y%m%d").date()
+              except: invalid.append(("date",i)); continue
+              if dt.year!=1998: invalid.append(("year",i))
+              dates.add(dt); k=(d,s(b,11,12),s(b,13,24),s(b,25,27)); keys[k]+=1; exact[b]+=1
+              vals=[num(b,57,69),num(b,70,82),num(b,83,95),num(b,96,108),num(b,109,121)]
+              op,hi,lo,med,cl=vals
+              if any(v<0 for v in vals) or (hi and lo and hi<lo) or (cl and hi and cl>hi) or (cl and lo and cl<lo): invalid.append(("ohlc",i))
+              if s(b,153,170) and not s(b,153,170).isdigit(): invalid.append(("quantity",i))
+              if s(b,171,188) and not s(b,171,188).isdigit(): invalid.append(("volume",i))
+              if not s(b,11,12) or not s(b,13,24) or not s(b,25,27): invalid.append(("key",i))
+          if invalid: raise SystemExit("FAIL-CLOSED: "+repr(invalid[:10]))
+          dup={str(k):v for k,v in keys.items() if v>1}
+          idxs=[round(i*(len(q)-1)/29) for i in range(30)]
+          samples=[]
+          for idx in idxs:
+              b=q[idx]; samples.append({"record_index":idx,"date":s(b,3,10),"codbdi":s(b,11,12),"codneg":s(b,13,24),"tpmerc":s(b,25,27),"preabe":num(b,57,69),"premax":num(b,70,82),"premin":num(b,83,95),"premed":num(b,96,108),"preult":num(b,109,121),"quatot":s(b,153,170),"voltot":s(b,171,188)})
+          ev={"schema_version":"1.0.0","year":1998,"phase":"FASE06","status":"VALIDADO","decision":"LIBERADO_PARA_FASE07","entry_gate":"FASE05","raw_path":raw,"raw_sha256":sha,"quote_records_type_01":len(q),"logical_key":"data+codbdi+codneg+tpmerc","logical_key_uniqueness_assessment":"DEFERRED_TO_FASE07","duplicate_logical_keys_observed":len(dup),"duplicate_logical_key_rows":sum(v-1 for v in dup.values()),"duplicate_exact_record_rows":sum(v-1 for v in exact.values() if v>1),"trading_dates_observed":len(dates),"semantic_errors":0,"semantic_checks":{"tpmerc_present":True,"codbdi_present":True,"logical_key_unique":"NOT_ASSESSED_IN_FASE06","duplicate_keys_deferred_to_fase07":True,"ohlc_relationships_valid":True,"quantity_numeric":True,"volume_numeric":True,"ohlc_sample_cases":30},"ohlc_sample_cases":samples,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          json.dump(ev,open(out,"w",encoding="utf-8"),ensure_ascii=False,indent=2)
+          PY
+      - name: Publicar
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json
+          git diff --cached --quiet || git commit -m "cert(cotahist): valida fase 06 semantica 1998"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
