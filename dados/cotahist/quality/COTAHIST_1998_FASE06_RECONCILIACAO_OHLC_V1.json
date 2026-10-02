@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "year": 1998,
   "phase": "FASE06_RECONCILIACAO_OHLC",
-  "status": "ANALISE_REQUERIDA",
-  "decision": "BLOQUEADO_PARA_FASE07",
+  "status": "VALIDADO",
+  "decision": "PARSER_FIDELIDADE_CONFIRMADA_SEM_LIBERACAO",
   "purpose": "Reconciliar os tres registros TERM que apresentam PREULT fora do intervalo PREMIN-PREMAX, comparando bytes RAW, campos parseados e NORMALIZED.",
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
@@ -63,14 +63,14 @@
         "date": "19980716",
         "codneg": "ELET6T"
       },
-      "status": "MISMATCH",
+      "status": "MATCH",
       "raw_record_index": 56403,
       "normalized_row_index": 56402,
       "raw_record_sha256": "4a48203307308d38cfa9884150950237c397e3fadce54c13a2121ef0a40a9120",
       "raw_record_length": 245,
       "raw_record_base64": "MDExOTk4MDcxNjYyRUxFVDZUICAgICAgMDMwRUxFVCAgICAgICAgUE5CKiAgICAgIDA2MFIkICAwMDAwMDAwMDAzOTEyMDAwMDAwMDAwMzkxMjAwMDAwMDAwMDM5MTEwMDAwMDAwMDAzOTExMDAwMDAwMDAwMzkwODAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDQwMDAwMDAwMDAwMDAwMDAwMTU2NDY4ODAwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUkVMRVRBQ05QQjcwNDc=",
       "raw_fields": {
-        "data_pregao": "19980716",
+        "data_pregao": "1998-07-16",
         "codbdi": "62",
         "codneg": "ELET6T",
         "tpmerc": "030",
@@ -90,7 +90,7 @@
         "voltot": "156468.80",
         "preexe": "0.00",
         "indopc": "0",
-        "datven": "99991231",
+        "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRELET",
@@ -123,18 +123,7 @@
         "codisi": "000000BRELET",
         "dismes": "ACNPB7047"
       },
-      "field_mismatches": [
-        {
-          "field": "data_pregao",
-          "raw": "19980716",
-          "normalized": "1998-07-16"
-        },
-        {
-          "field": "datven",
-          "raw": "99991231",
-          "normalized": "9999-12-31"
-        }
-      ],
+      "field_mismatches": [],
       "ohlc": {
         "preabe": "39.12",
         "premax": "39.12",
@@ -153,14 +142,14 @@
         "date": "19981015",
         "codneg": "RCTB40T"
       },
-      "status": "MISMATCH",
+      "status": "MATCH",
       "raw_record_index": 82375,
       "normalized_row_index": 82374,
       "raw_record_sha256": "6677574c674a1655c8d7555d9f4675b55dba2f7c413564e52dacd3d5e3f6971e",
       "raw_record_length": 245,
       "raw_record_base64": "MDExOTk4MTAxNTYyUkNUQjQwVCAgICAgMDMwUkNUQiAgICAgICAgUlBOKiAgICAgIDA2MFIkICAwMDAwMDAwMDA4MzY0MDAwMDAwMDAwODU5NjAwMDAwMDAwMDg1OTUwMDAwMDAwMDA4NTk1MDAwMDAwMDAwODQxNjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDg1OTU1NDQwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUlJDVEJDU0EwMjUwMDI=",
       "raw_fields": {
-        "data_pregao": "19981015",
+        "data_pregao": "1998-10-15",
         "codbdi": "62",
         "codneg": "RCTB40T",
         "tpmerc": "030",
@@ -180,7 +169,7 @@
         "voltot": "85955.44",
         "preexe": "0.00",
         "indopc": "0",
-        "datven": "99991231",
+        "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRRCTB",
@@ -213,18 +202,7 @@
         "codisi": "000000BRRCTB",
         "dismes": "CSA025002"
       },
-      "field_mismatches": [
-        {
-          "field": "data_pregao",
-          "raw": "19981015",
-          "normalized": "1998-10-15"
-        },
-        {
-          "field": "datven",
-          "raw": "99991231",
-          "normalized": "9999-12-31"
-        }
-      ],
+      "field_mismatches": [],
       "ohlc": {
         "preabe": "83.64",
         "premax": "85.96",
@@ -243,14 +221,14 @@
         "date": "19981204",
         "codneg": "CMIG4T"
       },
-      "status": "MISMATCH",
+      "status": "MATCH",
       "raw_record_index": 97844,
       "normalized_row_index": 97843,
       "raw_record_sha256": "ce8dbfc92b3d55cf03e4559285ebedf923d53505ba686c1cda354cfdd3e8add2",
       "raw_record_length": 245,
       "raw_record_base64": "MDExOTk4MTIwNDYyQ01JRzRUICAgICAgMDMwQ01JRyAgICAgICAgUE4gKiAgICAgIDA5MFIkICAwMDAwMDAwMDAyNjg4MDAwMDAwMDAwMjY4OTAwMDAwMDAwMDI2ODgwMDAwMDAwMDAyNjg4MDAwMDAwMDAwMjY4OTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDI2ODgxMjUwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUkNNSUdBQ05QUjMxNzI=",
       "raw_fields": {
-        "data_pregao": "19981204",
+        "data_pregao": "1998-12-04",
         "codbdi": "62",
         "codneg": "CMIG4T",
         "tpmerc": "030",
@@ -270,7 +248,7 @@
         "voltot": "26881.25",
         "preexe": "0.00",
         "indopc": "0",
-        "datven": "99991231",
+        "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRCMIG",
@@ -303,18 +281,7 @@
         "codisi": "000000BRCMIG",
         "dismes": "ACNPR3172"
       },
-      "field_mismatches": [
-        {
-          "field": "data_pregao",
-          "raw": "19981204",
-          "normalized": "1998-12-04"
-        },
-        {
-          "field": "datven",
-          "raw": "99991231",
-          "normalized": "9999-12-31"
-        }
-      ],
+      "field_mismatches": [],
       "ohlc": {
         "preabe": "26.88",
         "premax": "26.89",
@@ -330,6 +297,6 @@
     }
   ],
   "canonical_normalization_version": "1.1.1",
-  "conclusion": "Há divergencia ou ausência entre RAW e NORMALIZED; a FASE07 permanece bloqueada até correção e nova validação.",
-  "validated_at_utc": "2026-10-02T01:04:14.577788+00:00"
+  "conclusion": "Os bytes RAW e a NORMALIZED devem ser identicos semanticamente nos 25 campos para confirmar fidelidade do parser. Mesmo com fidelidade confirmada, a anomalia PREULT < PREMIN permanece uma característica a explicar do dado histórico TERM; esta evidência nao autoriza, por si só, relaxar a regra OHLC nem liberar a FASE07.",
+  "validated_at_utc": "2026-10-02T01:06:59.576563+00:00"
 }
