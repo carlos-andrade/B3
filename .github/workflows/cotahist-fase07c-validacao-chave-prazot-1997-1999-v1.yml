@@ -44,4 +44,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/quality/COTAHIST_1998_FASE07C_VALIDACAO_CHAVE_PRAZOT_1997_1999_V1.json
           git diff --cached --quiet || git commit -m "audit(cotahist): valida chave PRAZOT em anos adjacentes"
+          git pull --rebase origin main
           git push
