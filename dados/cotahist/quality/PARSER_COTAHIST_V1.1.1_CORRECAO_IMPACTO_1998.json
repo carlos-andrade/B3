@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "CORRECAO_PARSER_COTAHIST_V1.1.1",
+  "status": "IMPACTO_IDENTIFICADO",
+  "date_utc": "2026-10-02",
+  "cause": "O parser v1.1.0 utilizava offsets incorretos nos campos FATCOT, PTOEXE, CODISI e DISMES do registro 01 de 245 bytes.",
+  "correction": {
+    "parser_file": "scripts/ingestao/normalize_cotahist.py",
+    "previous_version": "1.1.0",
+    "new_version": "1.1.1",
+    "correct_layout": {
+      "FATCOT": "211-217",
+      "PTOEXE": "218-224",
+      "CODISI": "225-236",
+      "DISMES": "237-245"
+    }
+  },
+  "validated_1998": {
+    "raw_sha256": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
+    "normalized_sha256_v1_1_1": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
+    "rows": 104971,
+    "target_records_reconciled": 3,
+    "target_records_match": 3,
+    "semantic_errors": 0
+  },
+  "governance": {
+    "raw_unchanged": true,
+    "no_ohlc_values_modified": true,
+    "fase07_release": false,
+    "reason": "Os tres registros TERM continuam apresentando PREULT < PREMIN; a fidelidade do parser foi confirmada, mas a semantica historica do dado ainda requer explicacao antes da liberacao."
+  },
+  "impact": "Qualquer release normalizado produzido com parser v1.1.0 deve ser considerado sujeito a reprocessamento e nova certificacao antes de ser tratado como semanticamente definitivo."
+}
