@@ -1,0 +1,71 @@
+name: COTAHIST 1998 - FASE04 Normalizacao V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-1998-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1998_FASE03_PARSING_V1.json"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase04-1998
+  cancel-in-progress: false
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with: {fetch-depth: 0, lfs: true}
+      - uses: actions/setup-python@v7
+        with: {python-version: "3.12"}
+      - name: Verificar FASE03
+        run: |
+          python - <<'PY'
+          import json
+          e=json.load(open("dados/cotahist/quality/COTAHIST_1998_FASE03_PARSING_V1.json",encoding="utf-8"))
+          if e.get("status")!="VALIDADO" or e.get("decision")!="LIBERADO_PARA_FASE04": raise SystemExit("FAIL-CLOSED: FASE03 nao liberou")
+          PY
+      - name: Normalizar 1998
+        run: python scripts/ingestao/normalize_cotahist.py --zip dados/cotahist/raw/anual/COTAHIST_A1998.ZIP --output dados/cotahist/normalized/anual/COTAHIST_A1998.csv
+      - name: Verificar contra manifesto
+        run: |
+          python - <<'PY'
+          import csv,hashlib,json
+          p="dados/cotahist/normalized/anual/COTAHIST_A1998.csv"
+          m=json.load(open("dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json",encoding="utf-8"))
+          h=hashlib.sha256(open(p,"rb").read()).hexdigest()
+          if h!=m["normalized_sha256"]: raise SystemExit(f"FAIL-CLOSED: hash {h} != {m['normalized_sha256']}")
+          with open(p,encoding="utf-8",newline="") as f:
+              r=csv.reader(f); header=next(r); rows=list(r)
+          if len(header)!=25 or any(len(x)!=25 for x in rows): raise SystemExit("FAIL-CLOSED: schema 25 campos")
+          if len(rows)!=m["linhas_normalized"]: raise SystemExit("FAIL-CLOSED: linhas divergentes")
+          dates=[x[0] for x in rows]
+          if min(dates)!=m["primeira_data"] or max(dates)!=m["ultima_data"]: raise SystemExit("FAIL-CLOSED: datas divergentes")
+          print(h,len(rows),len(header),min(dates),max(dates))
+          PY
+      - name: Gerar evidencia
+        run: |
+          python - <<'PY'
+          import datetime,csv,hashlib,json
+          from pathlib import Path
+          raw=Path("dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"); norm=Path("dados/cotahist/normalized/anual/COTAHIST_A1998.csv"); mpath=Path("dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json"); ev=Path("dados/cotahist/quality/COTAHIST_1998_FASE04_NORMALIZACAO_V1.json")
+          m=json.loads(mpath.read_text(encoding="utf-8"))
+          with norm.open(encoding="utf-8",newline="") as f: r=csv.reader(f); header=next(r); rows=list(r)
+          out={"schema_version":"1.0.0","year":1998,"phase":"FASE04","status":"VALIDADO","decision":"LIBERADO_PARA_FASE05","entry_gate":"FASE03","validation_method":"normalizacao_deterministica_com_script_canonico","raw_path":str(raw),"raw_sha256":hashlib.sha256(raw.read_bytes()).hexdigest(),"normalized_path":str(norm),"normalized_manifest_path":str(mpath),"normalized_sha256":hashlib.sha256(norm.read_bytes()).hexdigest(),"parser_version":m.get("parser_version"),"rows":len(rows),"fields":len(header),"invalid_dates":m.get("datas_invalidas",0),"out_of_year_dates":m.get("datas_fora_do_ano",0),"first_date":min(x[0] for x in rows),"last_date":max(x[0] for x in rows),"manifest_matches_computed":True,"normalization_is_deterministically_reconciled":True,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+      - name: Publicar
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/anual/COTAHIST_A1998.csv dados/cotahist/quality/COTAHIST_1998_FASE04_NORMALIZACAO_V1.json
+          git diff --cached --quiet || git commit -m "data(cotahist): materializa normalized de 1998"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
