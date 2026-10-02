@@ -1,0 +1,40 @@
+name: COTAHIST 1997 - FASE08 Semantica K4 V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/analisar_semantica_k4_cotahist_1997_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1997_FASE07_IDENTIDADE_HISTORICA_V1.json"
+      - ".github/workflows/cotahist-fase08-semantica-k4-1997-v1.yml"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase08-1997
+  cancel-in-progress: false
+jobs:
+  semantica:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Executar FASE08
+        run: |
+          python scripts/ingestao/analisar_semantica_k4_cotahist_1997_v1.py             --zip dados/cotahist/raw/anual/COTAHIST_A1997.ZIP             --output dados/cotahist/quality/COTAHIST_1997_FASE08_SEMANTICA_K4_V1.json
+      - name: Persistir evidencia
+        if: success()
+        run: |
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1997_FASE08_SEMANTICA_K4_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): executar fase 08 semantica k4 1997"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
