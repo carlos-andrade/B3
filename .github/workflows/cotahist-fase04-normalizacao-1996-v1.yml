@@ -66,7 +66,7 @@ jobs:
           if len(rows)!=int(m.get("linhas_normalized")):
               raise SystemExit(f"FAIL-CLOSED: linhas={len(rows)}")
           dates=[x[0] for x in rows]
-          if min(dates)!=m.get("primeira_data") or max(dates)!=m.get("ultima_data"):
+          if any(len(x)!=25 for x in rows):\n              raise SystemExit("FAIL-CLOSED: registro com numero de campos diferente de 25")\n          if min(dates)!=m.get("primeira_data") or max(dates)!=m.get("ultima_data"):
               raise SystemExit("FAIL-CLOSED: intervalo de datas divergente")
           print(f"NORMALIZED_SHA256={actual}")
           print(f"ROWS={len(rows)} FIELDS={len(header)} FIRST={min(dates)} LAST={max(dates)}")
