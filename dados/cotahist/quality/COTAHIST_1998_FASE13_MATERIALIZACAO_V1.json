@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_13",
+  "year": 1998,
+  "purpose": "MATERIALIZACAO_NORMALIZED",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP",
+  "manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
+  "raw_sha256_actual": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
+  "raw_sha256_manifest": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
+  "normalized_sha256_actual": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
+  "normalized_sha256_manifest": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
+  "rows_normalized": 104971,
+  "rows_manifest": 104971,
+  "fields": 25,
+  "first_date": "1998-01-02",
+  "last_date": "1998-12-30",
+  "invalid_dates": 0,
+  "dates_outside_year": 0,
+  "failures": [],
+  "status": "VALIDADO",
+  "decision": "NORMALIZED_1998_MATERIALIZADO"
+}
