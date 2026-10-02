@@ -19,7 +19,7 @@ checks={
 failures=[k for k,v in checks.items() if not v]
 status="VALIDADO" if not failures else "BLOQUEADO"
 out={"schema_version":"1.0.0","phase":"FASE_12","transition":"1996_FECHAMENTO_1997_ABERTURA","year_closed":1996,"year_opened":1997,
-"closed":{"status":"FECHADO_E_CERTIFICADO" if not failures else "NAO_CERTIFICADO","phase11_evidence":"dados/cotahist/quality/COTAHIST_1996_FASE11_CERTIFICACAO_V1.json","phase11_status":f11.get("status"),"certification":f11.get("certificacao"),"rows_normalized":104791,"fields":25},
+"closed":{"status":"FECHADO_E_CERTIFICADO" if not failures else "NAO_CERTIFICADO","phase11_evidence":"dados/cotahist/quality/COTAHIST_1996_FASE11_CERTIFICACAO_V1.json","phase11_status":f11.get("status"),"certification":f11.get("certificacao"),"rows_normalized":110685,"fields":25},
 "next_year":{"raw_present":checks["raw_1997_present"],"manifest_present":checks["manifest_1997_present"],"manifest_status":m96.get("status"),"parser_version":m96.get("parser_version"),"rows_normalized":m96.get("linhas_normalized"),"fields":m96.get("campos"),"invalid_dates":m96.get("datas_invalidas"),"dates_outside_year":m96.get("datas_fora_do_ano"),"normalized_release_present":(B/"normalized/anual/COTAHIST_A1997.csv").exists()},
 "gate":"FASE_11_1996_REQUIRED_BEFORE_1997_OPENING","checks":checks,"failures":failures,"decision":"1997_ABERTO_SOB_CONTROLE" if not failures else "1997_ABERTURA_BLOQUEADA"}
 (Q/"COTAHIST_1996_FASE12_FECHAMENTO_1997_ABERTURA_V1.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
