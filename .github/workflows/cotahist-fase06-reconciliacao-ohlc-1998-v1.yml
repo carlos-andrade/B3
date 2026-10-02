@@ -1,0 +1,43 @@
+name: COTAHIST 1998 - FASE06 Reconciliacao OHLC V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml"
+      - "scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1998.csv"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase06-reconciliacao-ohlc-1998
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Executar reconciliacao
+        run: |
+          python scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py
+
+      - name: Publicar evidencia
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json ]; then
+            git add dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
+            git diff --cached --quiet || git commit -m "audit(cotahist): publica reconciliacao OHLC 1998"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
