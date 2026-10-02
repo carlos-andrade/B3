@@ -13,7 +13,6 @@ permissions:
 concurrency:
   group: cotahist-fase06-reconciliacao-ohlc-1998
   cancel-in-progress: false
-
 jobs:
   reconcile:
     runs-on: ubuntu-latest
@@ -24,11 +23,9 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-
       - name: Executar reconciliacao
         run: |
           python scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py
-
       - name: Publicar evidencia
         if: always()
         run: |
