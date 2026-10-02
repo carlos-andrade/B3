@@ -11,7 +11,7 @@ from decimal import Decimal
 from pathlib import Path
 
 
-PARSER_VERSION = "1.1.0"
+PARSER_VERSION = "1.1.1"
 
 FIELDS = [
     ("data_pregao", 3, 10, "date"),
@@ -36,9 +36,9 @@ FIELDS = [
     ("indopc", 202, 202, "str"),
     ("datven", 203, 210, "date"),
     ("fatcot", 211, 217, "int"),
-    ("ptoexe", 218, 230, "price6"),
-    ("codisi", 231, 242, "str"),
-    ("dismes", 243, 245, "str"),
+    ("ptoexe", 218, 224, "price"),
+    ("codisi", 225, 236, "str"),
+    ("dismes", 237, 245, "str"),
 ]
 
 HEADER = [field[0] for field in FIELDS]
