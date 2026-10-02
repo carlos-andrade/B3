@@ -19,6 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with: {fetch-depth: 0, lfs: true}
+      - name: Verificar script de reconciliacao
+        run: |
+          test -f scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py
+      - name: Reconciliar anomalias OHLC
+        continue-on-error: true
+        run: |
+          python scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py
+
       - name: Validar semantica
         run: |
           python - <<'PY'
@@ -74,7 +82,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json
+          git add dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
           git diff --cached --quiet || git commit -m "cert(cotahist): valida fase 06 semantica 1998"
           git fetch origin main
           git rebase origin/main
