@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE08",
+  "status": "VALIDADO",
+  "year": 1998,
+  "raw_file": "COTAHIST_A1998.ZIP",
+  "rows_total": 104971,
+  "trading_dates": 246,
+  "first_date": "19980102",
+  "last_date": "19981230",
+  "weekend_records": [],
+  "invalid_dates": [],
+  "numeric_field_errors": [],
+  "term_rows": 8234,
+  "date_multiplicity_max": 553,
+  "governance": [
+    "Validação estrutural/calendário não reescreve dados.",
+    "Registros TERM não são rejeitados por geometria OHLC clássica.",
+    "Anomalias documentadas permanecem preservadas."
+  ]
+}
