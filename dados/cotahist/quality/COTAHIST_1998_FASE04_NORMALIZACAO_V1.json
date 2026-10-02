@@ -10,8 +10,8 @@
   "raw_sha256": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
   "normalized_manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json",
-  "normalized_sha256": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
-  "parser_version": "1.1.0",
+  "normalized_sha256": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
+  "parser_version": "1.1.1",
   "rows": 104971,
   "fields": 25,
   "invalid_dates": 0,
@@ -20,5 +20,5 @@
   "last_date": "1998-12-30",
   "manifest_matches_computed": true,
   "normalization_is_deterministically_reconciled": true,
-  "validated_at_utc": "2026-10-02T00:38:45.086822+00:00"
+  "validated_at_utc": "2026-10-02T01:01:37.458584+00:00"
 }
