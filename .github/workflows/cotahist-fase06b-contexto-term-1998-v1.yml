@@ -1,0 +1,39 @@
+name: COTAHIST 1998 - FASE06B Contexto TERM V1
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/auditar_contexto_term_cotahist_1998_v1.py"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1998.csv"
+      - ".github/workflows/cotahist-fase06b-contexto-term-1998-v1.yml"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase06b-contexto-term-1998
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout completo com LFS
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Executar analise contextual
+        run: python scripts/ingestao/auditar_contexto_term_cotahist_1998_v1.py
+      - name: Publicar evidencia
+        if: always()
+        run: |
+          if [ -f dados/cotahist/quality/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json ]; then
+            cp dados/cotahist/quality/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json /tmp/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git fetch origin main
+            git checkout -B main origin/main
+            cp /tmp/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json dados/cotahist/quality/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json
+            git add dados/cotahist/quality/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json
+            git diff --cached --quiet || (git commit -m "audit(cotahist): contexto TERM 1998 fase 06b" && git push origin HEAD:main)
+          fi
