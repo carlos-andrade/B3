@@ -113,7 +113,7 @@ out={
    "Nenhum dado RAW ou normalizado e alterado por esta investigacao."
  ]
 }
-# replace eval-derived examples with deterministic parsed tuples
+# serializar exemplos diretamente como arrays estruturados; nunca usar repr/eval de tuplas
 out["base_key_semantics"]["examples"]=[]
 for k,v in list(multi_prazot_bases.items())[:50]:
     out["base_key_semantics"]["examples"].append({"base_key":list(k),"prazot_values":v})
