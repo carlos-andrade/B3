@@ -49,5 +49,5 @@
   "rule": "PREMAX/PREMIN/PREULT reconciliacao exige investigacao quando PREULT fica fora do intervalo PREMIN-PREMAX",
   "b3_layout_source": "https://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf",
   "b3_layout_observation": "TPMERC 030 = TERM; PREMAX = highest floor price; PREMIN = lowest floor price; PREULT = last negotiated price.",
-  "validated_at_utc": "2026-10-02T00:47:25.401980+00:00"
+  "validated_at_utc": "2026-10-02T01:08:48.728489+00:00"
 }

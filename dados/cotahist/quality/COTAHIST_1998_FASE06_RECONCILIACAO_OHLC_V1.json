@@ -298,5 +298,5 @@
   ],
   "canonical_normalization_version": "1.1.1",
   "conclusion": "Os bytes RAW e a NORMALIZED devem ser identicos semanticamente nos 25 campos para confirmar fidelidade do parser. Mesmo com fidelidade confirmada, a anomalia PREULT < PREMIN permanece uma característica a explicar do dado histórico TERM; esta evidência nao autoriza, por si só, relaxar a regra OHLC nem liberar a FASE07.",
-  "validated_at_utc": "2026-10-02T01:06:59.576563+00:00"
+  "validated_at_utc": "2026-10-02T01:08:47.328099+00:00"
 }
