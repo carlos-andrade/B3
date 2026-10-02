@@ -91,7 +91,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "99991231",
-        "fatcot": "10.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRELET",
         "dismes": "ACNPB7047"
@@ -133,11 +133,6 @@
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
-        },
-        {
-          "field": "fatcot",
-          "raw": "10.00",
-          "normalized": "1000"
         }
       ],
       "ohlc": {
@@ -186,7 +181,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "99991231",
-        "fatcot": "10.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRRCTB",
         "dismes": "CSA025002"
@@ -228,11 +223,6 @@
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
-        },
-        {
-          "field": "fatcot",
-          "raw": "10.00",
-          "normalized": "1000"
         }
       ],
       "ohlc": {
@@ -281,7 +271,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "99991231",
-        "fatcot": "10.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "000000BRCMIG",
         "dismes": "ACNPR3172"
@@ -323,11 +313,6 @@
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
-        },
-        {
-          "field": "fatcot",
-          "raw": "10.00",
-          "normalized": "1000"
         }
       ],
       "ohlc": {
@@ -346,5 +331,5 @@
   ],
   "canonical_normalization_version": "1.1.1",
   "conclusion": "Há divergencia ou ausência entre RAW e NORMALIZED; a FASE07 permanece bloqueada até correção e nova validação.",
-  "validated_at_utc": "2026-10-02T01:03:08.852068+00:00"
+  "validated_at_utc": "2026-10-02T01:04:14.577788+00:00"
 }
