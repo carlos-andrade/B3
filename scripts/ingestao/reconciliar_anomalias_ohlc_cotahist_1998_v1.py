@@ -39,7 +39,7 @@ FIELDS = [
     ("preexe", 189, 201, "price"),
     ("indopc", 202, 202, "text"),
     ("datven", 203, 210, "date"),
-    ("fatcot", 211, 217, "price"),
+    ("fatcot", 211, 217, "int"),
     ("ptoexe", 218, 224, "price"),
     ("codisi", 225, 236, "text"),
     ("dismes", 237, 245, "text"),
