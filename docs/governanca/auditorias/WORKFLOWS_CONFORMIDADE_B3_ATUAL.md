@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-02T01:50:35.327581+00:00
-Workflows auditados: 149
+Gerado em UTC: 2026-10-02T08:52:04.498133+00:00
+Workflows auditados: 150
 
 ## Regra de decisão
 
@@ -92,6 +92,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase07b-semantica-prazot-1998-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07b-tpmerc-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07c-codbdi-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase07c-validacao-chave-prazot-1997-1999-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07d-codisi-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07e-dimes-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07f-colisao-k4-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
