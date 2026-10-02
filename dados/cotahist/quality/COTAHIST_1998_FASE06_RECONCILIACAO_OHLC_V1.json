@@ -76,8 +76,8 @@
         "tpmerc": "030",
         "nomres": "ELET",
         "especi": "PNB*",
-        "prazot": "06",
-        "modref": "0",
+        "prazot": "060",
+        "modref": "R$",
         "preabe": "39.12",
         "premax": "39.12",
         "premin": "39.11",
@@ -118,7 +118,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "9999-12-31",
-        "fatcot": "1000.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "BRELETACNPB7",
         "dismes": "047"
@@ -130,16 +130,6 @@
           "normalized": "1998-07-16"
         },
         {
-          "field": "prazot",
-          "raw": "06",
-          "normalized": "060"
-        },
-        {
-          "field": "modref",
-          "raw": "0",
-          "normalized": "R$"
-        },
-        {
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
@@ -147,7 +137,7 @@
         {
           "field": "fatcot",
           "raw": "10.00",
-          "normalized": "1000.00"
+          "normalized": "1000"
         },
         {
           "field": "codisi",
@@ -191,8 +181,8 @@
         "tpmerc": "030",
         "nomres": "RCTB",
         "especi": "RPN*",
-        "prazot": "06",
-        "modref": "0",
+        "prazot": "060",
+        "modref": "R$",
         "preabe": "83.64",
         "premax": "85.96",
         "premin": "85.95",
@@ -233,7 +223,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "9999-12-31",
-        "fatcot": "1000.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "BRRCTBCSA025",
         "dismes": "002"
@@ -245,16 +235,6 @@
           "normalized": "1998-10-15"
         },
         {
-          "field": "prazot",
-          "raw": "06",
-          "normalized": "060"
-        },
-        {
-          "field": "modref",
-          "raw": "0",
-          "normalized": "R$"
-        },
-        {
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
@@ -262,7 +242,7 @@
         {
           "field": "fatcot",
           "raw": "10.00",
-          "normalized": "1000.00"
+          "normalized": "1000"
         },
         {
           "field": "codisi",
@@ -306,8 +286,8 @@
         "tpmerc": "030",
         "nomres": "CMIG",
         "especi": "PN *",
-        "prazot": "09",
-        "modref": "0",
+        "prazot": "090",
+        "modref": "R$",
         "preabe": "26.88",
         "premax": "26.89",
         "premin": "26.88",
@@ -348,7 +328,7 @@
         "preexe": "0.00",
         "indopc": "0",
         "datven": "9999-12-31",
-        "fatcot": "1000.00",
+        "fatcot": "1000",
         "ptoexe": "0.00",
         "codisi": "BRCMIGACNPR3",
         "dismes": "172"
@@ -360,16 +340,6 @@
           "normalized": "1998-12-04"
         },
         {
-          "field": "prazot",
-          "raw": "09",
-          "normalized": "090"
-        },
-        {
-          "field": "modref",
-          "raw": "0",
-          "normalized": "R$"
-        },
-        {
           "field": "datven",
           "raw": "99991231",
           "normalized": "9999-12-31"
@@ -377,7 +347,7 @@
         {
           "field": "fatcot",
           "raw": "10.00",
-          "normalized": "1000.00"
+          "normalized": "1000"
         },
         {
           "field": "codisi",
@@ -404,6 +374,7 @@
       }
     }
   ],
+  "canonical_normalization_version": "1.1.1",
   "conclusion": "Há divergencia ou ausência entre RAW e NORMALIZED; a FASE07 permanece bloqueada até correção e nova validação.",
-  "validated_at_utc": "2026-10-02T00:56:32.878496+00:00"
+  "validated_at_utc": "2026-10-02T00:59:55.101114+00:00"
 }
