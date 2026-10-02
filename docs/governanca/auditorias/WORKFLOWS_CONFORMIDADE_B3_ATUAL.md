@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-02T00:35:53.109605+00:00
-Workflows auditados: 141
+Gerado em UTC: 2026-10-02T00:38:06.636317+00:00
+Workflows auditados: 142
 
 ## Regra de decisão
 
@@ -70,6 +70,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-normalizacao-1995-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase04-normalizacao-1996-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase04-normalizacao-1997-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase04-normalizacao-1998-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1996-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
