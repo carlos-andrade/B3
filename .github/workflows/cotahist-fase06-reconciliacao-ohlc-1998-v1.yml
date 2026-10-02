@@ -17,7 +17,7 @@ concurrency:
 jobs:
   reconcile:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 21
     steps:
       - name: Checkout completo com LFS
         uses: actions/checkout@v5
