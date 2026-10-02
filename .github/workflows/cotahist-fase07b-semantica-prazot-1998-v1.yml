@@ -1,0 +1,61 @@
+name: COTAHIST 1998 - FASE07B Semantica PRAZOT TPMERC030 V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/ingestao/investigar_semantica_prazot_cotahist_1998_fase07b_v1.py
+      - .github/workflows/cotahist-fase07b-semantica-prazot-1998-v1.yml
+      - dados/cotahist/quality/COTAHIST_1998_FASE07A_COLISOES_IDENTIDADE_V1.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase07b-1998
+  cancel-in-progress: false
+
+jobs:
+  investigate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Verificar gate FASE07A
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1998_FASE07A_COLISOES_IDENTIDADE_V1.json"
+          d=json.load(open(p,encoding="utf-8"))
+          assert d["collision_metrics"]["collision_groups"] == 1336
+          assert d["collision_metrics"]["contractual_key_collisions"] == 0
+          assert d["field_difference_frequency"][0]["value"] == "prazot"
+          print("Gate FASE07A OK")
+          PY
+      - name: Executar FASE07B
+        run: |
+          python scripts/ingestao/investigar_semantica_prazot_cotahist_1998_fase07b_v1.py             dados/cotahist/raw/anual/COTAHIST_A1998.ZIP             dados/cotahist/quality/COTAHIST_1998_FASE07B_SEMANTICA_PRAZOT_TPMERC030_V1.json
+      - name: Validar evidencia
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          p="dados/cotahist/quality/COTAHIST_1998_FASE07B_SEMANTICA_PRAZOT_TPMERC030_V1.json"
+          d=json.load(open(p,encoding="utf-8"))
+          assert d["term_rows"] > 0
+          assert d["candidate_row_key"]["duplicate_groups"] == 0
+          assert not d["invalid_prazot"]
+          print("Evidencia FASE07B válida")
+          PY
+      - name: Persistir evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE07B_SEMANTICA_PRAZOT_TPMERC030_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): semantica PRAZOT termo 1998 fase 07b"
+          git push
