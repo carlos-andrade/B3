@@ -32,9 +32,12 @@ codneg_dates=defaultdict(set)
 invalid_prazot=[]
 
 with zipfile.ZipFile(ZIP_PATH) as z:
-    names=[n for n in z.namelist() if n.upper().endswith(".TXT")]
+    names=[n for n in z.namelist() if not n.endswith("/")]
     if not names:
-        raise RuntimeError("Nenhum TXT encontrado no ZIP")
+        raise RuntimeError("Nenhum arquivo de dados encontrado no ZIP")
+    # O COTAHIST pode ser empacotado com extensao diferente de .TXT.
+    # O criterio robusto e selecionar o primeiro membro nao-diretorio e validar
+    # a estrutura dos registros 01 de 245 bytes durante a leitura.
     with z.open(names[0]) as f:
         for raw in f:
             line=raw.rstrip(b"\r\n")
