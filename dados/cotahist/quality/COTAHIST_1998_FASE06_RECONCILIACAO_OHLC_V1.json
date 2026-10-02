@@ -8,7 +8,7 @@
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
   "raw_sha256": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
-  "normalized_sha256": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
+  "normalized_sha256": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
   "targets": [
     {
       "date": "19980716",
@@ -120,8 +120,8 @@
         "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
-        "codisi": "BRELETACNPB7",
-        "dismes": "047"
+        "codisi": "000000BRELET",
+        "dismes": "ACNPB7047"
       },
       "field_mismatches": [
         {
@@ -138,16 +138,6 @@
           "field": "fatcot",
           "raw": "10.00",
           "normalized": "1000"
-        },
-        {
-          "field": "codisi",
-          "raw": "000000BRELET",
-          "normalized": "BRELETACNPB7"
-        },
-        {
-          "field": "dismes",
-          "raw": "ACNPB7047",
-          "normalized": "047"
         }
       ],
       "ohlc": {
@@ -225,8 +215,8 @@
         "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
-        "codisi": "BRRCTBCSA025",
-        "dismes": "002"
+        "codisi": "000000BRRCTB",
+        "dismes": "CSA025002"
       },
       "field_mismatches": [
         {
@@ -243,16 +233,6 @@
           "field": "fatcot",
           "raw": "10.00",
           "normalized": "1000"
-        },
-        {
-          "field": "codisi",
-          "raw": "000000BRRCTB",
-          "normalized": "BRRCTBCSA025"
-        },
-        {
-          "field": "dismes",
-          "raw": "CSA025002",
-          "normalized": "002"
         }
       ],
       "ohlc": {
@@ -330,8 +310,8 @@
         "datven": "9999-12-31",
         "fatcot": "1000",
         "ptoexe": "0.00",
-        "codisi": "BRCMIGACNPR3",
-        "dismes": "172"
+        "codisi": "000000BRCMIG",
+        "dismes": "ACNPR3172"
       },
       "field_mismatches": [
         {
@@ -348,16 +328,6 @@
           "field": "fatcot",
           "raw": "10.00",
           "normalized": "1000"
-        },
-        {
-          "field": "codisi",
-          "raw": "000000BRCMIG",
-          "normalized": "BRCMIGACNPR3"
-        },
-        {
-          "field": "dismes",
-          "raw": "ACNPR3172",
-          "normalized": "172"
         }
       ],
       "ohlc": {
@@ -376,5 +346,5 @@
   ],
   "canonical_normalization_version": "1.1.1",
   "conclusion": "Há divergencia ou ausência entre RAW e NORMALIZED; a FASE07 permanece bloqueada até correção e nova validação.",
-  "validated_at_utc": "2026-10-02T00:59:55.101114+00:00"
+  "validated_at_utc": "2026-10-02T01:03:08.852068+00:00"
 }
