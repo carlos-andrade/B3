@@ -20,7 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          lfs: true
+          lfs: false
+      - name: Materializar somente os RAW necessários
+        run: |
+          git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A1997.ZIP,dados/cotahist/raw/anual/COTAHIST_A1998.ZIP,dados/cotahist/raw/anual/COTAHIST_A1999.ZIP"
       - name: Executar FASE07C
         run: |
           python scripts/ingestao/validar_chave_prazot_cotahist_1997_1999_fase07c_v1.py             dados/cotahist/raw/anual/COTAHIST_A1997.ZIP             dados/cotahist/raw/anual/COTAHIST_A1998.ZIP             dados/cotahist/raw/anual/COTAHIST_A1999.ZIP             dados/cotahist/quality/COTAHIST_1998_FASE07C_VALIDACAO_CHAVE_PRAZOT_1997_1999_V1.json
