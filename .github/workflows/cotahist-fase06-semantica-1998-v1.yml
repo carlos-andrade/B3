@@ -33,7 +33,7 @@ jobs:
           def s(b,a,z): return b[a-1:z].decode("latin-1").strip()
           def num(b,a,z):
               v=s(b,a,z); return float(v)/100 if v else 0.0
-          invalid=[]; keys=collections.Counter(); exact=collections.Counter(); dates=set()
+          invalid=[]; ohlc_anomalies=[]; keys=collections.Counter(); exact=collections.Counter(); dates=set()
           for i,b in enumerate(q):
               if len(b)!=245: invalid.append(("length",i)); continue
               d=s(b,3,10)
@@ -43,11 +43,11 @@ jobs:
               dates.add(dt); k=(d,s(b,11,12),s(b,13,24),s(b,25,27)); keys[k]+=1; exact[b]+=1
               vals=[num(b,57,69),num(b,70,82),num(b,83,95),num(b,96,108),num(b,109,121)]
               op,hi,lo,med,cl=vals
-              if any(v<0 for v in vals) or (hi and lo and hi<lo) or (cl and hi and cl>hi) or (cl and lo and cl<lo): invalid.append(("ohlc",i))
+              if any(v<0 for v in vals) or (hi and lo and hi<lo) or (cl and hi and cl>hi) or (cl and lo and cl<lo): ohlc_anomalies.append({"index":i,"date":d,"codneg":s(b,13,24),"tpmerc":s(b,25,27),"codbdi":s(b,11,12),"preabe":op,"premax":hi,"premin":lo,"premed":med,"preult":cl})
               if s(b,153,170) and not s(b,153,170).isdigit(): invalid.append(("quantity",i))
               if s(b,171,188) and not s(b,171,188).isdigit(): invalid.append(("volume",i))
               if not s(b,11,12) or not s(b,13,24) or not s(b,25,27): invalid.append(("key",i))
-          if invalid: raise SystemExit("FAIL-CLOSED: "+repr(invalid[:10]))
+          if invalid or ohlc_anomalies:\n              print("OHLC_ANOMALIES="+json.dumps(ohlc_anomalies,ensure_ascii=False))\n              raise SystemExit("FAIL-CLOSED: inconsistencias semanticas; diagnostico publicado no log")
           dup={str(k):v for k,v in keys.items() if v>1}
           idxs=[round(i*(len(q)-1)/29) for i in range(30)]
           samples=[]
