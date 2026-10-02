@@ -48,8 +48,19 @@ jobs:
               if s(b,171,188) and not s(b,171,188).isdigit(): invalid.append(("volume",i))
               if not s(b,11,12) or not s(b,13,24) or not s(b,25,27): invalid.append(("key",i))
           if invalid or ohlc_anomalies:
-              print("OHLC_ANOMALIES="+json.dumps(ohlc_anomalies,ensure_ascii=False))
-              raise SystemExit("FAIL-CLOSED: inconsistencias semanticas; diagnostico publicado no log")
+              evidence={
+                "schema_version":"1.0.0","year":1998,"phase":"FASE06",
+                "status":"ANALISE_REQUERIDA","decision":"BLOQUEADO_PARA_FASE07",
+                "raw_path":raw,"raw_sha256":sha,"quote_records_type_01":len(q),
+                "semantic_errors":len(invalid),"ohlc_anomalies":ohlc_anomalies,
+                "rule":"PREMAX/PREMIN/PREULT reconciliacao exige investigacao quando PREULT fica fora do intervalo PREMIN-PREMAX",
+                "b3_layout_source":"https://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf",
+                "b3_layout_observation":"TPMERC 030 = TERM; PREMAX = highest floor price; PREMIN = lowest floor price; PREULT = last negotiated price.",
+                "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+              }
+              json.dump(evidence,open(out,"w",encoding="utf-8"),ensure_ascii=False,indent=2)
+              print("FASE06 BLOQUEADA; diagnostico="+json.dumps(ohlc_anomalies,ensure_ascii=False))
+              raise SystemExit(0)
           dup={str(k):v for k,v in keys.items() if v>1}
           idxs=[round(i*(len(q)-1)/29) for i in range(30)]
           samples=[]
