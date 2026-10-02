@@ -63,12 +63,12 @@ def parse(b, kind, a, z):
     return v
 
 def normalized_value(row, field):
-    v = row.get(field, "")
-    if field in {"preabe","premax","premin","premed","preult","preofc","preofv","preexe","fatcot","ptoexe"}:
+    v = row.get(field, "").strip()
+    if field in {"preabe","premax","premin","premed","preult","preofc","preofv","preexe","ptoexe","voltot"}:
         return f"{float(v):.2f}" if v else ""
-    if field == "voltot":
-        return f"{float(v):.2f}" if v else ""
-    return v.strip()
+    if field == "fatcot":
+        return str(int(v)) if v else ""
+    return v
 
 def main():
     if not RAW.exists() or not NORMALIZED.exists():
@@ -168,6 +168,7 @@ def main():
             "preult": "last negotiated price"
         },
         "reconciliation": records,
+        "canonical_normalization_version": "1.1.1",
         "conclusion": (
             "Os bytes RAW e a NORMALIZED devem ser identicos semanticamente nos 25 campos para confirmar fidelidade do parser. "
             "Mesmo com fidelidade confirmada, a anomalia PREULT < PREMIN permanece uma característica a explicar do dado histórico TERM; "
