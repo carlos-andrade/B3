@@ -1,0 +1,27 @@
+name: COTAHIST 1998 - FASE08 Consistencia calendario V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/ingestao/validar_consistencia_cotahist_1998_fase08_v1.py
+      - .github/workflows/cotahist-fase08-consistencia-1998-v1.yml
+permissions: {contents: write}
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with: {lfs: false}
+      - name: Materializar RAW 1998
+        run: git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - name: Executar e validar FASE08
+        run: python scripts/ingestao/validar_consistencia_cotahist_1998_fase08_v1.py dados/cotahist/raw/anual/COTAHIST_A1998.ZIP dados/cotahist/quality/COTAHIST_1998_FASE08_CONSISTENCIA_V1.json
+      - name: Persistir evidencia
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE08_CONSISTENCIA_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): consistencia calendario 1998 fase 08"
+          git pull --rebase origin main
+          git push
