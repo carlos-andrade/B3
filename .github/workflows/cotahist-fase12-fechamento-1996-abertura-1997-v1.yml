@@ -1,23 +1,23 @@
-name: COTAHIST - FASE12 Fechamento 1996 Abertura 1997 V1
+name: COTAHIST - FASE12 Fechamento 1996 Abertura 1997 V2
 on:
-  workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - ".github/workflows/cotahist-fase12-fechamento-1996-abertura-1997-v1.yml"
       - "scripts/ingestao/fechar_cotahist_1996_abrir_1997_fase12_v1.py"
       - "dados/cotahist/quality/COTAHIST_1996_FASE11_CERTIFICACAO_V1.json"
       - "dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json"
       - "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
-      - "dados/cotahist/normalized/anual/COTAHIST_A1997.csv"
+  workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  group: cotahist-fase12-1996-1997
+  group: cotahist-fase12-1996-1997-v2
   cancel-in-progress: false
 jobs:
   transicao:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
@@ -39,6 +39,3 @@ jobs:
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
-      - name: Resumo
-        if: always()
-        run: echo "FASE12 1996->1997: fechamento e abertura sob controle"
