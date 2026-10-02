@@ -35,10 +35,21 @@ with zipfile.ZipFile(ZIP_PATH) as z:
     names=[n for n in z.namelist() if not n.endswith("/")]
     if not names:
         raise RuntimeError("Nenhum arquivo de dados encontrado no ZIP")
-    # O COTAHIST pode ser empacotado com extensao diferente de .TXT.
-    # O criterio robusto e selecionar o primeiro membro nao-diretorio e validar
-    # a estrutura dos registros 01 de 245 bytes durante a leitura.
-    with z.open(names[0]) as f:
+    # O ZIP pode conter arquivos auxiliares. Seleciona o membro que efetivamente
+    # contem registros COTAHIST tipo 01, validando a primeira linha de 245 bytes.
+    data_name=None
+    for name in names:
+        with z.open(name) as probe:
+            for raw_probe in probe:
+                probe_line=raw_probe.rstrip(b"\\r\\n")
+                if len(probe_line) >= 245 and probe_line[:2] == b"01":
+                    data_name=name
+                    break
+        if data_name:
+            break
+    if not data_name:
+        raise RuntimeError("Nenhum membro com registros COTAHIST tipo 01 encontrado no ZIP")
+    with z.open(data_name) as f:
         for raw in f:
             line=raw.rstrip(b"\r\n")
             if len(line) < 245 or line[:2] != b"01":
