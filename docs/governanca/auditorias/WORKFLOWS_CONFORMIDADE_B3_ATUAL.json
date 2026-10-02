@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-02T00:38:06.636317+00:00",
+  "generated_at_utc": "2026-10-02T00:39:44.142030+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
-  "workflow_count": 142,
+  "workflow_count": 143,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 115,
+    "CONFORME_COM_OBSERVACAO": 116,
     "CONFORME": 27
   },
   "results": [
@@ -3548,6 +3548,89 @@
     },
     {
       "workflow": ".github/workflows/cotahist-fase05-manifesto-checksum-1997-v1.yml",
+      "current_phase": 5,
+      "status": "CONFORME_COM_OBSERVACAO",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "severity": "BAIXA"
+        },
+        {
+          "code": "NO_POSTERIOR_PHASE_TRIGGER",
+          "ok": true,
+          "detail": "nenhum gatilho explícito de fase posterior",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "DIRECTIONAL_INPUT_SIGNAL",
+          "ok": true,
+          "detail": "há sinal de entrada/evidência no trigger",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "PERMISSIONS_MATCH_WRITE",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
+          "severity": "ALTA"
+        },
+        {
+          "code": "EVIDENCE_PERSISTENCE_SIGNAL",
+          "ok": true,
+          "detail": "há sinal de persistência/evidência",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "DECISION_SIGNAL",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "IDEMPOTENCE_SIGNAL",
+          "ok": true,
+          "detail": "padrão de idempotência/deduplicação detectado",
+          "severity": "BAIXA"
+        }
+      ],
+      "blocking_divergences": [],
+      "observability_or_advisory": [
+        "STEP_SUMMARY"
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-fase05-manifesto-checksum-1998-v1.yml",
       "current_phase": 5,
       "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
