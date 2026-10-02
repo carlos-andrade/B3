@@ -1,0 +1,71 @@
+name: COTAHIST 1998 - FASE03 Parsing Estrutural V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase03-parsing-1998-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1998_FASE14_PRESENCA_INTEGRIDADE_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase03-1998
+  cancel-in-progress: false
+
+jobs:
+  parsing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with: {fetch-depth: 0, lfs: true}
+      - name: FASE03 — validar pre-condicoes e parsing estrutural
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, pathlib, sys, zipfile
+          raw=pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1998.ZIP")
+          f14=pathlib.Path("dados/cotahist/quality/COTAHIST_1998_FASE14_PRESENCA_INTEGRIDADE_V1.json")
+          ev=pathlib.Path("dados/cotahist/quality/COTAHIST_1998_FASE03_PARSING_V1.json")
+          e14=json.loads(f14.read_text(encoding="utf-8"))
+          if e14.get("status")!="VALIDADO" or e14.get("decisao")!="LIBERADO_PARA_FASE03_05": sys.exit("FASE03 BLOQUEADA: FASE14 nao liberou")
+          sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          if sha!=e14.get("sha256_calculado"): sys.exit("FASE03 BLOQUEADA: SHA divergente")
+          with zipfile.ZipFile(raw) as z:
+              names=z.namelist()
+              if len(names)!=1: sys.exit("FASE03 BLOQUEADA: ZIP nao possui 1 membro")
+              lines=z.read(names[0]).splitlines()
+          bad=[i+1 for i,x in enumerate(lines) if len(x)!=245]
+          if bad: sys.exit(f"FASE03 BLOQUEADA: {len(bad)} registros fora de 245 bytes")
+          types={}
+          for x in lines:
+              t=x[:2].decode("latin-1"); types[t]=types.get(t,0)+1
+          if types.get("00",0)!=1 or types.get("99",0)!=1 or types.get("01",0)<=0: sys.exit("FASE03 BLOQUEADA: estrutura 00/01/99 invalida")
+          dates=[]
+          for x in lines:
+              if x[:2]==b"01":
+                  d=x[2:10].decode("latin-1")
+                  try: dates.append(datetime.datetime.strptime(d,"%Y%m%d").date())
+                  except ValueError: sys.exit("FASE03 BLOQUEADA: data invalida")
+          out={"schema_version":"1.0.0","year":1998,"phase":"FASE03","status":"VALIDADO",
+            "decision":"LIBERADO_PARA_FASE04","entry_gate":"FASE14","raw_path":str(raw),"raw_sha256":sha,
+            "zip_member_count":len(names),"zip_member":names[0],"record_length_bytes":245,
+            "total_records":len(lines),"record_type_counts":types,"quote_records_type_01":types.get("01",0),
+            "invalid_record_lengths":len(bad),"invalid_dates":0,"first_quote_date":min(dates).isoformat(),
+            "last_quote_date":max(dates).isoformat(),"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+      - name: Publicar evidencia
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE03_PARSING_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): valida 1998 fase 03 parsing"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
