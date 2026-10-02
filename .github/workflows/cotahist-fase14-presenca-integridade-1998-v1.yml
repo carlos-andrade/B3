@@ -1,0 +1,36 @@
+name: COTAHIST 1998 - FASE14 Presenca e Integridade RAW V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase14-presenca-integridade-1998-v1.yml"
+      - "scripts/ingestao/validar_presenca_integridade_cotahist_1998_fase14_v1.py"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1998.json"
+      - "dados/cotahist/checksums/COTAHIST_A1998.ZIP.sha256"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase14-1998
+  cancel-in-progress: false
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with: {fetch-depth: 0, lfs: true}
+      - name: Executar FASE14
+        run: python scripts/ingestao/validar_presenca_integridade_cotahist_1998_fase14_v1.py
+      - name: Persistir evidencia
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1998_FASE14_PRESENCA_INTEGRIDADE_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): publicar fase 14 1998"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
