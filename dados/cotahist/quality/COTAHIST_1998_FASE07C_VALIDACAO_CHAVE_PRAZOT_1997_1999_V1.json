@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "phase": "FASE07C",
-  "status": "VALIDADO",
+  "status": "ANALISE_CHAVE_PRAZOT_ANOS_ADJACENTES",
   "candidate_key": [
     "data_pregao",
     "codbdi",
@@ -41,12 +41,11 @@
       "invalid_prazot": []
     }
   },
-  "decision": "CANDIDATA_SEM_DUPLICIDADE_NOS_ANOS_TESTADOS",
   "governance": [
-    "A chave candidata foi testada em 1997, 1998 e 1999 antes de qualquer promoção.",
-    "Não foi observada duplicidade da chave DATA+CODBDI+CODNEG+TPMERC+PRAZOT nos três anos.",
-    "PRAZOT foi numérico/válido em todos os registros TERM analisados.",
-    "A ausência de duplicidade nos três anos não prova, isoladamente, semântica econômica universal; a promoção deve permanecer condicionada a validações adicionais.",
-    "Nenhum RAW ou dado normalizado foi alterado."
-  ]
+    "A chave candidata deve ser testada por ano antes de qualquer promoção.",
+    "Duplicidade da chave candidata é bloqueador de promoção.",
+    "Nenhum RAW ou dado normalizado é alterado.",
+    "A validação de 1998 é comparada com 1997 e 1999; ausência de duplicidade não prova, isoladamente, semântica econômica universal."
+  ],
+  "decision": "CANDIDATA_SEM_DUPLICIDADE_NOS_ANOS_TESTADOS"
 }
