@@ -1,7 +1,7 @@
 {
   "source_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=5",
   "final_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=5",
-  "retrieved_at": "2026-10-01T18:26:55.784372+00:00",
+  "retrieved_at": "2026-10-02T17:53:46.017816+00:00",
   "sha256": "11c2c2391585e482a428e43c8056a1813d278f3d6a8e8ec9d416cf087810a30d",
   "bytes": 642,
   "content_type": "application/json",
