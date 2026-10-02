@@ -17,7 +17,7 @@ concurrency:
 jobs:
   reconcile:
     runs-on: ubuntu-latest
-    timeout-minutes: 21
+    timeout-minutes: 22
     steps:
       - name: Checkout completo com LFS
         uses: actions/checkout@v5
@@ -30,12 +30,14 @@ jobs:
       - name: Publicar evidencia
         if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -f dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json ]; then
-            git add dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
-            git diff --cached --quiet || git commit -m "audit(cotahist): publica reconciliacao OHLC 1998"
+            cp dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json /tmp/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git fetch origin main
-            git rebase origin/main
+            git checkout -B main origin/main
+            cp /tmp/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
+            git add dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json
+            git commit -m "audit(cotahist): publica reconciliacao OHLC 1998"
             git push origin HEAD:main
           fi
