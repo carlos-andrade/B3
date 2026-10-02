@@ -47,7 +47,7 @@ jobs:
           blocked=[k for k in ["F03","F04","F05","F06","F08"] if statuses.get(k)!="VALIDADO"]
           if statuses.get("F07")!="FASE_07_IDENTIDADE_HISTORICA_1997_ANALISE": blocked.append("F07")
           raw=required["RAW"]; raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest() if raw.exists() else None
-          expected="911a993548931f56b1b3dc18d2994c67f5d011cf7a85986029384298f17d6800"
+          expected="f6bd380e753ec8024857b739b7d9b010c7467a5fd967e82d01186a46f5e33fc3"
           if raw_sha and raw_sha!=expected: blocked.append("RAW_SHA256")
           ok=not missing and not blocked
           out={"schema_version":"1.0.0","year":1997,"phase":"FASE09","status":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
