@@ -1,0 +1,126 @@
+name: COTAHIST 1997 - FASE03 Parsing Estrutural V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase03-parsing-1997-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1997_FASE14_PRESENCA_INTEGRIDADE_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase03-1997
+  cancel-in-progress: false
+
+jobs:
+  parsing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: FASE03 — validar pre-condicoes e parsing estrutural
+        run: |
+          python - <<'PY'
+          import datetime
+          import hashlib
+          import json
+          import pathlib
+          import sys
+          import zipfile
+
+          root = pathlib.Path(".")
+          raw = root / "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+          f14 = root / "dados/cotahist/quality/COTAHIST_1997_FASE14_PRESENCA_INTEGRIDADE_V1.json"
+          ev = root / "dados/cotahist/quality/COTAHIST_1997_FASE03_PARSING_V1.json"
+
+          if not raw.exists() or not f14.exists():
+              sys.exit("FASE03 BLOQUEADA: RAW ou FASE14 ausente")
+
+          e14 = json.loads(f14.read_text(encoding="utf-8"))
+          if e14.get("status") != "VALIDADO" or e14.get("decisao") != "LIBERADO_PARA_FASE03_05":
+              sys.exit("FASE03 BLOQUEADA: FASE14 nao liberou FASE03-05")
+
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          if raw_sha != e14.get("sha256_calculado") or not e14.get("sha256_coerente"):
+              sys.exit("FASE03 BLOQUEADA: SHA do RAW diverge da evidencia FASE14")
+
+          with zipfile.ZipFile(raw) as z:
+              members = z.namelist()
+              if len(members) != 1:
+                  sys.exit(f"FASE03 BLOQUEADA: esperado 1 membro ZIP, encontrado {len(members)}")
+              member = members[0]
+              data = z.read(member)
+
+          lines = data.splitlines()
+          bad_lengths = [i + 1 for i, line in enumerate(lines) if len(line) != 245]
+          if bad_lengths:
+              sys.exit(f"FASE03 BLOQUEADA: registros fora de 245 bytes: {len(bad_lengths)}")
+
+          types = {}
+          for line in lines:
+              t = line[:2].decode("latin-1")
+              types[t] = types.get(t, 0) + 1
+
+          if types.get("00", 0) != 1 or types.get("99", 0) != 1:
+              sys.exit("FASE03 BLOQUEADA: header/trailer estrutural invalido")
+          quote_count = types.get("01", 0)
+          if quote_count <= 0:
+              sys.exit("FASE03 BLOQUEADA: nenhum registro tipo 01")
+
+          dates = []
+          invalid_dates = 0
+          for line in lines:
+              if line[:2] != b"01":
+                  continue
+              value = line[2:10].decode("latin-1")
+              try:
+                  dates.append(datetime.datetime.strptime(value, "%Y%m%d").date())
+              except ValueError:
+                  invalid_dates += 1
+
+          if invalid_dates:
+              sys.exit(f"FASE03 BLOQUEADA: datas invalidas em {invalid_dates} registros")
+
+          out = {
+            "schema_version": "1.0.0",
+            "year": 1997,
+            "phase": "FASE03",
+            "status": "VALIDADO",
+            "decision": "LIBERADO_PARA_FASE04",
+            "entry_gate": "FASE14",
+            "raw_path": str(raw),
+            "raw_sha256": raw_sha,
+            "zip_member_count": len(members),
+            "zip_member": member,
+            "record_length_bytes": 245,
+            "total_records": len(lines),
+            "record_type_counts": types,
+            "quote_records_type_01": quote_count,
+            "invalid_record_lengths": len(bad_lengths),
+            "invalid_dates": invalid_dates,
+            "first_quote_date": min(dates).isoformat(),
+            "last_quote_date": max(dates).isoformat(),
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "parsing_statement": "Parsing estrutural concluido sem registros fora de 245 bytes e sem datas invalidas nos registros tipo 01."
+          }
+          ev.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+      - name: Publicar evidencia FASE03
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1997_FASE03_PARSING_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): valida 1997 fase 03 parsing"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
