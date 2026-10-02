@@ -1,0 +1,2060 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "phase": "FASE08_SEMANTICA_K4_1996",
+  "raw_file": "COTAHIST_A1996.ZIP",
+  "raw_sha256": "911a993548931f56b1b3dc18d2994c67f5d011cf7a85986029384298f17d6800",
+  "records_type01": 110685,
+  "trading_dates": 248,
+  "k4_definition": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "codisi",
+    "dismes",
+    "especi",
+    "prazot",
+    "datven",
+    "preexe",
+    "indopc",
+    "ptoexe"
+  ],
+  "k4_metrics": {
+    "groups": 110685,
+    "unique_groups": 110685,
+    "repeated_groups": 0,
+    "rows_in_repeated_groups": 0,
+    "duplicate_excess_rows": 0,
+    "max_group_size": 1
+  },
+  "duplicate_k4_examples": [],
+  "codneg_reuse": {
+    "distinct_codneg": 1325,
+    "with_multiple_attribute_values": 996,
+    "examples": [
+      {
+        "codneg": "BBD 3",
+        "rows": 519,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "332",
+            "333",
+            "334",
+            "335",
+            "336",
+            "337",
+            "338",
+            "339",
+            "340",
+            "341",
+            "342",
+            "343",
+            "344"
+          ],
+          "especi": [
+            "ON *",
+            "ON *EBD",
+            "ON *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "BBD 4",
+        "rows": 597,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "332",
+            "333",
+            "334",
+            "335",
+            "336",
+            "337",
+            "338",
+            "339",
+            "340",
+            "341",
+            "342",
+            "343",
+            "344"
+          ],
+          "especi": [
+            "PN *",
+            "PN *EBD",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "BRD 4",
+        "rows": 542,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "104",
+            "105"
+          ],
+          "especi": [
+            "PN *",
+            "PN *EBD"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "BRH 4",
+        "rows": 494,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020"
+          ],
+          "codbdi": [
+            "02",
+            "96"
+          ],
+          "dismes": [
+            "153",
+            "155",
+            "156",
+            "157"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED",
+            "PN *EDS",
+            "PN *INT"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CMI 3",
+        "rows": 529,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "164",
+            "166"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CMI 4",
+        "rows": 591,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "164",
+            "166"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CPN 5",
+        "rows": 537,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "069",
+            "071",
+            "072",
+            "073",
+            "074"
+          ],
+          "especi": [
+            "PNA*",
+            "PNA*ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CSI 6",
+        "rows": 522,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CSN 3",
+        "rows": 607,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "203",
+            "204",
+            "205"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "CST 6",
+        "rows": 536,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "104",
+            "105",
+            "106"
+          ],
+          "especi": [
+            "PNB*",
+            "PNB*ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "DUR 4",
+        "rows": 454,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "166",
+            "167",
+            "168"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "ELE 3",
+        "rows": 532,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "126",
+            "127"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "ELE 6",
+        "rows": 626,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "041",
+            "042"
+          ],
+          "especi": [
+            "PNB*",
+            "PNB*ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "INE 4",
+        "rows": 387,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "120",
+            "121",
+            "122",
+            "123",
+            "125"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED",
+            "PN *ES"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "ITA 4",
+        "rows": 505,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "308",
+            "309",
+            "310",
+            "311",
+            "312",
+            "313",
+            "314",
+            "315",
+            "316",
+            "317",
+            "318",
+            "319",
+            "320",
+            "321"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "ITS 4",
+        "rows": 504,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "223",
+            "225",
+            "226",
+            "227",
+            "228",
+            "229"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "KLA 4",
+        "rows": 457,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "040",
+            "041",
+            "042"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "LIG 3",
+        "rows": 528,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "139",
+            "140",
+            "141"
+          ],
+          "especi": [
+            "ON *",
+            "ON *EB",
+            "ON *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "PAL 3",
+        "rows": 455,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "139",
+            "140"
+          ],
+          "especi": [
+            "ON *",
+            "ON *ES"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "PDG 4",
+        "rows": 481,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "138",
+            "139"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "PTI 4",
+        "rows": 479,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "154",
+            "156",
+            "157"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "REA 4",
+        "rows": 497,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "162",
+            "163",
+            "164"
+          ],
+          "especi": [
+            "PN *",
+            "PN *ED"
+          ],
+          "prazot": [
+            "",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "RHD 3",
+        "rows": 347,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "101",
+            "102"
+          ],
+          "especi": [
+            "ON",
+            "ON  ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090",
+            "120"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "SCO 4",
+        "rows": 446,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "dismes": [
+            "173",
+            "174",
+            "175",
+            "176"
+          ],
+          "especi": [
+            "PN",
+            "PN  ED"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      },
+      {
+        "codneg": "SHA 4",
+        "rows": 611,
+        "dates": 248,
+        "varying_attributes": {
+          "tpmerc": [
+            "010",
+            "020",
+            "030"
+          ],
+          "codbdi": [
+            "02",
+            "62",
+            "96"
+          ],
+          "especi": [
+            "PN *",
+            "PN *INT"
+          ],
+          "prazot": [
+            "",
+            "030",
+            "060",
+            "090"
+          ]
+        },
+        "first_date": "19960102",
+        "last_date": "19961230"
+      }
+    ]
+  },
+  "same_day_codneg_reuse": {
+    "groups": 33720,
+    "examples": [
+      {
+        "date": "19960102",
+        "codneg": "ACE 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "ACE 3",
+            "tpmerc": "010",
+            "nomres": "ACESITA",
+            "especi": "ON *INT",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRACESACNOR5",
+            "dismes": "123",
+            "totneg": "00016",
+            "quatot": "000000000010100000",
+            "voltot": "000000000004619700"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "ACE 3",
+            "tpmerc": "020",
+            "nomres": "ACESITA",
+            "especi": "ON *INT",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRACESACNOR5",
+            "dismes": "123",
+            "totneg": "00001",
+            "quatot": "000000000000002000",
+            "voltot": "000000000000000882"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BAS 4",
+        "rows": 3,
+        "distinct_k4_without_date": 3,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BAS 4",
+            "tpmerc": "010",
+            "nomres": "AMERICA SUL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBASUACNPR0",
+            "dismes": "173",
+            "totneg": "00004",
+            "quatot": "000000000001061000",
+            "voltot": "000000000004668700"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "62",
+            "codneg": "BAS 4",
+            "tpmerc": "030",
+            "nomres": "BASU",
+            "especi": "PN *",
+            "prazot": "030",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBASUACNPR0",
+            "dismes": "173",
+            "totneg": "00002",
+            "quatot": "000000000001000000",
+            "voltot": "000000000004510100"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BAS 4",
+            "tpmerc": "020",
+            "nomres": "AMERICA SUL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBASUACNPR0",
+            "dismes": "173",
+            "totneg": "00002",
+            "quatot": "000000000000000623",
+            "voltot": "000000000000002557"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "ARC 6",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "ARC 6",
+            "tpmerc": "010",
+            "nomres": "ARACRUZ",
+            "especi": "PNB",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRARCZACNPB3",
+            "dismes": "119",
+            "totneg": "00050",
+            "quatot": "000000000001017000",
+            "voltot": "000000000158225000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "ARC 6",
+            "tpmerc": "020",
+            "nomres": "ARACRUZ",
+            "especi": "PNB",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRARCZACNPB3",
+            "dismes": "119",
+            "totneg": "00004",
+            "quatot": "000000000000001899",
+            "voltot": "000000000000285520"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "AVP 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "AVP 3",
+            "tpmerc": "010",
+            "nomres": "AVIPAL",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRAVPLACNOR6",
+            "dismes": "116",
+            "totneg": "00005",
+            "quatot": "000000000001400000",
+            "voltot": "000000000000278600"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "AVP 3",
+            "tpmerc": "020",
+            "nomres": "AVIPAL",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRAVPLACNOR6",
+            "dismes": "116",
+            "totneg": "00001",
+            "quatot": "000000000000024000",
+            "voltot": "000000000000004320"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BBR 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BBR 3",
+            "tpmerc": "010",
+            "nomres": "BAMERIND BR",
+            "especi": "ON *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBRAACNOR5",
+            "dismes": "311",
+            "totneg": "00008",
+            "quatot": "000000000014000000",
+            "voltot": "000000000028562700"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BBR 3",
+            "tpmerc": "020",
+            "nomres": "BAMERIND BR",
+            "especi": "ON *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBRAACNOR5",
+            "dismes": "311",
+            "totneg": "00001",
+            "quatot": "000000000000089592",
+            "voltot": "000000000000182767"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BES 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BES 4",
+            "tpmerc": "010",
+            "nomres": "BANESPA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBESPACNPR2",
+            "dismes": "154",
+            "totneg": "00008",
+            "quatot": "000000000002000000",
+            "voltot": "000000000001013000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BES 4",
+            "tpmerc": "020",
+            "nomres": "BANESPA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBESPACNPR2",
+            "dismes": "154",
+            "totneg": "00007",
+            "quatot": "000000000000265449",
+            "voltot": "000000000000130027"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BRS 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BRS 3",
+            "tpmerc": "010",
+            "nomres": "BANRISUL",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRSRACNOR3",
+            "dismes": "070",
+            "totneg": "00001",
+            "quatot": "000000000000002000",
+            "voltot": "000000000000011200"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BRS 3",
+            "tpmerc": "020",
+            "nomres": "BANRISUL",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRSRACNOR3",
+            "dismes": "070",
+            "totneg": "00002",
+            "quatot": "000000000000000274",
+            "voltot": "000000000000001533"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BRS 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BRS 4",
+            "tpmerc": "010",
+            "nomres": "BANRISUL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRSRACNPR0",
+            "dismes": "070",
+            "totneg": "00001",
+            "quatot": "000000000000006000",
+            "voltot": "000000000000033600"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BRS 4",
+            "tpmerc": "020",
+            "nomres": "BANRISUL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRSRACNPR0",
+            "dismes": "070",
+            "totneg": "00001",
+            "quatot": "000000000000000199",
+            "voltot": "000000000000001096"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BCN 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BCN 4",
+            "tpmerc": "010",
+            "nomres": "BCN",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBCNAACNPR9",
+            "dismes": "165",
+            "totneg": "00002",
+            "quatot": "000000000006100000",
+            "voltot": "000000000002409500"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BCN 4",
+            "tpmerc": "020",
+            "nomres": "BCN",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBCNAACNPR9",
+            "dismes": "165",
+            "totneg": "00001",
+            "quatot": "000000000000010240",
+            "voltot": "000000000000003799"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BEL 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BEL 3",
+            "tpmerc": "010",
+            "nomres": "BELGO MINEIR",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBELGACNOR9",
+            "dismes": "132",
+            "totneg": "00002",
+            "quatot": "000000000000040000",
+            "voltot": "000000000000289000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BEL 3",
+            "tpmerc": "020",
+            "nomres": "BELGO MINEIR",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBELGACNOR9",
+            "dismes": "132",
+            "totneg": "00001",
+            "quatot": "000000000000004010",
+            "voltot": "000000000000027268"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BEL 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BEL 4",
+            "tpmerc": "010",
+            "nomres": "BELGO MINEIR",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBELGACNPR6",
+            "dismes": "132",
+            "totneg": "00006",
+            "quatot": "000000000000380000",
+            "voltot": "000000000002018550"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BEL 4",
+            "tpmerc": "020",
+            "nomres": "BELGO MINEIR",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBELGACNPR6",
+            "dismes": "132",
+            "totneg": "00004",
+            "quatot": "000000000000013397",
+            "voltot": "000000000000068446"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BOB 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BOB 4",
+            "tpmerc": "010",
+            "nomres": "BOMBRIL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBOBRACNPR3",
+            "dismes": "117",
+            "totneg": "00001",
+            "quatot": "000000000000200000",
+            "voltot": "000000000000280000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BOB 4",
+            "tpmerc": "020",
+            "nomres": "BOMBRIL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBOBRACNPR3",
+            "dismes": "117",
+            "totneg": "00002",
+            "quatot": "000000000000100000",
+            "voltot": "000000000000135000"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BBD 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BBD 3",
+            "tpmerc": "010",
+            "nomres": "BRADESCO",
+            "especi": "ON *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBDCACNOR1",
+            "dismes": "332",
+            "totneg": "00010",
+            "quatot": "000000000027970000",
+            "voltot": "000000000020697900"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BBD 3",
+            "tpmerc": "020",
+            "nomres": "BRADESCO",
+            "especi": "ON *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBDCACNOR1",
+            "dismes": "332",
+            "totneg": "00005",
+            "quatot": "000000000000014456",
+            "voltot": "000000000000010664"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BBD 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BBD 4",
+            "tpmerc": "010",
+            "nomres": "BRADESCO",
+            "especi": "PN *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBDCACNPR8",
+            "dismes": "332",
+            "totneg": "00098",
+            "quatot": "000000000170840000",
+            "voltot": "000000000144826520"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BBD 4",
+            "tpmerc": "020",
+            "nomres": "BRADESCO",
+            "especi": "PN *ED",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBDCACNPR8",
+            "dismes": "332",
+            "totneg": "00013",
+            "quatot": "000000000000063655",
+            "voltot": "000000000000053198"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BRH 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BRH 4",
+            "tpmerc": "010",
+            "nomres": "BRAHMA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRHAACNPR9",
+            "dismes": "153",
+            "totneg": "00045",
+            "quatot": "000000000006750000",
+            "voltot": "000000000273432630"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BRH 4",
+            "tpmerc": "020",
+            "nomres": "BRAHMA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBRHAACNPR9",
+            "dismes": "153",
+            "totneg": "00009",
+            "quatot": "000000000000030079",
+            "voltot": "000000000001205545"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BB  4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BB  4",
+            "tpmerc": "010",
+            "nomres": "BRASIL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBASACNPR0",
+            "dismes": "156",
+            "totneg": "00030",
+            "quatot": "000000000020570000",
+            "voltot": "000000000022496410"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BB  4",
+            "tpmerc": "020",
+            "nomres": "BRASIL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBBASACNPR0",
+            "dismes": "156",
+            "totneg": "00002",
+            "quatot": "000000000000004378",
+            "voltot": "000000000000004756"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BFC 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BFC 4",
+            "tpmerc": "010",
+            "nomres": "BRASINCA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBFCVACNPR1",
+            "dismes": "024",
+            "totneg": "00001",
+            "quatot": "000000000000008000",
+            "voltot": "000000000000076000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BFC 4",
+            "tpmerc": "020",
+            "nomres": "BRASINCA",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBFCVACNPR1",
+            "dismes": "024",
+            "totneg": "00002",
+            "quatot": "000000000000000477",
+            "voltot": "000000000000004054"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "BMT 4",
+        "rows": 3,
+        "distinct_k4_without_date": 3,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "BMT 4",
+            "tpmerc": "010",
+            "nomres": "BRASMOTOR",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBMTOACNPR6",
+            "dismes": "039",
+            "totneg": "00013",
+            "quatot": "000000000002740000",
+            "voltot": "000000000053120000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "62",
+            "codneg": "BMT 4",
+            "tpmerc": "030",
+            "nomres": "BMTO",
+            "especi": "PN *",
+            "prazot": "030",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBMTOACNPR6",
+            "dismes": "039",
+            "totneg": "00002",
+            "quatot": "000000000001000000",
+            "voltot": "000000000019883060"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "BMT 4",
+            "tpmerc": "020",
+            "nomres": "BRASMOTOR",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRBMTOACNPR6",
+            "dismes": "039",
+            "totneg": "00003",
+            "quatot": "000000000000012000",
+            "voltot": "000000000000230619"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CME 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CME 4",
+            "tpmerc": "010",
+            "nomres": "CAEMI METAL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMETACNPR5",
+            "dismes": "112",
+            "totneg": "00006",
+            "quatot": "000000000003600000",
+            "voltot": "000000000014399000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CME 4",
+            "tpmerc": "020",
+            "nomres": "CAEMI METAL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMETACNPR5",
+            "dismes": "112",
+            "totneg": "00004",
+            "quatot": "000000000000091125",
+            "voltot": "000000000000350140"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CAB 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CAB 4",
+            "tpmerc": "010",
+            "nomres": "CASA ANGLO",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCABRACNPR0",
+            "dismes": "149",
+            "totneg": "00016",
+            "quatot": "000000000012970000",
+            "voltot": "000000000053179840"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CAB 4",
+            "tpmerc": "020",
+            "nomres": "CASA ANGLO",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCABRACNPR0",
+            "dismes": "149",
+            "totneg": "00001",
+            "quatot": "000000000000000135",
+            "voltot": "000000000000000540"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CMI 3",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CMI 3",
+            "tpmerc": "010",
+            "nomres": "CEMIG",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMIGACNOR6",
+            "dismes": "164",
+            "totneg": "00004",
+            "quatot": "000000000006200000",
+            "voltot": "000000000012072900"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CMI 3",
+            "tpmerc": "020",
+            "nomres": "CEMIG",
+            "especi": "ON *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMIGACNOR6",
+            "dismes": "164",
+            "totneg": "00003",
+            "quatot": "000000000000087924",
+            "voltot": "000000000000169830"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CMI 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CMI 4",
+            "tpmerc": "010",
+            "nomres": "CEMIG",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMIGACNPR3",
+            "dismes": "164",
+            "totneg": "00093",
+            "quatot": "000000000164600000",
+            "voltot": "000000000356969800"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CMI 4",
+            "tpmerc": "020",
+            "nomres": "CEMIG",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCMIGACNPR3",
+            "dismes": "164",
+            "totneg": "00037",
+            "quatot": "000000000000475037",
+            "voltot": "000000000001017991"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CES 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CES 4",
+            "tpmerc": "010",
+            "nomres": "CESP",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCESPACNPR0",
+            "dismes": "139",
+            "totneg": "00010",
+            "quatot": "000000000025700000",
+            "voltot": "000000000070597500"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CES 4",
+            "tpmerc": "020",
+            "nomres": "CESP",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCESPACNPR0",
+            "dismes": "139",
+            "totneg": "00006",
+            "quatot": "000000000000130210",
+            "voltot": "000000000000347181"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "CEV 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "CEV 4",
+            "tpmerc": "010",
+            "nomres": "CEVAL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCEVAACNPR6",
+            "dismes": "134",
+            "totneg": "00007",
+            "quatot": "000000000011000000",
+            "voltot": "000000000012457200"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "CEV 4",
+            "tpmerc": "020",
+            "nomres": "CEVAL",
+            "especi": "PN *",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRCEVAACNPR6",
+            "dismes": "134",
+            "totneg": "00002",
+            "quatot": "000000000000018477",
+            "voltot": "000000000000020878"
+          }
+        ]
+      },
+      {
+        "date": "19960102",
+        "codneg": "ICP 4",
+        "rows": 2,
+        "distinct_k4_without_date": 2,
+        "contexts": [
+          {
+            "data_pregao": "19960102",
+            "codbdi": "02",
+            "codneg": "ICP 4",
+            "tpmerc": "010",
+            "nomres": "CIM ITAU",
+            "especi": "PN *INT",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRICPIACNPR2",
+            "dismes": "134",
+            "totneg": "00020",
+            "quatot": "000000000002910000",
+            "voltot": "000000000066826000"
+          },
+          {
+            "data_pregao": "19960102",
+            "codbdi": "96",
+            "codneg": "ICP 4",
+            "tpmerc": "020",
+            "nomres": "CIM ITAU",
+            "especi": "PN *INT",
+            "prazot": "",
+            "preexe": "0000000000000",
+            "indopc": "0",
+            "datven": "99991231",
+            "ptoexe": "0000000000000",
+            "codisi": "BRICPIACNPR2",
+            "dismes": "134",
+            "totneg": "00002",
+            "quatot": "000000000000012000",
+            "voltot": "000000000000265250"
+          }
+        ]
+      }
+    ]
+  },
+  "code_cardinality": {
+    "codneg": 1325,
+    "codisi": 916,
+    "tpmerc": 8,
+    "codbdi": 16,
+    "dismes": 216,
+    "especi": 119,
+    "prazot": 6,
+    "datven": 16,
+    "indopc": 5
+  },
+  "governance": [
+    "K4 e uma chave contratual candidata, nao uma afirmacao automatica de identidade economica.",
+    "Duplicidades K4 nao devem ser eliminadas sem evidencia de duplicacao fisica.",
+    "Reutilizacao de CODNEG exige contexto temporal e contratual.",
+    "CODBDI e TPMERC sao atributos classificatorios.",
+    "RAW e NORMALIZED nao sao alterados pela FASE08."
+  ],
+  "decision": "LIBERADO_PARA_FASE09"
+}
