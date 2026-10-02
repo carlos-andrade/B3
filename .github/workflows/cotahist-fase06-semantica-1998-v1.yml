@@ -47,7 +47,9 @@ jobs:
               if s(b,153,170) and not s(b,153,170).isdigit(): invalid.append(("quantity",i))
               if s(b,171,188) and not s(b,171,188).isdigit(): invalid.append(("volume",i))
               if not s(b,11,12) or not s(b,13,24) or not s(b,25,27): invalid.append(("key",i))
-          if invalid or ohlc_anomalies:\n              print("OHLC_ANOMALIES="+json.dumps(ohlc_anomalies,ensure_ascii=False))\n              raise SystemExit("FAIL-CLOSED: inconsistencias semanticas; diagnostico publicado no log")
+          if invalid or ohlc_anomalies:
+              print("OHLC_ANOMALIES="+json.dumps(ohlc_anomalies,ensure_ascii=False))
+              raise SystemExit("FAIL-CLOSED: inconsistencias semanticas; diagnostico publicado no log")
           dup={str(k):v for k,v in keys.items() if v>1}
           idxs=[round(i*(len(q)-1)/29) for i in range(30)]
           samples=[]
