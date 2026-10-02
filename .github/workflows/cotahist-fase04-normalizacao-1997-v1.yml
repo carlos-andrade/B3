@@ -1,0 +1,112 @@
+name: COTAHIST 1997 - FASE04 Normalizacao V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-1997-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+      - "dados/cotahist/quality/COTAHIST_1997_FASE03_PARSING_V1.json"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase04-1997
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: Configurar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Verificar pre-condicoes FASE03
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("dados/cotahist/quality/COTAHIST_1997_FASE03_PARSING_V1.json")
+          e=json.loads(p.read_text(encoding="utf-8"))
+          if e.get("status")!="VALIDADO" or e.get("decision")!="LIBERADO_PARA_FASE04":
+              raise SystemExit("FAIL-CLOSED: FASE03 nao liberou FASE04")
+          print("FASE03=VALIDADO; DECISAO=LIBERADO_PARA_FASE04")
+          PY
+      - name: Normalizar 1997
+        run: |
+          python scripts/ingestao/normalize_cotahist.py             --zip dados/cotahist/raw/anual/COTAHIST_A1997.ZIP             --output dados/cotahist/normalized/anual/COTAHIST_A1997.csv
+      - name: Verificar normalizacao contra manifesto
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+          p=Path("dados/cotahist/normalized/anual/COTAHIST_A1997.csv")
+          mpath=Path("dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json")
+          m=json.loads(mpath.read_text(encoding="utf-8"))
+          actual=hashlib.sha256(p.read_bytes()).hexdigest()
+          if actual != m.get("normalized_sha256"):
+              raise SystemExit(f"FAIL-CLOSED: hash normalizado divergente: {actual} != {m.get('normalized_sha256')}")
+          with p.open(encoding="utf-8",newline="") as fh:
+              r=csv.reader(fh)
+              header=next(r)
+              rows=list(r)
+          if len(header)!=25:
+              raise SystemExit(f"FAIL-CLOSED: campos={len(header)}")
+          if len(rows)!=int(m.get("linhas_normalized")):
+              raise SystemExit(f"FAIL-CLOSED: linhas={len(rows)}")
+          dates=[x[0] for x in rows]
+          if min(dates)!=m.get("primeira_data") or max(dates)!=m.get("ultima_data"):
+              raise SystemExit("FAIL-CLOSED: intervalo de datas divergente")
+          print(f"NORMALIZED_SHA256={actual}")
+          print(f"ROWS={len(rows)} FIELDS={len(header)} FIRST={min(dates)} LAST={max(dates)}")
+          PY
+      - name: Gerar evidencia FASE04
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json
+          from pathlib import Path
+          root=Path(".")
+          raw=root/"dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+          norm=root/"dados/cotahist/normalized/anual/COTAHIST_A1997.csv"
+          manifest=root/"dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json"
+          ev=root/"dados/cotahist/quality/COTAHIST_1997_FASE04_NORMALIZACAO_V1.json"
+          m=json.loads(manifest.read_text(encoding="utf-8"))
+          out={
+            "schema_version":"1.0.0","year":1997,"phase":"FASE04","status":"VALIDADO",
+            "decision":"LIBERADO_PARA_FASE05","entry_gate":"FASE03",
+            "validation_method":"normalizacao_deterministica_com_script_canonico",
+            "raw_path":str(raw),"raw_sha256":hashlib.sha256(raw.read_bytes()).hexdigest(),
+            "normalized_path":str(norm),"normalized_manifest_path":str(manifest),
+            "normalized_sha256":hashlib.sha256(norm.read_bytes()).hexdigest(),
+            "parser_version":m.get("parser_version"),"rows":int(m.get("linhas_normalized")),
+            "fields":int(m.get("campos")),"invalid_dates":int(m.get("datas_invalidas",0)),
+            "out_of_year_dates":int(m.get("datas_fora_do_ano",0)),
+            "first_date":m.get("primeira_data"),"last_date":m.get("ultima_data"),
+            "manifest_matches_computed":True,"normalization_is_deterministically_reconciled":True,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+      - name: Publicar NORMALIZED e evidencia
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/anual/COTAHIST_A1997.csv dados/cotahist/quality/COTAHIST_1997_FASE04_NORMALIZACAO_V1.json
+          git diff --cached --quiet || git commit -m "data(cotahist): materializa normalized de 1997"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
