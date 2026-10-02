@@ -1,0 +1,619 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1998,
+  "phase": "FASE06B_CONTEXT_TERM",
+  "status": "VALIDADO",
+  "decision": "INVESTIGACAO_CONTEXTUAL_CONCLUIDA_SEM_LIBERACAO",
+  "purpose": "Medir a recorrencia das anomalias OHLC dentro de todo o universo TPMERC=030 antes da FASE07.",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
+  "normalized_sha256": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
+  "term_records": 8234,
+  "anomaly_records": 29,
+  "anomaly_counts": {
+    "premed_outside": 11,
+    "preabe_outside": 16,
+    "preult_lt_premin": 3
+  },
+  "codbdi_distribution": {
+    "62": 8234
+  },
+  "monthly_term_distribution": {
+    "1998-01": 464,
+    "1998-02": 448,
+    "1998-03": 822,
+    "1998-04": 724,
+    "1998-05": 683,
+    "1998-06": 589,
+    "1998-07": 865,
+    "1998-08": 841,
+    "1998-09": 615,
+    "1998-10": 637,
+    "1998-11": 737,
+    "1998-12": 809
+  },
+  "anomalies": [
+    {
+      "row": 12131,
+      "date": "1998-02-18",
+      "codneg": "COP 4",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "222.86",
+      "premax": "222.86",
+      "premin": "222.86",
+      "premed": "222.85",
+      "preult": "222.86",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 25926,
+      "date": "1998-04-03",
+      "codneg": "BBAS4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "15.74",
+      "premax": "15.51",
+      "premin": "15.5",
+      "premed": "15.5",
+      "preult": "15.51",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 29896,
+      "date": "1998-04-17",
+      "codneg": "ACES3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "090",
+      "datven": "9999-12-31",
+      "preabe": "2.05",
+      "premax": "2.12",
+      "premin": "2.11",
+      "premed": "2.11",
+      "preult": "2.12",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 30897,
+      "date": "1998-04-22",
+      "codneg": "CESP3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "43.04",
+      "premax": "43.07",
+      "premin": "43.07",
+      "premed": "43.07",
+      "preult": "43.07",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 32322,
+      "date": "1998-04-27",
+      "codneg": "SHAP4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "0.82",
+      "premax": "0.86",
+      "premin": "0.85",
+      "premed": "0.85",
+      "preult": "0.85",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 37778,
+      "date": "1998-05-14",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "40.61",
+      "premax": "40.61",
+      "premin": "40.61",
+      "premed": "40.6",
+      "preult": "40.61",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 41768,
+      "date": "1998-05-27",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "34.61",
+      "premax": "34.61",
+      "premin": "34.61",
+      "premed": "34.6",
+      "preult": "34.61",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 41769,
+      "date": "1998-05-27",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "35.98",
+      "premax": "35.98",
+      "premin": "35.98",
+      "premed": "35.97",
+      "preult": "35.98",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 47963,
+      "date": "1998-06-17",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "34.95",
+      "premax": "34.95",
+      "premin": "34.95",
+      "premed": "34.94",
+      "preult": "34.95",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 48379,
+      "date": "1998-06-18",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "35.88",
+      "premax": "35.88",
+      "premin": "35.88",
+      "premed": "35.87",
+      "preult": "35.88",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 49580,
+      "date": "1998-06-23",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "36.28",
+      "premax": "36.28",
+      "premin": "36.28",
+      "premed": "36.27",
+      "preult": "36.28",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 52109,
+      "date": "1998-07-01",
+      "codneg": "ACES3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "1.32",
+      "premax": "1.3",
+      "premin": "1.28",
+      "premed": "1.28",
+      "preult": "1.3",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 53732,
+      "date": "1998-07-07",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "41.29",
+      "premax": "41.29",
+      "premin": "41.29",
+      "premed": "41.28",
+      "preult": "41.29",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 55032,
+      "date": "1998-07-13",
+      "codneg": "ELET6T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "39.62",
+      "premax": "38.28",
+      "premin": "38.27",
+      "premed": "38.27",
+      "preult": "38.28",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 55462,
+      "date": "1998-07-14",
+      "codneg": "BESP3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "56.61",
+      "premax": "56.61",
+      "premin": "56.61",
+      "premed": "56.6",
+      "preult": "56.61",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 56404,
+      "date": "1998-07-16",
+      "codneg": "ELET6T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "39.12",
+      "premax": "39.12",
+      "premin": "39.11",
+      "premed": "39.11",
+      "preult": "39.08",
+      "flags": {
+        "preult_lt_premin": true,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 58298,
+      "date": "1998-07-22",
+      "codneg": "TBCP4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "313.74",
+      "premax": "308.93",
+      "premin": "308.93",
+      "premed": "308.93",
+      "preult": "308.93",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 63741,
+      "date": "1998-08-10",
+      "codneg": "BESP3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "51.44",
+      "premax": "51.44",
+      "premin": "51.44",
+      "premed": "51.43",
+      "preult": "51.44",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 66830,
+      "date": "1998-08-19",
+      "codneg": "MAHS4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "20.23",
+      "premax": "19.36",
+      "premin": "19.35",
+      "premed": "19.35",
+      "preult": "19.35",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 78299,
+      "date": "1998-09-30",
+      "codneg": "CESP3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "13.65",
+      "premax": "14.43",
+      "premin": "14.4",
+      "premed": "14.4",
+      "preult": "14.4",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 79880,
+      "date": "1998-10-06",
+      "codneg": "CMIG3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "15.86",
+      "premax": "15.86",
+      "premin": "15.86",
+      "premed": "15.85",
+      "preult": "15.86",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": true,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 80268,
+      "date": "1998-10-07",
+      "codneg": "BBAS4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "8.53",
+      "premax": "8.81",
+      "premin": "8.8",
+      "premed": "8.8",
+      "preult": "8.81",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 80324,
+      "date": "1998-10-07",
+      "codneg": "WHMT3T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "0.68",
+      "premax": "0.73",
+      "premin": "0.72",
+      "premed": "0.72",
+      "preult": "0.73",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 81504,
+      "date": "1998-10-13",
+      "codneg": "RCTB30T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "51.59",
+      "premax": "48.67",
+      "premin": "48.66",
+      "premed": "48.66",
+      "preult": "48.66",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 82376,
+      "date": "1998-10-15",
+      "codneg": "RCTB40T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "83.64",
+      "premax": "85.96",
+      "premin": "85.95",
+      "premed": "85.95",
+      "preult": "84.16",
+      "flags": {
+        "preult_lt_premin": true,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 90752,
+      "date": "1998-11-12",
+      "codneg": "CESP4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "030",
+      "datven": "9999-12-31",
+      "preabe": "27.37",
+      "premax": "27.22",
+      "premin": "25.26",
+      "premed": "26.11",
+      "preult": "25.26",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 91597,
+      "date": "1998-11-16",
+      "codneg": "USIM4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "3.71",
+      "premax": "3.68",
+      "premin": "3.67",
+      "premed": "3.67",
+      "preult": "3.68",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    },
+    {
+      "row": 97844,
+      "date": "1998-12-04",
+      "codneg": "CMIG4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "25.29",
+      "premax": "26.89",
+      "premin": "25.29",
+      "premed": "25.29",
+      "preult": "24.46",
+      "flags": {
+        "preult_lt_premin": true,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": false
+      }
+    },
+    {
+      "row": 102599,
+      "date": "1998-12-21",
+      "codneg": "CESP4T",
+      "codbdi": "62",
+      "tpmerc": "030",
+      "prazot": "060",
+      "datven": "9999-12-31",
+      "preabe": "29.13",
+      "premax": "30.05",
+      "premin": "29.4",
+      "premed": "29.66",
+      "preult": "30.04",
+      "flags": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premed_outside": false,
+        "preabe_outside": true
+      }
+    }
+  ],
+  "rule_under_test": "PREMIN <= PREMED <= PREMAX e PREMIN <= PREULT <= PREMAX",
+  "interpretation_policy": "Fato estatistico apenas; nenhuma anomalia e reinterpretada ou corrigida.",
+  "next_gate": "FASE07 permanece bloqueada ate explicar as anomalias ou estabelecer regra documental de excecao."
+}
