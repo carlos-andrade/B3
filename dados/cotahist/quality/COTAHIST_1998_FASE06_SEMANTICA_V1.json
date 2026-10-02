@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1998,
+  "phase": "FASE06",
+  "status": "ANALISE_REQUERIDA",
+  "decision": "BLOQUEADO_PARA_FASE07",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP",
+  "raw_sha256": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
+  "quote_records_type_01": 104971,
+  "semantic_errors": 0,
+  "ohlc_anomalies": [
+    {
+      "index": 56402,
+      "date": "19980716",
+      "codneg": "ELET6T",
+      "tpmerc": "030",
+      "codbdi": "62",
+      "preabe": 39.12,
+      "premax": 39.12,
+      "premin": 39.11,
+      "premed": 39.11,
+      "preult": 39.08
+    },
+    {
+      "index": 82374,
+      "date": "19981015",
+      "codneg": "RCTB40T",
+      "tpmerc": "030",
+      "codbdi": "62",
+      "preabe": 83.64,
+      "premax": 85.96,
+      "premin": 85.95,
+      "premed": 85.95,
+      "preult": 84.16
+    },
+    {
+      "index": 97842,
+      "date": "19981204",
+      "codneg": "CMIG4T",
+      "tpmerc": "030",
+      "codbdi": "62",
+      "preabe": 25.29,
+      "premax": 26.89,
+      "premin": 25.29,
+      "premed": 25.29,
+      "preult": 24.46
+    }
+  ],
+  "rule": "PREMAX/PREMIN/PREULT reconciliacao exige investigacao quando PREULT fica fora do intervalo PREMIN-PREMAX",
+  "b3_layout_source": "https://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf",
+  "b3_layout_observation": "TPMERC 030 = TERM; PREMAX = highest floor price; PREMIN = lowest floor price; PREULT = last negotiated price.",
+  "validated_at_utc": "2026-10-02T00:47:25.401980+00:00"
+}
