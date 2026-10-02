@@ -1,0 +1,44 @@
+name: COTAHIST - FASE12 Fechamento 1997 Abertura 1998 V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase12-fechamento-1997-abertura-1998-v1.yml"
+      - "scripts/ingestao/fechar_cotahist_1997_abrir_1998_fase12_v1.py"
+      - "dados/cotahist/quality/COTAHIST_1997_FASE11_CERTIFICACAO_V1.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1998_quality.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase12-1997-1998
+  cancel-in-progress: false
+
+jobs:
+  transicao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Executar FASE12
+        run: python scripts/ingestao/fechar_cotahist_1997_abrir_1998_fase12_v1.py
+      - name: Publicar transicao
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1997_FASE12_FECHAMENTO_1998_ABERTURA_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): publicar fechamento 1997 abertura 1998"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
