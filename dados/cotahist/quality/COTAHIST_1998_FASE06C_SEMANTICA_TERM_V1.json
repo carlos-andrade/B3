@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1998,
+  "phase": "FASE06C_SEMANTICA_TERM",
+  "status": "VALIDADO",
+  "decision": "OHLC_CLASSICO_NAO_E_BLOQUEADOR_UNIVERSAL_PARA_TPMERC_030",
+  "term_records": 8234,
+  "anomaly_records": 29,
+  "anomaly_rate": 0.003521982025746903,
+  "anomaly_counts": {
+    "preabe_outside": 16,
+    "premed_outside": 11,
+    "preult_lt_premin": 3,
+    "preult_gt_premax": 0
+  },
+  "internal_evidence": "dados/cotahist/quality/COTAHIST_1998_FASE06B_CONTEXT_TERM_V1.json",
+  "primary_layout_sources": [
+    "https://bvmf.bmfbovespa.com.br/pt-br/download/SeriesHistoricas_Layout.pdf",
+    "https://www.b3.com.br/data/files/C8/F3/08/B4/297BE410F816C9E492D828A8/SeriesHistoricas_Layout.pdf"
+  ],
+  "corroborating_publication": "https://p.download.uol.com.br/spimagem/bidusayao/gm06jan2009.pdf",
+  "findings": [
+    "O layout oficial descreve os campos, mas não documenta a invariante OHLC clássica como regra de rejeição.",
+    "Publicação de mercado a termo de 2009 contém FECH < MIN e MED > MAX, demonstrando que a geometria OHLC clássica não pode ser universalizada para TERM.",
+    "Os 29 registros de 1998 permanecem preservados; nenhuma correção de dado foi aplicada."
+  ],
+  "limitations": [
+    "Não foi encontrada nesta investigação uma especificação histórica primária anterior a 2000 que detalhe a fórmula de PREMED/PREABE/PREMIN/PREMAX/PREULT para TERM.",
+    "Não foi possível atribuir cada anomalia de 1998 a um negócio individual."
+  ]
+}
