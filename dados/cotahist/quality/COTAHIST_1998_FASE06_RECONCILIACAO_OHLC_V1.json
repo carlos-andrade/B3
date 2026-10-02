@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1998,
+  "phase": "FASE06_RECONCILIACAO_OHLC",
+  "status": "ANALISE_REQUERIDA",
+  "decision": "BLOQUEADO_PARA_FASE07",
+  "purpose": "Reconciliar os tres registros TERM que apresentam PREULT fora do intervalo PREMIN-PREMAX, comparando bytes RAW, campos parseados e NORMALIZED.",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
+  "raw_sha256": "91a2d516686a0d0ff133254df2595f44d23d9b7ecf1966a11ef4c2beeacec440",
+  "normalized_sha256": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
+  "targets": [
+    {
+      "date": "19980716",
+      "codneg": "ELET6T"
+    },
+    {
+      "date": "19981015",
+      "codneg": "RCTB40T"
+    },
+    {
+      "date": "19981204",
+      "codneg": "CMIG4T"
+    }
+  ],
+  "record_field_contract": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "nomres",
+    "especi",
+    "prazot",
+    "modref",
+    "preabe",
+    "premax",
+    "premin",
+    "premed",
+    "preult",
+    "preofc",
+    "preofv",
+    "totneg",
+    "quatot",
+    "voltot",
+    "preexe",
+    "indopc",
+    "datven",
+    "fatcot",
+    "ptoexe",
+    "codisi",
+    "dismes"
+  ],
+  "official_b3_layout": {
+    "source": "https://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf",
+    "tpmerc_030": "TERM",
+    "premax": "highest floor price",
+    "premin": "lowest floor price",
+    "preult": "last negotiated price"
+  },
+  "reconciliation": [
+    {
+      "target": {
+        "date": "19980716",
+        "codneg": "ELET6T"
+      },
+      "status": "MISMATCH",
+      "raw_record_index": 56403,
+      "normalized_row_index": 56402,
+      "raw_record_sha256": "4a48203307308d38cfa9884150950237c397e3fadce54c13a2121ef0a40a9120",
+      "raw_record_length": 245,
+      "raw_record_base64": "MDExOTk4MDcxNjYyRUxFVDZUICAgICAgMDMwRUxFVCAgICAgICAgUE5CKiAgICAgIDA2MFIkICAwMDAwMDAwMDAzOTEyMDAwMDAwMDAwMzkxMjAwMDAwMDAwMDM5MTEwMDAwMDAwMDAzOTExMDAwMDAwMDAwMzkwODAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDQwMDAwMDAwMDAwMDAwMDAwMTU2NDY4ODAwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUkVMRVRBQ05QQjcwNDc=",
+      "raw_fields": {
+        "data_pregao": "19980716",
+        "codbdi": "62",
+        "codneg": "ELET6T",
+        "tpmerc": "030",
+        "nomres": "ELET",
+        "especi": "PNB*",
+        "prazot": "06",
+        "modref": "0",
+        "preabe": "39.12",
+        "premax": "39.12",
+        "premin": "39.11",
+        "premed": "39.11",
+        "preult": "39.08",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "4000000",
+        "voltot": "156468.80",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "99991231",
+        "fatcot": "10.00",
+        "ptoexe": "0.00",
+        "codisi": "000000BRELET",
+        "dismes": "ACNPB7047"
+      },
+      "normalized_fields": {
+        "data_pregao": "1998-07-16",
+        "codbdi": "62",
+        "codneg": "ELET6T",
+        "tpmerc": "030",
+        "nomres": "ELET",
+        "especi": "PNB*",
+        "prazot": "060",
+        "modref": "R$",
+        "preabe": "39.12",
+        "premax": "39.12",
+        "premin": "39.11",
+        "premed": "39.11",
+        "preult": "39.08",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "4000000",
+        "voltot": "156468.80",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "9999-12-31",
+        "fatcot": "1000.00",
+        "ptoexe": "0.00",
+        "codisi": "BRELETACNPB7",
+        "dismes": "047"
+      },
+      "field_mismatches": [
+        {
+          "field": "data_pregao",
+          "raw": "19980716",
+          "normalized": "1998-07-16"
+        },
+        {
+          "field": "prazot",
+          "raw": "06",
+          "normalized": "060"
+        },
+        {
+          "field": "modref",
+          "raw": "0",
+          "normalized": "R$"
+        },
+        {
+          "field": "datven",
+          "raw": "99991231",
+          "normalized": "9999-12-31"
+        },
+        {
+          "field": "fatcot",
+          "raw": "10.00",
+          "normalized": "1000.00"
+        },
+        {
+          "field": "codisi",
+          "raw": "000000BRELET",
+          "normalized": "BRELETACNPB7"
+        },
+        {
+          "field": "dismes",
+          "raw": "ACNPB7047",
+          "normalized": "047"
+        }
+      ],
+      "ohlc": {
+        "preabe": "39.12",
+        "premax": "39.12",
+        "premin": "39.11",
+        "premed": "39.11",
+        "preult": "39.08"
+      },
+      "ohlc_rule_observation": {
+        "preult_lt_premin": true,
+        "preult_gt_premax": false,
+        "premin_le_premed_le_premax": true
+      }
+    },
+    {
+      "target": {
+        "date": "19981015",
+        "codneg": "RCTB40T"
+      },
+      "status": "MISMATCH",
+      "raw_record_index": 82375,
+      "normalized_row_index": 82374,
+      "raw_record_sha256": "6677574c674a1655c8d7555d9f4675b55dba2f7c413564e52dacd3d5e3f6971e",
+      "raw_record_length": 245,
+      "raw_record_base64": "MDExOTk4MTAxNTYyUkNUQjQwVCAgICAgMDMwUkNUQiAgICAgICAgUlBOKiAgICAgIDA2MFIkICAwMDAwMDAwMDA4MzY0MDAwMDAwMDAwODU5NjAwMDAwMDAwMDg1OTUwMDAwMDAwMDA4NTk1MDAwMDAwMDAwODQxNjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDg1OTU1NDQwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUlJDVEJDU0EwMjUwMDI=",
+      "raw_fields": {
+        "data_pregao": "19981015",
+        "codbdi": "62",
+        "codneg": "RCTB40T",
+        "tpmerc": "030",
+        "nomres": "RCTB",
+        "especi": "RPN*",
+        "prazot": "06",
+        "modref": "0",
+        "preabe": "83.64",
+        "premax": "85.96",
+        "premin": "85.95",
+        "premed": "85.95",
+        "preult": "84.16",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "1000000",
+        "voltot": "85955.44",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "99991231",
+        "fatcot": "10.00",
+        "ptoexe": "0.00",
+        "codisi": "000000BRRCTB",
+        "dismes": "CSA025002"
+      },
+      "normalized_fields": {
+        "data_pregao": "1998-10-15",
+        "codbdi": "62",
+        "codneg": "RCTB40T",
+        "tpmerc": "030",
+        "nomres": "RCTB",
+        "especi": "RPN*",
+        "prazot": "060",
+        "modref": "R$",
+        "preabe": "83.64",
+        "premax": "85.96",
+        "premin": "85.95",
+        "premed": "85.95",
+        "preult": "84.16",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "1000000",
+        "voltot": "85955.44",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "9999-12-31",
+        "fatcot": "1000.00",
+        "ptoexe": "0.00",
+        "codisi": "BRRCTBCSA025",
+        "dismes": "002"
+      },
+      "field_mismatches": [
+        {
+          "field": "data_pregao",
+          "raw": "19981015",
+          "normalized": "1998-10-15"
+        },
+        {
+          "field": "prazot",
+          "raw": "06",
+          "normalized": "060"
+        },
+        {
+          "field": "modref",
+          "raw": "0",
+          "normalized": "R$"
+        },
+        {
+          "field": "datven",
+          "raw": "99991231",
+          "normalized": "9999-12-31"
+        },
+        {
+          "field": "fatcot",
+          "raw": "10.00",
+          "normalized": "1000.00"
+        },
+        {
+          "field": "codisi",
+          "raw": "000000BRRCTB",
+          "normalized": "BRRCTBCSA025"
+        },
+        {
+          "field": "dismes",
+          "raw": "CSA025002",
+          "normalized": "002"
+        }
+      ],
+      "ohlc": {
+        "preabe": "83.64",
+        "premax": "85.96",
+        "premin": "85.95",
+        "premed": "85.95",
+        "preult": "84.16"
+      },
+      "ohlc_rule_observation": {
+        "preult_lt_premin": true,
+        "preult_gt_premax": false,
+        "premin_le_premed_le_premax": true
+      }
+    },
+    {
+      "target": {
+        "date": "19981204",
+        "codneg": "CMIG4T"
+      },
+      "status": "MISMATCH",
+      "raw_record_index": 97844,
+      "normalized_row_index": 97843,
+      "raw_record_sha256": "ce8dbfc92b3d55cf03e4559285ebedf923d53505ba686c1cda354cfdd3e8add2",
+      "raw_record_length": 245,
+      "raw_record_base64": "MDExOTk4MTIwNDYyQ01JRzRUICAgICAgMDMwQ01JRyAgICAgICAgUE4gKiAgICAgIDA5MFIkICAwMDAwMDAwMDAyNjg4MDAwMDAwMDAwMjY4OTAwMDAwMDAwMDI2ODgwMDAwMDAwMDAyNjg4MDAwMDAwMDAwMjY4OTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDI2ODgxMjUwMDAwMDAwMDAwMDAwMDk5OTkxMjMxMDAwMTAwMDAwMDAwMDAwMDAwMDBCUkNNSUdBQ05QUjMxNzI=",
+      "raw_fields": {
+        "data_pregao": "19981204",
+        "codbdi": "62",
+        "codneg": "CMIG4T",
+        "tpmerc": "030",
+        "nomres": "CMIG",
+        "especi": "PN *",
+        "prazot": "09",
+        "modref": "0",
+        "preabe": "26.88",
+        "premax": "26.89",
+        "premin": "26.88",
+        "premed": "26.88",
+        "preult": "26.89",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "1000000",
+        "voltot": "26881.25",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "99991231",
+        "fatcot": "10.00",
+        "ptoexe": "0.00",
+        "codisi": "000000BRCMIG",
+        "dismes": "ACNPR3172"
+      },
+      "normalized_fields": {
+        "data_pregao": "1998-12-04",
+        "codbdi": "62",
+        "codneg": "CMIG4T",
+        "tpmerc": "030",
+        "nomres": "CMIG",
+        "especi": "PN *",
+        "prazot": "090",
+        "modref": "R$",
+        "preabe": "26.88",
+        "premax": "26.89",
+        "premin": "26.88",
+        "premed": "26.88",
+        "preult": "26.89",
+        "preofc": "0.00",
+        "preofv": "0.00",
+        "totneg": "2",
+        "quatot": "1000000",
+        "voltot": "26881.25",
+        "preexe": "0.00",
+        "indopc": "0",
+        "datven": "9999-12-31",
+        "fatcot": "1000.00",
+        "ptoexe": "0.00",
+        "codisi": "BRCMIGACNPR3",
+        "dismes": "172"
+      },
+      "field_mismatches": [
+        {
+          "field": "data_pregao",
+          "raw": "19981204",
+          "normalized": "1998-12-04"
+        },
+        {
+          "field": "prazot",
+          "raw": "09",
+          "normalized": "090"
+        },
+        {
+          "field": "modref",
+          "raw": "0",
+          "normalized": "R$"
+        },
+        {
+          "field": "datven",
+          "raw": "99991231",
+          "normalized": "9999-12-31"
+        },
+        {
+          "field": "fatcot",
+          "raw": "10.00",
+          "normalized": "1000.00"
+        },
+        {
+          "field": "codisi",
+          "raw": "000000BRCMIG",
+          "normalized": "BRCMIGACNPR3"
+        },
+        {
+          "field": "dismes",
+          "raw": "ACNPR3172",
+          "normalized": "172"
+        }
+      ],
+      "ohlc": {
+        "preabe": "26.88",
+        "premax": "26.89",
+        "premin": "26.88",
+        "premed": "26.88",
+        "preult": "26.89"
+      },
+      "ohlc_rule_observation": {
+        "preult_lt_premin": false,
+        "preult_gt_premax": false,
+        "premin_le_premed_le_premax": true
+      }
+    }
+  ],
+  "conclusion": "Há divergencia ou ausência entre RAW e NORMALIZED; a FASE07 permanece bloqueada até correção e nova validação.",
+  "validated_at_utc": "2026-10-02T00:52:50.794980+00:00"
+}
