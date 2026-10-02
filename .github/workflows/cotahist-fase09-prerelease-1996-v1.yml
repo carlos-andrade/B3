@@ -1,0 +1,72 @@
+name: COTAHIST - FASE09 Pre-Release 1996
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase09-prerelease-1996-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE03_PARSING_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE06_SEMANTICA_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE07_IDENTIDADE_HISTORICA_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1996_FASE08_SEMANTICA_K4_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A1996.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1996.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1996_quality.json"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase09-1996
+  cancel-in-progress: false
+jobs:
+  prerelease:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Avaliar gate FASE09
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib,sys
+          y="1996"; q=pathlib.Path("dados/cotahist/quality")
+          evidence={k:q/f"COTAHIST_{y}_{s}.json" for k,s in [
+            ("F03","FASE03_PARSING_V1"),("F04","FASE04_NORMALIZACAO_V1"),("F05","FASE05_MANIFESTO_CHECKSUM_V1"),
+            ("F06","FASE06_SEMANTICA_V1"),("F07","FASE07_IDENTIDADE_HISTORICA_V1"),("F08","FASE08_SEMANTICA_K4_V1")]}
+          required={"RAW":pathlib.Path(f"dados/cotahist/raw/anual/COTAHIST_A{y}.ZIP"),
+                    "NORMALIZED":pathlib.Path(f"dados/cotahist/normalized/anual/COTAHIST_A{y}.csv"),
+                    "MANIFEST":pathlib.Path(f"dados/cotahist/normalized/manifests/COTAHIST_A{y}_quality.json")}
+          missing=[k for k,p in {**evidence,**required}.items() if not p.exists()]
+          statuses={}
+          for k,p in evidence.items():
+           if p.exists():
+            try: statuses[k]=json.loads(p.read_text(encoding="utf-8")).get("status")
+            except Exception: statuses[k]="INVALID_JSON"
+          blocked=[k for k in ["F03","F04","F05","F06","F08"] if statuses.get(k)!="VALIDADO"]
+          if statuses.get("F07")!="FASE_07_IDENTIDADE_HISTORICA_1996_ANALISE": blocked.append("F07")
+          raw=required["RAW"]; raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest() if raw.exists() else None
+          expected="911a993548931f56b1b3dc18d2994c67f5d011cf7a85986029384298f17d6800"
+          if raw_sha and raw_sha!=expected: blocked.append("RAW_SHA256")
+          ok=not missing and not blocked
+          out={"schema_version":"1.0.0","year":1996,"phase":"FASE09","status":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "preconditions":{k:("OK" if k not in missing else "AUSENTE") for k in {**evidence,**required}},
+            "evidence_statuses":statuses,"missing":missing,"blocked":blocked,"raw_sha256":raw_sha,"expected_raw_sha256":expected,
+            "f07_treatment":"F07 accepted as completed historical identity analysis; it is not retrocertified as VALIDADO.",
+            "decision":"LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "note":"FASE09 consolidates evidence and does not retrocertify missing phases."}
+          target=q/f"COTAHIST_{y}_FASE09_PRE_RELEASE_V1.json"; target.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          if not ok: sys.exit(1)
+          PY
+      - name: Publicar FASE09
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1996_FASE09_PRE_RELEASE_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): publicar pre-release fase 09 1996"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
