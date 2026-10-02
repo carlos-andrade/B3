@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1997,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "F03": "OK",
+    "F04": "OK",
+    "F05": "OK",
+    "F06": "OK",
+    "F07": "OK",
+    "F08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "F03": "VALIDADO",
+    "F04": "VALIDADO",
+    "F05": "VALIDADO",
+    "F06": "VALIDADO",
+    "F07": "FASE_07_IDENTIDADE_HISTORICA_1997_ANALISE",
+    "F08": "VALIDADO"
+  },
+  "missing": [],
+  "blocked": [],
+  "raw_sha256": "f6bd380e753ec8024857b739b7d9b010c7467a5fd967e82d01186a46f5e33fc3",
+  "expected_raw_sha256": "f6bd380e753ec8024857b739b7d9b010c7467a5fd967e82d01186a46f5e33fc3",
+  "f07_treatment": "F07 accepted as completed historical identity analysis; it is not retrocertified as VALIDADO.",
+  "decision": "LIBERADO_PARA_FASE10",
+  "note": "FASE09 consolidates evidence and does not retrocertify missing phases."
+}
