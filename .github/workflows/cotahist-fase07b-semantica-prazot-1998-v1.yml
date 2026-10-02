@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-fase07b-1998
+  group: cotahist-fase07b-${{ github.run_id }}
   cancel-in-progress: false
 
 jobs:
@@ -21,10 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          lfs: true
+          lfs: false
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+      - name: Materializar somente o RAW 1998
+        run: |
+          git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
       - name: Verificar gate FASE07A
         shell: bash
         run: |
