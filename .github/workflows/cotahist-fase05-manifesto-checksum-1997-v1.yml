@@ -1,0 +1,83 @@
+name: COTAHIST 1997 - FASE05 Manifesto e Checksum V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase05-manifesto-checksum-1997-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1997.json"
+      - "dados/cotahist/checksums/COTAHIST_A1997.ZIP.sha256"
+      - "dados/cotahist/quality/COTAHIST_1997_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase05-1997
+  cancel-in-progress: false
+
+jobs:
+  manifesto_checksum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: FASE05 — validar manifesto, checksum e FASE04
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, pathlib, re, sys
+          root=pathlib.Path(".")
+          raw=root/"dados/cotahist/raw/anual/COTAHIST_A1997.ZIP"
+          man=root/"dados/cotahist/manifests/COTAHIST_A1997.json"
+          chk=root/"dados/cotahist/checksums/COTAHIST_A1997.ZIP.sha256"
+          f4=root/"dados/cotahist/quality/COTAHIST_1997_FASE04_NORMALIZACAO_V1.json"
+          nm=root/"dados/cotahist/normalized/manifests/COTAHIST_A1997_quality.json"
+          ev=root/"dados/cotahist/quality/COTAHIST_1997_FASE05_MANIFESTO_CHECKSUM_V1.json"
+          for p in (raw,man,chk,f4,nm):
+              if not p.exists(): sys.exit(f"FASE05 BLOQUEADA: ausente {p}")
+          e4=json.loads(f4.read_text(encoding="utf-8"))
+          m=json.loads(man.read_text(encoding="utf-8"))
+          n=json.loads(nm.read_text(encoding="utf-8"))
+          if e4.get("status")!="VALIDADO" or e4.get("decision")!="LIBERADO_PARA_FASE05":
+              sys.exit("FASE05 BLOQUEADA: FASE04 nao liberou")
+          if m.get("status")!="VALIDADO" or m.get("ano")!=1997:
+              sys.exit("FASE05 BLOQUEADA: manifesto principal invalido")
+          if n.get("status")!="VALIDADO" or n.get("ano")!=1997:
+              sys.exit("FASE05 BLOQUEADA: manifesto normalizado invalido")
+          actual=hashlib.sha256(raw.read_bytes()).hexdigest()
+          checksum_text=chk.read_text(encoding="utf-8").strip()
+          checksum_value=checksum_text.split()[0] if checksum_text else ""
+          if not re.fullmatch(r"[0-9a-f]{64}",actual): sys.exit("FASE05 BLOQUEADA: SHA calculado invalido")
+          if actual!=m.get("sha256"): sys.exit("FASE05 BLOQUEADA: RAW diverge do manifesto")
+          if actual!=checksum_value: sys.exit("FASE05 BLOQUEADA: RAW diverge do checksum")
+          out={
+            "schema_version":"1.0.0","year":1997,"phase":"FASE05","status":"VALIDADO",
+            "decision":"LIBERADO_PARA_FASE06","entry_gate":"FASE04",
+            "rule":"docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md",
+            "raw_path":str(raw),"raw_sha256":actual,"manifest_path":str(man),
+            "checksum_path":str(chk),"normalized_manifest_path":str(nm),
+            "manifest_sha256_matches_raw":True,"checksum_matches_raw":True,
+            "normalized_manifest_status":"VALIDADO","fase04_status":"VALIDADO",
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+      - name: Publicar evidencia FASE05
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1997_FASE05_MANIFESTO_CHECKSUM_V1.json
+          git diff --cached --quiet || git commit -m "audit(cotahist): valida 1997 fase 05 manifesto checksum"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
