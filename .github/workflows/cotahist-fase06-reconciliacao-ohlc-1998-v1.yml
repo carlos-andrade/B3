@@ -8,6 +8,7 @@ on:
       - "scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py"
       - "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
       - "dados/cotahist/normalized/anual/COTAHIST_A1998.csv"
+      - "scripts/ingestao/reconciliar_anomalias_ohlc_cotahist_1998_v1.py"
 permissions:
   contents: write
 concurrency:
