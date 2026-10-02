@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE07C",
+  "status": "VALIDADO",
+  "candidate_key": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "prazot"
+  ],
+  "years": {
+    "1997": {
+      "rows_total": 119272,
+      "term_rows": 7319,
+      "candidate_key_groups": 7319,
+      "candidate_duplicate_groups": 0,
+      "candidate_duplicate_extra_rows": 0,
+      "base_groups": 5950,
+      "base_groups_multiple_rows": 1226,
+      "invalid_prazot": []
+    },
+    "1998": {
+      "rows_total": 104971,
+      "term_rows": 8234,
+      "candidate_key_groups": 8234,
+      "candidate_duplicate_groups": 0,
+      "candidate_duplicate_extra_rows": 0,
+      "base_groups": 6807,
+      "base_groups_multiple_rows": 1336,
+      "invalid_prazot": []
+    },
+    "1999": {
+      "rows_total": 129841,
+      "term_rows": 10799,
+      "candidate_key_groups": 10799,
+      "candidate_duplicate_groups": 0,
+      "candidate_duplicate_extra_rows": 0,
+      "base_groups": 9034,
+      "base_groups_multiple_rows": 1673,
+      "invalid_prazot": []
+    }
+  },
+  "decision": "CANDIDATA_SEM_DUPLICIDADE_NOS_ANOS_TESTADOS",
+  "governance": [
+    "A chave candidata foi testada em 1997, 1998 e 1999 antes de qualquer promoção.",
+    "Não foi observada duplicidade da chave DATA+CODBDI+CODNEG+TPMERC+PRAZOT nos três anos.",
+    "PRAZOT foi numérico/válido em todos os registros TERM analisados.",
+    "A ausência de duplicidade nos três anos não prova, isoladamente, semântica econômica universal; a promoção deve permanecer condicionada a validações adicionais.",
+    "Nenhum RAW ou dado normalizado foi alterado."
+  ]
+}
