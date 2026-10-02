@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "FASE_12",
+  "transition": "1997_FECHAMENTO_1998_ABERTURA",
+  "year_closed": 1997,
+  "year_opened": 1998,
+  "closed": {
+    "status": "FECHADO_E_CERTIFICADO",
+    "phase11_evidence": "dados/cotahist/quality/COTAHIST_1997_FASE11_CERTIFICACAO_V1.json",
+    "phase11_status": "VALIDADO",
+    "certification": "CERTIFICADO_NORMALIZACAO",
+    "rows_normalized": 119272,
+    "fields": 25
+  },
+  "next_year": {
+    "raw_present": true,
+    "manifest_present": true,
+    "manifest_status": "VALIDADO",
+    "parser_version": "1.1.0",
+    "rows_normalized": 104971,
+    "fields": 25,
+    "invalid_dates": 0,
+    "dates_outside_year": 0,
+    "normalized_release_present": false
+  },
+  "gate": "FASE_11_1997_REQUIRED_BEFORE_1998_OPENING",
+  "checks": {
+    "fase11_certificada": true,
+    "raw_1998_present": true,
+    "manifest_1998_present": true,
+    "manifest_1998_validated": true,
+    "manifest_1998_parser_1_1_0": true,
+    "manifest_1998_fields_25": true,
+    "manifest_1998_dates_valid": true
+  },
+  "failures": [],
+  "decision": "1998_ABERTO_SOB_CONTROLE"
+}
