@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-fase07c-prazot-adjacentes
+  group: cotahist-fase07c-${{ github.run_id }}
   cancel-in-progress: false
 
 jobs:
