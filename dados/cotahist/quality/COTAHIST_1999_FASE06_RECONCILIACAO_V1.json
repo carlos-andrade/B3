@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "fase": "FASE06",
+  "ano": 1999,
+  "status": "BLOQUEADO",
+  "evidence_type": "RECONCILIACAO_RAW_NORMALIZED",
+  "mode": "AUDITORIA_CONTROLADA",
+  "source": {
+    "raw_file": "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP",
+    "raw_manifest": "dados/cotahist/manifests/COTAHIST_A1999.json",
+    "raw_sha256": "fe7428b367a2d40acaefe823fd5080254d07f9ad6c29fc64c9e6876cbd876f09",
+    "normalized_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json",
+    "normalized_file": "dados/cotahist/normalized/anual/COTAHIST_A1999.csv",
+    "normalized_sha256": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d"
+  },
+  "verified_facts": [
+    "RAW manifest is VALIDADO.",
+    "RAW manifest identifies a ZIP with one COTAHIST member and 245-byte records.",
+    "Normalized manifest is VALIDADO.",
+    "Normalized manifest reports parser_version 1.1.0, 129841 rows and 25 fields.",
+    "Normalized manifest reports zero invalid dates and zero dates outside 1999.",
+    "The existing duplicate audit reports 1673 candidate-key duplicate groups, all with distinct full rows; differences include PRAZOT and transactional fields.",
+    "The duplicate audit is diagnostic evidence and must not be used to deduplicate or to decide identity in FASE06."
+  ],
+  "required_checks": {
+    "raw_hash_vs_manifest": "VALIDADO",
+    "normalized_hash_recorded": "VALIDADO",
+    "row_level_raw_vs_normalized_reconciliation": "NAO_EXECUTADO",
+    "semantic_invariant_execution_from_source_records": "NAO_EXECUTADO",
+    "candidate_duplicate_diagnostic": "VALIDADO_COM_EXCECAO",
+    "identity_decision": "RESERVADO_PARA_FASE07"
+  },
+  "blocking_reason": "The available GitHub read/contents interface exposes the 1999 ZIP as a binary repository object but does not provide a text-readable execution environment or workflow-dispatch operation in the connected GitHub toolset. Existing manifests and duplicate diagnostics prove provenance and metadata, but do not constitute the required row-level FASE06 reconciliation. Therefore FASE06 cannot be marked VALIDADO without inventing execution evidence.",
+  "governance": {
+    "raw_immutable": true,
+    "normalized_not_modified": true,
+    "deduplication_performed": false,
+    "identity_changed": false,
+    "correction_at_origin": true,
+    "fail_closed": true
+  },
+  "decision": "BLOQUEADO_PARA_FASE07",
+  "next_authorized_action": "Executar a reconciliacao FASE06 em ambiente com acesso ao RAW/normalizado e persistir a evidencia; somente apos status VALIDADO ou VALIDADO_COM_EXCECAO nao-bloqueante executar FASE07.",
+  "readme_update": false
+}
