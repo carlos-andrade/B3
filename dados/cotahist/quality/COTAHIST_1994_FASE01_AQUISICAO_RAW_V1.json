@@ -13,7 +13,7 @@
     "source": "B3",
     "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A1994.ZIP",
     "original_acquired_at_utc": "2026-09-23T13:31:34.600678+00:00",
-    "revalidated_at_utc": "2026-10-03T06:30:49.065188+00:00",
+    "revalidated_at_utc": "2026-10-03T11:57:21.756302+00:00",
     "sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
     "source_reacquisition_sha256": "b3bbd8e8d290c36943398c6f99a04e0721db2ebac3b917904df9efaacf3172eb",
     "source_matches_raw": true,
