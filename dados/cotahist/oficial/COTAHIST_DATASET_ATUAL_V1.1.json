@@ -3,10 +3,10 @@
   "dataset_id": "COTAHIST_OFICIAL_ATUAL",
   "status": "VIGENTE",
   "status_frescor": "VALIDADO",
-  "generated_at_utc": "2026-10-02T02:26:09.452404+00:00",
+  "generated_at_utc": "2026-10-03T02:12:23.181576+00:00",
   "source": "B3",
   "ano_corrente": 2026,
-  "ultima_data": "2026-10-01",
+  "ultima_data": "2026-10-02",
   "composicao": {
     "snapshot_anual": {
       "normalized_file": "COTAHIST_A2026.csv",
@@ -26,6 +26,17 @@
         "raw_sha256": "472277bad1e2b4c1af7b1de58abf0c367fab1dad48818b04608782faff59ddd2",
         "normalized_sha256": "1506605d3f2f989ae6289f2e60a65d02de9db45ea99aacb2546f16a61e1b4935",
         "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D01102026_quality.json"
+      },
+      {
+        "data_referencia": "2026-10-02",
+        "primeira_data": "2026-10-02",
+        "ultima_data": "2026-10-02",
+        "linhas_normalized": 17948,
+        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D02102026.ZIP",
+        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D02102026.csv",
+        "raw_sha256": "ed74b2743182a951390dd8d4bc505c38ab08bdc99d790fcfc21829b466831ea0",
+        "normalized_sha256": "c8dc4d3eb5f2910a538e69cd8d8d3736731ee5c92b8246043ba1c8accac3095a",
+        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D02102026_quality.json"
       },
       {
         "data_referencia": "2026-09-24",
