@@ -21,6 +21,6 @@
   "invalid_dates": 0,
   "first_quote_date": "1994-01-03",
   "last_quote_date": "1994-12-29",
-  "validated_at_utc": "2026-10-03T01:28:36.906521+00:00",
+  "validated_at_utc": "2026-10-03T07:03:06.612990+00:00",
   "parsing_statement": "Parsing estrutural do membro COTAHIST concluído sem registros fora de 245 bytes e sem datas inválidas nos registros tipo 01."
 }
