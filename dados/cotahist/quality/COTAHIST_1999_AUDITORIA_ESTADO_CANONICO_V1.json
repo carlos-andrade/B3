@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "audit_type": "ESTADO_CANONICO_ANUAL",
+  "year": 1999,
+  "workflow_reference": ".github/workflows/cotahist-orquestrador-anual-dryrun-v2.yml",
+  "matrix_reference": "docs/cotahist/MATRIZ_OPERACIONAL_TAREFAS_POR_FASE_V1.md",
+  "executed_at_utc": "2026-10-03T01:00:00Z",
+  "mode": "READ_ONLY_AUDIT",
+  "mutations_before_audit": false,
+  "phases": [
+    {
+      "phase": "FASE00",
+      "status": "VALIDADO",
+      "evidence": "docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md",
+      "note": "governança vigente localizada"
+    },
+    {
+      "phase": "FASE01",
+      "status": "VALIDADO",
+      "evidence": [
+        "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP",
+        "dados/cotahist/manifests/COTAHIST_A1999.json",
+        "dados/cotahist/checksums/COTAHIST_A1999.ZIP.sha256"
+      ]
+    },
+    {
+      "phase": "FASE02",
+      "status": "EVIDENCIA_LEGADA_VALIDADA",
+      "evidence": "dados/cotahist/manifests/COTAHIST_A1999.json",
+      "note": "conteúdo comprova ZIP com 1 membro, registros de 245 bytes e tipos 00/01/99; falta materialização no contrato canônico FASE02"
+    },
+    {
+      "phase": "FASE03",
+      "status": "EVIDENCIA_INDIRETA",
+      "evidence": "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json",
+      "note": "parser_version 1.1.0 e dataset normalizado comprovados; evidência específica de parsing não materializada"
+    },
+    {
+      "phase": "FASE04",
+      "status": "VALIDADO",
+      "evidence": "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json",
+      "note": "129841 linhas, 25 campos, datas válidas e período 1999"
+    },
+    {
+      "phase": "FASE05",
+      "status": "VALIDADO",
+      "evidence": [
+        "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json",
+        "dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256"
+      ],
+      "note": "manifesto normalizado e checksum presentes"
+    },
+    {
+      "phase": "FASE06",
+      "status": "EVIDENCIA_DIAGNOSTICA",
+      "evidence": "dados/cotahist/normalized/manifests/COTAHIST_A1999_duplicate_audit.json",
+      "note": "duplicidades foram auditadas, mas o artefato não constitui evidência completa FASE06; não promover"
+    },
+    {
+      "phase": "FASE07",
+      "status": "BLOQUEADO",
+      "note": "não há contrato/evidência canônica FASE07 localizada"
+    },
+    {
+      "phase": "FASE08",
+      "status": "BLOQUEADO",
+      "note": "não há contrato/evidência canônica FASE08 localizada"
+    },
+    {
+      "phase": "GATE_06_08",
+      "status": "BLOQUEADO",
+      "note": "FASE06/07/08 não satisfazem contrato de promoção"
+    },
+    {
+      "phase": "FASE09",
+      "status": "BLOQUEADO"
+    },
+    {
+      "phase": "FASE10",
+      "status": "BLOQUEADO"
+    },
+    {
+      "phase": "FASE11",
+      "status": "BLOQUEADO"
+    },
+    {
+      "phase": "FASE12",
+      "status": "BLOQUEADO"
+    }
+  ],
+  "findings": [
+    "Não rebaixar nem apagar evidências históricas existentes.",
+    "Não deduplicar o NORMALIZED com base na chave candidata data_pregao+codbdi+codneg+tpmerc+dismes.",
+    "Não executar FASE07 antes de existir evidência formal da FASE06.",
+    "Não promover 1999 para FASE09.",
+    "A lacuna atual é de materialização/contrato de evidências, não de aquisição RAW."
+  ],
+  "decision": "BLOQUEADO_PARA_FASE07",
+  "next_authorized_action": "materializar e validar evidência canônica da FASE02/FASE03/FASE06 na própria fase de origem; depois executar FASE07",
+  "readme_update": false
+}
