@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "status": "VALIDADO",
+  "tipo": "DIARIO",
+  "data_referencia": "2026-10-07",
+  "parser_version": "1.1.0",
+  "source": "B3",
+  "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_D07102026.ZIP",
+  "raw_file": "dados/cotahist/raw/diario/COTAHIST_D07102026.ZIP",
+  "raw_sha256": "400e20ced76928bf78374e700551a7af21165b0ae8dff84c005253070af6c217",
+  "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D07102026.csv",
+  "normalized_sha256": "d979a2dc94482c92bb3d1fbff94eca9c0d87b3c1b677503df2af8f94f11a2a21",
+  "linhas_normalized": 17311,
+  "campos": 25,
+  "primeira_data": "2026-10-07",
+  "ultima_data": "2026-10-07",
+  "adquirido_em_utc": "2026-10-08T02:49:30.301178+00:00"
+}
