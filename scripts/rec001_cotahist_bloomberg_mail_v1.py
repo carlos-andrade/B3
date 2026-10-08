@@ -84,3 +84,5 @@ def main():
         os.makedirs(os.path.dirname(OUT),exist_ok=True)
         with open(OUT,"w",encoding="utf-8") as f: json.dump(evidence,f,ensure_ascii=False,indent=2); f.write("\n")
 if __name__=="__main__": main()
+
+# controlled trigger 2026-10-08
