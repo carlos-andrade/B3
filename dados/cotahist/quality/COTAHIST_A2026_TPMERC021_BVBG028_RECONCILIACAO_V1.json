@@ -553,7 +553,32 @@
     "source_snapshot": "IN260922.zip",
     "market_code": "21",
     "market_code_basis": "MktIdrCd field",
-    "market21_tickers": 0
+    "market21_tickers": 0,
+    "mkt_idr_cd_distribution": {
+      "BVMF": 115834
+    },
+    "mkt_nm_distribution": {
+      "": 115834
+    },
+    "q_suffix_bvbg": {
+      "tickers": 1396,
+      "mkt_idr_cd_distribution": {
+        "BVMF": 1396
+      }
+    }
+  },
+  "cotahist_021_semantics": {
+    "all_codneg_end_q": false,
+    "q_suffix_count": 252,
+    "non_q_tickers": [
+      "BTCI11M",
+      "MOTV3M",
+      "SBSP3M"
+    ],
+    "codbdi_distribution": {
+      "93": 1538,
+      "92": 6
+    }
   },
   "cross_match": {
     "distinct_codneg_matched": 0,
