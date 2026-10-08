@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-07T10:19:46.250850+00:00",
+  "generated_at_utc": "2026-10-08T10:24:36.137121+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
-  "workflow_count": 152,
+  "workflow_count": 153,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 125,
+    "CONFORME_COM_OBSERVACAO": 126,
     "CONFORME": 27
   },
   "results": [
@@ -11458,6 +11458,83 @@
           "code": "DECISION_SIGNAL",
           "ok": true,
           "detail": "há sinal de status/decisão/fail-closed",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "IDEMPOTENCE_SIGNAL",
+          "ok": true,
+          "detail": "padrão de idempotência/deduplicação detectado",
+          "severity": "BAIXA"
+        }
+      ],
+      "blocking_divergences": [],
+      "observability_or_advisory": [
+        "STEP_SUMMARY"
+      ]
+    },
+    {
+      "workflow": ".github/workflows/cotahist-reconciliacao-tpmerc021-bvbg028-v1.yml",
+      "current_phase": null,
+      "status": "CONFORME_COM_OBSERVACAO",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "severity": "BAIXA"
+        },
+        {
+          "code": "NO_POSTERIOR_PHASE_TRIGGER",
+          "ok": true,
+          "detail": "nenhum gatilho explícito de fase posterior",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "PERMISSIONS_MATCH_WRITE",
+          "ok": true,
+          "detail": "publicação possui credencial/permissão compatível",
+          "severity": "ALTA"
+        },
+        {
+          "code": "EVIDENCE_PERSISTENCE_SIGNAL",
+          "ok": true,
+          "detail": "há sinal de persistência/evidência",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "DECISION_SIGNAL",
+          "ok": false,
+          "detail": "não foi identificado sinal explícito de decisão",
           "severity": "MEDIA"
         },
         {
