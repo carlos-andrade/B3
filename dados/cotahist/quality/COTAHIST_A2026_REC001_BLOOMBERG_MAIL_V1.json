@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0-rec001-b3-cross-repo",
+  "result": "FAIL_CONTENT_DIVERGENCE",
+  "raw_preserved": true,
+  "b3_snapshot": {
+    "path": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
+    "zip_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+    "member": "COTAHIST_A2026.TXT",
+    "member_size": 721181214,
+    "zip_integrity": true,
+    "stats": {
+      "record01_count": 2919760,
+      "first_record00": "00COTAHIST.2026BOVESPA 20260923                                                                                                                                                                                                                      ",
+      "first_record01": "012026010202LEVE3       010METAL LEVE  ON      NM   R$  000000000341700000000034840000000003316000000000335700000000033500000000003347000000000335001954000000000000320100000000001074616400000000000000009999123100000010000000000000BRLEVEACNOR2202",
+      "last_record01": "012026092382YDUQX803    080YDUQE       ON      NM000R$  000000000005200000000000520000000000052000000000005200000000000520000000000010000000000004800001000000000000000100000000000000005200000000000074602027121700000010000000000000BRYDUQACNOR3107",
+      "trailer_record99": "99COTAHIST.2026BOVESPA 2026092300002919760                                                                                                                                                                                                           ",
+      "date_min": "20260102",
+      "date_max": "20260923",
+      "member_sha256": "6ff05a4e3997375ac637252776b6e3e2a41a782bfa3354b491f50a74334c7b81"
+    }
+  },
+  "bloomberg_mail_raw": {
+    "url": "https://raw.githubusercontent.com/carlos-andrade/BLOOMBERG_MAIL/main/EMAILS_RECEBIDOS/INGESTAO/005/RAW/COTAHIST_A2026.ZIP",
+    "zip_sha256": "c65e64f468def41439ff05e47869d934b406cb3f59ab2638f66a3a59bd4d974f",
+    "member": "COTAHIST_A2026.TXT",
+    "member_size": 758495751,
+    "zip_integrity": true,
+    "stats": {
+      "record01_count": 3070831,
+      "first_record00": "00COTAHIST.2026BOVESPA 20261006                                                                                                                                                                                                                      ",
+      "first_record01": "012026010202LEVE3       010METAL LEVE  ON      NM   R$  000000000341700000000034840000000003316000000000335700000000033500000000003347000000000335001954000000000000320100000000001074616400000000000000009999123100000010000000000000BRLEVEACNOR2202",
+      "last_record01": "012026100682YDUQW120    080YDUQE  FM   ON      NM000R$  000000000006600000000000690000000000058000000000006100000000000610000000000055000000000000000010000000000000010100000000000000618800000000000120602026111900000010000000000000BRYDUQACNOR3108",
+      "trailer_record99": "99COTAHIST.2026BOVESPA 2026100600003070831                                                                                                                                                                                                           ",
+      "date_min": "20260102",
+      "date_max": "20261006",
+      "member_sha256": "b992c416970f80f2bf3a5087c18899d56aff1b1419ee4a2d8db0f063eac0c51e"
+    }
+  },
+  "comparison": {
+    "common_prefix_records_physical": 0,
+    "first_difference": {
+      "record_position": 1,
+      "b3_sha256": "3ad07b5a9eb2b82cdc27abb2fb80e5bd8c21e9a24804dd9ea69cb78fcc2ee9b5",
+      "bloomberg_sha256": "e5e6ad5e4552a89fea5bea3fd16f9dc0c2f6421ec7ed1ae90a2ea6e9e464be60",
+      "b3_prefix": "00COTAHIST.2026BOVESPA 20260923         ",
+      "bloomberg_prefix": "00COTAHIST.2026BOVESPA 20261006         "
+    },
+    "b3_exhausted": false,
+    "bloomberg_exhausted": false
+  },
+  "interpretation": "B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
+  "promotion_impact": "BLOCKED_CONTENT_DIVERGENCE"
+}
