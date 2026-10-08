@@ -105,6 +105,20 @@ O objetivo dessa separação é impedir que uma hipótese de pesquisa seja confu
 
 ---
 
+## 4-A. Política incremental permanente
+
+A base B3 é atualizada por incrementos e não depende apenas de snapshots. Para COTAHIST, os incrementos diários são preservados, validados e incorporados sem substituir RAW histórico.
+
+A integração com o repositório **BLOOMBERG_MAIL** segue o fluxo:
+
+**fonte oficial → BLOOMBERG_MAIL RAW → validação/reconciliação → B3**
+
+Documento de governança: [Carta de recebimento incremental](./governanca/CARTA_RECEBIMENTO_INCREMENTAL_BLOOMBERG_MAIL_V1_0_2026-10-08.md).
+
+Regra: toda atualização incremental deve manter proveniência, SHA-256, período, validação e rastreabilidade. Divergências de uma mesma competência não são sobrescritas silenciosamente.
+
+---
+
 ## 4. Ingestão automática
 
 A automação está concentrada principalmente em:
