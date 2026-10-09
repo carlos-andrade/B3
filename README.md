@@ -481,10 +481,10 @@ O repositório **B3 — A BOLSA DO BRASIL** é a fonte de organização e memór
 
 > Este bloco é gerenciado pelo workflow `Atualizar README — B3`.
 
-- **Última alteração relevante:** `169eecb0a392` — 08/10/2026 02:51 UTC
+- **Última alteração relevante:** `d78b69eae679` — 09/10/2026 03:09 UTC
 - **Commit de referência:** data(bcb): atualizar nucleo macro SGS
-- **Workflows GitHub Actions:** 152
-- **Scripts Python em `scripts/ingestao/`:** 117
+- **Workflows GitHub Actions:** 154
+- **Scripts Python em `scripts/ingestao/`:** 118
 - **Diretórios operacionais de primeiro nível:** 8
 
 **Escopo monitorado:**
