@@ -1,0 +1,88 @@
+# Projeto: B3 — A BOLSA DO BRASIL
+# Arquivo: watchdog-b3-24x7.yml
+# Caminho: .github/workflows/watchdog-b3-24x7.yml
+# Data de criação: 2026-10-09
+# Versão: 1.0.0
+# Finalidade: executar auditoria estática recorrente e publicar evidências.
+
+name: "B3 — Watchdog 24x7"
+
+on:
+  push:
+    branches:
+      - main
+      - "feat/watchdog-24x7-v1"
+    paths:
+      - "**.py"
+      - ".github/workflows/**"
+      - "governanca/**"
+      - "scripts/**"
+      - "WATCHDOG/**"
+  pull_request:
+    paths:
+      - "**.py"
+      - ".github/workflows/**"
+      - "governanca/**"
+      - "scripts/**"
+      - "WATCHDOG/**"
+  schedule:
+    # GitHub Actions é best-effort; agenda não representa SLA de tempo real.
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: watchdog-b3-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: "Auditoria estática e evidências"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: false
+
+      - name: Executar Watchdog em modo somente leitura
+        id: watchdog
+        run: python WATCHDOG/scripts/watchdog_b3.py
+
+      - name: Publicar relatório Markdown e JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchdog-b3-${{ github.run_id }}-${{ github.run_attempt }}
+          path: watchdog-output/watchdog-report.*
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Resumo operacional
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+          COMMIT_SHA: ${{ github.sha }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          {
+            echo "## B3 Watchdog"
+            echo "- Estado do job: ${JOB_STATUS}"
+            echo "- Commit: ${COMMIT_SHA}"
+            echo "- Ref: ${REF_NAME}"
+            echo "- Escopo: sintaxe Python, contratos essenciais e inspeção estática de workflows"
+            echo "- Escrita no repositório: desativada"
+            echo "- Relatório detalhado: artefato desta execução"
+          } >> "$GITHUB_STEP_SUMMARY"
