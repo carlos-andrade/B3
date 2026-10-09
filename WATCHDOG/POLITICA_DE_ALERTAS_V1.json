@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "project": "B3",
+  "component": "WATCHDOG",
+  "created_at": "2026-10-09",
+  "timezone": "UTC",
+  "policy": {
+    "critical": {
+      "result": "FAIL",
+      "conditions": [
+        "python_syntax_error",
+        "required_governance_file_missing",
+        "watchdog_internal_error"
+      ],
+      "action": "fail_workflow_and_publish_report"
+    },
+    "warning": {
+      "result": "WARN",
+      "conditions": [
+        "workflow_missing_timeout",
+        "workflow_missing_explicit_permissions",
+        "github_action_not_pinned_to_full_commit_sha",
+        "workflow_missing_trigger"
+      ],
+      "action": "publish_report_without_promoting_warning_to_critical_failure"
+    },
+    "info": {
+      "result": "INFO",
+      "conditions": [
+        "repository_inventory",
+        "runtime_metadata"
+      ],
+      "action": "include_in_report"
+    }
+  },
+  "safety": {
+    "auto_fix": false,
+    "write_repository_files": false,
+    "modify_raw_data": false,
+    "modify_certification": false,
+    "print_secrets": false
+  },
+  "limitations": [
+    "Static analysis is not proof of financial or domain correctness.",
+    "Scheduled GitHub Actions runs are best-effort and have no real-time SLA.",
+    "Artifacts expire according to repository retention settings."
+  ]
+}
