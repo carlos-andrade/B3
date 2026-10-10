@@ -1,41 +1,41 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-08T23:59:35.474064-03:00",
+  "generated_at": "2026-10-09T23:26:13.173358-03:00",
   "status": "VALIDADO",
   "series": [
     {
       "codigo_sgs": 432,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-08",
-      "linhas": 10080,
+      "ultima_data": "2026-10-09",
+      "linhas": 10081,
       "manifest": "dados/bcb_sgs/manifests/SGS_432_quality.json"
     },
     {
       "codigo_sgs": 11,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-08",
-      "linhas": 10116,
+      "ultima_data": "2026-10-09",
+      "linhas": 10117,
       "manifest": "dados/bcb_sgs/manifests/SGS_11_quality.json"
     },
     {
       "codigo_sgs": 12,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-07",
-      "linhas": 10157,
+      "ultima_data": "2026-10-08",
+      "linhas": 10158,
       "manifest": "dados/bcb_sgs/manifests/SGS_12_quality.json"
     },
     {
       "codigo_sgs": 1,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-08",
-      "linhas": 10491,
+      "ultima_data": "2026-10-09",
+      "linhas": 10492,
       "manifest": "dados/bcb_sgs/manifests/SGS_1_quality.json"
     },
     {
       "codigo_sgs": 433,
       "status": "VALIDADO",
-      "ultima_data": "2026-08-01",
-      "linhas": 560,
+      "ultima_data": "2026-09-01",
+      "linhas": 561,
       "manifest": "dados/bcb_sgs/manifests/SGS_433_quality.json"
     }
   ],
