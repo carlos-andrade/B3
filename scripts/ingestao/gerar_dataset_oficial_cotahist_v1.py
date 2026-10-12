@@ -14,6 +14,7 @@ MANIFESTS = ROOT / "dados/cotahist/normalized/manifests"
 OUT = ROOT / "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json"
 
 EXPECTED_YEARS = list(range(1986, 2027))
+SUPPORTED_PARSER_VERSIONS = {"1.1.0", "1.1.1", "1.1.2"}
 ALLOWED_CERTIFICATIONS = {
     "CERTIFICADO_NORMALIZACAO",
     "CERTIFICADO_NORMALIZACAO_COM_EXCECAO_SEMANTICA",
@@ -43,8 +44,8 @@ def main() -> None:
             failures.append(f"{year}: quality status inválido")
             continue
 
-        if quality.get("parser_version") != "1.1.0":
-            failures.append(f"{year}: parser incompatível")
+        if quality.get("parser_version") not in SUPPORTED_PARSER_VERSIONS:
+            failures.append(f"{year}: parser incompatível ou não homologado: {quality.get('parser_version')}")
             continue
 
         if quality.get("campos") != 25 or quality.get("datas_invalidas") != 0 or quality.get("datas_fora_do_ano") != 0:
