@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-12T13:07:00.759939+00:00",
+  "generated_at_utc": "2026-10-12T15:55:46.652559+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 255,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 134,
-    "CONFORME": 121
+    "CONFORME_COM_OBSERVACAO": 133,
+    "CONFORME": 122
   },
   "results": [
     {
@@ -20049,7 +20049,7 @@
     {
       "workflow": ".github/workflows/rec001-cotahist-bloomberg-mail.yml",
       "current_phase": null,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -20083,8 +20083,8 @@
         },
         {
           "code": "STEP_SUMMARY",
-          "ok": false,
-          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado",
           "severity": "BAIXA"
         },
         {
@@ -20107,8 +20107,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -20119,9 +20119,7 @@
         }
       ],
       "blocking_divergences": [],
-      "observability_or_advisory": [
-        "STEP_SUMMARY"
-      ]
+      "observability_or_advisory": []
     },
     {
       "workflow": ".github/workflows/sincronizar-wiki-b3.yml",
