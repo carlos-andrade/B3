@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/quality/COTAHIST_2006_FASE08_CALENDARIO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2006_FASE08_SEMANTICA_CALENDARIO_V1.json"
 permissions:
   contents: write
 jobs:
