@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-fase06-reconciliacao-1999-v1
+  cancel-in-progress: false
+
 jobs:
   reconciliacao:
     runs-on: ubuntu-latest
@@ -21,7 +25,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
-          fetch-depth: 0
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase06-reconciliacao-1999-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A1999.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A1999.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json
+            dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json
+            dados/cotahist/quality/COTAHIST_1999_FASE06_RECONCILIACAO_V1.json
+          sparse-checkout-cone-mode: false
 
       - name: Reconciliar RAW e normalizado
         run: |
@@ -62,12 +75,16 @@ jobs:
             ("voltot", 171, 188, 100),
           ]
 
-          def fixed(rec, a, b, scale=1):
+          def fixed(rec, name, a, b, scale=1):
               s = rec[a-1:b].decode("ascii").strip()
               if not s:
                   return ""
-              if a == 3 and b == 10:
+              if name == "data_pregao":
                   return datetime.datetime.strptime(s, "%Y%m%d").date().isoformat()
+              if name in {"codbdi", "codneg", "tpmerc"}:
+                  return s
+              if name in {"totneg", "quatot"}:
+                  return str(int(s))
               return str(Decimal(s) / Decimal(scale))
 
           with zipfile.ZipFile(raw) as z:
@@ -79,7 +96,7 @@ jobs:
           raw_rows = []
           for line in data.splitlines():
               if len(line) == 245 and line[0:2] == b"01":
-                  raw_rows.append(tuple(fixed(line, a, b, scale) for _, a, b, scale in critical))
+                  raw_rows.append(tuple(fixed(line, name, a, b, scale) for name, a, b, scale in critical))
 
           with norm.open("r", encoding="utf-8", newline="") as fh:
               rd = csv.DictReader(fh)
