@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/cotahist-recuperar-normalized-1999-v1.yml"
       - "scripts/ingestao/normalize_cotahist.py"
+      - "dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json"
 
 permissions:
   contents: write
