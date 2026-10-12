@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "year": 2004,
   "phase": "FASE06",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_FASE07",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE07",
   "raw_sha256": "f750ba8ee9e25299ed96811979befb29315d91667fedc3885c709440b4989467",
   "normalized_sha256": "3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77",
   "phase05_status": "VALIDADO",
-  "raw_records": 0,
+  "raw_records": 166937,
   "normalized_records": 166937,
   "critical_fields_checked": [
     "data_pregao",
@@ -23,16 +23,10 @@
     "quatot",
     "voltot"
   ],
-  "mismatch_count": 1,
-  "mismatch_sample": [
-    {
-      "type": "ROW_COUNT",
-      "raw": 0,
-      "normalized": 166937
-    }
-  ],
+  "mismatch_count": 0,
+  "mismatch_sample": [],
   "logical_key_uniqueness_assessment": "DEFERRED_TO_FASE07",
   "raw_immutable": true,
   "deduplication_performed": false,
-  "validated_at_utc": "2026-10-12T12:54:38.978017+00:00"
-}\n
+  "validated_at_utc": "2026-10-12T12:54:55.647417+00:00"
+}
