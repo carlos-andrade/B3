@@ -22,7 +22,8 @@ A presença do manifesto não substitui o conteúdo normalizado.
 | 01 | `cotahist-fase01-aquisicao-2006-v1.yml` | Verificar RAW armazenado, proveniência e SHA-256; não adquirir externamente |
 | 02 | `cotahist-fase02-integridade-2006-v1.yml` | Confirmar hash, checksum e estrutura ZIP |
 | 03 | `cotahist-fase03-parsing-2006-v1.yml` | Verificar membros ZIP, tipos de registo e comprimento de 245 bytes |
-| 04 | `cotahist-fase04-recuperar-normalized-2006-v1.yml` | Regenerar CSV a partir do RAW e comparar hash/contagem/datas com manifest e sidecar |
+| 04A | `cotahist-fase04-recuperar-normalized-2006-v1.yml` | Regenerar CSV a partir do RAW sem alterar manifest/sidecar |
+| 04B | `cotahist-fase04-validacao-independente-2006-v1.yml` | Verificar CSV regenerado, hash/contagem/datas e liberar a FASE05 |
 | 05–09 | workflows de manifesto, reconciliação, identidade, calendário e pré-release | Executar gates já definidos nos templates de 2005, adaptados para 2006 |
 | 10 | `cotahist-fase10-validacao-independente-2006-v1.yml` | Checkout LFS efetivo, hash físico e comparação independente dos 25 campos |
 | 11 | `cotahist-fase11-certificacao-2006-v1.yml` | Certificar apenas depois da FASE10 aprovada |
