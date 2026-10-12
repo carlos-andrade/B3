@@ -2,16 +2,15 @@
   "schema_version": "1.0.0",
   "year": 1999,
   "gate": "GATE_06_08",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_FASE09",
+  "status": "GATE_APROVADO",
+  "decision": "APROVADO_PARA_ANALISE_FASE09",
   "phase_statuses": {
     "FASE06": "VALIDADO",
     "FASE07": "VALIDADO",
     "FASE08": "VALIDADO_COM_EXCECAO"
   },
-  "blockers": [
-    "FASE07: colisões na chave selecionada"
-  ],
+  "phase07_duplicate_groups_with_selected_key": 0,
+  "blockers": [],
   "phase08_exceptions": [
     {
       "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
@@ -20,5 +19,5 @@
       "detail": "A fase verifica datas observadas, validade ISO, ano e ordem cronológica. Não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 1999."
     }
   ],
-  "validated_at_utc": "2026-10-12T11:00:26.037601+00:00"
+  "validated_at_utc": "2026-10-12T11:01:28.363418+00:00"
 }
