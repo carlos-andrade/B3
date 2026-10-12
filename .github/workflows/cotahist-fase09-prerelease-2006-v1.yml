@@ -6,12 +6,6 @@ on:
     branches: [main]
     paths:
       - "dados/cotahist/quality/COTAHIST_2006_GATE_06_08_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE03_PARSING_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE04_NORMALIZACAO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE05_MANIFESTO_CHECKSUM_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE06_RECONCILIACAO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE07_IDENTIDADE_CHAVES_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE08_SEMANTICA_CALENDARIO_V1.json"
 
 permissions:
   contents: write
