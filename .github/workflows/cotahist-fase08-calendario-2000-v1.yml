@@ -143,12 +143,6 @@ jobs:
             "weekend_dates_observed": weekend_dates,
             "calendar_gaps_over_4_days": large_gaps,
             "official_calendar_reference": "NOT_PERSISTED",
-            "exceptions": [{
-              "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
-              "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
-              "blocking": False,
-              "detail": "A fase verifica datas observadas, validade ISO, ano e ordem cronológica. Não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2000."
-            }],
             "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "deduplication_performed": False,
             "rows_removed": 0
