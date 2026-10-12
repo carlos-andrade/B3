@@ -1,8 +1,8 @@
-# ROADMAP COTAHIST 1999–2000 — Estado em 2026-10-12
+# ROADMAP COTAHIST 1999–2001 — Estado em 2026-10-12
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999 e 2000 fechados; 2001 em execução controlada até FASE06  
+**Estado:** 1999 e 2000 fechados/certificados; 2001 com FASE01–FASE07 validadas  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -12,7 +12,7 @@
 - **COTAHIST 2000:** FASE01–FASE10 validadas; FASE11 certificado; FASE12 fechou 2000 e autorizou a transição controlada para 2001.
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
-- **COTAHIST 2001:** FASE01–FASE06 validadas; NORMALIZED recuperado e hash reconciliado; próxima fase é FASE07.
+- **COTAHIST 2001:** FASE01–FASE07 validadas; FASE07 testou 141.848 registos, encontrou 7.891 grupos de colisão na chave-base e zero na candidata com `prazot`; zero linhas removidas. Próxima fase: FASE08.
 - O ano 2002 permanece bloqueado até fechamento formal de 2001.
 
 ## COTAHIST 1999
@@ -114,7 +114,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE04 independente | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE04_NORMALIZACAO_V1.json` |
 | FASE05 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE05_MANIFESTO_CHECKSUM_V1.json` |
 | FASE06 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE06_RECONCILIACAO_V1.json` |
-| FASE07–12 | NÃO INICIADAS | Aguardar FASE07; manter sequência linear |
+| FASE07 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE07_IDENTIDADE_CHAVES_V1.json` |
+| FASE08–12 | NÃO INICIADAS | Próxima: FASE08; manter sequência linear |
 
 ### Integridade normalizado 2001
 
@@ -124,7 +125,7 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 
 ## Próximas ações atualizadas
 
-1. Executar FASE07 de 2001 para testar identidade, cardinalidade e chave com `prazot`, sem deduplicar.
+1. FASE07 de 2001 validada no run [38244487613](https://github.com/carlos-andrade/B3/actions/runs/38244487613); evidência persistida e hash do NORMALIZED reconciliado com a FASE05.
 2. Executar FASE08 e Gate 06–08 de 2001, classificando explicitamente qualquer exceção temporal.
 3. Executar FASE09 e FASE10 independente com comparação dos 25 campos.
 4. Só após FASE10 válida, executar FASE11 e FASE12 para fechar 2001.
