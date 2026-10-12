@@ -59,7 +59,7 @@ Correção publicada no commit `4cdafbfdc62803be8bc6fa823577f38dca176b3b`: compa
 | Marco | Estado observado | Próxima ação |
 |---|---|---|
 | COTAHIST 1986–2003 | Histórico de ingestão e certificação com exceções específicas por ano | Preservar evidências e não presumir uniformidade entre anos |
-| COTAHIST 2004 | FASE00–FASE09 concluídas; gate 06–08 aprovado; FASE09 `LIBERADO_PARA_FASE10` com hashes RAW/NORMALIZED confirmados | FASE10 independente em execução para comparar os 25 campos RAW × NORMALIZED; FASE11 só após resultado e revisão |
+| COTAHIST 2004 | FASE00–FASE10 concluídas; FASE10 `VALIDADO`, 166.937 registos em cada fonte, 25 campos comparados e zero divergências | FASE11 certificação em execução; depois avaliar FASE12 de fechamento 2004/abertura 2005 |
 | COTAHIST 2005 | FASE12 registada como concluída, com transição controlada | Preservar fechamento e evidências |
 | COTAHIST 2006 | FASE00 aprovada em execução do GitHub Actions | Continuar a partir da fase seguinte prevista no plano |
 | Certificação anual | **PASS** — execução #32 concluída com sucesso; matriz contém 41 anos certificados | Manter teste de regressão para versões homologadas |
