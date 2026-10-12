@@ -58,7 +58,7 @@ jobs:
                   sys.exit(f"FASE02 BLOQUEADA: esperado 1 membro ZIP, encontrado {len(members)}")
               member = members[0]
               with z.open(member) as f:
-                  lines = [line.rstrip(b"\\r\\n") for line in f]
+                  lines = [line.rstrip(b"\r\n") for line in f]
           lengths = [len(line) for line in lines]
           bad_lengths = sum(n != 245 for n in lengths)
           types = {}
@@ -94,7 +94,7 @@ jobs:
             "notes": "Validacao estrutural retrospectiva da fonte; nao substitui FASE03 nem certifica o NORMALIZED."
           }
           out_path.parent.mkdir(parents=True, exist_ok=True)
-          out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+          out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(json.dumps(out, ensure_ascii=False))
           PY
 
