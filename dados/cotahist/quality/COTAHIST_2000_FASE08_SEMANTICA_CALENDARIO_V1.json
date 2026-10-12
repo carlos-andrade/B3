@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "year": 2000,
   "phase": "FASE08",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_GATE_06_08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
   "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2000.csv",
   "normalized_sha256": "d0f3158c05ccfb50d1d7bcf98ec75f4a4480a7dd5acd1fae19ffd1d51e64ecca",
@@ -522,11 +522,15 @@
       "current_date": "2000-01-04"
     }
   ],
-  "source_order_classified_as_instrument_first": false,
-  "blockers": [
-    "ORDEM_DA_FONTE_NAO_CLASSIFICADA"
-  ],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
   "exceptions": [
+    {
+      "code": "FONTE_ORDENADA_POR_INSTRUMENTO_NAO_POR_DATA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS",
+      "blocking": false,
+      "detail": "A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
+    },
     {
       "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
       "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
@@ -550,7 +554,7 @@
     }
   ],
   "official_calendar_reference": "NOT_PERSISTED",
-  "validated_at_utc": "2026-10-12T11:12:28.655362+00:00",
+  "validated_at_utc": "2026-10-12T11:13:24.696069+00:00",
   "deduplication_performed": false,
   "rows_removed": 0
 }
