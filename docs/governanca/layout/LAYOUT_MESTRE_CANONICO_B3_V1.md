@@ -3,8 +3,8 @@
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** carlos-andrade/B3  
 **Arquivo canônico:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`  
-**Versão:** 1.0.0  
-**Data:** 2026-10-01  
+**Versão:** 1.0.1  
+**Data:** 2026-10-12  
 **Status:** VIGENTE  
 **Natureza:** documento normativo único para execução, governança e geração de código
 
@@ -326,11 +326,16 @@ Responsabilidade:
 - converter para esquema canônico;
 - aplicar transformações determinísticas;
 - preservar rastreabilidade;
-- produzir dataset normalizado.
+- produzir dataset normalizado;
+- validar offsets e larguras de cada campo contra o layout de origem;
+- confirmar existência física e tamanho não nulo do arquivo produzido;
+- registrar a versão exata do parser e os hashes calculados.
+
+A mudança de offsets, precisão numérica, codificação ou serialização exige teste de regressão contra amostras e artefatos de referência. Uma contagem correta de linhas e campos não prova equivalência semântica.
 
 Não decide identidade posterior.
 
-**Saída:** NORMALIZED.
+**Saída:** NORMALIZED + evidência de transformação e validação estrutural.
 
 ## FASE05 — MANIFESTO / CHECKSUM
 
@@ -338,11 +343,16 @@ Responsabilidade:
 
 - fechar hashes;
 - registrar metadados;
-- confirmar coerência entre artefatos.
+- confirmar coerência entre artefatos;
+- verificar a existência física e tamanho não nulo de RAW, NORMALIZED, manifesto e sidecar;
+- recalcular SHA-256 a partir dos bytes reais e comparar com manifesto e sidecar;
+- bloquear a promoção se qualquer arquivo estiver ausente ou se os hashes divergirem.
+
+É proibido corrigir divergências atualizando o manifesto/sidecar apenas para fazê-los coincidir com o arquivo encontrado. A causa deve ser investigada na fase de origem e a decisão deve ser persistida.
 
 Não executa semântica posterior.
 
-**Saída:** manifesto/checksum.
+**Saída:** manifesto/checksum com integridade física demonstrada.
 
 ## FASE06 — SEMÂNTICA / INVARIANTES
 
@@ -1130,7 +1140,8 @@ Qualquer processo futuro deve ser enquadrado neste fluxo antes de ser implementa
 
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
-| 1.0.0 | 2026-10-01 | Consolidação das cartas, contratos, matriz operacional, governança de workflows, monitoramento, README, gates, fases e regra única de geração de código. | VIGENTE |
+| 1.0.0 | 2026-10-01 | Consolidação das cartas, contratos, matriz operacional, governança de workflows, monitoramento, README, gates, fases e regra única de geração de código. | HISTÓRICA |
+| 1.0.1 | 2026-10-12 | Acrescenta controles de existência física, reconciliação de hash, offsets de layout e não promoção automática para artefatos normalizados. | VIGENTE |
 
 
 ## 40. AUDITORIA SEMÂNTICA DOS WORKFLOWS — REGRA VIGENTE
@@ -1185,3 +1196,23 @@ e
 `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md`
 
 A implementação deve permanecer alinhada a este Layout Mestre.
+
+
+## 41. INTEGRIDADE FÍSICA E REGRESSÃO DE NORMALIZAÇÃO — REGRA VIGENTE
+
+A cadeia obrigatória de evidência é:
+
+**LAYOUT → WORKFLOW → RUN REAL → ARTEFATO FÍSICO → HASH CALCULADO → MANIFESTO/SIDECAR → EVIDÊNCIA PERSISTIDA → VALIDAÇÃO INDEPENDENTE → GATE**
+
+Regras fail-closed:
+
+1. A existência de manifesto ou sidecar não prova que o artefato referido exista.
+2. Um artefato ausente, vazio ou inacessível bloqueia a fase; não pode ser reconstruído a partir do hash.
+3. O SHA-256 deve ser calculado sobre os bytes do arquivo físico. Manifesto, sidecar e hash calculado devem coincidir antes da promoção.
+4. Contagem de linhas, contagem de campos e intervalo de datas são verificações necessárias, mas não suficientes para demonstrar equivalência semântica.
+5. Alterações de offsets/larguras dos campos exigem revisão contra o layout oficial de origem, comparação de regressão e registo da versão do parser.
+6. É proibido deduplicar registos durante normalização para contornar diferenças de contagem; identidade e cardinalidade pertencem à FASE07.
+7. Divergências devem ser preservadas em evidência diagnóstica; nunca corrigir manifesto/checksum silenciosamente.
+8. Uma recuperação não retrocertifica a fase. A fase só pode ser promovida após a execução real e o gate independente exigido.
+
+O incidente documentado em `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` é referência operacional para aplicar estas regras, sem substituir a validação específica de cada ano.
