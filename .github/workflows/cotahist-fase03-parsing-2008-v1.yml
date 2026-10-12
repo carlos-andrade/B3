@@ -1,0 +1,122 @@
+name: COTAHIST 2008 - FASE03 Parsing Estrutural
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase03-parsing-2008-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2008_FASE02_INTEGRIDADE_FONTE_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase03-parsing-2008-v1
+  cancel-in-progress: false
+
+jobs:
+  parsing:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase03-parsing-2008-v1.yml
+            dados/cotahist/quality/COTAHIST_2008_FASE02_INTEGRIDADE_FONTE_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2008.ZIP
+            dados/cotahist/quality/COTAHIST_2008_FASE03_PARSING_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Executar parsing estrutural e validar datas
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, zipfile, datetime, sys
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2008.ZIP")
+          f2p = pathlib.Path("dados/cotahist/quality/COTAHIST_2008_FASE02_INTEGRIDADE_FONTE_V1.json")
+          ev = pathlib.Path("dados/cotahist/quality/COTAHIST_2008_FASE03_PARSING_V1.json")
+          if not raw.is_file() or not f2p.is_file():
+              sys.exit("FASE03 BLOQUEADA: RAW ou evidência FASE02 ausente")
+          f2 = json.loads(f2p.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          if f2.get("status") != "VALIDADO" or f2.get("decision") != "LIBERADO_PARA_FASE03" or f2.get("raw_sha256") != raw_sha:
+              sys.exit("FASE03 BLOQUEADA: FASE02/RAW não validados")
+          with zipfile.ZipFile(raw) as z:
+              members = [n for n in z.namelist() if not n.endswith("/")]
+              if len(members) != 1 or z.testzip() is not None:
+                  sys.exit("FASE03 BLOQUEADA: ZIP inválido")
+              with z.open(members[0]) as f:
+                  lines = [line.rstrip(b"\r\n") for line in f]
+          bad_lengths = [i+1 for i,line in enumerate(lines) if len(line) != 245]
+          types = {}
+          for line in lines:
+              k = line[:2].decode("ascii", "replace")
+              types[k] = types.get(k, 0) + 1
+          dates, invalid = [], []
+          for i,line in enumerate(lines, start=1):
+              if line[:2] != b"01":
+                  continue
+              value = line[2:10].decode("ascii", "replace")
+              try:
+                  d = datetime.datetime.strptime(value, "%Y%m%d").date()
+                  if d.year != 2008:
+                      invalid.append({"line":i,"date":value,"reason":"OUT_OF_YEAR"})
+                  dates.append(d.isoformat())
+              except ValueError:
+                  invalid.append({"line":i,"date":value,"reason":"INVALID_DATE"})
+          if bad_lengths or types.get("00") != 1 or types.get("99") != 1 or not dates or invalid:
+              sys.exit(f"FASE03 BLOQUEADA: bad_lengths={len(bad_lengths)} invalid_dates={len(invalid)} types={types}")
+          out = {
+            "schema_version":"1.0.0","year":2008,"phase":"FASE03",
+            "status":"VALIDADO","decision":"LIBERADO_PARA_FASE04",
+            "evidence_kind":"PARSING_ESTRUTURAL_CANONICO_REEXECUTADO",
+            "raw_path":str(raw),"raw_sha256":raw_sha,
+            "phase02_evidence_path":str(f2p),"phase02_status":f2.get("status"),
+            "zip_member_count":len(members),"zip_member":members[0],
+            "record_length_bytes":245,"total_records":len(lines),
+            "record_type_counts":types,"quote_records_type_01":types.get("01",0),
+            "invalid_record_lengths":len(bad_lengths),"invalid_dates":len(invalid),
+            "first_quote_date":min(dates),"last_quote_date":max(dates),
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "limitations":["Parsing estrutural não certifica normalização nem semântica."]
+          }
+          ev.parent.mkdir(parents=True, exist_ok=True)
+          ev.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência FASE03
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2008_FASE03_PARSING_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 03 parsing 2008"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2008 — FASE03"
+            echo "- Parsing estrutural e validação de datas."
+            echo "- Não certifica NORMALIZED."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
