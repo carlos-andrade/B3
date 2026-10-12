@@ -4,7 +4,7 @@
 **Repositório:** `carlos-andrade/B3`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-12  
-**Estado:** COTAHIST 1999 fechado e certificado; COTAHIST 2000 em execução até FASE08, Gate 06–08 pendente  
+**Estado:** COTAHIST 1999 e 2000 fechados/certificados; COTAHIST 2001 validado até FASE06  
 **Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
 **Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
@@ -73,11 +73,11 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 5. Próximos passos
 
-1. Concluir o Gate 06–08 de 2000 e rever a exceção de calendário histórico.
-2. Executar FASE09 e FASE10 independente de 2000, com comparação integral dos 25 campos.
-3. Executar FASE11 e FASE12 para fechar 2000 apenas após a certificação.
-4. Só então iniciar 2001; não promover o ano com evidência ausente.
+1. Executar FASE07 de 2001 para testar identidade/cardinalidade sem deduplicar.
+2. Executar FASE08 e Gate 06–08 de 2001, classificando exceções e sem impor ordenação que não esteja no contrato da fonte.
+3. Executar FASE09 e FASE10 independente de 2001, comparando todos os 25 campos.
+4. Executar FASE11 e FASE12 apenas após FASE10 validada; só então abrir 2002.
 
 ## 6. Estado no momento do registo
 
-**Estado atual:** 1999 está fechado após FASE10 independente validada, FASE11 certificada e FASE12 concluída. Para 2000, FASE01–07 estão validadas; FASE08 está `VALIDADO_COM_EXCECAO`, com a ordem original não cronológica explicitada e sem reordenar dados. O Gate 06–08 está criado e em fila; FASE09–12 de 2000 e o ano 2001 permanecem bloqueados até aos respetivos gates.
+**Estado atual:** 1999 e 2000 foram fechados após FASE10 independente validada, FASE11 certificada e FASE12 concluída em cada ano. Para 2001, FASE01–06 estão validadas; o CSV normalizado foi recuperado e reconciliado com manifesto/sidecar. FASE07–12 de 2001 permanecem por executar. O ano 2002 está bloqueado até ao fechamento formal de 2001.
