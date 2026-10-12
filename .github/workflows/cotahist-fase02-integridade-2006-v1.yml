@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase02-integridade-2006-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2006_FASE01_AQUISICAO_RAW_V1.json"
 
 permissions:
