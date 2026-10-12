@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999 e 2000 fechados/certificados; 2001 com FASE01–FASE10 validadas, pronto para certificação FASE11  
+**Estado:** 1999 e 2000 fechados/certificados; 2001 com FASE01–FASE11 concluídas, CERTIFICADO e aguardando fechamento FASE12  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -12,7 +12,7 @@
 - **COTAHIST 2000:** FASE01–FASE10 validadas; FASE11 certificado; FASE12 fechou 2000 e autorizou a transição controlada para 2001.
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
-- **COTAHIST 2001:** FASE01–FASE10 validadas; a FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE09 liberou a FASE10. FASE07: 7.891 grupos de colisão na chave-base e zero na candidata com `prazot`; nenhuma linha removida. FASE08: 246 datas, zero datas inválidas/fora do ano e 27.297 regressões cronológicas globais; ordem original preservada. Próxima: FASE11 certificação.
+- **COTAHIST 2001:** FASE01–FASE11 concluídas; FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE09 liberou a FASE10; FASE11 `CERTIFICADO`. FASE07: 7.891 grupos de colisão na chave-base e zero na candidata com `prazot`; nenhuma linha removida. FASE08: 246 datas, zero datas inválidas/fora do ano e 27.297 regressões cronológicas globais; ordem original preservada. Próxima: FASE12 fechamento e transição controlada.
 - O ano 2002 permanece bloqueado até fechamento formal de 2001.
 
 ## COTAHIST 1999
@@ -120,8 +120,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | Gate 06–08 | GATE_APROVADO | `dados/cotahist/quality/COTAHIST_2001_GATE_06_08_V1.json` |
 | FASE09 | LIBERADO_PARA_FASE10 | `dados/cotahist/quality/COTAHIST_2001_FASE09_PRE_RELEASE_V1.json` |
 | FASE10 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE10_VALIDACAO_INDEPENDENTE_V1.json` |
-| FASE11 | NÃO INICIADA | Próxima: certificação condicionada à FASE10 |
-| FASE12 | NÃO INICIADA | Fechamento formal de 2001 e transição controlada para 2002 |
+| FASE11 | CERTIFICADO | `dados/cotahist/quality/COTAHIST_2001_FASE11_CERTIFICACAO_V1.json` |
+| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2001 e transição controlada para 2002 |
 
 ### Integridade normalizado 2001
 
@@ -136,4 +136,5 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 3. Gate 06–08 aprovado no run [38244654290](https://github.com/carlos-andrade/B3/actions/runs/38244654290); zero bloqueadores.
 4. FASE09 concluída no run [38244723696](https://github.com/carlos-andrade/B3/actions/runs/38244723696), `LIBERADO_PARA_FASE10`; RAW, NORMALIZED e manifesto presentes, hashes conferidos.
 5. FASE10 independente validada no run [38244793960](https://github.com/carlos-andrade/B3/actions/runs/38244793960): 25 campos, 141.848 registos, zero divergências; evidência persistida.
-6. Executar FASE11 certificação e depois FASE12 fechamento formal; não abrir 2002 antes do fechamento nem atualizar README fora das 23:55 Brasília.
+6. FASE11 certificada no run [38244879058](https://github.com/carlos-andrade/B3/actions/runs/38244879058), sem bloqueadores; escopo limitado à integridade/consistência do dataset.
+7. Executar FASE12 para fechar formalmente 2001 e autorizar transição controlada para 2002; não iniciar 2002 antes do fechamento nem atualizar README fora das 23:55 Brasília.
