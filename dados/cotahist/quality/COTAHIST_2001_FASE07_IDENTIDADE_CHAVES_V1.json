@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2001,
+  "phase": "FASE07",
+  "status": "VALIDADO",
+  "decision": "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE",
+  "validation_type": "AUDITORIA_DE_IDENTIDADE_E_CARDINALIDADE_SEM_MUTACAO",
+  "source_normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2001.csv",
+  "source_normalized_sha256": "d15b1d6b5a407a397c7deb6a555a8572d9f9f6539ab657821a2e08f9f186396a",
+  "phase06_evidence_path": "dados/cotahist/quality/COTAHIST_2001_FASE06_RECONCILIACAO_V1.json",
+  "phase06_status": "VALIDADO",
+  "records": 141848,
+  "base_candidate": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "dismes"
+    ],
+    "distinct_keys": 128158,
+    "duplicate_groups": 7891,
+    "duplicate_rows_excess": 13690,
+    "groups_identical_full_row": 0,
+    "groups_different_full_row": 7891,
+    "sample_collisions": [
+      {
+        "key": [
+          "2001-12-21",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "020",
+          "031",
+          "090"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-02-15",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "029",
+          "090"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-01-17",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "058"
+        ],
+        "different_fields": [
+          "prazot",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-01-18",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "030",
+          "032",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-01-19",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "090"
+        ],
+        "different_fields": [
+          "prazot",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-01-22",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "045"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premin",
+          "preult",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-01-31",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-02-07",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-02-14",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "030",
+          "057",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2001-03-07",
+          "62",
+          "ACES3T",
+          "030",
+          "131"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "030",
+          "060",
+          "090"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      }
+    ]
+  },
+  "candidate_with_prazot": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "prazot",
+      "dismes"
+    ],
+    "distinct_keys": 141848,
+    "duplicate_groups": 0,
+    "duplicate_rows_excess": 0,
+    "groups_identical_full_row": 0,
+    "groups_different_full_row": 0,
+    "sample_collisions": []
+  },
+  "base_duplicate_groups_separated_by_prazot": 7891,
+  "selected_key": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "prazot",
+    "dismes"
+  ],
+  "identity_decision": "PRAZOT integra a chave candidata para distinguir registos que colidem na chave base.",
+  "deduplication_performed": false,
+  "source_rows_removed": 0,
+  "limitations": [
+    "A conclusão aplica-se ao COTAHIST 2001 e à versão normalizada identificada; não autoriza deduplicação nem generalização automática a outros anos."
+  ],
+  "validated_at_utc": "2026-10-12T11:43:38.161194+00:00"
+}
