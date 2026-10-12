@@ -1,3 +1,4 @@
+# Reexecucao apos FASE08 VALIDADO_COM_EXCECAO; excecoes classificadas como nao bloqueadoras em 2026-10-12.
 name: COTAHIST 2004 - Gate 06-08
 on:
   workflow_dispatch:
