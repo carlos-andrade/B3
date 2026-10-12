@@ -20,106 +20,519 @@
     {
       "row": 3,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "AVIL4FF",
+        "020",
+        "",
+        "157"
+      ],
+      "current_instrument": [
+        "96",
+        "BBDC3FF",
+        "020",
+        "",
+        "391"
+      ]
     },
     {
       "row": 8,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "BBDC3FF",
+        "020",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "96",
+        "BRGE12F",
+        "020",
+        "",
+        "063"
+      ]
     },
     {
       "row": 11,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "BBDC4FF",
+        "020",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "96",
+        "CRGT5FF",
+        "020",
+        "",
+        "100"
+      ]
     },
     {
       "row": 19,
       "previous_date": "2000-01-06",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "AVIL4FF",
+        "020",
+        "",
+        "157"
+      ],
+      "current_instrument": [
+        "96",
+        "BRDT4FF",
+        "020",
+        "",
+        "108"
+      ]
     },
     {
       "row": 21,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "BRGE3FF",
+        "020",
+        "",
+        "169"
+      ],
+      "current_instrument": [
+        "96",
+        "ESTR4FF",
+        "020",
+        "",
+        "142"
+      ]
     },
     {
       "row": 30,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "BRHA4FF",
+        "020",
+        "",
+        "164"
+      ],
+      "current_instrument": [
+        "02",
+        "GEPA3",
+        "010",
+        "",
+        "100"
+      ]
     },
     {
       "row": 40,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "02",
+        "BBDC3",
+        "010",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "96",
+        "CRGT5FF",
+        "020",
+        "",
+        "100"
+      ]
     },
     {
       "row": 41,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "96",
+        "CRGT5FF",
+        "020",
+        "",
+        "100"
+      ],
+      "current_instrument": [
+        "96",
+        "RPAD5FF",
+        "020",
+        "",
+        "169"
+      ]
     },
     {
       "row": 55,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "02",
+        "BBDC4",
+        "010",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "96",
+        "CRTP3FF",
+        "020",
+        "",
+        "100"
+      ]
     },
     {
       "row": 59,
       "previous_date": "2000-01-04",
-      "current_date": "2000-01-03"
+      "current_date": "2000-01-03",
+      "previous_instrument": [
+        "02",
+        "CSNA3",
+        "010",
+        "",
+        "213"
+      ],
+      "current_instrument": [
+        "02",
+        "TLPP4",
+        "010",
+        "",
+        "102"
+      ]
     },
     {
       "row": 75,
       "previous_date": "2000-01-07",
-      "current_date": "2000-01-05"
+      "current_date": "2000-01-05",
+      "previous_instrument": [
+        "96",
+        "AVIL4FF",
+        "020",
+        "",
+        "157"
+      ],
+      "current_instrument": [
+        "96",
+        "BBDC4FF",
+        "020",
+        "",
+        "392"
+      ]
     },
     {
       "row": 76,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "BBDC4FF",
+        "020",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "02",
+        "EBEN4",
+        "010",
+        "",
+        "101"
+      ]
     },
     {
       "row": 81,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "BNBR4FF",
+        "020",
+        "",
+        "160"
+      ],
+      "current_instrument": [
+        "02",
+        "ELET6",
+        "010",
+        "",
+        "049"
+      ]
     },
     {
       "row": 88,
       "previous_date": "2000-01-06",
-      "current_date": "2000-01-05"
+      "current_date": "2000-01-05",
+      "previous_instrument": [
+        "02",
+        "BBDC4",
+        "010",
+        "",
+        "392"
+      ],
+      "current_instrument": [
+        "96",
+        "CEVA3FF",
+        "020",
+        "",
+        "138"
+      ]
     },
     {
       "row": 90,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "BRHA4FF",
+        "020",
+        "",
+        "164"
+      ],
+      "current_instrument": [
+        "02",
+        "PLIM4",
+        "010",
+        "",
+        "107"
+      ]
     },
     {
       "row": 104,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "CRGT5FF",
+        "020",
+        "",
+        "100"
+      ],
+      "current_instrument": [
+        "96",
+        "PTIP4FF",
+        "020",
+        "",
+        "167"
+      ]
     },
     {
       "row": 111,
       "previous_date": "2000-01-06",
-      "current_date": "2000-01-05"
+      "current_date": "2000-01-05",
+      "previous_instrument": [
+        "96",
+        "BESP4FF",
+        "020",
+        "",
+        "157"
+      ],
+      "current_instrument": [
+        "96",
+        "CTNM3FF",
+        "020",
+        "",
+        "112"
+      ]
     },
     {
       "row": 117,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "02",
+        "CRTP5",
+        "010",
+        "",
+        "100"
+      ],
+      "current_instrument": [
+        "96",
+        "TRPL4FF",
+        "020",
+        "",
+        "100"
+      ]
     },
     {
       "row": 127,
       "previous_date": "2000-01-05",
-      "current_date": "2000-01-04"
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "96",
+        "CTNM4FF",
+        "020",
+        "",
+        "111"
+      ],
+      "current_instrument": [
+        "02",
+        "UNIP6",
+        "010",
+        "",
+        "145"
+      ]
     },
     {
       "row": 130,
       "previous_date": "2000-01-05",
+      "current_date": "2000-01-04",
+      "previous_instrument": [
+        "02",
+        "EBEN4",
+        "010",
+        "",
+        "101"
+      ],
+      "current_instrument": [
+        "96",
+        "VAGV4FF",
+        "020",
+        "",
+        "130"
+      ]
+    }
+  ],
+  "instrument_order_regressions": 54383,
+  "instrument_date_regressions": 2782,
+  "instrument_date_regression_samples": [
+    {
+      "row": 267,
+      "instrument": [
+        "96",
+        "ACES4FF",
+        "020",
+        "",
+        "130"
+      ],
+      "previous_date": "2000-01-13",
+      "current_date": "2000-01-12"
+    },
+    {
+      "row": 1674,
+      "instrument": [
+        "96",
+        "PMAM4FF",
+        "020",
+        "",
+        "032"
+      ],
+      "previous_date": "2000-01-13",
+      "current_date": "2000-01-12"
+    },
+    {
+      "row": 1715,
+      "instrument": [
+        "96",
+        "PMAM4FF",
+        "020",
+        "",
+        "032"
+      ],
+      "previous_date": "2000-01-27",
+      "current_date": "2000-01-04"
+    },
+    {
+      "row": 1718,
+      "instrument": [
+        "96",
+        "PMAM4FF",
+        "020",
+        "",
+        "032"
+      ],
+      "previous_date": "2000-01-05",
+      "current_date": "2000-01-03"
+    },
+    {
+      "row": 1720,
+      "instrument": [
+        "02",
+        "PMAM4",
+        "010",
+        "",
+        "032"
+      ],
+      "previous_date": "2000-01-27",
+      "current_date": "2000-01-03"
+    },
+    {
+      "row": 1725,
+      "instrument": [
+        "02",
+        "PMAM4",
+        "010",
+        "",
+        "032"
+      ],
+      "previous_date": "2000-01-13",
+      "current_date": "2000-01-07"
+    },
+    {
+      "row": 1785,
+      "instrument": [
+        "06",
+        "TOYB5",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2000-01-27",
+      "current_date": "2000-01-07"
+    },
+    {
+      "row": 1786,
+      "instrument": [
+        "06",
+        "TOYB5",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2000-01-07",
+      "current_date": "2000-01-03"
+    },
+    {
+      "row": 2203,
+      "instrument": [
+        "96",
+        "TRJC6FF",
+        "020",
+        "",
+        "102"
+      ],
+      "previous_date": "2000-01-31",
+      "current_date": "2000-01-03"
+    },
+    {
+      "row": 2727,
+      "instrument": [
+        "96",
+        "PTNT4FF",
+        "020",
+        "",
+        "025"
+      ],
+      "previous_date": "2000-01-14",
       "current_date": "2000-01-04"
     }
   ],
+  "source_order_classified_as_instrument_first": false,
   "blockers": [
-    "ORDEM_CRONOLOGICA_DA_FONTE_REQUER_CLASSIFICACAO"
+    "ORDEM_DA_FONTE_NAO_CLASSIFICADA"
+  ],
+  "exceptions": [
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase verifica datas observadas, validade ISO, ano e ordem cronológica. Não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2000."
+    }
   ],
   "weekday_distribution": {
     "Monday": 49,
@@ -137,15 +550,7 @@
     }
   ],
   "official_calendar_reference": "NOT_PERSISTED",
-  "exceptions": [
-    {
-      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
-      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
-      "blocking": false,
-      "detail": "A fase verifica datas observadas, validade ISO, ano e ordem cronológica. Não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2000."
-    }
-  ],
-  "validated_at_utc": "2026-10-12T11:11:27.457034+00:00",
+  "validated_at_utc": "2026-10-12T11:12:12.872571+00:00",
   "deduplication_performed": false,
   "rows_removed": 0
 }
