@@ -1,0 +1,152 @@
+name: COTAHIST 2002 - FASE09 Pre-Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase09-prerelease-2002-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2002_GATE_06_08_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE03_PARSING_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase09-prerelease-2002-v1
+  cancel-in-progress: false
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase09-prerelease-2002-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2002.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A2002.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2002_quality.json
+            dados/cotahist/quality/COTAHIST_2002_GATE_06_08_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE03_PARSING_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE05_MANIFESTO_CHECKSUM_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json
+            dados/cotahist/quality/COTAHIST_2002_FASE09_PRE_RELEASE_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Avaliar pré-release sem retrocertificação
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, sys, datetime
+          q = pathlib.Path("dados/cotahist/quality")
+          names = {
+            "FASE03": "COTAHIST_2002_FASE03_PARSING_V1.json",
+            "FASE04": "COTAHIST_2002_FASE04_NORMALIZACAO_V1.json",
+            "FASE05": "COTAHIST_2002_FASE05_MANIFESTO_CHECKSUM_V1.json",
+            "FASE06": "COTAHIST_2002_FASE06_RECONCILIACAO_V1.json",
+            "FASE07": "COTAHIST_2002_FASE07_IDENTIDADE_CHAVES_V1.json",
+            "FASE08": "COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json",
+            "GATE_06_08": "COTAHIST_2002_GATE_06_08_V1.json"
+          }
+          required = {
+            "RAW": pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2002.ZIP"),
+            "NORMALIZED": pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2002.csv"),
+            "MANIFEST": pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2002_quality.json")
+          }
+          missing = [k for k,p in {**{k:q/v for k,v in names.items()}, **required}.items() if not p.is_file() or p.stat().st_size == 0]
+          data, blocked = {}, []
+          for k, name in names.items():
+              p = q / name
+              if p.is_file():
+                  data[k] = json.loads(p.read_text(encoding="utf-8"))
+          for phase in ("FASE03","FASE04","FASE05","FASE06","FASE07"):
+              if data.get(phase, {}).get("status") != "VALIDADO":
+                  blocked.append(f"{phase}_STATUS")
+          if data.get("FASE08", {}).get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
+              blocked.append("FASE08_STATUS")
+          gate = data.get("GATE_06_08", {})
+          if gate.get("status") != "GATE_APROVADO" or gate.get("decision") != "APROVADO_PARA_ANALISE_FASE09":
+              blocked.append("GATE_06_08")
+          raw = required["RAW"]
+          manifest_path = required["MANIFEST"]
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest() if raw.exists() else None
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
+          if raw_sha != manifest.get("raw_sha256"):
+              blocked.append("RAW_SHA256")
+          csv_path = required["NORMALIZED"]
+          csv_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest() if csv_path.exists() else None
+          if csv_sha != manifest.get("normalized_sha256"):
+              blocked.append("NORMALIZED_SHA256")
+          ok = not missing and not blocked
+          out = {
+            "schema_version": "1.0.0",
+            "year": 2002,
+            "phase": "FASE09",
+            "status": "LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "decision": "LIBERADO_PARA_FASE10" if ok else "BLOQUEADO",
+            "preconditions": {k: ("OK" if k not in missing else "AUSENTE") for k in {**names, **required}},
+            "evidence_statuses": {k: v.get("status") for k,v in data.items()},
+            "gate_06_08_status": gate.get("status"),
+            "raw_sha256": raw_sha,
+            "normalized_sha256": csv_sha,
+            "missing": missing,
+            "blocked": blocked,
+            "phase08_exceptions": data.get("FASE08", {}).get("exceptions", []),
+            "note": "FASE09 consolida evidências já persistidas; não substitui nem retrocertifica FASE00–08 e não executa FASE10.",
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          target = q / "COTAHIST_2002_FASE09_PRE_RELEASE_V1.json"
+          target.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not ok:
+              sys.exit("FASE09 BLOQUEADA")
+          PY
+
+      - name: Persistir evidência FASE09
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2002_FASE09_PRE_RELEASE_V1.json || {
+            echo "Nenhuma evidência FASE09 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2002_FASE09_PRE_RELEASE_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): registrar pre-release fase 09 2002"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2002 — FASE09"
+            echo "- Consolida evidências anteriores e o Gate 06-08."
+            echo "- Não executa FASE10 nem certifica o ano."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
