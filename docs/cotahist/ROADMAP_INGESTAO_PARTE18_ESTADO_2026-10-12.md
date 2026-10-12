@@ -46,6 +46,14 @@ Correção publicada no commit `f2512bec41c5062a27eb1846c30af7097b2e48a5`:
 
 As execuções já iniciadas sob a configuração antiga podem terminar em falha; avaliar separadamente os resultados após a estabilização. A alteração evita novos disparos provocados apenas pela gravação da evidência, mas não elimina conflitos com todos os outros workflows que escrevem em `main`.
 
+### 2.4 Comparação REC-001 — falso positivo no cabeçalho temporal
+
+A evidência REC-001 anterior comparava as linhas físicas desde a primeira linha, incluindo o registo tipo `00` (cabeçalho com data do snapshot) e o tipo `99` (trailer com contagem). Como o snapshot B3 terminava em 2026-09-23 e o RAW do BLOOMBERG_MAIL avançava até 2026-10-06, os cabeçalhos diferiam legitimamente e a comparação reportava divergência na posição 1 antes de comparar qualquer registo tipo `01`.
+
+Correção publicada no commit `4cdafbfdc62803be8bc6fa823577f38dca176b3b`: comparar apenas registos tipo `01`, preservando a ordem física, reportando a primeira divergência real, posição comum e se cada fluxo se esgotou. Os cabeçalhos tipo `00` e trailers tipo `99` ficam explicitamente fora da comparação de sobreposição.
+
+**Estado desta correção:** o workflow REC-001 foi acionado, mas a execução que usa o novo comparador ainda não terminou no momento da atualização. Não declarar `PASS_OVERLAP_EXACT` até verificar a evidência recém-gerada.
+
 ## 3. Roadmap por marco
 
 | Marco | Estado observado | Próxima ação |
@@ -54,10 +62,10 @@ As execuções já iniciadas sob a configuração antiga podem terminar em falha
 | COTAHIST 2004 | FASE00–FASE04 registadas como validadas na continuidade anterior | Confirmar evidências e avançar FASE05 em sequência |
 | COTAHIST 2005 | FASE12 registada como concluída, com transição controlada | Preservar fechamento e evidências |
 | COTAHIST 2006 | FASE00 aprovada em execução do GitHub Actions | Continuar a partir da fase seguinte prevista no plano |
-| Certificação anual | Código corrigido para aceitar versões homologadas | Confirmar execução do workflow e matriz publicada |
-| Dataset oficial | Código corrigido para aceitar versões homologadas | Confirmar execução; não promover enquanto houver anos não certificados |
-| REC-001 B3 × BLOOMBERG_MAIL | Workflow corrigido para limitar triggers e serializar execuções próprias | Verificar resultado de comparação, hashes e persistência da evidência |
-| Auditoria de workflows | Execução recente falhou durante publicação por rejeição non-fast-forward e conflito no rebase | Reexecutar após estabilização das gravações concorrentes e investigar conflitos remanescentes |
+| Certificação anual | **PASS** — execução #32 concluída com sucesso; matriz contém 41 anos certificados | Manter teste de regressão para versões homologadas |
+| Dataset oficial | **PASS** — execução #24 concluída com sucesso; manifesto oficial publicado para 1986–2026 | Validar consistência entre manifesto, matriz e hashes em auditoria independente |
+| REC-001 B3 × BLOOMBERG_MAIL | Workflow e comparador corrigidos; execução do comparador novo pendente | Verificar resultado de sobreposição, hashes e persistência da evidência |
+| Auditoria de workflows | **PASS** — execução #258 terminou com sucesso após a correção do workflow REC-001 | Reexecutar após o fim das execuções antigas e confirmar ausência de novos conflitos |
 
 ## 4. Critérios de aceite para publicação do dataset oficial
 
@@ -83,6 +91,6 @@ A publicação só pode ser considerada aprovada se:
 
 ## 6. Registo de execução desta parte
 
-As correções de código e de workflow foram publicadas em `main`. No momento deste registo, as execuções acionadas por esses commits ainda estavam em andamento; portanto, não se declara PASS para certificação anual, dataset oficial, REC-001 ou auditoria sem consulta aos resultados finais.
+As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação. A REC-001 ainda está em execução após a correção do comparador; a sua aprovação continua pendente de resultado final e evidência atualizada.
 
 **Regra de governança:** não saltar fases, não substituir evidência por inferência, não remover registos para forçar reconciliação e não promover o dataset quando os gates falharem.
