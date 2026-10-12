@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; próxima FASE09  
+**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; próxima FASE10  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -369,7 +369,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE07 | VALIDADO | [COTAHIST_2005_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE07_IDENTIDADE_CHAVES_V1.json) |
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2005_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE08_SEMANTICA_CALENDARIO_V1.json) |
 | GATE 06–08 | GATE_APROVADO | [COTAHIST_2005_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_GATE_06_08_V1.json) |
-| FASE09–FASE12 | NÃO INICIADAS | Próxima: FASE09 — pré-release; depende do gate aprovado |
+| FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2005_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE09_PRE_RELEASE_V1.json) |
+| FASE10–FASE12 | NÃO INICIADAS | Próxima: FASE10 — validação independente dos 25 campos RAW × NORMALIZED |
 
 ### Integridade física COTAHIST 2005
 
@@ -425,3 +426,15 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - FASE06 `VALIDADO`; FASE07 `VALIDADO`; FASE08 `VALIDADO_COM_EXCECAO`; zero colisões na chave candidata selecionada.
 - A limitação de calendário oficial histórico de 2005 permanece explícita e não bloqueadora.
 - Próxima etapa: FASE09 — pré-release.
+
+
+## Atualização operacional — FASE09 COTAHIST 2005 — 2026-10-12
+
+- Workflow: [COTAHIST 2005 — FASE09 Pré-release](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase09-prerelease-2005-v1.yml)
+- Execução: [run 38253159476](https://github.com/carlos-andrade/B3/actions/runs/38253159476)
+- Evidência: [COTAHIST_2005_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE09_PRE_RELEASE_V1.json)
+- Resultado: `LIBERADO_PARA_FASE10`; `missing=[]`; `blocked=[]`; Gate 06–08 `GATE_APROVADO`.
+- SHA-256 RAW: `41eac6d743d9c3e812bb001c4d327582fa7c408dbc99ff4a1734698da8b18f52`.
+- SHA-256 NORMALIZED: `9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c`.
+- A FASE09 apenas consolida evidências; não certifica o ano nem executa FASE10.
+- Próxima etapa: FASE10 — validação independente de todos os 25 campos.
