@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "ano": 1999,
   "fase": "FASE04",
-  "status": "BLOQUEADO_PARA_PROMOCAO",
+  "status": "EVIDENCIA_RECONSTRUIDA_AGUARDA_GATE",
   "decision": "AGUARDA_VALIDACAO_INDEPENDENTE",
   "recuperacao": "REGENERACAO_DETERMINISTICA_A_PARTIR_DO_RAW_IMUTAVEL",
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP",
@@ -22,12 +22,10 @@
   "ultima_data_calculada": "1999-12-30",
   "datas_coincidem_manifesto": true,
   "evidencia_fase03": "dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json",
-  "evidencia_fase03_status": "AUSENTE",
+  "evidencia_fase03_status": "PRESENTE",
   "raw_alterado": false,
   "deduplicacao_aplicada": false,
   "promocao_automatica": false,
-  "blockers": [
-    "evidência canónica da FASE03 ausente"
-  ],
-  "audit_timestamp_utc": "2026-10-12T10:49:42.150636+00:00"
+  "blockers": [],
+  "audit_timestamp_utc": "2026-10-12T10:54:03.786586+00:00"
 }
