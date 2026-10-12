@@ -5,9 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/quality/COTAHIST_2006_FASE06_RECONCILIACAO_V1.json"
       - "dados/cotahist/quality/COTAHIST_2006_FASE07_IDENTIDADE_CHAVES_V1.json"
-      - "dados/cotahist/normalized/anual/COTAHIST_A2006.csv"
 
 permissions:
   contents: write
