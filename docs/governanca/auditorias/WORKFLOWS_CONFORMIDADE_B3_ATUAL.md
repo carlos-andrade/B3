@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-12T13:00:58.664031+00:00
-Workflows auditados: 244
+Gerado em UTC: 2026-10-12T13:05:13.777895+00:00
+Workflows auditados: 252
 
 ## Regra de decisão
 
@@ -107,6 +107,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-validacao-independente-2002-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2003-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2004-v1.yml | 4 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase04-validacao-independente-2005-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1996-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -118,6 +119,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase05-manifesto-checksum-2002-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-2003-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-2004-v1.yml | 5 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase05-manifesto-checksum-2005-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-reconciliacao-1999-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-reconciliacao-2000-v1.yml | 6 | **CONFORME** | — | — |
@@ -125,6 +127,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase06-reconciliacao-2002-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2003-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2004-v1.yml | 6 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase06-reconciliacao-2005-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1995-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1996-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -137,6 +140,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase07-identidade-2002-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-2003-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-2004-v1.yml | 7 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase07-identidade-2005-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-historica-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07-identidade-historica-1995-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07-identidade-historica-1996-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -157,6 +161,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase08-calendario-2002-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2003-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2004-v1.yml | 8 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase08-calendario-2005-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-consistencia-1998-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-semantica-k4-1995-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -183,6 +188,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase09-prerelease-2002-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2003-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2004-v1.yml | 9 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase09-prerelease-2005-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1988-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1989-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -199,6 +205,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase10-validacao-independente-2002-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase10-validacao-independente-2003-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase10-validacao-independente-2004-v1.yml | 10 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase10-validacao-independente-2005-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase11-certificacao-1995-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase11-certificacao-1996-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase11-certificacao-1997-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -231,6 +238,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-gate-06-08-2002-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-gate-06-08-2003-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-gate-06-08-2004-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-gate-06-08-2005-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-gate-historico-1986.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-importacao-diaria-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-integridade-campos-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
