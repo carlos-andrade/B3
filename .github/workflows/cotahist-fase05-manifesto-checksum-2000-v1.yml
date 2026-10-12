@@ -1,0 +1,111 @@
+name: COTAHIST 2000 - FASE05 Manifesto e Checksum
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase05-manifesto-checksum-2000-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2000_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2000.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2000_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2000.csv.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase05-manifesto-checksum-2000-v1
+  cancel-in-progress: false
+
+jobs:
+  manifesto:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase05-manifesto-checksum-2000-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2000.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2000_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2000.csv.sha256
+            dados/cotahist/quality/COTAHIST_2000_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2000_FASE05_MANIFESTO_CHECKSUM_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconciliar arquivo físico, manifesto e sidecar
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, sys, datetime
+          cp=pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2000.csv")
+          mp=pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2000_quality.json")
+          sp=pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2000.csv.sha256")
+          f4p=pathlib.Path("dados/cotahist/quality/COTAHIST_2000_FASE04_NORMALIZACAO_V1.json")
+          ev=pathlib.Path("dados/cotahist/quality/COTAHIST_2000_FASE05_MANIFESTO_CHECKSUM_V1.json")
+          for p in (cp,mp,sp,f4p):
+              if not p.is_file() or p.stat().st_size==0:
+                  sys.exit(f"FASE05 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f4=json.loads(f4p.read_text(encoding="utf-8"))
+          m=json.loads(mp.read_text(encoding="utf-8"))
+          side=sp.read_text(encoding="utf-8").strip().split()
+          side_sha=side[0] if side else ""
+          sha=hashlib.sha256(cp.read_bytes()).hexdigest()
+          if f4.get("status")!="VALIDADO" or f4.get("decision")!="LIBERADO_PARA_FASE05":
+              sys.exit("FASE05 BLOQUEADA: FASE04 não VALIDADO")
+          if sha!=m.get("normalized_sha256") or sha!=side_sha:
+              sys.exit("FASE05 BLOQUEADA: SHA-256 diverge do manifesto/sidecar")
+          with cp.open(encoding="utf-8",newline="") as f:
+              rd=csv.DictReader(f); fields=rd.fieldnames or []; rows=list(rd)
+          if len(fields)!=25 or len(rows)!=m.get("linhas_normalized"):
+              sys.exit("FASE05 BLOQUEADA: campos/linhas divergem")
+          dates=[r.get("data_pregao","") for r in rows]
+          if not dates or min(dates)!=m.get("primeira_data") or max(dates)!=m.get("ultima_data"):
+              sys.exit("FASE05 BLOQUEADA: intervalo de datas diverge")
+          out={
+            "schema_version":"1.0.0","year":2000,"phase":"FASE05",
+            "status":"VALIDADO","decision":"LIBERADO_PARA_FASE06",
+            "validation_type":"RECONCILIACAO_FISICA_MANIFESTO_SIDECAR",
+            "normalized_path":str(cp),"normalized_sha256_calculated":sha,
+            "normalized_sha256_manifest":m.get("normalized_sha256"),
+            "normalized_sha256_sidecar":side_sha,"manifest_hash_match":True,
+            "sidecar_hash_match":True,"phase04_status":f4.get("status"),
+            "rows_calculated":len(rows),"rows_manifest":m.get("linhas_normalized"),
+            "fields":len(fields),"first_date":min(dates),"last_date":max(dates),
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "note":"FASE05 não substitui reconciliação semântica FASE06."
+          }
+          ev.parent.mkdir(parents=True,exist_ok=True)
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência FASE05
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2000_FASE05_MANIFESTO_CHECKSUM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 05 manifesto checksum 2000"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2000 — FASE05"
+            echo "- Revalida hash físico, manifesto, sidecar, esquema e datas."
+            echo "- Não executa FASE06."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
