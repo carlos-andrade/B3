@@ -43,25 +43,48 @@ def stream_stats(path):
                     "date_min":min(dates) if dates else None,"date_max":max(dates) if dates else None,
                     "member_sha256":member_sha.hexdigest()}
 
+def iter_record01_lines(handle):
+    """Yield only negotiated COTAHIST detail records; ignore period-specific header/trailer."""
+    for raw in handle:
+        if raw[:2] == b"01":
+            yield raw
+
+
 def compare_streams(b3_path, bloom_path):
     with zipfile.ZipFile(b3_path) as a, zipfile.ZipFile(bloom_path) as b:
         an=next(n for n in a.namelist() if n.upper().endswith("COTAHIST_A2026.TXT"))
         bn=next(n for n in b.namelist() if n.upper().endswith("COTAHIST_A2026.TXT"))
         with a.open(an) as fa, b.open(bn) as fb:
-            i=0; mismatches=[]; b3_end=False; bloom_end=False; common=0
+            ia=iter_record01_lines(fa)
+            ib=iter_record01_lines(fb)
+            position=0
+            mismatches=[]
             while True:
-                ra=fa.readline(); rb=fb.readline()
-                if not ra: b3_end=True
-                if not rb: bloom_end=True
-                if b3_end or bloom_end: break
-                i+=1
-                if ra!=rb:
-                    mismatches.append({"record_position":i,"b3_sha256":hashlib.sha256(ra).hexdigest(),"bloomberg_sha256":hashlib.sha256(rb).hexdigest(),
-                                       "b3_prefix":ra[:40].decode("latin-1","replace"),"bloomberg_prefix":rb[:40].decode("latin-1","replace")})
+                ra=next(ia, None)
+                rb=next(ib, None)
+                if ra is None or rb is None:
+                    b3_exhausted = ra is None
+                    bloom_exhausted = rb is None
                     break
-                common+=1
-            return {"common_prefix_records_physical":common,"first_difference":mismatches[0] if mismatches else None,
-                    "b3_exhausted":b3_end,"bloomberg_exhausted":bloom_end}
+                position += 1
+                if ra != rb:
+                    mismatches.append({
+                        "record01_position": position,
+                        "b3_date": ra[2:10].decode("ascii", "replace"),
+                        "bloomberg_date": rb[2:10].decode("ascii", "replace"),
+                        "b3_sha256": hashlib.sha256(ra).hexdigest(),
+                        "bloomberg_sha256": hashlib.sha256(rb).hexdigest(),
+                        "b3_prefix": ra[:40].decode("latin-1", "replace"),
+                        "bloomberg_prefix": rb[:40].decode("latin-1", "replace"),
+                    })
+                    break
+            return {
+                "common_record01_prefix": position if not mismatches else position - 1,
+                "first_difference": mismatches[0] if mismatches else None,
+                "b3_exhausted": b3_exhausted if not mismatches else False,
+                "bloomberg_exhausted": bloom_exhausted if not mismatches else False,
+                "comparison_unit": "record type 01 only; period-specific type 00 headers and type 99 trailers excluded",
+            }
 
 def main():
     with tempfile.TemporaryDirectory() as td:
