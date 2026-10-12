@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-12T11:15:11.260140+00:00
-Workflows auditados: 176
+Gerado em UTC: 2026-10-12T11:16:59.967293+00:00
+Workflows auditados: 178
 
 ## Regra de decisão
 
@@ -134,6 +134,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase09-prerelease-1996-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase09-prerelease-1997-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase09-prerelease-1999-v1.yml | 9 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase09-prerelease-2000-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1988-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1989-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -145,6 +146,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase10-integridade-1996-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase10-integridade-1997-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase10-validacao-independente-1999-v1.yml | 10 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase10-validacao-independente-2000-v1.yml | 10 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase11-certificacao-1995-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase11-certificacao-1996-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase11-certificacao-1997-v1.yml | 11 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
