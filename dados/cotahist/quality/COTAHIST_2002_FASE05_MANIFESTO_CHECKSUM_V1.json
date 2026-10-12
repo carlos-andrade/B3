@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2002,
+  "phase": "FASE05",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE06",
+  "validation_type": "RECONCILIACAO_FISICA_MANIFESTO_SIDECAR",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2002.csv",
+  "normalized_sha256_calculated": "e1903df22583dc33fa506c340722434bb22bb386debdd7114ad5cfc3ad6560cc",
+  "normalized_sha256_manifest": "e1903df22583dc33fa506c340722434bb22bb386debdd7114ad5cfc3ad6560cc",
+  "normalized_sha256_sidecar": "e1903df22583dc33fa506c340722434bb22bb386debdd7114ad5cfc3ad6560cc",
+  "manifest_hash_match": true,
+  "sidecar_hash_match": true,
+  "phase04_status": "VALIDADO",
+  "rows_calculated": 129973,
+  "rows_manifest": 129973,
+  "fields": 25,
+  "first_date": "2002-01-02",
+  "last_date": "2002-12-30",
+  "validated_at_utc": "2026-10-12T11:54:20.820700+00:00",
+  "note": "FASE05 não substitui reconciliação semântica FASE06."
+}
