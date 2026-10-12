@@ -1,0 +1,150 @@
+name: COTAHIST 1999 - FASE12 Fechamento e Transicao 2000
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase12-fechamento-1999-abertura-2000-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1999_FASE11_CERTIFICACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_1999_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A2000.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2000.json"
+      - "dados/cotahist/checksums/COTAHIST_A2000.ZIP.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase12-fechamento-1999-abertura-2000-v1
+  cancel-in-progress: false
+
+jobs:
+  transicao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase12-fechamento-1999-abertura-2000-v1.yml
+            dados/cotahist/quality/COTAHIST_1999_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+            dados/cotahist/quality/COTAHIST_1999_FASE11_CERTIFICACAO_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2000.ZIP
+            dados/cotahist/manifests/COTAHIST_A2000.json
+            dados/cotahist/checksums/COTAHIST_A2000.ZIP.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2000.csv
+            dados/cotahist/quality/COTAHIST_1999_FASE12_FECHAMENTO_2000_ABERTURA_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar certificação 1999 e pré-condições da transição 2000
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, sys, zipfile, datetime
+          q = pathlib.Path("dados/cotahist/quality")
+          f10p = q / "COTAHIST_1999_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+          f11p = q / "COTAHIST_1999_FASE11_CERTIFICACAO_V1.json"
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2000.ZIP")
+          manifest_path = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2000.json")
+          checksum_path = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2000.ZIP.sha256")
+          csv2000 = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2000.csv")
+          out_path = q / "COTAHIST_1999_FASE12_FECHAMENTO_2000_ABERTURA_V1.json"
+          for p in (f10p, f11p, raw, manifest_path, checksum_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE12 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f10 = json.loads(f10p.read_text(encoding="utf-8"))
+          f11 = json.loads(f11p.read_text(encoding="utf-8"))
+          m = json.loads(manifest_path.read_text(encoding="utf-8"))
+          blockers = []
+          if f10.get("status") != "VALIDADO" or f10.get("mismatch_count") != 0 or f10.get("field_count") != 25:
+              blockers.append("FASE10_1999_NAO_VALIDADA")
+          if f11.get("status") != "CERTIFICADO" or f11.get("decision") != "LIBERADO_PARA_FASE12":
+              blockers.append("FASE11_1999_NAO_CERTIFICADA")
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          checksum_parts = checksum_path.read_text(encoding="utf-8").strip().split()
+          checksum_sha = checksum_parts[0] if checksum_parts else ""
+          if raw_sha != m.get("sha256") or raw_sha != checksum_sha:
+              blockers.append("RAW_2000_HASH_DIVERGENTE")
+          zip_error = None
+          member_count = 0
+          bad_lengths = None
+          type_counts = {}
+          try:
+              with zipfile.ZipFile(raw) as z:
+                  zip_error = z.testzip()
+                  members = [n for n in z.namelist() if not n.endswith("/")]
+                  member_count = len(members)
+                  if member_count == 1:
+                      with z.open(members[0]) as f:
+                          lines = [line.rstrip(b"\r\n") for line in f]
+                      bad_lengths = sum(1 for line in lines if len(line) != 245)
+                      for line in lines:
+                          k = line[:2].decode("ascii", "replace")
+                          type_counts[k] = type_counts.get(k, 0) + 1
+          except Exception as exc:
+              zip_error = str(exc)
+          if zip_error is not None or member_count != 1 or bad_lengths != 0 or type_counts.get("00") != 1 or type_counts.get("99") != 1 or type_counts.get("01",0) <= 0:
+              blockers.append("RAW_2000_ZIP_ESTRUTURAL_INVALIDO")
+          csv_exists = csv2000.is_file() and csv2000.stat().st_size > 0 if csv2000.exists() else False
+          out = {
+            "schema_version": "1.0.0",
+            "year_closed": 1999,
+            "phase": "FASE12",
+            "status": "FECHADO_COM_TRANSICAO_CONTROLADA" if not blockers else "BLOQUEADO",
+            "decision": "FECHAR_1999_E_AUTORIZAR_CONTINUACAO_2000" if not blockers else "BLOQUEADO",
+            "phase10_1999_status": f10.get("status"),
+            "phase11_1999_status": f11.get("status"),
+            "year2000_raw_path": str(raw),
+            "year2000_raw_sha256": raw_sha,
+            "year2000_manifest_sha256": m.get("sha256"),
+            "year2000_sidecar_sha256": checksum_sha,
+            "year2000_raw_hash_match": raw_sha == m.get("sha256") == checksum_sha,
+            "year2000_zip_member_count": member_count,
+            "year2000_invalid_record_lengths": bad_lengths,
+            "year2000_record_type_counts": type_counts,
+            "year2000_normalized_csv_exists": csv_exists,
+            "year2000_phase04_status": "AGUARDA_RECONSTRUCAO_CSV" if not csv_exists else "AGUARDA_VALIDACAO_INDEPENDENTE",
+            "blockers": blockers,
+            "transition_scope": "Fecha 1999 após certificação; não certifica 2000. A continuação de 2000 deve começar pela fase de origem necessária e permanece bloqueada na FASE04 enquanto o CSV normalizado não existir.",
+            "deduplication_performed": False,
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          out_path.parent.mkdir(parents=True, exist_ok=True)
+          out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if blockers:
+              sys.exit("FASE12 BLOQUEADA")
+          PY
+
+      - name: Persistir fechamento e transição
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_1999_FASE12_FECHAMENTO_2000_ABERTURA_V1.json || {
+            echo "Nenhuma evidência FASE12 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1999_FASE12_FECHAMENTO_2000_ABERTURA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): fechar 1999 e registar transicao 2000"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 1999 — FASE12"
+            echo "- Fecha 1999 apenas após FASE10 e FASE11 válidas."
+            echo "- Regista estado do RAW 2000 e bloqueio da FASE04 se o CSV estiver ausente."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
