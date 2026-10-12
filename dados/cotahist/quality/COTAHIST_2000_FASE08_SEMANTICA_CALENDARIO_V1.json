@@ -526,8 +526,8 @@
   "blockers": [],
   "exceptions": [
     {
-      "code": "FONTE_ORDENADA_POR_INSTRUMENTO_NAO_POR_DATA",
-      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS",
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
       "blocking": false,
       "detail": "A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
     },
@@ -554,7 +554,7 @@
     }
   ],
   "official_calendar_reference": "NOT_PERSISTED",
-  "validated_at_utc": "2026-10-12T11:13:24.696069+00:00",
+  "validated_at_utc": "2026-10-12T11:13:52.599346+00:00",
   "deduplication_performed": false,
   "rows_removed": 0
 }
