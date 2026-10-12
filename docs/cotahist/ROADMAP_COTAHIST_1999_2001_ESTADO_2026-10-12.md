@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas, próximo GATE 06–08  
+**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; próxima FASE09  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -368,8 +368,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE06 | VALIDADO | [COTAHIST_2005_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json) |
 | FASE07 | VALIDADO | [COTAHIST_2005_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE07_IDENTIDADE_CHAVES_V1.json) |
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2005_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE08_SEMANTICA_CALENDARIO_V1.json) |
-| GATE 06–08 | PENDENTE | Próxima: verificar evidências FASE06/07/08 em modo somente leitura |
-| FASE09–FASE12 | NÃO INICIADAS | Dependem da aprovação do Gate 06–08 e dos gates seguintes |
+| GATE 06–08 | GATE_APROVADO | [COTAHIST_2005_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_GATE_06_08_V1.json) |
+| FASE09–FASE12 | NÃO INICIADAS | Próxima: FASE09 — pré-release; depende do gate aprovado |
 
 ### Integridade física COTAHIST 2005
 
@@ -414,3 +414,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - Linhas analisadas: 181.408; datas de pregão distintas: 249; regressões cronológicas globais: 0; regressões de data por instrumento: 0.
 - Exceção não bloqueadora: calendário oficial histórico de pregões de 2005 não está persistido. A fase não afirma equivalência com uma lista externa oficial.
 - Próxima etapa: Gate 06–08, em modo somente leitura.
+
+
+## Atualização operacional — Gate 06–08 COTAHIST 2005 — 2026-10-12
+
+- Workflow: [COTAHIST 2005 — Gate 06–08](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-gate-06-08-2005-v1.yml)
+- Execução: [run 38253110579](https://github.com/carlos-andrade/B3/actions/runs/38253110579)
+- Evidência: [COTAHIST_2005_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_GATE_06_08_V1.json)
+- Resultado: `GATE_APROVADO`; decisão: `APROVADO_PARA_ANALISE_FASE09`; bloqueadores: 0.
+- FASE06 `VALIDADO`; FASE07 `VALIDADO`; FASE08 `VALIDADO_COM_EXCECAO`; zero colisões na chave candidata selecionada.
+- A limitação de calendário oficial histórico de 2005 permanece explícita e não bloqueadora.
+- Próxima etapa: FASE09 — pré-release.
