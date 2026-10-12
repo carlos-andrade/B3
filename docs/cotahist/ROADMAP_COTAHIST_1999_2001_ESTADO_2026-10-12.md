@@ -372,7 +372,7 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2005_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE09_PRE_RELEASE_V1.json) |
 | FASE10 | VALIDADO | [COTAHIST_2005_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
 | FASE11 | CERTIFICADO | [COTAHIST_2005_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE11_CERTIFICACAO_V1.json) |
-| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2005 e verificação para transição controlada a 2006 |
+| FASE12 | FECHADO_COM_TRANSICAO_CONTROLADA | [COTAHIST_2005_FASE12_FECHAMENTO_2006_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE12_FECHAMENTO_2006_ABERTURA_V1.json) |
 
 ### Integridade física COTAHIST 2005
 
@@ -464,3 +464,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - FASE10: 25 campos comparados independentemente, 181.408 registros, zero divergências; Gate 06–08 aprovado.
 - A certificação não fecha o ano nem autoriza automaticamente 2006. Isso depende da FASE12.
 - Próxima etapa: FASE12 — fechamento formal e verificação do RAW 2006 antes de autorizar a transição.
+
+
+## Atualização operacional — FASE12 COTAHIST 2005 — 2026-10-12
+
+- Workflow: [COTAHIST 2005 — FASE12 Fechamento e Transição 2006](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase12-fechamento-2005-abertura-2006-v1.yml)
+- Execução: [run 38253381813](https://github.com/carlos-andrade/B3/actions/runs/38253381813)
+- Evidência: [COTAHIST_2005_FASE12_FECHAMENTO_2006_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE12_FECHAMENTO_2006_ABERTURA_V1.json)
+- Resultado: `FECHADO_COM_TRANSICAO_CONTROLADA`; decisão: `FECHAR_2005_E_AUTORIZAR_CONTINUACAO_2006`; bloqueadores: 0.
+- Certificação 2005 confirmada; RAW 2006 confere com manifesto e sidecar; ZIP íntegro, um membro, 198.367 registros tipo 01, cabeçalho e trailer presentes.
+- NORMALIZED 2006 ausente; a FASE12 autoriza iniciar o ciclo 2006, sem certificar esse ano nem saltar fases. A normalização pertence à FASE04 após FASE00–03.
+- Próxima ação: iniciar 2006 pela FASE00 e seguir sequencialmente.
