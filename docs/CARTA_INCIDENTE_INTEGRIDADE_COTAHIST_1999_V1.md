@@ -4,7 +4,7 @@
 **Repositório:** `carlos-andrade/B3`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-12  
-**Estado:** FASE00–FASE08 validadas (FASE08 com exceção classificada); Gate 06–08 aprovado; FASE09 em execução/aguarda resultado  
+**Estado:** COTAHIST 1999 fechado e certificado; COTAHIST 2000 em execução até FASE08, Gate 06–08 pendente  
 **Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
 **Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
@@ -45,6 +45,12 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 - Gate 06–08: `GATE_APROVADO`, decisão `APROVADO_PARA_ANALISE_FASE09`, sem bloqueadores.
 - Workflows FASE07, FASE08 e Gate: `.github/workflows/cotahist-fase07-identidade-1999-v1.yml`, `.github/workflows/cotahist-fase08-calendario-1999-v1.yml`, `.github/workflows/cotahist-gate-06-08-1999-v1.yml`.
 - Workflow FASE09: `.github/workflows/cotahist-fase09-prerelease-1999-v1.yml`.
+- FASE09 1999: `LIBERADO_PARA_FASE10`; FASE10 independente: `VALIDADO`, 129.841 linhas e 25 campos, zero divergências; FASE11: `CERTIFICADO`; FASE12: `FECHADO_COM_TRANSICAO_CONTROLADA`.
+- Transição 2000: RAW SHA-256 `77ba58b5138e384be140759bf836e8cc22189cdfecdf80e4c13672c535f42bd6` verificado contra manifesto e sidecar; ZIP estruturalmente válido.
+- COTAHIST 2000 FASE01–06: evidências canónicas persistidas e validadas; CSV recuperado com 153.682 linhas, 25 campos, hash `d0f3158c05ccfb50d1d7bcf98ec75f4a4480a7dd5acd1fae19ffd1d51e64ecca` coincidente com manifesto e sidecar; FASE06 zero divergências nos 12 campos críticos.
+- COTAHIST 2000 FASE07: chave base com 6.069 grupos de colisão e 8.150 linhas excedentes; chave candidata incluindo `prazot` com zero grupos duplicados, sem deduplicação.
+- COTAHIST 2000 FASE08: 248 datas distintas; zero datas inválidas/fora do ano; 22.957 regressões de ordem global documentadas como característica da ordem da fonte, não como erro de data, pois a FASE06 reconciliou os campos críticos linha a linha. Calendário oficial histórico externo permanece não persistido.
+- Gate 06–08 de 2000: workflow criado, execução em fila no GitHub Actions.
 
 ## 3.1 Alterações anteriores
 
@@ -67,12 +73,11 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 5. Próximos passos
 
-1. Confirmar a conclusão da FASE09 e sua evidência persistida.
-2. Executar a FASE10 como gate independente, sem tratá-la como substituta das fases anteriores.
-3. Executar FASE11 certificação/promoção apenas se o contrato da FASE10 aprovar.
-4. Executar FASE12 fechamento de 1999 somente após certificação, depois abrir 2000.
-5. Manter o ano 2000 bloqueado até o fechamento formal de 1999.
+1. Concluir o Gate 06–08 de 2000 e rever a exceção de calendário histórico.
+2. Executar FASE09 e FASE10 independente de 2000, com comparação integral dos 25 campos.
+3. Executar FASE11 e FASE12 para fechar 2000 apenas após a certificação.
+4. Só então iniciar 2001; não promover o ano com evidência ausente.
 
 ## 6. Estado no momento do registo
 
-**Estado atual:** FASE02–FASE07 têm evidências canónicas com status `VALIDADO`; FASE08 está `VALIDADO_COM_EXCECAO` com limitação explicitada; o Gate 06–08 está `GATE_APROVADO`. A FASE09 foi criada e a execução está pendente/em fila. FASE10–12 e o ano 2000 continuam bloqueados até aos respetivos gates.
+**Estado atual:** 1999 está fechado após FASE10 independente validada, FASE11 certificada e FASE12 concluída. Para 2000, FASE01–07 estão validadas; FASE08 está `VALIDADO_COM_EXCECAO`, com a ordem original não cronológica explicitada e sem reordenar dados. O Gate 06–08 está criado e em fila; FASE09–12 de 2000 e o ano 2001 permanecem bloqueados até aos respetivos gates.
