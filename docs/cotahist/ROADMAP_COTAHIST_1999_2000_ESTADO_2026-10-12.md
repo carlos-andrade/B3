@@ -2,17 +2,18 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999 fechado; 2000 em execução controlada  
+**Estado:** 1999 e 2000 fechados; 2001 em execução controlada até FASE06  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
 ## Resumo executivo
 
 - **COTAHIST 1999:** FASE00–FASE10 validadas; FASE11 certificado; FASE12 fechou 1999 e autorizou a transição controlada para 2000.
-- **COTAHIST 2000:** FASE01–FASE07 validadas; FASE08 `VALIDADO_COM_EXCECAO`; Gate 06–08 criado e aguardando execução final no GitHub Actions.
+- **COTAHIST 2000:** FASE01–FASE10 validadas; FASE11 certificado; FASE12 fechou 2000 e autorizou a transição controlada para 2001.
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
-- O ano 2001 permanece bloqueado até fechamento formal de 2000.
+- **COTAHIST 2001:** FASE01–FASE06 validadas; NORMALIZED recuperado e hash reconciliado; próxima fase é FASE07.
+- O ano 2002 permanece bloqueado até fechamento formal de 2001.
 
 ## COTAHIST 1999
 
@@ -88,3 +89,43 @@
 4. Só após FASE10 validada, executar FASE11 certificação.
 5. Executar FASE12 para fechar 2000; só então abrir 2001.
 6. Não atualizar README fora da janela de 23:55 Brasília.
+
+
+## COTAHIST 2000 — Fechamento
+
+| Fase | Estado | Evidência |
+|---|---|---|
+| Gate 06–08 | GATE_APROVADO | `dados/cotahist/quality/COTAHIST_2000_GATE_06_08_V1.json` |
+| FASE09 | LIBERADO_PARA_FASE10 | `dados/cotahist/quality/COTAHIST_2000_FASE09_PRE_RELEASE_V1.json` |
+| FASE10 | VALIDADO | `dados/cotahist/quality/COTAHIST_2000_FASE10_VALIDACAO_INDEPENDENTE_V1.json` |
+| FASE11 | CERTIFICADO | `dados/cotahist/quality/COTAHIST_2000_FASE11_CERTIFICACAO_V1.json` |
+| FASE12 | FECHADO_COM_TRANSICAO_CONTROLADA | `dados/cotahist/quality/COTAHIST_2000_FASE12_FECHAMENTO_2001_ABERTURA_V1.json` |
+
+FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 registos, zero divergências. A transição verificou o RAW 2001, o manifesto e o sidecar com SHA-256 `0386ca1b80d207ef9876fe64c2d48e9af1b827b3ecc0365c0e99db5cacf20eb5`. O CSV normalizado de 2001 não existia no início da transição e foi recuperado na FASE04.
+
+## COTAHIST 2001 — Estado atual
+
+| Fase | Estado | Evidência |
+|---|---|---|
+| FASE01 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE01_AQUISICAO_RAW_V1.json` |
+| FASE02 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE02_INTEGRIDADE_FONTE_V1.json` |
+| FASE03 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE03_PARSING_V1.json` |
+| FASE04 recuperação | EVIDÊNCIA RECONSTRUÍDA | `dados/cotahist/quality/COTAHIST_2001_FASE04_RECUPERACAO_V1.json` |
+| FASE04 independente | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE04_NORMALIZACAO_V1.json` |
+| FASE05 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE05_MANIFESTO_CHECKSUM_V1.json` |
+| FASE06 | VALIDADO | `dados/cotahist/quality/COTAHIST_2001_FASE06_RECONCILIACAO_V1.json` |
+| FASE07–12 | NÃO INICIADAS | Aguardar FASE07; manter sequência linear |
+
+### Integridade normalizado 2001
+
+- RAW SHA-256: `0386ca1b80d207ef9876fe64c2d48e9af1b827b3ecc0365c0e99db5cacf20eb5`
+- NORMALIZED SHA-256: `d15b1d6b5a407a397c7deb6a555a8572d9f9f6539ab657821a2e08f9f186396a`
+- Registos: 141.848; campos: 25; datas: 2001-01-02 a 2001-12-28; FASE06 comparou 12 campos críticos com zero divergências.
+
+## Próximas ações atualizadas
+
+1. Executar FASE07 de 2001 para testar identidade, cardinalidade e chave com `prazot`, sem deduplicar.
+2. Executar FASE08 e Gate 06–08 de 2001, classificando explicitamente qualquer exceção temporal.
+3. Executar FASE09 e FASE10 independente com comparação dos 25 campos.
+4. Só após FASE10 válida, executar FASE11 e FASE12 para fechar 2001.
+5. Só então abrir 2002; não atualizar README fora das 23:55 Brasília.
