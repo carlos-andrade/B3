@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-12T12:02:21.851875+00:00
-Workflows auditados: 213
+Gerado em UTC: 2026-10-12T12:03:27.200545+00:00
+Workflows auditados: 215
 
 ## Regra de decisão
 
@@ -90,10 +90,12 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-recuperar-normalized-2000-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2001-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2002-v1.yml | 4 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase04-recuperar-normalized-2003-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2000-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2001-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2002-v1.yml | 4 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase04-validacao-independente-2003-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1994-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1995-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase05-manifesto-checksum-1996-v1.yml | 5 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
