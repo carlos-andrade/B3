@@ -1,0 +1,122 @@
+name: COTAHIST 1999 - FASE02 Integridade da Fonte
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase02-integridade-1999-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A1999.json"
+      - "dados/cotahist/checksums/COTAHIST_A1999.ZIP.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase02-integridade-1999-v1
+  cancel-in-progress: false
+
+jobs:
+  integridade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar RAW, ZIP, layout estrutural e checksum
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, zipfile, datetime, sys
+          root = pathlib.Path(".")
+          raw = root / "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP"
+          manifest_path = root / "dados/cotahist/manifests/COTAHIST_A1999.json"
+          checksum_path = root / "dados/cotahist/checksums/COTAHIST_A1999.ZIP.sha256"
+          out_path = root / "dados/cotahist/quality/COTAHIST_1999_FASE02_INTEGRIDADE_FONTE_V1.json"
+          for p in (raw, manifest_path, checksum_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE02 BLOQUEADA: arquivo ausente/vazio: {p}")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          checksum_text = checksum_path.read_text(encoding="utf-8").strip().split()
+          checksum_sha = checksum_text[0] if checksum_text else ""
+          if raw_sha != manifest.get("sha256") or raw_sha != checksum_sha:
+              sys.exit(f"FASE02 BLOQUEADA: hash RAW/manifesto/sidecar diverge: {raw_sha}")
+          with zipfile.ZipFile(raw) as z:
+              bad_member = z.testzip()
+              members = [n for n in z.namelist() if not n.endswith("/")]
+              if bad_member:
+                  sys.exit(f"FASE02 BLOQUEADA: membro ZIP corrompido: {bad_member}")
+              if len(members) != 1:
+                  sys.exit(f"FASE02 BLOQUEADA: esperado 1 membro ZIP, encontrado {len(members)}")
+              member = members[0]
+              with z.open(member) as f:
+                  lines = [line.rstrip(b"\\r\\n") for line in f]
+          lengths = [len(line) for line in lines]
+          bad_lengths = sum(n != 245 for n in lengths)
+          types = {}
+          for line in lines:
+              kind = line[:2].decode("ascii", "replace")
+              types[kind] = types.get(kind, 0) + 1
+          if bad_lengths or types.get("00", 0) != 1 or types.get("99", 0) != 1 or types.get("01", 0) <= 0:
+              sys.exit(f"FASE02 BLOQUEADA: estrutura inválida; bad_lengths={bad_lengths}; types={types}")
+          if manifest.get("ano") != 1999 or manifest.get("fonte") != "B3":
+              sys.exit("FASE02 BLOQUEADA: metadados de proveniência incompatíveis")
+          out = {
+            "schema_version": "1.0.0",
+            "year": 1999,
+            "phase": "FASE02",
+            "status": "VALIDADO",
+            "decision": "LIBERADO_PARA_FASE03",
+            "evidence_kind": "VALIDACAO_CANONICA_REEXECUTADA",
+            "source": "B3",
+            "raw_path": str(raw),
+            "raw_sha256": raw_sha,
+            "manifest_path": str(manifest_path),
+            "checksum_path": str(checksum_path),
+            "manifest_sha256_matches": raw_sha == manifest.get("sha256"),
+            "sidecar_sha256_matches": raw_sha == checksum_sha,
+            "zip_member_count": len(members),
+            "zip_member": member,
+            "zip_testzip_error": bad_member,
+            "total_lines": len(lines),
+            "record_length_bytes": 245,
+            "invalid_record_lengths": bad_lengths,
+            "record_type_counts": types,
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "notes": "Validacao estrutural retrospectiva da fonte; nao substitui FASE03 nem certifica o NORMALIZED."
+          }
+          out_path.parent.mkdir(parents=True, exist_ok=True)
+          out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência canónica FASE02
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1999_FASE02_INTEGRIDADE_FONTE_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): materializar fase 02 integridade fonte 1999"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 1999 — FASE02"
+            echo "- Validação canónica da integridade do RAW."
+            echo "- Não certifica parsing, normalização ou fases posteriores."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
