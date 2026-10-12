@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE04 validadas, próxima FASE05  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE05 validadas, próxima FASE06  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -228,11 +228,24 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE03 | VALIDADO | [COTAHIST_2004_FASE03_PARSING_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE03_PARSING_V1.json) |
 | FASE04 recuperação | EVIDÊNCIA RECONSTRUÍDA | [COTAHIST_2004_FASE04_RECUPERACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE04_RECUPERACAO_V1.json) |
 | FASE04 independente | VALIDADO | [COTAHIST_2004_FASE04_NORMALIZACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE04_NORMALIZACAO_V1.json) |
-| FASE05–FASE12 | NÃO INICIADAS | Próxima: FASE05 — manifesto/checksum físico |
+| FASE05 | VALIDADO | [COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json) |
+| FASE06–FASE12 | NÃO INICIADAS | Próxima: FASE06 — semântica/invariantes e reconciliação RAW × NORMALIZED |
 
 ### Estado físico de entrada 2004
 
 - RAW: `dados/cotahist/raw/anual/COTAHIST_A2004.ZIP`
 - SHA-256 RAW/manifesto/sidecar: `f750ba8ee9e25299ed96811979befb29315d91667fedc3885c709440b4989467`
 - ZIP: um membro, zero comprimentos inválidos, 166.937 registos tipo `01` e registos `00`/ `99` presentes.
-- NORMALIZED: ausente; reconstrução só na FASE04.
+- NORMALIZED: `dados/cotahist/normalized/anual/COTAHIST_A2004.csv`; SHA-256 `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`; 166.937 linhas, 25 campos. FASE04 e FASE05 validadas; reconciliação semântica linha a linha permanece na FASE06.
+
+
+## Atualização operacional — FASE05 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE05 Manifesto e Checksum](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase05-manifesto-checksum-2004-v1.yml)
+- Execução: [run 38251912597](https://github.com/carlos-andrade/B3/actions/runs/38251912597)
+- Evidência persistida: [COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json)
+- RAW SHA-256 calculado = manifesto = sidecar: `f750ba8ee9e25299ed96811979befb29315d91667fedc3885c709440b4989467`.
+- NORMALIZED SHA-256 calculado = manifesto = sidecar: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
+- ZIP íntegro; membro `COTAHIST_A2004.TXT`; 166.937 linhas normalizadas, 25 campos, datas de 2004-01-02 a 2004-12-30.
+- RAW preservado; nenhuma deduplicação executada.
+- Decisão: `LIBERADO_PARA_FASE06`. FASE05 verifica integridade física e não substitui a reconciliação semântica da FASE06.
