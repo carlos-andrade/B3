@@ -5,13 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/raw/anual/COTAHIST_A2006.ZIP"
-      - "dados/cotahist/manifests/COTAHIST_A2006.json"
-      - "dados/cotahist/checksums/COTAHIST_A2006.ZIP.sha256"
       - "dados/cotahist/quality/COTAHIST_2006_FASE04_NORMALIZACAO_V1.json"
-      - "dados/cotahist/normalized/anual/COTAHIST_A2006.csv"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2006.csv.sha256"
 
 permissions:
   contents: write
