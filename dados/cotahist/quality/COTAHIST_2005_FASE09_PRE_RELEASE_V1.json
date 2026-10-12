@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2005,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "decision": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "FASE03": "OK",
+    "FASE04": "OK",
+    "FASE05": "OK",
+    "FASE06": "OK",
+    "FASE07": "OK",
+    "FASE08": "OK",
+    "GATE_06_08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "FASE03": "VALIDADO",
+    "FASE04": "VALIDADO",
+    "FASE05": "VALIDADO",
+    "FASE06": "VALIDADO",
+    "FASE07": "VALIDADO",
+    "FASE08": "VALIDADO_COM_EXCECAO",
+    "GATE_06_08": "GATE_APROVADO"
+  },
+  "gate_06_08_status": "GATE_APROVADO",
+  "raw_sha256": "41eac6d743d9c3e812bb001c4d327582fa7c408dbc99ff4a1734698da8b18f52",
+  "normalized_sha256": "9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c",
+  "missing": [],
+  "blocked": [],
+  "phase08_exceptions": [
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2005."
+    }
+  ],
+  "note": "FASE09 consolida evidências já persistidas; não substitui nem retrocertifica FASE00–08 e não executa FASE10.",
+  "validated_at_utc": "2026-10-12T13:04:38.819803+00:00"
+}
