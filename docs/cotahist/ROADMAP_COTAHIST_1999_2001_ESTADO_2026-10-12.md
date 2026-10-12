@@ -1,8 +1,8 @@
-# ROADMAP COTAHIST 1999–2004 — Estado em 2026-10-12
+# ROADMAP COTAHIST 1999–2005 — Estado em 2026-10-12
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; FASE12 fechada; transição 2005 autorizada  
+**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE05 validadas, próxima FASE06  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -351,3 +351,27 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - Certificação 2004 confirmada; RAW 2005 conferido contra manifesto e sidecar; ZIP íntegro, um membro, 181.408 registros tipo 01, registros de cabeçalho/trailer presentes.
 - NORMALIZED 2005 ausente. A transição autoriza iniciar o ciclo 2005, mas não certifica o ano nem permite saltar fases; a normalização só pode ocorrer na FASE04 após FASE00–03.
 - Próxima ação: iniciar 2005 pela governança/pré-condições e aquisição/integridade do RAW, em sequência controlada.
+
+
+## COTAHIST 2005 — Estado operacional em 2026-10-12
+
+| Fase | Estado | Evidência |
+|---|---|---|
+| Transição 2004→2005 | AUTORIZADA | [COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json) |
+| FASE00 | VALIDADO | [COTAHIST_2005_FASE00_GOVERNANCA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE00_GOVERNANCA_V1.json) |
+| FASE01 | VALIDADO | [COTAHIST_2005_FASE01_AQUISICAO_RAW_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE01_AQUISICAO_RAW_V1.json) |
+| FASE02 | VALIDADO | [COTAHIST_2005_FASE02_INTEGRIDADE_FONTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE02_INTEGRIDADE_FONTE_V1.json) |
+| FASE03 | VALIDADO | [COTAHIST_2005_FASE03_PARSING_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE03_PARSING_V1.json) |
+| FASE04 recuperação | EVIDÊNCIA RECONSTRUÍDA | [COTAHIST_2005_FASE04_RECUPERACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE04_RECUPERACAO_V1.json) |
+| FASE04 independente | VALIDADO | [COTAHIST_2005_FASE04_NORMALIZACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE04_NORMALIZACAO_V1.json) |
+| FASE05 | VALIDADO | [COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json) |
+| FASE06–FASE12 | NÃO INICIADAS | Próxima: FASE06 — reconciliação semântica RAW × NORMALIZED |
+
+### Integridade física COTAHIST 2005
+
+- RAW SHA-256: `41eac6d743d9c3e812bb001c4d327582fa7c408dbc99ff4a1734698da8b18f52`.
+- NORMALIZED SHA-256: `9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c`.
+- Registros normalizados: 181.408; campos: 25; intervalo: 2005-01-03 a 2005-12-29.
+- RAW e NORMALIZED conferem com os respectivos manifestos e sidecars; ZIP validado; nenhum registro removido.
+- Workflow FASE05: [run 38252835291](https://github.com/carlos-andrade/B3/actions/runs/38252835291).
+- Próxima etapa: FASE06; identidade/chaves e calendário continuam em fases próprias posteriores.
