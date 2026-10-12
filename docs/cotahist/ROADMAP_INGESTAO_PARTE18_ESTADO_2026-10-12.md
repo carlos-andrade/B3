@@ -59,7 +59,7 @@ Correção publicada no commit `4cdafbfdc62803be8bc6fa823577f38dca176b3b`: compa
 | Marco | Estado observado | Próxima ação |
 |---|---|---|
 | COTAHIST 1986–2003 | Histórico de ingestão e certificação com exceções específicas por ano | Preservar evidências e não presumir uniformidade entre anos |
-| COTAHIST 2004 | **FASE00–FASE06 validadas**; FASE05 confirmou hashes/ZIP; FASE06 reconciliou 166.937 registos, 12 campos críticos e zero divergências | FASE07 em execução: identidade, cardinalidade e colisões de chave; sem deduplicação |
+| COTAHIST 2004 | **FASE00–FASE07 validadas**; FASE06: 166.937 registos, 12 campos críticos, zero divergências. FASE07: 9.642 colisões na chave-base; chave com `PRAZOT` produziu 166.937 chaves distintas e zero colisões | FASE08 em execução: calendário, sequência cronológica e consistência temporal |
 | COTAHIST 2005 | FASE12 registada como concluída, com transição controlada | Preservar fechamento e evidências |
 | COTAHIST 2006 | FASE00 aprovada em execução do GitHub Actions | Continuar a partir da fase seguinte prevista no plano |
 | Certificação anual | **PASS** — execução #32 concluída com sucesso; matriz contém 41 anos certificados | Manter teste de regressão para versões homologadas |
@@ -91,6 +91,6 @@ A publicação só pode ser considerada aprovada se:
 
 ## 6. Registo de execução desta parte
 
-As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação, mantendo explícita a exceção semântica controlada de 1986. A REC-001 #210 terminou com sucesso técnico, mas a comparação de negócio está bloqueada por divergência real na posição 222.003. A FASE05 de 2004 foi executada na run #2 e validou hashes e estrutura; a FASE06 foi executada e a evidência persistida com `VALIDADO`, 166.937 registos RAW e NORMALIZED, 12 campos críticos e `mismatch_count: 0`. A FASE07 foi acionada para avaliar a identidade/chave candidata sem remover linhas.
+As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação, mantendo explícita a exceção semântica controlada de 1986. A REC-001 #210 terminou com sucesso técnico, mas a comparação de negócio está bloqueada por divergência real na posição 222.003. A FASE05 de 2004 foi executada na run #2 e validou hashes e estrutura; a FASE06 foi executada e a evidência persistida com `VALIDADO`, 166.937 registos RAW e NORMALIZED, 12 campos críticos e `mismatch_count: 0`. A FASE07 foi executada e validou a chave candidata `(data_pregao, codbdi, codneg, tpmerc, prazot, dismes)`: a chave-base tinha 9.642 grupos de colisão e 20.705 linhas excedentes, mas incluir `prazot` separou todos os casos; 166.937 chaves distintas, zero colisões, zero linhas removidas. A FASE08 foi acionada para validar calendário e ordenação temporal.
 
 **Regra de governança:** não saltar fases, não substituir evidência por inferência, não remover registos para forçar reconciliação e não promover o dataset quando os gates falharem.
