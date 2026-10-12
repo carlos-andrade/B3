@@ -1,24 +1,24 @@
 # FASE00 2008 criada apos FASE12 2007 autorizar a transicao.
-# FASE00 2007 criada após FASE12 2006 autorizar a transição.
-name: COTAHIST 2007 - FASE00 Governanca e Pre-condicoes
+# FASE00 2008 criada após FASE12 2007 autorizar a transição.
+name: COTAHIST 2008 - FASE00 Governanca e Pre-condicoes
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - ".github/workflows/cotahist-fase00-governanca-2007-v1.yml"
+      - ".github/workflows/cotahist-fase00-governanca-2008-v1.yml"
       - "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
-      - "dados/cotahist/quality/COTAHIST_2006_FASE12_FECHAMENTO_2007_ABERTURA_V1.json"
-      - "dados/cotahist/raw/anual/COTAHIST_A2007.ZIP"
-      - "dados/cotahist/manifests/COTAHIST_A2007.json"
-      - "dados/cotahist/checksums/COTAHIST_A2007.ZIP.sha256"
+      - "dados/cotahist/quality/COTAHIST_2007_FASE12_FECHAMENTO_2008_ABERTURA_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A2008.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2008.json"
+      - "dados/cotahist/checksums/COTAHIST_A2008.ZIP.sha256"
 
 permissions:
   contents: write
 
 concurrency:
-  group: cotahist-fase00-governanca-2007-v1
+  group: cotahist-fase00-governanca-2008-v1
   cancel-in-progress: false
 
 jobs:
@@ -30,13 +30,13 @@ jobs:
         with:
           fetch-depth: 1
           sparse-checkout: |
-            .github/workflows/cotahist-fase00-governanca-2007-v1.yml
+            .github/workflows/cotahist-fase00-governanca-2008-v1.yml
             docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-            dados/cotahist/quality/COTAHIST_2006_FASE12_FECHAMENTO_2007_ABERTURA_V1.json
-            dados/cotahist/raw/anual/COTAHIST_A2007.ZIP
-            dados/cotahist/manifests/COTAHIST_A2007.json
-            dados/cotahist/checksums/COTAHIST_A2007.ZIP.sha256
-            dados/cotahist/quality/COTAHIST_2007_FASE00_GOVERNANCA_V1.json
+            dados/cotahist/quality/COTAHIST_2007_FASE12_FECHAMENTO_2008_ABERTURA_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2008.ZIP
+            dados/cotahist/manifests/COTAHIST_A2008.json
+            dados/cotahist/checksums/COTAHIST_A2008.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_2008_FASE00_GOVERNANCA_V1.json
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -48,29 +48,29 @@ jobs:
           python - <<'PY'
           import json, pathlib, sys, datetime
           layout = pathlib.Path("docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md")
-          transition = pathlib.Path("dados/cotahist/quality/COTAHIST_2006_FASE12_FECHAMENTO_2007_ABERTURA_V1.json")
-          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2007.ZIP")
-          manifest_path = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2007.json")
-          checksum = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2007.ZIP.sha256")
-          target = pathlib.Path("dados/cotahist/quality/COTAHIST_2007_FASE00_GOVERNANCA_V1.json")
+          transition = pathlib.Path("dados/cotahist/quality/COTAHIST_2007_FASE12_FECHAMENTO_2008_ABERTURA_V1.json")
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2008.ZIP")
+          manifest_path = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2008.json")
+          checksum = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2008.ZIP.sha256")
+          target = pathlib.Path("dados/cotahist/quality/COTAHIST_2008_FASE00_GOVERNANCA_V1.json")
           required = [layout, transition, raw, manifest_path, checksum]
           missing = [str(p) for p in required if not p.is_file() or p.stat().st_size == 0]
           blockers = [f"ARTEFATO_AUSENTE:{p}" for p in missing]
           t, m = {}, {}
           if transition.is_file():
               t = json.loads(transition.read_text(encoding="utf-8"))
-              if t.get("status") != "FECHADO_COM_TRANSICAO_CONTROLADA" or t.get("decision") != "FECHAR_2006_E_AUTORIZAR_CONTINUACAO_2007":
-                  blockers.append("TRANSICAO_2006_2007_NAO_AUTORIZADA")
+              if t.get("status") != "FECHADO_COM_TRANSICAO_CONTROLADA" or t.get("decision") != "FECHAR_2007_E_AUTORIZAR_CONTINUACAO_2008":
+                  blockers.append("TRANSICAO_2007_2008_NAO_AUTORIZADA")
           if layout.is_file() and "Versão:** 1.0.1" not in layout.read_text(encoding="utf-8"):
               blockers.append("LAYOUT_MESTRE_VERSAO_INESPERADA")
           if manifest_path.is_file():
               m = json.loads(manifest_path.read_text(encoding="utf-8"))
-              if m.get("ano") != 2007 or m.get("fonte") != "B3":
+              if m.get("ano") != 2008 or m.get("fonte") != "B3":
                   blockers.append("METADADOS_MANIFESTO_INVALIDOS")
           ok = not blockers
           out = {
             "schema_version": "1.0.0",
-            "year": 2007,
+            "year": 2008,
             "phase": "FASE00",
             "status": "VALIDADO" if ok else "BLOQUEADO",
             "decision": "AUTORIZAR_FASE01" if ok else "BLOQUEAR_FASE01",
@@ -101,12 +101,12 @@ jobs:
         if: always()
         run: |
           set -euo pipefail
-          test -s dados/cotahist/quality/COTAHIST_2007_FASE00_GOVERNANCA_V1.json || exit 0
+          test -s dados/cotahist/quality/COTAHIST_2008_FASE00_GOVERNANCA_V1.json || exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_2007_FASE00_GOVERNANCA_V1.json
+          git add dados/cotahist/quality/COTAHIST_2008_FASE00_GOVERNANCA_V1.json
           git diff --cached --quiet && exit 0
-          git commit -m "audit(cotahist): validar governanca fase 00 2007"
+          git commit -m "audit(cotahist): validar governanca fase 00 2008"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -115,8 +115,8 @@ jobs:
         if: always()
         run: |
           {
-            echo "## COTAHIST 2007 — FASE00"
-            echo "- Confirma autorização da transição 2006→2007, Layout Mestre e pré-condições."
+            echo "## COTAHIST 2008 — FASE00"
+            echo "- Confirma autorização da transição 2007→2008, Layout Mestre e pré-condições."
             echo "- Não calcula checksum, não faz parsing e não reconstrói NORMALIZED."
             echo "- Resultado: ${{ job.status }}"
           } >> "$GITHUB_STEP_SUMMARY"
