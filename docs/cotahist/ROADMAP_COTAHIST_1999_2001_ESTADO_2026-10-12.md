@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; próxima FASE12  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; FASE12 fechada; transição 2005 autorizada  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -236,7 +236,7 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2004_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE09_PRE_RELEASE_V1.json) |
 | FASE10 | VALIDADO | [COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
 | FASE11 | CERTIFICADO | [COTAHIST_2004_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE11_CERTIFICACAO_V1.json) |
-| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2004 e autorização controlada da transição para 2005 |
+| FASE12 | FECHADO_COM_TRANSICAO_CONTROLADA | [COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json) |
 
 ### Estado físico de entrada 2004
 
@@ -340,3 +340,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - FASE10 independente: 25 campos, 166.937 registros, zero divergências.
 - Escopo da certificação: integridade e consistência do conjunto COTAHIST 2004 conforme evidências anteriores; não certifica estratégias de investimento e não autoriza deduplicação.
 - Próxima etapa: FASE12 — fechamento formal do ano e verificação das condições de transição para 2005.
+
+
+## Atualização operacional — FASE12 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE12 Fechamento e Transição 2005](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase12-fechamento-2004-abertura-2005-v1.yml)
+- Execução: [run 38252492115](https://github.com/carlos-andrade/B3/actions/runs/38252492115)
+- Evidência: [COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json)
+- Resultado: `FECHADO_COM_TRANSICAO_CONTROLADA`; decisão: `FECHAR_2004_E_AUTORIZAR_CONTINUACAO_2005`; bloqueadores: 0.
+- Certificação 2004 confirmada; RAW 2005 conferido contra manifesto e sidecar; ZIP íntegro, um membro, 181.408 registros tipo 01, registros de cabeçalho/trailer presentes.
+- NORMALIZED 2005 ausente. A transição autoriza iniciar o ciclo 2005, mas não certifica o ano nem permite saltar fases; a normalização só pode ocorrer na FASE04 após FASE00–03.
+- Próxima ação: iniciar 2005 pela governança/pré-condições e aquisição/integridade do RAW, em sequência controlada.
