@@ -1,3 +1,4 @@
+# Reexecucao controlada apos FASE12 fechar 2004 e confirmar RAW 2005; reconstruir NORMALIZED sem alterar manifesto silenciosamente.
 name: COTAHIST 2005 - FASE04 Recuperar Normalized
 
 on:
