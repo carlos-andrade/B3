@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase08-calendario-2006-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2006_FASE07_IDENTIDADE_CHAVES_V1.json"
 
 permissions:
