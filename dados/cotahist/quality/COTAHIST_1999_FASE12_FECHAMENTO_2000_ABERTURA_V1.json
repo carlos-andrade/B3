@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 1999,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_1999_E_AUTORIZAR_CONTINUACAO_2000",
+  "phase10_1999_status": "VALIDADO",
+  "phase11_1999_status": "CERTIFICADO",
+  "year2000_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2000.ZIP",
+  "year2000_raw_sha256": "77ba58b5138e384be140759bf836e8cc22189cdfecdf80e4c13672c535f42bd6",
+  "year2000_manifest_sha256": "77ba58b5138e384be140759bf836e8cc22189cdfecdf80e4c13672c535f42bd6",
+  "year2000_sidecar_sha256": "77ba58b5138e384be140759bf836e8cc22189cdfecdf80e4c13672c535f42bd6",
+  "year2000_raw_hash_match": true,
+  "year2000_zip_member_count": 1,
+  "year2000_invalid_record_lengths": 0,
+  "year2000_record_type_counts": {
+    "00": 1,
+    "01": 153682,
+    "99": 1
+  },
+  "year2000_normalized_csv_exists": false,
+  "year2000_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 1999 após certificação; não certifica 2000. A continuação de 2000 deve começar pela fase de origem necessária e permanece bloqueada na FASE04 enquanto o CSV normalizado não existir.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-12T11:05:14.336955+00:00"
+}
