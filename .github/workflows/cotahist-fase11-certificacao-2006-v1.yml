@@ -5,10 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/quality/COTAHIST_2006_FASE09_PRE_RELEASE_V1.json"
       - "dados/cotahist/quality/COTAHIST_2006_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2006_GATE_06_08_V1.json"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json"
 
 permissions:
   contents: write
