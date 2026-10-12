@@ -1,3 +1,4 @@
+# Reexecucao controlada em 2026-10-12: validar integridade persistida antes de liberar a FASE06.
 name: COTAHIST 2004 - FASE05 Manifesto e Checksum
 
 on:
