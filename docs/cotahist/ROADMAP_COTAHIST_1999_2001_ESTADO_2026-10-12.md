@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE02 validadas, próxima FASE03  
+**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE03 validadas, próxima FASE04  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -13,7 +13,7 @@
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
 - **COTAHIST 2001:** FASE01–FASE12 concluídas; FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA`.
-- **COTAHIST 2002:** FASE00–FASE02 validadas. FASE02 confirmou SHA-256 `ee002b9a533d310351ed07ccb3a8cd3badd84993a4969c5b58088d738de59116`, ZIP válido, um membro, 129.973 registos tipo 01, zero comprimentos inválidos e registos 00/99 presentes. CSV normalizado ainda ausente; próxima fase: FASE03.
+- **COTAHIST 2002:** FASE00–FASE03 validadas. FASE03 confirmou 129.973 registos tipo 01, 129.975 linhas totais, comprimento fixo de 245 bytes, zero datas inválidas e intervalo de 2002-01-02 a 2002-12-30. CSV normalizado ainda ausente; próxima fase: FASE04.
 - O ano 2002 foi liberado para início controlado pela FASE12 de 2001; a primeira fase do novo ciclo deve ser FASE00/FASE01, sem saltar etapas.
 
 ## COTAHIST 1999
@@ -146,7 +146,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE00 | VALIDADO | [COTAHIST_2002_FASE00_GOVERNANCA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE00_GOVERNANCA_V1.json) |
 | FASE01 | VALIDADO | [COTAHIST_2002_FASE01_AQUISICAO_RAW_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE01_AQUISICAO_RAW_V1.json) |
 | FASE02 | VALIDADO | [COTAHIST_2002_FASE02_INTEGRIDADE_FONTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE02_INTEGRIDADE_FONTE_V1.json) |
-| FASE03–FASE12 | NÃO INICIADAS | Próxima: FASE03 — parsing estrutural |
+| FASE03 | VALIDADO | [COTAHIST_2002_FASE03_PARSING_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE03_PARSING_V1.json) |
+| FASE04–FASE12 | NÃO INICIADAS | Próxima: FASE04 — normalização/recuperação do CSV ausente |
 
 ### Integridade inicial 2002
 
@@ -161,5 +162,6 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 2. FASE00 de 2002 validada no run [38245106125](https://github.com/carlos-andrade/B3/actions/runs/38245106125).
 3. FASE01 de 2002 validada no run [38245216624](https://github.com/carlos-andrade/B3/actions/runs/38245216624); a primeira tentativa de persistência falhou por corrida de push, a correção foi incorporada ao workflow e a execução posterior persistiu a evidência com sucesso.
 4. FASE02 validada no run [38245293962](https://github.com/carlos-andrade/B3/actions/runs/38245293962): ZIP, checksum, membro, tipos de registo e comprimentos verificados.
-5. Executar FASE03; reconstruir NORMALIZED somente na FASE04 e validar o artefacto físico/hash na FASE05.
-6. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
+5. FASE03 validada no run [38245400382](https://github.com/carlos-andrade/B3/actions/runs/38245400382): 129.973 registos tipo 01, zero datas inválidas e zero comprimentos incorretos.
+6. Reconstruir NORMALIZED somente na FASE04, usando o parser canónico e preservando todas as linhas; depois validar o artefacto físico/hash na FASE05.
+7. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
