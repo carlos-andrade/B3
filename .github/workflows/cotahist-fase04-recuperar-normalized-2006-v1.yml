@@ -5,11 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "scripts/ingestao/normalize_cotahist.py"
       - "dados/cotahist/quality/COTAHIST_2006_FASE03_PARSING_V1.json"
-      - "dados/cotahist/raw/anual/COTAHIST_A2006.ZIP"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2006.csv.sha256"
 
 permissions:
   contents: write
