@@ -80,19 +80,22 @@ jobs:
             exit 0
           fi
           git commit -m "audit(governanca): atualiza conformidade dos workflows"
-          for tentativa in 1 2 3; do
+          for tentativa in 1 2 3 4 5; do
             if git push origin HEAD:main; then
               exit 0
             fi
+            echo "Push concorrente; reconstruindo a auditoria sobre main (tentativa ${tentativa}/5)."
+            git rebase --abort || true
             git fetch origin main
-            git rebase origin/main
+            git reset --hard origin/main
             python scripts/governanca/auditar_workflows_b3.py
             git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md
             if git diff --cached --quiet; then
-              echo "Sem alteração após rebase; auditoria já persistida."
+              echo "Sem alteração após reconstrução; auditoria já persistida."
               exit 0
             fi
-            git commit --amend --no-edit
+            git commit -m "audit(governanca): atualiza conformidade dos workflows"
+            sleep $((tentativa * 2))
           done
-          echo "Falha persistente ao publicar auditoria após 3 tentativas."
+          echo "Falha persistente ao publicar auditoria após 5 tentativas."
           exit 1
