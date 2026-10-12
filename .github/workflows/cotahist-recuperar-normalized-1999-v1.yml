@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/cotahist-recuperar-normalized-1999-v1.yml"
+      - "scripts/ingestao/normalize_cotahist.py"
 
 permissions:
   contents: write
