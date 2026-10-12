@@ -9,11 +9,11 @@
   "raw_sha256_calculado": "fe7428b367a2d40acaefe823fd5080254d07f9ad6c29fc64c9e6876cbd876f09",
   "raw_sha256_esperado": "fe7428b367a2d40acaefe823fd5080254d07f9ad6c29fc64c9e6876cbd876f09",
   "csv_path": "dados/cotahist/normalized/anual/COTAHIST_A1999.csv",
-  "csv_sha256_calculado": "d4c009984c23bde54532a9388da9841eca690286e10dc9c3502248f233840c7b",
+  "csv_sha256_calculado": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
   "csv_sha256_manifesto": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
   "csv_sha256_sidecar": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
-  "sha256_manifesto_coincide": false,
-  "sha256_sidecar_coincide": false,
+  "sha256_manifesto_coincide": true,
+  "sha256_sidecar_coincide": true,
   "linhas_calculadas": 129841,
   "linhas_manifesto": 129841,
   "contagem_coincide": true,
@@ -27,9 +27,7 @@
   "deduplicacao_aplicada": false,
   "promocao_automatica": false,
   "blockers": [
-    "SHA-256 diverge do manifesto",
-    "SHA-256 diverge do sidecar",
     "evidência canónica da FASE03 ausente"
   ],
-  "audit_timestamp_utc": "2026-10-12T10:47:20.535084+00:00"
+  "audit_timestamp_utc": "2026-10-12T10:49:42.150636+00:00"
 }
