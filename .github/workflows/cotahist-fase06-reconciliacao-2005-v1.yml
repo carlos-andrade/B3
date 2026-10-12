@@ -1,0 +1,173 @@
+name: COTAHIST 2005 - FASE06 Reconciliacao Semantica
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase06-reconciliacao-2005-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A2005.ZIP"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2005.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2005_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase06-reconciliacao-2005-v1
+  cancel-in-progress: false
+
+jobs:
+  reconciliacao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase06-reconciliacao-2005-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2005.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A2005.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2005_quality.json
+            dados/cotahist/quality/COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json
+            dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconciliar campos críticos RAW x NORMALIZED
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys, zipfile
+          from decimal import Decimal
+
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2005.ZIP")
+          normalized = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2005.csv")
+          manifest = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2005_quality.json")
+          phase05 = pathlib.Path("dados/cotahist/quality/COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json")
+          evidence = pathlib.Path("dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json")
+
+          for path in (raw, normalized, manifest, phase05):
+              if not path.is_file() or path.stat().st_size == 0:
+                  sys.exit(f"FASE06 BLOQUEADA: arquivo ausente/vazio: {path}")
+          f5 = json.loads(phase05.read_text(encoding="utf-8"))
+          m = json.loads(manifest.read_text(encoding="utf-8"))
+          if f5.get("status") != "VALIDADO" or f5.get("decision") != "LIBERADO_PARA_FASE06":
+              sys.exit("FASE06 BLOQUEADA: FASE05 não validada/liberada")
+
+          critical = [
+              ("data_pregao", 3, 10, 1), ("codbdi", 11, 12, 1),
+              ("codneg", 13, 24, 1), ("tpmerc", 25, 27, 1),
+              ("preabe", 57, 69, 100), ("premax", 70, 82, 100),
+              ("premin", 83, 95, 100), ("premed", 96, 108, 100),
+              ("preult", 109, 121, 100), ("totneg", 148, 152, 1),
+              ("quatot", 153, 170, 1), ("voltot", 171, 188, 100)
+          ]
+
+          def fixed(record, name, start, end, scale=1):
+              value = record[start - 1:end].decode("ascii").strip()
+              if not value:
+                  return ""
+              if name == "data_pregao":
+                  return datetime.datetime.strptime(value, "%Y%m%d").date().isoformat()
+              if name in {"codbdi", "codneg", "tpmerc"}:
+                  return value
+              if name in {"totneg", "quatot"}:
+                  return str(int(value))
+              return str(Decimal(value) / Decimal(scale))
+
+          with zipfile.ZipFile(raw) as archive:
+              members = [name for name in archive.namelist() if not name.endswith("/")]
+              if len(members) != 1 or archive.testzip() is not None:
+                  sys.exit("FASE06 BLOQUEADA: ZIP inválido ou com estrutura inesperada")
+              with archive.open(members[0]) as stream:
+                  lines = [line.rstrip(b"\r\n") for line in stream]
+
+          raw_rows = [
+              tuple(fixed(line, name, start, end, scale) for name, start, end, scale in critical)
+              for line in lines if line[:2] == b"01" and len(line) == 245
+          ]
+
+          with normalized.open(encoding="utf-8", newline="") as stream:
+              reader = csv.DictReader(stream)
+              header = reader.fieldnames or []
+              required = [item[0] for item in critical]
+              if any(field not in header for field in required):
+                  sys.exit("FASE06 BLOQUEADA: campos críticos ausentes no NORMALIZED")
+              normalized_rows = [tuple(row[field].strip() for field in required) for row in reader]
+
+          mismatches = []
+          if len(raw_rows) != len(normalized_rows):
+              mismatches.append({"type": "ROW_COUNT", "raw": len(raw_rows), "normalized": len(normalized_rows)})
+          for index, (raw_row, normalized_row) in enumerate(zip(raw_rows, normalized_rows), start=1):
+              if raw_row != normalized_row:
+                  mismatches.append({"row": index, "raw": raw_row, "normalized": normalized_row})
+                  if len(mismatches) >= 20:
+                      break
+
+          ok = not mismatches and len(raw_rows) == m.get("linhas_normalized")
+          result = {
+              "schema_version": "1.0.0",
+              "year": 2005,
+              "phase": "FASE06",
+              "status": "VALIDADO" if ok else "BLOQUEADO",
+              "decision": "LIBERADO_PARA_FASE07" if ok else "BLOQUEADO_PARA_FASE07",
+              "raw_sha256": hashlib.sha256(raw.read_bytes()).hexdigest(),
+              "normalized_sha256": hashlib.sha256(normalized.read_bytes()).hexdigest(),
+              "phase05_status": f5.get("status"),
+              "raw_records": len(raw_rows),
+              "normalized_records": len(normalized_rows),
+              "critical_fields_checked": [item[0] for item in critical],
+              "mismatch_count": len(mismatches),
+              "mismatch_sample": mismatches,
+              "logical_key_uniqueness_assessment": "DEFERRED_TO_FASE07",
+              "raw_immutable": True,
+              "deduplication_performed": False,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          evidence.parent.mkdir(parents=True, exist_ok=True)
+          evidence.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          if not ok:
+              sys.exit("FASE06 BLOQUEADA: divergências encontradas; evidência diagnóstica persistida")
+          PY
+
+      - name: Persistir evidência FASE06 inclusive quando bloqueada
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json || {
+            echo "Nenhuma evidência FASE06 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir resultado fase 06 2005"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2005 — FASE06"
+            echo "- Reconcilia 12 campos críticos RAW × NORMALIZED."
+            echo "- Não decide unicidade/cardinalidade de chave; isso pertence à FASE07."
+            echo "- Não deduplica nem modifica RAW."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
