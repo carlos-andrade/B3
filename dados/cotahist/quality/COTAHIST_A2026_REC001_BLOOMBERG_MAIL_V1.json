@@ -37,16 +37,19 @@
     }
   },
   "comparison": {
-    "common_prefix_records_physical": 0,
+    "common_record01_prefix": 222002,
     "first_difference": {
-      "record_position": 1,
-      "b3_sha256": "3ad07b5a9eb2b82cdc27abb2fb80e5bd8c21e9a24804dd9ea69cb78fcc2ee9b5",
-      "bloomberg_sha256": "e5e6ad5e4552a89fea5bea3fd16f9dc0c2f6421ec7ed1ae90a2ea6e9e464be60",
-      "b3_prefix": "00COTAHIST.2026BOVESPA 20260923         ",
-      "bloomberg_prefix": "00COTAHIST.2026BOVESPA 20261006         "
+      "record01_position": 222003,
+      "b3_date": "20260102",
+      "bloomberg_date": "20260102",
+      "b3_sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
+      "bloomberg_sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
+      "b3_prefix": "012026010278ABCBA235    070ABCB    /EJSP",
+      "bloomberg_prefix": "012026010278ABCBA243    070ABCBE    /EJP"
     },
     "b3_exhausted": false,
-    "bloomberg_exhausted": false
+    "bloomberg_exhausted": false,
+    "comparison_unit": "record type 01 only; period-specific type 00 headers and type 99 trailers excluded"
   },
   "interpretation": "B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
   "promotion_impact": "BLOCKED_CONTENT_DIVERGENCE"
