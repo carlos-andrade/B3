@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE05 validadas, próxima FASE06  
+**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE06 validadas, próxima FASE07  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -365,7 +365,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE04 recuperação | EVIDÊNCIA RECONSTRUÍDA | [COTAHIST_2005_FASE04_RECUPERACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE04_RECUPERACAO_V1.json) |
 | FASE04 independente | VALIDADO | [COTAHIST_2005_FASE04_NORMALIZACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE04_NORMALIZACAO_V1.json) |
 | FASE05 | VALIDADO | [COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE05_MANIFESTO_CHECKSUM_V1.json) |
-| FASE06–FASE12 | NÃO INICIADAS | Próxima: FASE06 — reconciliação semântica RAW × NORMALIZED |
+| FASE06 | VALIDADO | [COTAHIST_2005_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json) |
+| FASE07–FASE12 | NÃO INICIADAS | Próxima: FASE07 — identidade, chaves e cardinalidade |
 
 ### Integridade física COTAHIST 2005
 
@@ -375,3 +376,15 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - RAW e NORMALIZED conferem com os respectivos manifestos e sidecars; ZIP validado; nenhum registro removido.
 - Workflow FASE05: [run 38252835291](https://github.com/carlos-andrade/B3/actions/runs/38252835291).
 - Próxima etapa: FASE06; identidade/chaves e calendário continuam em fases próprias posteriores.
+
+
+## Atualização operacional — FASE06 COTAHIST 2005 — 2026-10-12
+
+- Workflow: [COTAHIST 2005 — FASE06 Reconciliação Semântica](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase06-reconciliacao-2005-v1.yml)
+- Execução: [run 38252894896](https://github.com/carlos-andrade/B3/actions/runs/38252894896)
+- Evidência: [COTAHIST_2005_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE06_RECONCILIACAO_V1.json)
+- Resultado: `VALIDADO`; decisão: `LIBERADO_PARA_FASE07`.
+- RAW: 181.408 registros; NORMALIZED: 181.408 registros; 12 campos críticos comparados; divergências: 0.
+- RAW SHA-256: `41eac6d743d9c3e812bb001c4d327582fa7c408dbc99ff4a1734698da8b18f52`.
+- NORMALIZED SHA-256: `9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c`.
+- RAW preservado; nenhuma deduplicação executada. Unicidade/cardinalidade permanece reservada à FASE07.
