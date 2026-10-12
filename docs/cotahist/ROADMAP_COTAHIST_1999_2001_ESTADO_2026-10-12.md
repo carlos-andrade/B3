@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2002 fechados/certificados; COTAHIST 2003 com FASE00–FASE02 validadas, próxima FASE03  
+**Estado:** 1999–2002 fechados/certificados; COTAHIST 2003 com FASE00–FASE03 validadas, próxima FASE04  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -196,7 +196,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE00 | VALIDADO | [COTAHIST_2003_FASE00_GOVERNANCA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE00_GOVERNANCA_V1.json) |
 | FASE01 | VALIDADO | [COTAHIST_2003_FASE01_AQUISICAO_RAW_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE01_AQUISICAO_RAW_V1.json) |
 | FASE02 | VALIDADO | [COTAHIST_2003_FASE02_INTEGRIDADE_FONTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE02_INTEGRIDADE_FONTE_V1.json) |
-| FASE03–FASE12 | NÃO INICIADAS | Próxima: FASE03 — parsing estrutural |
+| FASE03 | VALIDADO | [COTAHIST_2003_FASE03_PARSING_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE03_PARSING_V1.json) |
+| FASE04–FASE12 | NÃO INICIADAS | Próxima: FASE04 — reconstrução e validação do NORMALIZED ausente |
 
 ### Estado físico de entrada 2003
 
