@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE01 validadas, próxima FASE02  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE02 validadas, próxima FASE03  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -224,7 +224,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | Transição 2003→2004 | AUTORIZADA | [COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json) |
 | FASE00 | VALIDADO | [COTAHIST_2004_FASE00_GOVERNANCA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE00_GOVERNANCA_V1.json) |
 | FASE01 | VALIDADO | [COTAHIST_2004_FASE01_AQUISICAO_RAW_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE01_AQUISICAO_RAW_V1.json) |
-| FASE02–FASE12 | NÃO INICIADAS | Próxima: FASE02 — integridade da fonte |
+| FASE02 | VALIDADO | [COTAHIST_2004_FASE02_INTEGRIDADE_FONTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE02_INTEGRIDADE_FONTE_V1.json) |
+| FASE03–FASE12 | NÃO INICIADAS | Próxima: FASE03 — parsing estrutural |
 
 ### Estado físico de entrada 2004
 
