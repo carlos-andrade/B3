@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-12T12:58:58.459120+00:00
-Workflows auditados: 239
+Gerado em UTC: 2026-10-12T12:59:59.365306+00:00
+Workflows auditados: 242
 
 ## Regra de decisão
 
@@ -60,11 +60,13 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase00-governanca-2002-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase00-governanca-2003-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase00-governanca-2004-v1.yml | 0 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase00-governanca-2005-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2000-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2001-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2002-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2003-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2004-v1.yml | 1 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase01-aquisicao-2005-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-raw-1993-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase01-aquisicao-raw-1994-v1.yml | 1 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase02-evidencia-1993-v1.yml | 2 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -75,6 +77,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase02-integridade-2002-v1.yml | 2 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase02-integridade-2003-v1.yml | 2 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase02-integridade-2004-v1.yml | 2 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase02-integridade-2005-v1.yml | 2 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase03-parsing-1994-v1.yml | 3 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase03-parsing-1995-v1.yml | 3 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase03-parsing-1996-v1.yml | 3 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
