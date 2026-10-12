@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE09 concluídas, pré-release liberado para FASE10  
+**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE10 validadas, pronto para certificação FASE11  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -13,7 +13,7 @@
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
 - **COTAHIST 2001:** FASE01–FASE12 concluídas; FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA`.
-- **COTAHIST 2002:** FASE00–FASE09 concluídas; Gate 06–08 aprovado e FASE09 `LIBERADO_PARA_FASE10`. FASE08 `VALIDADO_COM_EXCECAO`, 249 datas, zero datas inválidas/fora do ano e 24.893 regressões cronológicas globais; ordem original preservada. FASE07: 6.263 grupos de colisão na chave-base, zero na chave candidata com `prazot`, nenhuma linha removida. Próxima: FASE10 independente.
+- **COTAHIST 2002:** FASE00–FASE10 validadas; a FASE10 independente comparou os 25 campos em 129.973 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE09 liberou a FASE10. FASE08 `VALIDADO_COM_EXCECAO`, 249 datas e 24.893 regressões cronológicas globais; ordem original preservada. FASE07: 6.263 grupos de colisão na chave-base, zero na candidata com `prazot`, nenhuma linha removida. Próxima: FASE11 certificação.
 - O ano 2002 foi liberado para início controlado pela FASE12 de 2001; a primeira fase do novo ciclo deve ser FASE00/FASE01, sem saltar etapas.
 
 ## COTAHIST 1999
@@ -155,7 +155,9 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json) |
 | Gate 06–08 | GATE_APROVADO | [COTAHIST_2002_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_GATE_06_08_V1.json) |
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2002_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE09_PRE_RELEASE_V1.json) |
-| FASE10–FASE12 | NÃO INICIADAS | Próxima: FASE10 — validação independente dos 25 campos |
+| FASE10 | VALIDADO | [COTAHIST_2002_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
+| FASE11 | NÃO INICIADA | Próxima: certificação condicionada à FASE10 |
+| FASE12 | NÃO INICIADA | Fechamento de 2002 e transição controlada para 2003 |
 
 ### Integridade inicial 2002
 
@@ -179,5 +181,6 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 11. FASE08 validada no run [38245835385](https://github.com/carlos-andrade/B3/actions/runs/38245835385): 249 datas, zero datas inválidas/fora do ano e exceções não bloqueadoras classificadas; fonte não reordenada.
 12. Gate 06–08 aprovado no run [38245902575](https://github.com/carlos-andrade/B3/actions/runs/38245902575), sem bloqueadores.
 13. FASE09 concluída no run [38245939874](https://github.com/carlos-andrade/B3/actions/runs/38245939874), `LIBERADO_PARA_FASE10`; hashes RAW/NORMALIZED conferidos.
-14. Executar FASE10 independente comparando os 25 campos RAW × NORMALIZED.
-15. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
+14. FASE10 independente validada no run [38246008895](https://github.com/carlos-andrade/B3/actions/runs/38246008895): 25 campos, 129.973 registos, zero divergências.
+15. Executar FASE11 certificação; depois FASE12 fechamento e transição, verificando RAW 2003 contra manifesto/sidecar antes de autorizar o próximo ciclo.
+16. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
