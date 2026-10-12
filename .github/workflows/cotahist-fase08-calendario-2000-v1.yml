@@ -73,9 +73,11 @@ jobs:
                   invalid.append({"row": i, "date": value, "reason": "INVALID_ISO_DATE"})
           if invalid:
               sys.exit(f"FASE08 BLOQUEADA: datas inválidas/fora do ano: {len(invalid)}")
+          regression_samples = [
+              {"row": i + 1, "previous_date": parsed[i-1].isoformat(), "current_date": parsed[i].isoformat()}
+              for i in range(1, len(parsed)) if parsed[i] < parsed[i-1]
+          ][:20]
           out_of_order = sum(1 for i in range(1, len(parsed)) if parsed[i] < parsed[i-1])
-          if out_of_order:
-              sys.exit(f"FASE08 BLOQUEADA: sequência cronológica regressiva em {out_of_order} pontos")
           sessions = sorted(set(parsed))
           weekday_counts = Counter(d.strftime("%A") for d in sessions)
           weekend_dates = [d.isoformat() for d in sessions if d.weekday() >= 5]
@@ -85,8 +87,8 @@ jobs:
             "schema_version": "1.0.0",
             "year": 2000,
             "phase": "FASE08",
-            "status": "VALIDADO_COM_EXCECAO",
-            "decision": "LIBERADO_PARA_GATE_06_08",
+            "status": "BLOQUEADO" if out_of_order else "VALIDADO_COM_EXCECAO",
+            "decision": "BLOQUEADO_PARA_GATE_06_08" if out_of_order else "LIBERADO_PARA_GATE_06_08",
             "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
             "normalized_path": str(csv_path),
             "normalized_sha256": hashlib.sha256(csv_path.read_bytes()).hexdigest(),
@@ -98,7 +100,9 @@ jobs:
             "last_trading_date": max(sessions).isoformat(),
             "invalid_dates": 0,
             "out_of_year_dates": 0,
-            "chronological_regressions": 0,
+            "chronological_regressions": out_of_order,
+            "chronological_regression_samples": regression_samples,
+            "blockers": ["ORDEM_CRONOLOGICA_DA_FONTE_REQUER_CLASSIFICACAO"] if out_of_order else [],
             "weekday_distribution": dict(weekday_counts),
             "weekend_dates_observed": weekend_dates,
             "calendar_gaps_over_4_days": large_gaps,
@@ -116,14 +120,20 @@ jobs:
           ev_path.parent.mkdir(parents=True, exist_ok=True)
           ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(json.dumps(out, ensure_ascii=False))
+          if out_of_order:
+              sys.exit("FASE08 BLOQUEADA: ordem cronológica requer classificação")
           PY
 
-      - name: Persistir evidência FASE08
-        if: success()
+      - name: Persistir evidência FASE08 inclusive quando bloqueada
+        if: always()
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s dados/cotahist/quality/COTAHIST_2000_FASE08_SEMANTICA_CALENDARIO_V1.json || {
+            echo "Nenhuma evidência FASE08 produzida."
+            exit 0
+          }
           git add dados/cotahist/quality/COTAHIST_2000_FASE08_SEMANTICA_CALENDARIO_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar fase 08 calendario 2000"
