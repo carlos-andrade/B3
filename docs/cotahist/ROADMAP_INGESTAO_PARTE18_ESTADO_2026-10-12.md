@@ -94,3 +94,25 @@ A publicação só pode ser considerada aprovada se:
 As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação, mantendo explícita a exceção semântica controlada de 1986. A REC-001 #210 terminou com sucesso técnico, mas a comparação de negócio está bloqueada por divergência real na posição 222.003. A FASE05 de 2004 foi executada na run #2 e validou hashes e estrutura; a FASE06 foi executada e a evidência persistida com `VALIDADO`, 166.937 registos RAW e NORMALIZED, 12 campos críticos e `mismatch_count: 0`. A FASE07 foi executada e validou a chave candidata `(data_pregao, codbdi, codneg, tpmerc, prazot, dismes)`: a chave-base tinha 9.642 grupos de colisão e 20.705 linhas excedentes, mas incluir `prazot` separou todos os casos; 166.937 chaves distintas, zero colisões, zero linhas removidas. A FASE08 terminou com `VALIDADO_COM_EXCECAO` e liberou o gate 06–08. Foram observadas 249 datas de pregão, nenhuma data inválida/fora do ano, mas 30.148 regressões cronológicas porque a fonte mantém ordenação que não é globalmente cronológica. O workflow classificou essa característica como exceção não bloqueadora com base na reconciliação de linhas da FASE06; nenhuma linha foi reordenada nem removida. O calendário oficial histórico de sessões/feriados ainda não está persistido, portanto não se declara validação contra calendário externo B3.
 
 **Regra de governança:** não saltar fases, não substituir evidência por inferência, não remover registos para forçar reconciliação e não promover o dataset quando os gates falharem.
+
+
+## 7. Atualização incremental — 2026-10-12
+
+### Estado operacional confirmado
+
+- **2004:** FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`. FASE10 comparou 166.937 registos e 25 campos com zero divergências. A transição para 2005 foi validada sem certificar 2005 automaticamente.
+- **2005:** FASE04–FASE12 concluídas; FASE11 `CERTIFICADO`. FASE10 comparou 181.408 registos e 25 campos com zero divergências. A transição para 2006 validou o RAW e a integridade estrutural, mas não certificou 2006.
+- **2006:** FASE00–FASE08 concluídas. FASE01–FASE07 estão `VALIDADO`; FASE08 está `VALIDADO_COM_EXCECAO`, com 246 datas de pregão, zero datas inválidas/fora do ano, zero regressões cronológicas e nenhuma linha removida. A exceção não bloqueadora é a falta de calendário oficial histórico de sessões/feriados persistido.
+- **2006, identidade:** a chave candidata `(data_pregao, codbdi, codneg, tpmerc, prazot, dismes)` produziu 198.367 chaves distintas e zero colisões. A chave-base tinha 11.764 grupos de colisão; nenhuma deduplicação foi realizada.
+- **Próxima etapa de 2006:** executar e confirmar `GATE_06_08`, depois FASE09 pré-release, FASE10 independente dos 25 campos, FASE11 certificação e FASE12 transição controlada para 2007. Os workflows FASE01–11 de 2006 não existiam na `main`; estão a ser repostos individualmente a partir da branch de recuperação, evitando uma mesclagem ampla que também reverteria alterações recentes de governação.
+- **REC-001 B3 × BLOOMBERG_MAIL:** permanece `FAIL_CONTENT_DIVERGENCE`. Os primeiros 222.002 registos tipo `01` coincidem; a primeira diferença está na posição 222.003, em 2026-01-02 (`ABCBA235` versus `ABCBA243`). Não promover até classificar a causa.
+- **Auditoria de workflows:** a persistência foi corrigida para reconstruir a auditoria sobre `origin/main` após push concorrente. Execuções posteriores tiveram sucessos; algumas execuções antigas foram canceladas por concorrência. Confirmar o estado final da auditoria mais recente antes de declarar a fila limpa.
+
+### Evidências de execução
+
+- [FASE12 2004 — fechamento e transição 2005](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE12_FECHAMENTO_2005_ABERTURA_V1.json)
+- [FASE10 2005 — validação independente](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE10_VALIDACAO_INDEPENDENTE_V1.json)
+- [FASE12 2005 — fechamento e transição 2006](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE12_FECHAMENTO_2006_ABERTURA_V1.json)
+- [FASE06 2006 — reconciliação semântica](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2006_FASE06_RECONCILIACAO_V1.json)
+- [FASE07 2006 — identidade e cardinalidade](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2006_FASE07_IDENTIDADE_CHAVES_V1.json)
+- [FASE08 2006 — calendário e consistência](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2006_FASE08_SEMANTICA_CALENDARIO_V1.json)
