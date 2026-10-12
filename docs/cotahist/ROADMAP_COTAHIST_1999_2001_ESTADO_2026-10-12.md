@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE07 validadas, próxima FASE08  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas, próximo GATE 06–08  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -231,7 +231,9 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE05 | VALIDADO | [COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json) |
 | FASE06 | VALIDADO | [COTAHIST_2004_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE06_RECONCILIACAO_V1.json) |
 | FASE07 | VALIDADO | [COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json) |
-| FASE08–FASE12 | NÃO INICIADAS | Próxima: FASE08 — semântica avançada, calendário e consistência |
+| FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json) |
+| GATE 06–08 | PENDENTE | Próxima: verificar evidências FASE06, FASE07 e FASE08; não corrige fases técnicas |
+| FASE09–FASE12 | NÃO INICIADAS | Dependem da aprovação do Gate 06–08 e dos gates seguintes |
 
 ### Estado físico de entrada 2004
 
@@ -277,3 +279,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - Decisão restrita a 2004 e à versão normalizada identificada: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
 - Nenhuma linha removida; deduplicação não executada. A decisão não se generaliza automaticamente a outros anos.
 - Próxima etapa: FASE08, preservando a ordem original da fonte e classificando explicitamente limitações do calendário histórico.
+
+
+## Atualização operacional — FASE08 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE08 Calendário e Consistência](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase08-calendario-2004-v1.yml)
+- Execução: [run 38252181158](https://github.com/carlos-andrade/B3/actions/runs/38252181158)
+- Evidência: [COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json)
+- Estado: `VALIDADO_COM_EXCECAO`; decisão: `LIBERADO_PARA_GATE_06_08`; bloqueadores: 0.
+- Linhas analisadas: 166.937; datas de pregão distintas: 249; regressões cronológicas globais: 30.148; regressões de data por instrumento: 12.489.
+- A ordem original da fonte foi preservada. A ausência de calendário oficial histórico persistido permanece limitação explicitamente classificada; não se afirma equivalência com lista externa oficial de pregões.
+- Próximo passo: executar o Gate 06–08 para verificar as evidências FASE06/07/08 em modo somente leitura.
