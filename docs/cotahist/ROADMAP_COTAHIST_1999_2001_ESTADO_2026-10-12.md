@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE07 validadas, próxima FASE08  
+**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE08 concluídas, FASE08 validada com exceções classificadas  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -13,7 +13,7 @@
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
 - **COTAHIST 2001:** FASE01–FASE12 concluídas; FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA`.
-- **COTAHIST 2002:** FASE00–FASE07 validadas. A FASE07 encontrou 6.263 grupos de colisão na chave-base, separados pela chave candidata com `prazot`, que individualizou os 129.973 registos; zero colisões na candidata e nenhuma linha removida. Próxima fase: FASE08.
+- **COTAHIST 2002:** FASE00–FASE08 concluídas; FASE08 `VALIDADO_COM_EXCECAO`, 249 datas, zero datas inválidas/fora do ano e 24.893 regressões cronológicas globais; ordem original preservada. FASE07: 6.263 grupos de colisão na chave-base, zero na chave candidata com `prazot`, nenhuma linha removida. Próxima: Gate 06–08.
 - O ano 2002 foi liberado para início controlado pela FASE12 de 2001; a primeira fase do novo ciclo deve ser FASE00/FASE01, sem saltar etapas.
 
 ## COTAHIST 1999
@@ -152,7 +152,9 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE05 | VALIDADO | [COTAHIST_2002_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE05_MANIFESTO_CHECKSUM_V1.json) |
 | FASE06 | VALIDADO | [COTAHIST_2002_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE06_RECONCILIACAO_V1.json) |
 | FASE07 | VALIDADO | [COTAHIST_2002_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE07_IDENTIDADE_CHAVES_V1.json) |
-| FASE08–FASE12 | NÃO INICIADAS | Próxima: FASE08 — consistência temporal; não reordenar a fonte |
+| FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json) |
+| Gate 06–08 | NÃO INICIADO | Próxima barreira: avaliar FASE06, FASE07 e FASE08 |
+| FASE09–FASE12 | NÃO INICIADAS | Aguardar Gate 06–08 |
 
 ### Integridade inicial 2002
 
@@ -173,5 +175,6 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 8. FASE05 validada no run [38245636852](https://github.com/carlos-andrade/B3/actions/runs/38245636852); hash físico, manifesto e sidecar coincidentes, contagem e datas coerentes.
 9. FASE06 validada no run [38245704769](https://github.com/carlos-andrade/B3/actions/runs/38245704769): 12 campos críticos, 129.973 registos, zero divergências.
 10. FASE07 validada no run [38245774114](https://github.com/carlos-andrade/B3/actions/runs/38245774114): chave-base com 6.263 grupos de colisão; chave candidata com `prazot` sem duplicados, 129.973 registos preservados.
-11. Executar FASE08 para validar consistência temporal e classificar exceções sem reordenar a fonte.
-12. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
+11. FASE08 validada no run [38245835385](https://github.com/carlos-andrade/B3/actions/runs/38245835385): 249 datas, zero datas inválidas/fora do ano e exceções não bloqueadoras classificadas; fonte não reordenada.
+12. Executar Gate 06–08 de 2002, consumindo apenas evidências persistidas das FASE06–08.
+13. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
