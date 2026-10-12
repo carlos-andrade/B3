@@ -1,0 +1,125 @@
+name: COTAHIST 1999 - FASE05 Manifesto e Checksum
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase05-manifesto-checksum-1999-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1999.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase05-manifesto-checksum-1999-v1
+  cancel-in-progress: false
+
+jobs:
+  manifesto-checksum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase05-manifesto-checksum-1999-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A1999.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256
+            dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar manifesto e checksum contra o arquivo físico
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, sys, datetime
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A1999.csv")
+          manifest_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json")
+          sidecar_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256")
+          f4_path = pathlib.Path("dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json")
+          for p in (csv_path, manifest_path, sidecar_path, f4_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE05 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f4 = json.loads(f4_path.read_text(encoding="utf-8"))
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          sidecar_parts = sidecar_path.read_text(encoding="utf-8").strip().split()
+          if not sidecar_parts:
+              sys.exit("FASE05 BLOQUEADA: sidecar vazio")
+          sidecar_sha = sidecar_parts[0]
+          csv_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest()
+          if f4.get("status") != "VALIDADO" or f4.get("decision") != "LIBERADO_PARA_FASE05":
+              sys.exit("FASE05 BLOQUEADA: FASE04 não está VALIDADO")
+          if csv_sha != manifest.get("normalized_sha256") or csv_sha != sidecar_sha:
+              sys.exit(f"FASE05 BLOQUEADA: SHA físico={csv_sha}; manifesto={manifest.get('normalized_sha256')}; sidecar={sidecar_sha}")
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              fields = reader.fieldnames or []
+              rows = list(reader)
+          if len(fields) != 25 or len(rows) != manifest.get("linhas_normalized"):
+              sys.exit("FASE05 BLOQUEADA: esquema/contagem não coincide com manifesto")
+          dates = [row.get("data_pregao", "") for row in rows]
+          if not dates or min(dates) != manifest.get("primeira_data") or max(dates) != manifest.get("ultima_data"):
+              sys.exit("FASE05 BLOQUEADA: intervalo de datas não coincide com manifesto")
+          out = {
+            "schema_version": "1.0.0",
+            "year": 1999,
+            "phase": "FASE05",
+            "status": "VALIDADO",
+            "decision": "LIBERADO_PARA_FASE06",
+            "validation_type": "RECONCILIACAO_FISICA_MANIFESTO_SIDECAR",
+            "normalized_path": str(csv_path),
+            "normalized_sha256_calculated": csv_sha,
+            "normalized_sha256_manifest": manifest.get("normalized_sha256"),
+            "normalized_sha256_sidecar": sidecar_sha,
+            "manifest_hash_match": True,
+            "sidecar_hash_match": True,
+            "phase04_evidence_path": str(f4_path),
+            "phase04_status": f4.get("status"),
+            "rows_calculated": len(rows),
+            "rows_manifest": manifest.get("linhas_normalized"),
+            "fields": len(fields),
+            "first_date": min(dates),
+            "last_date": max(dates),
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "promotion_note": "FASE05 validada; FASE06 ainda exige reconciliação semântica linha a linha RAW × NORMALIZED."
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência canónica FASE05
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 05 manifesto checksum 1999"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 1999 — FASE05"
+            echo "- Verifica arquivo físico, SHA-256, manifesto, sidecar, contagem e datas."
+            echo "- Não executa reconciliação semântica da FASE06."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
