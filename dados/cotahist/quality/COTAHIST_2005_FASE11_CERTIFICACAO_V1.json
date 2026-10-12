@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2005,
+  "phase": "FASE11",
+  "status": "CERTIFICADO",
+  "decision": "LIBERADO_PARA_FASE12",
+  "certification_scope": "Integridade e consistência do conjunto COTAHIST 2005 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
+  "evidence_statuses": {
+    "FASE09": "LIBERADO_PARA_FASE10",
+    "FASE10": "VALIDADO",
+    "GATE_06_08": "GATE_APROVADO",
+    "MANIFEST": "VALIDADO"
+  },
+  "phase10_mismatch_count": 0,
+  "phase10_fields_checked": 25,
+  "gate_06_08_status": "GATE_APROVADO",
+  "blockers": [],
+  "certified_at_utc": "2026-10-12T13:05:51.579198+00:00"
+}
