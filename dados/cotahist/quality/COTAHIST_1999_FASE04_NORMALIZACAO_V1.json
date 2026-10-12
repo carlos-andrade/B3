@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "year": 1999,
+  "phase": "FASE04",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE05",
+  "validation_type": "VALIDACAO_INDEPENDENTE_DO_ARTEFATO_PERSISTIDO",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP",
+  "raw_sha256_calculated": "fe7428b367a2d40acaefe823fd5080254d07f9ad6c29fc64c9e6876cbd876f09",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A1999.csv",
+  "normalized_sha256_calculated": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
+  "normalized_sha256_manifest": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
+  "normalized_sha256_sidecar": "0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d",
+  "hash_manifest_match": true,
+  "hash_sidecar_match": true,
+  "phase03_evidence_path": "dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json",
+  "phase03_status": "VALIDADO",
+  "rows_calculated": 129841,
+  "rows_manifest": 129841,
+  "fields": 25,
+  "first_date": "1999-01-04",
+  "last_date": "1999-12-30",
+  "invalid_dates": 0,
+  "raw_modified": false,
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-12T10:54:45.387452+00:00",
+  "limitations": [
+    "A reconciliação linha a linha RAW × NORMALIZED pertence à FASE06."
+  ]
+}
