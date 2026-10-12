@@ -87,7 +87,7 @@ jobs:
               if len(members) != 1 or archive.testzip() is not None:
                   sys.exit("FASE06 BLOQUEADA: ZIP inválido ou com estrutura inesperada")
               with archive.open(members[0]) as stream:
-                  lines = [line.rstrip(b"\\r\\n") for line in stream]
+                  lines = [line.rstrip(b"\r\n") for line in stream]
 
           raw_rows = [
               tuple(fixed(line, name, start, end, scale) for name, start, end, scale in critical)
@@ -132,7 +132,7 @@ jobs:
               "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
           }
           evidence.parent.mkdir(parents=True, exist_ok=True)
-          evidence.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+          evidence.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(json.dumps(result, ensure_ascii=False, indent=2))
           if not ok:
               sys.exit("FASE06 BLOQUEADA: divergências encontradas; evidência diagnóstica persistida")
