@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999, 2000 e 2001 fechados/certificados; transição controlada para 2002 autorizada, com NORMALIZED 2002 ainda ausente  
+**Estado:** 1999, 2000 e 2001 fechados/certificados; COTAHIST 2002 com FASE00–FASE01 validadas, próxima FASE02  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -13,7 +13,7 @@
 - O CSV normalizado de 2000 foi recuperado e persistido. O hash físico coincide com o manifesto e o sidecar.
 - Nenhum registo foi deduplicado nem removido.
 - **COTAHIST 2001:** FASE01–FASE12 concluídas; FASE10 independente comparou os 25 campos em 141.848 registos, zero divergências e hashes conferidos. Gate 06–08 aprovado; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA`.
-- **COTAHIST 2002:** transição autorizada; RAW ZIP, manifesto e sidecar conferidos com SHA-256 `ee002b9a533d310351ed07ccb3a8cd3badd84993a4969c5b58088d738de59116`; ZIP válido, um membro, 129.973 registos tipo 01 e comprimentos estruturais válidos. CSV normalizado ainda ausente; ciclo técnico 2002 não iniciado.
+- **COTAHIST 2002:** FASE00 `VALIDADO` e FASE01 `VALIDADO`; RAW, manifesto e sidecar conferidos com SHA-256 `ee002b9a533d310351ed07ccb3a8cd3badd84993a4969c5b58088d738de59116`. O RAW contém um membro ZIP, 129.973 registos tipo 01 e comprimentos estruturais válidos. CSV normalizado ainda ausente; próxima fase: FASE02.
 - O ano 2002 foi liberado para início controlado pela FASE12 de 2001; a primeira fase do novo ciclo deve ser FASE00/FASE01, sem saltar etapas.
 
 ## COTAHIST 1999
@@ -137,3 +137,27 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 4. FASE12 de 2001 concluída no run [38244969020](https://github.com/carlos-andrade/B3/actions/runs/38244969020): fechamento aprovado e RAW 2002 verificado; CSV normalizado 2002 ausente.
 5. Próximo ciclo: iniciar 2002 em FASE00/FASE01, seguir sequencialmente, reconstruir NORMALIZED apenas na FASE04 e validar manifesto/checksum antes de avançar.
 6. Não atualizar README fora da janela de 23:55 Brasília.
+
+
+## COTAHIST 2002 — Estado atual
+
+| Fase | Estado | Evidência |
+|---|---|---|
+| FASE00 | VALIDADO | [COTAHIST_2002_FASE00_GOVERNANCA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE00_GOVERNANCA_V1.json) |
+| FASE01 | VALIDADO | [COTAHIST_2002_FASE01_AQUISICAO_RAW_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2002_FASE01_AQUISICAO_RAW_V1.json) |
+| FASE02–FASE12 | NÃO INICIADAS | Próxima: FASE02 — integridade da fonte |
+
+### Integridade inicial 2002
+
+- RAW SHA-256: `ee002b9a533d310351ed07ccb3a8cd3badd84993a4969c5b58088d738de59116`
+- Fonte: B3; manifesto e sidecar coincidentes.
+- ZIP: um membro, zero registos com comprimento diferente de 245 bytes; 129.973 registos tipo `01`, um registo tipo `00` e um tipo `99`.
+- NORMALIZED: ausente. Não reconstruir antes das FASE01–03; a recuperação/normalização pertence à FASE04.
+
+## Próximas ações atualizadas
+
+1. COTAHIST 2001 foi fechado formalmente na FASE12; a transição para 2002 está autorizada.
+2. FASE00 de 2002 validada no run [38245106125](https://github.com/carlos-andrade/B3/actions/runs/38245106125).
+3. FASE01 de 2002 validada no run [38245216624](https://github.com/carlos-andrade/B3/actions/runs/38245216624); a primeira tentativa de persistência falhou por corrida de push, a correção foi incorporada ao workflow e a execução posterior persistiu a evidência com sucesso.
+4. Executar FASE02, depois FASE03; reconstruir NORMALIZED somente na FASE04 e validar o artefacto físico/hash na FASE05.
+5. Manter a sequência linear; não deduplicar; não atualizar README fora das 23:55 Brasília.
