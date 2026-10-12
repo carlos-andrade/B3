@@ -4,7 +4,7 @@
 **Repositório:** `carlos-andrade/B3`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-12  
-**Estado:** FASE00–FASE05 validadas; FASE06 em execução/aguarda resultado  
+**Estado:** FASE00–FASE08 validadas (FASE08 com exceção classificada); Gate 06–08 aprovado; FASE09 em execução/aguarda resultado  
 **Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
 **Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
@@ -39,6 +39,12 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 - Workflow FASE04: `.github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml`
 - Workflow FASE05: `.github/workflows/cotahist-fase05-manifesto-checksum-1999-v1.yml`
 - Workflow FASE06 corrigido para comparar datas ISO, identificadores textuais e inteiros: `.github/workflows/cotahist-fase06-reconciliacao-1999-v1.yml`
+- Evidência FASE06 validada: 129.841 registos RAW e NORMALIZED; 12 campos críticos comparados; zero divergências.
+- Evidência FASE07 validada: chave base produziu 1.673 grupos de colisão e 1.765 linhas excedentes; a chave candidata que inclui `prazot` produziu zero grupos duplicados, sem remover linhas.
+- Evidência FASE08: 246 datas distintas, intervalo 1999-01-04 a 1999-12-30, zero datas inválidas/fora do ano/regressões cronológicas; calendário oficial histórico externo não persistido, registado como exceção não bloqueadora apenas para consistência interna.
+- Gate 06–08: `GATE_APROVADO`, decisão `APROVADO_PARA_ANALISE_FASE09`, sem bloqueadores.
+- Workflows FASE07, FASE08 e Gate: `.github/workflows/cotahist-fase07-identidade-1999-v1.yml`, `.github/workflows/cotahist-fase08-calendario-1999-v1.yml`, `.github/workflows/cotahist-gate-06-08-1999-v1.yml`.
+- Workflow FASE09: `.github/workflows/cotahist-fase09-prerelease-1999-v1.yml`.
 
 ## 3.1 Alterações anteriores
 
@@ -61,12 +67,12 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 5. Próximos passos
 
-1. Concluir e auditar a execução real da FASE06, verificando a evidência persistida e a reconciliação dos campos críticos.
-2. Se FASE06 bloquear, preservar a evidência diagnóstica e corrigir na origem; não avançar.
-3. Se FASE06 validar, iniciar FASE07 para identidade/chaves/cardinalidade, sem deduplicar antecipadamente.
-4. Só depois de FASE07, executar FASE08 e o Gate 06–08.
-5. Manter FASE09–12 e o ano 2000 bloqueados até aos respetivos gates.
+1. Confirmar a conclusão da FASE09 e sua evidência persistida.
+2. Executar a FASE10 como gate independente, sem tratá-la como substituta das fases anteriores.
+3. Executar FASE11 certificação/promoção apenas se o contrato da FASE10 aprovar.
+4. Executar FASE12 fechamento de 1999 somente após certificação, depois abrir 2000.
+5. Manter o ano 2000 bloqueado até o fechamento formal de 1999.
 
 ## 6. Estado no momento do registo
 
-**Estado atual:** FASE02, FASE03, FASE04 e FASE05 têm evidências canónicas persistidas e status `VALIDADO`. A FASE06 foi corrigida para exigir FASE05 e comparar datas, identificadores e inteiros sem coerções incorretas; a execução de reconciliação está em curso/aguarda confirmação final. Não declarar FASE06, FASE07 ou fases posteriores validadas sem evidência real e gate aprovado.
+**Estado atual:** FASE02–FASE07 têm evidências canónicas com status `VALIDADO`; FASE08 está `VALIDADO_COM_EXCECAO` com limitação explicitada; o Gate 06–08 está `GATE_APROVADO`. A FASE09 foi criada e a execução está pendente/em fila. FASE10–12 e o ano 2000 continuam bloqueados até aos respetivos gates.
