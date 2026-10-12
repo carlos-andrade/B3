@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; próxima FASE10  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; próxima FASE11  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -234,7 +234,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json) |
 | GATE 06–08 | GATE_APROVADO | [COTAHIST_2004_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_GATE_06_08_V1.json) |
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2004_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE09_PRE_RELEASE_V1.json) |
-| FASE10–FASE12 | NÃO INICIADAS | Próxima: FASE10 — validação independente de todos os 25 campos RAW × NORMALIZED |
+| FASE10 | VALIDADO | [COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
+| FASE11–FASE12 | NÃO INICIADAS | Próxima: FASE11 — certificação anual; depende da evidência independente da FASE10 |
 
 ### Estado físico de entrada 2004
 
@@ -314,3 +315,16 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - SHA-256 NORMALIZED: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
 - A FASE09 consolida evidências; não reexecuta fases anteriores nem certifica o ano.
 - Próxima etapa: FASE10, validação independente dos 25 campos linha a linha.
+
+
+## Atualização operacional — FASE10 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE10 Validação Independente Integral](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase10-validacao-independente-2004-v1.yml)
+- Execução: [run 38252359646](https://github.com/carlos-andrade/B3/actions/runs/38252359646)
+- Evidência: [COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json)
+- Resultado: `VALIDADO`; decisão: `LIBERADO_PARA_FASE11`.
+- RAW: 166.937 registros; NORMALIZED: 166.937 registros; campos verificados: 25; divergências: 0.
+- SHA-256 RAW: `f750ba8ee9e25299ed96811979befb29315d91667fedc3885c709440b4989467`.
+- SHA-256 NORMALIZED: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
+- RAW preservado; nenhuma deduplicação executada. A validação independente não certifica nem fecha o ano.
+- Próxima etapa: FASE11 — certificação anual.
