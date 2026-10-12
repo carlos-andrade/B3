@@ -25,7 +25,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
-          fetch-depth: 0
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase02-integridade-1999-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A1999.ZIP
+            dados/cotahist/manifests/COTAHIST_A1999.json
+            dados/cotahist/checksums/COTAHIST_A1999.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_1999_FASE02_INTEGRIDADE_FONTE_V1.json
+          sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
         with:
