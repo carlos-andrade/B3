@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2002 fechados/certificados; COTAHIST 2003 com FASE00–FASE08 concluídas, FASE08 validada com exceções classificadas  
+**Estado:** 1999–2002 fechados/certificados; COTAHIST 2003 com FASE00–FASE09 concluídas, pré-release liberado para FASE10  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -203,8 +203,9 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE06 | VALIDADO | [COTAHIST_2003_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE06_RECONCILIACAO_V1.json) |
 | FASE07 | VALIDADO | [COTAHIST_2003_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE07_IDENTIDADE_CHAVES_V1.json) |
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2003_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE08_SEMANTICA_CALENDARIO_V1.json) |
-| Gate 06–08 | NÃO INICIADO | Próxima barreira: avaliar FASE06–08 |
-| FASE09–FASE12 | NÃO INICIADAS | Aguardar Gate 06–08 |
+| Gate 06–08 | GATE_APROVADO | [COTAHIST_2003_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_GATE_06_08_V1.json) |
+| FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2003_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE09_PRE_RELEASE_V1.json) |
+| FASE10–FASE12 | NÃO INICIADAS | Próxima: FASE10 — validação independente dos 25 campos |
 
 ### Estado físico de entrada 2003
 
