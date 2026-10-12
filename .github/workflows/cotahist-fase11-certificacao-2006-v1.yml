@@ -1,0 +1,121 @@
+name: COTAHIST 2006 - FASE11 Certificacao
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/quality/COTAHIST_2006_FASE09_PRE_RELEASE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2006_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2006_GATE_06_08_V1.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase11-certificacao-2006-v1
+  cancel-in-progress: false
+
+jobs:
+  certificar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase11-certificacao-2006-v1.yml
+            dados/cotahist/quality/COTAHIST_2006_FASE09_PRE_RELEASE_V1.json
+            dados/cotahist/quality/COTAHIST_2006_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+            dados/cotahist/quality/COTAHIST_2006_GATE_06_08_V1.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json
+            dados/cotahist/quality/COTAHIST_2006_FASE11_CERTIFICACAO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar contrato de certificação
+        run: |
+          python - <<'PY'
+          import json, pathlib, datetime, sys
+          q = pathlib.Path("dados/cotahist/quality")
+          paths = {
+            "FASE09": q / "COTAHIST_2006_FASE09_PRE_RELEASE_V1.json",
+            "FASE10": q / "COTAHIST_2006_FASE10_VALIDACAO_INDEPENDENTE_V1.json",
+            "GATE_06_08": q / "COTAHIST_2006_GATE_06_08_V1.json",
+            "MANIFEST": pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2006_quality.json")
+          }
+          missing = [k for k,p in paths.items() if not p.is_file() or p.stat().st_size == 0]
+          data = {k: json.loads(p.read_text(encoding="utf-8")) for k,p in paths.items() if p.is_file()}
+          blockers = []
+          if missing:
+              blockers.extend([f"{k}_AUSENTE" for k in missing])
+          if not missing:
+              if data["FASE09"].get("status") != "LIBERADO_PARA_FASE10":
+                  blockers.append("FASE09_NAO_LIBERADA")
+              if data["FASE10"].get("status") != "VALIDADO" or data["FASE10"].get("decision") != "LIBERADO_PARA_FASE11":
+                  blockers.append("FASE10_NAO_VALIDADA")
+              if data["FASE10"].get("mismatch_count") != 0 or data["FASE10"].get("field_count") != 25:
+                  blockers.append("FASE10_DIVERGENCIAS_OU_ESQUEMA_INCOMPLETO")
+              if data["GATE_06_08"].get("status") != "GATE_APROVADO":
+                  blockers.append("GATE_06_08_NAO_APROVADO")
+              if data["MANIFEST"].get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
+                  blockers.append("MANIFESTO_NORMALIZADO_NAO_VALIDADO")
+          ok = not blockers
+          out = {
+            "schema_version": "1.0.0",
+            "year": 2006,
+            "phase": "FASE11",
+            "status": "CERTIFICADO" if ok else "BLOQUEADO",
+            "decision": "LIBERADO_PARA_FASE12" if ok else "BLOQUEADO_PARA_FASE12",
+            "certification_scope": "Integridade e consistência do conjunto COTAHIST 2006 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
+            "evidence_statuses": {k: v.get("status") for k,v in data.items()},
+            "phase10_mismatch_count": data.get("FASE10", {}).get("mismatch_count"),
+            "phase10_fields_checked": data.get("FASE10", {}).get("field_count"),
+            "gate_06_08_status": data.get("GATE_06_08", {}).get("status"),
+            "blockers": blockers,
+            "certified_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          target = q / "COTAHIST_2006_FASE11_CERTIFICACAO_V1.json"
+          target.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not ok:
+              sys.exit("FASE11 BLOQUEADA")
+          PY
+
+      - name: Persistir certificação
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2006_FASE11_CERTIFICACAO_V1.json || {
+            echo "Nenhuma evidência FASE11 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2006_FASE11_CERTIFICACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): certificar fase 11 2006"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2006 — FASE11"
+            echo "- Certificação depende de FASE09, FASE10 e Gate 06-08."
+            echo "- Não fecha o ano nem abre automaticamente o ano seguinte."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
