@@ -4,7 +4,7 @@
 **Repositório:** `carlos-andrade/B3`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-12  
-**Estado:** INCIDENTE ABERTO — recuperação parcial persistida  
+**Estado:** INCIDENTE ABERTO — CSV recuperado; FASE03 pendente  
 **Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
 **Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
@@ -26,7 +26,7 @@ A comparação do histórico do normalizador identificou alteração nos offsets
 | `codisi` | bytes 231–242 | bytes 231–242 |
 | `dismes` | bytes 243–245 | bytes 243–245 |
 
-A implementação publicada como versão 1.1.1 havia alterado incorretamente estes intervalos para 218–224, 225–236 e 237–245. A versão 1.1.2 restaura os offsets do layout de 245 bytes e eleva a versão do parser. A execução subsequente deverá provar se a saída reproduz o hash histórico; até lá, a correção está implementada, mas não validada.
+A implementação publicada como versão 1.1.1 havia alterado incorretamente estes intervalos para 218–224, 225–236 e 237–245. A versão 1.1.2 restaura os offsets do layout de 245 bytes. A execução de recuperação concluiu com sucesso e reproduziu exatamente o SHA-256 histórico e do sidecar: `0bf3643a8a06f6e513f97d8cf4d5fd0a7ac718af6d8a55a9ac8bdd230d4e2b1d`. Contagem de 129.841 linhas, 25 campos e intervalo de datas coincidem com o manifesto.
 
 ## 3. Alterações persistidas
 
@@ -34,6 +34,8 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 - Normalizador corrigido: `scripts/ingestao/normalize_cotahist.py`, versão 1.1.2
 - CSV regenerado e auditoria de divergência persistidos pelo commit `34a66a213f81874f995cd4c2153cb4239a6d3c45`
 - Correção do normalizador persistida pelo commit `70acbb8559fcecafd894629315513b5dbe9fdd42`
+- Recuperação reconciliada e evidência atualizada pelo commit `f06d0618a1e828e0f11d88537fca80987d5cfc3a`
+- LAYOUT Mestre 1.0.1 com controles fail-closed persistido pelo commit `86fcf9309d3d5712485a3442391f254e87b99c0f`
 - Reexecução configurada pelo commit `afe1c4c018bd27ec6f6ab8dd092b2d654c975ac3`
 
 ## 4. Regras de contenção
@@ -47,12 +49,12 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 5. Próximos passos
 
-1. Confirmar o resultado do workflow `COTAHIST 1999 - Recuperar CSV normalizado`.
-2. Verificar o SHA-256 do CSV após a correção do parser.
-3. Se o hash coincidir, validar separadamente o sidecar e a evidência canónica da FASE03.
-4. Se o hash não coincidir, comparar os campos por registo contra a implementação histórica antes de alterar manifesto.
-5. Só depois reexecutar FASE05 e FASE06; manter FASE07–08 e o ano 2000 bloqueados até aos respetivos gates.
+1. Materializar e validar a evidência canónica da FASE02 por execução independente.
+2. Materializar e validar a evidência canónica da FASE03 por parsing estrutural direto do RAW.
+3. Reexecutar a validação independente da FASE04 e revalidar a FASE05.
+4. Reexecutar FASE06 apenas após os gates anteriores.
+5. Manter FASE07–08 e o ano 2000 bloqueados até aos respetivos gates.
 
 ## 6. Estado no momento do registo
 
-**Incidente aberto.** A correção dos offsets foi publicada, mas a execução de recuperação subsequente ainda estava em fila no GitHub Actions. Não declarar FASE04, FASE05 ou FASE06 como validadas com base apenas neste documento.
+**Incidente aberto.** O CSV foi recuperado e os hashes coincidem, mas a evidência canónica da FASE03 continua ausente. A evidência FASE04 permanece `BLOQUEADO_PARA_PROMOCAO`; não declarar FASE04/05/06 como certificadas até concluir as validações e gates específicos.
