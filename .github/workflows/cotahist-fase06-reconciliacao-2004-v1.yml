@@ -1,3 +1,4 @@
+# Reexecucao apos FASE05 VALIDADO em 2026-10-12; executar reconciliacao semantica RAW x NORMALIZED.
 name: COTAHIST 2004 - FASE06 Reconciliacao Semantica
 
 on:
