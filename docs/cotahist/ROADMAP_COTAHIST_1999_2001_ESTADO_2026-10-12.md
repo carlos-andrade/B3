@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE06 validadas, próxima FASE07  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE07 validadas, próxima FASE08  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -230,7 +230,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE04 independente | VALIDADO | [COTAHIST_2004_FASE04_NORMALIZACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE04_NORMALIZACAO_V1.json) |
 | FASE05 | VALIDADO | [COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE05_MANIFESTO_CHECKSUM_V1.json) |
 | FASE06 | VALIDADO | [COTAHIST_2004_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE06_RECONCILIACAO_V1.json) |
-| FASE07–FASE12 | NÃO INICIADAS | Próxima: FASE07 — identidade, chaves e cardinalidade |
+| FASE07 | VALIDADO | [COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json) |
+| FASE08–FASE12 | NÃO INICIADAS | Próxima: FASE08 — semântica avançada, calendário e consistência |
 
 ### Estado físico de entrada 2004
 
@@ -263,3 +264,16 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - NORMALIZED SHA-256: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
 - RAW preservado; nenhuma deduplicação executada. Unicidade/cardinalidade permanece expressamente reservada à FASE07.
 - Decisão: `LIBERADO_PARA_FASE07`.
+
+
+## Atualização operacional — FASE07 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE07 Identidade e Cardinalidade](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase07-identidade-2004-v1.yml)
+- Execução: [run 38252121389](https://github.com/carlos-andrade/B3/actions/runs/38252121389)
+- Evidência: [COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json)
+- Registros analisados: 166.937; hash NORMALIZED: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
+- Chave-base `[data_pregao,codbdi,codneg,tpmerc,dismes]`: 9.642 grupos duplicados, 20.705 linhas excedentes; grupos com linhas idênticas completas: 0.
+- Chave candidata com `prazot`: 166.937 chaves distintas, zero grupos duplicados.
+- Decisão restrita a 2004 e à versão normalizada identificada: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- Nenhuma linha removida; deduplicação não executada. A decisão não se generaliza automaticamente a outros anos.
+- Próxima etapa: FASE08, preservando a ordem original da fonte e classificando explicitamente limitações do calendário histórico.
