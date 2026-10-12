@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas, próximo GATE 06–08  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; próxima FASE09  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -232,8 +232,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE06 | VALIDADO | [COTAHIST_2004_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE06_RECONCILIACAO_V1.json) |
 | FASE07 | VALIDADO | [COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE07_IDENTIDADE_CHAVES_V1.json) |
 | FASE08 | VALIDADO_COM_EXCECAO | [COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json) |
-| GATE 06–08 | PENDENTE | Próxima: verificar evidências FASE06, FASE07 e FASE08; não corrige fases técnicas |
-| FASE09–FASE12 | NÃO INICIADAS | Dependem da aprovação do Gate 06–08 e dos gates seguintes |
+| GATE 06–08 | GATE_APROVADO | [COTAHIST_2004_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_GATE_06_08_V1.json) |
+| FASE09–FASE12 | NÃO INICIADAS | Próxima: FASE09 — pré-release; validar gate e hashes sem refazer fases anteriores |
 
 ### Estado físico de entrada 2004
 
@@ -290,3 +290,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - Linhas analisadas: 166.937; datas de pregão distintas: 249; regressões cronológicas globais: 30.148; regressões de data por instrumento: 12.489.
 - A ordem original da fonte foi preservada. A ausência de calendário oficial histórico persistido permanece limitação explicitamente classificada; não se afirma equivalência com lista externa oficial de pregões.
 - Próximo passo: executar o Gate 06–08 para verificar as evidências FASE06/07/08 em modo somente leitura.
+
+
+## Atualização operacional — Gate 06–08 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — Gate 06–08](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-gate-06-08-2004-v1.yml)
+- Execução: [run 38252248693](https://github.com/carlos-andrade/B3/actions/runs/38252248693)
+- Evidência: [COTAHIST_2004_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_GATE_06_08_V1.json)
+- Resultado: `GATE_APROVADO`; decisão: `APROVADO_PARA_ANALISE_FASE09`; bloqueadores: 0.
+- Estados consumidos: FASE06 `VALIDADO`; FASE07 `VALIDADO`; FASE08 `VALIDADO_COM_EXCECAO`.
+- As exceções da FASE08 permanecem registradas e não foram apagadas nem reclassificadas pelo Gate.
+- Próxima etapa: FASE09 — pré-release.
