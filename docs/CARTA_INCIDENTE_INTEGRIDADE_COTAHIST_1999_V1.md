@@ -4,7 +4,7 @@
 **Repositório:** `carlos-andrade/B3`  
 **Versão:** 1.0.0  
 **Data:** 2026-10-12  
-**Estado:** INCIDENTE ABERTO — CSV recuperado; FASE03 pendente  
+**Estado:** FASE00–FASE05 validadas; FASE06 em execução/aguarda resultado  
 **Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
 **Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
@@ -30,6 +30,18 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 3. Alterações persistidas
 
+- Evidência canónica FASE02 validada: `dados/cotahist/quality/COTAHIST_1999_FASE02_INTEGRIDADE_FONTE_V1.json`
+- Evidência canónica FASE03 validada: `dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json`
+- Evidência independente FASE04 validada: `dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json`
+- Evidência FASE05 validada: `dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json`
+- Workflow FASE02: `.github/workflows/cotahist-fase02-integridade-1999-v1.yml`
+- Workflow FASE03: `.github/workflows/cotahist-fase03-parsing-1999-v1.yml`
+- Workflow FASE04: `.github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml`
+- Workflow FASE05: `.github/workflows/cotahist-fase05-manifesto-checksum-1999-v1.yml`
+- Workflow FASE06 corrigido para comparar datas ISO, identificadores textuais e inteiros: `.github/workflows/cotahist-fase06-reconciliacao-1999-v1.yml`
+
+## 3.1 Alterações anteriores
+
 - Workflow de recuperação: `.github/workflows/cotahist-recuperar-normalized-1999-v1.yml`
 - Normalizador corrigido: `scripts/ingestao/normalize_cotahist.py`, versão 1.1.2
 - CSV regenerado e auditoria de divergência persistidos pelo commit `34a66a213f81874f995cd4c2153cb4239a6d3c45`
@@ -49,12 +61,12 @@ A implementação publicada como versão 1.1.1 havia alterado incorretamente est
 
 ## 5. Próximos passos
 
-1. Materializar e validar a evidência canónica da FASE02 por execução independente.
-2. Materializar e validar a evidência canónica da FASE03 por parsing estrutural direto do RAW.
-3. Reexecutar a validação independente da FASE04 e revalidar a FASE05.
-4. Reexecutar FASE06 apenas após os gates anteriores.
-5. Manter FASE07–08 e o ano 2000 bloqueados até aos respetivos gates.
+1. Concluir e auditar a execução real da FASE06, verificando a evidência persistida e a reconciliação dos campos críticos.
+2. Se FASE06 bloquear, preservar a evidência diagnóstica e corrigir na origem; não avançar.
+3. Se FASE06 validar, iniciar FASE07 para identidade/chaves/cardinalidade, sem deduplicar antecipadamente.
+4. Só depois de FASE07, executar FASE08 e o Gate 06–08.
+5. Manter FASE09–12 e o ano 2000 bloqueados até aos respetivos gates.
 
 ## 6. Estado no momento do registo
 
-**Incidente aberto.** O CSV foi recuperado e os hashes coincidem, mas a evidência canónica da FASE03 continua ausente. A evidência FASE04 permanece `BLOQUEADO_PARA_PROMOCAO`; não declarar FASE04/05/06 como certificadas até concluir as validações e gates específicos.
+**Estado atual:** FASE02, FASE03, FASE04 e FASE05 têm evidências canónicas persistidas e status `VALIDADO`. A FASE06 foi corrigida para exigir FASE05 e comparar datas, identificadores e inteiros sem coerções incorretas; a execução de reconciliação está em curso/aguarda confirmação final. Não declarar FASE06, FASE07 ou fases posteriores validadas sem evidência real e gate aprovado.
