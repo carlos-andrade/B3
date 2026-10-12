@@ -1,0 +1,560 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2002,
+  "phase": "FASE08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
+  "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2002.csv",
+  "normalized_sha256": "e1903df22583dc33fa506c340722434bb22bb386debdd7114ad5cfc3ad6560cc",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 129973,
+  "unique_trading_dates": 249,
+  "first_trading_date": "2002-01-02",
+  "last_trading_date": "2002-12-30",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 24893,
+  "chronological_regression_samples": [
+    {
+      "row": 7,
+      "previous_date": "2002-01-03",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "current_instrument": [
+        "02",
+        "ALBA3",
+        "010",
+        "",
+        "163"
+      ]
+    },
+    {
+      "row": 10,
+      "previous_date": "2002-01-03",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "96",
+        "ACES4F",
+        "020",
+        "",
+        "130"
+      ],
+      "current_instrument": [
+        "96",
+        "ALPA4F",
+        "020",
+        "",
+        "153"
+      ]
+    },
+    {
+      "row": 20,
+      "previous_date": "2002-01-04",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "96",
+        "ACES4F",
+        "020",
+        "",
+        "130"
+      ],
+      "current_instrument": [
+        "02",
+        "AMBV3",
+        "010",
+        "",
+        "106"
+      ]
+    },
+    {
+      "row": 23,
+      "previous_date": "2002-01-03",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "96",
+        "AMBV3F",
+        "020",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "02",
+        "ARCZ6",
+        "010",
+        "",
+        "127"
+      ]
+    },
+    {
+      "row": 26,
+      "previous_date": "2002-01-03",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "AMBV4",
+        "010",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "02",
+        "ARLA4",
+        "010",
+        "",
+        "127"
+      ]
+    },
+    {
+      "row": 28,
+      "previous_date": "2002-01-04",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "02",
+        "ALBA3",
+        "010",
+        "",
+        "163"
+      ],
+      "current_instrument": [
+        "96",
+        "AMBV4F",
+        "020",
+        "",
+        "106"
+      ]
+    },
+    {
+      "row": 30,
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "current_instrument": [
+        "02",
+        "ARTE4",
+        "010",
+        "",
+        "042"
+      ]
+    },
+    {
+      "row": 36,
+      "previous_date": "2002-01-08",
+      "current_date": "2002-01-04",
+      "previous_instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "current_instrument": [
+        "02",
+        "AMBV3",
+        "010",
+        "",
+        "106"
+      ]
+    },
+    {
+      "row": 38,
+      "previous_date": "2002-01-04",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "02",
+        "ALPA4",
+        "010",
+        "",
+        "153"
+      ],
+      "current_instrument": [
+        "02",
+        "ARCZ6",
+        "010",
+        "",
+        "127"
+      ]
+    },
+    {
+      "row": 40,
+      "previous_date": "2002-01-03",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "ARCZ3",
+        "010",
+        "",
+        "127"
+      ],
+      "current_instrument": [
+        "02",
+        "AVPL3",
+        "010",
+        "",
+        "123"
+      ]
+    },
+    {
+      "row": 44,
+      "previous_date": "2002-01-04",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "AMBV4",
+        "010",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "96",
+        "BAZA3F",
+        "020",
+        "",
+        "145"
+      ]
+    },
+    {
+      "row": 59,
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-04",
+      "previous_instrument": [
+        "02",
+        "ALBA3",
+        "010",
+        "",
+        "163"
+      ],
+      "current_instrument": [
+        "96",
+        "AMBV4F",
+        "020",
+        "",
+        "106"
+      ]
+    },
+    {
+      "row": 60,
+      "previous_date": "2002-01-04",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "96",
+        "AMBV4F",
+        "020",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "02",
+        "BCAL6",
+        "010",
+        "",
+        "112"
+      ]
+    },
+    {
+      "row": 62,
+      "previous_date": "2002-01-08",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "96",
+        "ACES3F",
+        "020",
+        "",
+        "131"
+      ],
+      "current_instrument": [
+        "02",
+        "BDLL4",
+        "010",
+        "",
+        "138"
+      ]
+    },
+    {
+      "row": 66,
+      "previous_date": "2002-01-08",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "02",
+        "ACES4",
+        "010",
+        "",
+        "130"
+      ],
+      "current_instrument": [
+        "02",
+        "ASTA4",
+        "010",
+        "",
+        "105"
+      ]
+    },
+    {
+      "row": 68,
+      "previous_date": "2002-01-08",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "96",
+        "ACES4F",
+        "020",
+        "",
+        "130"
+      ],
+      "current_instrument": [
+        "02",
+        "BELG3",
+        "010",
+        "",
+        "143"
+      ]
+    },
+    {
+      "row": 73,
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-02",
+      "previous_instrument": [
+        "02",
+        "ALPA4",
+        "010",
+        "",
+        "153"
+      ],
+      "current_instrument": [
+        "96",
+        "BEMG3F",
+        "020",
+        "",
+        "034"
+      ]
+    },
+    {
+      "row": 75,
+      "previous_date": "2002-01-08",
+      "current_date": "2002-01-07",
+      "previous_instrument": [
+        "02",
+        "ALBA3",
+        "010",
+        "",
+        "163"
+      ],
+      "current_instrument": [
+        "96",
+        "AMBV3F",
+        "020",
+        "",
+        "106"
+      ]
+    },
+    {
+      "row": 77,
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "02",
+        "AMBV3",
+        "010",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "02",
+        "AVPL3",
+        "010",
+        "",
+        "123"
+      ]
+    },
+    {
+      "row": 81,
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-03",
+      "previous_instrument": [
+        "02",
+        "AMBV4",
+        "010",
+        "",
+        "106"
+      ],
+      "current_instrument": [
+        "02",
+        "BAZA3",
+        "010",
+        "",
+        "145"
+      ]
+    }
+  ],
+  "instrument_order_regressions": 46245,
+  "instrument_date_regressions": 668,
+  "instrument_date_regression_samples": [
+    {
+      "row": 99,
+      "instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "previous_date": "2002-01-10",
+      "current_date": "2002-01-09"
+    },
+    {
+      "row": 15419,
+      "instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "previous_date": "2002-03-19",
+      "current_date": "2002-03-18"
+    },
+    {
+      "row": 18457,
+      "instrument": [
+        "02",
+        "ACES3",
+        "010",
+        "",
+        "131"
+      ],
+      "previous_date": "2002-04-02",
+      "current_date": "2002-04-01"
+    },
+    {
+      "row": 22700,
+      "instrument": [
+        "02",
+        "BGOS4",
+        "010",
+        "",
+        "133"
+      ],
+      "previous_date": "2002-01-07",
+      "current_date": "2002-01-04"
+    },
+    {
+      "row": 22707,
+      "instrument": [
+        "02",
+        "BHEQ4",
+        "010",
+        "",
+        "101"
+      ],
+      "previous_date": "2002-01-18",
+      "current_date": "2002-01-17"
+    },
+    {
+      "row": 28365,
+      "instrument": [
+        "02",
+        "CAFE4",
+        "010",
+        "",
+        "121"
+      ],
+      "previous_date": "2002-04-12",
+      "current_date": "2002-01-24"
+    },
+    {
+      "row": 30517,
+      "instrument": [
+        "96",
+        "CGOS3F",
+        "020",
+        "",
+        "105"
+      ],
+      "previous_date": "2002-03-27",
+      "current_date": "2002-01-22"
+    },
+    {
+      "row": 30519,
+      "instrument": [
+        "96",
+        "CGOS3F",
+        "020",
+        "",
+        "105"
+      ],
+      "previous_date": "2002-01-22",
+      "current_date": "2002-01-14"
+    },
+    {
+      "row": 30561,
+      "instrument": [
+        "02",
+        "CGOS6",
+        "010",
+        "",
+        "106"
+      ],
+      "previous_date": "2002-04-24",
+      "current_date": "2002-01-08"
+    },
+    {
+      "row": 31486,
+      "instrument": [
+        "96",
+        "CMGR3F",
+        "020",
+        "",
+        "103"
+      ],
+      "previous_date": "2002-04-15",
+      "current_date": "2002-03-25"
+    }
+  ],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
+      "blocking": false,
+      "detail": "A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2002."
+    }
+  ],
+  "weekday_distribution": {
+    "Wednesday": 50,
+    "Thursday": 51,
+    "Friday": 49,
+    "Monday": 51,
+    "Tuesday": 48
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2002-02-08",
+      "to": "2002-02-13",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "validated_at_utc": "2026-10-12T11:56:13.555472+00:00",
+  "deduplication_performed": false,
+  "rows_removed": 0
+}
