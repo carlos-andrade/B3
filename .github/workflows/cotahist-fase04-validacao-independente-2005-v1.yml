@@ -1,3 +1,4 @@
+# Reexecucao apos recuperar NORMALIZED 2005 com hashes/contagem coincidentes; validar artefato persistido independentemente.
 name: COTAHIST 2005 - FASE04 Validacao Independente
 
 on:
