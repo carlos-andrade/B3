@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2001,
+  "phase": "FASE01",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE02",
+  "evidence_kind": "VERIFICACAO_RETROSPECTIVA_DE_AQUISICAO",
+  "source": "B3",
+  "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2001.ZIP",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2001.ZIP",
+  "raw_sha256": "0386ca1b80d207ef9876fe64c2d48e9af1b827b3ecc0365c0e99db5cacf20eb5",
+  "manifest_path": "dados/cotahist/manifests/COTAHIST_A2001.json",
+  "checksum_path": "dados/cotahist/checksums/COTAHIST_A2001.ZIP.sha256",
+  "manifest_hash_match": true,
+  "sidecar_hash_match": true,
+  "manifest_status": "VALIDADO",
+  "acquired_at_utc_from_manifest": "2026-09-23T13:39:24.953035+00:00",
+  "validated_at_utc": "2026-10-12T11:19:07.171185+00:00",
+  "notes": "Verifica o RAW já persistido e sua proveniência; não altera nem substitui o arquivo original."
+}
