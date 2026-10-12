@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; próxima FASE11  
+**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; próxima FASE12  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -371,7 +371,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | GATE 06–08 | GATE_APROVADO | [COTAHIST_2005_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_GATE_06_08_V1.json) |
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2005_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE09_PRE_RELEASE_V1.json) |
 | FASE10 | VALIDADO | [COTAHIST_2005_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
-| FASE11–FASE12 | NÃO INICIADAS | Próxima: FASE11 — certificação anual; depois FASE12 de fechamento/transição |
+| FASE11 | CERTIFICADO | [COTAHIST_2005_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE11_CERTIFICACAO_V1.json) |
+| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2005 e verificação para transição controlada a 2006 |
 
 ### Integridade física COTAHIST 2005
 
@@ -452,3 +453,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - NORMALIZED SHA-256: `9fe7ee30e135223f5d414d7ed678f2973645c2f8779f7e94b7a148794e6a847c`.
 - RAW preservado; nenhuma deduplicação executada. A validação independente não certifica nem fecha o ano.
 - Próxima etapa: FASE11 — certificação anual.
+
+
+## Atualização operacional — FASE11 COTAHIST 2005 — 2026-10-12
+
+- Workflow: [COTAHIST 2005 — FASE11 Certificação](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase11-certificacao-2005-v1.yml)
+- Execução: [run 38253300794](https://github.com/carlos-andrade/B3/actions/runs/38253300794)
+- Evidência: [COTAHIST_2005_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2005_FASE11_CERTIFICACAO_V1.json)
+- Resultado: `CERTIFICADO`; decisão: `LIBERADO_PARA_FASE12`; bloqueadores: 0.
+- FASE10: 25 campos comparados independentemente, 181.408 registros, zero divergências; Gate 06–08 aprovado.
+- A certificação não fecha o ano nem autoriza automaticamente 2006. Isso depende da FASE12.
+- Próxima etapa: FASE12 — fechamento formal e verificação do RAW 2006 antes de autorizar a transição.
