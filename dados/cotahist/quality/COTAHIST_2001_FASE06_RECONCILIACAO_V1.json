@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2001,
+  "phase": "FASE06",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE07",
+  "raw_sha256": "0386ca1b80d207ef9876fe64c2d48e9af1b827b3ecc0365c0e99db5cacf20eb5",
+  "normalized_sha256": "d15b1d6b5a407a397c7deb6a555a8572d9f9f6539ab657821a2e08f9f186396a",
+  "phase05_status": "VALIDADO",
+  "raw_records": 141848,
+  "normalized_records": 141848,
+  "critical_fields_checked": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "preabe",
+    "premax",
+    "premin",
+    "premed",
+    "preult",
+    "totneg",
+    "quatot",
+    "voltot"
+  ],
+  "mismatch_count": 0,
+  "mismatch_sample": [],
+  "logical_key_uniqueness_assessment": "DEFERRED_TO_FASE07",
+  "raw_immutable": true,
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-12T11:21:20.234030+00:00"
+}
