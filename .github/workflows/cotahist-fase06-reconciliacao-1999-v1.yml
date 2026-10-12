@@ -33,13 +33,17 @@ jobs:
           raw = root / "dados/cotahist/raw/anual/COTAHIST_A1999.ZIP"
           norm = root / "dados/cotahist/normalized/anual/COTAHIST_A1999.csv"
           manifest = root / "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json"
+          f5 = root / "dados/cotahist/quality/COTAHIST_1999_FASE05_MANIFESTO_CHECKSUM_V1.json"
           ev = root / "dados/cotahist/quality/COTAHIST_1999_FASE06_RECONCILIACAO_V1.json"
 
-          for p in (raw, norm, manifest):
+          for p in (raw, norm, manifest, f5):
               if not p.exists():
                   sys.exit(f"FASE06 BLOQUEADA: ausente {p}")
 
           m = json.loads(manifest.read_text(encoding="utf-8"))
+          e5 = json.loads(f5.read_text(encoding="utf-8"))
+          if e5.get("status") != "VALIDADO" or e5.get("decision") != "LIBERADO_PARA_FASE06":
+              sys.exit("FASE06 BLOQUEADA: FASE05 não está VALIDADO")
           if m.get("status") not in {"VALIDADO", "VALIDADO_COM_EXCECAO"}:
               sys.exit(f"FASE06 BLOQUEADA: manifesto normalizado status={m.get('status')!r}")
 
@@ -62,6 +66,8 @@ jobs:
               s = rec[a-1:b].decode("ascii").strip()
               if not s:
                   return ""
+              if a == 3 and b == 10:
+                  return datetime.datetime.strptime(s, "%Y%m%d").date().isoformat()
               return str(Decimal(s) / Decimal(scale))
 
           with zipfile.ZipFile(raw) as z:
@@ -128,9 +134,14 @@ jobs:
           print("mismatch_count: 0")
           PY
 
-      - name: Publicar evidência FASE06
-        if: success()
+      - name: Persistir evidência FASE06 inclusive quando bloqueada
+        if: always()
         run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_1999_FASE06_RECONCILIACAO_V1.json || {
+            echo "Nenhuma evidência FASE06 foi produzida; pré-condição falhou antes da reconciliação."
+            exit 0
+          }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/quality/COTAHIST_1999_FASE06_RECONCILIACAO_V1.json
@@ -138,6 +149,7 @@ jobs:
             echo "Nenhuma alteração na evidência."
             exit 0
           fi
-          git commit -m "audit(cotahist): validar 1999 fase 06 reconciliacao"
-          git pull --rebase origin main
+          git commit -m "audit(cotahist): persistir resultado fase 06 1999"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
