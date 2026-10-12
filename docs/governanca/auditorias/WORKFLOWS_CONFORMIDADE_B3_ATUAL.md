@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-12T16:28:36.760006+00:00
-Workflows auditados: 280
+Gerado em UTC: 2026-10-12T16:29:13.030260+00:00
+Workflows auditados: 281
 
 ## Regra de decisão
 
@@ -210,6 +210,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase09-prerelease-2004-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2005-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2006-v1.yml | 9 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase09-prerelease-2007-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1988-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1989-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
