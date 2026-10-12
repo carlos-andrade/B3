@@ -2,7 +2,7 @@
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; próxima FASE11  
+**Estado:** 1999–2003 fechados/certificados; COTAHIST 2004 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; próxima FASE12  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -235,7 +235,8 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | GATE 06–08 | GATE_APROVADO | [COTAHIST_2004_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_GATE_06_08_V1.json) |
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2004_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE09_PRE_RELEASE_V1.json) |
 | FASE10 | VALIDADO | [COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
-| FASE11–FASE12 | NÃO INICIADAS | Próxima: FASE11 — certificação anual; depende da evidência independente da FASE10 |
+| FASE11 | CERTIFICADO | [COTAHIST_2004_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE11_CERTIFICACAO_V1.json) |
+| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2004 e autorização controlada da transição para 2005 |
 
 ### Estado físico de entrada 2004
 
@@ -328,3 +329,14 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 - SHA-256 NORMALIZED: `3c8521b70bcd9b3dbdbe94df6008be46b65a4bfd589d59aa798f22d8cac2bb77`.
 - RAW preservado; nenhuma deduplicação executada. A validação independente não certifica nem fecha o ano.
 - Próxima etapa: FASE11 — certificação anual.
+
+
+## Atualização operacional — FASE11 COTAHIST 2004 — 2026-10-12
+
+- Workflow: [COTAHIST 2004 — FASE11 Certificação](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase11-certificacao-2004-v1.yml)
+- Execução: [run 38252431324](https://github.com/carlos-andrade/B3/actions/runs/38252431324)
+- Evidência: [COTAHIST_2004_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2004_FASE11_CERTIFICACAO_V1.json)
+- Estado: `CERTIFICADO`; decisão: `LIBERADO_PARA_FASE12`; bloqueadores: 0.
+- FASE10 independente: 25 campos, 166.937 registros, zero divergências.
+- Escopo da certificação: integridade e consistência do conjunto COTAHIST 2004 conforme evidências anteriores; não certifica estratégias de investimento e não autoriza deduplicação.
+- Próxima etapa: FASE12 — fechamento formal do ano e verificação das condições de transição para 2005.
