@@ -1,0 +1,137 @@
+name: COTAHIST 1999 - FASE04 Validacao Independente
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml"
+      - "dados/cotahist/normalized/anual/COTAHIST_A1999.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256"
+      - "dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase04-validacao-independente-1999-v1
+  cancel-in-progress: false
+
+jobs:
+  validacao-independente:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A1999.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A1999.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256
+            dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json
+            dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar NORMALIZED persistido, hashes, esquema e FASE03
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, sys, datetime
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A1999.ZIP")
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A1999.csv")
+          manifest_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A1999_quality.json")
+          sidecar_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A1999.csv.sha256")
+          f3_path = pathlib.Path("dados/cotahist/quality/COTAHIST_1999_FASE03_PARSING_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json")
+          for p in (raw, csv_path, manifest_path, sidecar_path, f3_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE04 BLOQUEADA: arquivo ausente/vazio: {p}")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          f3 = json.loads(f3_path.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          csv_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest()
+          sidecar_sha = sidecar_path.read_text(encoding="utf-8").strip().split()[0]
+          if f3.get("status") != "VALIDADO" or f3.get("decision") != "LIBERADO_PARA_FASE04":
+              sys.exit("FASE04 BLOQUEADA: FASE03 não está VALIDADO")
+          if raw_sha != manifest.get("raw_sha256"):
+              sys.exit("FASE04 BLOQUEADA: SHA do RAW diverge do manifesto normalizado")
+          if csv_sha != manifest.get("normalized_sha256") or csv_sha != sidecar_sha:
+              sys.exit(f"FASE04 BLOQUEADA: CSV SHA={csv_sha}; manifesto={manifest.get('normalized_sha256')}; sidecar={sidecar_sha}")
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              fields = reader.fieldnames or []
+              rows = list(reader)
+          if len(fields) != 25 or any(len(row) != 25 for row in rows):
+              sys.exit("FASE04 BLOQUEADA: esquema não tem 25 campos por registo")
+          if len(rows) != manifest.get("linhas_normalized"):
+              sys.exit(f"FASE04 BLOQUEADA: linhas={len(rows)}; manifesto={manifest.get('linhas_normalized')}")
+          dates = [row.get("data_pregao", "") for row in rows]
+          if not dates or any(not d.startswith("1999-") for d in dates):
+              sys.exit("FASE04 BLOQUEADA: datas ausentes ou fora de 1999")
+          first, last = min(dates), max(dates)
+          if first != manifest.get("primeira_data") or last != manifest.get("ultima_data"):
+              sys.exit("FASE04 BLOQUEADA: intervalo de datas diverge do manifesto")
+          out = {
+            "schema_version": "1.0.0",
+            "year": 1999,
+            "phase": "FASE04",
+            "status": "VALIDADO",
+            "decision": "LIBERADO_PARA_FASE05",
+            "validation_type": "VALIDACAO_INDEPENDENTE_DO_ARTEFATO_PERSISTIDO",
+            "raw_path": str(raw),
+            "raw_sha256_calculated": raw_sha,
+            "normalized_path": str(csv_path),
+            "normalized_sha256_calculated": csv_sha,
+            "normalized_sha256_manifest": manifest.get("normalized_sha256"),
+            "normalized_sha256_sidecar": sidecar_sha,
+            "hash_manifest_match": True,
+            "hash_sidecar_match": True,
+            "phase03_evidence_path": str(f3_path),
+            "phase03_status": f3.get("status"),
+            "rows_calculated": len(rows),
+            "rows_manifest": manifest.get("linhas_normalized"),
+            "fields": len(fields),
+            "first_date": first,
+            "last_date": last,
+            "invalid_dates": 0,
+            "raw_modified": False,
+            "deduplication_performed": False,
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "limitations": ["A reconciliação linha a linha RAW × NORMALIZED pertence à FASE06."]
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência canónica FASE04
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_1999_FASE04_NORMALIZACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar independentemente fase 04 1999"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 1999 — FASE04"
+            echo "- Validação independente do NORMALIZED persistido."
+            echo "- A FASE06 continua necessária para reconciliação linha a linha."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
