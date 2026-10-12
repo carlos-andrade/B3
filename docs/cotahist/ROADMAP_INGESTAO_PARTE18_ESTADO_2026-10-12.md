@@ -52,19 +52,19 @@ A evidência REC-001 anterior comparava as linhas físicas desde a primeira linh
 
 Correção publicada no commit `4cdafbfdc62803be8bc6fa823577f38dca176b3b`: comparar apenas registos tipo `01`, preservando a ordem física, reportando a primeira divergência real, posição comum e se cada fluxo se esgotou. Os cabeçalhos tipo `00` e trailers tipo `99` ficam explicitamente fora da comparação de sobreposição.
 
-**Estado desta correção:** o workflow REC-001 foi acionado, mas a execução que usa o novo comparador ainda não terminou no momento da atualização. Não declarar `PASS_OVERLAP_EXACT` até verificar a evidência recém-gerada.
+**Resultado verificado em 2026-10-12:** execução #210 concluída com sucesso técnico e evidência persistida. O comparador eliminou o falso positivo do cabeçalho e identificou divergência real na posição 222.003 dos registos tipo `01`, na data 2026-01-02 (`ABCBA235` no snapshot B3 versus `ABCBA243` no RAW BLOOMBERG_MAIL). Os 222.002 registos anteriores coincidem byte a byte. Estado de negócio: `FAIL_CONTENT_DIVERGENCE`; promoção bloqueada. A causa da divergência deve ser investigada, sem afrouxar a comparação nem assumir que a diferença é legítima antes de consultar os registos originais e a eventual política de retificações.
 
 ## 3. Roadmap por marco
 
 | Marco | Estado observado | Próxima ação |
 |---|---|---|
 | COTAHIST 1986–2003 | Histórico de ingestão e certificação com exceções específicas por ano | Preservar evidências e não presumir uniformidade entre anos |
-| COTAHIST 2004 | FASE00–FASE04 registadas como validadas na continuidade anterior | Confirmar evidências e avançar FASE05 em sequência |
+| COTAHIST 2004 | FASE00–FASE05 validadas; FASE05 confirmou hashes RAW/NORMALIZED, integridade ZIP, 166.937 linhas e 25 campos | FASE06 em execução: reconciliação semântica linha a linha dos campos críticos |
 | COTAHIST 2005 | FASE12 registada como concluída, com transição controlada | Preservar fechamento e evidências |
 | COTAHIST 2006 | FASE00 aprovada em execução do GitHub Actions | Continuar a partir da fase seguinte prevista no plano |
 | Certificação anual | **PASS** — execução #32 concluída com sucesso; matriz contém 41 anos certificados | Manter teste de regressão para versões homologadas |
 | Dataset oficial | **PASS** — execução #24 concluída com sucesso; manifesto oficial publicado para 1986–2026 | Validar consistência entre manifesto, matriz e hashes em auditoria independente |
-| REC-001 B3 × BLOOMBERG_MAIL | Workflow e comparador corrigidos; execução do comparador novo pendente | Verificar resultado de sobreposição, hashes e persistência da evidência |
+| REC-001 B3 × BLOOMBERG_MAIL | **FAIL_CONTENT_DIVERGENCE**; 222.002 registos tipo 01 coincidem; primeira diferença na posição 222.003, em 2026-01-02 | Investigar o par de registos divergentes e classificar causa; manter promoção bloqueada até resolução |
 | Auditoria de workflows | **PASS** — execução #258 terminou com sucesso após a correção do workflow REC-001 | Reexecutar após o fim das execuções antigas e confirmar ausência de novos conflitos |
 
 ## 4. Critérios de aceite para publicação do dataset oficial
@@ -91,6 +91,6 @@ A publicação só pode ser considerada aprovada se:
 
 ## 6. Registo de execução desta parte
 
-As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação. A REC-001 ainda está em execução após a correção do comparador; a sua aprovação continua pendente de resultado final e evidência atualizada.
+As correções foram publicadas em `main`. A certificação anual #32, a geração do dataset oficial #24 e a auditoria de workflows #258 terminaram com sucesso. A matriz contém 41 anos sem falhas de certificação, mantendo explícita a exceção semântica controlada de 1986. A REC-001 #210 terminou com sucesso técnico, mas a comparação de negócio está bloqueada por divergência real na posição 222.003. A FASE05 de 2004 foi executada na run #2 e validou hashes e estrutura; a FASE06 foi acionada após esse gate e aguarda resultado.
 
 **Regra de governança:** não saltar fases, não substituir evidência por inferência, não remover registos para forçar reconciliação e não promover o dataset quando os gates falharem.
