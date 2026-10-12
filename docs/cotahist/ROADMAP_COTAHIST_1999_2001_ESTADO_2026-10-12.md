@@ -1,8 +1,8 @@
-# ROADMAP COTAHIST 1999–2003 — Estado em 2026-10-12
+# ROADMAP COTAHIST 1999–2004 — Estado em 2026-10-12
 
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2003 com FASE00–FASE11 concluídas; 2003 CERTIFICADO, aguardando fechamento FASE12  
+**Estado:** 1999–2003 fechados/certificados; transição controlada para 2004 autorizada, CSV NORMALIZED 2004 ainda ausente  
 **Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
 **Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
 
@@ -207,11 +207,26 @@ FASE10 comparou independentemente os 25 campos do RAW com o NORMALIZED: 153.682 
 | FASE09 | LIBERADO_PARA_FASE10 | [COTAHIST_2003_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE09_PRE_RELEASE_V1.json) |
 | FASE10 | VALIDADO | [COTAHIST_2003_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE10_VALIDACAO_INDEPENDENTE_V1.json) |
 | FASE11 | CERTIFICADO | [COTAHIST_2003_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE11_CERTIFICACAO_V1.json) |
-| FASE12 | NÃO INICIADA | Próxima: fechamento formal de 2003 e transição controlada para 2004 |
+| FASE12 | FECHADO_COM_TRANSICAO_CONTROLADA | [COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json) |
 
 ### Estado físico de entrada 2003
 
 - RAW: `dados/cotahist/raw/anual/COTAHIST_A2003.ZIP`
 - SHA-256 RAW/manifesto/sidecar: `bcd337ebc1d92c190c4d8b77f582d2ec0890a8705fd5c10d68b28fa1eb15a2f0`
 - ZIP: um membro, zero comprimentos inválidos, 148.112 registos tipo `01` e registos `00`/ `99` presentes.
+- NORMALIZED: ausente; reconstrução só na FASE04.
+
+
+## COTAHIST 2004 — Estado atual
+
+| Fase | Estado | Evidência |
+|---|---|---|
+| Transição 2003→2004 | AUTORIZADA | [COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2003_FASE12_FECHAMENTO_2004_ABERTURA_V1.json) |
+| FASE00–FASE12 | NÃO INICIADAS | Próxima: FASE00 — governança/pré-condições |
+
+### Estado físico de entrada 2004
+
+- RAW: `dados/cotahist/raw/anual/COTAHIST_A2004.ZIP`
+- SHA-256 RAW/manifesto/sidecar: `f750ba8ee9e25299ed96811979befb29315d91667fedc3885c709440b4989467`
+- ZIP: um membro, zero comprimentos inválidos, 166.937 registos tipo `01` e registos `00`/ `99` presentes.
 - NORMALIZED: ausente; reconstrução só na FASE04.
