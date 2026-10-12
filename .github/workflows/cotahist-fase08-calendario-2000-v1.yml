@@ -129,8 +129,8 @@ jobs:
             "source_order_classified_by_row_reconciliation": source_order_classified,
             "blockers": [] if source_order_classified else ["ORDEM_DA_FONTE_NAO_CLASSIFICADA"],
             "exceptions": ([{
-              "code":"FONTE_ORDENADA_POR_INSTRUMENTO_NAO_POR_DATA",
-              "classification":"EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS",
+              "code":"ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+              "classification":"EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
               "blocking":False,
               "detail":"A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
             }] if source_order_classified and out_of_order else []) + [{
