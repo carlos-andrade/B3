@@ -1,3 +1,4 @@
+# Reexecucao apos FASE05 VALIDADO; reconciliar campos criticos RAW x NORMALIZED sem deduplicar.
 name: COTAHIST 2005 - FASE06 Reconciliacao Semantica
 
 on:
