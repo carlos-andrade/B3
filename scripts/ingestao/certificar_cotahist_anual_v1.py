@@ -13,7 +13,8 @@ MANIFESTS = ROOT / "dados" / "cotahist" / "normalized" / "manifests"
 OUT = ROOT / "dados" / "cotahist" / "certificacao" / "COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
 
 YEARS = range(1986, 2027)
-PARSER_VERSION = "1.1.0"
+# Versoes explicitamente reconhecidas apos validacao dos manifestos historicos.
+SUPPORTED_PARSER_VERSIONS = {"1.1.0", "1.1.1", "1.1.2"}
 
 FIELDS = [
     "ano", "raw_present", "quality_manifest_present", "quality_status",
@@ -45,7 +46,7 @@ def main() -> None:
         outside = data.get("datas_fora_do_ano", "")
 
         structural_ok = (
-            raw and present and status == "VALIDADO" and parser == PARSER_VERSION
+            raw and present and status == "VALIDADO" and parser in SUPPORTED_PARSER_VERSIONS
             and fields == 25 and invalid == 0 and outside == 0
         )
 
