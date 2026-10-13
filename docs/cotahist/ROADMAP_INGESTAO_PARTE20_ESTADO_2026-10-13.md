@@ -1428,3 +1428,28 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. Gate 06–08 (2020): publicar, executar e verificar.
 3. FASE09–FASE12: somente após o Gate.
 
+## 53. COTAHIST 2020 — Gate 06–08 validado; FASE09 publicada (2026-10-13)
+
+### Gate independente FASE06–FASE08
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_GATE_06_08_V1.json`, blob `ca9f838b086ed5691539e62ab87238e1df8c04a9`.
+- Decisão: `LIBERADO_PARA_FASE09`; zero bloqueadores.
+- 1.251.646 linhas, 25 campos, 249 datas; hashes NORMALIZED concordantes nas FASE06/07/08; zero datas inválidas/fora do ano e nenhuma data de fim de semana.
+- 45.574 regressões cronológicas aceites como exceção explícita não bloqueadora; zero regressões temporais por instrumento; nenhuma deduplicação.
+
+### FASE09 — Pre-release
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase09-prerelease-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase09-prerelease-2020-v1.yml
+- Commit: `5b28c1aa4b4c14aa0faa5198b6c262ebcb4cb1dc`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE09_PRE_RELEASE_V1.json`.
+- Gate `VALIDADO_COM_EXCECAO` / `LIBERADO_PARA_FASE09`; verificar artefactos, hashes e exceções classificadas antes da FASE10.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 (2020): validadas.
+2. Gate 06–08 (2020): VALIDADO_COM_EXCECAO, zero bloqueadores.
+3. FASE09 (2020): workflow publicado; verificar run/evidência.
+4. FASE10–FASE12: dependem da FASE09 e da validação independente dos 25 campos.
+
