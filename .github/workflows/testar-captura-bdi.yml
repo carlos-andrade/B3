@@ -19,6 +19,7 @@ on:
         default: "auto"
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -56,3 +57,8 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+      - name: Reavaliar atualidade após captura
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run watchdog-data-freshness.yml --ref main --repo "$GH_REPO"
