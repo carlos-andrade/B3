@@ -1,4 +1,5 @@
 # Reexecução controlada: aceita o Gate 06–08 com exceções explicitamente não bloqueadoras.
+# Rerun phase 11 for 2016 after FASE10 evidence.
 name: COTAHIST 2016 - FASE11 Certificacao
 
 on:
