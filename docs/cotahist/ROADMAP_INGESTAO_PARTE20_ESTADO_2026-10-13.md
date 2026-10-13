@@ -1238,3 +1238,23 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Não reutilizar evidências/certificações de 2019 para 2020.
 4. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
 
+## 45. COTAHIST 2020 — FASE00 validada; FASE01 em execução (2026-10-13)
+
+### FASE00 — Governação
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE00_GOVERNANCA_V1.json`.
+- Estado: `VALIDADO`; decisão `AUTORIZAR_FASE01`; zero bloqueadores.
+- Layout Mestre V1.0.1 confirmado; transição 2019→2020 `FECHADO_COM_TRANSICAO_CONTROLADA`.
+- RAW 2020 presente; manifesto B3 ano 2020 presente. CSV NORMALIZED ausente, com reconstrução prevista após FASE01–03.
+
+### FASE01 — Aquisição RAW
+- Workflow: `.github/workflows/cotahist-fase01-aquisicao-2020-v1.yml`.
+- Estado: run iniciado; evidência `dados/cotahist/quality/COTAHIST_2020_FASE01_AQUISICAO_RAW_V1.json` pendente.
+- SHA-256 esperado conforme manifesto/sidecar: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+- Só avançar quando RAW físico, manifesto e sidecar coincidirem na evidência.
+
+### Roadmap operacional imediato
+1. FASE00 (2020): VALIDADO.
+2. FASE01 (2020): executar/verificar.
+3. FASE02–FASE03 (2020): após a FASE01.
+4. FASE04 (2020): reconstruir NORMALIZED apenas depois de parsing validado; RAW imutável.
+
