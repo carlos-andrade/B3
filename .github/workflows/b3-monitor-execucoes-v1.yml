@@ -35,18 +35,32 @@ jobs:
           from pathlib import Path
 
           repo = os.environ["GITHUB_REPOSITORY"]
-          raw = subprocess.check_output([
-              "gh", "api", "-X", "GET", f"repos/{repo}/actions/runs?per_page=100"
-          ], text=True)
-          data = json.loads(raw)
-          runs = data.get("workflow_runs", [])
           now = datetime.datetime.now(datetime.timezone.utc)
           cutoff = now - datetime.timedelta(hours=24)
           recent = []
-          for run in runs:
-              created = datetime.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
-              if created >= cutoff:
-                  recent.append(run)
+          page = 1
+          pages_fetched = 0
+          while True:
+              raw = subprocess.check_output([
+                  "gh", "api", "-X", "GET",
+                  f"repos/{repo}/actions/runs?per_page=100&page={page}"
+              ], text=True)
+              data = json.loads(raw)
+              page_runs = data.get("workflow_runs", [])
+              pages_fetched += 1
+              if not page_runs:
+                  break
+              page_dates = []
+              for run in page_runs:
+                  created = datetime.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+                  page_dates.append(created)
+                  if created >= cutoff:
+                      recent.append(run)
+              # GitHub returns workflow runs newest-first; once a full page is
+              # entirely older than the cutoff, older pages cannot contribute.
+              if all(created < cutoff for created in page_dates) or len(page_runs) < 100:
+                  break
+              page += 1
 
           counts = Counter(run["conclusion"] or run["status"] for run in recent)
           unfavorable = {"failure", "timed_out", "action_required", "stale"}
@@ -63,6 +77,7 @@ jobs:
               "window_hours": 24,
               "result": overall,
               "runs_observed": len(recent),
+              "pages_fetched": pages_fetched,
               "distribution": dict(counts),
               "unfavorable_runs": [
                   {"name": r["name"], "run_number": r["run_number"],
@@ -77,7 +92,7 @@ jobs:
                   for r in active[:100]
               ],
               "limitations": [
-                  "O relatório cobre apenas as execuções devolvidas pela API na janela indicada.",
+                  "O relatório pagina a API até ultrapassar a janela móvel de 24 horas; páginas antigas não são consultadas depois do corte.",
                   "A execução do próprio monitor precisa de supervisão externa independente.",
                   "FAVORAVEL não certifica a qualidade dos dados de negócio."
               ]
@@ -93,6 +108,7 @@ jobs:
               f"**Verificado em UTC:** {now.isoformat()}",
               "**Janela:** últimas 24 horas",
               f"**Execuções observadas:** {len(recent)}",
+              f"**Páginas consultadas:** {pages_fetched}",
               f"**Distribuição:** {dict(counts)}",
               "",
               "## Execuções não favoráveis"
