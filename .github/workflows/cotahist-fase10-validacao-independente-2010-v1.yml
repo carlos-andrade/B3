@@ -1,0 +1,191 @@
+name: COTAHIST 2010 - FASE10 Validacao Independente Integral
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase10-validacao-independente-2010-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2010_FASE09_PRE_RELEASE_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase10-validacao-independente-2010-v1
+  cancel-in-progress: false
+
+jobs:
+  validacao-independente:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase10-validacao-independente-2010-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2010.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A2010.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2010_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2010.csv.sha256
+            dados/cotahist/quality/COTAHIST_2010_FASE09_PRE_RELEASE_V1.json
+            dados/cotahist/quality/COTAHIST_2010_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Comparar independentemente os 25 campos do RAW com o NORMALIZED
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, sys, zipfile, datetime
+          from decimal import Decimal
+          raw_path = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2010.ZIP")
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2010.csv")
+          manifest_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2010_quality.json")
+          sidecar_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2010.csv.sha256")
+          f9_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2010_FASE09_PRE_RELEASE_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2010_FASE10_VALIDACAO_INDEPENDENTE_V1.json")
+          for p in (raw_path, csv_path, manifest_path, sidecar_path, f9_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE10 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f9 = json.loads(f9_path.read_text(encoding="utf-8"))
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          if f9.get("status") != "LIBERADO_PARA_FASE10":
+              sys.exit("FASE10 BLOQUEADA: FASE09 não liberou a validação independente")
+          raw_sha = hashlib.sha256(raw_path.read_bytes()).hexdigest()
+          csv_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest()
+          sidecar_parts = sidecar_path.read_text(encoding="utf-8").strip().split()
+          sidecar_sha = sidecar_parts[0] if sidecar_parts else ""
+          if raw_sha != manifest.get("raw_sha256"):
+              sys.exit("FASE10 BLOQUEADA: hash RAW diverge do manifesto")
+          if csv_sha != manifest.get("normalized_sha256") or csv_sha != sidecar_sha:
+              sys.exit("FASE10 BLOQUEADA: hash NORMALIZED diverge do manifesto/sidecar")
+          fields = [
+            ("data_pregao",3,10,"date",0), ("codbdi",11,12,"str",0),
+            ("codneg",13,24,"str",0), ("tpmerc",25,27,"str",0),
+            ("nomres",28,39,"str",0), ("especi",40,49,"str",0),
+            ("prazot",50,52,"str",0), ("modref",53,56,"str",0),
+            ("preabe",57,69,"price",2), ("premax",70,82,"price",2),
+            ("premin",83,95,"price",2), ("premed",96,108,"price",2),
+            ("preult",109,121,"price",2), ("preofc",122,134,"price",2),
+            ("preofv",135,147,"price",2), ("totneg",148,152,"int",0),
+            ("quatot",153,170,"int",0), ("voltot",171,188,"money",2),
+            ("preexe",189,201,"price",2), ("indopc",202,202,"str",0),
+            ("datven",203,210,"date",0), ("fatcot",211,217,"int",0),
+            ("ptoexe",218,230,"price",6), ("codisi",231,242,"str",0),
+            ("dismes",243,245,"str",0)
+          ]
+          def parse(raw, kind, scale):
+              if kind == "str":
+                  return raw.decode("latin-1").strip()
+              value = raw.decode("ascii", "strict").strip()
+              if kind == "date":
+                  if value in {"", "00000000"}:
+                      return ""
+                  return datetime.datetime.strptime(value, "%Y%m%d").strftime("%Y-%m-%d")
+              if not value:
+                  return ""
+              if kind == "int":
+                  return str(int(value))
+              if kind in {"price", "money"}:
+                  return str(Decimal(value) / (Decimal(10) ** scale))
+              raise ValueError(f"tipo desconhecido: {kind}")
+          with zipfile.ZipFile(raw_path) as z:
+              members = [n for n in z.namelist() if not n.endswith("/")]
+              if len(members) != 1 or z.testzip() is not None:
+                  sys.exit("FASE10 BLOQUEADA: ZIP inválido")
+              with z.open(members[0]) as f:
+                  source_lines = [line.rstrip(b"\r\n") for line in f]
+          bad_lengths = sum(1 for line in source_lines if len(line) != 245)
+          types = {}
+          for line in source_lines:
+              kind = line[:2].decode("ascii", "replace")
+              types[kind] = types.get(kind, 0) + 1
+          if bad_lengths or types.get("00") != 1 or types.get("99") != 1:
+              sys.exit("FASE10 BLOQUEADA: estrutura RAW inválida")
+          raw_rows = [[parse(line[a-1:b], kind, scale) for _,a,b,kind,scale in fields] for line in source_lines if line[:2] == b"01"]
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              header = reader.fieldnames or []
+              normalized_rows = [[row.get(name, "") for name, *_ in fields] for row in reader]
+          if header != [name for name, *_ in fields]:
+              sys.exit("FASE10 BLOQUEADA: cabeçalho/ordem de campos divergente")
+          mismatches = []
+          if len(raw_rows) != len(normalized_rows):
+              mismatches.append({"type":"ROW_COUNT","raw":len(raw_rows),"normalized":len(normalized_rows)})
+          for idx, (rrow, nrow) in enumerate(zip(raw_rows, normalized_rows), start=1):
+              for col, (rv, nv) in enumerate(zip(rrow, nrow)):
+                  if rv != nv:
+                      mismatches.append({"row":idx,"field":fields[col][0],"raw":rv,"normalized":nv})
+                      if len(mismatches) >= 25:
+                          break
+              if len(mismatches) >= 25:
+                  break
+          ok = not mismatches and len(raw_rows) == manifest.get("linhas_normalized")
+          out = {
+            "schema_version":"1.0.0",
+            "year":2010,
+            "phase":"FASE10",
+            "status":"VALIDADO" if ok else "BLOQUEADO",
+            "decision":"LIBERADO_PARA_FASE11" if ok else "BLOQUEADO_PARA_FASE11",
+            "validation_type":"INDEPENDENT_RAW_TO_NORMALIZED_ALL_FIELDS",
+            "phase09_status":f9.get("status"),
+            "raw_sha256":raw_sha,
+            "normalized_sha256":csv_sha,
+            "raw_record_count":len(raw_rows),
+            "normalized_record_count":len(normalized_rows),
+            "record_length_bytes":245,
+            "record_type_counts":types,
+            "fields_checked":[name for name,*_ in fields],
+            "field_count":len(fields),
+            "mismatch_count":len(mismatches),
+            "mismatch_sample":mismatches,
+            "raw_modified":False,
+            "deduplication_performed":False,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "note":"FASE10 é validação independente; não substitui nem retrocertifica FASE00–09."
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not ok:
+              sys.exit("FASE10 BLOQUEADA: reconciliação independente encontrou divergências")
+          PY
+
+      - name: Persistir resultado FASE10 mesmo quando bloqueado
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2010_FASE10_VALIDACAO_INDEPENDENTE_V1.json || {
+            echo "Nenhuma evidência FASE10 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2010_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir validacao independente fase 10 2010"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2010 — FASE10"
+            echo "- Validação independente de todos os 25 campos contra o RAW."
+            echo "- Não substitui as fases 00–09 nem certifica o ano."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
