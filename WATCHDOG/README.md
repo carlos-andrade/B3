@@ -8,6 +8,7 @@
 O projeto B3 tem um workflow de monitorização de execuções GitHub Actions:
 
 - Workflow: [B3 - Monitor independente de execuções V1](../.github/workflows/b3-monitor-execucoes-v1.yml)
+- Guia de heartbeat externo: [heartbeat-supervisor-externo.md](heartbeat-supervisor-externo.md)
 - Cadência declarada: a cada 15 minutos, além de execução manual.
 - Janela analisada: últimas 24 horas.
 - Sinais recolhidos: execuções desfavoráveis e execuções ainda ativas.
@@ -17,7 +18,7 @@ O projeto B3 tem um workflow de monitorização de execuções GitHub Actions:
 
 ## Estado e limitações conhecidas
 
-A configuração do workflow e a execução da validação do inventário estão confirmadas. Os relatórios do monitor são publicados como artefactos com retenção configurada de 30 dias; os artefactos do GitHub não são um arquivo imutável nem uma garantia de retenção permanente. Os alertas são issues do GitHub, não notificações externas; confirmação de receção e SLA de escalonamento ainda não estão implementados. A supervisão externa do próprio GitHub Actions permanece pendente.
+A configuração do workflow e a execução da validação do inventário estão confirmadas. Os relatórios do monitor são publicados como artefactos com retenção configurada de 30 dias; os artefactos do GitHub não são um arquivo imutável nem uma garantia de retenção permanente. Os alertas são issues do GitHub, não notificações externas; confirmação de receção e SLA de escalonamento ainda não estão implementados. Os hooks de heartbeat externo estão preparados, mas a supervisão só ficará ativa depois de configurar as secrets `WATCHDOG_HEARTBEAT_WORKFLOWS_URL` e `WATCHDOG_HEARTBEAT_DATA_URL` e validar o serviço externo. Consulte o [guia de supervisão externa](heartbeat-supervisor-externo.md).
 
 O resultado `FAVORAVEL` significa apenas que, na janela analisada pelo script, não foram encontrados resultados desfavoráveis nem execuções ativas. Não é certificação global da qualidade dos dados B3.
 
