@@ -1,3 +1,4 @@
+# Execução controlada após FASE06 VALIDADO; não deduplica nem remove linhas.
 name: COTAHIST 2015 - FASE07 Identidade e Cardinalidade
 
 on:
