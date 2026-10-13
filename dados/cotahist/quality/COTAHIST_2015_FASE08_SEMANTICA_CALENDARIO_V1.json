@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2015,
+  "phase": "FASE08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
+  "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2015.csv",
+  "normalized_sha256": "9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 414177,
+  "unique_trading_dates": 246,
+  "first_trading_date": "2015-01-02",
+  "last_trading_date": "2015-12-30",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 0,
+  "chronological_regression_samples": [],
+  "instrument_order_regressions": 94112,
+  "instrument_date_regressions": 0,
+  "instrument_date_regression_samples": [],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false,
+      "detail": "A métrica instrument_order_regressions conta transições decrescentes da tupla de identidade do instrumento na ordem cronológica original. A fonte não é obrigada a ordenar globalmente por essa tupla; a consistência temporal por instrumento é avaliada separadamente por instrument_date_regressions."
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2015."
+    }
+  ],
+  "weekday_distribution": {
+    "Friday": 48,
+    "Monday": 48,
+    "Tuesday": 50,
+    "Wednesday": 52,
+    "Thursday": 48
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2015-02-13",
+      "to": "2015-02-18",
+      "calendar_days": 5
+    },
+    {
+      "from": "2015-12-23",
+      "to": "2015-12-28",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "validated_at_utc": "2026-10-13T11:18:55.391986+00:00",
+  "deduplication_performed": false,
+  "rows_removed": 0
+}
