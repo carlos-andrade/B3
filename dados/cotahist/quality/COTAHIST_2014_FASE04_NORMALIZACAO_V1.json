@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2014,
+  "phase": "FASE04",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE05",
+  "validation_type": "VALIDACAO_INDEPENDENTE_DO_ARTEFATO_PERSISTIDO",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2014.csv",
+  "normalized_sha256_calculated": "af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01",
+  "normalized_sha256_manifest": "af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01",
+  "normalized_sha256_sidecar": "af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01",
+  "hash_manifest_match": true,
+  "hash_sidecar_match": true,
+  "phase03_evidence_path": "dados/cotahist/quality/COTAHIST_2014_FASE03_PARSING_V1.json",
+  "phase03_status": "VALIDADO",
+  "rows_calculated": 392228,
+  "rows_manifest": 392228,
+  "fields": 25,
+  "first_date": "2014-01-02",
+  "last_date": "2014-12-30",
+  "raw_modified": false,
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T10:00:08.175785+00:00",
+  "limitations": [
+    "A reconciliação linha a linha RAW × NORMALIZED pertence à FASE06."
+  ]
+}
