@@ -1893,3 +1893,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE09: enfileirada; verificar evidência.
 4. FASE10: executar após FASE09 e exigir zero divergências nos 25 campos.
 
+## 69. COTAHIST 2021 — FASE09 liberada; FASE10 em fila (2026-10-13)
+
+### FASE09 — Pre-release
+**Estado: LIBERADO_PARA_FASE10 — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE09_PRE_RELEASE_V1.json`, blob `fff72fc5adcbe6ca1b657fc4edb984642b927f5f`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481844157 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE10`; `missing=[]`, `blocked=[]`.
+- Gate: `VALIDADO_COM_EXCECAO / LIBERADO_PARA_FASE09`.
+- SHA-256 RAW: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`.
+- SHA-256 NORMALIZED: `0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2`.
+- FASE09 consolida as evidências e não retrocertifica fases anteriores; as exceções de ordenação continuam explícitas.
+
+### FASE10 — Validação independente dos 25 campos
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481931550.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- Gate: FASE09 liberada; hashes RAW/NORMALIZED devem conferir com manifesto/sidecar/FASE09; ZIP íntegro; comparação independente dos 25 campos, em ordem original.
+- Só avançar para FASE11 se a evidência confirmar `VALIDADO`, `LIBERADO_PARA_FASE11`, 25 campos e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE09 (2021): validadas/liberadas conforme evidências persistidas, com exceções temporais explícitas.
+2. FASE10: enfileirada; verificar execução, hashes e zero divergências nos 25 campos.
+3. FASE11: somente após FASE10 validada.
+4. Preservar RAW/CSV e as evidências históricas V1/V2; nenhuma deduplicação.
+
