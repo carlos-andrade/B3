@@ -1185,3 +1185,32 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE12: somente após certificação, verificar transição RAW para 2020 sem certificar automaticamente 2020.
 4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 43. COTAHIST 2019 — FASE11 certificada; FASE12 publicada (2026-10-13)
+
+### FASE11 — Certificação
+**Estado: CERTIFICADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE11_CERTIFICACAO_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2019_FASE11_CERTIFICACAO_V1.json
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38434701113 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE12`; zero bloqueadores.
+- FASE10: zero divergências nos 25 campos; Gate 06–08 `VALIDADO_COM_EXCECAO`, sem bloqueadores; hashes RAW/NORMALIZED conferem com manifesto.
+- Escopo limitado à integridade/consistência COTAHIST 2019; não certifica estratégia de investimento nem autoriza deduplicação.
+
+### FASE12 — Fechamento 2019 e transição para 2020
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase12-fechamento-2019-abertura-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase12-fechamento-2019-abertura-2020-v1.yml
+- Commit: `c1f4200911ea5240fc6630bb5fe2dbcbf0560abd`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE12_FECHAMENTO_2020_ABERTURA_V1.json`.
+- O workflow valida FASE10/FASE11 de 2019 e o RAW 2020 contra manifesto/sidecar, ZIP e registos de 245 bytes.
+- A consulta inicial não encontrou `dados/cotahist/normalized/anual/COTAHIST_A2020.csv`; a transição deverá registar `AGUARDA_RECONSTRUCAO_CSV`, sem tratar 2020 como certificado.
+- Próximo ciclo: verificar evidência FASE12 e iniciar 2020 pela FASE00, reconstruindo NORMALIZED pela cadeia governada.
+
+### Roadmap operacional imediato
+1. COTAHIST 2019: FASE00–FASE11 validadas/certificadas pelas evidências específicas.
+2. FASE12 (2019): workflow publicado; verificar execução e evidência.
+3. COTAHIST 2020: depois da transição, iniciar FASE00 e verificar/reconstruir NORMALIZED; não reutilizar certificação de 2019.
+4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
