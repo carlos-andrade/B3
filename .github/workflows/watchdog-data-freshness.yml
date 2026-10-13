@@ -1,0 +1,97 @@
+name: B3 — WATCHDOG de atualidade dos dados
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "WATCHDOG/engine/check_data_freshness.py"
+      - "WATCHDOG/registry/datasets-monitorizados.json"
+      - "WATCHDOG/tests/test_data_freshness.py"
+      - ".github/workflows/watchdog-data-freshness.yml"
+  schedule:
+    - cron: "15 7 * * 1-6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: watchdog-data-freshness
+  cancel-in-progress: false
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes do avaliador de atualidade
+        run: python -m unittest WATCHDOG.tests.test_data_freshness -v
+      - name: Avaliar atualidade e gerar relatórios
+        id: freshness
+        run: |
+          set +e
+          python WATCHDOG/engine/check_data_freshness.py --output watchdog-data-freshness.json > watchdog-data-freshness.stdout.json
+          code=$?
+          set -e
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads(Path("watchdog-data-freshness.json").read_text(encoding="utf-8"))
+          lines = [
+              "# WATCHDOG — atualidade dos dados B3", "",
+              f"**Resultado:** {report['result']}",
+              f"**Data de avaliação:** {report['evaluation_date']}",
+              f"**Datasets avaliados:** {report['dataset_count']}",
+              f"**Distribuição:** {report['counts']}", ""
+          ]
+          for item in report["datasets"]:
+              lines += [
+                  f"## {item['id']} — {item['state']}",
+                  f"- Dataset: {item['name']}",
+                  f"- Data de observação: {item['observation_date'] or 'UNKNOWN'}",
+                  f"- Idade (dias): {item['age_days'] if item['age_days'] is not None else 'UNKNOWN'}",
+                  f"- Limite (dias): {item['max_age_days']}",
+                  f"- Fonte: {item['source'] or 'UNKNOWN'}",
+                  f"- Detalhe: {item['details']}", ""
+              ]
+          summary = "\n".join(lines) + "\n"
+          Path("watchdog-data-freshness.md").write_text(summary, encoding="utf-8")
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(summary, encoding="utf-8")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"result={report['result']}\n")
+              out.write(f"has_stale={'true' if report['counts']['STALE'] else 'false'}\n")
+          PY
+          echo "evaluator_exit_code=$code" >> "$GITHUB_OUTPUT"
+      - name: Criar ou atualizar alerta de atualidade
+        if: steps.freshness.outputs.has_stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          title="[WATCHDOG] Atualidade de dados — B3"
+          issue_number="$(gh issue list --state open --search '"[WATCHDOG] Atualidade de dados" in:title' --json number,title --jq '.[] | select(.title == "[WATCHDOG] Atualidade de dados — B3") | .number' | head -n 1 || true)"
+          if [ -n "$issue_number" ]; then
+            gh issue edit "$issue_number" --body-file watchdog-data-freshness.md
+          else
+            gh issue create --title "$title" --body-file watchdog-data-freshness.md
+          fi
+      - name: Publicar evidência de atualidade
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchdog-data-freshness-${{ github.run_id }}
+          path: |
+            watchdog-data-freshness.json
+            watchdog-data-freshness.md
+            watchdog-data-freshness.stdout.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Falhar quando existem datasets desatualizados
+        if: steps.freshness.outputs.has_stale == 'true'
+        run: exit 1
