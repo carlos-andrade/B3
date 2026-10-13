@@ -1,5 +1,6 @@
 # Reexecucao controlada da normalizacao 2017 com reconciliacao do hash existente.
 # Reexecucao controlada apos a validacao estrutural da FASE03.
+# Rerun phase 04 for 2017.
 name: COTAHIST 2017 - FASE04 Normalizacao e Reconciliacao
 
 on:
