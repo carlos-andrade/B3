@@ -2077,3 +2077,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE06: preparada; executar após FASE05.
 4. Nenhuma deduplicação; RAW e todas as linhas preservadas.
 
+## 75. COTAHIST 2022 — FASE05 validada; FASE06 em fila (2026-10-13)
+
+### FASE05 — Manifesto e checksum
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE05_MANIFESTO_CHECKSUM_V1.json`, blob `f1d9c9323014c78a79b684142310a6db7686ae17`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482836300 — validação e persistência concluídas com sucesso.
+- Decisão: `LIBERADO_PARA_FASE06`.
+- SHA-256 RAW: `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`.
+- SHA-256 NORMALIZED: `4e0e75d0bab794eeffdaa23990e3651810c3654b31e1b6bd3c53b9e4f72d8148`.
+- Manifesto/sidecar/hashes físicos concordantes; 2.117.440 linhas, 25 campos; RAW inalterado, deduplicação não executada.
+
+### FASE06 — Reconciliação semântica
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase06-reconciliacao-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482955506.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json`.
+- Compara 12 campos críticos RAW × NORMALIZED em ordem original; só liberar FASE07 com zero divergências e hashes/contagens concordantes.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 (2022): VALIDADO.
+2. FASE06: enfileirada; verificar evidência.
+3. FASE07: executar após FASE06 sem divergências.
+4. FASE08 V2 e Gate: usar exceções temporais explícitas, mantendo o diagnóstico original.
+5. Preservar RAW e todas as linhas.
+
