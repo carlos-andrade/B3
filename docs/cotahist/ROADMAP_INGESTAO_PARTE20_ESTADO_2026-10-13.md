@@ -857,3 +857,34 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE10: validação independente dos 25 campos, apenas depois da FASE09 liberada.
 5. Preservar RAW/linhas; trilha REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 32. COTAHIST 2018 — FASE09 liberada; FASE10 publicada (2026-10-13)
+
+### FASE09 — Pre-release
+**Estado: LIBERADO_PARA_FASE10 — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE09_PRE_RELEASE_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE09_PRE_RELEASE_V1.json
+- Blob SHA: `bc687e30760d06f4ded4474cade6086379d7545d`.
+- Evidências FASE03–FASE08 e Gate presentes; RAW, NORMALIZED e manifesto presentes.
+- `missing=[]`, `blocked=[]`; Gate `VALIDADO_COM_EXCECAO` / `LIBERADO_PARA_FASE09`.
+- SHA-256 RAW: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- SHA-256 NORMALIZED: `e3e57fdcf4be823830e6d6653d68275fa33af6d51b86392356cc29fe7a0f7981`.
+- FASE09 apenas consolida evidências e não retrocertifica fases anteriores.
+
+### FASE10 — Validação independente integral
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase10-validacao-independente-2018-v1.yml
+- Commit de publicação: `605d5c9505a4bec5abfcd57ea96a8ea308223deb`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- Gate de entrada: FASE09 `LIBERADO_PARA_FASE10`, hashes físicos RAW/NORMALIZED confirmados pelo manifesto/sidecar/FASE09, ZIP íntegro e cabeçalho com 25 campos na ordem canónica.
+- Compara os 25 campos do layout fixo por registo e mantém amostra de divergências para diagnóstico; não modifica RAW nem deduplica.
+- Só avançar para FASE11 com evidência `VALIDADO`, `LIBERADO_PARA_FASE11` e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE09 (2018): validadas/liberadas conforme evidências individuais; FASE08 mantém limitações explícitas.
+2. FASE10 (2018): workflow publicado; verificar run e resultado independente de 25 campos.
+3. FASE11: só após FASE10 sem divergências.
+4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
