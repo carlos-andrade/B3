@@ -1377,3 +1377,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE07 (2020): workflow publicado; verificar identidade/cardinalidade.
 3. FASE08–FASE12: bloqueadas até evidências das fases precedentes.
 
+## 51. COTAHIST 2020 — FASE07 validada; FASE08 publicada (2026-10-13)
+
+### FASE07 — Identidade e cardinalidade
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE07_IDENTIDADE_CHAVES_V1.json`, blob `18d7b4d1bc297b2f3af945a28610735f05653083`.
+- Decisão: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- 1.251.646 registos analisados.
+- Chave-base: 1.177.517 chaves distintas, 25.360 grupos colidentes e 74.129 linhas excedentes; todos os grupos colidentes contêm linhas completas diferentes.
+- Chave candidata com `prazot`: 1.251.646 chaves distintas e zero colisões; 25.360 grupos base separados por `prazot`.
+- Nenhuma deduplicação ou remoção de linhas.
+
+### FASE08 — Calendário e consistência temporal
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase08-calendario-2020-v1.yml
+- Commit: `167e98a7eb3e064f32549fae244e9cdad1ab3d40`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- Valida datas, cronologia, regressões por instrumento e lacunas de calendário; regressões de ordem só podem ser aceites como exceções se a reconciliação FASE06 confirmar os campos críticos em ordem original.
+- Só avançar para Gate 06–08 depois de evidência FASE08 persistida e sem bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2020): VALIDADO.
+2. FASE08 (2020): workflow publicado; verificar resultado.
+3. Gate 06–08 e FASE09: somente após FASE08.
+
