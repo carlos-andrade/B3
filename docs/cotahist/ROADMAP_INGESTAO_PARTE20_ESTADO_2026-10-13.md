@@ -1854,3 +1854,42 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. Gate 06–08: após V2 validada, confirmar hashes, datas, contagens e exceções.
 5. FASE09: após Gate válido; FASE10 independente dos 25 campos continua obrigatória.
 
+## 68. COTAHIST 2021 — FASE08 V2 e Gate 06–08 validados; FASE09 enfileirada (2026-10-13)
+
+### FASE08 V2 — consistência temporal com exceções classificadas
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json`, blob `cde96cf94a536ca698828036aa9964920851cda6`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481632305 — sucesso.
+- Decisão: `LIBERADO_PARA_GATE_06_08`; zero bloqueadores.
+- 1.831.862 linhas, 25 campos; 247 datas distintas; intervalo 2021-01-04 a 2021-12-30; datas inválidas/fora do ano: zero; fins de semana: nenhum.
+- Regressões cronológicas: 139.405; regressões temporais por instrumento na chave usada pela fase: 73.784. Ambas são registadas como exceções não bloqueadoras, pois a FASE06 comprovou reconciliação dos campos críticos RAW × NORMALIZED na ordem original, os hashes coincidem e nenhuma linha foi reordenada/removida.
+- Limitação explícita: a ordem física de 2021 não é declarada correta nem cronológica; a FASE10 permanece obrigatória para comparar independentemente todos os 25 campos.
+- A evidência original FASE08 V1 `BLOQUEADO` e o diagnóstico de ordenação são preservados, sem substituição.
+
+### Gate independente FASE06–FASE08
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_GATE_06_08_V1.json`, blob `4a85ef6f5035a8b60feac77d99d906e9147b5c07`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481734467 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE09`; zero bloqueadores.
+- Todos os checks passaram: FASE06/07/08, hashes NORMALIZED, contagens, 25 campos, datas válidas, exceções explicitamente classificadas, ausência de fins de semana e nenhuma deduplicação.
+
+### FASE09 — Pre-release
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase09-prerelease-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481844157.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE09_PRE_RELEASE_V1.json`.
+- Confere evidências, hashes RAW/NORMALIZED, manifesto e Gate. Só libera FASE10 se `missing=[]`, `blocked=[]` e o Gate estiver `VALIDADO_COM_EXCECAO / LIBERADO_PARA_FASE09`.
+
+### FASE10 — validação independente de 25 campos
+- Workflow preparado: `.github/workflows/cotahist-fase10-validacao-independente-2021-v1.yml`.
+- Deve ser executado após FASE09 liberada; não avançar para FASE11 sem 25 campos comparados e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 V2 (2021): VALIDADO; exceções de ordem mantidas explícitas.
+2. Gate 06–08: VALIDADO_COM_EXCECAO, liberado para FASE09.
+3. FASE09: enfileirada; verificar evidência.
+4. FASE10: executar após FASE09 e exigir zero divergências nos 25 campos.
+
