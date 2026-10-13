@@ -130,6 +130,7 @@ jobs:
         if: steps.monitor.outputs.has_unfavorable == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           title="[WATCHDOG] Execuções desfavoráveis — B3"
