@@ -1507,3 +1507,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE11 (2020): workflow publicado; verificar certificação.
 3. FASE12: somente após certificação; validar transição RAW 2021 sem certificar automaticamente 2021.
 
+## 56. COTAHIST 2020 — FASE11 certificada; FASE12 publicada (2026-10-13)
+
+### FASE11 — Certificação
+**Estado: CERTIFICADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE11_CERTIFICACAO_V1.json`.
+- Decisão: `LIBERADO_PARA_FASE12`; zero bloqueadores.
+- FASE10: 25 campos, zero divergências; Gate 06–08 `VALIDADO_COM_EXCECAO`; hashes RAW/NORMALIZED conferem com manifesto.
+- Escopo: integridade e consistência do COTAHIST 2020, sem autorização para deduplicação nem certificação de estratégias.
+
+### FASE12 — Fechamento 2020 e transição para 2021
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase12-fechamento-2020-abertura-2021-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase12-fechamento-2020-abertura-2021-v1.yml
+- Commit: `f338aa4f4d17d1869d93874326ab210842753aa6`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json`.
+- RAW 2021: SHA-256 `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`, igual ao manifesto e sidecar; ZIP ainda precisa de validação física pela FASE12.
+- A transição fecha 2020, não certifica 2021; o ciclo seguinte começa pela FASE00.
+
+### Roadmap operacional imediato
+1. COTAHIST 2020: FASE00–FASE11 validadas/certificadas.
+2. FASE12 (2020): verificar run e evidência.
+3. COTAHIST 2021: após transição, iniciar FASE00 e reconstruir NORMALIZED se ausente.
+4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
