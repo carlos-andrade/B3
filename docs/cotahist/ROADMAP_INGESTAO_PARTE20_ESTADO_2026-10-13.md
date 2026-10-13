@@ -1748,3 +1748,44 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE08: preparada; executar após FASE07 validada.
 4. Acompanhar retry FASE04 até término e confirmar resultado.
 
+## 65. COTAHIST 2021 — FASE07 validada; FASE08 e Gate preparados (2026-10-13)
+
+### FASE07 — Identidade e cardinalidade
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json`, blob `983a378e27f1b1860f786db7088d41ad6231aef2`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481092183 — `completed / success`.
+- Decisão: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- Registos: 1.831.862; hash NORMALIZED: `0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2`.
+- Chave-base `data_pregao+codbdi+codneg+tpmerc+dismes`: 1.748.312 chaves distintas; 28.694 grupos duplicados; 83.550 linhas excedentes. Nenhum grupo era idêntico na linha completa.
+- Chave candidata com `prazot`: 1.831.862 chaves distintas; zero grupos duplicados/linhas excedentes. `prazot` separa os registos que colidem na chave-base.
+- Conclusão restrita ao ficheiro/hash de 2021; nenhuma linha removida e nenhuma deduplicação.
+
+### FASE08 — Calendário e consistência temporal
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase08-calendario-2021-v1.yml
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- Verifica datas, regressões cronológicas e temporais por instrumento, distribuição semanal e lacunas; não reordena nem remove linhas.
+- O calendário oficial histórico B3 não está incorporado, pelo que a fase não poderá afirmar equivalência com a lista oficial de sessões/feriados.
+
+### Gate independente FASE06–FASE08
+**Estado: WORKFLOW PREPARADO; execução após FASE08.**
+
+- Workflow: `.github/workflows/cotahist-gate-06-08-2021-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-gate-06-08-2021-v1.yml
+- Revalida hashes, contagens, datas, 25 campos, exceções e ausência de deduplicação.
+- O Gate só pode liberar FASE09 se as evidências FASE06/07/08 estiverem persistidas, os checks passarem e as exceções forem explícitas.
+
+### FASE04 — repetição idempotente
+- Run https://github.com/carlos-andrade/B3/actions/runs/38480963443 — `completed / success`.
+- Evidência atualizada: `dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json`, blob `279b70b0c6ba09e36c91fee894c6dca19469b21e`.
+- O CSV foi persistido com sucesso após incluir o seu caminho na definição de sparse-checkout. Hash e contagem mantiveram-se inalterados.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2021): VALIDADO.
+2. FASE08: run enfileirado; verificar evidência.
+3. Gate 06–08: executar após FASE08.
+4. FASE09: somente após Gate validado, sem bloqueadores.
+
