@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T23:09:57.428789+00:00
-Workflows auditados: 499
+Gerado em UTC: 2026-10-13T23:10:38.379659+00:00
+Workflows auditados: 501
 
 ## Regra de decisão
 
@@ -232,6 +232,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase05-manifesto-checksum-2019-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-2020-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase05-manifesto-checksum-2021-v1.yml | 5 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase05-manifesto-checksum-2022-v1.yml | 5 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-1994-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-reconciliacao-1999-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-reconciliacao-2000-v1.yml | 6 | **CONFORME** | — | — |
@@ -256,6 +257,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase06-reconciliacao-2019-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2020-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2021-v1.yml | 6 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase06-reconciliacao-2022-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1995-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1996-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
