@@ -23,7 +23,7 @@
   "invalid_dates": 0,
   "first_quote_date": "2018-01-02",
   "last_quote_date": "2018-12-28",
-  "validated_at_utc": "2026-10-13T14:39:16.205409+00:00",
+  "validated_at_utc": "2026-10-13T15:18:54.647413+00:00",
   "limitations": [
     "Parsing estrutural não certifica normalização nem semântica."
   ]
