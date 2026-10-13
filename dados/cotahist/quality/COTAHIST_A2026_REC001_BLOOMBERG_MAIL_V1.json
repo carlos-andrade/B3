@@ -219,6 +219,121 @@
     "bloomberg_exhausted": false,
     "comparison_unit": "record type 01 only; period-specific type 00 headers and type 99 trailers excluded"
   },
+  "unordered_content_reconciliation": {
+    "method": "SHA-256 multiset of type-01 payload bytes with line terminators excluded; duplicate multiplicity preserved; ordering ignored",
+    "b3_record01_count": 2919760,
+    "bloomberg_mail_record01_count": 3070831,
+    "b3_unique_payload_hashes": 2919760,
+    "bloomberg_mail_unique_payload_hashes": 3070831,
+    "b3_records_missing_from_bloomberg_multiplicity": 0,
+    "bloomberg_records_missing_from_b3_multiplicity": 151071,
+    "bloomberg_contains_all_b3_records_as_exact_payload_multiset": true,
+    "unordered_multiset_exact_match": false,
+    "b3_only_hash_count_sample": [],
+    "bloomberg_only_hash_count_sample": [
+      {
+        "sha256": "0000b50cb69f2465c9c777839e1745848b2a3db1edfdf3daa94ddfeb93747dd2",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0000f6b420ba5481bb7a0fe5ed772d8dc13774b42b4517280d7588f563eed381",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0002281f2865876df920bf7392a27a2bd1b9b85b723679aad36d58ddd4d65126",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00027b5719105c660954386e3bb91e8b05c30839b5b9bcbdb53eea5712922237",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "000351ada7c7c4f82e7f7f3fb7749bc58535b5da727eb6d033d5abe6e5892b03",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00042859355abbf1237d5afbf8a0e9c9f12f6db5927aa9894f0653cf10ef725b",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00046c0a16a876245f0e2d0b941bcf8b88715b55be8a6970f99fd95c68b430be",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00049bd513c670edbd6ab507c6bb90f0f9a612662deca800b3c1e00e59b1574c",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "000538c9dd5ed24487e84709695084d83ba4aff5eb82224087877210f6c518ea",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0005446baa2ae0035dd69823591b71d9981c9682532160847a2c56b63aef783c",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00054bbc3604807279df5d7733d4b0bfdca7aaa0b5c4e84c001026ee0033707e",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00059137641446184f1b409f7fe2e237091d1603d5fb300b7addc20f824ce5a0",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0005a0cdb32912831845fd74b9c71d95a674e8b6be7ae435f40046d3b1176625",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0006446bd0f278ea0829447110a5308748546870ff7a7bfc6491938cc728c50c",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0006594cf13c2f25ed2d51321ee46a91408010e861eb1f83320f439de8322ec7",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "000692a9c0178cd41c86c3ae1b22659a9259cd1f5bce406380b898d53bab0c81",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0007149c7eeeeeb0d3accfd5c8b83287098514c563f3adc08197457faf8a2074",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0007e25b4df6238e7cc644ce8d554a464efa1308ea51ebe7e9367896711fbc38",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "00081d09822f55857202ba903e67019a3d1f1042f232fb267dce99a56baba53c",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      },
+      {
+        "sha256": "0008be1f616ad074cb9b4548bd372386a6daa216295c2df19f04ecd8bcc31f3a",
+        "bloomberg_count": 1,
+        "b3_count": 0
+      }
+    ],
+    "interpretation_limit": "A multiset match proves payload equality independent of ordering, not equal source ordering or a promotion decision."
+  },
   "divergence_diagnostics": {
     "purpose": "Diagnosticar se a primeira divergência decorre de registo ausente, ticker distinto ou deslocamento local; não altera o critério byte-a-byte.",
     "target_tickers": [
