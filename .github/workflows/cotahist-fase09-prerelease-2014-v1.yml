@@ -77,7 +77,9 @@ jobs:
           if any(e.get("blocking") is not False for e in data.get("FASE08", {}).get("exceptions", [])):
               blocked.append("FASE08_UNCLASSIFIED_EXCEPTION")
           gate = data.get("GATE_06_08", {})
-          if gate.get("status") not in {"GATE_APROVADO", "VALIDADO_COM_EXCECAO"} or gate.get("decision") not in {"APROVADO_PARA_ANALISE_FASE09", "LIBERADO_PARA_FASE09"}:
+          gate_status_ok = gate.get("status") in {"GATE_APROVADO", "VALIDADO_COM_EXCECAO"}
+          gate_decision_ok = gate.get("decision") in {"APROVADO_PARA_ANALISE_FASE09", "LIBERADO_PARA_FASE09"}
+          if not gate_status_ok or not gate_decision_ok:
               blocked.append("GATE_06_08")
           raw = required["RAW"]
           manifest_path = required["MANIFEST"]
@@ -107,6 +109,9 @@ jobs:
             "preconditions": {k: ("OK" if k not in missing else "AUSENTE") for k in {**names, **required}},
             "evidence_statuses": {k: v.get("status") for k,v in data.items()},
             "gate_06_08_status": gate.get("status"),
+            "gate_06_08_decision": gate.get("decision"),
+            "gate_status_accepted": gate_status_ok,
+            "gate_decision_accepted": gate_decision_ok,
             "raw_sha256": raw_sha,
             "normalized_sha256": csv_sha,
             "missing": missing,
