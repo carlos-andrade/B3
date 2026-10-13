@@ -460,3 +460,36 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Só liberar FASE12 se a evidência indicar `status=CERTIFICADO`, `decision=LIBERADO_PARA_FASE12` e `blockers=[]`.
 4. Preservar RAW e NORMALIZED; sem deduplicação ou remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL permanece uma trilha independente.
 
+
+
+---
+
+## Secção 19 — FASE11 certificada e FASE12 publicada para 2017→2018 (2026-10-13)
+
+### FASE11 — certificação verificada
+- Evidência: `dados/cotahist/quality/COTAHIST_2017_FASE11_CERTIFICACAO_V1.json`
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE11_CERTIFICACAO_V1.json
+- Estado: `CERTIFICADO`; decisão: `LIBERADO_PARA_FASE12`.
+- Bloqueadores: zero.
+- FASE10: `VALIDADO`; divergências: 0; campos verificados: 25.
+- Hashes certificados:
+  - RAW: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`
+  - NORMALIZED: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`
+- Timestamp da certificação: `2026-10-13T12:18:26.279850+00:00`.
+- Âmbito: integridade e consistência COTAHIST 2017 conforme evidências FASE00–10; não certifica estratégias de investimento e não autoriza deduplicação.
+
+### FASE12 — workflow de fechamento/transição publicado
+- Workflow: `.github/workflows/cotahist-fase12-fechamento-2017-abertura-2018-v1.yml`
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase12-fechamento-2017-abertura-2018-v1.yml
+- Commit: `1bcba36cc0c85845d4e8f603c91636092fb80516`.
+- O workflow foi parametrizado a partir do fluxo de fechamento/transição 2016→2017 para fechar 2017 após certificação e verificar a integridade do RAW 2018.
+- Manifesto e sidecar de checksum de 2018 estão presentes e declaram SHA-256 `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`; o ZIP binário não foi lido diretamente nesta verificação, portanto a integridade estrutural será confirmada pelo workflow.
+- **Estado: WORKFLOW PUBLICADO; evidência FASE12 ainda por confirmar.** A publicação não equivale a fechamento concluído nem certifica 2018.
+
+### Próxima ação
+1. Executar `COTAHIST 2017 - FASE12 Fechamento e Transicao 2018` na branch `main`, caso não tenha iniciado automaticamente.
+2. Validar `dados/cotahist/quality/COTAHIST_2017_FASE12_FECHAMENTO_2018_ABERTURA_V1.json`.
+3. Só considerar 2017 fechado se a evidência indicar `FECHADO_COM_TRANSICAO_CONTROLADA`, decisão `FECHAR_2017_E_AUTORIZAR_CONTINUACAO_2018` e `blockers=[]`.
+4. A transição não certifica 2018. A FASE04/etapas subsequentes de 2018 permanecem condicionadas à existência e validação do NORMALIZED.
+5. Preservar RAW e registos: nenhuma deduplicação ou remoção. REC-001 B3 × BLOOMBERG_MAIL continua independente.
+
