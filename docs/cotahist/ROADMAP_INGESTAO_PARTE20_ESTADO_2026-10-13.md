@@ -2213,3 +2213,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE09: depois do Gate.
 4. FASE10: comparação independente de todos os 25 campos, zero divergências.
 
+## 80. COTAHIST 2022 — Gate 06–08 validado; FASE09 em fila (2026-10-13)
+
+### Gate independente FASE06–FASE08
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_GATE_06_08_V1.json`, blob `e83cb98225a080680a803b32944674f113566208`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483527126 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE09`; zero bloqueadores.
+- 2.117.440 linhas, 25 campos; 250 datas distintas; hashes NORMALIZED concordantes com FASE06/07 V2/08 V2.
+- Todos os checks passaram: datas válidas/no ano, nenhuma data de fim de semana, exceções de ordenação explicitamente classificadas, nenhuma linha removida/deduplicada.
+- Exceções de ordenação continuam registadas; FASE10 independente de 25 campos é obrigatória.
+
+### FASE09 — Pre-release
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase09-prerelease-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483639277.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE09_PRE_RELEASE_V1.json`.
+- Gate: `VALIDADO_COM_EXCECAO / LIBERADO_PARA_FASE09); só avançar quando `missing=[]` e `blocked=[]`.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 V2 (2022): validadas com exceções temporais explícitas.
+2. Gate 06–08: VALIDADO_COM_EXCECAO, zero bloqueadores.
+3. FASE09: enfileirada; verificar evidência.
+4. FASE10: comparar independentemente 25 campos e exigir zero divergências.
+
