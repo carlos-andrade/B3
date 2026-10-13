@@ -8,7 +8,7 @@ on:
     paths:
       - "dados/cotahist/normalized/anual/COTAHIST_A2022.csv"
       - "dados/cotahist/quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json"
       - "dados/cotahist/quality/COTAHIST_2022_FASE08_SEMANTICA_CALENDARIO_V2.json"
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
             .github/workflows/cotahist-gate-06-08-2022-v1.yml
             dados/cotahist/normalized/anual/COTAHIST_A2022.csv
             dados/cotahist/quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json
-            dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json
             dados/cotahist/quality/COTAHIST_2022_FASE08_SEMANTICA_CALENDARIO_V2.json
             dados/cotahist/quality/COTAHIST_2022_GATE_06_08_V1.json
           sparse-checkout-cone-mode: false
@@ -49,7 +49,7 @@ jobs:
           csv_path = root / "normalized/anual/COTAHIST_A2022.csv"
           paths = {
             "FASE06": root / "quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json",
-            "FASE07": root / "quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V1.json",
+            "FASE07": root / "quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json",
             "FASE08": root / "quality/COTAHIST_2022_FASE08_SEMANTICA_CALENDARIO_V2.json"
           }
           out_path = root / "quality/COTAHIST_2022_GATE_06_08_V1.json"
@@ -60,7 +60,7 @@ jobs:
           ev = {k: json.loads(p.read_text(encoding="utf-8")) if p.is_file() and p.stat().st_size else {} for k,p in paths.items()}
           f6, f7, f8 = ev["FASE06"], ev["FASE07"], ev["FASE08"]
           checks["phase06_validated"] = f6.get("status") == "VALIDADO" and f6.get("decision") == "LIBERADO_PARA_FASE07" and f6.get("mismatch_count") == 0
-          checks["phase07_validated"] = f7.get("status") == "VALIDADO" and f7.get("decision") == "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE"
+          checks["phase07_validated"] = f7.get("status") == "VALIDADO" and f7.get("decision") == "CHAVE_CANDIDATA_COM_PRAZOT_ESPECI_CODISI_VALIDADA_POR_CARDINALIDADE"
           checks["phase08_accepted"] = f8.get("status") == "VALIDADO_COM_EXCECAO" and f8.get("decision") == "LIBERADO_PARA_GATE_06_08" and f8.get("blockers") == []
           for k,v in checks.items():
               if not v: blockers.append("CHECK_FAILED:" + k)
