@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T23:30:18.354313+00:00
-Workflows auditados: 509
+Gerado em UTC: 2026-10-13T23:33:30.593896+00:00
+Workflows auditados: 510
 
 ## Regra de decisão
 
@@ -173,6 +173,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-normalizacao-2020-v2.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-normalizacao-2021-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-normalizacao-2022-v1.yml | 4 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase04-normalizacao-2023-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2000-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2001-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2002-v1.yml | 4 | **CONFORME** | — | — |
