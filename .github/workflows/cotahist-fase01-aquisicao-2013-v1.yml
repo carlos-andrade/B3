@@ -1,0 +1,126 @@
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW e proveniência apos FASE00.
+# FASE01 2013: verificar RAW adquirido e proveniência após FASE00.
+name: COTAHIST 2013 - FASE01 Aquisicao RAW
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase01-aquisicao-2013-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase01-aquisicao-2013-v1
+  cancel-in-progress: false
+
+jobs:
+  aquisicao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase01-aquisicao-2013-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2013.ZIP
+            dados/cotahist/manifests/COTAHIST_A2013.json
+            dados/cotahist/checksums/COTAHIST_A2013.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_2013_FASE00_GOVERNANCA_V1.json
+            dados/cotahist/quality/COTAHIST_2013_FASE01_AQUISICAO_RAW_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verificar proveniência e integridade de aquisição
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, sys, datetime
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2013.ZIP")
+          mp = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2013.json")
+          cp = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2013.ZIP.sha256")
+          ev = pathlib.Path("dados/cotahist/quality/COTAHIST_2013_FASE01_AQUISICAO_RAW_V1.json")
+          f0p = pathlib.Path("dados/cotahist/quality/COTAHIST_2013_FASE00_GOVERNANCA_V1.json")
+          if not f0p.is_file() or f0p.stat().st_size == 0:
+              sys.exit("FASE01 BLOQUEADA: evidência FASE00 ausente")
+          f0 = json.loads(f0p.read_text(encoding="utf-8"))
+          if f0.get("status") != "VALIDADO" or f0.get("decision") != "AUTORIZAR_FASE01":
+              sys.exit("FASE01 BLOQUEADA: FASE00 não autorizou execução")
+          for p in (raw, mp, cp):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE01 BLOQUEADA: artefato ausente/vazio: {p}")
+          m = json.loads(mp.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          parts = cp.read_text(encoding="utf-8").strip().split()
+          sidecar_sha = parts[0] if parts else ""
+          if m.get("ano") != 2013 or m.get("fonte") != "B3":
+              sys.exit("FASE01 BLOQUEADA: metadados de proveniência inválidos")
+          if raw_sha != m.get("sha256") or raw_sha != sidecar_sha:
+              sys.exit("FASE01 BLOQUEADA: SHA-256 diverge entre RAW, manifesto e checksum")
+          out = {
+            "schema_version": "1.0.0",
+            "year": 2013,
+            "phase": "FASE01",
+            "status": "VALIDADO",
+            "decision": "LIBERADO_PARA_FASE02",
+            "evidence_kind": "VERIFICACAO_RETROSPECTIVA_DE_AQUISICAO",
+            "phase00_status": f0.get("status"),
+            "source": m.get("fonte"),
+            "source_url": m.get("url"),
+            "raw_path": str(raw),
+            "raw_sha256": raw_sha,
+            "manifest_path": str(mp),
+            "checksum_path": str(cp),
+            "manifest_hash_match": True,
+            "sidecar_hash_match": True,
+            "manifest_status": m.get("status"),
+            "acquired_at_utc_from_manifest": m.get("acquired_at_utc"),
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "notes": "Verifica o RAW já persistido e sua proveniência; não altera nem substitui o arquivo original."
+          }
+          ev.parent.mkdir(parents=True, exist_ok=True)
+          ev.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência FASE01
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2013_FASE01_AQUISICAO_RAW_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 01 aquisicao 2013"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas; evidência não deve ser considerada persistida."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2013 — FASE01"
+            echo "- Verifica proveniência e SHA-256 do RAW já adquirido."
+            echo "- Não valida parsing, normalização ou fases posteriores."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
