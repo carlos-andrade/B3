@@ -1,6 +1,7 @@
 # Reexecução controlada após persistência da evidência FASE09.
 # Gate de entrada: FASE09 deve estar LIBERADO_PARA_FASE10.
 # Execução controlada após FASE09 liberada; compara independentemente os 25 campos.
+# Rerun phase 10 for 2016 after FASE09 release.
 name: COTAHIST 2016 - FASE10 Validacao Independente Integral
 
 on:
