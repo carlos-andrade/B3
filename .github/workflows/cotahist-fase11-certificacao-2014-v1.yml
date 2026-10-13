@@ -1,3 +1,4 @@
+# Reexecução controlada: aceita o Gate 06–08 com exceções explicitamente não bloqueadoras.
 name: COTAHIST 2014 - FASE11 Certificacao
 
 on:
