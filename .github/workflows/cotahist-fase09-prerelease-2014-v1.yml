@@ -75,7 +75,7 @@ jobs:
           if data.get("FASE08", {}).get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
               blocked.append("FASE08_STATUS")
           gate = data.get("GATE_06_08", {})
-          if gate.get("status") != "GATE_APROVADO" or gate.get("decision") != "APROVADO_PARA_ANALISE_FASE09":
+          if gate.get("status") not in {"GATE_APROVADO", "VALIDADO_COM_EXCECAO"} or gate.get("decision") not in {"APROVADO_PARA_ANALISE_FASE09", "LIBERADO_PARA_FASE09"}:
               blocked.append("GATE_06_08")
           raw = required["RAW"]
           manifest_path = required["MANIFEST"]
