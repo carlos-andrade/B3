@@ -398,3 +398,33 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Só avançar para a FASE10 se a evidência indicar `status=LIBERADO_PARA_FASE10`, sem itens em `missing` nem `blocked`, com hashes e contagens consistentes.
 4. Manter a trilha REC-001 B3 × BLOOMBERG_MAIL bloqueada e independente até validação própria.
 
+
+
+---
+
+## Secção 17 — FASE09 validada e FASE10 publicada para 2017 (2026-10-13)
+
+### FASE09 — evidência verificada
+- Evidência: `dados/cotahist/quality/COTAHIST_2017_FASE09_PRE_RELEASE_V1.json`
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE09_PRE_RELEASE_V1.json
+- Estado/decisão: `LIBERADO_PARA_FASE10`.
+- Preconditions: FASE03–08, Gate 06–08, RAW, NORMALIZED e MANIFEST = `OK`.
+- `missing=[]`; `blocked=[]`.
+- RAW SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`.
+- NORMALIZED SHA-256: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- Data de validação da evidência: `2026-10-13T12:13:36.165014+00:00`.
+
+### FASE10 — workflow publicado
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2017-v1.yml`
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase10-validacao-independente-2017-v1.yml
+- Commit de publicação: `8c1a71a65db96dc649aa609b1034416449f1d970`.
+- Base técnica: workflow de validação independente já usado para 2016, parametrizado para 2017.
+- A execução reconcilia independentemente os 25 campos do RAW com o NORMALIZED, valida hashes e contagens e persiste a evidência da FASE10, inclusive em caso de bloqueio.
+- **Estado atual: WORKFLOW PUBLICADO; execução/evidência FASE10 ainda por confirmar.** Não declarar a validação independente concluída apenas com a publicação do workflow.
+
+### Próxima ação
+1. Executar `COTAHIST 2017 - FASE10 Validacao Independente Integral` na branch `main`, caso não tenha iniciado automaticamente.
+2. Validar `dados/cotahist/quality/COTAHIST_2017_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+3. Só liberar FASE11 quando `status=VALIDADO`, `decision=LIBERADO_PARA_FASE11`, `mismatch_count=0`, `raw_record_count=normalized_record_count=489115`, `field_count=25`, hashes consistentes e sem bloqueadores.
+4. Manter RAW imutável, sem deduplicação ou remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua em trilha independente.
+
