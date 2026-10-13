@@ -142,6 +142,17 @@ jobs:
             gh issue create --title "$title" --body-file watchdog-alert.md
           fi
 
+      - name: Heartbeat para supervisor externo (opcional)
+        env:
+          WATCHDOG_HEARTBEAT_URL: ${{ secrets.WATCHDOG_HEARTBEAT_WORKFLOWS_URL }}
+        run: |
+          set -euo pipefail
+          if [ -z "$WATCHDOG_HEARTBEAT_URL" ]; then
+            echo "::warning::WATCHDOG_HEARTBEAT_WORKFLOWS_URL não configurado; supervisão independente permanece inativa."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 10 "$WATCHDOG_HEARTBEAT_URL"
+
       - name: Publicar evidência da execução
         if: always()
         uses: actions/upload-artifact@v4
