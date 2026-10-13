@@ -1533,3 +1533,25 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. COTAHIST 2021: após transição, iniciar FASE00 e reconstruir NORMALIZED se ausente.
 4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 57. COTAHIST 2020 — FASE12 concluída; ciclo 2021 autorizado (2026-10-13)
+
+### FASE12 — Fechamento e transição
+**Estado: FECHADO_COM_TRANSICAO_CONTROLADA — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json`, blob `e37874a4d4e9b1c8d2d4cf92dcd160e97350b516`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38436853749 — sucesso.
+- Decisão: `FECHAR_2020_E_AUTORIZAR_CONTINUACAO_2021`; zero bloqueadores.
+- FASE10 2020 `VALIDADO`; FASE11 2020 `CERTIFICADO`.
+- RAW 2021 SHA-256: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`, igual ao manifesto e sidecar; ZIP com um membro, zero comprimentos inválidos; 1.831.862 registos tipo `01`.
+- NORMALIZED CSV 2021 ausente; `year2021_phase04_status=AGUARDA_RECONSTRUCAO_CSV`. A transição não certifica 2021.
+
+### COTAHIST 2021 — início do ciclo
+- Iniciar pela FASE00, usando a transição 2020→2021 como pré-condição.
+- Executar FASE01–03 e reconstruir NORMALIZED na FASE04.
+- Não reutilizar evidências de anos anteriores; RAW imutável e deduplicação não autorizada.
+
+### Roadmap operacional imediato
+1. COTAHIST 2020: fechado após certificação.
+2. COTAHIST 2021: FASE00 a iniciar.
+3. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada.
+
