@@ -235,15 +235,22 @@ def main():
                 "bloomberg_mail_occurrences": scan_target_tickers(bloom, tickers),
                 "interpretation_limit": "A presença de um ticker noutra posição não prova equivalência semântica nem autoriza promoção automática."
             }
-        result="PASS_OVERLAP_EXACT" if cmp["first_difference"] is None and cmp["b3_exhausted"] and not cmp["bloomberg_exhausted"] else ("PASS_EXACT" if cmp["first_difference"] is None and cmp["b3_exhausted"] and cmp["bloomberg_exhausted"] else "FAIL_CONTENT_DIVERGENCE")
+        if cmp["first_difference"] is None and cmp["b3_exhausted"] and not cmp["bloomberg_exhausted"]:
+            result = "PASS_OVERLAP_EXACT"
+        elif cmp["first_difference"] is None and cmp["b3_exhausted"] and cmp["bloomberg_exhausted"]:
+            result = "PASS_EXACT"
+        elif multiset["bloomberg_contains_all_b3_records_as_exact_payload_multiset"] and bloom_stats["record01_count"] > b3_stats["record01_count"]:
+            result = "PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE"
+        else:
+            result = "FAIL_CONTENT_DIVERGENCE"
         evidence={"schema_version":"1.0-rec001-b3-cross-repo","result":result,"raw_preserved":True,
           "b3_snapshot":{"path":B3_ZIP,"zip_sha256":b3_sha,"member":b3_member,"member_size":b3_member_size,"zip_integrity":b3_zip_bad is None,"stats":b3_stats},
           "bloomberg_mail_raw":{"url":BLOOM_ZIP_URL,"zip_sha256":bloom_sha,"member":bloom_member,"member_size":bloom_member_size,"zip_integrity":bloom_zip_bad is None,"stats":bloom_stats},
           "comparison":cmp,
           "unordered_content_reconciliation":multiset,
           "divergence_diagnostics":diagnostics,
-          "interpretation":"B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
-          "promotion_impact":"REC001_B3_ELIGIBLE_FOR_REVIEW" if result.startswith("PASS_") else "BLOCKED_CONTENT_DIVERGENCE"}
+          "interpretation":"PASS_OVERLAP_EXACT means the ordered B3 type-01 stream is an exact prefix. PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE means every B3 type-01 payload occurs in BLOOMBERG_MAIL with at least the same multiplicity, but source order differs; content reconciliation passes while promotion remains blocked for explicit order-variance review. Additional Bloomberg rows are not automatically classified as temporal-only without date-level reconciliation.",
+          "promotion_impact":"BLOCKED_ORDER_VARIANCE_REVIEW" if result == "PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE" else ("REC001_B3_ELIGIBLE_FOR_REVIEW" if result.startswith("PASS_") else "BLOCKED_CONTENT_DIVERGENCE")}
         os.makedirs(os.path.dirname(OUT),exist_ok=True)
         with open(OUT,"w",encoding="utf-8") as f: json.dump(evidence,f,ensure_ascii=False,indent=2); f.write("\n")
 if __name__=="__main__": main()
