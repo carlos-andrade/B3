@@ -79,17 +79,19 @@ jobs:
               "runs_observed": len(recent),
               "pages_fetched": pages_fetched,
               "distribution": dict(counts),
+              "unfavorable_count": len(bad),
+              "active_count": len(active),
               "unfavorable_runs": [
                   {"name": r["name"], "run_number": r["run_number"],
                    "status": r["status"], "conclusion": r["conclusion"],
                    "url": r["html_url"], "created_at": r["created_at"]}
-                  for r in bad[:100]
+                  for r in bad
               ],
               "active_runs": [
                   {"name": r["name"], "run_number": r["run_number"],
                    "status": r["status"], "url": r["html_url"],
                    "created_at": r["created_at"]}
-                  for r in active[:100]
+                  for r in active
               ],
               "limitations": [
                   "O relatório pagina a API até ultrapassar a janela móvel de 24 horas; páginas antigas não são consultadas depois do corte.",
@@ -109,6 +111,8 @@ jobs:
               "**Janela:** últimas 24 horas",
               f"**Execuções observadas:** {len(recent)}",
               f"**Páginas consultadas:** {pages_fetched}",
+              f"**Falhas/desfavoráveis:** {len(bad)}",
+              f"**Execuções ativas:** {len(active)}",
               f"**Distribuição:** {dict(counts)}",
               "",
               "## Execuções não favoráveis"
@@ -120,6 +124,8 @@ jobs:
               ])
           else:
               lines.append("- Nenhuma.")
+          if len(bad) > 100:
+              lines += ["", f"**Nota:** são {len(bad)} execuções desfavoráveis no total; a issue mostra as primeiras 100. O artefacto JSON contém a lista completa."]
           lines += ["", "## Execuções em andamento"]
           if active:
               lines.extend([
