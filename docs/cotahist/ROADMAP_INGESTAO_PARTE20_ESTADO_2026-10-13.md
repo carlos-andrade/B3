@@ -1157,3 +1157,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE11: só após FASE10 validada sem divergências.
 4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 42. COTAHIST 2019 — FASE10 validada; FASE11 publicada (2026-10-13)
+
+### FASE10 — Validação independente integral
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE10_VALIDACAO_INDEPENDENTE_V1.json`, blob `472b93851f1274d3bd7c051d91fa10c5c8982ca2`.
+- Decisão: `LIBERADO_PARA_FASE11`.
+- RAW/NORMALIZED: 779.229 registos cada; registos físicos de 245 bytes; contagens: `00=1`, `01=779229`, `99=1`.
+- Os 25 campos foram comparados independentemente; divergências: 0; amostra vazia.
+- SHA-256 RAW: `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`.
+- SHA-256 NORMALIZED: `1f1fd89ed5e1fb5c9a3b5012852c6b6bd8694b680875ad0346757707664435bf`.
+- RAW não modificado; deduplicação não executada.
+
+### FASE11 — Certificação
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase11-certificacao-2019-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase11-certificacao-2019-v1.yml
+- Commit de publicação: `287752525ffb886a99a216e351982df325d6f90c`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE11_CERTIFICACAO_V1.json`.
+- Verifica FASE09, FASE10, Gate, manifesto e hashes. Só avançar para FASE12 com `CERTIFICADO`, `LIBERADO_PARA_FASE12` e zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE10 (2019): validadas/liberadas conforme evidências específicas.
+2. FASE11 (2019): workflow publicado; verificar certificação.
+3. FASE12: somente após certificação, verificar transição RAW para 2020 sem certificar automaticamente 2020.
+4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
