@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2023,
+  "phase": "FASE02",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE03",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2023.ZIP",
+  "raw_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "manifest_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "sidecar_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "raw_hash_match": true,
+  "zip_test_error": null,
+  "zip_member_count": 1,
+  "zip_members": [
+    "COTAHIST_A2023.TXT"
+  ],
+  "blockers": [],
+  "validated_at_utc": "2026-10-13T23:33:33.192205+00:00"
+}\n

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2023,
+  "phase": "FASE03",
+  "status": "BLOQUEADO",
+  "decision": "BLOQUEADO",
+  "evidence_kind": "PARSING_ESTRUTURAL_CANONICO_REEXECUTADO",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2023.ZIP",
+  "raw_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "phase02_evidence_path": "dados/cotahist/quality/COTAHIST_2023_FASE02_INTEGRIDADE_FONTE_V1.json",
+  "zip_member_count": 1,
+  "zip_member": "COTAHIST_A2023.TXT",
+  "record_length_bytes": 245,
+  "total_records": 0,
+  "record_type_counts": {},
+  "quote_records_type_01": 0,
+  "invalid_record_lengths": 2257426,
+  "invalid_dates": 0,
+  "invalid_date_samples": [],
+  "first_quote_date": null,
+  "last_quote_date": null,
+  "validated_at_utc": "2026-10-13T23:33:33.192278+00:00",
+  "limitations": [
+    "Parsing estrutural nao certifica normalizacao nem semantica."
+  ]
+}\n

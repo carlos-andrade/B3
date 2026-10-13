@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2023,
+  "phase": "FASE04",
+  "status": "BLOQUEADO",
+  "decision": "BLOQUEADO_PARA_FASE05",
+  "entry_gate": "FASE03",
+  "validation_method": "normalizacao_deterministica_com_reconciliacao_manifesto_e_sidecar",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2023.ZIP",
+  "raw_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2023.csv",
+  "normalized_sha256_calculated": null,
+  "normalized_sha256_manifest": "abe7e17072dc4499af7cfd0eacebd7b7fbe0d579777fced9ad1deda97bb1d87d",
+  "normalized_sha256_sidecar": null,
+  "manifest_parser_version": "1.1.0",
+  "normalizer_script_version": null,
+  "rows": null,
+  "fields": null,
+  "first_date": null,
+  "last_date": null,
+  "blockers": [
+    "RAW_ESTRUTURAL_INVALIDO"
+  ],
+  "raw_modified": false,
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T23:33:33.192639+00:00"
+}\n
