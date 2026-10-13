@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T11:26:32.027601+00:00
-Workflows auditados: 412
+Gerado em UTC: 2026-10-13T11:27:07.636063+00:00
+Workflows auditados: 413
 
 ## Regra de decisão
 
@@ -213,6 +213,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase06-reconciliacao-2013-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2014-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-2015-v1.yml | 6 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase06-reconciliacao-2016-v1.yml | 6 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1995-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase06-semantica-1996-v1.yml | 6 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
