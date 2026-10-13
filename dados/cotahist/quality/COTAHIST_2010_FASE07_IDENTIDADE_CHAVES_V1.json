@@ -1,0 +1,314 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2010,
+  "phase": "FASE07",
+  "status": "VALIDADO",
+  "decision": "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE",
+  "validation_type": "AUDITORIA_DE_IDENTIDADE_E_CARDINALIDADE_SEM_MUTACAO",
+  "source_normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2010.csv",
+  "source_normalized_sha256": "6c81d249dd709d57e8348b9b007379e7ea97e6f53c7759fe3003360538917786",
+  "phase06_evidence_path": "dados/cotahist/quality/COTAHIST_2010_FASE06_RECONCILIACAO_V1.json",
+  "phase06_status": "VALIDADO",
+  "records": 287480,
+  "base_candidate": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "dismes"
+    ],
+    "distinct_keys": 246074,
+    "duplicate_groups": 14848,
+    "duplicate_rows_excess": 41406,
+    "groups_identical_full_row": 0,
+    "groups_different_full_row": 14848,
+    "sample_collisions": [
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "ABYA3T",
+          "030",
+          "104"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "053"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "ACGU3T",
+          "030",
+          "102"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "AGIN3T",
+          "030",
+          "102"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "016",
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "ALLL11T",
+          "030",
+          "109"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "017",
+          "030"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BAZA3T",
+          "030",
+          "156"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premed",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BBAS3T",
+          "030",
+          "209"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "016",
+          "030",
+          "060"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BBDC4T",
+          "030",
+          "546"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "030",
+          "060",
+          "091"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BICB4T",
+          "030",
+          "110"
+        ],
+        "occurrences": 2,
+        "distinct_prazot": [
+          "016",
+          "030"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BISA3T",
+          "030",
+          "104"
+        ],
+        "occurrences": 3,
+        "distinct_prazot": [
+          "030",
+          "060",
+          "113"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      },
+      {
+        "key": [
+          "2010-01-04",
+          "62",
+          "BRKM5T",
+          "030",
+          "107"
+        ],
+        "occurrences": 7,
+        "distinct_prazot": [
+          "016",
+          "018",
+          "030",
+          "060",
+          "078",
+          "090",
+          "120"
+        ],
+        "different_fields": [
+          "prazot",
+          "preabe",
+          "premax",
+          "premin",
+          "premed",
+          "preult",
+          "totneg",
+          "quatot",
+          "voltot"
+        ]
+      }
+    ]
+  },
+  "candidate_with_prazot": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "prazot",
+      "dismes"
+    ],
+    "distinct_keys": 287480,
+    "duplicate_groups": 0,
+    "duplicate_rows_excess": 0,
+    "groups_identical_full_row": 0,
+    "groups_different_full_row": 0,
+    "sample_collisions": []
+  },
+  "base_duplicate_groups_separated_by_prazot": 14848,
+  "selected_key": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "prazot",
+    "dismes"
+  ],
+  "identity_decision": "PRAZOT integra a chave candidata para distinguir registos que colidem na chave base.",
+  "deduplication_performed": false,
+  "source_rows_removed": 0,
+  "limitations": [
+    "A conclusão aplica-se ao COTAHIST 2010 e à versão normalizada identificada; não autoriza deduplicação nem generalização automática a outros anos."
+  ],
+  "validated_at_utc": "2026-10-13T09:20:55.629211+00:00"
+}
