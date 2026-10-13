@@ -1,4 +1,5 @@
 # Execução controlada após FASE04 e NORMALIZED persistidos.
+# Reexecucao controlada apos FASE04 validada e NORMALIZED persistido.
 name: COTAHIST 2016 - FASE05 Manifesto e Checksum
 
 on:
