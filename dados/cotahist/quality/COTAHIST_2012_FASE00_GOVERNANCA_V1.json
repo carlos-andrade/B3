@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2012,
+  "phase": "FASE00",
+  "status": "VALIDADO",
+  "decision": "AUTORIZAR_FASE01",
+  "layout_path": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+  "layout_version": "1.0.1",
+  "transition_evidence_path": "dados/cotahist/quality/COTAHIST_2011_FASE12_FECHAMENTO_2012_ABERTURA_V1.json",
+  "transition_status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "transition_decision": "FECHAR_2011_E_AUTORIZAR_CONTINUACAO_2012",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2012.ZIP",
+  "raw_exists_nonempty": true,
+  "manifest_path": "dados/cotahist/manifests/COTAHIST_A2012.json",
+  "manifest_year": 2012,
+  "manifest_source": "B3",
+  "checksum_path": "dados/cotahist/checksums/COTAHIST_A2012.ZIP.sha256",
+  "blockers": [],
+  "normalized_csv_status": "AUSENTE; reconstrução pertence à FASE04 após FASE01–03",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T09:35:40.201492+00:00"
+}
