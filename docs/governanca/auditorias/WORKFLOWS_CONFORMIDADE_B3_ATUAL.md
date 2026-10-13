@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T10:01:43.815948+00:00
-Workflows auditados: 383
+Gerado em UTC: 2026-10-13T10:40:46.166360+00:00
+Workflows auditados: 385
 
 ## Regra de decisão
 
@@ -221,6 +221,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase07-identidade-2011-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-2012-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-2013-v1.yml | 7 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase07-identidade-2014-v1.yml | 7 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase07-identidade-historica-1986-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07-identidade-historica-1995-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase07-identidade-historica-1996-v1.yml | 7 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -412,3 +413,4 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/sincronizar-wiki-b3.yml | — | **CONFORME** | — | — |
 | .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/validar-bvbg02802.yml | — | **CONFORME** | — | — |
+| .github/workflows/watchdog-b3-validation.yml | — | **DIVERGENTE_CRITICA** | NO_README_TRIGGER | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
