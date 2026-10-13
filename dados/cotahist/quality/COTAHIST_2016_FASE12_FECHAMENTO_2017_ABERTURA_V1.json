@@ -18,10 +18,10 @@
     "01": 489115,
     "99": 1
   },
-  "year2017_normalized_csv_exists": false,
-  "year2017_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "year2017_normalized_csv_exists": true,
+  "year2017_phase04_status": "AGUARDA_VALIDACAO_INDEPENDENTE",
   "blockers": [],
   "transition_scope": "Fecha 2016 após certificação; não certifica 2017. O CSV normalizado 2017 está ausente e a FASE04 permanece bloqueada até regeneração e validação.",
   "deduplication_performed": false,
-  "validated_at_utc": "2026-10-13T11:32:59.403725+00:00"
+  "validated_at_utc": "2026-10-13T11:47:33.189778+00:00"
 }
