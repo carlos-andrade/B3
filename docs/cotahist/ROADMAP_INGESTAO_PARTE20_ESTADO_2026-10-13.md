@@ -1555,3 +1555,23 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. COTAHIST 2021: FASE00 a iniciar.
 3. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada.
 
+## 58. COTAHIST 2021 — FASE00 validada; FASE01 iniciada (2026-10-13)
+
+### FASE00 — Governação
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE00_GOVERNANCA_V1.json`.
+- Estado `VALIDADO`; decisão `AUTORIZAR_FASE01`; zero bloqueadores.
+- Layout Mestre V1.0.1 confirmado; transição 2020→2021 validada.
+- RAW 2021, manifesto e sidecar presentes; NORMALIZED CSV ausente, reconstrução prevista após FASE01–03.
+
+### FASE01 — Aquisição RAW
+- Workflow: `.github/workflows/cotahist-fase01-aquisicao-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38437052896.
+- Estado: enfileirado; evidência `dados/cotahist/quality/COTAHIST_2021_FASE01_AQUISICAO_RAW_V1.json` pendente.
+- SHA-256 esperado conforme manifesto/sidecar: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`.
+
+### Roadmap operacional imediato
+1. FASE00 (2021): VALIDADO.
+2. FASE01 (2021): verificar run/evidência.
+3. FASE02–FASE03 (2021): após FASE01.
+4. FASE04 (2021): reconstruir NORMALIZED após parsing válido, sem modificar RAW.
+
