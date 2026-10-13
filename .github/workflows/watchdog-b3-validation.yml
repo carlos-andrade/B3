@@ -50,7 +50,12 @@ jobs:
               ids.add(system["id"])
               workflow = root / system["monitor"]["workflow"]
               assert workflow.is_file(), f"Workflow monitorizado ausente: {workflow}"
-              assert "*/15 * * * *" in workflow.read_text(encoding="utf-8"), "Cadência esperada não encontrada"
+              workflow_text = workflow.read_text(encoding="utf-8")
+              assert "*/15 * * * *" in workflow_text, "Cadência esperada não encontrada"
+              assert "upload-artifact@v4" in workflow_text, "Publicação de evidência ausente"
+              assert "retention-days: 30" in workflow_text, "Retenção de evidência não declarada"
+              assert "issues: write" in workflow_text, "Permissão de alertas não declarada"
+              assert "gh issue create" in workflow_text, "Criação de alerta não configurada"
               check_ids = set()
               for check in system["checks"]:
                   assert check.get("id") and check["id"] not in check_ids, "ID de controlo ausente/duplicado"
