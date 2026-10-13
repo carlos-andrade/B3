@@ -2239,3 +2239,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE09: enfileirada; verificar evidência.
 4. FASE10: comparar independentemente 25 campos e exigir zero divergências.
 
+## 81. COTAHIST 2022 — FASE09 liberada; FASE10 em fila (2026-10-13)
+
+### FASE09 — Pre-release
+**Estado: LIBERADO_PARA_FASE10 — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE09_PRE_RELEASE_V1.json`, blob `e4c7bdd87e3f6f5624b0d1d12d27759f7aebbe52`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483639277 — validação e persistência concluídas com sucesso.
+- Decisão: `LIBERADO_PARA_FASE10`; `missing=[]`, `blocked=[]`.
+- Gate: `VALIDADO_COM_EXCECAO / LIBERADO_PARA_FASE09`.
+- SHA-256 RAW: `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`.
+- SHA-256 NORMALIZED: `4e0e75d0bab794eeffdaa23990e3651810c3654b31e1b6bd3c53b9e4f72d8148`.
+
+### FASE10 — Validação independente dos 25 campos
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483723845.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- Compara os 25 campos RAW × NORMALIZED na ordem original; exige zero divergências, hashes físicos concordantes e ZIP íntegro.
+- Só avançar para FASE11 com evidência `VALIDADO`, `LIBERADO_PARA_FASE11`, 25 campos e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE09 (2022): validadas/liberadas conforme evidências específicas; FASE07 V1 bloqueada preservada e V2 validada.
+2. FASE10: enfileirada; verificar 25 campos e zero divergências.
+3. FASE11: após FASE10 validada.
+4. FASE12: após certificação 2022; transição para 2023 sem certificação automática do novo ano.
+
