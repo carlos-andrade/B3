@@ -1,0 +1,1739 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2021,
+  "phase": "FASE08_DIAGNOSTICO_ORDEM",
+  "status": "DIAGNOSTICO_CONCLUIDO",
+  "decision": "REQUER_REVISAO_DO_CONTRATO",
+  "validation_type": "DIAGNOSTICO_DE_ORDENACAO_SEM_CERTIFICACAO",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2021.csv",
+  "normalized_sha256": "0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 1831862,
+  "unique_trading_dates": 247,
+  "first_trading_date": "2021-01-04",
+  "last_trading_date": "2021-12-30",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 139405,
+  "chronological_regression_samples": [
+    {
+      "row": 125,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 249,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 342,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 373,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 435,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 497,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 559,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 621,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 683,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 776,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 900,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1024,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1148,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1303,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1396,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1427,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1520,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1551,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1644,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1675,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    }
+  ],
+  "chronological_regression_record_samples": [
+    {
+      "previous": {
+        "row": 124,
+        "data_pregao": "2021-02-11",
+        "codbdi": "96",
+        "nomres": "SONDOTECNICA",
+        "codneg": "SOND6F",
+        "tpmerc": "020",
+        "especi": "PNB",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRSONDACNPB6",
+        "dismes": "161"
+      },
+      "current": {
+        "row": 125,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "AMPHENOL COR",
+        "codneg": "A1PH34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRA1PHBDR006",
+        "dismes": "104"
+      }
+    },
+    {
+      "previous": {
+        "row": 248,
+        "data_pregao": "2021-02-11",
+        "codbdi": "96",
+        "nomres": "TEKNO",
+        "codneg": "TKNO4F",
+        "tpmerc": "020",
+        "especi": "PN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRTKNOACNPR5",
+        "dismes": "065"
+      },
+      "current": {
+        "row": 249,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ESTAPAR",
+        "codneg": "ALPK3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRALPKACNOR9",
+        "dismes": "100"
+      }
+    },
+    {
+      "previous": {
+        "row": 341,
+        "data_pregao": "2021-02-11",
+        "codbdi": "96",
+        "nomres": "WLM IND COM",
+        "codneg": "WLMM3F",
+        "tpmerc": "020",
+        "especi": "ON",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRWLMMACNOR6",
+        "dismes": "102"
+      },
+      "current": {
+        "row": 342,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "LAS VEGAS SA",
+        "codneg": "L1VS34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRL1VSBDR008",
+        "dismes": "100"
+      }
+    },
+    {
+      "previous": {
+        "row": 372,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "MONDELEZ INT",
+        "codneg": "MDLZ34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRMDLZBDR002",
+        "dismes": "122"
+      },
+      "current": {
+        "row": 373,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "BROWN FORMAN",
+        "codneg": "B1FC34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRB1FCBDR007",
+        "dismes": "104"
+      }
+    },
+    {
+      "previous": {
+        "row": 434,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "ALLIAR",
+        "codneg": "AALR3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRAALRACNOR6",
+        "dismes": "102"
+      },
+      "current": {
+        "row": 435,
+        "data_pregao": "2021-01-14",
+        "codbdi": "08",
+        "nomres": "TECNOSOLO",
+        "codneg": "TCNO4",
+        "tpmerc": "010",
+        "especi": "PN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRTCNOACNPR2",
+        "dismes": "159"
+      }
+    },
+    {
+      "previous": {
+        "row": 496,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "NEUROCRINE B",
+        "codneg": "N1BI34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRN1BIBDR009",
+        "dismes": "100"
+      },
+      "current": {
+        "row": 497,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "MINERVA",
+        "codneg": "BEEF3",
+        "tpmerc": "010",
+        "especi": "ON  EJ  NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBEEFACNOR6",
+        "dismes": "110"
+      }
+    },
+    {
+      "previous": {
+        "row": 558,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "ATOMPAR",
+        "codneg": "ATOM3",
+        "tpmerc": "010",
+        "especi": "ON",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRATOMACNOR1",
+        "dismes": "103"
+      },
+      "current": {
+        "row": 559,
+        "data_pregao": "2021-01-14",
+        "codbdi": "12",
+        "nomres": "FII BTG SHOP",
+        "codneg": "BPML11",
+        "tpmerc": "010",
+        "especi": "CI",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBPMLCTF006",
+        "dismes": "104"
+      }
+    },
+    {
+      "previous": {
+        "row": 620,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "PINDUODUO IN",
+        "codneg": "P1DD34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRP1DDBDR004",
+        "dismes": "100"
+      },
+      "current": {
+        "row": 621,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "LATIN AMER40",
+        "codneg": "BILF39",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBILFBDR006",
+        "dismes": "101"
+      }
+    },
+    {
+      "previous": {
+        "row": 682,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "AMAZONIA",
+        "codneg": "BAZA3",
+        "tpmerc": "010",
+        "especi": "ON",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBAZAACNOR0",
+        "dismes": "174"
+      },
+      "current": {
+        "row": 683,
+        "data_pregao": "2021-01-14",
+        "codbdi": "12",
+        "nomres": "FII RB CAP I",
+        "codneg": "FIIP11B",
+        "tpmerc": "010",
+        "especi": "CI      MB",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFIIPCTF001",
+        "dismes": "233"
+      }
+    },
+    {
+      "previous": {
+        "row": 775,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "BANCO INTER",
+        "codneg": "BIDI11",
+        "tpmerc": "010",
+        "especi": "UNT     N2",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBIDICDAXX3",
+        "dismes": "106"
+      },
+      "current": {
+        "row": 776,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "BRADESPAR",
+        "codneg": "BRAP4",
+        "tpmerc": "010",
+        "especi": "PN      N1",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBRAPACNPR2",
+        "dismes": "137"
+      }
+    },
+    {
+      "previous": {
+        "row": 899,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "BOMBRIL",
+        "codneg": "BOBR4",
+        "tpmerc": "010",
+        "especi": "PN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRBOBRACNPR3",
+        "dismes": "128"
+      },
+      "current": {
+        "row": 900,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "CDW CORP",
+        "codneg": "C1DW34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRC1DWBDR009",
+        "dismes": "101"
+      }
+    },
+    {
+      "previous": {
+        "row": 1023,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "CABLE ONE IN",
+        "codneg": "C1AB34",
+        "tpmerc": "010",
+        "especi": "DRN ED",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRC1ABBDR009",
+        "dismes": "102"
+      },
+      "current": {
+        "row": 1024,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "CEA MODAS",
+        "codneg": "CEAB3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRCEABACNOR1",
+        "dismes": "101"
+      }
+    },
+    {
+      "previous": {
+        "row": 1147,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "CESP",
+        "codneg": "CESP5",
+        "tpmerc": "010",
+        "especi": "PNA     N1",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRCESPACNPA6",
+        "dismes": "117"
+      },
+      "current": {
+        "row": 1148,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "COELCE",
+        "codneg": "COCE5",
+        "tpmerc": "010",
+        "especi": "PNA",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRCOCEACNPA3",
+        "dismes": "140"
+      }
+    },
+    {
+      "previous": {
+        "row": 1302,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "COSAN",
+        "codneg": "CSAN3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRCSANACNOR6",
+        "dismes": "120"
+      },
+      "current": {
+        "row": 1303,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "COGNIZANT",
+        "codneg": "CTSH34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRCTSHBDR002",
+        "dismes": "115"
+      }
+    },
+    {
+      "previous": {
+        "row": 1395,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "D1000VFARMA",
+        "codneg": "DMVF3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRDMVFACNOR9",
+        "dismes": "100"
+      },
+      "current": {
+        "row": 1396,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "UNITED AIRLI",
+        "codneg": "U1AL34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRU1ALBDR006",
+        "dismes": "100"
+      }
+    },
+    {
+      "previous": {
+        "row": 1426,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "WESTERN DIG",
+        "codneg": "W1DC34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRW1DCBDR007",
+        "dismes": "102"
+      },
+      "current": {
+        "row": 1427,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "DOHLER",
+        "codneg": "DOHL3",
+        "tpmerc": "010",
+        "especi": "ON",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRDOHLACNOR2",
+        "dismes": "059"
+      }
+    },
+    {
+      "previous": {
+        "row": 1519,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "ENERGISA",
+        "codneg": "ENGI3",
+        "tpmerc": "010",
+        "especi": "ON      N2",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRENGIACNOR0",
+        "dismes": "138"
+      },
+      "current": {
+        "row": 1520,
+        "data_pregao": "2021-01-29",
+        "codbdi": "02",
+        "nomres": "WIX.COM LTD",
+        "codneg": "W1IX34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRW1IXBDR002",
+        "dismes": "100"
+      }
+    },
+    {
+      "previous": {
+        "row": 1550,
+        "data_pregao": "2021-01-29",
+        "codbdi": "08",
+        "nomres": "INEPAR",
+        "codneg": "INEP3",
+        "tpmerc": "010",
+        "especi": "ON",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRINEPACNOR1",
+        "dismes": "141"
+      },
+      "current": {
+        "row": 1551,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ELEKTRO",
+        "codneg": "EKTR4",
+        "tpmerc": "010",
+        "especi": "PN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BREKTRACNPR7",
+        "dismes": "144"
+      }
+    },
+    {
+      "previous": {
+        "row": 1643,
+        "data_pregao": "2021-02-12",
+        "codbdi": "02",
+        "nomres": "GDS HOLDINGS",
+        "codneg": "G1DS34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRG1DSBDR003",
+        "dismes": "100"
+      },
+      "current": {
+        "row": 1644,
+        "data_pregao": "2021-01-29",
+        "codbdi": "08",
+        "nomres": "INEPAR",
+        "codneg": "INEP4",
+        "tpmerc": "010",
+        "especi": "PN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRINEPACNPR8",
+        "dismes": "141"
+      }
+    },
+    {
+      "previous": {
+        "row": 1674,
+        "data_pregao": "2021-01-29",
+        "codbdi": "12",
+        "nomres": "FII ARCTIUM",
+        "codneg": "ARCT11",
+        "tpmerc": "010",
+        "especi": "CI  EB",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRARCTCTF008",
+        "dismes": "108"
+      },
+      "current": {
+        "row": 1675,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FEDERAL REAL",
+        "codneg": "F1RI34",
+        "tpmerc": "010",
+        "especi": "DRN ED",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRF1RIBDR005",
+        "dismes": "104"
+      }
+    }
+  ],
+  "first_rows_sample": [
+    {
+      "row": 1,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ADVANCE AUTO",
+      "codneg": "A1AP34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1APBDR001",
+      "dismes": "105"
+    },
+    {
+      "row": 2,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ABB LTD",
+      "codneg": "A1BB34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1BBBDR009",
+      "dismes": "100"
+    },
+    {
+      "row": 3,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ABIOMED INC",
+      "codneg": "A1BM34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1BMBDR006",
+      "dismes": "100"
+    },
+    {
+      "row": 4,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMCOR PLC",
+      "codneg": "A1CR34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1CRBDR003",
+      "dismes": "101"
+    },
+    {
+      "row": 5,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMEREN CORP",
+      "codneg": "A1EE34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1EEBDR007",
+      "dismes": "104"
+    },
+    {
+      "row": 6,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AEGON NV",
+      "codneg": "A1EG34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1EGBDR002",
+      "dismes": "100"
+    },
+    {
+      "row": 7,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALLIANT ENER",
+      "codneg": "A1EN34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1ENBDR008",
+      "dismes": "104"
+    },
+    {
+      "row": 8,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMERICAN ELE",
+      "codneg": "A1EP34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1EPBDR003",
+      "dismes": "104"
+    },
+    {
+      "row": 9,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AES CORP",
+      "codneg": "A1ES34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1ESBDR007",
+      "dismes": "104"
+    },
+    {
+      "row": 10,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AFLAC INC",
+      "codneg": "A1FL34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1FLBDR009",
+      "dismes": "104"
+    },
+    {
+      "row": 11,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AGILENT TECH",
+      "codneg": "A1GI34",
+      "tpmerc": "010",
+      "especi": "DRN ED",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1GIBDR003",
+      "dismes": "104"
+    },
+    {
+      "row": 12,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "APARTMENT IN",
+      "codneg": "A1IV34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1IVBDR002",
+      "dismes": "106"
+    },
+    {
+      "row": 13,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ARTHUR J GAL",
+      "codneg": "A1JG34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1JGBDR001",
+      "dismes": "104"
+    },
+    {
+      "row": 14,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AKAMAI TECHN",
+      "codneg": "A1KA34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1KABDR002",
+      "dismes": "101"
+    },
+    {
+      "row": 15,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALBEMARLE CO",
+      "codneg": "A1LB34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1LBBDR008",
+      "dismes": "104"
+    },
+    {
+      "row": 16,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALIGN TECHNO",
+      "codneg": "A1LG34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1LGBDR007",
+      "dismes": "100"
+    },
+    {
+      "row": 17,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALLIANCE DAT",
+      "codneg": "A1LL34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1LLBDR007",
+      "dismes": "104"
+    },
+    {
+      "row": 18,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALNYLAM PHAR",
+      "codneg": "A1LN34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1LNBDR003",
+      "dismes": "100"
+    },
+    {
+      "row": 19,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ALEXION PHAR",
+      "codneg": "A1LX34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1LXBDR002",
+      "dismes": "100"
+    },
+    {
+      "row": 20,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMERISOURCEB",
+      "codneg": "A1MB34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1MBBDR006",
+      "dismes": "104"
+    },
+    {
+      "row": 21,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ADVANCED MIC",
+      "codneg": "A1MD34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1MDBDR002",
+      "dismes": "100"
+    },
+    {
+      "row": 22,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMETEK INC",
+      "codneg": "A1ME34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1MEBDR000",
+      "dismes": "104"
+    },
+    {
+      "row": 23,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMERIPRISE F",
+      "codneg": "A1MP34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1MPBDR006",
+      "dismes": "104"
+    },
+    {
+      "row": 24,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AMERICAMOVIL",
+      "codneg": "A1MX34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1MXBDR000",
+      "dismes": "101"
+    },
+    {
+      "row": 25,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ARISTA NETWO",
+      "codneg": "A1NE34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1NEBDR008",
+      "dismes": "100"
+    },
+    {
+      "row": 26,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ANSYS INC",
+      "codneg": "A1NS34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1NSBDR008",
+      "dismes": "100"
+    },
+    {
+      "row": 27,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "ANTHEM INC",
+      "codneg": "A1NT34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1NTBDR006",
+      "dismes": "104"
+    },
+    {
+      "row": 28,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AON PLC",
+      "codneg": "A1ON34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1ONBDR007",
+      "dismes": "104"
+    },
+    {
+      "row": 29,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "AO SMITH COR",
+      "codneg": "A1OS34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1OSBDR006",
+      "dismes": "104"
+    },
+    {
+      "row": 30,
+      "data_pregao": "2021-01-04",
+      "codbdi": "02",
+      "nomres": "APACHE CORP",
+      "codneg": "A1PA34",
+      "tpmerc": "010",
+      "especi": "DRN",
+      "prazot": "",
+      "modref": "R$",
+      "codisi": "BRA1PABDR001",
+      "dismes": "104"
+    }
+  ],
+  "sort_order_diagnostics": {
+    "date_primary_key_fields": [
+      "data_pregao",
+      "codbdi",
+      "nomres",
+      "codneg",
+      "tpmerc",
+      "especi",
+      "prazot",
+      "dismes"
+    ],
+    "date_primary_key_regressions": 207261,
+    "security_primary_key_fields": [
+      "codbdi",
+      "nomres",
+      "codneg",
+      "tpmerc",
+      "especi",
+      "prazot",
+      "dismes",
+      "data_pregao"
+    ],
+    "security_primary_key_regressions": 192167,
+    "ticker_market_date_key_fields": [
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "especi",
+      "prazot",
+      "dismes",
+      "data_pregao"
+    ],
+    "ticker_market_date_key_regressions": 71237
+  },
+  "instrument_key_fields": [
+    "codbdi",
+    "nomres",
+    "codneg",
+    "tpmerc",
+    "especi",
+    "prazot",
+    "modref",
+    "codisi",
+    "dismes"
+  ],
+  "instrument_order_regressions": 192164,
+  "instrument_date_regressions": 66028,
+  "instrument_date_regression_samples": [
+    {
+      "row": 1552,
+      "instrument": [
+        "02",
+        "ESTEE LAUDER",
+        "ELCI34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRELCIBDR007",
+        "105"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1552,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ESTEE LAUDER",
+        "codneg": "ELCI34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRELCIBDR007",
+        "dismes": "105"
+      }
+    },
+    {
+      "row": 1556,
+      "instrument": [
+        "02",
+        "EMBRAER",
+        "EMBR3",
+        "010",
+        "ON      NM",
+        "",
+        "R$",
+        "BREMBRACNOR4",
+        "189"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1556,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "EMBRAER",
+        "codneg": "EMBR3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BREMBRACNOR4",
+        "dismes": "189"
+      }
+    },
+    {
+      "row": 1557,
+      "instrument": [
+        "02",
+        "ENAUTA PART",
+        "ENAT3",
+        "010",
+        "ON      NM",
+        "",
+        "R$",
+        "BRENATACNOR0",
+        "101"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1557,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ENAUTA PART",
+        "codneg": "ENAT3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRENATACNOR0",
+        "dismes": "101"
+      }
+    },
+    {
+      "row": 1559,
+      "instrument": [
+        "02",
+        "ENEVA",
+        "ENEV3",
+        "010",
+        "ON      NM",
+        "",
+        "R$",
+        "BRENEVACNOR8",
+        "104"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1559,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ENEVA",
+        "codneg": "ENEV3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRENEVACNOR8",
+        "dismes": "104"
+      }
+    },
+    {
+      "row": 1560,
+      "instrument": [
+        "02",
+        "ENERGISA",
+        "ENGI3",
+        "010",
+        "ON      N2",
+        "",
+        "R$",
+        "BRENGIACNOR0",
+        "138"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1560,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "ENERGISA",
+        "codneg": "ENGI3",
+        "tpmerc": "010",
+        "especi": "ON      N2",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRENGIACNOR0",
+        "dismes": "138"
+      }
+    },
+    {
+      "row": 1676,
+      "instrument": [
+        "02",
+        "FASTLY INC",
+        "F1SL34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRF1SLBDR007",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1676,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FASTLY INC",
+        "codneg": "F1SL34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRF1SLBDR007",
+        "dismes": "100"
+      }
+    },
+    {
+      "row": 1678,
+      "instrument": [
+        "02",
+        "FORTIVE CORP",
+        "F1TV34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRF1TVBDR004",
+        "105"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1678,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FORTIVE CORP",
+        "codneg": "F1TV34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRF1TVBDR004",
+        "dismes": "105"
+      }
+    },
+    {
+      "row": 1680,
+      "instrument": [
+        "02",
+        "FACEBOOK",
+        "FBOK34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFBOKBDR006",
+        "101"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1680,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FACEBOOK",
+        "codneg": "FBOK34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFBOKBDR006",
+        "dismes": "101"
+      }
+    },
+    {
+      "row": 1681,
+      "instrument": [
+        "02",
+        "FREEPORT",
+        "FCXO34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFCXOBDR007",
+        "132"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1681,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FREEPORT",
+        "codneg": "FCXO34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFCXOBDR007",
+        "dismes": "132"
+      }
+    },
+    {
+      "row": 1682,
+      "instrument": [
+        "02",
+        "FORD MOTORS",
+        "FDMO34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFDMOBDR008",
+        "133"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1682,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FORD MOTORS",
+        "codneg": "FDMO34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFDMOBDR008",
+        "dismes": "133"
+      }
+    },
+    {
+      "row": 1683,
+      "instrument": [
+        "02",
+        "FEDEX CORP",
+        "FDXB34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFDXBBDR002",
+        "129"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1683,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FEDEX CORP",
+        "codneg": "FDXB34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFDXBBDR002",
+        "dismes": "129"
+      }
+    },
+    {
+      "row": 1687,
+      "instrument": [
+        "02",
+        "FLEETCOR TEC",
+        "FLTC34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFLTCBDR001",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1687,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FLEETCOR TEC",
+        "codneg": "FLTC34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFLTCBDR001",
+        "dismes": "100"
+      }
+    },
+    {
+      "row": 1688,
+      "instrument": [
+        "02",
+        "FEMSA",
+        "FMXB34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFMXBBDR003",
+        "106"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1688,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FEMSA",
+        "codneg": "FMXB34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFMXBBDR003",
+        "dismes": "106"
+      }
+    },
+    {
+      "row": 1689,
+      "instrument": [
+        "02",
+        "FOX CORP",
+        "FOXC34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFOXCBDR007",
+        "102"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1689,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FOX CORP",
+        "codneg": "FOXC34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFOXCBDR007",
+        "dismes": "102"
+      }
+    },
+    {
+      "row": 1691,
+      "instrument": [
+        "02",
+        "FIRST SOLAR",
+        "FSLR34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRFSLRBDR001",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1691,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "FIRST SOLAR",
+        "codneg": "FSLR34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRFSLRBDR001",
+        "dismes": "100"
+      }
+    },
+    {
+      "row": 1693,
+      "instrument": [
+        "02",
+        "GDS HOLDINGS",
+        "G1DS34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRG1DSBDR003",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1693,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "GDS HOLDINGS",
+        "codneg": "G1DS34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRG1DSBDR003",
+        "dismes": "100"
+      }
+    },
+    {
+      "row": 1800,
+      "instrument": [
+        "02",
+        "GAFISA",
+        "GFSA3",
+        "010",
+        "ON      NM",
+        "",
+        "R$",
+        "BRGFSAACNOR3",
+        "119"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1800,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "GAFISA",
+        "codneg": "GFSA3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRGFSAACNOR3",
+        "dismes": "119"
+      }
+    },
+    {
+      "row": 1803,
+      "instrument": [
+        "02",
+        "GILEAD",
+        "GILD34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRGILDBDR000",
+        "119"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1803,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "GILEAD",
+        "codneg": "GILD34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRGILDBDR000",
+        "dismes": "119"
+      }
+    },
+    {
+      "row": 1804,
+      "instrument": [
+        "02",
+        "GRUPO MATEUS",
+        "GMAT3",
+        "010",
+        "ON      NM",
+        "",
+        "R$",
+        "BRGMATACNOR7",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1804,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "GRUPO MATEUS",
+        "codneg": "GMAT3",
+        "tpmerc": "010",
+        "especi": "ON      NM",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRGMATACNOR7",
+        "dismes": "100"
+      }
+    },
+    {
+      "row": 1805,
+      "instrument": [
+        "02",
+        "GENERAL MOT",
+        "GMCO34",
+        "010",
+        "DRN",
+        "",
+        "R$",
+        "BRGMCOBDR008",
+        "116"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04",
+      "record": {
+        "row": 1805,
+        "data_pregao": "2021-01-04",
+        "codbdi": "02",
+        "nomres": "GENERAL MOT",
+        "codneg": "GMCO34",
+        "tpmerc": "010",
+        "especi": "DRN",
+        "prazot": "",
+        "modref": "R$",
+        "codisi": "BRGMCOBDR008",
+        "dismes": "116"
+      }
+    }
+  ],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "CONTRATO_DE_ORDENACAO_A_CONFIRMAR",
+      "classification": "DIAGNOSTICO_NAO_CERTIFICADOR",
+      "blocking": false,
+      "detail": "Esta execução compara chaves de ordenação candidatas e regista amostras; não aprova nem relaxa o gate FASE08."
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_DIAGNOSTICO",
+      "blocking": false,
+      "detail": "A lista oficial histórica de sessões/feriados B3 de 2021 não está persistida neste diagnóstico."
+    }
+  ],
+  "weekday_distribution": {
+    "Monday": 49,
+    "Tuesday": 48,
+    "Wednesday": 51,
+    "Thursday": 51,
+    "Friday": 48
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2021-02-12",
+      "to": "2021-02-17",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "deduplication_performed": false,
+  "rows_removed": 0,
+  "validated_at_utc": "2026-10-13T23:00:25.504798+00:00"
+}
