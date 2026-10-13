@@ -1258,3 +1258,26 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE02–FASE03 (2020): após a FASE01.
 4. FASE04 (2020): reconstruir NORMALIZED apenas depois de parsing validado; RAW imutável.
 
+## 46. COTAHIST 2020 — FASE01/FASE02 validadas; FASE03 em execução (2026-10-13)
+
+### FASE01 — Aquisição RAW
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE01_AQUISICAO_RAW_V1.json`, blob `5187dda21dbbe49f3026f5d9684aeaf5da5dc00f`.
+- Estado `VALIDADO`; decisão `LIBERADO_PARA_FASE02`; RAW/manifesto/sidecar coincidem.
+- SHA-256 RAW: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+
+### FASE02 — Integridade da fonte
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE02_INTEGRIDADE_FONTE_V1.json`.
+- Estado `VALIDADO`; decisão `LIBERADO_PARA_FASE03`.
+- ZIP com um membro `COTAHIST_A2020.TXT`; teste ZIP sem erro; 1.251.648 linhas físicas; 245 bytes por registo; zero comprimentos inválidos; 1.251.646 registos tipo `01`.
+
+### FASE03 — Parsing estrutural
+- Workflow: `.github/workflows/cotahist-fase03-parsing-2020-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38435123333.
+- Estado: em execução; evidência `dados/cotahist/quality/COTAHIST_2020_FASE03_PARSING_V1.json` pendente.
+- Só avançar para FASE04 se a evidência confirmar zero comprimentos/datas inválidos e datas dentro de 2020.
+
+### Roadmap operacional imediato
+1. FASE00–FASE02 (2020): VALIDADO.
+2. FASE03 (2020): verificar run e evidência.
+3. FASE04 (2020): reconstruir NORMALIZED após FASE03 válida; comparar manifesto e sidecar sem atualizar silenciosamente hashes históricos.
+
