@@ -688,3 +688,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE05 2018: workflow publicado; executar/verificar a evidência de manifesto e checksum.
 3. Só criar/acionar FASE06 depois de FASE05 `VALIDADO` / `LIBERADO_PARA_FASE06`; FASE06 reconcilia campos críticos RAW × NORMALIZED, sem deduplicação.
 4. Manter RAW imutável e todas as linhas. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada até reconciliação própria.
+
+
+---
+
+## Secção 27 — FASE05 validada; FASE06 publicada — COTAHIST 2018 (2026-10-13)
+
+### FASE05 — manifesto e checksum: VALIDADO
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE05_MANIFESTO_CHECKSUM_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE05_MANIFESTO_CHECKSUM_V1.json
+- Blob SHA: `9a251e4f6e3304a6dea689f65bb0fdf3f8a7499d`.
+- Estado/decisão: `VALIDADO` / `LIBERADO_PARA_FASE06`.
+- RAW SHA-256 coincide entre cálculo físico, manifesto e sidecar: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- NORMALIZED SHA-256 coincide entre cálculo físico, manifesto e sidecar: `e3e57fdcf4be823830e6d6653d68275fa33af6d51b86392356cc29fe7a0f7981`.
+- ZIP íntegro, membro único `COTAHIST_A2018.TXT`; 580.155 linhas; 25 campos; datas 2018-01-02 a 2018-12-28.
+- `raw_modified=false`; `deduplication_performed=false`.
+- Timestamp da evidência: `2026-10-13T16:19:16.010825+00:00`.
+
+### FASE06 — reconciliação semântica RAW × NORMALIZED: workflow publicado; execução pendente
+- Workflow: `.github/workflows/cotahist-fase06-reconciliacao-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase06-reconciliacao-2018-v1.yml
+- Commits: criação `0228cee170d85ae8c6b87fd1bbc844940cbf60c2`; endurecimento do gate `d897ef21b24904f560a00dc6fd60152552fd4c34`.
+- O gate exige FASE05 2018 `VALIDADO` / `LIBERADO_PARA_FASE06` e confirma que os hashes RAW/NORMALIZED continuam iguais aos da evidência FASE05.
+- Compara 12 campos críticos por ordem de registo, sem deduplicação: data, Cód. BDI, ticker, tipo de mercado, preços de abertura/máximo/mínimo/médio/último, número de negócios, quantidade e volume.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE06_RECONCILIACAO_V1.json`.
+- Estado: **WORKFLOW PUBLICADO; evidência ainda não encontrada na consulta posterior à publicação**. Não declarar FASE06 concluída nem avançar para FASE07 sem evidência `VALIDADO` / `LIBERADO_PARA_FASE07`.
+- O workflow persiste evidência diagnóstica inclusive quando encontra divergências; amostra de divergências limitada a 20 registos para diagnóstico.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 2018: VALIDADO; FASE05 libera FASE06.
+2. FASE06 2018: executar/verificar a reconciliação semântica dos 12 campos críticos RAW × NORMALIZED.
+3. Se FASE06 validar sem divergências, avançar para FASE07 identidade/cardinalidade; se bloquear, investigar sem corrigir ou deduplicar o RAW.
+4. Preservar as evidências históricas e a trilha independente REC-001 B3 × BLOOMBERG_MAIL, que permanece bloqueada até reconciliação própria.
