@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 2020,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_2020_E_AUTORIZAR_CONTINUACAO_2021",
+  "phase10_2020_status": "VALIDADO",
+  "phase11_2020_status": "CERTIFICADO",
+  "year2021_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2021.ZIP",
+  "year2021_raw_sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+  "year2021_manifest_sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+  "year2021_sidecar_sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+  "year2021_raw_hash_match": true,
+  "year2021_zip_member_count": 1,
+  "year2021_invalid_record_lengths": 0,
+  "year2021_record_type_counts": {
+    "00": 1,
+    "01": 1831862,
+    "99": 1
+  },
+  "year2021_normalized_csv_exists": false,
+  "year2021_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 2020 após certificação; não certifica 2021. Manifesto e sidecar não substituem a validação física do NORMALIZED 2021.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T17:13:14.185219+00:00"
+}
