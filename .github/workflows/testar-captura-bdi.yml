@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "ferramentas/capturar_bdi.py"
+  schedule:
+    - cron: "0 11 * * 1-5"
   workflow_dispatch:
     inputs:
       endpoint:
@@ -11,9 +13,9 @@ on:
         required: true
         default: "DailyAverageStocks"
       date:
-        description: "Data YYYY-MM-DD"
-        required: true
-        default: "2026-09-22"
+        description: "Data YYYY-MM-DD ou auto para procurar a última data disponível"
+        required: false
+        default: "auto"
 
 permissions:
   contents: write
@@ -26,15 +28,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Testar cálculo de datas
+        run: python -m unittest ferramentas.test_capturar_bdi -v
       - name: Capturar
         env:
           ENDPOINT: ${{ inputs.endpoint || 'DailyAverageStocks' }}
-          DATA: ${{ inputs.date }}
+          DATA: ${{ inputs.date || 'auto' }}
         run: |
           set -euo pipefail
-          if [ -z "$DATA" ]; then
-            DATA="$(TZ=America/Sao_Paulo date -d 'yesterday' +%F)"
-          fi
           echo "DATA=$DATA" >> "$GITHUB_ENV"
           python ferramentas/capturar_bdi.py --endpoint "$ENDPOINT" --date "$DATA"
       - name: Commit
