@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T10:53:28.193856+00:00
-Workflows auditados: 385
+Gerado em UTC: 2026-10-13T10:54:39.641428+00:00
+Workflows auditados: 386
 
 ## Regra de decisão
 
@@ -414,3 +414,4 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/validar-bvbg02802.yml | — | **CONFORME** | — | — |
 | .github/workflows/watchdog-b3-validation.yml | — | **DIVERGENTE_CRITICA** | NO_README_TRIGGER | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
+| .github/workflows/watchdog-data-freshness.yml | — | **CONFORME** | — | — |
