@@ -14,7 +14,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: cotahist-fase04-normalizacao-2023-v1
+  group: cotahist-fase04-normalizacao-2023-v2
   cancel-in-progress: false
 jobs:
   validate-normalize:
