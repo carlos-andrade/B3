@@ -2130,3 +2130,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE08 V2: depois de FASE07, com exceções de ordenação explicitadas.
 4. Gate 06–08 e FASE09: só após FASE08 V2 e Gate aprovados.
 
+## 77. COTAHIST 2022 — FASE07 V1 bloqueada; FASE07 V2 com chave ampliada em execução (2026-10-13)
+
+### FASE07 V1 — Resultado e diagnóstico
+**Estado: BLOQUEADO — evidência preservada.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V1.json`, blob `27a927efb47e4d0f79b0bf2efae68df308cea6cb`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483116402 — a auditoria terminou com falha de chave, não por divergência RAW/NORMALIZED.
+- Decisão: `AGUARDANDO_DECISAO_NORMATIVA`.
+- Registos: 2.117.440; hash NORMALIZED `4e0e75d0bab794eeffdaa23990e3651810c3654b31e1b6bd3c53b9e4f72d8148`.
+- Chave-base `data_pregao+codbdi+codneg+tpmerc+dismes`: 18.872 grupos duplicados; 49.375 linhas excedentes; nenhum grupo idêntico na linha completa.
+- Candidata com `prazot`: restaram 5 grupos duplicados/5 linhas excedentes. Todos os 5 grupos são do ticker `BIOM12F`, BDI 96, mercado 020, com `prazot` vazio; os campos divergentes são `especi` e `codisi`.
+- Não houve deduplicação nem remoção de linhas. O resultado prova que `prazot` sozinho não é chave suficiente neste ano.
+
+### FASE07 V2 — Chave candidata ampliada
+**Estado: RUN EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2022-v2.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483274102.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json`.
+- A V2 testa `data_pregao+codbdi+codneg+tpmerc+prazot+dismes+especi+codisi`. A hipótese é que `ESPECI` e `CODISI` separem as cinco colisões restantes; só aceitar se a cardinalidade confirmar zero colisões.
+- FASE08 V2, Gate e FASE09 foram atualizados para consumir a evidência V2 e a nova decisão. A FASE07 V1 bloqueada permanece preservada.
+
+### Roadmap operacional imediato
+1. FASE00–FASE06 (2022): VALIDADO.
+2. FASE07 V1: BLOQUEADO por chave insuficiente; preservado.
+3. FASE07 V2: executar/verificar chave ampliada.
+4. FASE08 V2 e Gate: somente após FASE07 V2 sem colisões.
+
