@@ -7,6 +7,9 @@ on:
       - "WATCHDOG/engine/check_data_freshness.py"
       - "WATCHDOG/registry/datasets-monitorizados.json"
       - "WATCHDOG/tests/test_data_freshness.py"
+      - "dados/bdi/manifests/**"
+      - "dados/bcb_sgs/manifests/**"
+      - "dados/cotahist/manifests/**"
       - ".github/workflows/watchdog-data-freshness.yml"
   schedule:
     - cron: "15 7 * * 1-6"
@@ -68,7 +71,7 @@ jobs:
           PY
           echo "evaluator_exit_code=$code" >> "$GITHUB_OUTPUT"
       - name: Criar ou atualizar alerta de atualidade
-        if: steps.freshness.outputs.has_stale == 'true'
+        if: steps.freshness.outputs.has_alert == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
