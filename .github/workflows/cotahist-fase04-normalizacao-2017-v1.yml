@@ -201,7 +201,26 @@ jobs:
           fi
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
+            if ! git rebase origin/main; then
+              unexpected=false
+              while IFS= read -r conflict_file; do
+                case "$conflict_file" in
+                  "$evidence"|"$norm")
+                    git checkout --theirs -- "$conflict_file"
+                    git add "$conflict_file"
+                    ;;
+                  *)
+                    echo "Conflito inesperado fora dos artefactos FASE04: $conflict_file"
+                    unexpected=true
+                    ;;
+                esac
+              done < <(git diff --name-only --diff-filter=U)
+              if [ "$unexpected" = true ]; then
+                git rebase --abort || true
+                exit 1
+              fi
+              GIT_EDITOR=true git rebase --continue
+            fi
             if git push origin HEAD:main; then exit 0; fi
             echo "Push concorrente; nova tentativa ${attempt}/5."
             sleep $((attempt * 2))
