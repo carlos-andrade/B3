@@ -1,0 +1,134 @@
+# FASE12 fecha 2020 apos certificacao e valida RAW 2021; nao certifica 2021.
+name: COTAHIST 2020 - FASE12 Fechamento e Transicao 2021
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase12-fechamento-2020-abertura-2021-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2020_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2020_FASE11_CERTIFICACAO_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A2021.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2021.json"
+      - "dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase12-fechamento-2020-abertura-2021-v1
+  cancel-in-progress: false
+
+jobs:
+  transicao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase12-fechamento-2020-abertura-2021-v1.yml
+            dados/cotahist/quality/COTAHIST_2020_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+            dados/cotahist/quality/COTAHIST_2020_FASE11_CERTIFICACAO_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2021.ZIP
+            dados/cotahist/manifests/COTAHIST_A2021.json
+            dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2021.csv
+            dados/cotahist/quality/COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar certificacao 2020 e RAW 2021
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, pathlib, sys, zipfile
+          q=pathlib.Path("dados/cotahist/quality")
+          f10p=q/"COTAHIST_2020_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+          f11p=q/"COTAHIST_2020_FASE11_CERTIFICACAO_V1.json"
+          raw=pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2021.ZIP")
+          mp=pathlib.Path("dados/cotahist/manifests/COTAHIST_A2021.json")
+          cp=pathlib.Path("dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256")
+          norm=pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2021.csv")
+          ev=q/"COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json"
+          for p in (f10p,f11p,raw,mp,cp):
+              if not p.is_file() or p.stat().st_size==0: sys.exit(f"FASE12 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f10=json.loads(f10p.read_text(encoding="utf-8")); f11=json.loads(f11p.read_text(encoding="utf-8")); m=json.loads(mp.read_text(encoding="utf-8"))
+          blockers=[]
+          if f10.get("year")!=2020 or f10.get("status")!="VALIDADO" or f10.get("mismatch_count")!=0 or f10.get("field_count")!=25: blockers.append("FASE10_2020_NAO_VALIDADA")
+          if f11.get("year")!=2020 or f11.get("status")!="CERTIFICADO" or f11.get("decision")!="LIBERADO_PARA_FASE12": blockers.append("FASE11_2020_NAO_CERTIFICADA")
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          parts=cp.read_text(encoding="utf-8").strip().split(); side_sha=parts[0] if parts else ""
+          manifest_sha=m.get("sha256")
+          if m.get("ano")!=2021 or m.get("fonte")!="B3" or raw_sha!=manifest_sha or raw_sha!=side_sha: blockers.append("RAW_2021_HASH_OU_PROVENIENCIA_DIVERGENTE")
+          zip_error=None; member_count=0; bad_lengths=None; types={}
+          try:
+              with zipfile.ZipFile(raw) as z:
+                  zip_error=z.testzip(); members=[n for n in z.namelist() if not n.endswith("/")]
+                  member_count=len(members)
+                  if member_count==1:
+                      with z.open(members[0]) as f: lines=[line.rstrip(b"\r\n") for line in f]
+                      bad_lengths=sum(1 for line in lines if len(line)!=245)
+                      for line in lines:
+                          k=line[:2].decode("ascii","replace"); types[k]=types.get(k,0)+1
+          except Exception as exc: zip_error=str(exc)
+          if zip_error is not None or member_count!=1 or bad_lengths!=0 or types.get("00")!=1 or types.get("99")!=1 or types.get("01",0)<=0: blockers.append("RAW_2021_ZIP_ESTRUTURAL_INVALIDO")
+          out={
+            "schema_version":"1.0.0","year_closed":2020,"phase":"FASE12",
+            "status":"FECHADO_COM_TRANSICAO_CONTROLADA" if not blockers else "BLOQUEADO",
+            "decision":"FECHAR_2020_E_AUTORIZAR_CONTINUACAO_2021" if not blockers else "BLOQUEADO",
+            "phase10_2020_status":f10.get("status"),"phase11_2020_status":f11.get("status"),
+            "year2021_raw_path":str(raw),"year2021_raw_sha256":raw_sha,
+            "year2021_manifest_sha256":manifest_sha,"year2021_sidecar_sha256":side_sha,
+            "year2021_raw_hash_match":raw_sha==manifest_sha==side_sha,
+            "year2021_zip_member_count":member_count,"year2021_invalid_record_lengths":bad_lengths,
+            "year2021_record_type_counts":types,"year2021_normalized_csv_exists":norm.is_file() and norm.stat().st_size>0,
+            "year2021_phase04_status":"AGUARDA_VALIDACAO_INDEPENDENTE" if norm.is_file() and norm.stat().st_size>0 else "AGUARDA_RECONSTRUCAO_CSV",
+            "blockers":blockers,
+            "transition_scope":"Fecha 2020 após certificação; não certifica 2021. Manifesto e sidecar não substituem a validação física do NORMALIZED 2021.",
+            "deduplication_performed":False,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if blockers: sys.exit("FASE12 BLOQUEADA")
+          PY
+
+      - name: Persistir evidencia FASE12
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json || { echo "Evidência FASE12 não produzida."; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2020_FASE12_FECHAMENTO_2021_ABERTURA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): fechar 2020 e registar transicao 2021"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then exit 0; fi
+            else
+              git rebase --abort || true
+              exit 1
+            fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2020 — FASE12"
+            echo "- Fecha 2020 após certificação independente."
+            echo "- Valida RAW 2021; não certifica o ano seguinte."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
