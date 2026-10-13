@@ -1967,3 +1967,58 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. COTAHIST 2022: iniciar ciclo próprio após FASE12; não reutilizar evidências de 2021.
 4. Preservar RAW, linhas e exceções de ordenação; nenhuma deduplicação.
 
+## 72. COTAHIST 2021 fechado; ciclo 2022 iniciado — FASE00–FASE02 validadas (2026-10-13)
+
+### FASE12 — Fechamento 2021 e transição 2022
+**Estado: FECHADO_COM_TRANSICAO_CONTROLADA — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE12_FECHAMENTO_2022_ABERTURA_V1.json`, blob `f4bb9bfa928896d309c555fcc8dd67ea1cda4a82`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482231933 — sucesso.
+- Decisão: `FECHAR_2021_E_AUTORIZAR_CONTINUACAO_2022`; zero bloqueadores.
+- RAW 2022: SHA-256 físico = manifesto = sidecar `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`.
+- ZIP: um membro `COTAHIST_A2022.TXT`, 2.117.440 registos `01`, header/trailer únicos, zero comprimentos inválidos.
+- NORMALIZED 2022 ausente no momento da transição; reconstrução pertence à FASE04 depois de FASE01–03.
+
+### FASE00 — Governação 2022
+**Estado: VALIDADO.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE00_GOVERNANCA_V1.json`, blob `df8d5ef6965ebdd8a03812a60e663abe9ed9c2ea`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482307259 — sucesso.
+- Decisão: `AUTORIZAR_FASE01`; transição 2021→2022 confirmada; layout mestre V1.0.1; zero bloqueadores.
+
+### FASE01 — Aquisição/proveniência RAW 2022
+**Estado: VALIDADO.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE01_AQUISICAO_RAW_V1.json`, blob `c7abfbbad54526fa0a129cc6b92f06c6464f00c7`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482333847 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE02`; RAW SHA-256, manifesto e sidecar concordam; sem mutação do RAW.
+
+### FASE02 — Integridade física da fonte 2022
+**Estado: VALIDADO.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE02_INTEGRIDADE_FONTE_V1.json`, blob `e3a5d31a4def74cb7e659dab4f72b2cc1c0beeca`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482393243 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE03`.
+- 2.117.442 linhas físicas; header `00=1`, cotações `01=2.117.440`, trailer `99=1`; 245 bytes por registo; zero comprimentos inválidos.
+
+### FASE03 — Parsing estrutural 2022
+**Estado: RUN EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase03-parsing-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482470145.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE03_PARSING_V1.json`.
+
+### FASE04 — Normalização 2022
+**Estado: WORKFLOW PREPARADO; aguarda FASE03.**
+
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2022-v1.yml`.
+- O checkout esparso inclui os artefactos necessários, incluindo o caminho NORMALIZED, para evitar falhas de persistência LFS observadas no primeiro ciclo de 2021.
+- Não iniciar a validação da FASE04 até existir evidência FASE03 VALIDADO/liberado.
+
+### Roadmap operacional imediato
+1. 2021: fechado e certificado.
+2. 2022: FASE00–FASE02 VALIDADO.
+3. FASE03: execução em curso.
+4. FASE04: aguardar parsing; reconstruir NORMALIZED sem alterar RAW.
+5. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada.
+
