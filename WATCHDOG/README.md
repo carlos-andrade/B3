@@ -1,7 +1,7 @@
 # WATCHDOG — Supervisão operacional do projeto B3
 
 **Padrão central:** [GOVERNANCA/WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG)  
-**Estado local:** piloto com evidências de execução em artefactos de 30 dias e alertas rastreáveis por GitHub Issues; supervisão externa do próprio monitor ainda pendente.
+**Estado local:** piloto operacional em teste; última avaliação de atualidade: **8 PASS, 0 STALE, 0 UNKNOWN**. Os limiares permanecem provisórios, e a supervisão externa do próprio monitor ainda está pendente.
 
 ## Âmbito inicial
 
@@ -28,7 +28,7 @@ Foi adicionado o avaliador [check_data_freshness.py](engine/check_data_freshness
 
 **Primeira avaliação real (2026-10-13): 5 PASS, 1 STALE e 1 UNKNOWN.** A primeira execução encontrou BDI DailyAverageStocks em 2026-09-22 (21 dias), acima do limite de 5 dias, e abriu a [issue de atualidade #8](https://github.com/carlos-andrade/B3/issues/8). A captura automática foi corrigida e encontrou registos válidos em **2026-10-09**, preservando RAW, SHA-256 e manifesto em [dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json](../dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json). [Execução da captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38387032896).
 
-O manifesto anual COTAHIST 2026 passou a declarar a última data de observação **2026-09-23**, suportada pelo manifesto de qualidade NORMALIZED. O catálogo também monitoriza a série diária COTAHIST, separada do snapshot anual. A reavaliação posterior concluiu **8 PASS, 0 STALE e 0 UNKNOWN**, com os limites configurados. [Execução de reavaliação](https://github.com/carlos-andrade/B3/actions/runs/38387593511). A [issue #8](https://github.com/carlos-andrade/B3/issues/8) permanece aberta para revisão humana antes do encerramento.
+O manifesto anual COTAHIST 2026 declara a última data de observação **2026-09-23**, suportada pelo manifesto de qualidade NORMALIZED e pelo registo de reconciliação. O catálogo monitoriza também os manifestos diários COTAHIST, separadamente do snapshot anual. A reavaliação concluiu **8 PASS, 0 STALE e 0 UNKNOWN**, dentro dos limites configurados. [Execução de reavaliação](https://github.com/carlos-andrade/B3/actions/runs/38387593511). A [issue #8](https://github.com/carlos-andrade/B3/issues/8) permanece aberta para revisão humana e aprovação dos limiares.
 
 **Importante:** todos os limiares atuais estão marcados como **PROVISIONAL** e ainda precisam de aprovação dos proprietários das séries. Um resultado PASS significa apenas que as datas observadas ficaram dentro dos limites configurados; não certifica integralmente a qualidade do negócio.
 
@@ -40,9 +40,9 @@ O manifesto anual COTAHIST 2026 passou a declarar a última data de observação
 
 ## Próximos passos do piloto
 
-1. Rever os resultados reais do monitor de atualidade e calibrar limites por dataset.
-2. Adicionar confirmação de receção, responsáveis e escalonamento de alertas.
-3. Garantir que a falha do próprio monitor é detetada por mecanismo independente.
-4. Expandir a reconciliação a integridade, hashes e continuidade de dados COTAHIST/BCB/BDI.
-5. Testar recuperação, retenção e acesso aos artefactos.
-6. Registar critérios de aceitação e evidência antes de declarar o piloto operacional completo.
+1. Aprovar os limiares provisórios por dataset com os respetivos proprietários e atualizar o catálogo com a decisão.
+2. Configurar `WATCHDOG_HEARTBEAT_WORKFLOWS_URL` e `WATCHDOG_HEARTBEAT_DATA_URL` com serviço externo independente; testar heartbeat ausente.
+3. Definir confirmação de receção, responsáveis, SLA e escalonamento dos alertas.
+4. Rever o ruído de alertas das execuções falhadas no histórico e documentar a política de classificação.
+5. Expandir a reconciliação de integridade, hashes e continuidade de dados COTAHIST/BCB/BDI.
+6. Registar a aceitação humana antes de declarar o piloto operacional completo.
