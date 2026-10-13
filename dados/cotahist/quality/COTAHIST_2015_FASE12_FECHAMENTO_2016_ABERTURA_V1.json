@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 2015,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_2015_E_AUTORIZAR_CONTINUACAO_2016",
+  "phase10_2015_status": "VALIDADO",
+  "phase11_2015_status": "CERTIFICADO",
+  "year2016_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2016.ZIP",
+  "year2016_raw_sha256": "ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f",
+  "year2016_manifest_sha256": "ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f",
+  "year2016_sidecar_sha256": "ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f",
+  "year2016_raw_hash_match": true,
+  "year2016_zip_member_count": 1,
+  "year2016_invalid_record_lengths": 0,
+  "year2016_record_type_counts": {
+    "00": 1,
+    "01": 466734,
+    "99": 1
+  },
+  "year2016_normalized_csv_exists": false,
+  "year2016_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 2015 após certificação; não certifica 2016. O CSV normalizado 2016 está ausente e a FASE04 permanece bloqueada até regeneração e validação.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T11:22:21.289591+00:00"
+}
