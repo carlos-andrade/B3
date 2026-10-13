@@ -266,3 +266,36 @@ Verificação realizada em 2026-10-13 na branch `main`: a evidência FASE05 foi 
 7. REC-001 B3 × BLOOMBERG_MAIL continua bloqueada em trilha independente por divergência de multiplicidades/ordem; não contornar pela certificação anual.
 
 **Regra de promoção:** não avançar de fase sem evidência persistida, hashes e contagens reconciliados.
+
+## 13. FASE06 validada e FASE07 preparada — COTAHIST 2017
+
+Verificação realizada em 2026-10-13 na branch `main`.
+
+### FASE06 — 2017: VALIDADO
+
+- Evidência: [COTAHIST_2017_FASE06_RECONCILIACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE06_RECONCILIACAO_V1.json).
+- Commit da evidência: [6c1dc3e5f1476642de5e2060c62200017b0d26b9](https://github.com/carlos-andrade/B3/commit/6c1dc3e5f1476642de5e2060c62200017b0d26b9).
+- Estado/decisão: `VALIDADO` / `LIBERADO_PARA_FASE07`.
+- Registos RAW e NORMALIZED: 489.115 em cada lado.
+- Campos críticos comparados: 12; divergências: zero; amostra de divergências vazia.
+- Hash RAW: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`.
+- Hash NORMALIZED: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- A evidência mantém a avaliação da unicidade da chave para a FASE07; `raw_immutable=true`; `deduplication_performed=false`.
+
+### FASE07 — 2017: workflow publicado; evidência pendente
+
+- Workflow: [cotahist-fase07-identidade-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase07-identidade-2017-v1.yml).
+- Commit do workflow: [e8f0e666bfba12fd084005f969efa5ac7c361812](https://github.com/carlos-andrade/B3/commit/e8f0e666bfba12fd084005f969efa5ac7c361812).
+- O workflow testa a chave-base `data_pregao+codbdi+codneg+tpmerc+dismes` e a candidata com `prazot`, preservando todos os registos e emitindo amostras de colisões.
+- A evidência `dados/cotahist/quality/COTAHIST_2017_FASE07_IDENTIDADE_CHAVES_V1.json` ainda não estava presente na consulta pós-publicação. FASE07 permanece pendente de resultado; a existência do workflow não prova a execução.
+
+### Roadmap operacional imediato
+
+1. FASE05 2017: VALIDADO.
+2. FASE06 2017: VALIDADO; 489.115 registos, 12 campos críticos, zero divergências.
+3. FASE07 2017: workflow publicado; executar/verificar a evidência de identidade e cardinalidade.
+4. FASE08 2017 e Gate 06–08: dependem da FASE07 validada.
+5. FASE09 → FASE10 independente dos 25 campos → FASE11 certificação → FASE12 fechamento/transição para 2018.
+6. REC-001 B3 × BLOOMBERG_MAIL permanece em trilha separada, bloqueada até reconciliação da divergência de multiplicidades/ordem.
+
+**Regra de promoção:** nenhuma fase posterior é promovida sem evidência própria persistida e validação dos respetivos pré-requisitos. Nenhuma linha pode ser removida ou deduplicada para forçar unicidade.
