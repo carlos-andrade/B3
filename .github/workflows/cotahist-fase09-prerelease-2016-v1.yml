@@ -1,4 +1,5 @@
 # Execução controlada após Gate 06–08 liberado; não retrocertifica fases anteriores.
+# Rerun phase 09 for 2016 after the independent gate.
 name: COTAHIST 2016 - FASE09 Pre-Release
 
 on:
