@@ -1655,3 +1655,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 - FASE05 preparada: `.github/workflows/cotahist-fase05-manifesto-checksum-2021-v1.yml`, commit `f0d1fd8dfae54872d84d841d8676baa8547dd3dd`. O disparo automático foi limitado à evidência FASE04, evitando execução prematura na criação do workflow.
 - Próximo passo: aguardar o run FASE04 inicial terminar; validar a evidência e o CSV persistidos. Se o run inicial falhar/expirar, o run otimizado poderá assumir após a libertação do grupo de concorrência.
 
+## 62. COTAHIST 2021 — FASE04 validada; FASE05 em execução (2026-10-13)
+
+### FASE04 — Normalização
+**Estado: VALIDADO — evidência e NORMALIZED persistidos.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json`, blob `0480eb655b6917e91bf54089e59dc60ab259699a`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480393973 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE05`; zero bloqueadores.
+- 1.831.862 linhas, 25 campos; datas inválidas/fora de 2021: zero; intervalo 2021-01-04 a 2021-12-30.
+- SHA-256 NORMALIZED calculado = manifesto = sidecar: `0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2`.
+- O CSV está em Git LFS, ponteiro com tamanho declarado de 247.991.181 bytes. RAW permanece inalterado; deduplicação não executada.
+- O run de repetição com checkout esparso foi enfileirado e começou após o run inicial; acompanhar para garantir que termine sem divergência.
+
+### FASE05 — Manifesto e checksum
+**Estado: WORKFLOW EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase05-manifesto-checksum-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480769247.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json`.
+- O workflow foi ajustado para permitir disparo controlado por alteração da própria definição ou pela evidência FASE04. Isso evita depender exclusivamente de eventos de push originados por GitHub Actions, que podem não encadear workflows.
+- FASE06 preparada em `.github/workflows/cotahist-fase06-reconciliacao-2021-v1.yml`; aguarda FASE05 e deve ser verificada após execução.
+
+### Roadmap operacional imediato
+1. FASE00–FASE04 (2021): VALIDADO.
+2. FASE05 (2021): execução em curso; verificar hash físico RAW/NORMALIZED, manifesto, sidecar e evidência.
+3. FASE06 (2021): preparada; executar após FASE05 validada e reconciliar os 12 campos críticos.
+4. Preservar RAW/linhas; não deduplicar.
+
