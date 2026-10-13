@@ -757,3 +757,39 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE08 (2018): não iniciar antes de validar a FASE07 e definir/implementar o contrato da fase.
 5. Preservar RAW, linhas e evidências históricas; manter a trilha REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 29. COTAHIST 2018 — FASE07 validada; FASE08 publicada (2026-10-13)
+
+### FASE07 — Identidade e cardinalidade
+**Estado: VALIDADO — evidência persistida e workflow executado com sucesso.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE07_IDENTIDADE_CHAVES_V1.json
+- Blob SHA: `216f6287eebdde32455bd0931c35fae034a04a2b`.
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2018-v1.yml`.
+- Run observado: https://github.com/carlos-andrade/B3/actions/runs/38432136074 — `completed / success`.
+- Decisão: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- Registos analisados: 580.155; hash NORMALIZED coincide com FASE06: `e3e57fdcf4be823830e6d6653d68275fa33af6d51b86392356cc29fe7a0f7981`.
+- Chave-base `data_pregao+codbdi+codneg+tpmerc+dismes`: 557.611 chaves distintas, 10.342 grupos duplicados e 22.544 linhas excedentes; todos os grupos colidentes contêm linhas completas diferentes.
+- Chave candidata com `prazot`: 580.155 chaves distintas, zero colisões. Os 10.342 grupos duplicados da chave-base são separados por `prazot`.
+- `deduplication_performed=false`; `source_rows_removed=0`.
+- Conclusão limitada ao ano 2018 e ao hash NORMALIZED auditado; não autoriza deduplicação nem generalização automática a outros anos.
+
+### FASE08 — Calendário e consistência temporal
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase08-calendario-2018-v1.yml
+- Commit de publicação: `329e875317a7b0ae570b546510ab52559134492d`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- Pré-condições: FASE06 e FASE07 validadas, hashes físicos NORMALIZED concordantes e contagem de linhas consistente.
+- Valida datas, sequência cronológica, regressões temporais por instrumento, distribuição semanal e lacunas de calendário; não reordena nem remove linhas.
+- A lista oficial histórica de sessões/feriados B3 não está incorporada nesta fase; a evidência deverá declarar essa limitação, sem alegar equivalência com calendário oficial.
+- O workflow é acionado por push da sua própria definição e por `workflow_dispatch`; verificar a execução real e a evidência persistida antes de avançar para o Gate 06–08/FASE09.
+
+### Roadmap operacional imediato
+1. FASE00–FASE06 (2018): VALIDADO.
+2. FASE07 (2018): VALIDADO; chave candidata com `prazot`, sem mutação.
+3. FASE08 (2018): workflow publicado; aguardar run/evidência e rever exceções.
+4. Depois de FASE08, construir/verificar o Gate 06–08 antes de autorizar FASE09.
+5. Manter RAW e todas as linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
+
