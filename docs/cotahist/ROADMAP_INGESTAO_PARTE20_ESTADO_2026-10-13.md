@@ -1929,3 +1929,41 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 - RAW 2022 está presente no repositório, SHA-256 manifesto/sidecar `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`; a validação física de 2022 pertence à FASE12 e ao ciclo subsequente.
 - Nenhuma destas preparações autoriza pular a FASE10 nem deduplicar dados.
 
+## 71. COTAHIST 2021 — FASE10 validada; FASE11 certificada; FASE12 em fila (2026-10-13)
+
+### FASE10 — Validação independente integral
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE10_VALIDACAO_INDEPENDENTE_V1.json`, blob `f941caa5efedace19074f243b0dbe9df9c3388a3`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481931550 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE11`.
+- RAW/NORMALIZED: 1.831.862 registos cada; 245 bytes por registo; tipos físicos: header `00=1`, registos `01=1.831.862`, trailer `99=1`.
+- Os 25 campos foram comparados independentemente, em ordem original; divergências: 0; amostra vazia.
+- SHA-256 RAW: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`.
+- SHA-256 NORMALIZED: `0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2`.
+- RAW inalterado; deduplicação não executada.
+
+### FASE11 — Certificação
+**Estado: CERTIFICADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE11_CERTIFICACAO_V1.json`, blob `2c6c9ecf6f282da55776adf75ecbb1f95ea0e94c`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482176735 — job de certificação concluído com sucesso.
+- Decisão: `LIBERADO_PARA_FASE12`; zero bloqueadores.
+- Estados verificados: FASE09 `LIBERADO_PARA_FASE10`, FASE10 `VALIDADO`, Gate `VALIDADO_COM_EXCECAO), manifesto `VALIDADO`.
+- Escopo: integridade/consistência do COTAHIST 2021 segundo as evidências; a exceção de ordenação física permanece documentada e não autoriza reordenação/deduplicação.
+
+### FASE12 — Fechamento 2021 e transição para 2022
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase12-fechamento-2021-abertura-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482231933.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE12_FECHAMENTO_2022_ABERTURA_V1.json`.
+- RAW 2022 está presente. Manifesto e sidecar declaram SHA-256 `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`; a FASE12 irá validar o hash físico, ZIP e estrutura.
+- A transição não certifica 2022. O ciclo 2022 deve iniciar pela FASE00/FASE01 próprias e validar/reconstruir NORMALIZED antes das fases seguintes.
+
+### Roadmap operacional imediato
+1. COTAHIST 2021: FASE00–FASE11 certificadas/validadas conforme evidências individuais.
+2. FASE12: executar/verificar fechamento e transição para 2022.
+3. COTAHIST 2022: iniciar ciclo próprio após FASE12; não reutilizar evidências de 2021.
+4. Preservar RAW, linhas e exceções de ordenação; nenhuma deduplicação.
+
