@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 2010,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_2010_E_AUTORIZAR_CONTINUACAO_2011",
+  "phase10_2010_status": "VALIDADO",
+  "phase11_2010_status": "CERTIFICADO",
+  "year2011_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2011.ZIP",
+  "year2011_raw_sha256": "0cf67787cc1b77dde67a4ff1a340123ab261ce252245d24b5d32ec5b8b162359",
+  "year2011_manifest_sha256": "0cf67787cc1b77dde67a4ff1a340123ab261ce252245d24b5d32ec5b8b162359",
+  "year2011_sidecar_sha256": "0cf67787cc1b77dde67a4ff1a340123ab261ce252245d24b5d32ec5b8b162359",
+  "year2011_raw_hash_match": true,
+  "year2011_zip_member_count": 1,
+  "year2011_invalid_record_lengths": 0,
+  "year2011_record_type_counts": {
+    "00": 1,
+    "01": 298370,
+    "99": 1
+  },
+  "year2011_normalized_csv_exists": false,
+  "year2011_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 2010 após certificação; não certifica 2011. O CSV normalizado 2011 está ausente e a FASE04 permanece bloqueada até regeneração e validação.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T09:25:00.997382+00:00"
+}
