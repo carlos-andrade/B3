@@ -1350,3 +1350,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE06 (2020): executar/verificar reconciliação semântica.
 3. FASE07–FASE12: dependem das evidências das fases anteriores.
 
+## 50. COTAHIST 2020 — FASE06 validada; FASE07 publicada (2026-10-13)
+
+### FASE06 — Reconciliação semântica
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE06_RECONCILIACAO_V1.json`, blob `1402fa8e0779c2529c66c4134a0b588e9bfe39f1`.
+- Decisão: `LIBERADO_PARA_FASE07`.
+- 1.251.646 registos RAW/NORMALIZED reconciliados nos 12 campos críticos, em ordem original; divergências: 0.
+- SHA-256 RAW: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+- SHA-256 NORMALIZED: `cb9230638ae4cec17d9345401ba41e4576b6ff6369f32377367fe20f3c02de50`.
+- RAW imutável; deduplicação não executada.
+
+### FASE07 — Identidade e cardinalidade
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase07-identidade-2020-v1.yml
+- Commit: `29d040e22ecd0d3868ca5645cf75c5e6d3cd1122`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- Avalia chave-base e chave candidata com `prazot`; não deduplica nem generaliza a outros anos.
+- Só avançar para FASE08 após evidência persistida e validada.
+
+### Roadmap operacional imediato
+1. FASE00–FASE06 (2020): VALIDADO.
+2. FASE07 (2020): workflow publicado; verificar identidade/cardinalidade.
+3. FASE08–FASE12: bloqueadas até evidências das fases precedentes.
+
