@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 2021,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_2021_E_AUTORIZAR_CONTINUACAO_2022",
+  "phase10_2021_status": "VALIDADO",
+  "phase11_2021_status": "CERTIFICADO",
+  "year2022_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2022.ZIP",
+  "year2022_raw_sha256": "a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8",
+  "year2022_manifest_sha256": "a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8",
+  "year2022_sidecar_sha256": "a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8",
+  "year2022_raw_hash_match": true,
+  "year2022_zip_member_count": 1,
+  "year2022_invalid_record_lengths": 0,
+  "year2022_record_type_counts": {
+    "00": 1,
+    "01": 2117440,
+    "99": 1
+  },
+  "year2022_normalized_csv_exists": false,
+  "year2022_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 2021 após certificação; não certifica 2022. A existência de manifesto ou hash NORMALIZED declarado não prova a existência física do CSV 2022; FASE04/FASE05 devem ser verificadas e executadas no ciclo seguinte.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-13T23:07:17.357050+00:00"
+}
