@@ -1,0 +1,153 @@
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# FASE12 2012: fechar ano certificado e verificar transicao RAW para 2013.
+# Reexecucao controlada apos FASE11 2012 CERTIFICADO; validar transicao para 2013.
+# Reexecucao apos FASE11 2012 CERTIFICADO; validar fechamento 2012 e RAW 2013.
+name: COTAHIST 2012 - FASE12 Fechamento e Transicao 2013
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase12-fechamento-2012-abertura-2013-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2012_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2012_FASE11_CERTIFICACAO_V1.json"
+      - "dados/cotahist/raw/anual/COTAHIST_A2013.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2013.json"
+      - "dados/cotahist/checksums/COTAHIST_A2013.ZIP.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase12-fechamento-2012-abertura-2013-v1
+  cancel-in-progress: false
+
+jobs:
+  transicao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase12-fechamento-2012-abertura-2013-v1.yml
+            dados/cotahist/quality/COTAHIST_2012_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+            dados/cotahist/quality/COTAHIST_2012_FASE11_CERTIFICACAO_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2013.ZIP
+            dados/cotahist/manifests/COTAHIST_A2013.json
+            dados/cotahist/checksums/COTAHIST_A2013.ZIP.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2013.csv
+            dados/cotahist/quality/COTAHIST_2012_FASE12_FECHAMENTO_2013_ABERTURA_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar certificação 2012 e transição controlada 2013
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, sys, zipfile, datetime
+          q=pathlib.Path("dados/cotahist/quality")
+          f10p=q/"COTAHIST_2012_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+          f11p=q/"COTAHIST_2012_FASE11_CERTIFICACAO_V1.json"
+          raw=pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2013.ZIP")
+          mp=pathlib.Path("dados/cotahist/manifests/COTAHIST_A2013.json")
+          cp=pathlib.Path("dados/cotahist/checksums/COTAHIST_A2013.ZIP.sha256")
+          csv2013=pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2013.csv")
+          ev=q/"COTAHIST_2012_FASE12_FECHAMENTO_2013_ABERTURA_V1.json"
+          for p in (f10p,f11p,raw,mp,cp):
+              if not p.is_file() or p.stat().st_size==0:
+                  sys.exit(f"FASE12 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f10=json.loads(f10p.read_text(encoding="utf-8"))
+          f11=json.loads(f11p.read_text(encoding="utf-8"))
+          m=json.loads(mp.read_text(encoding="utf-8"))
+          blockers=[]
+          if f10.get("status")!="VALIDADO" or f10.get("mismatch_count")!=0 or f10.get("field_count")!=25:
+              blockers.append("FASE10_2012_NAO_VALIDADA")
+          if f11.get("status")!="CERTIFICADO" or f11.get("decision")!="LIBERADO_PARA_FASE12":
+              blockers.append("FASE11_2012_NAO_CERTIFICADA")
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          parts=cp.read_text(encoding="utf-8").strip().split()
+          side_sha=parts[0] if parts else ""
+          if raw_sha!=m.get("sha256") or raw_sha!=side_sha:
+              blockers.append("RAW_2013_HASH_DIVERGENTE")
+          zip_error=None; member_count=0; bad_lengths=None; types={}
+          try:
+              with zipfile.ZipFile(raw) as z:
+                  zip_error=z.testzip()
+                  members=[n for n in z.namelist() if not n.endswith("/")]
+                  member_count=len(members)
+                  if member_count==1:
+                      with z.open(members[0]) as f:
+                          lines=[line.rstrip(b"\r\n") for line in f]
+                      bad_lengths=sum(1 for line in lines if len(line)!=245)
+                      for line in lines:
+                          k=line[:2].decode("ascii","replace")
+                          types[k]=types.get(k,0)+1
+          except Exception as exc:
+              zip_error=str(exc)
+          if zip_error is not None or member_count!=1 or bad_lengths!=0 or types.get("00")!=1 or types.get("99")!=1 or types.get("01",0)<=0:
+              blockers.append("RAW_2013_ZIP_ESTRUTURAL_INVALIDO")
+          csv_exists=csv2013.is_file() and csv2013.stat().st_size>0 if csv2013.exists() else False
+          out={
+            "schema_version":"1.0.0","year_closed":2012,"phase":"FASE12",
+            "status":"FECHADO_COM_TRANSICAO_CONTROLADA" if not blockers else "BLOQUEADO",
+            "decision":"FECHAR_2012_E_AUTORIZAR_CONTINUACAO_2013" if not blockers else "BLOQUEADO",
+            "phase10_2012_status":f10.get("status"),"phase11_2012_status":f11.get("status"),
+            "year2013_raw_path":str(raw),"year2013_raw_sha256":raw_sha,
+            "year2013_manifest_sha256":m.get("sha256"),"year2013_sidecar_sha256":side_sha,
+            "year2013_raw_hash_match":raw_sha==m.get("sha256")==side_sha,
+            "year2013_zip_member_count":member_count,"year2013_invalid_record_lengths":bad_lengths,
+            "year2013_record_type_counts":types,"year2013_normalized_csv_exists":csv_exists,
+            "year2013_phase04_status":"AGUARDA_RECONSTRUCAO_CSV" if not csv_exists else "AGUARDA_VALIDACAO_INDEPENDENTE",
+            "blockers":blockers,
+            "transition_scope":"Fecha 2012 após certificação; não certifica 2013. O CSV normalizado 2013 está ausente e a FASE04 permanece bloqueada até regeneração e validação.",
+            "deduplication_performed":False,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.parent.mkdir(parents=True,exist_ok=True)
+          ev.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(out,ensure_ascii=False))
+          if blockers: sys.exit("FASE12 BLOQUEADA")
+          PY
+
+      - name: Persistir fechamento e transição
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2012_FASE12_FECHAMENTO_2013_ABERTURA_V1.json || {
+            echo "Nenhuma evidência FASE12 produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2012_FASE12_FECHAMENTO_2013_ABERTURA_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): fechar 2012 e registar transicao 2013"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2012 — FASE12"
+            echo "- Fecha 2012 após certificação independente."
+            echo "- Verifica integridade RAW 2013 e regista bloqueio FASE04 se o CSV estiver ausente."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
