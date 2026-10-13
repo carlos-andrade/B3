@@ -27,6 +27,10 @@ O princípio central é simples:
 
 > **Não transformar ausência de informação em informação.**
 
+## WATCHDOG — monitorização transversal
+
+O projeto adota o padrão central [WATCHDOG da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG). O piloto local inventaria o [monitor de execuções GitHub Actions](./WATCHDOG/README.md), com cadência de 15 minutos e análise da janela de 24 horas. A implementação atual não certifica cobertura universal: alertas externos, evidência persistente e supervisão independente do próprio monitor continuam pendentes.
+
 ---
 
 ## 2. O que já existe
