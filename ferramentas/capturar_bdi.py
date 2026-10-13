@@ -114,10 +114,32 @@ def main() -> None:
 
     date_text = selected_date.isoformat()
     target = RAW / args.endpoint / date_text
-    target.mkdir(parents=True, exist_ok=True)
     path = target / f"page_{args.page:04d}.json"
-    path.write_bytes(data)
+    mdir = MANIFESTS / args.endpoint
+    manifest_path = mdir / f"{date_text}_page_{args.page:04d}.json"
+    digest = hashlib.sha256(data).hexdigest()
 
+    if manifest_path.exists():
+        existing = json.loads(manifest_path.read_text(encoding="utf-8"))
+        existing_digest = existing.get("sha256")
+        if existing_digest != digest:
+            raise RuntimeError(
+                f"Divergência BDI para {date_text}, página {args.page}: "
+                "o SHA-256 mudou; não sobrescrever sem reconciliação explícita."
+            )
+        if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == digest:
+            print("BDI_ALREADY_CURRENT=true")
+            print(json.dumps(existing, ensure_ascii=False, indent=2))
+            return
+
+    if path.exists() and hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+        raise RuntimeError(
+            f"RAW BDI existente diverge para {date_text}, página {args.page}; "
+            "não sobrescrever sem reconciliação explícita."
+        )
+
+    target.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
     url = f"{BASE}/{args.endpoint}/{date_text}/{date_text}/{args.page}/{PAGE_SIZE}"
     manifest = {
         "date": date_text,
@@ -128,18 +150,18 @@ def main() -> None:
         "url": url,
         "file": str(path.relative_to(ROOT)),
         "size_bytes": len(data),
-        "sha256": hashlib.sha256(data).hexdigest(),
+        "sha256": digest,
         "columns": len(columns),
         "records": len(values),
         "captured_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
     }
 
-    mdir = MANIFESTS / args.endpoint
     mdir.mkdir(parents=True, exist_ok=True)
-    (mdir / f"{date_text}_page_{args.page:04d}.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    if not manifest_path.exists():
+        manifest_path.write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
 
 
