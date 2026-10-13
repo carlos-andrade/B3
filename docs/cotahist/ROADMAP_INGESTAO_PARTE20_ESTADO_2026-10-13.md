@@ -1128,3 +1128,32 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE10: só após FASE09 liberada; qualquer divergência real nos 25 campos bloqueia FASE11.
 4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
 
+## 41. COTAHIST 2019 — FASE09 liberada; FASE10 publicada (2026-10-13)
+
+### FASE09 — Pre-release
+**Estado: LIBERADO_PARA_FASE10 — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE09_PRE_RELEASE_V1.json`, blob `ca560a3025115729bf5fe132f18bae9c8b738a47`.
+- Decisão: `LIBERADO_PARA_FASE10`; `missing=[]`; `blocked=[]`.
+- FASE03–FASE08, Gate, RAW, NORMALIZED e manifesto foram encontrados e aceites.
+- SHA-256 RAW: `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`.
+- SHA-256 NORMALIZED: `1f1fd89ed5e1fb5c9a3b5012852c6b6bd8694b680875ad0346757707664435bf`.
+- As exceções FASE08 permanecem explícitas e não bloqueadoras; a FASE09 não as apaga nem retrocertifica fases anteriores.
+
+### FASE10 — Validação independente integral
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2019-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase10-validacao-independente-2019-v1.yml
+- Commit de publicação: `9ec958b4ad2155e39d7f3322e7463345a305136a`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- Gate de entrada: FASE09 `LIBERADO_PARA_FASE10`; SHA-256 RAW/NORMALIZED conferem com manifesto e sidecar; ZIP íntegro e 25 campos na ordem canónica.
+- Compara independentemente os 25 campos do RAW com NORMALIZED, em ordem física; amostra de até 25 divergências para diagnóstico; não modifica RAW nem deduplica.
+- Só avançar para FASE11 com evidência `VALIDADO`, `LIBERADO_PARA_FASE11`, 25 campos e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE09 (2019): validadas/liberadas conforme evidências individuais.
+2. FASE10 (2019): workflow publicado; verificar execução e reconciliação integral.
+3. FASE11: só após FASE10 validada sem divergências.
+4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
