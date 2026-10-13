@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0-rec001-b3-cross-repo",
-  "result": "FAIL_CONTENT_DIVERGENCE",
+  "result": "PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE",
   "raw_preserved": true,
   "b3_snapshot": {
     "path": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
@@ -588,6 +588,6 @@
     },
     "interpretation_limit": "A presença de um ticker noutra posição não prova equivalência semântica nem autoriza promoção automática."
   },
-  "interpretation": "B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
-  "promotion_impact": "BLOCKED_CONTENT_DIVERGENCE"
+  "interpretation": "PASS_OVERLAP_EXACT means the ordered B3 type-01 stream is an exact prefix. PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE means every B3 type-01 payload occurs in BLOOMBERG_MAIL with at least the same multiplicity, but source order differs; content reconciliation passes while promotion remains blocked for explicit order-variance review. Additional Bloomberg rows are not automatically classified as temporal-only without date-level reconciliation.",
+  "promotion_impact": "BLOCKED_ORDER_VARIANCE_REVIEW"
 }
