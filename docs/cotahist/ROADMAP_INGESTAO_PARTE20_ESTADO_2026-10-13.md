@@ -428,3 +428,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Só liberar FASE11 quando `status=VALIDADO`, `decision=LIBERADO_PARA_FASE11`, `mismatch_count=0`, `raw_record_count=normalized_record_count=489115`, `field_count=25`, hashes consistentes e sem bloqueadores.
 4. Manter RAW imutável, sem deduplicação ou remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua em trilha independente.
 
+
+
+---
+
+## Secção 18 — FASE10 validada e FASE11 publicada para 2017 (2026-10-13)
+
+### FASE10 — evidência verificada
+- Evidência: `dados/cotahist/quality/COTAHIST_2017_FASE10_VALIDACAO_INDEPENDENTE_V1.json`
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+- Estado: `VALIDADO`; decisão: `LIBERADO_PARA_FASE11`.
+- Tipo: validação independente RAW → NORMALIZED, todos os campos.
+- Registos RAW: 489.115; registos NORMALIZED: 489.115; tamanho dos registos: 245 bytes.
+- Campos comparados: 25; divergências: 0; amostra de divergências vazia.
+- RAW SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`.
+- NORMALIZED SHA-256: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- `raw_modified=false`; `deduplication_performed=false`.
+- Timestamp da evidência: `2026-10-13T12:17:07.977714+00:00`.
+
+### FASE11 — workflow de certificação publicado
+- Workflow: `.github/workflows/cotahist-fase11-certificacao-2017-v1.yml`
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase11-certificacao-2017-v1.yml
+- Commit de publicação: `09c4a918e245d85b6ba32800fe944e2d637c1f6f`.
+- Base técnica: workflow de certificação 2016, parametrizado para 2017.
+- Verifica FASE09, FASE10, Gate 06–08, manifesto, hashes, 25 campos e zero divergências.
+- **Estado: WORKFLOW PUBLICADO; execução/evidência FASE11 ainda por confirmar.** A publicação não equivale a certificação concluída.
+
+### Próxima ação
+1. Executar `COTAHIST 2017 - FASE11 Certificacao` na branch `main`, caso não tenha iniciado automaticamente.
+2. Verificar `dados/cotahist/quality/COTAHIST_2017_FASE11_CERTIFICACAO_V1.json`.
+3. Só liberar FASE12 se a evidência indicar `status=CERTIFICADO`, `decision=LIBERADO_PARA_FASE12` e `blockers=[]`.
+4. Preservar RAW e NORMALIZED; sem deduplicação ou remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL permanece uma trilha independente.
+
