@@ -3,12 +3,84 @@
   "project": "B3",
   "policy": "A data de ingestão nunca substitui a data da observação de mercado.",
   "datasets": [
-    {"id":"BCB-SGS-432","name":"BCB SGS 432","kind":"json_series","manifest_path":"dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json","series_key":"codigo_sgs","series_value":432,"date_field":"ultima_data","max_age_days":3},
-    {"id":"BCB-SGS-11","name":"BCB SGS 11","kind":"json_series","manifest_path":"dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json","series_key":"codigo_sgs","series_value":11,"date_field":"ultima_data","max_age_days":5},
-    {"id":"BCB-SGS-12","name":"BCB SGS 12","kind":"json_series","manifest_path":"dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json","series_key":"codigo_sgs","series_value":12,"date_field":"ultima_data","max_age_days":5},
-    {"id":"BCB-SGS-1","name":"BCB SGS 1","kind":"json_series","manifest_path":"dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json","series_key":"codigo_sgs","series_value":1,"date_field":"ultima_data","max_age_days":5},
-    {"id":"BCB-SGS-433","name":"BCB SGS 433 (IPCA)","kind":"json_series","manifest_path":"dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json","series_key":"codigo_sgs","series_value":433,"date_field":"ultima_data","max_age_days":45},
-    {"id":"B3-BDI-DAILY-AVERAGE-STOCKS","name":"B3 BDI DailyAverageStocks","kind":"glob_json_date","glob":"dados/bdi/manifests/DailyAverageStocks/*.json","date_field":"date","max_age_days":5},
-    {"id":"COTAHIST-2026","name":"COTAHIST anual 2026","kind":"json_field","manifest_path":"dados/cotahist/manifests/COTAHIST_A2026.json","date_field":"ultima_data_observacao","max_age_days":7,"acquired_at_field":"acquired_at_utc","note":"O manifesto atual regista aquisição mas não declara a última data de observação. Não inferir a data de mercado a partir de acquired_at_utc."}
+    {
+      "id": "BCB-SGS-432",
+      "name": "BCB SGS 432",
+      "kind": "json_series",
+      "manifest_path": "dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json",
+      "series_key": "codigo_sgs",
+      "series_value": 432,
+      "date_field": "ultima_data",
+      "max_age_days": 3
+    },
+    {
+      "id": "BCB-SGS-11",
+      "name": "BCB SGS 11",
+      "kind": "json_series",
+      "manifest_path": "dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json",
+      "series_key": "codigo_sgs",
+      "series_value": 11,
+      "date_field": "ultima_data",
+      "max_age_days": 5
+    },
+    {
+      "id": "BCB-SGS-12",
+      "name": "BCB SGS 12",
+      "kind": "json_series",
+      "manifest_path": "dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json",
+      "series_key": "codigo_sgs",
+      "series_value": 12,
+      "date_field": "ultima_data",
+      "max_age_days": 5
+    },
+    {
+      "id": "BCB-SGS-1",
+      "name": "BCB SGS 1",
+      "kind": "json_series",
+      "manifest_path": "dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json",
+      "series_key": "codigo_sgs",
+      "series_value": 1,
+      "date_field": "ultima_data",
+      "max_age_days": 5
+    },
+    {
+      "id": "BCB-SGS-433",
+      "name": "BCB SGS 433 (IPCA)",
+      "kind": "json_series",
+      "manifest_path": "dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json",
+      "series_key": "codigo_sgs",
+      "series_value": 433,
+      "date_field": "ultima_data",
+      "max_age_days": 45
+    },
+    {
+      "id": "B3-BDI-DAILY-AVERAGE-STOCKS",
+      "name": "B3 BDI DailyAverageStocks",
+      "kind": "glob_json_date",
+      "glob": "dados/bdi/manifests/DailyAverageStocks/*.json",
+      "date_field": "date",
+      "max_age_days": 5
+    },
+    {
+      "id": "COTAHIST-2026",
+      "name": "COTAHIST anual 2026",
+      "kind": "json_field",
+      "manifest_path": "dados/cotahist/manifests/COTAHIST_A2026.json",
+      "date_field": "ultima_data_observacao",
+      "max_age_days": 30,
+      "acquired_at_field": "acquired_at_utc",
+      "note": "Limiar provisório de 30 dias para o snapshot anual; a cobertura corrente é acompanhada separadamente pelos manifestos diários. Requer aprovação do proprietário.",
+      "threshold_status": "PROVISIONAL"
+    },
+    {
+      "id": "COTAHIST-DIARIO",
+      "name": "COTAHIST diário normalizado",
+      "kind": "glob_json_date",
+      "glob": "dados/cotahist/normalized/manifests/diario/*_quality.json",
+      "date_field": "ultima_data",
+      "max_age_days": 5,
+      "threshold_status": "PROVISIONAL",
+      "note": "Limiar provisório de 5 dias de calendário, sujeito a aprovação do proprietário e ao calendário de pregões."
+    }
   ]
 }
