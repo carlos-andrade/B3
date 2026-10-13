@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import hashlib, io, json, os, tempfile, urllib.request, zipfile
+import hashlib, io, json, os, sqlite3, tempfile, urllib.request, zipfile
 from collections import Counter
 
 B3_ZIP = "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
@@ -134,6 +134,84 @@ def compare_streams(b3_path, bloom_path):
                 "comparison_unit": "record type 01 only; period-specific type 00 headers and type 99 trailers excluded",
             }
 
+
+def compare_record01_multiset(b3_path, bloom_path, database_path):
+    """Compare exact type-01 record payloads as a multiset, independent of ordering."""
+    connection = sqlite3.connect(database_path)
+    connection.execute("PRAGMA journal_mode=OFF")
+    connection.execute("PRAGMA synchronous=OFF")
+    connection.execute("PRAGMA temp_store=FILE")
+    connection.execute("CREATE TABLE records (source INTEGER NOT NULL, digest BLOB NOT NULL, n INTEGER NOT NULL, PRIMARY KEY(source, digest)) WITHOUT ROWID")
+    upsert = "INSERT INTO records(source,digest,n) VALUES(?,?,1) ON CONFLICT(source,digest) DO UPDATE SET n=n+1"
+
+    def load(path, source):
+        total = 0
+        batch = []
+        with zipfile.ZipFile(path) as archive:
+            member = next(n for n in archive.namelist() if n.upper().endswith("COTAHIST_A2026.TXT"))
+            with archive.open(member) as handle:
+                for raw in iter_record01_lines(handle):
+                    payload = raw.rstrip(b"\\r\\n")
+                    batch.append((source, hashlib.sha256(payload).digest()))
+                    total += 1
+                    if len(batch) >= 10000:
+                        connection.executemany(upsert, batch)
+                        connection.commit()
+                        batch.clear()
+                if batch:
+                    connection.executemany(upsert, batch)
+                    connection.commit()
+        return total
+
+    b3_total = load(b3_path, 0)
+    bloom_total = load(bloom_path, 1)
+    query = """
+        SELECT COUNT(*) AS digest_count,
+               COALESCE(SUM(CASE WHEN a.n > COALESCE(b.n,0) THEN a.n-COALESCE(b.n,0) ELSE 0 END),0) AS missing_multiplicity
+        FROM (SELECT digest,n FROM records WHERE source=0) a
+        LEFT JOIN (SELECT digest,n FROM records WHERE source=1) b ON a.digest=b.digest
+    """
+    digest_count, missing_multiplicity = connection.execute(query).fetchone()
+    b3_unique = connection.execute("SELECT COUNT(*) FROM records WHERE source=0").fetchone()[0]
+    bloom_unique = connection.execute("SELECT COUNT(*) FROM records WHERE source=1").fetchone()[0]
+    b3_only = connection.execute("""
+        SELECT a.digest, a.n, COALESCE(b.n,0)
+        FROM (SELECT digest,n FROM records WHERE source=0) a
+        LEFT JOIN (SELECT digest,n FROM records WHERE source=1) b ON a.digest=b.digest
+        WHERE a.n > COALESCE(b.n,0) LIMIT 20
+    """).fetchall()
+    bloom_only = connection.execute("""
+        SELECT b.digest, b.n, COALESCE(a.n,0)
+        FROM (SELECT digest,n FROM records WHERE source=1) b
+        LEFT JOIN (SELECT digest,n FROM records WHERE source=0) a ON a.digest=b.digest
+        WHERE b.n > COALESCE(a.n,0) LIMIT 20
+    """).fetchall()
+    missing_from_b3 = connection.execute("""
+        SELECT COALESCE(SUM(CASE WHEN b.n > COALESCE(a.n,0) THEN b.n-COALESCE(a.n,0) ELSE 0 END),0)
+        FROM (SELECT digest,n FROM records WHERE source=1) b
+        LEFT JOIN (SELECT digest,n FROM records WHERE source=0) a ON a.digest=b.digest
+    """).fetchone()[0]
+    connection.close()
+    return {
+        "method": "SHA-256 multiset of type-01 payload bytes with line terminators excluded; duplicate multiplicity preserved; ordering ignored",
+        "b3_record01_count": b3_total,
+        "bloomberg_mail_record01_count": bloom_total,
+        "b3_unique_payload_hashes": b3_unique,
+        "bloomberg_mail_unique_payload_hashes": bloom_unique,
+        "b3_records_missing_from_bloomberg_multiplicity": int(missing_multiplicity),
+        "bloomberg_records_missing_from_b3_multiplicity": int(missing_from_b3),
+        "bloomberg_contains_all_b3_records_as_exact_payload_multiset": missing_multiplicity == 0,
+        "unordered_multiset_exact_match": missing_multiplicity == 0 and missing_from_b3 == 0,
+        "b3_only_hash_count_sample": [
+            {"sha256": row[0].hex(), "b3_count": row[1], "bloomberg_count": row[2]} for row in b3_only
+        ],
+        "bloomberg_only_hash_count_sample": [
+            {"sha256": row[0].hex(), "bloomberg_count": row[1], "b3_count": row[2]} for row in bloom_only
+        ],
+        "interpretation_limit": "A multiset match proves payload equality independent of ordering, not equal source ordering or a promotion decision."
+    }
+
+
 def main():
     with tempfile.TemporaryDirectory() as td:
         bloom=os.path.join(td,"COTAHIST_A2026.ZIP")
@@ -145,6 +223,7 @@ def main():
         bloom_zip_bad,bloom_member,bloom_member_size=inspect_zip(bloom)
         b3_stats=stream_stats(B3_ZIP); bloom_stats=stream_stats(bloom)
         cmp=compare_streams(B3_ZIP,bloom)
+        multiset = compare_record01_multiset(B3_ZIP, bloom, os.path.join(td, "rec001-record-multiset.sqlite"))
         diagnostics = {}
         if cmp["first_difference"]:
             first = cmp["first_difference"]
@@ -161,6 +240,7 @@ def main():
           "b3_snapshot":{"path":B3_ZIP,"zip_sha256":b3_sha,"member":b3_member,"member_size":b3_member_size,"zip_integrity":b3_zip_bad is None,"stats":b3_stats},
           "bloomberg_mail_raw":{"url":BLOOM_ZIP_URL,"zip_sha256":bloom_sha,"member":bloom_member,"member_size":bloom_member_size,"zip_integrity":bloom_zip_bad is None,"stats":bloom_stats},
           "comparison":cmp,
+          "unordered_content_reconciliation":multiset,
           "divergence_diagnostics":diagnostics,
           "interpretation":"B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
           "promotion_impact":"REC001_B3_ELIGIBLE_FOR_REVIEW" if result.startswith("PASS_") else "BLOCKED_CONTENT_DIVERGENCE"}
