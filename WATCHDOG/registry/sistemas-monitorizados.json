@@ -61,7 +61,7 @@
       "criticality": "high",
       "monitor": {
         "workflow": ".github/workflows/watchdog-data-freshness.yml",
-        "schedule": "15 7 * * 1-6",
+        "schedule": "15 7 * * *",
         "manual_trigger": true,
         "timezone": "UTC",
         "evidence_retention_days": 30
