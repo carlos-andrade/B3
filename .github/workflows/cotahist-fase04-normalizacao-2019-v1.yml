@@ -1,0 +1,243 @@
+# Reexecucao controlada da normalizacao 2019 com reconciliacao do hash existente.
+# Reexecucao controlada apos a validacao estrutural da FASE03.
+# Rerun phase 04 for 2019.
+# Confirmar reconciliacao do CSV 2019 contra manifesto e sidecar.
+name: COTAHIST 2019 - FASE04 Normalizacao e Reconciliacao
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-2019-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2019.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2019.json"
+      - "dados/cotahist/checksums/COTAHIST_A2019.ZIP.sha256"
+      - "dados/cotahist/quality/COTAHIST_2019_FASE03_PARSING_V1.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2019_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2019.csv.sha256"
+      - "scripts/ingestao/normalize_cotahist.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase04-normalizacao-2019-v1
+  cancel-in-progress: false
+
+jobs:
+  normalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Normalizar e validar contra evidencias existentes
+        id: normalize
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, runpy, subprocess, sys
+          root = pathlib.Path("dados/cotahist")
+          raw = root / "raw/anual/COTAHIST_A2019.ZIP"
+          top_manifest = root / "manifests/COTAHIST_A2019.json"
+          raw_sidecar = root / "checksums/COTAHIST_A2019.ZIP.sha256"
+          f3_path = root / "quality/COTAHIST_2019_FASE03_PARSING_V1.json"
+          manifest_path = root / "normalized/manifests/COTAHIST_A2019_quality.json"
+          sidecar_path = root / "normalized/manifests/COTAHIST_A2019.csv.sha256"
+          norm = root / "normalized/anual/COTAHIST_A2019.csv"
+          evidence = root / "quality/COTAHIST_2019_FASE04_NORMALIZACAO_V1.json"
+          blockers = []
+          details = {}
+          required = (raw, top_manifest, raw_sidecar, f3_path, manifest_path, sidecar_path)
+          missing = [str(p) for p in required if not p.is_file() or p.stat().st_size == 0]
+          if missing:
+              blockers.extend("ARTEFACTO_AUSENTE:" + p for p in missing)
+
+          f3 = json.loads(f3_path.read_text(encoding="utf-8")) if f3_path.is_file() and f3_path.stat().st_size else {}
+          m = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.is_file() and manifest_path.stat().st_size else {}
+          tm = json.loads(top_manifest.read_text(encoding="utf-8")) if top_manifest.is_file() and top_manifest.stat().st_size else {}
+          script_version = runpy.run_path("scripts/ingestao/normalize_cotahist.py").get("PARSER_VERSION") if pathlib.Path("scripts/ingestao/normalize_cotahist.py").is_file() else None
+          if f3.get("status") != "VALIDADO" or f3.get("decision") != "LIBERADO_PARA_FASE04":
+              blockers.append("FASE03_NAO_LIBEROU")
+          if f3.get("year") != 2019:
+              blockers.append("FASE03_ANO_DIVERGENTE")
+          if m.get("ano") != 2019 or m.get("status") not in {"VALIDADO", "VALIDADO_COM_EXCECAO"}:
+              blockers.append("MANIFESTO_NORMALIZED_NAO_VALIDADO")
+          if m.get("source") != "B3" or m.get("campos") != 25:
+              blockers.append("METADADOS_NORMALIZED_INVALIDOS")
+          if tm.get("ano") != 2019 or tm.get("fonte") != "B3":
+              blockers.append("MANIFESTO_RAW_PROVENIENCIA_INVALIDA")
+
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest() if raw.is_file() and raw.stat().st_size else None
+          raw_parts = raw_sidecar.read_text(encoding="utf-8").strip().split() if raw_sidecar.is_file() and raw_sidecar.stat().st_size else []
+          raw_sidecar_sha = raw_parts[0] if raw_parts else None
+          if raw_sha and (raw_sha != tm.get("sha256") or raw_sha != m.get("raw_sha256") or raw_sha != raw_sidecar_sha or raw_sha != f3.get("raw_sha256")):
+              blockers.append("RAW_SHA256_DIVERGENTE")
+
+          norm_sha = None
+          row_count = None
+          field_count = None
+          first_date = None
+          last_date = None
+          invalid_dates = None
+          out_of_year_dates = None
+          if not blockers:
+              result = subprocess.run(
+                  [sys.executable, "scripts/ingestao/normalize_cotahist.py", "--zip", str(raw), "--output", str(norm)],
+                  text=True, capture_output=True
+              )
+              details["normalizer_returncode"] = result.returncode
+              details["normalizer_stdout"] = result.stdout[-2000:]
+              details["normalizer_stderr"] = result.stderr[-2000:]
+              if result.returncode != 0 or not norm.is_file() or norm.stat().st_size == 0:
+                  blockers.append("NORMALIZADOR_FALHOU_OU_NAO_PRODUZIU_CSV")
+          if norm.is_file() and norm.stat().st_size:
+              norm_sha = hashlib.sha256(norm.read_bytes()).hexdigest()
+              with norm.open(encoding="utf-8", newline="") as fh:
+                  reader = csv.DictReader(fh)
+                  fields = reader.fieldnames or []
+                  rows = list(reader)
+              row_count = len(rows)
+              field_count = len(fields)
+              if field_count != 25 or any(len(row) != 25 for row in rows):
+                  blockers.append("SCHEMA_NORMALIZED_DIVERGENTE")
+              if row_count != m.get("linhas_normalized"):
+                  blockers.append("CONTAGEM_NORMALIZED_DIVERGENTE")
+              if norm_sha != m.get("normalized_sha256"):
+                  blockers.append("NORMALIZED_SHA256_DIVERGENTE_MANIFESTO")
+              side_parts = sidecar_path.read_text(encoding="utf-8").strip().split() if sidecar_path.is_file() and sidecar_path.stat().st_size else []
+              side_sha = side_parts[0] if side_parts else None
+              if norm_sha != side_sha:
+                  blockers.append("NORMALIZED_SHA256_DIVERGENTE_SIDECAR")
+              dates = [row.get("data_pregao", "") for row in rows]
+              invalid_dates = 0
+              out_of_year_dates = 0
+              parsed_dates = []
+              for value in dates:
+                  try:
+                      dt = datetime.date.fromisoformat(value)
+                      parsed_dates.append(dt)
+                      if dt.year != 2019:
+                          out_of_year_dates += 1
+                  except ValueError:
+                      invalid_dates += 1
+              if invalid_dates:
+                  blockers.append("DATAS_INVALIDAS")
+              if out_of_year_dates:
+                  blockers.append("DATAS_FORA_DO_ANO")
+              if parsed_dates:
+                  first_date = min(parsed_dates).isoformat()
+                  last_date = max(parsed_dates).isoformat()
+                  if first_date != m.get("primeira_data") or last_date != m.get("ultima_data"):
+                      blockers.append("INTERVALO_DE_DATAS_DIVERGENTE")
+              else:
+                  blockers.append("NORMALIZED_SEM_DATAS")
+          if raw_sha is None:
+              blockers.append("RAW_NAO_CALCULADO")
+
+          out = {
+              "schema_version": "1.0.0",
+              "year": 2019,
+              "phase": "FASE04",
+              "status": "VALIDADO" if not blockers else "BLOQUEADO",
+              "decision": "LIBERADO_PARA_FASE05" if not blockers else "BLOQUEADO_PARA_FASE05",
+              "entry_gate": "FASE03",
+              "validation_method": "normalizacao_deterministica_com_script_canonico_e_reconciliacao_manifesto",
+              "raw_path": str(raw),
+              "raw_sha256": raw_sha,
+              "normalized_path": str(norm),
+              "normalized_manifest_path": str(manifest_path),
+              "normalized_sha256_calculated": norm_sha,
+              "normalized_sha256_manifest": m.get("normalized_sha256"),
+              "normalized_sha256_sidecar": side_sha if 'side_sha' in locals() else None,
+              "manifest_parser_version": m.get("parser_version"),
+              "normalizer_script_version": script_version,
+              "rows": row_count,
+              "fields": field_count,
+              "invalid_dates": invalid_dates,
+              "out_of_year_dates": out_of_year_dates,
+              "first_date": first_date,
+              "last_date": last_date,
+              "manifest_matches_computed": norm_sha is not None and norm_sha == m.get("normalized_sha256"),
+              "blockers": blockers,
+              "raw_modified": False,
+              "deduplication_performed": False,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "diagnostics": details
+          }
+          evidence.parent.mkdir(parents=True, exist_ok=True)
+          evidence.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if blockers:
+              sys.exit("FASE04 BLOQUEADA: " + ";".join(blockers))
+          PY
+
+      - name: Persistir evidência e, apenas se validado, o NORMALIZED
+        if: always()
+        run: |
+          set -euo pipefail
+          evidence="dados/cotahist/quality/COTAHIST_2019_FASE04_NORMALIZACAO_V1.json"
+          norm="dados/cotahist/normalized/anual/COTAHIST_A2019.csv"
+          test -s "$evidence" || {
+            echo "Nenhuma evidência FASE04 produzida; investigar falha anterior à validação."
+            exit 0
+          }
+          status="$(python -c 'import json,sys; print(json.load(open(sys.argv[1],encoding="utf-8")).get("status","BLOQUEADO"))' "$evidence")"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$evidence"
+          if [ "$status" = "VALIDADO" ]; then
+            test -s "$norm"
+            git add "$norm"
+          fi
+          git diff --cached --quiet && exit 0
+          if [ "$status" = "VALIDADO" ]; then
+            git commit -m "data(cotahist): validar fase 04 normalizacao 2019"
+          else
+            git commit -m "audit(cotahist): registrar bloqueio fase 04 normalizacao 2019"
+          fi
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              unexpected=false
+              while IFS= read -r conflict_file; do
+                case "$conflict_file" in
+                  "$evidence"|"$norm")
+                    git checkout --theirs -- "$conflict_file"
+                    git add "$conflict_file"
+                    ;;
+                  *)
+                    echo "Conflito inesperado fora dos artefactos FASE04: $conflict_file"
+                    unexpected=true
+                    ;;
+                esac
+              done < <(git diff --name-only --diff-filter=U)
+              if [ "$unexpected" = true ]; then
+                git rebase --abort || true
+                exit 1
+              fi
+              GIT_EDITOR=true git rebase --continue
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2019 — FASE04"
+            echo "- Normalização canónica e comparação contra manifesto/sidecar existentes."
+            echo "- Em divergência, persiste evidência BLOQUEADO e não publica CSV não validado."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
