@@ -1281,3 +1281,23 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE03 (2020): verificar run e evidência.
 3. FASE04 (2020): reconstruir NORMALIZED após FASE03 válida; comparar manifesto e sidecar sem atualizar silenciosamente hashes históricos.
 
+## 47. COTAHIST 2020 — FASE03 validada; FASE04 em execução (2026-10-13)
+
+### FASE03 — Parsing estrutural
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE03_PARSING_V1.json`.
+- Estado `VALIDADO`; decisão `LIBERADO_PARA_FASE04`.
+- 1.251.646 registos tipo `01`; 1.251.648 linhas físicas; zero comprimentos inválidos; zero datas inválidas/fora do ano; intervalo 2020-01-02 a 2020-12-30.
+- SHA-256 RAW: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+
+### FASE04 — Normalização
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2020-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase04-normalizacao-2020-v1.yml
+- Estado: execução iniciada; evidência `dados/cotahist/quality/COTAHIST_2020_FASE04_NORMALIZACAO_V1.json` pendente.
+- O CSV NORMALIZED está ausente; reconstruir com o normalizador canónico após gate FASE03, validando 25 campos, contagem, datas e hash contra manifesto/sidecar.
+- Diferenças de versão do parser devem ser documentadas; não atualizar manifesto/sidecar silenciosamente.
+
+### Roadmap operacional imediato
+1. FASE00–FASE03 (2020): VALIDADO.
+2. FASE04 (2020): run iniciado; verificar resultado e persistência do CSV.
+3. FASE05–FASE12: dependem da validação FASE04 e das fases posteriores.
+
