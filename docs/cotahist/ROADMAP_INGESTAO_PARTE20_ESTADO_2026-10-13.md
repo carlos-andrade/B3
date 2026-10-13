@@ -23,7 +23,7 @@ Evidências consultadas na branch principal em 13/10/2026:
 - Commit de evidência: https://github.com/carlos-andrade/B3/commit/6f11ade95b9abf7be2b24bf56d622b9d76a566a1
 - Commit que registra FASE05/FASE06 e atualiza o roadmap anterior: https://github.com/carlos-andrade/B3/commit/6d30a7e25caca3fe42f284f6a1126d059cedf6dd
 
-## 3. Próxima fase autorizada
+## 3. Última fase concluída e próxima fase autorizada
 ### FASE07 — identidade, chaves e cardinalidade — 2014
 Estado: **VALIDADO — evidência persistida**.
 
@@ -38,7 +38,7 @@ Estado: **VALIDADO — evidência persistida**.
 
 A evidência está persistida e os seus campos/contagens foram conferidos contra a FASE06. O endpoint disponível nesta sessão não expõe uma listagem geral dos runs; por isso, o estado do run é inferido do artefato produzido e commitado pelo workflow, e não de uma consulta direta ao painel de execuções.
 
-Pré-condições:
+Contrato e pré-condições da FASE07 (registo histórico):
 1. consumir o NORMALIZED e o hash fixados pela FASE06;
 2. consumir a evidência FASE06 em modo somente leitura;
 3. seguir o Layout Mestre e a regra de existência/validação;
@@ -49,6 +49,17 @@ Pré-condições:
 8. executar validação independente antes de promover o status.
 
 A chave candidata usada em 2006 incluiu `prazot` para separar colisões, mas a evidência de 2006 não autoriza deduplicação nem generalização automática para outros anos.
+### FASE08 — calendário e consistência temporal — 2014
+Estado: **WORKFLOW PUBLICADO; EXECUÇÃO/EVIDÊNCIA AINDA NÃO CONFIRMADAS**.
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2014-v1.yml`.
+- Commit do workflow: `013100f0e271988c37b1edad58cf77a1d01f2f3b`.
+- Contrato anual: usa NORMALIZED 2014 e evidências FASE06/FASE07; trigger inclui alterações nesses artefactos e no próprio workflow.
+- Integridade do ficheiro: confirmado na branch `main`, sem referências residuais a 2013.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- Estado desta consulta: o artefacto esperado ainda não existe na branch `main`; a interface disponível não expõe listagem geral de runs, portanto não é possível afirmar SUCCESS/FAILURE nem distinguir entre execução pendente e falha anterior à persistência.
+- Próxima ação: consultar o run no GitHub Actions e validar a evidência; se não houver run/evidência, executar FASE08 manualmente pelo workflow_dispatch. Não avançar para Gate 06–08/FASE09 antes dessa verificação.
+
 
 ## 4. Roadmap por marco
 
