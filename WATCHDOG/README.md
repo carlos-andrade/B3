@@ -1,7 +1,7 @@
 # WATCHDOG — Supervisão operacional do projeto B3
 
 **Padrão central:** [GOVERNANCA/WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG)  
-**Estado local:** piloto documental integrado; monitor de execuções GitHub Actions já existente; lacunas de alertas e evidências persistentes em aberto.
+**Estado local:** piloto com evidências de execução em artefactos de 30 dias e alertas rastreáveis por GitHub Issues; supervisão externa do próprio monitor ainda pendente.
 
 ## Âmbito inicial
 
@@ -11,11 +11,13 @@ O projeto B3 tem um workflow de monitorização de execuções GitHub Actions:
 - Cadência declarada: a cada 15 minutos, além de execução manual.
 - Janela analisada: últimas 24 horas.
 - Sinais recolhidos: execuções desfavoráveis e execuções ainda ativas.
-- Permissões declaradas: leitura de Actions e contents.
+- Evidência: JSON e Markdown publicados como artefacto GitHub Actions, com retenção configurada de 30 dias.
+- Alerta: cria ou atualiza uma issue aberta para execuções desfavoráveis.
+- Permissões declaradas: leitura de Actions e contents; escrita de issues apenas para o fluxo de alertas.
 
 ## Estado e limitações conhecidas
 
-A existência do workflow e a sua configuração estão confirmadas no repositório. Isso não prova disponibilidade contínua nem cobertura de todos os pipelines. O workflow escreve um resumo de execução; este piloto ainda não demonstra envio de alerta fora do GitHub, armazenamento imutável de evidências, SLA de reconhecimento, nem supervisão externa do próprio GitHub Actions.
+A configuração do workflow e a execução da validação do inventário estão confirmadas. Os relatórios do monitor são publicados como artefactos com retenção configurada de 30 dias; os artefactos do GitHub não são um arquivo imutável nem uma garantia de retenção permanente. Os alertas são issues do GitHub, não notificações externas; confirmação de receção e SLA de escalonamento ainda não estão implementados. A supervisão externa do próprio GitHub Actions permanece pendente.
 
 O resultado `FAVORAVEL` significa apenas que, na janela analisada pelo script, não foram encontrados resultados desfavoráveis nem execuções ativas. Não é certificação global da qualidade dos dados B3.
 
@@ -28,8 +30,8 @@ O resultado `FAVORAVEL` significa apenas que, na janela analisada pelo script, n
 ## Próximos passos do piloto
 
 1. Validar o workflow em execução agendada e testar cenários de falha.
-2. Produzir artefacto persistente com data UTC, distribuição e IDs/URLs das execuções.
-3. Adicionar canal de alerta com confirmação de receção e escalonamento.
+2. Testar a publicação dos artefactos em execução real e verificar a retenção.
+3. Adicionar confirmação de receção, responsáveis e escalonamento de alertas.
 4. Garantir que a falha do próprio monitor é detetada por mecanismo independente.
 5. Expandir cobertura a frescura, integridade e reconciliação de dados COTAHIST/BCB/BDI.
 6. Registar critérios de aceitação e evidência antes de declarar o piloto operacional completo.
