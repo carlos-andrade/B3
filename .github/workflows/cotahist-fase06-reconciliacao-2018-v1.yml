@@ -57,8 +57,12 @@ jobs:
                   sys.exit(f"FASE06 BLOQUEADA: arquivo ausente/vazio: {path}")
           f5 = json.loads(phase05.read_text(encoding="utf-8"))
           m = json.loads(manifest.read_text(encoding="utf-8"))
-          if f5.get("status") != "VALIDADO" or f5.get("decision") != "LIBERADO_PARA_FASE06":
-              sys.exit("FASE06 BLOQUEADA: FASE05 não validada/liberada")
+          if f5.get("year") != 2018 or f5.get("phase") != "FASE05" or f5.get("status") != "VALIDADO" or f5.get("decision") != "LIBERADO_PARA_FASE06":
+              sys.exit("FASE06 BLOQUEADA: FASE05 2018 não validada/liberada")
+          if f5.get("raw_sha256_calculated") != hashlib.sha256(raw.read_bytes()).hexdigest():
+              sys.exit("FASE06 BLOQUEADA: SHA-256 RAW diverge da evidência FASE05")
+          if f5.get("normalized_sha256_calculated") != hashlib.sha256(normalized.read_bytes()).hexdigest():
+              sys.exit("FASE06 BLOQUEADA: SHA-256 NORMALIZED diverge da evidência FASE05")
 
           critical = [
               ("data_pregao", 3, 10, 1), ("codbdi", 11, 12, 1),
