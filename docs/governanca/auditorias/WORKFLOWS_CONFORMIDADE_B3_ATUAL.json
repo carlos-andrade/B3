@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-13T11:14:26.198435+00:00",
+  "generated_at_utc": "2026-10-13T11:15:24.950817+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 397,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 141,
-    "CONFORME": 254,
+    "CONFORME_COM_OBSERVACAO": 140,
+    "CONFORME": 255,
     "DIVERGENTE_CRITICA": 2
   },
   "results": [
@@ -8203,7 +8203,7 @@
     {
       "workflow": ".github/workflows/cotahist-fase04-normalizacao-2015-v1.yml",
       "current_phase": 4,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -8237,8 +8237,8 @@
         },
         {
           "code": "STEP_SUMMARY",
-          "ok": false,
-          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado",
           "severity": "BAIXA"
         },
         {
@@ -8279,9 +8279,7 @@
         }
       ],
       "blocking_divergences": [],
-      "observability_or_advisory": [
-        "STEP_SUMMARY"
-      ]
+      "observability_or_advisory": []
     },
     {
       "workflow": ".github/workflows/cotahist-fase04-recuperar-normalized-2000-v1.yml",
