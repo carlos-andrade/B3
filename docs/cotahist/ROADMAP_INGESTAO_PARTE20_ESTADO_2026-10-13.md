@@ -827,3 +827,33 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE09: iniciar apenas depois do Gate validado.
 5. Preservar RAW e linhas; REC-001 B3 × BLOOMBERG_MAIL continua em trilha independente e bloqueada.
 
+## 31. COTAHIST 2018 — Gate 06–08 validado; FASE09 publicada (2026-10-13)
+
+### Gate independente FASE06–FASE08
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_GATE_06_08_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_GATE_06_08_V1.json
+- Blob SHA: `c2d55168ff7bd272a5abd646005560d041dc00c5`.
+- Run observado: https://github.com/carlos-andrade/B3/actions/runs/38432384518 — job `gate` concluído com `success`.
+- Decisão: `LIBERADO_PARA_FASE09`; zero bloqueadores.
+- Checks passaram: estados FASE06/07/08, hashes NORMALIZED concordantes, 580.155 linhas, 25 campos, 245 datas, datas válidas no ano, zero regressões cronológicas e temporais por instrumento, ausência de fins de semana, exceções classificadas e nenhuma deduplicação.
+- Exceções preservadas: ordenação lexicográfica global de instrumentos é apenas métrica informativa; calendário oficial histórico B3 não está persistido.
+
+### FASE09 — Pre-release
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase09-prerelease-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase09-prerelease-2018-v1.yml
+- Commit de publicação: `c23f232b7d5c03cd1c8a84b69bf6ed4a0049d13f`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE09_PRE_RELEASE_V1.json`.
+- Consolida FASE03–FASE08 e o Gate; confere presença dos artefactos, hashes RAW/NORMALIZED contra manifesto e Gate, contagem e campos. Não substitui fases anteriores nem executa a FASE10.
+- Só avançar para FASE10 após evidência FASE09 `LIBERADO_PARA_FASE10`, sem itens em `missing` ou `blocked`.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 (2018): validadas; FASE08 contém exceções explicitamente não bloqueadoras.
+2. Gate 06–08 (2018): VALIDADO_COM_EXCECAO, `LIBERADO_PARA_FASE09`, zero bloqueadores.
+3. FASE09 (2018): workflow publicado; verificar execução e evidência.
+4. FASE10: validação independente dos 25 campos, apenas depois da FASE09 liberada.
+5. Preservar RAW/linhas; trilha REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
