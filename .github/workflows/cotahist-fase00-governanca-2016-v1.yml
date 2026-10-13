@@ -7,6 +7,7 @@
 # FASE00 2016 criada apos FASE12 2015 autorizar a transicao.
 # FASE00 2016 criada após FASE12 2015 autorizar a transição.
 # Reexecução controlada após evidência de transição 2015→2016.
+# Execução controlada após transição 2015→2016; não certifica o ano de destino.
 name: COTAHIST 2016 - FASE00 Governanca e Pre-condicoes
 
 on:
