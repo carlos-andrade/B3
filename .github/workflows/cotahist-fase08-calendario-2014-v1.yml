@@ -133,7 +133,12 @@ jobs:
               "classification":"EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
               "blocking":False,
               "detail":"A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
-            }] if source_order_classified and out_of_order else []) + [{
+            }] if source_order_classified and out_of_order else []) + ([{
+              "code":"ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+              "classification":"METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+              "blocking":False,
+              "detail":"A métrica instrument_order_regressions conta transições decrescentes da tupla de identidade do instrumento na ordem cronológica original. A fonte não é obrigada a ordenar globalmente por essa tupla; a consistência temporal por instrumento é avaliada separadamente por instrument_date_regressions."
+            }] if instrument_order_regressions else []) + [{
               "code":"CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
               "classification":"LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
               "blocking":False,
