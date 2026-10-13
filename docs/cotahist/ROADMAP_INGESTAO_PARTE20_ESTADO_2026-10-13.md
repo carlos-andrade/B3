@@ -368,3 +368,33 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 6. REC-001 B3 × BLOOMBERG_MAIL permanece bloqueada em trilha independente.
 
 **Regra de promoção:** a evidência da FASE08 autoriza a execução do Gate, não substitui o Gate. Não promover para FASE09 com base apenas no status da FASE08 ou na publicação do workflow.
+
+
+---
+
+## Secção 16 — Gate 06–08 aprovado e FASE09 2017 preparada (2026-10-13)
+
+### Evidência verificada
+- Gate: `dados/cotahist/quality/COTAHIST_2017_GATE_06_08_V1.json`
+- Estado: `VALIDADO_COM_EXCECAO`
+- Decisão: `LIBERADO_PARA_FASE09`
+- Bloqueadores: zero.
+- Linhas verificadas: 489.115; campos: 25; datas de negociação: 246.
+- SHA-256 NORMALIZED: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- Regressões cronológicas e regressões temporais por instrumento: zero.
+- Sem deduplicação e sem remoção de linhas.
+- Exceções não bloqueantes mantidas explicitamente no JSON do Gate.
+
+### FASE09 — workflow publicado
+- Workflow: `.github/workflows/cotahist-fase09-prerelease-2017-v1.yml`
+- Execução manual disponível via `workflow_dispatch`; também é acionado por alterações nas dependências monitorizadas.
+- Commit de publicação: `f3918b6de8f86fdbf3e42a24242bae8f793da331`
+- A FASE09 consolida evidências anteriores, valida hashes/contagens e verifica o Gate; não executa nem certifica a FASE10.
+- **Estado da fase: PREPARADA; evidência FASE09 ainda por confirmar.** A criação do workflow não prova que o workflow já executou com sucesso.
+
+### Próxima ação e regra de avanço
+1. Executar o workflow `COTAHIST 2017 - FASE09 Pre-Release` no GitHub Actions, branch `main`, caso não tenha iniciado automaticamente.
+2. Confirmar a criação e validar `dados/cotahist/quality/COTAHIST_2017_FASE09_PRE_RELEASE_V1.json`.
+3. Só avançar para a FASE10 se a evidência indicar `status=LIBERADO_PARA_FASE10`, sem itens em `missing` nem `blocked`, com hashes e contagens consistentes.
+4. Manter a trilha REC-001 B3 × BLOOMBERG_MAIL bloqueada e independente até validação própria.
+
