@@ -3,11 +3,37 @@
   "project": "B3",
   "central_standard": "https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG",
   "controls": [
-    {"id": "B3-WD-COV-01", "name": "Inventário de workflows críticos e responsáveis", "status": "EM_VALIDACAO"},
-    {"id": "B3-WD-COV-02", "name": "Verificação agendada de execuções", "status": "IMPLEMENTADO"},
-    {"id": "B3-WD-COV-03", "name": "Alertas com confirmação e escalonamento", "status": "PENDENTE"},
-    {"id": "B3-WD-COV-04", "name": "Evidência persistente e rastreável", "status": "PENDENTE"},
-    {"id": "B3-WD-COV-05", "name": "Supervisão independente do próprio monitor", "status": "PENDENTE"},
-    {"id": "B3-WD-COV-06", "name": "Cobertura integrada da atualidade e integridade dos dados", "status": "EM_VALIDACAO"}
+    {
+      "id": "B3-WD-COV-01",
+      "name": "Inventário de workflows críticos e responsáveis",
+      "status": "EM_VALIDACAO"
+    },
+    {
+      "id": "B3-WD-COV-02",
+      "name": "Verificação agendada de execuções",
+      "status": "IMPLEMENTADO"
+    },
+    {
+      "id": "B3-WD-COV-03",
+      "name": "Alertas com confirmação e escalonamento",
+      "status": "PARCIAL",
+      "note": "Issue de alerta automática implementada; confirmação de receção e escalonamento ainda pendentes."
+    },
+    {
+      "id": "B3-WD-COV-04",
+      "name": "Evidência persistente e rastreável",
+      "status": "PARCIAL",
+      "note": "Artefactos JSON/Markdown com retenção configurada de 30 dias; não é armazenamento imutável."
+    },
+    {
+      "id": "B3-WD-COV-05",
+      "name": "Supervisão independente do próprio monitor",
+      "status": "PENDENTE"
+    },
+    {
+      "id": "B3-WD-COV-06",
+      "name": "Cobertura integrada da atualidade e integridade dos dados",
+      "status": "EM_VALIDACAO"
+    }
   ]
 }
