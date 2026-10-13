@@ -42,6 +42,7 @@ jobs:
             dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256
             dados/cotahist/quality/COTAHIST_2021_FASE03_PARSING_V1.json
             dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/normalized/anual/COTAHIST_A2021.csv
             dados/cotahist/normalized/manifests/COTAHIST_A2021_quality.json
             dados/cotahist/normalized/manifests/COTAHIST_A2021.csv.sha256
             scripts/ingestao/normalize_cotahist.py
