@@ -100,7 +100,8 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 - FASE05: `VALIDADO`, decisão `LIBERADO_PARA_FASE06`; RAW/NORMALIZED físicos coincidem com manifestos e sidecars, ZIP PASS, 466.734 linhas, 25 campos, datas 2016-01-04 a 2016-12-29, sem deduplicação. Evidência commit `b32869d5d19c5d5d86bfe4f412a466e237ef43d5`.
 - FASE06: `VALIDADO`, decisão `LIBERADO_PARA_FASE07`; 466.734 registos RAW/NORMALIZED, 12 campos críticos, zero divergências, sem alteração RAW ou deduplicação. Evidência commit `1d76cccaff6cba0980141821833b174cbd14cd5d`.
 - FASE07: `VALIDADO`, decisão `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`; 466.734 registos, 453.505 chaves-base distintas, 6.024 grupos duplicados na chave-base, 13.229 linhas excedentes; chave candidata com `prazot` tem 466.734 chaves distintas, zero colisões, nenhuma linha removida. Evidência blob `32285cf230bd498970886ea8b5cd6a9f8016cbf5`.
-- FASE08: workflow ainda a criar/validar; não avançar para Gate 06–08 antes da evidência temporal.
+- FASE08: `VALIDADO_COM_EXCECAO`, decisão `LIBERADO_PARA_GATE_06_08`; 466.734 registos, 249 datas entre 2016-01-04 e 2016-12-29, zero datas inválidas/fora do ano, zero regressões cronológicas e temporais por instrumento; 101.379 transições lexicográficas de instrumentos classificadas como métrica informativa não bloqueadora. Evidência: [COTAHIST_2016_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE08_SEMANTICA_CALENDARIO_V1.json).
+- Gate 06–08: workflow publicado em `.github/workflows/cotahist-gate-06-08-2016-v1.yml` (commit `037404066460da292a88e134a61a592cd921d9cd`); a evidência do Gate ainda não foi encontrada. Não avançar para FASE09 até decisão do Gate persistida.
 
 ## 4. Roadmap por marco
 
@@ -111,7 +112,7 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
 | COTAHIST 2014 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
 | COTAHIST 2015 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
-| COTAHIST 2016 | FASE00–FASE07 validadas; chave candidata com `prazot` sem colisões | Executar e auditar FASE08 calendário/consistência |
+| COTAHIST 2016 | FASE00–FASE08 validadas com exceções classificadas; Gate 06–08 pendente | Confirmar Gate independente antes de FASE09 |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
 | Dataset oficial / certificação anual | README anterior registra execuções bem-sucedidas; esta continuação não reexecutou esses workflows | Revalidar matriz, manifestos e hashes antes de qualquer nova declaração |
