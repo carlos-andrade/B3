@@ -84,9 +84,10 @@
         {
           "id": "B3-WD-DATA-003",
           "name": "Data de observação COTAHIST declarada",
-          "state": "PARCIAL",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
           "required": true,
-          "limitation": "O manifesto anual atual não declara ultima_data_observacao; o resultado correto é UNKNOWN."
+          "limitation": "A data de observação está declarada; o limiar anual de 30 dias permanece PROVISIONAL e exige aprovação do proprietário.",
+          "evidence": "Manifesto anual declara ultima_data_observacao=2026-09-23, derivada do manifesto NORMALIZED e confirmada pela reconciliação."
         },
         {
           "id": "B3-WD-DATA-004",
@@ -94,6 +95,14 @@
           "state": "IMPLEMENTADO_NO_WORKFLOW",
           "required": true,
           "limitation": "Artefactos retidos por 30 dias; não são armazenamento imutável."
+        },
+        {
+          "id": "B3-WD-DATA-005",
+          "name": "Atualidade do COTAHIST diário normalizado",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "required": true,
+          "evidence": "Glob dos manifestos de qualidade diários normalizados, campo ultima_data; última avaliação passou.",
+          "limitation": "Limiar de 5 dias de calendário é PROVISIONAL e deve ser interpretado segundo o calendário de pregões."
         }
       ]
     }
