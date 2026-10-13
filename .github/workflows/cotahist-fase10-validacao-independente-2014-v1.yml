@@ -1,4 +1,5 @@
 # Reexecução controlada após persistência da evidência FASE09.
+# Gate de entrada: FASE09 deve estar LIBERADO_PARA_FASE10.
 name: COTAHIST 2014 - FASE10 Validacao Independente Integral
 
 on:
