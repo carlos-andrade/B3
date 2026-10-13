@@ -57,7 +57,7 @@ A chave candidata usada em 2006 incluiu `prazot` para separar colisões, mas a e
 | COTAHIST 1986–2003 | Histórico com exceções específicas por ano | Preservar evidências; não presumir uniformidade |
 | COTAHIST 2004–2013 | Ciclos anteriores registrados como concluídos/fechados, com exceções de calendário documentadas por ano | Não reexecutar sem causa/evidência |
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
-| COTAHIST 2014 | FASE00–FASE07 validadas; FASE07 sem mutação, 392.228 chaves distintas | Preparar FASE08 conforme o Layout Mestre |
+| COTAHIST 2014 | FASE00–FASE07 validadas; workflow FASE08 publicado em `main` (commit `013100f0e271988c37b1edad58cf77a1d01f2f3b`) | Verificar evidência/run FASE08; não avançar sem resultado auditável |
 | COTAHIST 2014 FASE08–FASE12 | Ainda não comprovadas como concluídas nesta continuação | Avançar sequencialmente após cada gate |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
@@ -76,13 +76,11 @@ Estado de promoção: **BLOCKED_ORDER_VARIANCE_REVIEW**.
 Não classificar os 151.071 registos como mera extensão temporal sem reconciliação por data. Não afrouxar a comparação, não sobrescrever RAW e não promover o dataset enquanto a classificação estiver pendente.
 
 ## 6. Ordem de execução
-1. Verificar se há artefato FASE07 de 2014 e/ou execução existente antes de criar ou reexecutar qualquer processo.
-2. Se não houver evidência válida, localizar o workflow/script canônico e confirmar a conformidade com o Layout Mestre.
-3. Executar somente a FASE07 de 2014, sem chamar nem reexecutar workflows de outras fases.
-4. Validar a evidência física e seus hashes; conferir contagens e confirmar que nenhuma linha foi removida.
-5. Persistir o resultado e atualizar a documentação derivada conforme a ordem normativa.
-6. Só então considerar FASE08.
-7. Em trilha separada, investigar REC-001; não permitir que esse bloqueio seja contornado pela certificação anual.
+1. FASE07 de 2014: evidência persistida e conferida; 392.228 registos, zero colisões na chave candidata com `prazot`, nenhuma linha removida.
+2. FASE08 de 2014: workflow publicado em `main`; validar se a execução automática foi disparada pelo push e procurar a evidência `dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+3. Não declarar FASE08 concluída até conferir a evidência, hashes, contagens e estado/decisão. Se não houver evidência, investigar o run e executar manualmente pelo mecanismo autorizado.
+4. Só após FASE08 auditada, avaliar o Gate 06–08 e autorizar FASE09 conforme as dependências do Layout Mestre.
+5. Em trilha separada, investigar REC-001; não permitir que esse bloqueio seja contornado pela certificação anual.
 
 ## 7. Regras de governança
 - Ordem documental: **correção → cartas normativas → evidências/incidentes → verificação → README**.
@@ -95,5 +93,7 @@ Não classificar os 151.071 registos como mera extensão temporal sem reconcilia
 - Qualquer falha deve ser corrigida na fase de origem.
 
 ## 8. Registro desta continuação
-A prioridade do roadmap foi corrigida: **a próxima fase técnica é FASE07 de 2014**. O workflow específico foi criado em `.github/workflows/cotahist-fase07-identidade-2014-v1.yml`, commit `fc173f5c5ae25937929a05833e0da4b30d16deac`. O workflow segue o padrão de 2013, testa a chave base e a candidata com `prazot`, não remove linhas e persiste evidência mesmo quando a validação bloqueia. A verificação posterior confirmou que o workflow existe na branch `main`; a evidência FASE07 ainda não estava presente na consulta imediata, portanto a execução não é declarada concluída. Próximo passo: verificar a execução real e a evidência persistida antes de avançar para FASE08. A REC-001 continua bloqueada.
+A FASE07 de 2014 foi verificada pela evidência persistida `dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json`: 392.228 registos, 377.073 chaves-base distintas, 6.856 grupos duplicados na chave-base, 392.228 chaves candidatas distintas com `prazot`, zero colisões candidatas e zero linhas removidas. Evidência commit `23a169b05c5efe088260b57fbe8f17473ef09529`.
+
+A FASE08 foi publicada em `.github/workflows/cotahist-fase08-calendario-2014-v1.yml`, commit `013100f0e271988c37b1edad58cf77a1d01f2f3b`. O workflow foi adaptado do contrato anual de 2013, com referências de ano e caminhos de 2014; o trigger contempla mudanças no próprio workflow, nas evidências FASE06/FASE07 e no NORMALIZED 2014. A leitura do ficheiro publicado confirmou a ausência de referências residuais a 2013. A execução automática deve ocorrer pelo evento de push, mas **o resultado do run e a evidência FASE08 ainda não foram confirmados nesta consulta**. Próximo passo: localizar o artefato persistido e validar a execução antes de avançar para o Gate 06–08. A REC-001 continua bloqueada.
 
