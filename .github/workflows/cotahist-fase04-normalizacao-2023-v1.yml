@@ -24,7 +24,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
+          lfs: false
+      - name: Obter apenas o RAW anual necessário via Git LFS
+        run: git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A2023.ZIP" --exclude=""
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
