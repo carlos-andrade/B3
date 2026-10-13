@@ -1301,3 +1301,27 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE04 (2020): run iniciado; verificar resultado e persistência do CSV.
 3. FASE05–FASE12: dependem da validação FASE04 e das fases posteriores.
 
+## 48. COTAHIST 2020 — FASE04 validada; FASE05 em execução (2026-10-13)
+
+### FASE04 — Normalização
+**Estado: VALIDADO — CSV reconstruído e evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE04_NORMALIZACAO_V1.json`, blob `ca39d64b4aa9df1ebdffd9dee93350ab64b3cd51`.
+- Decisão: `LIBERADO_PARA_FASE05`.
+- CSV físico: `dados/cotahist/normalized/anual/COTAHIST_A2020.csv`; 1.251.646 linhas, 25 campos; zero datas inválidas/fora do ano; intervalo 2020-01-02 a 2020-12-30.
+- SHA-256 calculado = manifesto = sidecar: `cb9230638ae4cec17d9345401ba41e4576b6ff6369f32377367fe20f3c02de50`.
+- SHA-256 RAW mantido: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+- Parser do manifesto `1.1.0`; script canónico `1.1.2`; diferença registada, sem alterar silenciosamente o manifesto.
+- RAW imutável; deduplicação não executada.
+
+### FASE05 — Manifesto e checksum
+- Workflow: `.github/workflows/cotahist-fase05-manifesto-checksum-2020-v1.yml`.
+- Estado: run iniciado; evidência `dados/cotahist/quality/COTAHIST_2020_FASE05_MANIFESTO_CHECKSUM_V1.json` pendente.
+- Validar hashes físicos RAW/NORMALIZED contra manifesto e sidecars, integridade ZIP, contagem e 25 campos.
+- Só avançar para FASE06 com evidência `VALIDADO` / `LIBERADO_PARA_FASE06`.
+
+### Roadmap operacional imediato
+1. FASE00–FASE04 (2020): VALIDADO.
+2. FASE05 (2020): verificar execução e evidência.
+3. FASE06–FASE12: bloqueadas até validação de cada fase precedente.
+
