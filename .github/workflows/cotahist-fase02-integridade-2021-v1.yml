@@ -1,0 +1,121 @@
+# Execução controlada após evidência FASE01 2021.
+name: COTAHIST 2021 - FASE02 Integridade da Fonte
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase02-integridade-2021-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2021_FASE01_AQUISICAO_RAW_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase02-integridade-2021-v1
+  cancel-in-progress: false
+
+jobs:
+  integridade:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-fase02-integridade-2021-v1.yml
+            dados/cotahist/quality/COTAHIST_2021_FASE01_AQUISICAO_RAW_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2021.ZIP
+            dados/cotahist/manifests/COTAHIST_A2021.json
+            dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_2021_FASE02_INTEGRIDADE_FONTE_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar ZIP, registros e proveniência
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, zipfile, datetime, sys
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2021.ZIP")
+          f1p = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE01_AQUISICAO_RAW_V1.json")
+          mp = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2021.json")
+          cp = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256")
+          ev = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE02_INTEGRIDADE_FONTE_V1.json")
+          for p in (raw, f1p, mp, cp):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE02 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f1 = json.loads(f1p.read_text(encoding="utf-8"))
+          m = json.loads(mp.read_text(encoding="utf-8"))
+          if f1.get("status") != "VALIDADO" or f1.get("decision") != "LIBERADO_PARA_FASE02":
+              sys.exit("FASE02 BLOQUEADA: FASE01 não VALIDADO")
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          sidecar_parts = cp.read_text(encoding="utf-8").strip().split()
+          sidecar_sha = sidecar_parts[0] if sidecar_parts else ""
+          if raw_sha != m.get("sha256") or raw_sha != f1.get("raw_sha256") or raw_sha != sidecar_sha:
+              sys.exit("FASE02 BLOQUEADA: divergência SHA-256")
+          with zipfile.ZipFile(raw) as z:
+              zip_error = z.testzip()
+              members = [n for n in z.namelist() if not n.endswith("/")]
+              if zip_error or len(members) != 1:
+                  sys.exit("FASE02 BLOQUEADA: ZIP corrompido ou número de membros inválido")
+              with z.open(members[0]) as f:
+                  lines = [line.rstrip(b"\r\n") for line in f]
+          bad_lengths = sum(1 for line in lines if len(line) != 245)
+          types = {}
+          for line in lines:
+              k = line[:2].decode("ascii", "replace")
+              types[k] = types.get(k, 0) + 1
+          if bad_lengths or types.get("00") != 1 or types.get("99") != 1 or types.get("01",0) <= 0:
+              sys.exit(f"FASE02 BLOQUEADA: estrutura inválida; bad_lengths={bad_lengths}; types={types}")
+          out = {
+            "schema_version":"1.0.0","year":2021,"phase":"FASE02",
+            "status":"VALIDADO","decision":"LIBERADO_PARA_FASE03",
+            "evidence_kind":"VALIDACAO_CANONICA_REEXECUTADA",
+            "raw_path":str(raw),"raw_sha256":raw_sha,
+            "phase01_evidence_path":str(f1p),"phase01_status":f1.get("status"),
+            "zip_member_count":len(members),"zip_member":members[0],
+            "zip_testzip_error":zip_error,"total_lines":len(lines),
+            "record_length_bytes":245,"invalid_record_lengths":bad_lengths,
+            "record_type_counts":types,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "notes":"Valida integridade física e estrutural da fonte; não valida parsing nem NORMALIZED."
+          }
+          ev.parent.mkdir(parents=True, exist_ok=True)
+          ev.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir evidência FASE02
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2021_FASE02_INTEGRIDADE_FONTE_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 02 integridade fonte 2021"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2021 — FASE02"
+            echo "- Valida SHA-256, ZIP e estrutura dos registos."
+            echo "- Não certifica parsing nem normalização."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
