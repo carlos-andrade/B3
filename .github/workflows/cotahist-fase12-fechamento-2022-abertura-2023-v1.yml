@@ -7,7 +7,6 @@ on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/quality/COTAHIST_2022_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
       - "dados/cotahist/quality/COTAHIST_2022_FASE11_CERTIFICACAO_V1.json"
       - "dados/cotahist/raw/anual/COTAHIST_A2023.ZIP"
       - "dados/cotahist/manifests/COTAHIST_A2023.json"
