@@ -1,3 +1,4 @@
+# Execução controlada após FASE05 VALIDADO; reconciliação crítica sem deduplicação.
 name: COTAHIST 2015 - FASE06 Reconciliacao Semantica
 
 on:
