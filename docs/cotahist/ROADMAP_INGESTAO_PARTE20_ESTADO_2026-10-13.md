@@ -920,3 +920,34 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE12: só após FASE11 certificada; fechamento do ano não certifica automaticamente o ano seguinte.
 4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 34. COTAHIST 2018 — FASE11 certificada; FASE12 publicada (2026-10-13)
+
+### FASE11 — Certificação
+**Estado: CERTIFICADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE11_CERTIFICACAO_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE11_CERTIFICACAO_V1.json
+- Blob SHA: `d3579e9dfd89efed839d15752fe608f684857ae9`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38432758936 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE12`; zero bloqueadores.
+- FASE10: zero divergências nos 25 campos; hashes RAW/NORMALIZED conferem com o manifesto; Gate 06–08 `VALIDADO_COM_EXCECAO` com zero bloqueadores.
+- Escopo: certifica integridade e consistência do conjunto COTAHIST 2018 conforme evidências FASE00–10; não certifica estratégia de investimento nem autoriza deduplicação.
+
+### FASE12 — Fechamento 2018 e transição controlada para 2019
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase12-fechamento-2018-abertura-2019-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase12-fechamento-2018-abertura-2019-v1.yml
+- Commit de publicação: `d0575530364d552c95ff74eb104bd6285b28e3e3`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE12_FECHAMENTO_2019_ABERTURA_V1.json`.
+- Entrada exige FASE10 VALIDADO com zero divergências/25 campos e FASE11 CERTIFICADO.
+- Verifica o SHA-256 do RAW 2019 contra manifesto e sidecar, ZIP com um membro, registos de 245 bytes e contagens de tipos.
+- Manifesto 2019 consultado declara SHA-256 `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`, 779.229 linhas e 25 campos para o NORMALIZED; contudo, o caminho físico `dados/cotahist/normalized/anual/COTAHIST_A2019.csv` não foi encontrado nesta consulta. O workflow deve registar esse estado e não tratar o manifesto como prova de existência do CSV.
+- A transição fecha 2018 e autoriza a investigação de 2019; não certifica 2019. O ciclo seguinte começa por verificar/reconstruir NORMALIZED e validar FASE04/FASE05 antes de qualquer fase posterior.
+
+### Roadmap operacional imediato
+1. COTAHIST 2018: FASE00–FASE11 certificadas/validadas pelas evidências específicas.
+2. FASE12 2018: workflow publicado; verificar execução e evidência.
+3. COTAHIST 2019: após transição, verificar existência física e hashes; reconstruir NORMALIZED se ausente e retomar pela fase de origem apropriada.
+4. RAW e todas as linhas permanecem imutáveis; REC-001 B3 × BLOOMBERG_MAIL segue independente e bloqueada.
+
