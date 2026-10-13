@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2017,
+  "phase": "FASE08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
+  "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2017.csv",
+  "normalized_sha256": "3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 489115,
+  "unique_trading_dates": 246,
+  "first_trading_date": "2017-01-02",
+  "last_trading_date": "2017-12-28",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 0,
+  "chronological_regression_samples": [],
+  "instrument_order_regressions": 109824,
+  "instrument_date_regressions": 0,
+  "instrument_date_regression_samples": [],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false,
+      "detail": "A métrica instrument_order_regressions conta transições decrescentes da tupla de identidade do instrumento na ordem cronológica original. A fonte não é obrigada a ordenar globalmente por essa tupla; a consistência temporal por instrumento é avaliada separadamente por instrument_date_regressions."
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2017."
+    }
+  ],
+  "weekday_distribution": {
+    "Monday": 48,
+    "Tuesday": 51,
+    "Wednesday": 50,
+    "Thursday": 48,
+    "Friday": 49
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2017-02-24",
+      "to": "2017-03-01",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "validated_at_utc": "2026-10-13T11:59:57.473583+00:00",
+  "deduplication_performed": false,
+  "rows_removed": 0
+}
