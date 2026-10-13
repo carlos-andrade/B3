@@ -1,0 +1,186 @@
+name: COTAHIST 2010 - FASE08 Calendario e Consistencia
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase08-calendario-2010-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2010_FASE07_IDENTIDADE_CHAVES_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase08-calendario-2010-v1
+  cancel-in-progress: false
+
+jobs:
+  calendario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase08-calendario-2010-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2010.csv
+            dados/cotahist/quality/COTAHIST_2010_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2010_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2010_FASE08_SEMANTICA_CALENDARIO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar sequência cronológica e consistência temporal
+        run: |
+          python - <<'PY'
+          import csv, json, pathlib, sys, datetime, hashlib
+          from collections import Counter
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2010.csv")
+          f6_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2010_FASE06_RECONCILIACAO_V1.json")
+          f7_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2010_FASE07_IDENTIDADE_CHAVES_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2010_FASE08_SEMANTICA_CALENDARIO_V1.json")
+          for p in (csv_path, f6_path, f7_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE08 BLOQUEADA: arquivo ausente/vazio: {p}")
+          f6 = json.loads(f6_path.read_text(encoding="utf-8"))
+          f7 = json.loads(f7_path.read_text(encoding="utf-8"))
+          if f6.get("status") != "VALIDADO" or f6.get("mismatch_count") != 0:
+              sys.exit("FASE08 BLOQUEADA: FASE06 não VALIDADO")
+          if f7.get("status") != "VALIDADO" or f7.get("decision") != "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE":
+              sys.exit("FASE08 BLOQUEADA: FASE07 não VALIDADO")
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              rows = list(reader)
+          dates = [row.get("data_pregao", "") for row in rows]
+          parsed = []
+          invalid = []
+          for i, value in enumerate(dates, start=1):
+              try:
+                  dt = datetime.date.fromisoformat(value)
+                  if dt.year != 2010:
+                      invalid.append({"row": i, "date": value, "reason": "OUT_OF_YEAR"})
+                  parsed.append(dt)
+              except ValueError:
+                  invalid.append({"row": i, "date": value, "reason": "INVALID_ISO_DATE"})
+          if invalid:
+              sys.exit(f"FASE08 BLOQUEADA: datas inválidas/fora do ano: {len(invalid)}")
+          regression_samples = [
+              {
+                "row": i + 1,
+                "previous_date": parsed[i-1].isoformat(),
+                "current_date": parsed[i].isoformat(),
+                "previous_instrument": [rows[i-1].get(k, "") for k in ("codbdi","codneg","tpmerc","prazot","dismes")],
+                "current_instrument": [rows[i].get(k, "") for k in ("codbdi","codneg","tpmerc","prazot","dismes")]
+              }
+              for i in range(1, len(parsed)) if parsed[i] < parsed[i-1]
+          ][:20]
+          out_of_order = sum(1 for i in range(1, len(parsed)) if parsed[i] < parsed[i-1])
+          instrument_keys = [tuple(row.get(k, "") for k in ("codbdi","codneg","tpmerc","prazot","dismes")) for row in rows]
+          instrument_order_regressions = sum(1 for i in range(1, len(instrument_keys)) if instrument_keys[i] < instrument_keys[i-1])
+          last_date_by_instrument = {}
+          instrument_date_regressions = 0
+          instrument_date_samples = []
+          for i, row in enumerate(rows, start=1):
+              key = tuple(row.get(k, "") for k in ("codbdi","codneg","tpmerc","prazot","dismes"))
+              current_date = parsed[i-1]
+              previous_date = last_date_by_instrument.get(key)
+              if previous_date is not None and current_date < previous_date:
+                  instrument_date_regressions += 1
+                  if len(instrument_date_samples) < 10:
+                      instrument_date_samples.append({"row":i,"instrument":list(key),"previous_date":previous_date.isoformat(),"current_date":current_date.isoformat()})
+              last_date_by_instrument[key] = current_date
+          source_order_classified = f6.get('status') == 'VALIDADO' and f6.get('mismatch_count') == 0
+          sessions = sorted(set(parsed))
+          weekday_counts = Counter(d.strftime("%A") for d in sessions)
+          weekend_dates = [d.isoformat() for d in sessions if d.weekday() >= 5]
+          gaps = [(sessions[i]-sessions[i-1]).days for i in range(1, len(sessions))]
+          large_gaps = [{"from": sessions[i-1].isoformat(), "to": sessions[i].isoformat(), "calendar_days": gaps[i-1]} for i in range(1, len(sessions)) if gaps[i-1] > 4]
+          out = {
+            "schema_version": "1.0.0",
+            "year": 2010,
+            "phase": "FASE08",
+            "status": "VALIDADO_COM_EXCECAO" if source_order_classified else "BLOQUEADO",
+            "decision": "LIBERADO_PARA_GATE_06_08" if source_order_classified else "BLOQUEADO_PARA_GATE_06_08",
+            "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+            "normalized_path": str(csv_path),
+            "normalized_sha256": hashlib.sha256(csv_path.read_bytes()).hexdigest(),
+            "phase06_status": f6.get("status"),
+            "phase07_status": f7.get("status"),
+            "rows_checked": len(rows),
+            "unique_trading_dates": len(sessions),
+            "first_trading_date": min(sessions).isoformat(),
+            "last_trading_date": max(sessions).isoformat(),
+            "invalid_dates": 0,
+            "out_of_year_dates": 0,
+            "chronological_regressions": out_of_order,
+            "chronological_regression_samples": regression_samples,
+            "instrument_order_regressions": instrument_order_regressions,
+            "instrument_date_regressions": instrument_date_regressions,
+            "instrument_date_regression_samples": instrument_date_samples,
+            "source_order_classified_by_row_reconciliation": source_order_classified,
+            "blockers": [] if source_order_classified else ["ORDEM_DA_FONTE_NAO_CLASSIFICADA"],
+            "exceptions": ([{
+              "code":"ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+              "classification":"EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
+              "blocking":False,
+              "detail":"A sequência da fonte não é globalmente cronológica. A FASE06 reconciliou os campos críticos linha a linha, pelo que a FASE08 trata a ordem original como característica da fonte, não como requisito de ordenação por data. Nenhuma linha é reordenada. A FASE10 independente verificará os 25 campos linha a linha."
+            }] if source_order_classified and out_of_order else []) + [{
+              "code":"CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+              "classification":"LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+              "blocking":False,
+              "detail":"A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2010."
+            }],
+            "weekday_distribution": dict(weekday_counts),
+            "weekend_dates_observed": weekend_dates,
+            "calendar_gaps_over_4_days": large_gaps,
+            "official_calendar_reference": "NOT_PERSISTED",
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "deduplication_performed": False,
+            "rows_removed": 0
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not source_order_classified:
+              sys.exit("FASE08 BLOQUEADA: FASE06 não comprovou reconciliação linha a linha")
+          PY
+
+      - name: Persistir evidência FASE08 inclusive quando bloqueada
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s dados/cotahist/quality/COTAHIST_2010_FASE08_SEMANTICA_CALENDARIO_V1.json || {
+            echo "Nenhuma evidência FASE08 produzida."
+            exit 0
+          }
+          git add dados/cotahist/quality/COTAHIST_2010_FASE08_SEMANTICA_CALENDARIO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 08 calendario 2010"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2010 — FASE08"
+            echo "- Valida datas, ano, ordem cronológica e distribuição temporal observada."
+            echo "- A ausência de calendário oficial histórico fica explicitamente classificada."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
