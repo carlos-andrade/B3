@@ -5,6 +5,7 @@
 # FASE12 2015: fechar ano certificado e verificar transicao RAW para 2016.
 # Reexecucao controlada apos FASE11 2015 CERTIFICADO; validar transicao para 2016.
 # Reexecucao apos FASE11 2015 CERTIFICADO; validar fechamento 2015 e RAW 2016.
+# Fechamento controlado após FASE11 CERTIFICADO; não certifica 2016.
 name: COTAHIST 2015 - FASE12 Fechamento e Transicao 2016
 
 on:
