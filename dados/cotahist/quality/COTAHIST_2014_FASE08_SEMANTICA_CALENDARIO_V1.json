@@ -24,6 +24,12 @@
   "blockers": [],
   "exceptions": [
     {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false,
+      "detail": "A métrica instrument_order_regressions conta transições decrescentes da tupla de identidade do instrumento na ordem cronológica original. A fonte não é obrigada a ordenar globalmente por essa tupla; a consistência temporal por instrumento é avaliada separadamente por instrument_date_regressions."
+    },
+    {
       "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
       "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
       "blocking": false,
@@ -51,7 +57,7 @@
     }
   ],
   "official_calendar_reference": "NOT_PERSISTED",
-  "validated_at_utc": "2026-10-13T10:55:36.007566+00:00",
+  "validated_at_utc": "2026-10-13T11:02:59.556010+00:00",
   "deduplication_performed": false,
   "rows_removed": 0
 }
