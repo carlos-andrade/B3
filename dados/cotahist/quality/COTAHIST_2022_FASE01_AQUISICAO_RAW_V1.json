@@ -16,6 +16,6 @@
   "sidecar_hash_match": true,
   "manifest_status": "VALIDADO",
   "acquired_at_utc_from_manifest": "2026-09-23T14:02:22.803924+00:00",
-  "validated_at_utc": "2026-10-13T23:08:11.050703+00:00",
+  "validated_at_utc": "2026-10-13T23:08:25.173755+00:00",
   "notes": "Verifica o RAW já persistido e sua proveniência; não altera nem substitui o arquivo original."
 }
