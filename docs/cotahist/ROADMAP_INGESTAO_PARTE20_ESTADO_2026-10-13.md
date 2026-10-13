@@ -2158,3 +2158,32 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE07 V2: executar/verificar chave ampliada.
 4. FASE08 V2 e Gate: somente após FASE07 V2 sem colisões.
 
+## 78. COTAHIST 2022 — FASE07 V2 validada; FASE08 V2 em fila (2026-10-13)
+
+### FASE07 V2 — Identidade e cardinalidade ampliada
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json`, blob `dc07e8547e67ef221bb3cba6a2bed3e64184a848`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483274102 — validação concluída com sucesso.
+- Decisão: `CHAVE_CANDIDATA_COM_PRAZOT_ESPECI_CODISI_VALIDADA_POR_CARDINALIDADE`.
+- Registos: 2.117.440; hash NORMALIZED `4e0e75d0bab794eeffdaa23990e3651810c3654b31e1b6bd3c53b9e4f72d8148`.
+- Chave-base: 18.872 grupos duplicados; 49.375 linhas excedentes.
+- Chave com `prazot`: 5 grupos duplicados/5 linhas excedentes, todos com divergências em `especi` e `codisi`.
+- Chave ampliada `data_pregao+codbdi+codneg+tpmerc+prazot+dismes+especi+codisi`: 2.117.440 chaves distintas, zero colisões.
+- A FASE07 V1 BLOQUEADA permanece preservada; V2 não removeu linhas nem deduplicou.
+
+### FASE08 V2 — Calendário e consistência temporal
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2022-v2.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483430485.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE08_SEMANTICA_CALENDARIO_V2.json`.
+- A V2 usa a decisão da chave ampliada, verifica datas e consistência temporal, e preserva exceções de ordenação explicitamente classificadas.
+- Gate 06–08 e FASE09 foram atualizados para consumir FASE07 V2; aguardam a evidência FASE08 V2.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 V2 (2022): VALIDADO; V1 da FASE07 preservada como bloqueada.
+2. FASE08 V2: executar/verificar.
+3. Gate 06–08: após FASE08 V2 validada.
+4. FASE09: após Gate sem bloqueadores.
+
