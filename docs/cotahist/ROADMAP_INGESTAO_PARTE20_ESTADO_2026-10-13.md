@@ -166,3 +166,33 @@ A FASE07 de 2014 foi verificada pela evidência persistida `dados/cotahist/quali
 
 A FASE08 de 2014 foi validada com exceções classificadas; o Gate 06–08 foi aprovado com decisão `LIBERADO_PARA_FASE09`. A FASE09 foi liberada para FASE10. A FASE10 verificou independentemente os 25 campos RAW × NORMALIZED: 392.228 registos de cada lado, zero divergências, hash RAW `613d76f8a64c7ffba0406cb54c1fd187266f55ed8b6037cb85993b2071a5aae7` e hash NORMALIZED `af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01`; evidência commit `075873272ce06a78d1765ab2cb6503d99d47345e`. A FASE11 foi certificada no commit `ef0ba2e70ccc05ea00649c1869fb0d036f09c4fb`. A FASE12 fechou 2014 e autorizou continuação para 2015 no commit `0e5c089c0ad700c689e13a7e2ef3de8458f4d9e7`. O CSV NORMALIZED de 2015 está ausente; a FASE04 de 2015 não está concluída. A REC-001 B3 × BLOOMBERG_MAIL continua bloqueada em trilha independente.
 
+
+
+## 10. Retificação do estado operacional — 2026-10-13 (verificação posterior)
+
+Esta secção prevalece como estado operacional mais recente sobre referências anteriores a 2014 como ciclo ativo. As secções anteriores são preservadas como histórico de execução.
+
+### COTAHIST 2016 — encerramento confirmado
+
+- FASE10: `VALIDADO`; 466.734 registos RAW e NORMALIZED; 25 campos comparados; zero divergências; `raw_modified=false`; `deduplication_performed=false`. Evidência: [COTAHIST_2016_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE10_VALIDACAO_INDEPENDENTE_V1.json).
+- FASE11: `CERTIFICADO`; decisão `LIBERADO_PARA_FASE12`; zero bloqueadores. Evidência: [COTAHIST_2016_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE11_CERTIFICACAO_V1.json).
+- FASE12: `FECHADO_COM_TRANSICAO_CONTROLADA`; decisão `FECHAR_2016_E_AUTORIZAR_CONTINUACAO_2017`. O RAW 2017 foi verificado, mas esta transição não certifica 2017. Evidência: [COTAHIST_2016_FASE12_FECHAMENTO_2017_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE12_FECHAMENTO_2017_ABERTURA_V1.json).
+
+### COTAHIST 2017 — estado ativo
+
+- RAW SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`, igual ao manifesto e sidecar.
+- FASE03: `VALIDADO`, decisão `LIBERADO_PARA_FASE04`; 489.115 registos tipo 01, 245 bytes por registo, zero comprimentos inválidos, zero datas inválidas, intervalo 2017-01-02 a 2017-12-28. Evidência: [COTAHIST_2017_FASE03_PARSING_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE03_PARSING_V1.json).
+- FASE04: **PENDENTE DE EXECUÇÃO VERIFICÁVEL**. Workflow publicado: [cotahist-fase04-normalizacao-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase04-normalizacao-2017-v1.yml). A branch consultada não contém `dados/cotahist/quality/COTAHIST_2017_FASE04_NORMALIZACAO_V1.json` nem `dados/cotahist/normalized/anual/COTAHIST_A2017.csv`; portanto, commits de alteração do workflow não são considerados prova de execução.
+- O manifesto de NORMALIZED existente declara 489.115 linhas, 25 campos e hash esperado `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`. A FASE04 deve regenerar o CSV com o script canónico, comparar hash calculado com manifesto e sidecar e só publicar o CSV quando o resultado for `VALIDADO`.
+- A consulta de estado do commit não retornou checks; não há evidência suficiente para afirmar sucesso ou falha de um run específico. A execução seguinte requer disparo explícito de `workflow_dispatch` no workflow FASE04 de 2017, seguido de verificação da evidência persistida e do CSV.
+
+### Roadmap operacional atualizado
+
+1. **FASE04 — 2017:** disparar o workflow; validar hash RAW, hash NORMALIZED, manifesto, sidecar, 25 campos, 489.115 linhas, datas e zero bloqueadores. Não avançar se a evidência estiver ausente ou bloqueada.
+2. **FASE05 — 2017:** só após FASE04 `VALIDADO`; reconciliar integridade física, manifesto, sidecars, schema e contagens.
+3. **FASE06–08 — 2017:** reconciliação RAW×NORMALIZED, identidade/chaves sem remoção de linhas e consistência temporal; manter exceções explícitas.
+4. **Gate 06–08 → FASE09 → FASE10:** exigir evidência persistida em cada etapa e validação independente dos 25 campos.
+5. **FASE11 → FASE12:** certificar e fechar 2017 apenas após gates anteriores concluídos; transição para 2018 não certifica automaticamente o novo ano.
+6. **Pista paralela bloqueada:** REC-001 B3 × BLOOMBERG_MAIL continua `BLOCKED_ORDER_VARIANCE_REVIEW`; não declarar a diferença de multiplicidades como mera extensão temporal sem reconciliação por data.
+
+**Regra de avanço:** nenhuma fase é marcada como concluída por existir workflow, por commit de código ou por hash esperado no manifesto. É necessária evidência de resultado produzida e persistida, reconciliada com os artefactos físicos.
