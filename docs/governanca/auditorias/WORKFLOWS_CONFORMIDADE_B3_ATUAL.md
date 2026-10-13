@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T11:13:00.379059+00:00
+Gerado em UTC: 2026-10-13T11:13:38.116416+00:00
 Workflows auditados: 396
 
 ## Regra de decisão
