@@ -80,6 +80,7 @@ def evaluate_dataset(entry: dict[str, Any], root: Path, today: dt.date) -> dict[
         "observation_date": date.isoformat() if date else None,
         "age_days": None,
         "max_age_days": entry["max_age_days"],
+        "threshold_status": entry.get("threshold_status", "PROVISIONAL"),
         "source": source,
         "acquired_at": acquired_at,
         "details": "",
