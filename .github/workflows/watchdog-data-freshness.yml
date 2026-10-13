@@ -59,6 +59,7 @@ jobs:
                   f"- Data de observação: {item['observation_date'] or 'UNKNOWN'}",
                   f"- Idade (dias): {item['age_days'] if item['age_days'] is not None else 'UNKNOWN'}",
                   f"- Limite (dias): {item['max_age_days']}",
+                  f"- Estado do limite: {item['threshold_status']}",
                   f"- Fonte: {item['source'] or 'UNKNOWN'}",
                   f"- Detalhe: {item['details']}", ""
               ]
@@ -84,6 +85,18 @@ jobs:
             gh issue edit "$issue_number" --body-file watchdog-data-freshness.md
           else
             gh issue create --title "$title" --body-file watchdog-data-freshness.md
+          fi
+      - name: Atualizar alerta aberto após recuperação (sem fechar)
+        if: steps.freshness.outputs.has_alert != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          issue_number="$(gh issue list --state open --search '"[WATCHDOG] Atualidade de dados" in:title' --json number,title --jq '.[] | select(.title == "[WATCHDOG] Atualidade de dados — B3") | .number' | head -n 1 || true)"
+          if [ -n "$issue_number" ]; then
+            printf '\n\n**Estado de recuperação:** a execução atual não encontrou estados STALE nem UNKNOWN. A issue permanece aberta para revisão humana; não é encerrada automaticamente.\n' >> watchdog-data-freshness.md
+            gh issue edit "$issue_number" --body-file watchdog-data-freshness.md
           fi
       - name: Publicar evidência de atualidade
         if: always()
