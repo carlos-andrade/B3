@@ -45,11 +45,433 @@
       "b3_sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
       "bloomberg_sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
       "b3_prefix": "012026010278ABCBA235    070ABCB    /EJSP",
-      "bloomberg_prefix": "012026010278ABCBA243    070ABCBE    /EJP"
+      "bloomberg_prefix": "012026010278ABCBA243    070ABCBE    /EJP",
+      "context_window": {
+        "b3": [
+          {
+            "record01_position": 222000,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PATI3F",
+            "tpmerc": "020",
+            "sha256": "9ae2a528f74286d5d37dcdb6fe5392614d2bfa2b092142cba35947ccbf79a530",
+            "prefix": "012026063096PATI3F      020PANATLANTICAON       "
+          },
+          {
+            "record01_position": 222001,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PATI4F",
+            "tpmerc": "020",
+            "sha256": "870f524091dac8ef2c6d07662b72fe1286dc0f6c2db23c4e5994bb4a5ad77856",
+            "prefix": "012026063096PATI4F      020PANATLANTICAPN       "
+          },
+          {
+            "record01_position": 222002,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PCAR3F",
+            "tpmerc": "020",
+            "sha256": "15422fb25d77decec97095f65a3c9f202677c2beff82216dd51e2ffa18b56927",
+            "prefix": "012026063096PCAR3F      020P.ACUCAR-CBDON      N"
+          },
+          {
+            "record01_position": 222003,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA235",
+            "tpmerc": "070",
+            "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
+            "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+          },
+          {
+            "record01_position": 222004,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA243",
+            "tpmerc": "070",
+            "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
+            "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+          },
+          {
+            "record01_position": 222005,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA253",
+            "tpmerc": "070",
+            "sha256": "4dff0bb6d80e1afdc246550d01dd4183f3bdf04ea005cbd58dbc17ee59dd5c27",
+            "prefix": "012026010278ABCBA253    070ABCBE    /EJPN      N"
+          },
+          {
+            "record01_position": 222006,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA268",
+            "tpmerc": "070",
+            "sha256": "9b13ba7ed1ec414a4a02237b3e387eb13e194d8d3b16e031349b938804100a6e",
+            "prefix": "012026010278ABCBA268    070ABCBE    /EJPN      N"
+          },
+          {
+            "record01_position": 222007,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBB235",
+            "tpmerc": "070",
+            "sha256": "cfdd98c93572f3ad354ed40f0361ff785adccd03762cffb9dd993782b689e7f4",
+            "prefix": "012026010278ABCBB235    070ABCB    /EJSPN      N"
+          },
+          {
+            "record01_position": 222008,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBB240",
+            "tpmerc": "070",
+            "sha256": "24cb31c0cfc61951ab689549e966611b705aa7eccbd22085ab495ac3c6145087",
+            "prefix": "012026010278ABCBB240    070ABCB    /EJSPN      N"
+          }
+        ],
+        "bloomberg_mail": [
+          {
+            "record01_position": 222000,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PATI3F",
+            "tpmerc": "020",
+            "sha256": "9ae2a528f74286d5d37dcdb6fe5392614d2bfa2b092142cba35947ccbf79a530",
+            "prefix": "012026063096PATI3F      020PANATLANTICAON       "
+          },
+          {
+            "record01_position": 222001,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PATI4F",
+            "tpmerc": "020",
+            "sha256": "870f524091dac8ef2c6d07662b72fe1286dc0f6c2db23c4e5994bb4a5ad77856",
+            "prefix": "012026063096PATI4F      020PANATLANTICAPN       "
+          },
+          {
+            "record01_position": 222002,
+            "date": "20260630",
+            "codbdi": "96",
+            "codneg": "PCAR3F",
+            "tpmerc": "020",
+            "sha256": "15422fb25d77decec97095f65a3c9f202677c2beff82216dd51e2ffa18b56927",
+            "prefix": "012026063096PCAR3F      020P.ACUCAR-CBDON      N"
+          },
+          {
+            "record01_position": 222003,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA243",
+            "tpmerc": "070",
+            "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
+            "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+          },
+          {
+            "record01_position": 222004,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA235",
+            "tpmerc": "070",
+            "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
+            "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+          },
+          {
+            "record01_position": 222005,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBA268",
+            "tpmerc": "070",
+            "sha256": "9b13ba7ed1ec414a4a02237b3e387eb13e194d8d3b16e031349b938804100a6e",
+            "prefix": "012026010278ABCBA268    070ABCBE    /EJPN      N"
+          },
+          {
+            "record01_position": 222006,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBB235",
+            "tpmerc": "070",
+            "sha256": "cfdd98c93572f3ad354ed40f0361ff785adccd03762cffb9dd993782b689e7f4",
+            "prefix": "012026010278ABCBB235    070ABCB    /EJSPN      N"
+          },
+          {
+            "record01_position": 222007,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBB240",
+            "tpmerc": "070",
+            "sha256": "24cb31c0cfc61951ab689549e966611b705aa7eccbd22085ab495ac3c6145087",
+            "prefix": "012026010278ABCBB240    070ABCB    /EJSPN      N"
+          },
+          {
+            "record01_position": 222008,
+            "date": "20260102",
+            "codbdi": "78",
+            "codneg": "ABCBB245",
+            "tpmerc": "070",
+            "sha256": "27aa884af790f37827eac72f67bdc2fd5915faa8775478cb25535d7192da5032",
+            "prefix": "012026010278ABCBB245    070ABCB    /EJSPN      N"
+          }
+        ]
+      }
     },
     "b3_exhausted": false,
     "bloomberg_exhausted": false,
     "comparison_unit": "record type 01 only; period-specific type 00 headers and type 99 trailers excluded"
+  },
+  "divergence_diagnostics": {
+    "purpose": "Diagnosticar se a primeira divergência decorre de registo ausente, ticker distinto ou deslocamento local; não altera o critério byte-a-byte.",
+    "target_tickers": [
+      "ABCBA235",
+      "ABCBA243"
+    ],
+    "b3_occurrences": {
+      "ABCBA235": [
+        {
+          "record01_position": 222003,
+          "date": "20260102",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
+          "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+        },
+        {
+          "record01_position": 268970,
+          "date": "20260108",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "7d66e386c743acf6e2bcc596e469f2dc86c86177819f5e104b994385ac9065c8",
+          "prefix": "012026010878ABCBA235    070ABCB    /EJSPN      N"
+        },
+        {
+          "record01_position": 334865,
+          "date": "20260115",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "519325c6fcf5a70a027f6cbf475a09ad90a4c3b76f64c4f4665e3be96c94bdb9",
+          "prefix": "012026011578ABCBA235    070ABCB        PN      N"
+        }
+      ],
+      "ABCBA243": [
+        {
+          "record01_position": 222004,
+          "date": "20260102",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
+          "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 233121,
+          "date": "20260105",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "ff6279fecc498757dcd773ae078e8f3bbebf9c6ff6fde72d6235c7314d921ae1",
+          "prefix": "012026010578ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 245065,
+          "date": "20260106",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "d6ae94080503f018dc4be6f4d62a222d72cdaa6dfb6521ad89956aae928e4576",
+          "prefix": "012026010678ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 257193,
+          "date": "20260107",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "e6b33383cdb0dbe8b58fb979c8302f84e85384d64d77723a66f0b081ec8e79d6",
+          "prefix": "012026010778ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 280823,
+          "date": "20260109",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "86b62c025024b6b1f1ccae9a8b124a3c5eb269b979e24131e3d88279e21bdde3",
+          "prefix": "012026010978ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 293595,
+          "date": "20260112",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "7e58c00d6d1a149aa99948e2b4087f24ca820ecbc6018cf47e91af69aa056028",
+          "prefix": "012026011278ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 306925,
+          "date": "20260113",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "b061350c0a4d51c58c59fd7f3cd971add07f548ba75fab9945c0b32a2693402e",
+          "prefix": "012026011378ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 320853,
+          "date": "20260114",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "7795c559d203dbb050710f6ee575977d963f1aad876fa7d31f7a424e794a0d79",
+          "prefix": "012026011478ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 334868,
+          "date": "20260115",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "0c0e3abd84bb8215552fbd1ad70282206b5d1b79602f040fe1ab6ebd4b0331f5",
+          "prefix": "012026011578ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 349559,
+          "date": "20260116",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "b6051d5621fa346fd8435233319c137a860431d56f0ed2aa1e4fb908a274881f",
+          "prefix": "012026011678ABCBA243    070ABCBE       PN      N"
+        }
+      ]
+    },
+    "bloomberg_mail_occurrences": {
+      "ABCBA235": [
+        {
+          "record01_position": 222004,
+          "date": "20260102",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
+          "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+        },
+        {
+          "record01_position": 268970,
+          "date": "20260108",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "7d66e386c743acf6e2bcc596e469f2dc86c86177819f5e104b994385ac9065c8",
+          "prefix": "012026010878ABCBA235    070ABCB    /EJSPN      N"
+        },
+        {
+          "record01_position": 334865,
+          "date": "20260115",
+          "codbdi": "78",
+          "codneg": "ABCBA235",
+          "tpmerc": "070",
+          "sha256": "519325c6fcf5a70a027f6cbf475a09ad90a4c3b76f64c4f4665e3be96c94bdb9",
+          "prefix": "012026011578ABCBA235    070ABCB        PN      N"
+        }
+      ],
+      "ABCBA243": [
+        {
+          "record01_position": 222003,
+          "date": "20260102",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
+          "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 233122,
+          "date": "20260105",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "ff6279fecc498757dcd773ae078e8f3bbebf9c6ff6fde72d6235c7314d921ae1",
+          "prefix": "012026010578ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 245064,
+          "date": "20260106",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "d6ae94080503f018dc4be6f4d62a222d72cdaa6dfb6521ad89956aae928e4576",
+          "prefix": "012026010678ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 257193,
+          "date": "20260107",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "e6b33383cdb0dbe8b58fb979c8302f84e85384d64d77723a66f0b081ec8e79d6",
+          "prefix": "012026010778ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 280822,
+          "date": "20260109",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "86b62c025024b6b1f1ccae9a8b124a3c5eb269b979e24131e3d88279e21bdde3",
+          "prefix": "012026010978ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 293591,
+          "date": "20260112",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "7e58c00d6d1a149aa99948e2b4087f24ca820ecbc6018cf47e91af69aa056028",
+          "prefix": "012026011278ABCBA243    070ABCBE    /EJPN      N"
+        },
+        {
+          "record01_position": 306923,
+          "date": "20260113",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "b061350c0a4d51c58c59fd7f3cd971add07f548ba75fab9945c0b32a2693402e",
+          "prefix": "012026011378ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 320852,
+          "date": "20260114",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "7795c559d203dbb050710f6ee575977d963f1aad876fa7d31f7a424e794a0d79",
+          "prefix": "012026011478ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 334863,
+          "date": "20260115",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "0c0e3abd84bb8215552fbd1ad70282206b5d1b79602f040fe1ab6ebd4b0331f5",
+          "prefix": "012026011578ABCBA243    070ABCBE       PN      N"
+        },
+        {
+          "record01_position": 349561,
+          "date": "20260116",
+          "codbdi": "78",
+          "codneg": "ABCBA243",
+          "tpmerc": "070",
+          "sha256": "b6051d5621fa346fd8435233319c137a860431d56f0ed2aa1e4fb908a274881f",
+          "prefix": "012026011678ABCBA243    070ABCBE       PN      N"
+        }
+      ]
+    },
+    "interpretation_limit": "A presença de um ticker noutra posição não prova equivalência semântica nem autoriza promoção automática."
   },
   "interpretation": "B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
   "promotion_impact": "BLOCKED_CONTENT_DIVERGENCE"
