@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase06-reconciliacao-2022-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2022_FASE05_MANIFESTO_CHECKSUM_V1.json"
 
 permissions:
