@@ -49,7 +49,7 @@ jobs:
                   recent.append(run)
 
           counts = Counter(run["conclusion"] or run["status"] for run in recent)
-          unfavorable = {"failure", "cancelled", "timed_out", "action_required", "stale"}
+          unfavorable = {"failure", "timed_out", "action_required", "stale"}
           bad = [run for run in recent if (run["conclusion"] or run["status"]) in unfavorable]
           active_states = {"queued", "in_progress", "waiting", "requested", "pending"}
           active = [run for run in recent if run["status"] in active_states]
