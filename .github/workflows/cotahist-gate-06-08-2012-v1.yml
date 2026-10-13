@@ -1,0 +1,87 @@
+name: COTAHIST 2012 - Gate 06-08
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-gate-06-08-2012-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2012_FASE08_SEMANTICA_CALENDARIO_V1.json"
+permissions:
+  contents: write
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-gate-06-08-2012-v1.yml
+            dados/cotahist/quality/COTAHIST_2012_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2012_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2012_FASE08_SEMANTICA_CALENDARIO_V1.json
+            dados/cotahist/quality/COTAHIST_2012_GATE_06_08_V1.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Avaliar evidências em modo somente leitura
+        run: |
+          python - <<'PY'
+          import json, pathlib, datetime, sys
+          root = pathlib.Path("dados/cotahist/quality")
+          specs = {
+            "FASE06": ("COTAHIST_2012_FASE06_RECONCILIACAO_V1.json", "VALIDADO"),
+            "FASE07": ("COTAHIST_2012_FASE07_IDENTIDADE_CHAVES_V1.json", "VALIDADO"),
+            "FASE08": ("COTAHIST_2012_FASE08_SEMANTICA_CALENDARIO_V1.json", "VALIDADO_COM_EXCECAO")
+          }
+          data, blockers = {}, []
+          for phase, (name, expected) in specs.items():
+              path = root / name
+              if not path.is_file() or path.stat().st_size == 0:
+                  blockers.append(f"{phase}_EVIDENCIA_AUSENTE")
+                  continue
+              data[phase] = json.loads(path.read_text(encoding="utf-8"))
+              if data[phase].get("status") != expected:
+                  blockers.append(f"{phase}_STATUS_INESPERADO")
+          if not blockers:
+              if data["FASE06"].get("mismatch_count") != 0:
+                  blockers.append("FASE06_DIVERGENCIAS")
+              if data["FASE07"].get("candidate_with_prazot", {}).get("duplicate_groups") != 0:
+                  blockers.append("FASE07_COLISOES_NA_CHAVE_CANDIDATA")
+              exceptions = data["FASE08"].get("exceptions", [])
+              if not exceptions or any(e.get("blocking") is not False or not e.get("classification") for e in exceptions):
+                  blockers.append("FASE08_EXCECAO_SEM_CLASSIFICACAO")
+          ok = not blockers
+          result = {
+            "schema_version": "1.0.0", "year": 2012, "gate": "GATE_06_08",
+            "status": "GATE_APROVADO" if ok else "BLOQUEADO",
+            "decision": "APROVADO_PARA_ANALISE_FASE09" if ok else "BLOQUEADO_PARA_FASE09",
+            "phase_statuses": {k: v.get("status", "AUSENTE") for k, v in data.items()},
+            "phase07_duplicate_groups_with_selected_key": data.get("FASE07", {}).get("candidate_with_prazot", {}).get("duplicate_groups"),
+            "blockers": blockers, "phase08_exceptions": data.get("FASE08", {}).get("exceptions", []),
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          target = root / "COTAHIST_2012_GATE_06_08_V1.json"
+          target.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(result, ensure_ascii=False))
+          if not ok:
+              sys.exit("GATE 06-08 BLOQUEADO")
+          PY
+      - name: Persistir decisão
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2012_GATE_06_08_V1.json || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2012_GATE_06_08_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir gate 06-08 2012"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
