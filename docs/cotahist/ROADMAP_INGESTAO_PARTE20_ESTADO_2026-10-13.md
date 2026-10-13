@@ -793,3 +793,37 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. Depois de FASE08, construir/verificar o Gate 06–08 antes de autorizar FASE09.
 5. Manter RAW e todas as linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
 
+## 30. COTAHIST 2018 — FASE08 validada com exceções classificadas; Gate publicado (2026-10-13)
+
+### FASE08 — Calendário e consistência temporal
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida e execução concluída com sucesso.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE08_SEMANTICA_CALENDARIO_V1.json
+- Blob SHA: `098474f52914b194d041a8db5d56dd5fdb7706d2`.
+- Run observado: https://github.com/carlos-andrade/B3/actions/runs/38432267442 — job `calendario` concluído com `success`.
+- Decisão: `LIBERADO_PARA_GATE_06_08`.
+- 580.155 linhas; 245 datas de negociação entre 2018-01-02 e 2018-12-28.
+- Datas inválidas/fora de 2018: 0; regressões cronológicas: 0; regressões temporais por instrumento: 0.
+- 122.534 transições lexicográficas decrescentes na tupla de instrumento: métrica informativa, explicitamente não bloqueadora.
+- Sem datas de fim de semana; lacunas superiores a quatro dias: 2018-02-09→2018-02-14 e 2018-12-21→2018-12-26.
+- Limitação declarada: calendário oficial histórico B3 não persistido; a fase não afirma equivalência com o calendário oficial.
+- RAW/linhas imutáveis; deduplicação não executada.
+
+### Gate independente FASE06–FASE08
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-gate-06-08-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-gate-06-08-2018-v1.yml
+- Commit: `2d494a94d933d0962996b5731af7ef71d629dd0a`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_GATE_06_08_V1.json`.
+- Revalida os três estados anteriores, hashes NORMALIZED, contagens, 25 campos, datas, calendário, regressões temporais, exceções e ausência de deduplicação.
+- Próximo gate: só avançar à FASE09 quando o artefacto persistido confirmar `VALIDADO_COM_EXCECAO`, `LIBERADO_PARA_FASE09` e zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2018): VALIDADO.
+2. FASE08 (2018): VALIDADO_COM_EXCECAO, zero bloqueadores, calendário oficial histórico explicitamente não persistido.
+3. Gate 06–08 (2018): workflow publicado; verificar run e evidência.
+4. FASE09: iniciar apenas depois do Gate validado.
+5. Preservar RAW e linhas; REC-001 B3 × BLOOMBERG_MAIL continua em trilha independente e bloqueada.
+
