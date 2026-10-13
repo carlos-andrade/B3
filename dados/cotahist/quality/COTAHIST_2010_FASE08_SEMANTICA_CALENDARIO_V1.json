@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2010,
+  "phase": "FASE08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
+  "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2010.csv",
+  "normalized_sha256": "6c81d249dd709d57e8348b9b007379e7ea97e6f53c7759fe3003360538917786",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 287480,
+  "unique_trading_dates": 247,
+  "first_trading_date": "2010-01-04",
+  "last_trading_date": "2010-12-30",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 0,
+  "chronological_regression_samples": [],
+  "instrument_order_regressions": 100697,
+  "instrument_date_regressions": 0,
+  "instrument_date_regression_samples": [],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2010."
+    }
+  ],
+  "weekday_distribution": {
+    "Monday": 49,
+    "Tuesday": 48,
+    "Wednesday": 51,
+    "Thursday": 51,
+    "Friday": 48
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2010-02-12",
+      "to": "2010-02-17",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "validated_at_utc": "2026-10-13T09:21:52.792552+00:00",
+  "deduplication_performed": false,
+  "rows_removed": 0
+}
