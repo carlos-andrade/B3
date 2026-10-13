@@ -1921,3 +1921,11 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE11: somente após FASE10 validada.
 4. Preservar RAW/CSV e as evidências históricas V1/V2; nenhuma deduplicação.
 
+## 70. COTAHIST 2021 — FASE10 em execução; certificação e transição preparadas (2026-10-13)
+
+- FASE10: run https://github.com/carlos-andrade/B3/actions/runs/38481931550, atualmente na comparação independente dos 25 campos; evidência ainda pendente.
+- FASE11 preparada: `.github/workflows/cotahist-fase11-certificacao-2021-v1.yml`; só deverá executar após FASE10 VALIDADO, 25 campos e zero divergências.
+- FASE12 preparada: `.github/workflows/cotahist-fase12-fechamento-2021-abertura-2022-v1.yml`; verifica a certificação 2021 e a proveniência/integridade do RAW 2022, sem certificar automaticamente o novo ano.
+- RAW 2022 está presente no repositório, SHA-256 manifesto/sidecar `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`; a validação física de 2022 pertence à FASE12 e ao ciclo subsequente.
+- Nenhuma destas preparações autoriza pular a FASE10 nem deduplicar dados.
+
