@@ -6,5 +6,8 @@
   "sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
   "status": "VALIDADO",
   "validacao": "ZIP com 1 arquivo COTAHIST; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
-  "acquired_at_utc": "2026-09-24T07:52:17.798962+00:00"
+  "acquired_at_utc": "2026-09-24T07:52:17.798962+00:00",
+  "ultima_data_observacao": "2026-09-23",
+  "fonte_data_observacao": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
+  "nota_data_observacao": "Derivada do manifesto de qualidade NORMALIZED e confirmada pelo registo de reconciliação do manifesto anual; acquired_at_utc permanece apenas a data de aquisição."
 }
