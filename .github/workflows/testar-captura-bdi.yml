@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "ferramentas/capturar_bdi.py"
+      - ".github/workflows/testar-captura-bdi.yml"
   schedule:
     - cron: "0 11 * * 1-5"
   workflow_dispatch:
@@ -19,6 +20,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: bdi-capture
+  cancel-in-progress: false
 
 jobs:
   captura:
@@ -48,5 +53,6 @@ jobs:
             echo "Nenhum novo dado."
           else
             git commit -m "data(b3): captura BDI $DATA"
+            git pull --rebase origin main
             git push
           fi
