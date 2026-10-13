@@ -1,0 +1,62 @@
+name: B3 — Endurecer publicação de evidências COTAHIST
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-cotahist-rebase-conflict-hardening.yml"
+      - "scripts/governanca/harden_cotahist_rebase.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-cotahist-rebase-conflict-hardening
+  cancel-in-progress: false
+
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Aplicar correção idempotente aos workflows ativos
+        run: python scripts/governanca/harden_cotahist_rebase.py
+      - name: Validar diff e publicar alteração única
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git diff --check
+          if git diff --quiet -- .github/workflows; then
+            echo "Nenhuma alteração pendente."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/cotahist-*.yml .github/workflows/rec001-cotahist-bloomberg-mail.yml
+          git commit -m "fix(cotahist): harden concurrent evidence publication"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              echo "Conflito na publicação do patch transversal; abortar e tentar novamente."
+              git rebase --abort || true
+              sleep $((attempt * 2))
+              continue
+            fi
+            if git push origin HEAD:main; then
+              echo "Patch transversal publicado."
+              exit 0
+            fi
+            echo "Push concorrente; tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Não foi possível publicar o patch transversal após cinco tentativas."
+          exit 1
