@@ -111,7 +111,11 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 
 - FASE12 de 2016 autorizou a continuação de 2017 sem certificar o novo ano.
 - RAW 2017 SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`, coincide com manifesto e sidecar; ZIP íntegro, 489.115 registos tipo 01.
-- NORMALIZED CSV 2017 ausente; iniciar FASE00 de governança e avançar sequencialmente, reconstruindo o CSV apenas na FASE04.
+- FASE00: `VALIDADO`, decisão `AUTORIZAR_FASE01`; evidência blob `46ba901d23e828660382b3efbf782697db8956ef`.
+- FASE01: `VALIDADO`, decisão `LIBERADO_PARA_FASE02`; RAW SHA coincide com manifesto/sidecar; evidência commit `0799b784e37685c0c9d332d3fe56c431a5428a78`.
+- FASE02: `VALIDADO`, decisão `LIBERADO_PARA_FASE03`; ZIP íntegro, um membro, registos de 245 bytes, 489.115 registos tipo 01; evidência commit `1c023edfc00c5196267c14865645ba5cc9254ea8`.
+- FASE03: `VALIDADO`, decisão `LIBERADO_PARA_FASE04`; zero comprimentos/datas inválidos, intervalo 2017-01-02 a 2017-12-28; evidência commit `b2fbad14e03f05eecc63b66ea7c673c43b5bbdf0`.
+- FASE04: workflow publicado em `.github/workflows/cotahist-fase04-normalizacao-2017-v1.yml` (commit `ef2652d24e472b601a79e44f940aa60250c1c1b6`), com duas atualizações de gatilho. O NORMALIZED CSV e a evidência FASE04 ainda não foram encontrados; a execução precisa ser confirmada antes de avançar para FASE05. Manifesto existente espera 489.115 linhas, 25 campos e SHA-256 `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
 
 ## 4. Roadmap por marco
 
@@ -123,7 +127,7 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 | COTAHIST 2014 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
 | COTAHIST 2015 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
 | COTAHIST 2016 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
-| COTAHIST 2017 | RAW íntegro e transição autorizada; NORMALIZED CSV ausente | Iniciar FASE00 e avançar sequencialmente até reconstrução/validação FASE04 |
+| COTAHIST 2017 | FASE00–FASE03 validadas; FASE04 de normalização pendente de evidência | Confirmar NORMALIZED físico contra manifesto/sidecar antes de FASE05 |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
 | Dataset oficial / certificação anual | README anterior registra execuções bem-sucedidas; esta continuação não reexecutou esses workflows | Revalidar matriz, manifestos e hashes antes de qualquer nova declaração |
