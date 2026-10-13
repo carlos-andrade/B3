@@ -1453,3 +1453,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE09 (2020): workflow publicado; verificar run/evidência.
 4. FASE10–FASE12: dependem da FASE09 e da validação independente dos 25 campos.
 
+## 54. COTAHIST 2020 — FASE09 liberada; FASE10 publicada (2026-10-13)
+
+### FASE09 — Pre-release
+**Estado: LIBERADO_PARA_FASE10 — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE09_PRE_RELEASE_V1.json`, blob `fe6aed84ce28399f18fc2a76d390cc28d31a1aad`.
+- Decisão `LIBERADO_PARA_FASE10`; `missing=[]`; `blocked=[]`.
+- FASE03–FASE08, Gate, RAW, NORMALIZED e manifesto aceites.
+- SHA-256 RAW: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+- SHA-256 NORMALIZED: `cb9230638ae4cec17d9345401ba41e4576b6ff6369f32377367fe20f3c02de50`.
+- Exceções FASE08 preservadas; FASE09 não retrocertifica fases anteriores.
+
+### FASE10 — Validação independente integral
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase10-validacao-independente-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase10-validacao-independente-2020-v1.yml
+- Commit: `7580af260632916cf869d36013ae12abb5aabd59`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- Comparar independentemente os 25 campos RAW × NORMALIZED, hashes/contagens e integridade do ZIP; não modificar RAW nem deduplicar.
+- Só avançar para FASE11 com `VALIDADO`, `LIBERADO_PARA_FASE11`, 25 campos e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE09 (2020): validadas/liberadas conforme evidências.
+2. FASE10 (2020): executar/verificar reconciliação integral.
+3. FASE11–FASE12: dependem da FASE10 sem divergências.
+
