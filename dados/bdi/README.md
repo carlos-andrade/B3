@@ -32,6 +32,12 @@ Nenhum número agregado será tratado como dado oficial do projeto sem identific
 - layouts e arquivos oficiais B3;
 - fontes complementares somente quando claramente identificadas.
 
+## Captura automatizada
+
+A captura do endpoint `DailyAverageStocks` está configurada no workflow [Testar captura BDI](../../.github/workflows/testar-captura-bdi.yml), com agenda em dias úteis às 11:00 UTC e execução manual. A opção `--date auto` procura a última data disponível até sete dias de calendário para trás, validando JSON, colunas e registos antes de gravar. A captura conserva o RAW e o SHA-256 no manifesto. Se o SHA-256 de uma data já registada divergir, o script interrompe a execução e exige reconciliação explícita; não sobrescreve silenciosamente. Após a captura, o workflow aciona a reavaliação WATCHDOG da atualidade dos dados.
+
+A data consultada é a data de observação do BDI; `captured_at_utc` é apenas o instante de captura. Não são intercambiáveis.
+
 ## Estrutura prevista
 
 - `fontes/` — documentação das fontes;
