@@ -1,3 +1,4 @@
+# Reexecucao controlada apos persistencia da evidencia FASE08 revisada; gate recalcula o estado fisico atual.
 # Gate independente 06-08 de 2019; revalida artefactos físicos e pré-condições para FASE09.
 name: COTAHIST 2019 - Gate independente FASE06-08
 
