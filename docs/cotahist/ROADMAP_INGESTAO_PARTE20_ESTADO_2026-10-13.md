@@ -56,12 +56,11 @@ Estado: **VALIDADO_COM_EXCECAO — evidência persistida; atualização de class
 - Commit do workflow: `013100f0e271988c37b1edad58cf77a1d01f2f3b`.
 - Contrato anual: usa NORMALIZED 2014 e evidências FASE06/FASE07; trigger inclui alterações nesses artefactos e no próprio workflow.
 - Integridade do ficheiro: confirmado na branch `main`, sem referências residuais a 2013.
-- Evidência esperada: `dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json`.
-- Evidência persistida: [COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json), commit `644a000bc7c0ae18fe52e0273040c4e3cb527779`; hash do blob `bd8c2c433b34c272ad0e054f224ed573702dc23f`.
+- Evidência persistida e revista: [COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json), commit `fb9ae230d9f658f166318aca6658a1415f3a9c77`; hash do blob `4ca480029a18007cb511e53f37fb838b99052f93`.
 - Resultado: 392.228 registos; 248 datas de negociação entre 2014-01-02 e 2014-12-30; zero datas inválidas/fora do ano, zero regressões cronológicas e zero regressões temporais por instrumento; nenhuma linha removida.
 - Métrica informativa: 97.444 transições decrescentes na ordenação lexicográfica da tupla de instrumento. Não equivale a regressão temporal; a versão inicial não a classificava explicitamente. O workflow foi corrigido no commit `106625dbd182fa83305339d40b7dfb6ce525210c` para persistir a classificação não bloqueadora e aguarda nova evidência dessa revisão.
 - Gate 06–08: execução com resultado `VALIDADO_COM_EXCECAO`, decisão `LIBERADO_PARA_FASE09`, zero bloqueadores e hash físico do NORMALIZED confirmado contra FASE06/FASE07/FASE08. Evidência: [COTAHIST_2014_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2014_GATE_06_08_V1.json), commit `f6f0a2f5c2b26cafd5fb18295a9043f00be9c999`.
-- A revisão do workflow FASE08 altera a evidência de entrada do Gate; por isso, não promover FASE09 até a nova evidência FASE08 e a execução subsequente do Gate estarem persistidas e verificadas.
+- O Gate foi reexecutado após a atualização da evidência FASE08: commit `1632ec85a416c0716b519a0df46eee0211f26ac7`; status `VALIDADO_COM_EXCECAO`, decisão `LIBERADO_PARA_FASE09`, zero bloqueadores. A FASE09 foi publicada em `.github/workflows/cotahist-fase09-prerelease-2014-v1.yml` (commit `0e0e8050d234adb062bbc7ba5bc9052cdfea0b92`); a evidência `COTAHIST_2014_FASE09_PRE_RELEASE_V1.json` ainda não foi encontrada na consulta. Não declarar FASE09 concluída sem evidência persistida.
 
 
 ## 4. Roadmap por marco
