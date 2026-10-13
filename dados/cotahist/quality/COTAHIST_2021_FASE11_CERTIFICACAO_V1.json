@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2021,
+  "phase": "FASE11",
+  "status": "CERTIFICADO",
+  "decision": "LIBERADO_PARA_FASE12",
+  "certification_scope": "Integridade e consistência do conjunto COTAHIST 2021 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
+  "evidence_statuses": {
+    "FASE09": "LIBERADO_PARA_FASE10",
+    "FASE10": "VALIDADO",
+    "GATE_06_08": "VALIDADO_COM_EXCECAO",
+    "MANIFEST": "VALIDADO"
+  },
+  "phase10_mismatch_count": 0,
+  "phase10_fields_checked": 25,
+  "gate_06_08_status": "VALIDADO_COM_EXCECAO",
+  "gate_06_08_decision": "LIBERADO_PARA_FASE09",
+  "raw_sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+  "normalized_sha256": "0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2",
+  "blockers": [],
+  "certified_at_utc": "2026-10-13T23:06:37.966442+00:00"
+}
