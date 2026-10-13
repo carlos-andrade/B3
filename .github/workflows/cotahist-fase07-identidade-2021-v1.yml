@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase07-identidade-2021-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json"
 
 permissions:
