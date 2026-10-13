@@ -50,15 +50,18 @@ Contrato e pré-condições da FASE07 (registo histórico):
 
 A chave candidata usada em 2006 incluiu `prazot` para separar colisões, mas a evidência de 2006 não autoriza deduplicação nem generalização automática para outros anos.
 ### FASE08 — calendário e consistência temporal — 2014
-Estado: **WORKFLOW PUBLICADO; EXECUÇÃO/EVIDÊNCIA AINDA NÃO CONFIRMADAS**.
+Estado: **VALIDADO_COM_EXCECAO — evidência persistida; atualização de classificação em reexecução**.
 
 - Workflow: `.github/workflows/cotahist-fase08-calendario-2014-v1.yml`.
 - Commit do workflow: `013100f0e271988c37b1edad58cf77a1d01f2f3b`.
 - Contrato anual: usa NORMALIZED 2014 e evidências FASE06/FASE07; trigger inclui alterações nesses artefactos e no próprio workflow.
 - Integridade do ficheiro: confirmado na branch `main`, sem referências residuais a 2013.
 - Evidência esperada: `dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json`.
-- Estado desta consulta: o artefacto esperado ainda não existe na branch `main`; a interface disponível não expõe listagem geral de runs, portanto não é possível afirmar SUCCESS/FAILURE nem distinguir entre execução pendente e falha anterior à persistência.
-- Próxima ação: consultar o run no GitHub Actions e validar a evidência; se não houver run/evidência, executar FASE08 manualmente pelo workflow_dispatch. Não avançar para Gate 06–08/FASE09 antes dessa verificação.
+- Evidência persistida: [COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2014_FASE08_SEMANTICA_CALENDARIO_V1.json), commit `644a000bc7c0ae18fe52e0273040c4e3cb527779`; hash do blob `bd8c2c433b34c272ad0e054f224ed573702dc23f`.
+- Resultado: 392.228 registos; 248 datas de negociação entre 2014-01-02 e 2014-12-30; zero datas inválidas/fora do ano, zero regressões cronológicas e zero regressões temporais por instrumento; nenhuma linha removida.
+- Métrica informativa: 97.444 transições decrescentes na ordenação lexicográfica da tupla de instrumento. Não equivale a regressão temporal; a versão inicial não a classificava explicitamente. O workflow foi corrigido no commit `106625dbd182fa83305339d40b7dfb6ce525210c` para persistir a classificação não bloqueadora e aguarda nova evidência dessa revisão.
+- Gate 06–08: execução com resultado `VALIDADO_COM_EXCECAO`, decisão `LIBERADO_PARA_FASE09`, zero bloqueadores e hash físico do NORMALIZED confirmado contra FASE06/FASE07/FASE08. Evidência: [COTAHIST_2014_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2014_GATE_06_08_V1.json), commit `f6f0a2f5c2b26cafd5fb18295a9043f00be9c999`.
+- A revisão do workflow FASE08 altera a evidência de entrada do Gate; por isso, não promover FASE09 até a nova evidência FASE08 e a execução subsequente do Gate estarem persistidas e verificadas.
 
 
 ## 4. Roadmap por marco
@@ -68,8 +71,8 @@ Estado: **WORKFLOW PUBLICADO; EXECUÇÃO/EVIDÊNCIA AINDA NÃO CONFIRMADAS**.
 | COTAHIST 1986–2003 | Histórico com exceções específicas por ano | Preservar evidências; não presumir uniformidade |
 | COTAHIST 2004–2013 | Ciclos anteriores registrados como concluídos/fechados, com exceções de calendário documentadas por ano | Não reexecutar sem causa/evidência |
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
-| COTAHIST 2014 | FASE00–FASE07 validadas; workflow FASE08 publicado em `main` (commit `013100f0e271988c37b1edad58cf77a1d01f2f3b`) | Verificar evidência/run FASE08; não avançar sem resultado auditável |
-| COTAHIST 2014 FASE08–FASE12 | Ainda não comprovadas como concluídas nesta continuação | Avançar sequencialmente após cada gate |
+| COTAHIST 2014 | FASE00–FASE08 com evidência; Gate 06–08 passou na revisão inicial, mas aguarda repetição após correção classificatória da FASE08 | Confirmar nova evidência FASE08 e novo Gate antes de FASE09 |
+| COTAHIST 2014 FASE09–FASE12 | FASE09 autorizada pelo Gate inicial, mas promoção temporariamente retida até a repetição do Gate após a correção da FASE08 | Não iniciar FASE09 antes do Gate atualizado |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
 | Dataset oficial / certificação anual | README anterior registra execuções bem-sucedidas; esta continuação não reexecutou esses workflows | Revalidar matriz, manifestos e hashes antes de qualquer nova declaração |
