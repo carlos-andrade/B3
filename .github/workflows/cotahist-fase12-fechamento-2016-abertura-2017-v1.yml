@@ -6,6 +6,7 @@
 # Reexecucao controlada apos FASE11 2016 CERTIFICADO; validar transicao para 2017.
 # Reexecucao apos FASE11 2016 CERTIFICADO; validar fechamento 2016 e RAW 2017.
 # Fechamento controlado após FASE11 CERTIFICADO; não certifica 2017.
+# Close 2016 and validate transition to 2017.
 name: COTAHIST 2016 - FASE12 Fechamento e Transicao 2017
 
 on:
