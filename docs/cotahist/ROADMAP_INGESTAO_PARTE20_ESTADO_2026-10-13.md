@@ -1789,3 +1789,36 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Gate 06–08: executar após FASE08.
 4. FASE09: somente após Gate validado, sem bloqueadores.
 
+## 66. COTAHIST 2021 — FASE08 bloqueada; diagnóstico de ordenação em curso (2026-10-13)
+
+### Resultado da FASE08 original
+**Estado: BLOQUEADO — não autoriza Gate 06–08 nem FASE09.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json`, blob `569fa602f53e092f27263d77ab49ad903ac89a93`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481217167 — validação falhou e evidência foi persistida.
+- Datas inválidas: 0; datas fora de 2021: 0; 247 datas distintas, intervalo 2021-01-04 a 2021-12-30; datas de fim de semana: nenhuma.
+- Regressões de data na ordem física: 139.405.
+- Regressões temporais sob a chave instrumental inicial `codbdi+codneg+tpmerc+prazot+dismes`: 73.784.
+- Bloqueadores: `REGRESSAO_CRONOLOGICA`, `REGRESSAO_TEMPORAL_POR_INSTRUMENTO`.
+- A FASE06 confirmou que RAW e NORMALIZED correspondem linha a linha nos 12 campos críticos, mas isso prova fidelidade da transformação, não conformidade da ordenação com o contrato oficial.
+
+### Fonte normativa e hipótese de diagnóstico
+- Layout oficial B3, revisão 02 (05/10/2020): https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf
+- O documento descreve o COTAHIST como classificado por tipo de registo, data do pregão, código BDI, nome da empresa e código de negociação. A FASE08 bloqueada não deve ser contornada até determinar se a sequência física de 2021 viola essa classificação, se há uma regra de ordenação adicional, ou se a chave de instrumento inicial era insuficiente.
+- Não reordenar o NORMALIZED, não alterar o RAW e não classificar as regressões como não bloqueadoras sem evidência.
+
+### Diagnóstico de ordenação — workflow separado
+**Estado: RUN ENFILEIRADO; não certificador.**
+
+- Workflow: `.github/workflows/cotahist-fase08-diagnostico-ordem-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481418609.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json`.
+- Regista amostras com ticker/nome/especificação, regressões de ordenação por chaves candidatas (data-primeiro versus instrumento-primeiro) e regressões temporais usando identidade mais completa, incluindo `nomres`, `especi`, `modref` e `codisi`.
+- O diagnóstico não altera a evidência FASE08 original e não libera fases seguintes. A decisão de correção dependerá dos resultados e da referência normativa.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2021): VALIDADO.
+2. FASE08: BLOQUEADO; investigar ordenação e chave de instrumento.
+3. Gate 06–08 e FASE09: suspensos até resolução documentada do bloqueio.
+4. Preservar RAW, CSV original e evidência de bloqueio; nenhuma deduplicação.
+
