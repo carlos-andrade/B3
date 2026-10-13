@@ -1,0 +1,172 @@
+# Execução controlada após FASE04 e NORMALIZED persistidos.
+# Reexecucao controlada apos FASE04 validada e NORMALIZED persistido.
+name: COTAHIST 2021 - FASE05 Manifesto e Checksum
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase05-manifesto-checksum-2021-v1
+  cancel-in-progress: false
+
+jobs:
+  manifesto:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase05-manifesto-checksum-2021-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2021.ZIP
+            dados/cotahist/manifests/COTAHIST_A2021.json
+            dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/normalized/anual/COTAHIST_A2021.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2021_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2021.csv.sha256
+            dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconciliar integridade física RAW e NORMALIZED
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys, zipfile
+
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2021.ZIP")
+          raw_manifest = pathlib.Path("dados/cotahist/manifests/COTAHIST_A2021.json")
+          raw_sidecar = pathlib.Path("dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256")
+          normalized = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2021.csv")
+          manifest = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2021_quality.json")
+          sidecar = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2021.csv.sha256")
+          phase04 = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json")
+          evidence = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json")
+
+          required = (raw, raw_manifest, raw_sidecar, normalized, manifest, sidecar, phase04)
+          for path in required:
+              if not path.is_file() or path.stat().st_size == 0:
+                  sys.exit(f"FASE05 BLOQUEADA: arquivo ausente/vazio: {path}")
+
+          rm = json.loads(raw_manifest.read_text(encoding="utf-8"))
+          m = json.loads(manifest.read_text(encoding="utf-8"))
+          f4 = json.loads(phase04.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          normalized_sha = hashlib.sha256(normalized.read_bytes()).hexdigest()
+          raw_side = raw_sidecar.read_text(encoding="utf-8").strip().split()
+          norm_side = sidecar.read_text(encoding="utf-8").strip().split()
+          raw_side_sha = raw_side[0] if raw_side else ""
+          norm_side_sha = norm_side[0] if norm_side else ""
+
+          if f4.get("year") != 2021 or f4.get("phase") != "FASE04" or f4.get("status") != "VALIDADO" or f4.get("decision") != "LIBERADO_PARA_FASE05" or f4.get("blockers") != []:
+              sys.exit("FASE05 BLOQUEADA: evidência FASE04 não autoriza avanço")
+          if f4.get("raw_sha256") != raw_sha or f4.get("normalized_sha256_calculated") != normalized_sha:
+              sys.exit("FASE05 BLOQUEADA: hashes da FASE04 divergem dos ficheiros físicos")
+          if rm.get("ano") != 2021 or rm.get("sha256") != raw_sha or rm.get("status") != "VALIDADO":
+              sys.exit("FASE05 BLOQUEADA: RAW diverge do manifesto de aquisição")
+          if raw_sha != raw_side_sha:
+              sys.exit("FASE05 BLOQUEADA: SHA-256 RAW diverge do sidecar")
+          if m.get("ano") != 2021 or m.get("campos") != 25 or m.get("normalized_sha256") != normalized_sha:
+              sys.exit("FASE05 BLOQUEADA: NORMALIZED diverge do manifesto")
+          if normalized_sha != norm_side_sha:
+              sys.exit("FASE05 BLOQUEADA: SHA-256 NORMALIZED diverge do sidecar")
+          if m.get("raw_sha256") != raw_sha:
+              sys.exit("FASE05 BLOQUEADA: vínculo RAW no manifesto NORMALIZED diverge")
+          if m.get("status") != "VALIDADO":
+              sys.exit("FASE05 BLOQUEADA: manifesto NORMALIZED não está VALIDADO")
+
+          with zipfile.ZipFile(raw) as archive:
+              bad_member = archive.testzip()
+              members = archive.namelist()
+              if bad_member is not None or len(members) != 1 or members[0] != "COTAHIST_A2021.TXT":
+                  sys.exit(f"FASE05 BLOQUEADA: estrutura ZIP inesperada; bad_member={bad_member}; members={members}")
+
+          with normalized.open(encoding="utf-8", newline="") as stream:
+              reader = csv.DictReader(stream)
+              fields = reader.fieldnames or []
+              rows = list(reader)
+          if len(fields) != 25 or len(rows) != m.get("linhas_normalized"):
+              sys.exit("FASE05 BLOQUEADA: quantidade de campos/linhas diverge do manifesto")
+          dates = [row.get("data_pregao", "") for row in rows]
+          if not dates or min(dates) != m.get("primeira_data") or max(dates) != m.get("ultima_data"):
+              sys.exit("FASE05 BLOQUEADA: intervalo de datas diverge do manifesto")
+
+          result = {
+              "schema_version": "1.0.0",
+              "year": 2021,
+              "phase": "FASE05",
+              "status": "VALIDADO",
+              "decision": "LIBERADO_PARA_FASE06",
+              "validation_type": "RECONCILIACAO_FISICA_RAW_NORMALIZED_MANIFESTO_SIDECAR",
+              "raw_path": str(raw),
+              "raw_sha256_calculated": raw_sha,
+              "raw_sha256_manifest": rm.get("sha256"),
+              "raw_sha256_sidecar": raw_side_sha,
+              "raw_hash_manifest_match": True,
+              "raw_hash_sidecar_match": True,
+              "raw_zip_member": members[0],
+              "raw_zip_test": "PASS",
+              "normalized_path": str(normalized),
+              "normalized_sha256_calculated": normalized_sha,
+              "normalized_sha256_manifest": m.get("normalized_sha256"),
+              "normalized_sha256_sidecar": norm_side_sha,
+              "normalized_hash_manifest_match": True,
+              "normalized_hash_sidecar_match": True,
+              "phase04_status": f4.get("status"),
+              "rows_calculated": len(rows),
+              "rows_manifest": m.get("linhas_normalized"),
+              "fields": len(fields),
+              "first_date": min(dates),
+              "last_date": max(dates),
+              "raw_modified": False,
+              "deduplication_performed": False,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "limitations": ["A reconciliação semântica linha a linha RAW × NORMALIZED pertence à FASE06."]
+          }
+          evidence.parent.mkdir(parents=True, exist_ok=True)
+          evidence.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Persistir evidência FASE05
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar fase 05 manifesto checksum 2021"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2021 — FASE05"
+            echo "- Revalida RAW físico, manifesto de aquisição, sidecar, NORMALIZED, manifesto e sidecar."
+            echo "- Não executa nem corrige FASE06."
+            echo "- Resultado: ${{ job.status }}"
+            echo "- Decisão: promoção somente após todas as verificações passarem."
+          } >> "$GITHUB_STEP_SUMMARY"
