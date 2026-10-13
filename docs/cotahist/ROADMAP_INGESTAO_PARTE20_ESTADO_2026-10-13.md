@@ -2049,3 +2049,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE06: reconciliação semântica depois de FASE05.
 5. Preservar RAW e todas as linhas; não deduplicar.
 
+## 74. COTAHIST 2022 — FASE04 validada; FASE05 em fila (2026-10-13)
+
+### FASE04 — Normalização e reconciliação
+**Estado: VALIDADO — evidência e CSV persistidos.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE04_NORMALIZACAO_V1.json`, blob `5d65cc7973b851c13100921719ea9df4ab402499`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482555165 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE05`; zero bloqueadores.
+- NORMALIZED: 2.117.440 linhas, 25 campos; datas inválidas/fora de 2022: zero; intervalo 2022-01-03 a 2022-12-29.
+- SHA-256 NORMALIZED calculado = manifesto = sidecar: `4e0e75d0bab794eeffdaa23990e3651810c3654b31e1b6bd3c53b9e4f72d8148`.
+- SHA-256 RAW: `a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8`.
+- Manifesto histórico mantém `parser_version=1.1.0`; script canónico executado reportou `PARSER_VERSION=1.1.2`. A diferença está explicitamente registada na evidência, sem atualização silenciosa do manifesto.
+- RAW inalterado; deduplicação não executada.
+
+### FASE05 — Manifesto e checksum
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase05-manifesto-checksum-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482836300.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE05_MANIFESTO_CHECKSUM_V1.json`.
+- Verifica hashes físicos RAW/NORMALIZED contra manifesto, sidecar e FASE04; ZIP íntegro e contagens. FASE06 só após FASE05 validada.
+
+### Roadmap operacional imediato
+1. FASE00–FASE04 (2022): VALIDADO.
+2. FASE05: enfileirada; confirmar evidência e hashes.
+3. FASE06: preparada; executar após FASE05.
+4. Nenhuma deduplicação; RAW e todas as linhas preservadas.
+
