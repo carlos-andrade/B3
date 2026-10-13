@@ -334,3 +334,37 @@ Verificação realizada em 2026-10-13 na branch `main`; esta secção prevalece 
 7. REC-001 B3 × BLOOMBERG_MAIL continua bloqueada em trilha independente até reconciliação da divergência de multiplicidades/ordem.
 
 **Regra de promoção:** workflow publicado ou commit de código não prova conclusão. Não avançar para Gate 06–08 antes de a evidência FASE08 estar persistida e validada.
+
+
+## 15. FASE08 validada com exceção; Gate 06–08 preparado — COTAHIST 2017
+
+Verificação da evidência na branch `main`, em 2026-10-13.
+
+### FASE08 — 2017: VALIDADO_COM_EXCECAO
+
+- Evidência: [COTAHIST_2017_FASE08_SEMANTICA_CALENDARIO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE08_SEMANTICA_CALENDARIO_V1.json).
+- Estado/decisão: `VALIDADO_COM_EXCECAO` / `LIBERADO_PARA_GATE_06_08`; zero bloqueadores.
+- NORMALIZED SHA-256: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`, igual à FASE06 e FASE07.
+- Registos verificados: 489.115; 246 datas de negociação; intervalo 2017-01-02 a 2017-12-28.
+- Datas inválidas/fora do ano: zero; regressões cronológicas: zero; regressões temporais por instrumento: zero; datas de fim de semana observadas: zero.
+- Métrica lexicográfica informativa: 109.824 transições decrescentes da tupla de instrumento; explicitamente não bloqueadora e não confundida com regressão temporal.
+- Exceções explícitas: calendário oficial histórico externo não persistido; intervalo de cinco dias entre 2017-02-24 e 2017-03-01. A fase não afirma equivalência com calendário oficial externo.
+- `deduplication_performed=false`; `rows_removed=0`.
+
+### Gate 06–08 — 2017: workflow publicado; evidência pendente
+
+- Workflow: [cotahist-gate-06-08-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-gate-06-08-2017-v1.yml).
+- Commit do workflow: [2c90b89335666d4cc911e49ea581b7ef9ef8f71d](https://github.com/carlos-andrade/B3/commit/2c90b89335666d4cc911e49ea581b7ef9ef8f71d).
+- O gate revalida fisicamente o NORMALIZED, hash, 489.115 registos, 25 campos, datas, ausência de regressões cronológicas, hashes de FASE06/FASE07/FASE08, classificação das exceções e preservação de todas as linhas.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2017_GATE_06_08_V1.json`. Não foi encontrada na consulta após publicação do workflow; portanto, o Gate ainda não está aprovado e a FASE09 não está autorizada.
+
+### Roadmap operacional
+
+1. FASE05–FASE07 2017: VALIDADO.
+2. FASE08 2017: VALIDADO_COM_EXCECAO, LIBERADO_PARA_GATE_06_08.
+3. Gate 06–08 2017: workflow publicado; aguarda execução e evidência persistida.
+4. FASE09: bloqueada até o Gate produzir decisão `LIBERADO_PARA_FASE09` sem bloqueadores.
+5. FASE10 independente (25 campos) → FASE11 certificação → FASE12 fechamento/transição para 2018, apenas após os gates anteriores.
+6. REC-001 B3 × BLOOMBERG_MAIL permanece bloqueada em trilha independente.
+
+**Regra de promoção:** a evidência da FASE08 autoriza a execução do Gate, não substitui o Gate. Não promover para FASE09 com base apenas no status da FASE08 ou na publicação do workflow.
