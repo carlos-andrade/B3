@@ -1325,3 +1325,28 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE05 (2020): verificar execução e evidência.
 3. FASE06–FASE12: bloqueadas até validação de cada fase precedente.
 
+## 49. COTAHIST 2020 — FASE05 validada; FASE06 publicada (2026-10-13)
+
+### FASE05 — Manifesto e checksum
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE05_MANIFESTO_CHECKSUM_V1.json`, blob `114ce5eeb41d218813c279e6f4c34db9f6b91caf`.
+- Decisão: `LIBERADO_PARA_FASE06`.
+- RAW SHA-256: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`; NORMALIZED SHA-256: `cb9230638ae4cec17d9345401ba41e4576b6ff6369f32377367fe20f3c02de50`.
+- RAW/manifesto/sidecar e NORMALIZED/manifesto/sidecar concordantes; ZIP `PASS`; 1.251.646 linhas; 25 campos; datas 2020-01-02 a 2020-12-30; RAW imutável e deduplicação não executada.
+
+### FASE06 — Reconciliação semântica
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase06-reconciliacao-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase06-reconciliacao-2020-v1.yml
+- Commit: `1e6d7418fab1f92f960d6b6fb9aaabad4ff52504`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE06_RECONCILIACAO_V1.json`.
+- Compara 12 campos críticos por ordem de registo, com hashes e contagens físicas confirmados; não modifica RAW nem deduplica.
+- Só avançar para FASE07 com `VALIDADO`, `LIBERADO_PARA_FASE07` e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 (2020): VALIDADO.
+2. FASE06 (2020): executar/verificar reconciliação semântica.
+3. FASE07–FASE12: dependem das evidências das fases anteriores.
+
