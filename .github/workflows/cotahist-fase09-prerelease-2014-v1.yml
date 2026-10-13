@@ -74,6 +74,8 @@ jobs:
                   blocked.append(f"{phase}_STATUS")
           if data.get("FASE08", {}).get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
               blocked.append("FASE08_STATUS")
+          if any(e.get("blocking") is not False for e in data.get("FASE08", {}).get("exceptions", [])):
+              blocked.append("FASE08_UNCLASSIFIED_EXCEPTION")
           gate = data.get("GATE_06_08", {})
           if gate.get("status") not in {"GATE_APROVADO", "VALIDADO_COM_EXCECAO"} or gate.get("decision") not in {"APROVADO_PARA_ANALISE_FASE09", "LIBERADO_PARA_FASE09"}:
               blocked.append("GATE_06_08")
@@ -87,6 +89,14 @@ jobs:
           csv_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest() if csv_path.exists() else None
           if csv_sha != manifest.get("normalized_sha256"):
               blocked.append("NORMALIZED_SHA256")
+          if csv_sha != gate.get("normalized_sha256_calculated"):
+              blocked.append("GATE_NORMALIZED_SHA256")
+          if gate.get("rows_checked") != manifest.get("linhas_normalized"):
+              blocked.append("GATE_ROW_COUNT")
+          if gate.get("field_count") != manifest.get("campos"):
+              blocked.append("GATE_FIELD_COUNT")
+          if gate.get("blockers") != []:
+              blocked.append("GATE_HAS_BLOCKERS")
           ok = not missing and not blocked
           out = {
             "schema_version": "1.0.0",
