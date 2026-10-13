@@ -1,5 +1,6 @@
 # Execução controlada após FASE02 2017 VALIDADO.
 # Reexecucao controlada da fase 03 de 2017.
+# Rerun 2017.
 name: COTAHIST 2017 - FASE03 Parsing Estrutural
 
 on:
