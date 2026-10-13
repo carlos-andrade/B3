@@ -1214,3 +1214,27 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. COTAHIST 2020: depois da transição, iniciar FASE00 e verificar/reconstruir NORMALIZED; não reutilizar certificação de 2019.
 4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 44. COTAHIST 2019 — FASE12 concluída; ciclo 2020 autorizado (2026-10-13)
+
+### FASE12 — Fechamento e transição
+**Estado: FECHADO_COM_TRANSICAO_CONTROLADA — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE12_FECHAMENTO_2020_ABERTURA_V1.json`, blob `d80d9dde1cbe22b4f08fd9363479ddda2bd0ca2e`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38434830513.
+- Decisão: `FECHAR_2019_E_AUTORIZAR_CONTINUACAO_2020`; zero bloqueadores.
+- FASE10 2019 `VALIDADO`, FASE11 2019 `CERTIFICADO`.
+- RAW 2020 SHA-256: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`, igual ao manifesto e sidecar; ZIP com um membro, zero comprimentos inválidos, header `00=1`, registos `01=1.251.646`, trailer `99=1`.
+- NORMALIZED CSV 2020 ausente fisicamente; `year2020_phase04_status=AGUARDA_RECONSTRUCAO_CSV`. O manifesto/checksum não substitui a validação física do CSV.
+- A FASE12 fecha 2019 e autoriza iniciar 2020; não certifica 2020.
+
+### COTAHIST 2020 — início do ciclo
+- Próximo passo: FASE00 com a transição 2019→2020 como pré-condição; depois FASE01–03 e reconstrução NORMALIZED na FASE04.
+- Evidências 2020 específicas ainda não foram encontradas nos caminhos canónicos consultados.
+- RAW permanece imutável; nenhuma deduplicação autorizada.
+
+### Roadmap operacional imediato
+1. COTAHIST 2019: fechado com transição controlada após certificação.
+2. COTAHIST 2020: iniciar FASE00 e seguir a cadeia faseada com evidência persistida.
+3. Não reutilizar evidências/certificações de 2019 para 2020.
+4. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
+
