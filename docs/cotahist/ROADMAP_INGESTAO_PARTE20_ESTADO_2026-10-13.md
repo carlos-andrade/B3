@@ -2104,3 +2104,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE08 V2 e Gate: usar exceções temporais explícitas, mantendo o diagnóstico original.
 5. Preservar RAW e todas as linhas.
 
+## 76. COTAHIST 2022 — FASE06 validada; FASE07 em fila (2026-10-13)
+
+### FASE06 — Reconciliação semântica
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json`, blob `0316afea997420dcb54cffd8ae596e04d6d749a5`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482955506 — validação concluída com sucesso.
+- Decisão: `LIBERADO_PARA_FASE07`; divergências: 0.
+- 2.117.440 registos RAW e NORMALIZED; hashes concordantes.
+- 12 campos críticos reconciliados em ordem original; nenhuma linha removida/deduplicada.
+
+### FASE07 — Identidade e cardinalidade
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483116402.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- Avalia chave-base e chave candidata com `prazot`; preservar todas as linhas e não deduplicar.
+- FASE08 V2 e Gate 06–08 já estão preparados, aguardando FASE07 validada.
+
+### Roadmap operacional imediato
+1. FASE00–FASE06 (2022): VALIDADO.
+2. FASE07: executar/verificar cardinalidade.
+3. FASE08 V2: depois de FASE07, com exceções de ordenação explicitadas.
+4. Gate 06–08 e FASE09: só após FASE08 V2 e Gate aprovados.
+
