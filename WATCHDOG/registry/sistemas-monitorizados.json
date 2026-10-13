@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project": "B3",
+  "systems": [
+    {
+      "id": "B3-GITHUB-ACTIONS",
+      "name": "Execuções de workflows GitHub Actions do repositório B3",
+      "owner": "Responsável operacional do projeto B3",
+      "criticality": "high",
+      "monitor": {
+        "workflow": ".github/workflows/b3-monitor-execucoes-v1.yml",
+        "schedule": "*/15 * * * *",
+        "manual_trigger": true,
+        "lookback_hours": 24,
+        "permissions": ["actions:read", "contents:read"]
+      },
+      "checks": [
+        {
+          "id": "B3-WD-001",
+          "name": "Detetar execuções não favoráveis",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "evidence": "Resumo de execução GitHub Actions",
+          "limitation": "Não há notificação externa nem persistência imutável confirmada."
+        },
+        {
+          "id": "B3-WD-002",
+          "name": "Detetar execuções em andamento",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "evidence": "Resumo de execução GitHub Actions",
+          "limitation": "O resultado é limitado à janela de 24 horas consultada."
+        },
+        {
+          "id": "B3-WD-003",
+          "name": "Detetar falha do próprio monitor por mecanismo independente",
+          "state": "PENDENTE",
+          "evidence": null
+        },
+        {
+          "id": "B3-WD-004",
+          "name": "Monitorizar atualidade e integridade dos datasets",
+          "state": "PARCIAL",
+          "evidence": "Workflows e certificações específicos do pipeline",
+          "limitation": "A cobertura integrada de todos os datasets ainda precisa de inventário e reconciliação."
+        }
+      ]
+    }
+  ]
+}
