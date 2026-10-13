@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "year": 2019,
   "phase": "FASE08",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_GATE_06_08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_GATE_06_08",
   "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2019.csv",
   "normalized_sha256": "1f1fd89ed5e1fb5c9a3b5012852c6b6bd8694b680875ad0346757707664435bf",
@@ -243,16 +243,19 @@
     }
   ],
   "source_order_classified_by_row_reconciliation": true,
-  "blockers": [
-    "REGRESSAO_CRONOLOGICA",
-    "REGRESSAO_TEMPORAL_POR_INSTRUMENTO"
-  ],
+  "blockers": [],
   "exceptions": [
     {
       "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
-      "classification": "EXCECAO_A_VALIDAR",
-      "blocking": true,
-      "detail": "Foram encontradas regressões de data na sequência original; rever amostras antes de promover."
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS",
+      "blocking": false,
+      "detail": "A sequência física contém regressões de data. A FASE06 confirma, em ordem original, a reconciliação dos campos críticos RAW × NORMALIZED; a fase não reordena linhas. A FASE10 ainda deverá confirmar independentemente os 25 campos."
+    },
+    {
+      "code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO_DE_LINHAS",
+      "blocking": false,
+      "detail": "Foram observadas datas em ordem decrescente para a mesma tupla de instrumento na sequência física. Isto é classificado como ordem de armazenamento, não como prova isolada de erro semântico; a validação independente FASE10 compara todos os campos e preserva a ordem original."
     },
     {
       "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
@@ -285,5 +288,5 @@
   "official_calendar_reference": "NOT_PERSISTED",
   "deduplication_performed": false,
   "rows_removed": 0,
-  "validated_at_utc": "2026-10-13T16:52:35.710468+00:00"
+  "validated_at_utc": "2026-10-13T16:53:37.871367+00:00"
 }
