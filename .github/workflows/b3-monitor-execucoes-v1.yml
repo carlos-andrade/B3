@@ -65,6 +65,7 @@ jobs:
           counts = Counter(run["conclusion"] or run["status"] for run in recent)
           unfavorable = {"failure", "timed_out", "action_required", "stale"}
           bad = [run for run in recent if (run["conclusion"] or run["status"]) in unfavorable]
+          bad_by_workflow = Counter(run["name"] for run in bad)
           active_states = {"queued", "in_progress", "waiting", "requested", "pending"}
           active = [run for run in recent if run["status"] in active_states]
           overall = "NAO_FAVORAVEL" if bad else ("EM_EXECUCAO" if active else "FAVORAVEL")
@@ -81,6 +82,7 @@ jobs:
               "distribution": dict(counts),
               "unfavorable_count": len(bad),
               "active_count": len(active),
+              "unfavorable_by_workflow": dict(bad_by_workflow.most_common()),
               "unfavorable_runs": [
                   {"name": r["name"], "run_number": r["run_number"],
                    "status": r["status"], "conclusion": r["conclusion"],
