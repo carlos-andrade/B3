@@ -1,0 +1,234 @@
+# FASE08 2021: consistencia temporal interna, sem reordenar ou remover registos.
+name: COTAHIST 2021 - Diagnostico de Ordem FASE08
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase08-diagnostico-ordem-2021-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2021.csv"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase08-diagnostico-ordem-2021-v1
+  cancel-in-progress: false
+
+jobs:
+  calendario:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase08-diagnostico-ordem-2021-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2021.csv
+            dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar datas e consistencia temporal
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys
+          from collections import Counter
+
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2021.csv")
+          f6_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json")
+          f7_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json")
+          for p in (csv_path, f6_path, f7_path):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"DIAGNOSTICO FASE08: arquivo ausente/vazio: {p}")
+          f6 = json.loads(f6_path.read_text(encoding="utf-8"))
+          f7 = json.loads(f7_path.read_text(encoding="utf-8"))
+          physical_hash = hashlib.sha256(csv_path.read_bytes()).hexdigest()
+          if f6.get("year") != 2021 or f6.get("status") != "VALIDADO" or f6.get("decision") != "LIBERADO_PARA_FASE07" or f6.get("mismatch_count") != 0:
+              sys.exit("DIAGNOSTICO FASE08: FASE06 não VALIDADO/liberado")
+          if f7.get("year") != 2021 or f7.get("status") != "VALIDADO" or f7.get("decision") != "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE":
+              sys.exit("DIAGNOSTICO FASE08: FASE07 não VALIDADO")
+          if f6.get("normalized_sha256") != physical_hash or f7.get("source_normalized_sha256") != physical_hash:
+              sys.exit("DIAGNOSTICO FASE08: hash NORMALIZED diverge das evidências FASE06/FASE07")
+
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              rows = list(reader)
+          if len(rows) != f6.get("normalized_records") or len(rows) != f7.get("records"):
+              sys.exit("DIAGNOSTICO FASE08: contagem de linhas diverge das fases anteriores")
+
+          dates, invalid = [], []
+          for i, row in enumerate(rows, start=1):
+              value = row.get("data_pregao", "")
+              try:
+                  dt = datetime.date.fromisoformat(value)
+                  if dt.year != 2021:
+                      invalid.append({"row": i, "date": value, "reason": "OUT_OF_YEAR"})
+                  dates.append(dt)
+              except ValueError:
+                  invalid.append({"row": i, "date": value, "reason": "INVALID_ISO_DATE"})
+          if invalid:
+              sys.exit(f"DIAGNOSTICO FASE08: {len(invalid)} datas inválidas/fora do ano")
+
+          chronology = [
+              {"row": i + 1, "previous_date": dates[i-1].isoformat(), "current_date": dates[i].isoformat()}
+              for i in range(1, len(dates)) if dates[i] < dates[i-1]
+          ]
+
+          def brief(i):
+              row = rows[i]
+              return {
+                  "row": i + 1,
+                  "data_pregao": row.get("data_pregao", ""),
+                  "codbdi": row.get("codbdi", ""),
+                  "nomres": row.get("nomres", ""),
+                  "codneg": row.get("codneg", ""),
+                  "tpmerc": row.get("tpmerc", ""),
+                  "especi": row.get("especi", ""),
+                  "prazot": row.get("prazot", ""),
+                  "modref": row.get("modref", ""),
+                  "codisi": row.get("codisi", ""),
+                  "dismes": row.get("dismes", "")
+              }
+
+          chronology_record_samples = [
+              {"previous": brief(i-1), "current": brief(i)}
+              for i in range(1, len(rows)) if dates[i] < dates[i-1]
+          ][:20]
+
+          instrument_fields = ("codbdi", "nomres", "codneg", "tpmerc", "especi", "prazot", "modref", "codisi", "dismes")
+          instrument_keys = [tuple(row.get(k, "") for k in instrument_fields) for row in rows]
+          instrument_order_regressions = sum(1 for i in range(1, len(instrument_keys)) if instrument_keys[i] < instrument_keys[i-1])
+          last_date = {}
+          instrument_date_regressions = 0
+          instrument_date_samples = []
+          for i, row in enumerate(rows):
+              key = tuple(row.get(k, "") for k in instrument_fields)
+              previous = last_date.get(key)
+              if previous is not None and dates[i] < previous:
+                  instrument_date_regressions += 1
+                  if len(instrument_date_samples) < 20:
+                      instrument_date_samples.append({
+                          "row": i + 1, "instrument": list(key),
+                          "previous_date": previous.isoformat(), "current_date": dates[i].isoformat(),
+                          "record": brief(i)
+                      })
+              last_date[key] = dates[i]
+
+          date_primary_keys = [
+              (dates[i], row.get("codbdi", ""), row.get("nomres", ""), row.get("codneg", ""),
+               row.get("tpmerc", ""), row.get("especi", ""), row.get("prazot", ""), row.get("dismes", ""))
+              for i, row in enumerate(rows)
+          ]
+          security_primary_keys = [
+              (row.get("codbdi", ""), row.get("nomres", ""), row.get("codneg", ""),
+               row.get("tpmerc", ""), row.get("especi", ""), row.get("prazot", ""),
+               row.get("dismes", ""), dates[i])
+              for i, row in enumerate(rows)
+          ]
+          ticker_market_date_keys = [
+              (row.get("codbdi", ""), row.get("codneg", ""), row.get("tpmerc", ""),
+               row.get("especi", ""), row.get("prazot", ""), row.get("dismes", ""), dates[i])
+              for i, row in enumerate(rows)
+          ]
+          date_primary_regressions = sum(1 for i in range(1, len(date_primary_keys)) if date_primary_keys[i] < date_primary_keys[i-1])
+          security_primary_regressions = sum(1 for i in range(1, len(security_primary_keys)) if security_primary_keys[i] < security_primary_keys[i-1])
+          ticker_market_date_regressions = sum(1 for i in range(1, len(ticker_market_date_keys)) if ticker_market_date_keys[i] < ticker_market_date_keys[i-1])
+          first_rows_sample = [brief(i) for i in range(min(30, len(rows)))]
+
+          sessions = sorted(set(dates))
+          weekday_counts = Counter(d.strftime("%A") for d in sessions)
+          weekend_dates = [d.isoformat() for d in sessions if d.weekday() >= 5]
+          gaps = [{"from": sessions[i-1].isoformat(), "to": sessions[i].isoformat(), "calendar_days": (sessions[i]-sessions[i-1]).days}
+                  for i in range(1, len(sessions)) if (sessions[i]-sessions[i-1]).days > 4]
+          blockers = []
+          exceptions = [
+              {"code": "CONTRATO_DE_ORDENACAO_A_CONFIRMAR", "classification": "DIAGNOSTICO_NAO_CERTIFICADOR", "blocking": False,
+               "detail": "Esta execução compara chaves de ordenação candidatas e regista amostras; não aprova nem relaxa o gate FASE08."},
+              {"code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO", "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_DIAGNOSTICO", "blocking": False,
+               "detail": "A lista oficial histórica de sessões/feriados B3 de 2021 não está persistida neste diagnóstico."}
+          ]
+          valid = not invalid
+          out = {
+              "schema_version": "1.0.0", "year": 2021, "phase": "FASE08_DIAGNOSTICO_ORDEM",
+              "status": "DIAGNOSTICO_CONCLUIDO" if valid else "DIAGNOSTICO_INCOMPLETO",
+              "decision": "REQUER_REVISAO_DO_CONTRATO" if valid else "BLOQUEADO",
+              "validation_type": "DIAGNOSTICO_DE_ORDENACAO_SEM_CERTIFICACAO",
+              "normalized_path": str(csv_path), "normalized_sha256": physical_hash,
+              "phase06_status": f6.get("status"), "phase07_status": f7.get("status"),
+              "rows_checked": len(rows), "unique_trading_dates": len(sessions),
+              "first_trading_date": min(sessions).isoformat(), "last_trading_date": max(sessions).isoformat(),
+              "invalid_dates": len(invalid), "out_of_year_dates": sum(1 for x in invalid if x["reason"] == "OUT_OF_YEAR"),
+              "chronological_regressions": len(chronology), "chronological_regression_samples": chronology[:20],
+              "chronological_regression_record_samples": chronology_record_samples,
+              "first_rows_sample": first_rows_sample,
+              "sort_order_diagnostics": {
+                  "date_primary_key_fields": ["data_pregao", "codbdi", "nomres", "codneg", "tpmerc", "especi", "prazot", "dismes"],
+                  "date_primary_key_regressions": date_primary_regressions,
+                  "security_primary_key_fields": ["codbdi", "nomres", "codneg", "tpmerc", "especi", "prazot", "dismes", "data_pregao"],
+                  "security_primary_key_regressions": security_primary_regressions,
+                  "ticker_market_date_key_fields": ["codbdi", "codneg", "tpmerc", "especi", "prazot", "dismes", "data_pregao"],
+                  "ticker_market_date_key_regressions": ticker_market_date_regressions
+              },
+              "instrument_key_fields": list(instrument_fields),
+              "instrument_order_regressions": instrument_order_regressions,
+              "instrument_date_regressions": instrument_date_regressions,
+              "instrument_date_regression_samples": instrument_date_samples,
+              "source_order_classified_by_row_reconciliation": f6.get("mismatch_count") == 0,
+              "blockers": blockers, "exceptions": exceptions,
+              "weekday_distribution": dict(weekday_counts), "weekend_dates_observed": weekend_dates,
+              "calendar_gaps_over_4_days": gaps, "official_calendar_reference": "NOT_PERSISTED",
+              "deduplication_performed": False, "rows_removed": 0,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          if not valid:
+              sys.exit("DIAGNOSTICO FASE08 incompleto: datas inválidas/fora do ano")
+          PY
+
+      - name: Persistir evidência FASE08 inclusive quando bloqueada
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json || {
+            echo "Evidência FASE08 não produzida; pré-condição falhou."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): registrar calendario e consistencia fase 08 2021"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2021 — FASE08"
+            echo "- Valida datas e consistência temporal sem reordenar/remover linhas."
+            echo "- Não certifica equivalência com calendário oficial B3."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
