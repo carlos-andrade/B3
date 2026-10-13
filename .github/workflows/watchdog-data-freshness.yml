@@ -68,6 +68,7 @@ jobs:
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
               out.write(f"result={report['result']}\n")
               out.write(f"has_stale={'true' if report['counts']['STALE'] else 'false'}\n")
+              out.write(f"has_alert={'true' if report['counts']['STALE'] or report['counts']['UNKNOWN'] else 'false'}\n")
           PY
           echo "evaluator_exit_code=$code" >> "$GITHUB_OUTPUT"
       - name: Criar ou atualizar alerta de atualidade
