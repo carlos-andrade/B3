@@ -43,12 +43,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/cotahist-*.yml .github/workflows/rec001-cotahist-bloomberg-mail.yml
           git commit -m "fix(cotahist): harden concurrent evidence publication"
-          for attempt in 1 2 3 4 5; do
+          for attempt in $(seq 1 15); do
             git fetch origin main
             if ! git rebase -X theirs origin/main; then
               echo "Conflito na publicação do patch transversal; abortar e tentar novamente."
               git rebase --abort || true
-              sleep $((attempt * 2))
+              sleep $((attempt * 3))
               continue
             fi
             if git push origin HEAD:main; then
@@ -56,7 +56,7 @@ jobs:
               exit 0
             fi
             echo "Push concorrente; tentativa ${attempt}/5."
-            sleep $((attempt * 2))
+            sleep $((attempt * 3))
           done
-          echo "Não foi possível publicar o patch transversal após cinco tentativas."
+          echo "Não foi possível publicar o patch transversal após quinze tentativas."
           exit 1
