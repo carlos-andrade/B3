@@ -1822,3 +1822,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Gate 06–08 e FASE09: suspensos até resolução documentada do bloqueio.
 4. Preservar RAW, CSV original e evidência de bloqueio; nenhuma deduplicação.
 
+## 67. COTAHIST 2021 — diagnóstico de ordenação concluído; FASE08 V2 em execução (2026-10-13)
+
+### Diagnóstico de ordenação
+**Estado: DIAGNOSTICO_CONCLUIDO — não certificador.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE08_DIAGNOSTICO_ORDEM_V1.json`, blob `1286007fc5c4a1bfae862b97f65ca6450e06e2de`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481418609 — sucesso.
+- 1.831.862 registos; datas válidas; 247 datas distintas; intervalo 2021-01-04 a 2021-12-30.
+- Regressões de data física: 139.405; regressões temporais sob a chave instrumental inicial: 73.784.
+- Chave temporal mais completa testada (`codbdi+nomres+codneg+tpmerc+especi+prazot+modref+codisi+dismes`) ainda mostra 66.028 regressões; logo, a chave inicial não explica por si só a sequência observada.
+- Regressões lexicográficas: chave data-primeiro = 207.261; instrumento-primeiro = 192.167; ticker/mercado/data = 71.237. Nenhuma das chaves candidatas testadas explica monotonicidade integral da ordem física.
+- As amostras mostram blocos em que a data regressa de 2021-02-11 para 2021-01-04. A evidência não demonstra alteração dos valores, mas demonstra que a ordem física não é globalmente cronológica.
+- Comparativo histórico: FASE08 de 2020 classificou 45.574 regressões cronológicas e zero regressões temporais por instrumento como exceção não bloqueadora após reconciliação de linhas críticas; 2019 registou 568/132. O caso 2021 tem magnitude superior e fica explicitamente registado para validação independente integral na FASE10.
+- Fonte normativa: [Layout oficial COTAHIST B3, revisão 02](https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf). A descrição do arquivo refere classificação por tipo de registo, data do pregão, BDI, nome e código de negociação; por isso a exceção de 2021 não é ocultada.
+
+### FASE08 V2 — consistência temporal com exceções explicitamente classificadas
+**Estado: RUN EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2021-v2.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase08-calendario-2021-v2.yml
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json`.
+- A V2 aplica o precedente auditável de 2019/2020: regressões de ordem física são classificadas como exceções não bloqueadoras somente porque a FASE06 comprova reconciliação dos campos críticos RAW × NORMALIZED, os hashes coincidem, as datas são válidas e nenhuma linha é reordenada/removida.
+- Esta classificação não declara a ordem física correta nem certifica os 25 campos; a FASE10 continua obrigatória e deve comparar todos os campos em ordem original.
+- A evidência FASE08 V1 BLOQUEADO e o diagnóstico separado permanecem preservados; o Gate/FASE09 foram atualizados para consumir V2, não V1.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2021): VALIDADO.
+2. FASE08 V1: BLOQUEADO e preservado como histórico.
+3. FASE08 V2: executar/verificar; aceitar apenas exceções explícitas e zero bloqueadores.
+4. Gate 06–08: após V2 validada, confirmar hashes, datas, contagens e exceções.
+5. FASE09: após Gate válido; FASE10 independente dos 25 campos continua obrigatória.
+
