@@ -645,3 +645,15 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE04 2018: workflow publicado; aguarda evidência persistida e reconciliação do NORMALIZED.
 3. Se FASE04 VALIDADO / `LIBERADO_PARA_FASE05`, avançar para FASE05; se BLOQUEADO, investigar os bloqueadores sem sobrescrever evidências históricas.
 4. Preservar RAW imutável, sem deduplicação nem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada até reconciliação própria.
+
+
+---
+
+## Secção 25 — Verificação pós-publicação FASE04 (2026-10-13)
+
+- Foi feita nova consulta ao branch `main` após a publicação do workflow FASE04.
+- O workflow está presente em `.github/workflows/cotahist-fase04-normalizacao-2018-v1.yml`.
+- Na consulta desta verificação, a evidência `dados/cotahist/quality/COTAHIST_2018_FASE04_NORMALIZACAO_V1.json` ainda não existia e o CSV `dados/cotahist/normalized/anual/COTAHIST_A2018.csv` também não estava publicado.
+- Estado operacional: **FASE04 PENDENTE DE EVIDÊNCIA**. Não declarar a normalização executada ou aprovada apenas com base no workflow publicado.
+- Ação necessária: abrir [GitHub Actions — COTAHIST 2018 FASE04](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-fase04-normalizacao-2018-v1.yml), selecionar a branch `main` e executar `Run workflow` se não houver execução automática em curso. Depois verificar a evidência FASE04 e os respetivos hashes/contagens.
+- Não executar FASE05 antes de a FASE04 produzir decisão `LIBERADO_PARA_FASE05` sem bloqueadores.
