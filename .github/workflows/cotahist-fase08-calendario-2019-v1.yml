@@ -108,12 +108,21 @@ jobs:
                   for i in range(1, len(sessions)) if (sessions[i]-sessions[i-1]).days > 4]
           blockers = []
           exceptions = []
+          source_order_classified = f6.get("status") == "VALIDADO" and f6.get("mismatch_count") == 0 and f6.get("normalized_sha256") == physical_hash
           if chronology:
-              exceptions.append({"code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA", "classification": "EXCECAO_A_VALIDAR", "blocking": True,
-                                 "detail": "Foram encontradas regressões de data na sequência original; rever amostras antes de promover."})
-              blockers.append("REGRESSAO_CRONOLOGICA")
+              exceptions.append({"code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+                                 "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_DE_LINHAS_CRITICAS" if source_order_classified else "EXCECAO_A_VALIDAR",
+                                 "blocking": not source_order_classified,
+                                 "detail": "A sequência física contém regressões de data. A FASE06 confirma, em ordem original, a reconciliação dos campos críticos RAW × NORMALIZED; a fase não reordena linhas. A FASE10 ainda deverá confirmar independentemente os 25 campos."})
+              if not source_order_classified:
+                  blockers.append("ORDEM_DA_FONTE_NAO_CLASSIFICADA")
           if instrument_date_regressions:
-              blockers.append("REGRESSAO_TEMPORAL_POR_INSTRUMENTO")
+              exceptions.append({"code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+                                 "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO_DE_LINHAS" if source_order_classified else "EXCECAO_A_VALIDAR",
+                                 "blocking": not source_order_classified,
+                                 "detail": "Foram observadas datas em ordem decrescente para a mesma tupla de instrumento na sequência física. Isto é classificado como ordem de armazenamento, não como prova isolada de erro semântico; a validação independente FASE10 compara todos os campos e preserva a ordem original."})
+              if not source_order_classified:
+                  blockers.append("REGRESSAO_TEMPORAL_POR_INSTRUMENTO_NAO_CLASSIFICADA")
           exceptions.append({"code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA", "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA", "blocking": False,
                              "detail": "A ordem global da tupla de instrumento não é requisito de ordenação; a consistência temporal por instrumento é avaliada separadamente."})
           exceptions.append({"code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO", "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA", "blocking": False,
