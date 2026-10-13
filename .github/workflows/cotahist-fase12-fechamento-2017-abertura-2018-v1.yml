@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: false
+          lfs: true
           fetch-depth: 1
           sparse-checkout: |
             .github/workflows/cotahist-fase12-fechamento-2017-abertura-2018-v1.yml
