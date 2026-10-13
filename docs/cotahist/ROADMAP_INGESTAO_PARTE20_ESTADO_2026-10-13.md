@@ -2187,3 +2187,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Gate 06–08: após FASE08 V2 validada.
 4. FASE09: após Gate sem bloqueadores.
 
+## 79. COTAHIST 2022 — FASE08 V2 validada com exceções; Gate em fila (2026-10-13)
+
+### FASE08 V2 — Calendário e consistência temporal
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE08_SEMANTICA_CALENDARIO_V2.json`, blob `e2395c26a351fda1bd83a8c43aa3d76cc8b100ed`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483430485 — validação concluída com sucesso.
+- Decisão: `LIBERADO_PARA_GATE_06_08`; zero bloqueadores.
+- 2.117.440 linhas; 247 datas distintas; intervalo 2022-01-03 a 2022-12-29; datas inválidas/fora do ano: zero; fins de semana: nenhum.
+- Regressões cronológicas: 159.593; regressões temporais por instrumento: 135.217. Ambas mantidas como exceções não bloqueadoras, com reconciliação FASE06 confirmada; FASE10 continua obrigatória para os 25 campos.
+- Calendário oficial histórico de sessões/feriados não está persistido; não se afirma equivalência com o calendário oficial B3.
+
+### Gate independente FASE06–FASE08
+**Estado: RUN ENFILEIRADO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-gate-06-08-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38483527126.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_GATE_06_08_V1.json`.
+- O Gate valida os hashes/contagens, 25 campos, datas, exceções explícitas e ausência de deduplicação; só libera FASE09 com zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 V2 (2022): VALIDADO_COM_EXCECAO.
+2. Gate 06–08: enfileirado.
+3. FASE09: depois do Gate.
+4. FASE10: comparação independente de todos os 25 campos, zero divergências.
+
