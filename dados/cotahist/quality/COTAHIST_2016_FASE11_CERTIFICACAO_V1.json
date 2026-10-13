@@ -2,22 +2,21 @@
   "schema_version": "1.0.0",
   "year": 2016,
   "phase": "FASE11",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_FASE12",
+  "status": "CERTIFICADO",
+  "decision": "LIBERADO_PARA_FASE12",
   "certification_scope": "Integridade e consistência do conjunto COTAHIST 2016 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
   "evidence_statuses": {
     "FASE09": "LIBERADO_PARA_FASE10",
+    "FASE10": "VALIDADO",
     "GATE_06_08": "VALIDADO_COM_EXCECAO",
     "MANIFEST": "VALIDADO"
   },
-  "phase10_mismatch_count": null,
-  "phase10_fields_checked": null,
+  "phase10_mismatch_count": 0,
+  "phase10_fields_checked": 25,
   "gate_06_08_status": "VALIDADO_COM_EXCECAO",
   "gate_06_08_decision": "LIBERADO_PARA_FASE09",
-  "raw_sha256": null,
-  "normalized_sha256": null,
-  "blockers": [
-    "FASE10_AUSENTE"
-  ],
-  "certified_at_utc": "2026-10-13T11:31:20.352888+00:00"
+  "raw_sha256": "ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f",
+  "normalized_sha256": "2d918553c976c74fcab7c065a25fa98efbffaf67f0fda73b46bbc7c8779ea66b",
+  "blockers": [],
+  "certified_at_utc": "2026-10-13T11:31:51.773278+00:00"
 }
