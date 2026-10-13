@@ -1003,3 +1003,36 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE05: iniciar após FASE04 validada; verificar/reconstruir manifesto/checksum sem alterar o RAW.
 4. FASE06–FASE12: bloqueadas até conclusão das pré-condições anuais, sem retrocertificação.
 
+## 37. COTAHIST 2019 — FASE04/FASE05 validadas; FASE06 preparada (2026-10-13)
+
+### FASE04 — Normalização
+**Estado: VALIDADO — CSV reconstruído e evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE04_NORMALIZACAO_V1.json`, blob `4c78a135385602fac5e80d2790306ebef514bb28`.
+- Decisão: `LIBERADO_PARA_FASE05`.
+- CSV físico: `dados/cotahist/normalized/anual/COTAHIST_A2019.csv`; 779.229 linhas, 25 campos, datas válidas entre 2019-01-02 e 2019-12-30.
+- SHA-256 calculado = manifesto = sidecar: `1f1fd89ed5e1fb5c9a3b5012852c6b6bd8694b680875ad0346757707664435bf`.
+- SHA-256 RAW mantido: `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`.
+- Parser declarado no manifesto: `1.1.0`; script canónico: `1.1.2`. Diferença registada, sem alteração silenciosa do manifesto.
+- RAW imutável; deduplicação não executada.
+
+### FASE05 — Manifesto e checksum
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE05_MANIFESTO_CHECKSUM_V1.json`, blob `aa313790011dc363207fc8fabe19347129db8c05`.
+- Decisão: `LIBERADO_PARA_FASE06`.
+- RAW e NORMALIZED físicos conferem com manifesto e sidecar; ZIP `PASS`; 779.229 linhas, 25 campos, zero alteração RAW e zero deduplicação.
+
+### FASE06 — Reconciliação semântica
+**Estado: próximo workflow a publicar/executar.**
+
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE06_RECONCILIACAO_V1.json`.
+- Gate: FASE05 `VALIDADO` / `LIBERADO_PARA_FASE06`, hashes RAW/NORMALIZED físicos iguais à evidência FASE05.
+- Comparar 12 campos críticos em ordem de registo; não deduplicar nem modificar RAW.
+- Só avançar para FASE07 com `VALIDADO`, `LIBERADO_PARA_FASE07` e zero divergências.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 (2019): VALIDADO.
+2. FASE06 (2019): criar workflow, executar e verificar reconciliação semântica.
+3. FASE07–FASE12: dependem da evidência FASE06 e das fases subsequentes; sem retrocertificação.
+
