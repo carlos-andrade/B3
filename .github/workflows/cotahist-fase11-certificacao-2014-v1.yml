@@ -59,10 +59,21 @@ jobs:
                   blockers.append("FASE10_NAO_VALIDADA")
               if data["FASE10"].get("mismatch_count") != 0 or data["FASE10"].get("field_count") != 25:
                   blockers.append("FASE10_DIVERGENCIAS_OU_ESQUEMA_INCOMPLETO")
-              if data["GATE_06_08"].get("status") != "GATE_APROVADO":
+              gate = data["GATE_06_08"]
+              if gate.get("status") not in {"GATE_APROVADO","VALIDADO_COM_EXCECAO"} or gate.get("decision") not in {"APROVADO_PARA_ANALISE_FASE09","LIBERADO_PARA_FASE09"}:
                   blockers.append("GATE_06_08_NAO_APROVADO")
               if data["MANIFEST"].get("status") not in {"VALIDADO","VALIDADO_COM_EXCECAO"}:
                   blockers.append("MANIFESTO_NORMALIZADO_NAO_VALIDADO")
+              manifest = data["MANIFEST"]
+              phase10 = data["FASE10"]
+              if phase10.get("raw_sha256") != manifest.get("raw_sha256"):
+                  blockers.append("FASE10_RAW_HASH_DIVERGE_MANIFESTO")
+              if phase10.get("normalized_sha256") != manifest.get("normalized_sha256"):
+                  blockers.append("FASE10_NORMALIZED_HASH_DIVERGE_MANIFESTO")
+              if gate.get("normalized_sha256_calculated") != manifest.get("normalized_sha256"):
+                  blockers.append("GATE_NORMALIZED_HASH_DIVERGE_MANIFESTO")
+              if gate.get("blockers") != []:
+                  blockers.append("GATE_COM_BLOQUEADORES")
           ok = not blockers
           out = {
             "schema_version": "1.0.0",
@@ -75,6 +86,9 @@ jobs:
             "phase10_mismatch_count": data.get("FASE10", {}).get("mismatch_count"),
             "phase10_fields_checked": data.get("FASE10", {}).get("field_count"),
             "gate_06_08_status": data.get("GATE_06_08", {}).get("status"),
+            "gate_06_08_decision": data.get("GATE_06_08", {}).get("decision"),
+            "raw_sha256": data.get("FASE10", {}).get("raw_sha256"),
+            "normalized_sha256": data.get("FASE10", {}).get("normalized_sha256"),
             "blockers": blockers,
             "certified_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
           }
