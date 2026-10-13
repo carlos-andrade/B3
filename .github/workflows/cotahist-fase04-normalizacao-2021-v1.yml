@@ -32,8 +32,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           lfs: true
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase04-normalizacao-2021-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2021.ZIP
+            dados/cotahist/manifests/COTAHIST_A2021.json
+            dados/cotahist/checksums/COTAHIST_A2021.ZIP.sha256
+            dados/cotahist/quality/COTAHIST_2021_FASE03_PARSING_V1.json
+            dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2021_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2021.csv.sha256
+            scripts/ingestao/normalize_cotahist.py
+          sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v7
         with:
