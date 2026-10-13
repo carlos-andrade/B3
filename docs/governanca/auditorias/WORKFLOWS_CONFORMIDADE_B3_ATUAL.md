@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T09:36:35.712947+00:00
-Workflows auditados: 347
+Gerado em UTC: 2026-10-13T09:37:14.362810+00:00
+Workflows auditados: 349
 
 ## Regra de decisão
 
@@ -117,6 +117,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase03-parsing-2009-v1.yml | 3 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase03-parsing-2010-v1.yml | 3 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase03-parsing-2011-v1.yml | 3 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase03-parsing-2012-v1.yml | 3 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-normalizacao-1994-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase04-normalizacao-1995-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase04-normalizacao-1996-v1.yml | 4 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -134,6 +135,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-recuperar-normalized-2009-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2010-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-recuperar-normalized-2011-v1.yml | 4 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase04-recuperar-normalized-2012-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-1999-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2000-v1.yml | 4 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase04-validacao-independente-2001-v1.yml | 4 | **CONFORME** | — | — |
