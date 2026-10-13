@@ -57,6 +57,7 @@ jobs:
               assert "retention-days: 30" in workflow_text, "Retenção de evidência não declarada"
               assert "issues: write" in workflow_text, "Permissão de alertas não declarada"
               assert "gh issue create" in workflow_text, "Criação de alerta não configurada"
+              assert "WATCHDOG_HEARTBEAT_" in workflow_text and "curl --fail" in workflow_text, "Heartbeat externo opcional não configurado"
               check_ids = set()
               for check in system["checks"]:
                   assert check.get("id") and check["id"] not in check_ids, "ID de controlo ausente/duplicado"
