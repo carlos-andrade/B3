@@ -2022,3 +2022,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE04: aguardar parsing; reconstruir NORMALIZED sem alterar RAW.
 5. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada.
 
+## 73. COTAHIST 2022 — FASE03 validada; FASE04 em execução (2026-10-13)
+
+### FASE03 — Parsing estrutural
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2022_FASE03_PARSING_V1.json`, blob `11c33a2b058012453fb865f0fe6a48a55604c1ed`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482470145 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE04`.
+- 2.117.440 registos de cotação, 245 bytes por registo; zero comprimentos/datas inválidos.
+- Intervalo: 2022-01-03 a 2022-12-29. Parsing não certifica normalização.
+
+### FASE04 — Normalização e reconciliação
+**Estado: RUN EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2022-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38482555165.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2022_FASE04_NORMALIZACAO_V1.json`.
+- O checkout esparso já inclui o CSV NORMALIZED para persistência LFS; o objetivo é reconstruir a camada NORMALIZED sem tocar no RAW.
+- FASE05 e FASE06 estão preparadas e devem ser acionadas somente após a evidência FASE04 estar persistida e validada.
+
+### Roadmap operacional imediato
+1. FASE00–FASE03 (2022): VALIDADO.
+2. FASE04: normalização em execução.
+3. FASE05: verificar manifesto/checksum após FASE04.
+4. FASE06: reconciliação semântica depois de FASE05.
+5. Preservar RAW e todas as linhas; não deduplicar.
+
