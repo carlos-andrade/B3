@@ -299,3 +299,38 @@ Verificação realizada em 2026-10-13 na branch `main`.
 6. REC-001 B3 × BLOOMBERG_MAIL permanece em trilha separada, bloqueada até reconciliação da divergência de multiplicidades/ordem.
 
 **Regra de promoção:** nenhuma fase posterior é promovida sem evidência própria persistida e validação dos respetivos pré-requisitos. Nenhuma linha pode ser removida ou deduplicada para forçar unicidade.
+
+## 14. FASE07 validada e FASE08 preparada — COTAHIST 2017
+
+Verificação realizada em 2026-10-13 na branch `main`; esta secção prevalece sobre estados operacionais anteriores, preservados como histórico.
+
+### FASE07 — 2017: VALIDADO
+
+- Evidência: [COTAHIST_2017_FASE07_IDENTIDADE_CHAVES_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE07_IDENTIDADE_CHAVES_V1.json).
+- Commit da evidência: [81cc956e515b4455833d54711ed53362e99ae7a0](https://github.com/carlos-andrade/B3/commit/81cc956e515b4455833d54711ed53362e99ae7a0).
+- Estado/decisão: `VALIDADO` / `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- Registos: 489.115; hash NORMALIZED coincide com a FASE06: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- Chave-base `data_pregao+codbdi+codneg+tpmerc+dismes`: 7.560 grupos duplicados e 15.256 linhas excedentes; todos os 7.560 grupos contêm diferenças entre linhas.
+- Chave candidata `data_pregao+codbdi+codneg+tpmerc+prazot+dismes`: 489.115 chaves distintas, zero grupos duplicados e zero linhas excedentes.
+- `deduplication_performed=false`; `source_rows_removed=0`.
+- Limitação: decisão específica para o NORMALIZED 2017; não autoriza deduplicação nem generalização automática para outros anos.
+
+### FASE08 — 2017: workflow publicado; execução/evidência pendente
+
+- Workflow: [cotahist-fase08-calendario-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase08-calendario-2017-v1.yml).
+- Commit do workflow: [e9c04b7cfa6cbc5a80b20294743eb3e820720db0](https://github.com/carlos-andrade/B3/commit/e9c04b7cfa6cbc5a80b20294743eb3e820720db0).
+- O workflow foi adaptado do contrato de FASE08 de 2016; verificado que não contém referências residuais a 2016. Consome NORMALIZED 2017 e evidências FASE06/FASE07, testa datas inválidas/fora do ano, regressões cronológicas, consistência temporal por instrumento, distribuição de dias e intervalos; preserva a ordem da fonte e não remove linhas.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2017_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- A FASE08 ainda não está concluída. Executar `workflow_dispatch` na branch `main` se o push não iniciar a execução; só promover após conferir evidência, hash NORMALIZED, contagens, exceções e decisão.
+
+### Roadmap operacional atualizado
+
+1. FASE05 2017: VALIDADO.
+2. FASE06 2017: VALIDADO — 489.115 registos, 12 campos críticos, zero divergências.
+3. FASE07 2017: VALIDADO — chave candidata com `prazot`, zero colisões, nenhuma linha removida.
+4. FASE08 2017: workflow publicado; aguarda execução e evidência persistida.
+5. Gate 06–08: depende da FASE08 auditada; classificar exceções sem assumir calendário oficial externo não persistido.
+6. FASE09 → FASE10 independente dos 25 campos → FASE11 certificação → FASE12 fechamento/transição controlada para 2018, sequencialmente e com evidência própria.
+7. REC-001 B3 × BLOOMBERG_MAIL continua bloqueada em trilha independente até reconciliação da divergência de multiplicidades/ordem.
+
+**Regra de promoção:** workflow publicado ou commit de código não prova conclusão. Não avançar para Gate 06–08 antes de a evidência FASE08 estar persistida e validada.
