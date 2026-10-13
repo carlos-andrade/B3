@@ -29,7 +29,7 @@ O princípio central é simples:
 
 ## WATCHDOG — monitorização transversal
 
-O projeto adota o padrão central [WATCHDOG da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG). O piloto local inventaria o [monitor de execuções GitHub Actions](./WATCHDOG/README.md), com cadência de 15 minutos e análise da janela de 24 horas. A implementação atual não certifica cobertura universal: alertas externos, evidência persistente e supervisão independente do próprio monitor continuam pendentes.
+O projeto adota o padrão central [WATCHDOG da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG). O piloto inclui o [monitor de execuções GitHub Actions](./WATCHDOG/README.md), com cadência de 15 minutos, relatórios JSON/Markdown retidos por 30 dias e alertas por issue para execuções desfavoráveis. Foi acrescentado um avaliador de atualidade para manifestos BCB SGS, BDI e COTAHIST. A supervisão externa do próprio monitor, confirmação de receção dos alertas e armazenamento imutável continuam pendentes.
 
 ---
 
