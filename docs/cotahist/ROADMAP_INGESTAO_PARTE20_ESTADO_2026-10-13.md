@@ -1575,3 +1575,33 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE02–FASE03 (2021): após FASE01.
 4. FASE04 (2021): reconstruir NORMALIZED após parsing válido, sem modificar RAW.
 
+## 59. COTAHIST 2021 — FASE01 validada; FASE02 publicada (2026-10-13)
+
+### FASE01 — Aquisição/proveniência RAW
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE01_AQUISICAO_RAW_V1.json`.
+- Blob SHA: `3ccff2ba3dcb682e46423180f1761ca3a0a7a698`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38437052896 — concluído com sucesso.
+- Decisão: `LIBERADO_PARA_FASE02`.
+- SHA-256 RAW: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`; manifesto e sidecar concordam.
+- Evidência classificada como verificação retrospectiva da aquisição: confirma proveniência e integridade do artefacto já persistido, sem o substituir nem modificar.
+
+### FASE02 — Integridade física e estrutural
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase02-integridade-2021-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase02-integridade-2021-v1.yml
+- Commit: `82b09e61aa219a0c16e3ced0e7b1cadb864809b8`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE02_INTEGRIDADE_FONTE_V1.json`.
+- Gate de entrada: FASE01 VALIDADO/liberado e igualdade do SHA-256 calculado com manifesto, sidecar e evidência FASE01.
+- Valida ZIP, número de membros, CRC, tamanho de 245 bytes, tipos de registo `00`, `01` e `99`; não executa parsing nem normalização.
+- Não foi encontrada execução da FASE02 no endpoint de runs consultado após a publicação; não declarar sucesso até a evidência persistir.
+
+### Roadmap operacional imediato
+1. COTAHIST 2021: FASE00 e FASE01 VALIDADO.
+2. FASE02: workflow publicado; confirmar execução e evidência persistida.
+3. FASE03: parsing apenas depois de FASE02 VALIDADO/liberado.
+4. FASE04: reconstruir NORMALIZED a partir de RAW, preservando hash e todas as linhas.
+5. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
+
