@@ -582,3 +582,34 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. Só após FASE02 validada, preparar/executar FASE03 (parsing); depois FASE04 (normalização e reconstrução do CSV).
 5. Manter o CSV ausente até a FASE04 canónica; comparar hash/contagem/esquema/datas com manifesto e sidecar, registando a diferença de versão do parser.
 6. RAW imutável, sem deduplicação nem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada até reconciliação própria.
+
+
+---
+
+## Secção 23 — FASE02 validada; FASE03 publicada — COTAHIST 2018 (2026-10-13)
+
+### FASE02 — integridade da fonte: VALIDADO
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE02_INTEGRIDADE_FONTE_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE02_INTEGRIDADE_FONTE_V1.json
+- Estado/decisão: `VALIDADO` / `LIBERADO_PARA_FASE03`.
+- SHA-256 RAW: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`, consistente com FASE01 e manifesto/sidecar.
+- ZIP íntegro: um membro (`COTAHIST_A2018.TXT`), `zip_testzip_error=null`, zero registos com comprimento inválido.
+- Total: 580.157 linhas físicas; 580.155 registos tipo `01`, um header `00` e um trailer `99`; cada registo tem 245 bytes.
+- Timestamp da evidência: `2026-10-13T14:18:57.288252+00:00`.
+- Âmbito limitado à integridade física/estrutura ZIP; ainda não certifica parsing nem NORMALIZED.
+
+### FASE03 — workflow de parsing estrutural publicado; evidência pendente
+- Workflow: `.github/workflows/cotahist-fase03-parsing-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase03-parsing-2018-v1.yml
+- Commit de publicação: `348f223d54bfb46208647c6631b421f041bde030`.
+- Adaptado do contrato de FASE03 2017, com referências de ano revistas e Git LFS ativado.
+- Valida FASE02 e hash RAW, ZIP/membro, comprimento de 245 bytes, tipos de registo e datas das cotações 2018.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE03_PARSING_V1.json`; ainda não encontrada após publicação. Não considerar FASE03 concluída até validar o artefacto.
+
+### Roadmap operacional imediato
+1. FASE00: VALIDADO.
+2. FASE01: VALIDADO; hashes RAW/manifesto/sidecar coincidentes.
+3. FASE02: VALIDADO; 580.155 registos tipo 01, estrutura ZIP íntegra e comprimentos válidos.
+4. FASE03: workflow publicado; aguarda execução/evidência `VALIDADO` / `LIBERADO_PARA_FASE04`, zero datas inválidas e zero datas fora de 2018.
+5. FASE04: depois da FASE03, regenerar NORMALIZED com `scripts/ingestao/normalize_cotahist.py`; verificar 580.155 linhas, 25 campos, datas e hash contra manifesto/sidecar. Registar a diferença `parser_version=1.1.0` no manifesto versus script canónico `PARSER_VERSION=1.1.2`, sem alterar a evidência histórica silenciosamente.
+6. Preservar RAW e linhas de origem; não deduplicar. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada até reconciliação própria.
