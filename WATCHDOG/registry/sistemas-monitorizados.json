@@ -12,15 +12,18 @@
         "schedule": "*/15 * * * *",
         "manual_trigger": true,
         "lookback_hours": 24,
-        "permissions": ["actions:read", "contents:read"]
+        "permissions": [
+          "actions:read",
+          "contents:read"
+        ]
       },
       "checks": [
         {
           "id": "B3-WD-001",
           "name": "Detetar execuções não favoráveis",
           "state": "IMPLEMENTADO_NO_WORKFLOW",
-          "evidence": "Resumo de execução GitHub Actions",
-          "limitation": "Não há notificação externa nem persistência imutável confirmada."
+          "evidence": "Relatório JSON/Markdown e issue de alerta quando existem execuções desfavoráveis",
+          "limitation": "A entrega é limitada às permissões e disponibilidade do GitHub Actions."
         },
         {
           "id": "B3-WD-002",
@@ -41,6 +44,13 @@
           "state": "PARCIAL",
           "evidence": "Workflows e certificações específicos do pipeline",
           "limitation": "A cobertura integrada de todos os datasets ainda precisa de inventário e reconciliação."
+        },
+        {
+          "id": "B3-WD-005",
+          "name": "Publicar evidência JSON e Markdown com retenção de 30 dias",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "evidence": "Artefacto watchdog-b3-evidence por execução",
+          "limitation": "Artefacto GitHub não equivale a arquivo imutável nem a retenção permanente."
         }
       ]
     }
