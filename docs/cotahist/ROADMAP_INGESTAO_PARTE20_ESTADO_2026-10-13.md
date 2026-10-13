@@ -951,3 +951,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. COTAHIST 2019: após transição, verificar existência física e hashes; reconstruir NORMALIZED se ausente e retomar pela fase de origem apropriada.
 4. RAW e todas as linhas permanecem imutáveis; REC-001 B3 × BLOOMBERG_MAIL segue independente e bloqueada.
 
+## 35. COTAHIST 2018 — FASE12 concluída; ciclo 2019 iniciado (2026-10-13)
+
+### FASE12 — Fechamento 2018 e transição para 2019
+**Estado: FECHADO_COM_TRANSICAO_CONTROLADA — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE12_FECHAMENTO_2019_ABERTURA_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE12_FECHAMENTO_2019_ABERTURA_V1.json
+- Blob SHA: `0f0ef1823459184139c33e07cb45000d0b1905f4`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38432896534.
+- Decisão: `FECHAR_2018_E_AUTORIZAR_CONTINUACAO_2019`; zero bloqueadores.
+- FASE10 2018 `VALIDADO`; FASE11 2018 `CERTIFICADO`.
+- RAW 2019: SHA-256 `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`, igual ao manifesto e sidecar; ZIP com um membro, zero comprimentos inválidos, header `00` = 1, registos `01` = 779.229, trailer `99` = 1.
+- NORMALIZED CSV 2019: ausente fisicamente; `year2019_phase04_status=AGUARDA_RECONSTRUCAO_CSV`. O manifesto de qualidade declara hash `1f1fd89ed5e1fb5c9a3b5012852c6b6bd8694b680875ad0346757707664435bf`, mas o artefacto físico não foi encontrado. O hash declarado não substitui a existência e validação física do CSV.
+- A FASE12 não certifica 2019.
+
+### COTAHIST 2019 — verificação inicial
+- RAW/manifesto/checksum existem; hashes concordam segundo a FASE12.
+- Evidências específicas FASE00–FASE05 de 2019 não foram encontradas nos caminhos canónicos consultados.
+- Próximo passo obrigatório: iniciar ciclo controlado 2019 pela FASE00, referenciando a transição 2018→2019; depois executar/verificar FASE01, FASE02, FASE03 e reconstruir NORMALIZED na FASE04. Não reutilizar evidência de 2018 nem aceitar o manifesto como substituto de evidência de 2019.
+
+### Roadmap operacional imediato
+1. COTAHIST 2018: fechado com transição controlada após certificação.
+2. COTAHIST 2019: FASE00 autorizada a iniciar; evidências 2019 específicas pendentes.
+3. RAW 2019 permanece imutável; reconstrução deve ocorrer apenas na camada NORMALIZED.
+4. REC-001 B3 × BLOOMBERG_MAIL permanece em trilha independente e bloqueada.
+
