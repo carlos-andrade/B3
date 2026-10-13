@@ -50,6 +50,32 @@ def iter_record01_lines(handle):
             yield raw
 
 
+def describe_record(raw, position):
+    return {
+        "record01_position": position,
+        "date": raw[2:10].decode("ascii", "replace"),
+        "codbdi": raw[10:12].decode("ascii", "replace").strip(),
+        "codneg": raw[12:24].decode("latin-1", "replace").strip(),
+        "tpmerc": raw[24:27].decode("ascii", "replace").strip(),
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "prefix": raw[:48].decode("latin-1", "replace"),
+    }
+
+
+def scan_target_tickers(path, targets):
+    found = {ticker: [] for ticker in targets}
+    with zipfile.ZipFile(path) as archive:
+        member = next(n for n in archive.namelist() if n.upper().endswith("COTAHIST_A2026.TXT"))
+        with archive.open(member) as handle:
+            position = 0
+            for raw in iter_record01_lines(handle):
+                position += 1
+                ticker = raw[12:24].decode("latin-1", "replace").strip()
+                if ticker in found and len(found[ticker]) < 20:
+                    found[ticker].append(describe_record(raw, position))
+    return found
+
+
 def compare_streams(b3_path, bloom_path):
     with zipfile.ZipFile(b3_path) as a, zipfile.ZipFile(bloom_path) as b:
         an=next(n for n in a.namelist() if n.upper().endswith("COTAHIST_A2026.TXT"))
@@ -59,6 +85,8 @@ def compare_streams(b3_path, bloom_path):
             ib=iter_record01_lines(fb)
             position=0
             mismatches=[]
+            previous_a=[]
+            previous_b=[]
             while True:
                 ra=next(ia, None)
                 rb=next(ib, None)
@@ -68,6 +96,19 @@ def compare_streams(b3_path, bloom_path):
                     break
                 position += 1
                 if ra != rb:
+                    context_a = [describe_record(raw, pos) for pos, raw in previous_a]
+                    context_b = [describe_record(raw, pos) for pos, raw in previous_b]
+                    context_a.append(describe_record(ra, position))
+                    context_b.append(describe_record(rb, position))
+                    for _ in range(5):
+                        next_a = next(ia, None)
+                        next_b = next(ib, None)
+                        if next_a is not None:
+                            position_a = context_a[-1]["record01_position"] + 1
+                            context_a.append(describe_record(next_a, position_a))
+                        if next_b is not None:
+                            position_b = context_b[-1]["record01_position"] + 1
+                            context_b.append(describe_record(next_b, position_b))
                     mismatches.append({
                         "record01_position": position,
                         "b3_date": ra[2:10].decode("ascii", "replace"),
@@ -76,8 +117,15 @@ def compare_streams(b3_path, bloom_path):
                         "bloomberg_sha256": hashlib.sha256(rb).hexdigest(),
                         "b3_prefix": ra[:40].decode("latin-1", "replace"),
                         "bloomberg_prefix": rb[:40].decode("latin-1", "replace"),
+                        "context_window": {"b3": context_a, "bloomberg_mail": context_b},
                     })
                     break
+                previous_a.append((position, ra))
+                previous_b.append((position, rb))
+                if len(previous_a) > 3:
+                    previous_a.pop(0)
+                if len(previous_b) > 3:
+                    previous_b.pop(0)
             return {
                 "common_record01_prefix": position if not mismatches else position - 1,
                 "first_difference": mismatches[0] if mismatches else None,
@@ -97,11 +145,23 @@ def main():
         bloom_zip_bad,bloom_member,bloom_member_size=inspect_zip(bloom)
         b3_stats=stream_stats(B3_ZIP); bloom_stats=stream_stats(bloom)
         cmp=compare_streams(B3_ZIP,bloom)
+        diagnostics = {}
+        if cmp["first_difference"]:
+            first = cmp["first_difference"]
+            tickers = sorted({first["b3_prefix"][12:24].strip(), first["bloomberg_prefix"][12:24].strip()})
+            diagnostics = {
+                "purpose": "Diagnosticar se a primeira divergência decorre de registo ausente, ticker distinto ou deslocamento local; não altera o critério byte-a-byte.",
+                "target_tickers": tickers,
+                "b3_occurrences": scan_target_tickers(B3_ZIP, tickers),
+                "bloomberg_mail_occurrences": scan_target_tickers(bloom, tickers),
+                "interpretation_limit": "A presença de um ticker noutra posição não prova equivalência semântica nem autoriza promoção automática."
+            }
         result="PASS_OVERLAP_EXACT" if cmp["first_difference"] is None and cmp["b3_exhausted"] and not cmp["bloomberg_exhausted"] else ("PASS_EXACT" if cmp["first_difference"] is None and cmp["b3_exhausted"] and cmp["bloomberg_exhausted"] else "FAIL_CONTENT_DIVERGENCE")
         evidence={"schema_version":"1.0-rec001-b3-cross-repo","result":result,"raw_preserved":True,
           "b3_snapshot":{"path":B3_ZIP,"zip_sha256":b3_sha,"member":b3_member,"member_size":b3_member_size,"zip_integrity":b3_zip_bad is None,"stats":b3_stats},
           "bloomberg_mail_raw":{"url":BLOOM_ZIP_URL,"zip_sha256":bloom_sha,"member":bloom_member,"member_size":bloom_member_size,"zip_integrity":bloom_zip_bad is None,"stats":bloom_stats},
           "comparison":cmp,
+          "divergence_diagnostics":diagnostics,
           "interpretation":"B3 snapshot is an exact byte-for-byte prefix of BLOOMBERG_MAIL RAW when PASS_OVERLAP_EXACT. The temporal extension in BLOOMBERG_MAIL is not treated as divergence.",
           "promotion_impact":"REC001_B3_ELIGIBLE_FOR_REVIEW" if result.startswith("PASS_") else "BLOCKED_CONTENT_DIVERGENCE"}
         os.makedirs(os.path.dirname(OUT),exist_ok=True)
