@@ -1,3 +1,4 @@
+# Execução controlada após FASE03 VALIDADO; compara o resultado com o manifesto existente.
 name: COTAHIST 2015 - FASE04 Normalizacao V1
 on:
   workflow_dispatch:
