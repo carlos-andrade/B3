@@ -1480,3 +1480,30 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE10 (2020): executar/verificar reconciliação integral.
 3. FASE11–FASE12: dependem da FASE10 sem divergências.
 
+## 55. COTAHIST 2020 — FASE10 validada; FASE11 publicada (2026-10-13)
+
+### FASE10 — Validação independente integral
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE10_VALIDACAO_INDEPENDENTE_V1.json`, blob `a68df016a85281eccd6a1b3b0cb40b28220663a1`.
+- Decisão: `LIBERADO_PARA_FASE11`.
+- 1.251.646 registos RAW/NORMALIZED; registos físicos de 245 bytes; `00=1`, `01=1.251.646`, `99=1`.
+- Os 25 campos foram comparados independentemente; divergências: 0; amostra vazia.
+- SHA-256 RAW: `86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f`.
+- SHA-256 NORMALIZED: `cb9230638ae4cec17d9345401ba41e4576b6ff6369f32377367fe20f3c02de50`.
+- RAW não modificado; deduplicação não executada.
+
+### FASE11 — Certificação
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase11-certificacao-2020-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase11-certificacao-2020-v1.yml
+- Commit: `7dc9cfa6d23bc5be24f0bb2850b52c5249cebc35`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_FASE11_CERTIFICACAO_V1.json`.
+- Só avançar para FASE12 com `CERTIFICADO`, `LIBERADO_PARA_FASE12` e zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE10 (2020): validadas/liberadas conforme evidências individuais.
+2. FASE11 (2020): workflow publicado; verificar certificação.
+3. FASE12: somente após certificação; validar transição RAW 2021 sem certificar automaticamente 2021.
+
