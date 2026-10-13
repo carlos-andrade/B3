@@ -977,3 +977,29 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. RAW 2019 permanece imutável; reconstrução deve ocorrer apenas na camada NORMALIZED.
 4. REC-001 B3 × BLOOMBERG_MAIL permanece em trilha independente e bloqueada.
 
+## 36. COTAHIST 2019 — FASE00–FASE03 validadas; FASE04 em execução (2026-10-13)
+
+### Evidências 2019 confirmadas
+
+- **FASE00 — VALIDADO / AUTORIZAR_FASE01**: `dados/cotahist/quality/COTAHIST_2019_FASE00_GOVERNANCA_V1.json`, blob `03811b65dd97e33cc43d1338db73ef48b8c7aeed`. Layout Mestre V1.0.1 vigente; transição 2018→2019 confirmada; zero bloqueadores.
+- **FASE01 — VALIDADO / LIBERADO_PARA_FASE02**: `dados/cotahist/quality/COTAHIST_2019_FASE01_AQUISICAO_RAW_V1.json`, blob `6a37bc8a00ef20c73df53d2ae1fac083a97b275b`. RAW coincide com manifesto e sidecar; fonte B3 registada.
+- **FASE02 — VALIDADO / LIBERADO_PARA_FASE03**: `dados/cotahist/quality/COTAHIST_2019_FASE02_INTEGRIDADE_FONTE_V1.json`, blob `20e0f012503f3f13867e0856282ea406b46bd75f`. ZIP com um membro `COTAHIST_A2019.TXT`, teste ZIP sem erro, 779.231 linhas físicas, 245 bytes por registo, zero comprimentos inválidos; 779.229 registos tipo `01`.
+- **FASE03 — VALIDADO / LIBERADO_PARA_FASE04**: `dados/cotahist/quality/COTAHIST_2019_FASE03_PARSING_V1.json`, blob `4ed3f834754ddcdca38335c5e9f64e8c5e7d5afd`. Zero datas inválidas/fora do ano; intervalo 2019-01-02 a 2019-12-30.
+- SHA-256 RAW em todas as evidências: `5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9`.
+
+### FASE04 — Normalização
+**Estado: workflow publicado e run iniciado; resultado final ainda não confirmado.**
+
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2019-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase04-normalizacao-2019-v1.yml
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38433330881.
+- A execução usa o normalizador canónico `scripts/ingestao/normalize_cotahist.py` e compara hash, contagem, 25 campos e datas com manifesto/sidecar existentes. A versão do script é `1.1.2`; manifesto existente declara `1.1.0`, diferença que deve permanecer explícita.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE04_NORMALIZACAO_V1.json`.
+- Só considerar FASE04 concluída se evidência persistida indicar `VALIDADO`, `LIBERADO_PARA_FASE05`, zero bloqueadores e hash físico calculado igual ao manifesto e sidecar.
+
+### Roadmap operacional imediato
+1. FASE00–FASE03 (2019): VALIDADO.
+2. FASE04 (2019): run em execução; verificar resultado e persistência.
+3. FASE05: iniciar após FASE04 validada; verificar/reconstruir manifesto/checksum sem alterar o RAW.
+4. FASE06–FASE12: bloqueadas até conclusão das pré-condições anuais, sem retrocertificação.
+
