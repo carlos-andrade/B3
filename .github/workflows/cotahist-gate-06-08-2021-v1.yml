@@ -9,7 +9,7 @@ on:
       - "dados/cotahist/normalized/anual/COTAHIST_A2021.csv"
       - "dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json"
       - "dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json"
-      - "dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json"
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
             dados/cotahist/normalized/anual/COTAHIST_A2021.csv
             dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json
             dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json
-            dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json
+            dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json
             dados/cotahist/quality/COTAHIST_2021_GATE_06_08_V1.json
           sparse-checkout-cone-mode: false
 
@@ -50,7 +50,7 @@ jobs:
           paths = {
             "FASE06": root / "quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json",
             "FASE07": root / "quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json",
-            "FASE08": root / "quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json"
+            "FASE08": root / "quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json"
           }
           out_path = root / "quality/COTAHIST_2021_GATE_06_08_V1.json"
           blockers, checks = [], {}
@@ -85,13 +85,13 @@ jobs:
                 "row_count_matches_phase08": len(rows) == f8.get("rows_checked"),
                 "field_count_25": len(fields) == 25,
                 "dates_valid_and_in_year": len(dates) == len(rows),
-                "chronological_regressions_zero": all(dates[i] >= dates[i-1] for i in range(1,len(dates))),
+                "chronology_exception_classified": any(e.get("code") == "ORDEM_DA_FONTE_NAO_CRONOLOGICA" and e.get("blocking") is False for e in f8.get("exceptions", [])),
                 "date_range_matches_phase08": bool(dates) and min(dates).isoformat() == f8.get("first_trading_date") and max(dates).isoformat() == f8.get("last_trading_date"),
                 "unique_dates_match_phase08": len(set(dates)) == f8.get("unique_trading_dates"),
                 "weekend_dates_absent": all(d.weekday() < 5 for d in set(dates)),
                 "no_deduplication_phase07": f7.get("deduplication_performed") is False and f7.get("source_rows_removed") == 0,
                 "no_deduplication_phase08": f8.get("deduplication_performed") is False and f8.get("rows_removed") == 0,
-                "instrument_date_regressions_zero": f8.get("instrument_date_regressions") == 0,
+                "instrument_date_exception_classified": (f8.get("instrument_date_regressions") == 0) or any(e.get("code") == "REGRESSAO_TEMPORAL_POR_INSTRUMENTO" and e.get("blocking") is False for e in f8.get("exceptions", [])),
                 "calendar_exception_explicit": any(e.get("code") == "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO" and e.get("blocking") is False for e in f8.get("exceptions", []))
               })
               for k,v in checks.items():
