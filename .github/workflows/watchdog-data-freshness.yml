@@ -98,6 +98,17 @@ jobs:
             printf '\n\n**Estado de recuperação:** a execução atual não encontrou estados STALE nem UNKNOWN. A issue permanece aberta para revisão humana; não é encerrada automaticamente.\n' >> watchdog-data-freshness.md
             gh issue edit "$issue_number" --body-file watchdog-data-freshness.md
           fi
+      - name: Heartbeat para supervisor externo (opcional)
+        env:
+          WATCHDOG_HEARTBEAT_URL: ${{ secrets.WATCHDOG_HEARTBEAT_DATA_URL }}
+        run: |
+          set -euo pipefail
+          if [ -z "$WATCHDOG_HEARTBEAT_URL" ]; then
+            echo "::warning::WATCHDOG_HEARTBEAT_DATA_URL não configurado; supervisão independente permanece inativa."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 10 "$WATCHDOG_HEARTBEAT_URL"
+
       - name: Publicar evidência de atualidade
         if: always()
         uses: actions/upload-artifact@v4
