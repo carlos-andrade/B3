@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T09:55:57.588139+00:00
-Workflows auditados: 374
+Gerado em UTC: 2026-10-13T09:56:40.138450+00:00
+Workflows auditados: 376
 
 ## Regra de decisão
 
@@ -69,6 +69,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase00-governanca-2011-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase00-governanca-2012-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase00-governanca-2013-v1.yml | 0 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase00-governanca-2014-v1.yml | 0 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2000-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2001-v1.yml | 1 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase01-aquisicao-2002-v1.yml | 1 | **CONFORME** | — | — |
@@ -338,6 +339,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase12-fechamento-2010-abertura-2011-v1.yml | 12 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase12-fechamento-2011-abertura-2012-v1.yml | 12 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase12-fechamento-2012-abertura-2013-v1.yml | 12 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase12-fechamento-2013-abertura-2014-v1.yml | 12 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase12-fechamento-transicao-1993-v1.yml | 12 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase13-materializacao-1996-v1.yml | 13 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase13-materializacao-1997-v1.yml | 13 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
