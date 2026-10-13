@@ -1605,3 +1605,42 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE04: reconstruir NORMALIZED a partir de RAW, preservando hash e todas as linhas.
 5. REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
 
+## 60. COTAHIST 2021 — FASE02 e FASE03 validadas; FASE04 em execução (2026-10-13)
+
+### FASE02 — Integridade física da fonte
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE02_INTEGRIDADE_FONTE_V1.json`.
+- Blob SHA: `4bc04facd284db779b457a7fe7c4580a38977692`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480257022 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE03`.
+- RAW SHA-256: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`; ZIP com um membro `COTAHIST_A2021.TXT`, CRC íntegro, zero comprimentos inválidos.
+- 1.831.864 linhas físicas: header `00=1`, registos `01=1.831.862`, trailer `99=1`.
+
+### FASE03 — Parsing estrutural
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE03_PARSING_V1.json`.
+- Blob SHA: `baea76d4fa6fbe9c9d6dd264b9ce164f691f6702`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480328958 — sucesso.
+- Decisão: `LIBERADO_PARA_FASE04`.
+- 1.831.862 registos de cotação; 245 bytes por registo; zero comprimentos inválidos e zero datas inválidas.
+- Intervalo: 2021-01-04 a 2021-12-30.
+- Parsing estrutural não certifica normalização nem semântica.
+
+### FASE04 — Normalização e reconciliação
+**Estado: WORKFLOW EM EXECUÇÃO; evidência pendente no momento desta atualização.**
+
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2021-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase04-normalizacao-2021-v1.yml
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480393973.
+- Objetivo: reconstruir NORMALIZED a partir do RAW imutável, conferir manifesto/checksum e reconciliar contagens/datas; só persistir CSV quando validado.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE04_NORMALIZACAO_V1.json`.
+- Não avançar para FASE05 até validar a evidência persistida e confirmar o SHA-256 físico do CSV.
+
+### Roadmap operacional imediato
+1. FASE00–FASE03 (2021): VALIDADO.
+2. FASE04 (2021): execução em curso; verificar resultado e artefactos.
+3. FASE05: apenas após FASE04 VALIDADO.
+4. Preservar RAW e linhas; não deduplicar.
+
