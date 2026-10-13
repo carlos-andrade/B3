@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "year": 2014,
   "phase": "FASE11",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_FASE12",
+  "status": "CERTIFICADO",
+  "decision": "LIBERADO_PARA_FASE12",
   "certification_scope": "Integridade e consistência do conjunto COTAHIST 2014 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
   "evidence_statuses": {
     "FASE09": "LIBERADO_PARA_FASE10",
@@ -14,8 +14,9 @@
   "phase10_mismatch_count": 0,
   "phase10_fields_checked": 25,
   "gate_06_08_status": "VALIDADO_COM_EXCECAO",
-  "blockers": [
-    "GATE_06_08_NAO_APROVADO"
-  ],
-  "certified_at_utc": "2026-10-13T11:08:17.229168+00:00"
+  "gate_06_08_decision": "LIBERADO_PARA_FASE09",
+  "raw_sha256": "613d76f8a64c7ffba0406cb54c1fd187266f55ed8b6037cb85993b2071a5aae7",
+  "normalized_sha256": "af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01",
+  "blockers": [],
+  "certified_at_utc": "2026-10-13T11:08:39.415256+00:00"
 }
