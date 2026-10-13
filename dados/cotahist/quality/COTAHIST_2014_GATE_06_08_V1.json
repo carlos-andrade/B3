@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2014,
+  "phase": "GATE_06_08",
+  "status": "VALIDADO_COM_EXCECAO",
+  "decision": "LIBERADO_PARA_FASE09",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2014.csv",
+  "normalized_sha256_calculated": "af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01",
+  "rows_checked": 392228,
+  "field_count": 25,
+  "unique_trading_dates": 248,
+  "first_trading_date": "2014-01-02",
+  "last_trading_date": "2014-12-30",
+  "invalid_date_count": 0,
+  "chronological_regressions": 0,
+  "instrument_order_regressions_phase08": 97444,
+  "instrument_date_regressions_phase08": 0,
+  "checks": {
+    "phase06_validated": true,
+    "phase07_validated": true,
+    "phase08_accepted_status": true,
+    "normalized_sha_matches_phase06": true,
+    "normalized_sha_matches_phase07": true,
+    "normalized_sha_matches_phase08": true,
+    "row_count_matches_phase06": true,
+    "row_count_matches_phase07": true,
+    "row_count_matches_phase08": true,
+    "field_count_25": true,
+    "dates_valid_and_in_year": true,
+    "chronological_regressions_zero": true,
+    "date_range_matches_phase08": true,
+    "unique_dates_match_phase08": true,
+    "weekend_dates_absent": true,
+    "no_deduplication_phase07": true,
+    "no_deduplication_phase08": true,
+    "instrument_date_regressions_zero": true,
+    "phase08_blockers_empty": true,
+    "calendar_exception_explicit": true
+  },
+  "blockers": [],
+  "exceptions": [
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "A fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2014."
+    }
+  ],
+  "deduplication_performed": false,
+  "rows_removed": 0,
+  "validated_at_utc": "2026-10-13T11:02:32.415560+00:00"
+}
