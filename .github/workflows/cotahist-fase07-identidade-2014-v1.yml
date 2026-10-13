@@ -1,0 +1,158 @@
+name: COTAHIST 2014 - FASE07 Identidade e Cardinalidade
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase07-identidade-2014-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2014_FASE06_RECONCILIACAO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase07-identidade-2014-v1
+  cancel-in-progress: false
+
+jobs:
+  identidade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase07-identidade-2014-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2014.csv
+            dados/cotahist/quality/COTAHIST_2014_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testar chaves candidatas sem deduplicar
+        run: |
+          python - <<'PY'
+          import csv, json, pathlib, sys, datetime, hashlib
+          from collections import defaultdict
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2014.csv")
+          f6_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2014_FASE06_RECONCILIACAO_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json")
+          if not csv_path.is_file() or not f6_path.is_file():
+              sys.exit("FASE07 BLOQUEADA: NORMALIZED ou evidência FASE06 ausente")
+          f6 = json.loads(f6_path.read_text(encoding="utf-8"))
+          if f6.get("status") != "VALIDADO" or f6.get("mismatch_count") != 0:
+              sys.exit("FASE07 BLOQUEADA: FASE06 não está VALIDADO com zero divergências")
+          with csv_path.open(encoding="utf-8", newline="") as f:
+              reader = csv.DictReader(f)
+              fieldnames = reader.fieldnames or []
+              rows = list(reader)
+          base_key = ["data_pregao", "codbdi", "codneg", "tpmerc", "dismes"]
+          key_with_prazo = ["data_pregao", "codbdi", "codneg", "tpmerc", "prazot", "dismes"]
+          for field in set(base_key + key_with_prazo):
+              if field not in fieldnames:
+                  sys.exit(f"FASE07 BLOQUEADA: campo de chave ausente: {field}")
+          def group_metrics(key_fields):
+              groups = defaultdict(list)
+              for row in rows:
+                  groups[tuple(row.get(k, "") for k in key_fields)].append(row)
+              dup = [(key, group) for key, group in groups.items() if len(group) > 1]
+              excess = sum(len(group)-1 for _, group in dup)
+              exact_groups = sum(1 for _, group in dup if len({tuple(r.get(k, "") for k in fieldnames) for r in group}) == 1)
+              different_groups = len(dup) - exact_groups
+              return {
+                "key_fields": key_fields,
+                "distinct_keys": len(groups),
+                "duplicate_groups": len(dup),
+                "duplicate_rows_excess": excess,
+                "groups_identical_full_row": exact_groups,
+                "groups_different_full_row": different_groups,
+                "sample_collisions": [
+                  {
+                    "key": list(key),
+                    "occurrences": len(group),
+                    "distinct_prazot": sorted({r.get("prazot", "") for r in group}),
+                    "different_fields": [field for field in fieldnames if len({r.get(field, "") for r in group}) > 1]
+                  }
+                  for key, group in dup[:10]
+                ]
+              }
+          base = group_metrics(base_key)
+          with_prazo = group_metrics(key_with_prazo)
+          base_groups = defaultdict(list)
+          for row in rows:
+              base_groups[tuple(row.get(k, "") for k in base_key)].append(row)
+          base_duplicate_groups = [g for g in base_groups.values() if len(g) > 1]
+          groups_separated_by_prazo = sum(1 for g in base_duplicate_groups if len({r.get("prazot", "") for r in g}) > 1)
+          selected = key_with_prazo if with_prazo["duplicate_groups"] == 0 else None
+          valid = selected is not None
+          out = {
+            "schema_version": "1.0.0",
+            "year": 2014,
+            "phase": "FASE07",
+            "status": "VALIDADO" if valid else "BLOQUEADO",
+            "decision": "CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE" if valid else "AGUARDANDO_DECISAO_NORMATIVA",
+            "validation_type": "AUDITORIA_DE_IDENTIDADE_E_CARDINALIDADE_SEM_MUTACAO",
+            "source_normalized_path": str(csv_path),
+            "source_normalized_sha256": hashlib.sha256(csv_path.read_bytes()).hexdigest(),
+            "phase06_evidence_path": str(f6_path),
+            "phase06_status": f6.get("status"),
+            "records": len(rows),
+            "base_candidate": base,
+            "candidate_with_prazot": with_prazo,
+            "base_duplicate_groups_separated_by_prazot": groups_separated_by_prazo,
+            "selected_key": selected,
+            "identity_decision": "PRAZOT integra a chave candidata para distinguir registos que colidem na chave base." if valid else "Nenhuma chave candidata testada resolveu todas as colisões; exige revisão normativa.",
+            "deduplication_performed": False,
+            "source_rows_removed": 0,
+            "limitations": ["A conclusão aplica-se ao COTAHIST 2014 e à versão normalizada identificada; não autoriza deduplicação nem generalização automática a outros anos."],
+            "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          if not valid:
+              sys.exit("FASE07 BLOQUEADA: a chave candidata com PRAZOT ainda contém colisões")
+          PY
+
+      - name: Persistir evidência FASE07 inclusive quando bloqueada
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json || {
+            echo "Nenhuma evidência FASE07 foi produzida; pré-condição falhou."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração na evidência."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): registrar identidade e cardinalidade fase 07 2014"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2014 — FASE07"
+            echo "- Testa chave base e chave candidata com PRAZOT."
+            echo "- Não elimina nem altera registos."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
