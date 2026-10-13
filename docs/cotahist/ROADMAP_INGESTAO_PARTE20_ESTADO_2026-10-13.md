@@ -25,7 +25,18 @@ Evidências consultadas na branch principal em 13/10/2026:
 
 ## 3. Próxima fase autorizada
 ### FASE07 — identidade, chaves e cardinalidade — 2014
-Estado: **PENDENTE DE EXECUÇÃO/VALIDAÇÃO**.
+Estado: **VALIDADO — evidência persistida**.
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2014-v1.yml`.
+- Evidência: `dados/cotahist/quality/COTAHIST_2014_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- Commit da evidência: `23a169b05c5efe088260b57fbe8f17473ef09529`.
+- Hash da evidência no repositório: `6c58bce7fc42fd4cae7ef503dcfffabe9d99d53e`.
+- Registos analisados: 392.228; hash NORMALIZED coincide com a FASE06: `af95fc567d875a2ba09221f4749cddae22281baf36145e9066021e2d13533c01`.
+- Chave-base: 6.856 grupos duplicados, 15.155 linhas excedentes; nenhum grupo era composto por linhas integralmente idênticas.
+- Chave candidata com `prazot`: 392.228 chaves distintas, zero colisões.
+- `deduplication_performed=false`; `source_rows_removed=0`.
+
+A evidência está persistida e os seus campos/contagens foram conferidos contra a FASE06. O endpoint disponível nesta sessão não expõe uma listagem geral dos runs; por isso, o estado do run é inferido do artefato produzido e commitado pelo workflow, e não de uma consulta direta ao painel de execuções.
 
 Pré-condições:
 1. consumir o NORMALIZED e o hash fixados pela FASE06;
@@ -46,7 +57,7 @@ A chave candidata usada em 2006 incluiu `prazot` para separar colisões, mas a e
 | COTAHIST 1986–2003 | Histórico com exceções específicas por ano | Preservar evidências; não presumir uniformidade |
 | COTAHIST 2004–2013 | Ciclos anteriores registrados como concluídos/fechados, com exceções de calendário documentadas por ano | Não reexecutar sem causa/evidência |
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
-| COTAHIST 2014 | FASE00–FASE06 validadas | Executar FASE07 |
+| COTAHIST 2014 | FASE00–FASE07 validadas; FASE07 sem mutação, 392.228 chaves distintas | Preparar FASE08 conforme o Layout Mestre |
 | COTAHIST 2014 FASE08–FASE12 | Ainda não comprovadas como concluídas nesta continuação | Avançar sequencialmente após cada gate |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
