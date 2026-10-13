@@ -196,3 +196,37 @@ Esta secção prevalece como estado operacional mais recente sobre referências 
 6. **Pista paralela bloqueada:** REC-001 B3 × BLOOMBERG_MAIL continua `BLOCKED_ORDER_VARIANCE_REVIEW`; não declarar a diferença de multiplicidades como mera extensão temporal sem reconciliação por data.
 
 **Regra de avanço:** nenhuma fase é marcada como concluída por existir workflow, por commit de código ou por hash esperado no manifesto. É necessária evidência de resultado produzida e persistida, reconciliada com os artefactos físicos.
+
+
+## 11. Atualização após evidência FASE04 de 2017
+
+Verificação posterior na branch `main` encontrou a evidência FASE04 que não estava disponível na consulta anterior. Esta secção prevalece para o estado atual; o histórico anterior permanece preservado.
+
+### FASE04 — 2017: VALIDADO
+
+- Evidência: [COTAHIST_2017_FASE04_NORMALIZACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE04_NORMALIZACAO_V1.json).
+- Estado: `VALIDADO`; decisão `LIBERADO_PARA_FASE05`; lista de bloqueadores vazia.
+- RAW SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`.
+- NORMALIZED SHA-256 calculado, manifesto e sidecar coincidem: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- Resultado: 489.115 linhas, 25 campos; primeira data 2017-01-02; última data 2017-12-28; zero datas inválidas e zero datas fora do ano.
+- Diagnóstico registado: normalizador versão 1.1.2, retorno 0; `raw_modified=false`; `deduplication_performed=false`.
+- O manifesto ainda declara parser 1.1.0 enquanto o script canónico é 1.1.2. Como o hash calculado coincide com manifesto e sidecar, a diferença de metadado fica registada e não invalida isoladamente o resultado.
+
+### FASE05 — 2017: workflow publicado; evidência ainda pendente
+
+- Workflow: [cotahist-fase05-manifesto-checksum-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase05-manifesto-checksum-2017-v1.yml).
+- Commit do workflow: [35ab6578b7995557fd3c7ffa3a08afea831fbade](https://github.com/carlos-andrade/B3/commit/35ab6578b7995557fd3c7ffa3a08afea831fbade).
+- O workflow revalida fisicamente RAW/ZIP, manifesto de aquisição, sidecar RAW, NORMALIZED, manifesto NORMALIZED, sidecar NORMALIZED, contagem de linhas, 25 campos e intervalo de datas.
+- A evidência esperada `dados/cotahist/quality/COTAHIST_2017_FASE05_MANIFESTO_CHECKSUM_V1.json` ainda não foi encontrada na branch na última consulta. Portanto, FASE05 permanece pendente; não promover para FASE06 sem a evidência persistida.
+- A existência do workflow e o commit que o publicou não provam que o job executou. Se a evidência não surgir automaticamente, executar manualmente via GitHub Actions: **Run workflow** na branch `main`.
+
+### Roadmap operacional imediato
+
+1. Confirmar execução e persistência da FASE05 2017.
+2. Se `VALIDADO`, criar/executar FASE06 para reconciliar 12 campos críticos RAW × NORMALIZED, sem deduplicar.
+3. FASE07: auditar chaves e colisões sem remover linhas.
+4. FASE08 e Gate 06–08: consistência temporal e classificação explícita de exceções.
+5. Só depois avançar sequencialmente por FASE09, FASE10 independente dos 25 campos, FASE11 certificação e FASE12 fechamento/transição para 2018.
+6. Manter `REC-001 B3 × BLOOMBERG_MAIL` bloqueada até à revisão da divergência de multiplicidades por data.
+
+**Regra de promoção:** artefactos, hashes e contagens verificados na branch são necessários; workflow publicado sem evidência persistida não é conclusão de fase.
