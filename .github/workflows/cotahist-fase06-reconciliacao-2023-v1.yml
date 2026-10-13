@@ -37,7 +37,7 @@ jobs:
           sparse-checkout-cone-mode: false
 
       - name: Obter apenas o RAW anual via Git LFS
-        run: git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A2023.ZIP" --exclude=""
+        run: git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A2023.ZIP,dados/cotahist/normalized/anual/COTAHIST_A2023.csv" --exclude=""
 
       - uses: actions/setup-python@v5
         with:
