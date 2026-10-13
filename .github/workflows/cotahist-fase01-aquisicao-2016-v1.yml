@@ -7,6 +7,7 @@
 # FASE01 2016: verificar RAW e proveniência apos FASE00.
 # FASE01 2016: verificar RAW adquirido e proveniência após FASE00.
 # Execução controlada: validar RAW 2016 após autorização FASE00.
+# Execução controlada após FASE00 2016; valida RAW e proveniência sem mutação.
 name: COTAHIST 2016 - FASE01 Aquisicao RAW
 
 on:
