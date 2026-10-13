@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2013,
+  "phase": "FASE03",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE04",
+  "evidence_kind": "PARSING_ESTRUTURAL_CANONICO_REEXECUTADO",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2013.ZIP",
+  "raw_sha256": "b6dfb0d73181a60cc65083c2b185a1cbb0c95b87b21f873cc151515c65e47636",
+  "phase02_evidence_path": "dados/cotahist/quality/COTAHIST_2013_FASE02_INTEGRIDADE_FONTE_V1.json",
+  "phase02_status": "VALIDADO",
+  "zip_member_count": 1,
+  "zip_member": "COTAHIST_A2013.TXT",
+  "record_length_bytes": 245,
+  "total_records": 378919,
+  "record_type_counts": {
+    "00": 1,
+    "01": 378917,
+    "99": 1
+  },
+  "quote_records_type_01": 378917,
+  "invalid_record_lengths": 0,
+  "invalid_dates": 0,
+  "first_quote_date": "2013-01-02",
+  "last_quote_date": "2013-12-30",
+  "validated_at_utc": "2026-10-13T09:47:32.166778+00:00",
+  "limitations": [
+    "Parsing estrutural não certifica normalização nem semântica."
+  ]
+}
