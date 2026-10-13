@@ -720,3 +720,40 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE06 2018: executar/verificar a reconciliação semântica dos 12 campos críticos RAW × NORMALIZED.
 3. Se FASE06 validar sem divergências, avançar para FASE07 identidade/cardinalidade; se bloquear, investigar sem corrigir ou deduplicar o RAW.
 4. Preservar as evidências históricas e a trilha independente REC-001 B3 × BLOOMBERG_MAIL, que permanece bloqueada até reconciliação própria.
+
+## 28. COTAHIST 2018 — FASE06 validada e FASE07 preparada (2026-10-13)
+
+### FASE06 — Reconciliação semântica
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE06_RECONCILIACAO_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE06_RECONCILIACAO_V1.json
+- Blob SHA observado: `18cc4289a981cc73616d2dfc4ca3117ce481795c`.
+- Decisão: `LIBERADO_PARA_FASE07`.
+- RAW: 580.155 registos; NORMALIZED: 580.155 registos.
+- Campos críticos reconciliados em ordem: `data_pregao`, `codbdi`, `codneg`, `tpmerc`, `preabe`, `premax`, `premin`, `premed`, `preult`, `totneg`, `quatot`, `voltot`.
+- Divergências: 0; amostra de divergências vazia.
+- SHA-256 RAW: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- SHA-256 NORMALIZED: `e3e57fdcf4be823830e6d6653d68275fa33af6d51b86392356cc29fe7a0f7981`.
+- RAW imutável; deduplicação não executada.
+- Timestamp da evidência: `2026-10-13T16:31:08.511482+00:00`.
+
+### FASE07 — Identidade e cardinalidade
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase07-identidade-2018-v1.yml
+- Commit de publicação: `b3ddd8047ddb1231318a98e8cac5cd2c954a5fdb`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- A FASE07 testa a chave-base `data_pregao+codbdi+codneg+tpmerc+dismes` e a candidata com `prazot` adicional, calcula cardinalidade e colisões, e não remove nem modifica registos.
+- A chave candidata com `prazot` é uma hipótese de auditoria baseada em precedentes de outros anos; não será considerada validada para 2018 até a execução gerar evidência própria.
+- Gate de entrada: evidência FASE06 VALIDADO/liberado, zero divergências, hash físico NORMALIZED igual ao fixado na FASE06 e contagem de linhas consistente.
+- A execução deve ser feita manualmente no GitHub Actions. Só avançar para FASE08 depois de verificar a evidência persistida e o seu status/decisão. Se houver colisões, inspecionar amostras e documentar a decisão normativa; não deduplicar.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 (2018): VALIDADO.
+2. FASE06 (2018): VALIDADO, 12 campos críticos, zero divergências.
+3. FASE07 (2018): workflow publicado; executar e verificar evidência.
+4. FASE08 (2018): não iniciar antes de validar a FASE07 e definir/implementar o contrato da fase.
+5. Preservar RAW, linhas e evidências históricas; manter a trilha REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
