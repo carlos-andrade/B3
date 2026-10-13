@@ -1,0 +1,289 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2021,
+  "phase": "FASE08",
+  "status": "BLOQUEADO",
+  "decision": "BLOQUEADO_PARA_GATE_06_08",
+  "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2021.csv",
+  "normalized_sha256": "0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2",
+  "phase06_status": "VALIDADO",
+  "phase07_status": "VALIDADO",
+  "rows_checked": 1831862,
+  "unique_trading_dates": 247,
+  "first_trading_date": "2021-01-04",
+  "last_trading_date": "2021-12-30",
+  "invalid_dates": 0,
+  "out_of_year_dates": 0,
+  "chronological_regressions": 139405,
+  "chronological_regression_samples": [
+    {
+      "row": 125,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 249,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 342,
+      "previous_date": "2021-02-11",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 373,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 435,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 497,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 559,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 621,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 683,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-14"
+    },
+    {
+      "row": 776,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 900,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1024,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1148,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1303,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1396,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1427,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1520,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1551,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1644,
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-29"
+    },
+    {
+      "row": 1675,
+      "previous_date": "2021-01-29",
+      "current_date": "2021-01-04"
+    }
+  ],
+  "instrument_order_regressions": 63288,
+  "instrument_date_regressions": 73784,
+  "instrument_date_regression_samples": [
+    {
+      "row": 1552,
+      "instrument": [
+        "02",
+        "ELCI34",
+        "010",
+        "",
+        "105"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1556,
+      "instrument": [
+        "02",
+        "EMBR3",
+        "010",
+        "",
+        "189"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1557,
+      "instrument": [
+        "02",
+        "ENAT3",
+        "010",
+        "",
+        "101"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1559,
+      "instrument": [
+        "02",
+        "ENEV3",
+        "010",
+        "",
+        "104"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1560,
+      "instrument": [
+        "02",
+        "ENGI3",
+        "010",
+        "",
+        "138"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1675,
+      "instrument": [
+        "02",
+        "F1RI34",
+        "010",
+        "",
+        "104"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1676,
+      "instrument": [
+        "02",
+        "F1SL34",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1678,
+      "instrument": [
+        "02",
+        "F1TV34",
+        "010",
+        "",
+        "105"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1680,
+      "instrument": [
+        "02",
+        "FBOK34",
+        "010",
+        "",
+        "101"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    },
+    {
+      "row": 1681,
+      "instrument": [
+        "02",
+        "FCXO34",
+        "010",
+        "",
+        "132"
+      ],
+      "previous_date": "2021-02-12",
+      "current_date": "2021-01-04"
+    }
+  ],
+  "source_order_classified_by_row_reconciliation": true,
+  "blockers": [
+    "REGRESSAO_CRONOLOGICA",
+    "REGRESSAO_TEMPORAL_POR_INSTRUMENTO"
+  ],
+  "exceptions": [
+    {
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_A_VALIDAR",
+      "blocking": true,
+      "detail": "Foram encontradas regressões de data na sequência original; rever amostras antes de promover."
+    },
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false,
+      "detail": "A ordem global da tupla de instrumento não é requisito de ordenação; a consistência temporal por instrumento é avaliada separadamente."
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_TEMPORAL_INTERNA",
+      "blocking": false,
+      "detail": "Esta fase não afirma equivalência com uma lista externa oficial de feriados/sessões B3 de 2021."
+    }
+  ],
+  "weekday_distribution": {
+    "Monday": 49,
+    "Tuesday": 48,
+    "Wednesday": 51,
+    "Thursday": 51,
+    "Friday": 48
+  },
+  "weekend_dates_observed": [],
+  "calendar_gaps_over_4_days": [
+    {
+      "from": "2021-02-12",
+      "to": "2021-02-17",
+      "calendar_days": 5
+    }
+  ],
+  "official_calendar_reference": "NOT_PERSISTED",
+  "deduplication_performed": false,
+  "rows_removed": 0,
+  "validated_at_utc": "2026-10-13T22:58:30.920695+00:00"
+}
