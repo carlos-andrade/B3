@@ -613,3 +613,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. FASE03: workflow publicado; aguarda execução/evidência `VALIDADO` / `LIBERADO_PARA_FASE04`, zero datas inválidas e zero datas fora de 2018.
 5. FASE04: depois da FASE03, regenerar NORMALIZED com `scripts/ingestao/normalize_cotahist.py`; verificar 580.155 linhas, 25 campos, datas e hash contra manifesto/sidecar. Registar a diferença `parser_version=1.1.0` no manifesto versus script canónico `PARSER_VERSION=1.1.2`, sem alterar a evidência histórica silenciosamente.
 6. Preservar RAW e linhas de origem; não deduplicar. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada até reconciliação própria.
+
+
+---
+
+## Secção 24 — FASE03 validada; FASE04 2018 publicada para normalização e reconciliação (2026-10-13)
+
+### FASE03 — parsing estrutural: VALIDADO
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE03_PARSING_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE03_PARSING_V1.json
+- Blob SHA da evidência: `4f258d343ef3d62842a9c3f18ba49944109196aa`.
+- Estado/decisão: `VALIDADO` / `LIBERADO_PARA_FASE04`.
+- RAW SHA-256: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`, igual à FASE02.
+- ZIP: membro único `COTAHIST_A2018.TXT`; 580.157 linhas físicas; 580.155 registos `01`, um `00` e um `99`.
+- Comprimento inválido: 0; datas inválidas: 0; primeira data: 2018-01-02; última data: 2018-12-28.
+- Timestamp da evidência: `2026-10-13T15:18:54.647413+00:00`.
+- Limite: validação estrutural; não certifica a semântica nem a normalização.
+
+### FASE04 — workflow publicado; execução/evidência ainda pendentes
+- Workflow: `.github/workflows/cotahist-fase04-normalizacao-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase04-normalizacao-2018-v1.yml
+- Commit de publicação: `cdcb13c0995a15e3f94a7c43063511175be70bcd`.
+- O workflow é acionado por `workflow_dispatch` e por push nas dependências monitorizadas; valida FASE03, proveniência e SHA-256 do RAW, executa o script canónico e compara CSV, manifesto e sidecar.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE04_NORMALIZACAO_V1.json`.
+- Critérios: 580.155 linhas, 25 campos, zero datas inválidas/fora de 2018, intervalo de datas reconciliado e hash do CSV coincidente com manifesto e sidecar. Se houver divergência, deve persistir evidência `BLOQUEADO` e não publicar CSV não validado.
+- Diferença de versão registada para reconciliação: manifesto `parser_version=1.1.0`; script canónico `PARSER_VERSION=1.1.2`. Não atualizar manifesto/sidecar silenciosamente nem alterar o RAW.
+- A criação/publicação do workflow não prova execução bem-sucedida; só promover para FASE05 após validar a evidência FASE04.
+
+### Roadmap operacional imediato
+1. FASE00–FASE03 2018: VALIDADO; FASE03 libera FASE04.
+2. FASE04 2018: workflow publicado; aguarda evidência persistida e reconciliação do NORMALIZED.
+3. Se FASE04 VALIDADO / `LIBERADO_PARA_FASE05`, avançar para FASE05; se BLOQUEADO, investigar os bloqueadores sem sobrescrever evidências históricas.
+4. Preservar RAW imutável, sem deduplicação nem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua independente e bloqueada até reconciliação própria.
