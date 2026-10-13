@@ -9,6 +9,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-2022-v1.yml"
       - "dados/cotahist/raw/anual/COTAHIST_A2022.ZIP"
       - "dados/cotahist/manifests/COTAHIST_A2022.json"
       - "dados/cotahist/checksums/COTAHIST_A2022.ZIP.sha256"
