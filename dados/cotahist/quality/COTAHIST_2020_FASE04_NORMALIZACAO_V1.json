@@ -25,7 +25,7 @@
   "blockers": [],
   "raw_modified": false,
   "deduplication_performed": false,
-  "validated_at_utc": "2026-10-13T17:02:58.952321+00:00",
+  "validated_at_utc": "2026-10-13T17:02:58.554925+00:00",
   "diagnostics": {
     "normalizer_returncode": 0,
     "normalizer_stdout": "NORMALIZADO: dados/cotahist/normalized/anual/COTAHIST_A2020.csv\nPARSER_VERSION=1.1.2\nCOTACOES_01=1251646\nPRIMEIRA_DATA=2020-01-02\nULTIMA_DATA=2020-12-30\n",
