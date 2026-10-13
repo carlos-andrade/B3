@@ -87,6 +87,12 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 - FASE10: `VALIDADO`, decisão `LIBERADO_PARA_FASE11`; 414.177 registos RAW e NORMALIZED, todos os 25 campos comparados, zero divergências, RAW imutável e sem deduplicação. Evidência: [COTAHIST_2015_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2015_FASE10_VALIDACAO_INDEPENDENTE_V1.json), commit `9841b5c2751815593cc255550591d9d00c9323f3`.
 - FASE11: `CERTIFICADO`, decisão `LIBERADO_PARA_FASE12`, zero bloqueadores; FASE10 sem divergências, Gate 06–08 com exceções classificadas e hashes RAW/NORMALIZED registados. Evidência: [COTAHIST_2015_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2015_FASE11_CERTIFICACAO_V1.json), blob `ad85083e59f8542b0416dd285bcfbe97ea333231`.
 
+### COTAHIST 2016 — estado inicial após transição
+
+- FASE12 de 2015 autorizou a continuação de 2016 sem certificar o novo ano. Evidência: [COTAHIST_2015_FASE12_FECHAMENTO_2016_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2015_FASE12_FECHAMENTO_2016_ABERTURA_V1.json), status `FECHADO_COM_TRANSICAO_CONTROLADA`, decisão `FECHAR_2015_E_AUTORIZAR_CONTINUACAO_2016`.
+- RAW 2016: SHA-256 `ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f`, coincidente com manifesto e sidecar; ZIP com um membro, zero comprimentos inválidos, 466.734 registos tipo 01.
+- NORMALIZED CSV 2016 ausente na verificação da FASE12. Próximo passo: governança FASE00 2016, aquisição/proveniência FASE01, integridade FASE02 e parsing FASE03; reconstruir o NORMALIZED apenas na FASE04 sob contrato vigente.
+
 ## 4. Roadmap por marco
 
 | Marco | Estado verificado | Próxima ação |
