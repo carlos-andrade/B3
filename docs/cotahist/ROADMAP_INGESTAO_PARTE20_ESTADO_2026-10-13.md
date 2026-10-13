@@ -91,7 +91,11 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 
 - FASE12 de 2015 autorizou a continuação de 2016 sem certificar o novo ano. Evidência: [COTAHIST_2015_FASE12_FECHAMENTO_2016_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2015_FASE12_FECHAMENTO_2016_ABERTURA_V1.json), status `FECHADO_COM_TRANSICAO_CONTROLADA`, decisão `FECHAR_2015_E_AUTORIZAR_CONTINUACAO_2016`.
 - RAW 2016: SHA-256 `ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f`, coincidente com manifesto e sidecar; ZIP com um membro, zero comprimentos inválidos, 466.734 registos tipo 01.
-- NORMALIZED CSV 2016 ausente na verificação da FASE12. Próximo passo: governança FASE00 2016, aquisição/proveniência FASE01, integridade FASE02 e parsing FASE03; reconstruir o NORMALIZED apenas na FASE04 sob contrato vigente.
+- FASE00: `VALIDADO`, decisão `AUTORIZAR_FASE01`; evidência blob `edad1b232c79fd790f3a5880659e28e3f82ab192`.
+- FASE01: `VALIDADO`, decisão `LIBERADO_PARA_FASE02`; hash RAW coincide com manifesto e sidecar; evidência blob `23cfc1752bde33c713362d17502a489eeb4125d6`.
+- FASE02: `VALIDADO`, decisão `LIBERADO_PARA_FASE03`; ZIP íntegro, um membro, 245 bytes por registo, 466.734 registos tipo 01; evidência blob `d0e8e98a8c8b35a54c57f310a3d242f1f5ddeb21`.
+- FASE03: `VALIDADO`, decisão `LIBERADO_PARA_FASE04`; zero comprimentos/datas inválidos, intervalo 2016-01-04 a 2016-12-29; evidência commit `7a3fefff7eb89aaaa40bc865b67bd0b626e2e887`.
+- FASE04: workflow publicado em `.github/workflows/cotahist-fase04-normalizacao-2016-v1.yml` (commit `756d28a727c9ec5490d6186ffdb6c84d815b739c`); NORMALIZED CSV ainda não foi encontrado na última consulta. Manifesto espera 466.734 linhas, 25 campos e hash `2d918553c976c74fcab7c065a25fa98efbffaf67f0fda73b46bbc7c8779ea66b`. Não avançar para FASE05 até persistir CSV e evidência FASE04 reconciliados.
 
 ## 4. Roadmap por marco
 
