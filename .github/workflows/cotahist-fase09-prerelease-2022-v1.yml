@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase09-prerelease-2022-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2022_GATE_06_08_V1.json"
 
 permissions:
