@@ -525,3 +525,32 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE04 deve regenerar o NORMALIZED usando o script canónico e só publicar o CSV se hash, contagem, esquema e datas coincidirem com o manifesto/sidecar existentes.
 4. Sem deduplicação e sem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua independente.
 
+
+
+---
+
+## Secção 21 — FASE00 2018 validada; FASE01 preparada (2026-10-13)
+
+### FASE00 — governação e pré-condições
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE00_GOVERNANCA_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE00_GOVERNANCA_V1.json
+- Estado: `VALIDADO`; decisão: `AUTORIZAR_FASE01`; bloqueadores: zero.
+- Transição 2017→2018 confirmada como `FECHADO_COM_TRANSICAO_CONTROLADA`.
+- Layout Mestre: versão 1.0.1; RAW, manifesto e sidecar presentes.
+- CSV NORMALIZED ausente de forma esperada nesta etapa; a reconstrução pertence à FASE04, depois das FASE01–03.
+- Commit de evidência observado: `316cb5cd27f4d7fe3d72f3d09462922b889f3586`.
+
+### FASE01 — workflow publicado; evidência pendente
+- Workflow: `.github/workflows/cotahist-fase01-aquisicao-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase01-aquisicao-2018-v1.yml
+- Commit de publicação: `f8f804cd71beeb7c17fd5d88335778cc2ff78595`.
+- O workflow valida a autorização FASE00, proveniência B3 e coincidência do SHA-256 físico do RAW com manifesto e sidecar. O checkout usa Git LFS e a evidência identifica a verificação como retrospectiva do RAW já persistido.
+- Hash esperado do RAW 2018: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- A consulta posterior à publicação ainda não encontrou `dados/cotahist/quality/COTAHIST_2018_FASE01_AQUISICAO_RAW_V1.json`. Portanto, FASE01 permanece pendente; não presumir que o workflow terminou com sucesso só porque o commit existe.
+
+### Roadmap operacional imediato
+1. FASE00 2018: VALIDADO; autorização explícita para FASE01.
+2. FASE01 2018: workflow publicado; aguarda evidência persistida e confirmação de `status=VALIDADO`, `decision=LIBERADO_PARA_FASE02`, hash RAW = manifesto = sidecar.
+3. Só após validar a evidência FASE01, preparar/executar FASE02; depois FASE03.
+4. FASE04 deve regenerar o CSV com o script canónico e comparar hash, contagem, esquema e datas com manifesto/sidecar existentes; registar a diferença de versão do parser sem a ocultar.
+5. RAW imutável; sem deduplicação e sem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua numa trilha independente e bloqueada até reconciliação própria.
