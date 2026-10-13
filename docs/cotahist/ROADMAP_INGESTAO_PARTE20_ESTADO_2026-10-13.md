@@ -888,3 +888,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE11: só após FASE10 sem divergências.
 4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 33. COTAHIST 2018 — FASE10 validada; FASE11 publicada (2026-10-13)
+
+### FASE10 — Validação independente integral
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2018_FASE10_VALIDACAO_INDEPENDENTE_V1.json`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2018_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+- Blob SHA: `6a5d3220b8e4ac5cb6f573130b8fa35d34684681`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38432586394.
+- Decisão: `LIBERADO_PARA_FASE11`.
+- RAW/NORMALIZED: 580.155 registos cada; 245 bytes por registo; tipos físicos: header `00` = 1, registos `01` = 580.155, trailer `99` = 1.
+- Os 25 campos foram comparados independentemente; divergências: 0; amostra vazia.
+- SHA-256 RAW: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- SHA-256 NORMALIZED: `e3e57fdcf4be823830e6d6653d68275fa33af6d51b86392356cc29fe7a0f7981`.
+- RAW não modificado; deduplicação não executada.
+
+### FASE11 — Certificação
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase11-certificacao-2018-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase11-certificacao-2018-v1.yml
+- Commit de publicação: `011b0993f7ae401eb9e660d2816e16d6eedcda73`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2018_FASE11_CERTIFICACAO_V1.json`.
+- Verifica FASE09, FASE10, Gate 06–08, manifesto e hashes; a certificação cobre integridade/consistência do conjunto, não estratégias de investimento nem deduplicação.
+- Só avançar para FASE12 após evidência `CERTIFICADO`, `LIBERADO_PARA_FASE12` e zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE10 (2018): validadas/liberadas conforme evidências persistidas.
+2. FASE11 (2018): workflow publicado; verificar run e certificação.
+3. FASE12: só após FASE11 certificada; fechamento do ano não certifica automaticamente o ano seguinte.
+4. Preservar RAW/linhas e manter REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
