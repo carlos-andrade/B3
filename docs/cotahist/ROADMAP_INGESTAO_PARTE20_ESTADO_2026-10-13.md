@@ -230,3 +230,39 @@ Verificação posterior na branch `main` encontrou a evidência FASE04 que não 
 6. Manter `REC-001 B3 × BLOOMBERG_MAIL` bloqueada até à revisão da divergência de multiplicidades por data.
 
 **Regra de promoção:** artefactos, hashes e contagens verificados na branch são necessários; workflow publicado sem evidência persistida não é conclusão de fase.
+
+
+## 12. Verificação FASE05 e preparação FASE06 — 2017
+
+Verificação realizada em 2026-10-13 na branch `main`: a evidência FASE05 foi encontrada e validada.
+
+### FASE05 — 2017: VALIDADO
+
+- Evidência: [COTAHIST_2017_FASE05_MANIFESTO_CHECKSUM_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE05_MANIFESTO_CHECKSUM_V1.json).
+- Estado/decisão: `VALIDADO` / `LIBERADO_PARA_FASE06`.
+- RAW SHA-256 calculado, manifesto e sidecar coincidem: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`.
+- NORMALIZED SHA-256 calculado, manifesto e sidecar coincidem: `3f56da73cfe270b78c9e5e955efddfb7b61702d12f5954f3f3468464a619a0db`.
+- ZIP: membro único `COTAHIST_A2017.TXT`; teste `PASS`.
+- Contagem: 489.115 linhas, 25 campos; intervalo 2017-01-02 a 2017-12-28.
+- `raw_modified=false`; `deduplication_performed=false`.
+- Limite: reconciliação semântica linha a linha fica para FASE06.
+
+### FASE06 — 2017: workflow publicado; resultado ainda pendente
+
+- Workflow: [cotahist-fase06-reconciliacao-2017-v1.yml](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase06-reconciliacao-2017-v1.yml).
+- Commit do workflow: https://github.com/carlos-andrade/B3/commit/f1056ff82766d12c8e3e08606a594b3469f9d8d2.
+- Escopo: reconciliação de 12 campos críticos RAW × NORMALIZED, sem alterar RAW e sem deduplicar; a avaliação de chaves permanece na FASE07.
+- A FASE06 só será promovida após a evidência `dados/cotahist/quality/COTAHIST_2017_FASE06_RECONCILIACAO_V1.json` estar persistida e auditada. A criação do workflow não prova execução.
+- Próxima ação: executar manualmente **Run workflow** na branch `main`, caso o push não tenha iniciado a execução, e depois verificar a evidência.
+
+### Roadmap operacional após esta verificação
+
+1. FASE05 2017: concluída e validada.
+2. FASE06 2017: workflow publicado; aguardando execução/evidência de reconciliação de 12 campos críticos.
+3. FASE07 2017: chaves e cardinalidade, sem remover linhas; depende da FASE06 validada.
+4. FASE08 + Gate 06–08: calendário e consistência temporal, com exceções explícitas.
+5. FASE09 → FASE10: pré-release e validação independente dos 25 campos.
+6. FASE11 → FASE12: certificação, fechamento e transição controlada para 2018.
+7. REC-001 B3 × BLOOMBERG_MAIL continua bloqueada em trilha independente por divergência de multiplicidades/ordem; não contornar pela certificação anual.
+
+**Regra de promoção:** não avançar de fase sem evidência persistida, hashes e contagens reconciliados.
