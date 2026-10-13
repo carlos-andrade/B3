@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2018,
+  "phase": "FASE02",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE03",
+  "evidence_kind": "VALIDACAO_CANONICA_REEXECUTADA",
+  "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2018.ZIP",
+  "raw_sha256": "9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507",
+  "phase01_evidence_path": "dados/cotahist/quality/COTAHIST_2018_FASE01_AQUISICAO_RAW_V1.json",
+  "phase01_status": "VALIDADO",
+  "zip_member_count": 1,
+  "zip_member": "COTAHIST_A2018.TXT",
+  "zip_testzip_error": null,
+  "total_lines": 580157,
+  "record_length_bytes": 245,
+  "invalid_record_lengths": 0,
+  "record_type_counts": {
+    "00": 1,
+    "01": 580155,
+    "99": 1
+  },
+  "validated_at_utc": "2026-10-13T14:18:57.288252+00:00",
+  "notes": "Valida integridade física e estrutural da fonte; não valida parsing nem NORMALIZED."
+}
