@@ -1,3 +1,4 @@
+# Execução controlada após FASE07; métricas lexicográficas são classificadas separadamente da regressão temporal.
 name: COTAHIST 2015 - FASE08 Calendario e Consistencia
 
 on:
