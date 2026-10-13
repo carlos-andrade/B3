@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase08-calendario-2022-v2.yml"
       - "dados/cotahist/quality/COTAHIST_2022_FASE06_RECONCILIACAO_V1.json"
       - "dados/cotahist/quality/COTAHIST_2022_FASE07_IDENTIDADE_CHAVES_V2.json"
       - "dados/cotahist/normalized/anual/COTAHIST_A2022.csv"
