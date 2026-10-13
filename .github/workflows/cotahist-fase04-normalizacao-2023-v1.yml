@@ -1,0 +1,156 @@
+name: COTAHIST 2023 - FASE02/03 e FASE04 Normalizacao Controlada
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-2023-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2023.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2023.json"
+      - "dados/cotahist/checksums/COTAHIST_A2023.ZIP.sha256"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2023_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2023.csv.sha256"
+      - "scripts/ingestao/normalize_cotahist.py"
+permissions:
+  contents: write
+concurrency:
+  group: cotahist-fase04-normalizacao-2023-v1
+  cancel-in-progress: false
+jobs:
+  validate-normalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Revalidar RAW, parsing e normalizacao
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, subprocess, sys, zipfile
+          root=pathlib.Path("dados/cotahist")
+          raw=root/"raw/anual/COTAHIST_A2023.ZIP"
+          rm_path=root/"manifests/COTAHIST_A2023.json"
+          rs_path=root/"checksums/COTAHIST_A2023.ZIP.sha256"
+          nm_path=root/"normalized/manifests/COTAHIST_A2023_quality.json"
+          ns_path=root/"normalized/manifests/COTAHIST_A2023.csv.sha256"
+          norm=root/"normalized/anual/COTAHIST_A2023.csv"
+          q=root/"quality"; q.mkdir(parents=True,exist_ok=True)
+          f02p=q/"COTAHIST_2023_FASE02_INTEGRIDADE_FONTE_V1.json"
+          f03p=q/"COTAHIST_2023_FASE03_PARSING_V1.json"
+          f04p=q/"COTAHIST_2023_FASE04_NORMALIZACAO_V1.json"
+          required=[raw,rm_path,rs_path,nm_path,ns_path,pathlib.Path("scripts/ingestao/normalize_cotahist.py")]
+          missing=[str(p) for p in required if not p.is_file() or not p.stat().st_size]
+          if missing: sys.exit("Pre-condicoes ausentes: "+",".join(missing))
+          rm=json.loads(rm_path.read_text()); nm=json.loads(nm_path.read_text())
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          parts=rs_path.read_text().strip().split(); raw_side=parts[0] if parts else ""
+          raw_ok=raw_sha==rm.get("sha256")==raw_side
+          f02_block=[]
+          if rm.get("ano")!=2023 or rm.get("fonte")!="B3" or rm.get("status")!="VALIDADO": f02_block.append("MANIFESTO_RAW_INVALIDO")
+          if not raw_ok: f02_block.append("RAW_SHA256_DIVERGENTE")
+          zip_error=None; members=[]; counts={}; bad_lengths=0; invalid_dates=[]; dates=[]
+          try:
+              with zipfile.ZipFile(raw) as z:
+                  zip_error=z.testzip(); members=[n for n in z.namelist() if not n.endswith("/")]
+                  if len(members)==1:
+                      with z.open(members[0]) as f:
+                          for no,line in enumerate(f,1):
+                              line=line.rstrip(b"\\r\\n")
+                              if len(line)!=245: bad_lengths+=1; continue
+                              kind=line[:2].decode("ascii","replace"); counts[kind]=counts.get(kind,0)+1
+                              if kind=="01":
+                                  value=line[2:10].decode("ascii","replace")
+                                  try:
+                                      dt=datetime.datetime.strptime(value,"%Y%m%d").date()
+                                      if dt.year!=2023: invalid_dates.append({"line":no,"date":value,"reason":"OUT_OF_YEAR"})
+                                      dates.append(dt.isoformat())
+                                  except ValueError: invalid_dates.append({"line":no,"date":value,"reason":"INVALID_DATE"})
+          except Exception as exc: zip_error=str(exc)
+          f02_ok=not f02_block and zip_error is None and len(members)==1
+          structural_ok=f02_ok and bad_lengths==0 and counts.get("00")==1 and counts.get("99")==1 and counts.get("01",0)>0 and not invalid_dates
+          f02={"schema_version":"1.0.0","year":2023,"phase":"FASE02","status":"VALIDADO" if f02_ok else "BLOQUEADO","decision":"LIBERADO_PARA_FASE03" if f02_ok else "BLOQUEADO","raw_path":str(raw),"raw_sha256":raw_sha,"manifest_sha256":rm.get("sha256"),"sidecar_sha256":raw_side,"raw_hash_match":raw_ok,"zip_test_error":zip_error,"zip_member_count":len(members),"zip_members":members,"blockers":f02_block,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          f03={"schema_version":"1.0.0","year":2023,"phase":"FASE03","status":"VALIDADO" if structural_ok else "BLOQUEADO","decision":"LIBERADO_PARA_FASE04" if structural_ok else "BLOQUEADO","evidence_kind":"PARSING_ESTRUTURAL_CANONICO_REEXECUTADO","raw_path":str(raw),"raw_sha256":raw_sha,"phase02_evidence_path":str(f02p),"zip_member_count":len(members),"zip_member":members[0] if len(members)==1 else None,"record_length_bytes":245,"total_records":sum(counts.values()),"record_type_counts":counts,"quote_records_type_01":counts.get("01",0),"invalid_record_lengths":bad_lengths,"invalid_dates":len(invalid_dates),"invalid_date_samples":invalid_dates[:20],"first_quote_date":min(dates) if dates else None,"last_quote_date":max(dates) if dates else None,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"limitations":["Parsing estrutural nao certifica normalizacao nem semantica."]}
+          f02p.write_text(json.dumps(f02,ensure_ascii=False,indent=2)+"\\n")
+          f03p.write_text(json.dumps(f03,ensure_ascii=False,indent=2)+"\\n")
+          blockers=list(f02_block)
+          if not structural_ok: blockers.append("RAW_ESTRUTURAL_INVALIDO")
+          norm_sha=None; rows=None; fields=None; first=None; last=None; declared_side=None; parser_version=None
+          if structural_ok:
+              tmp=pathlib.Path("/tmp/COTAHIST_A2023.csv")
+              proc=subprocess.run([sys.executable,"scripts/ingestao/normalize_cotahist.py","--zip",str(raw),"--output",str(tmp)],text=True,capture_output=True)
+              parser_version=subprocess.run([sys.executable,"-c","import runpy; print(runpy.run_path('scripts/ingestao/normalize_cotahist.py').get('PARSER_VERSION','unknown'))"],capture_output=True,text=True).stdout.strip()
+              if proc.returncode or not tmp.is_file() or not tmp.stat().st_size: blockers.append("NORMALIZADOR_FALHOU:"+proc.stderr[-1000:])
+              else:
+                  norm_sha=hashlib.sha256(tmp.read_bytes()).hexdigest()
+                  with tmp.open(encoding="utf-8",newline="") as fh:
+                      reader=csv.DictReader(fh); header=reader.fieldnames or []; data=list(reader)
+                  rows=len(data); fields=len(header)
+                  parsed=[]; invalid=0; out_year=0
+                  for row in data:
+                      try:
+                          dt=datetime.date.fromisoformat(row.get("data_pregao","")); parsed.append(dt)
+                          if dt.year!=2023: out_year+=1
+                      except ValueError: invalid+=1
+                  first=min(parsed).isoformat() if parsed else None; last=max(parsed).isoformat() if parsed else None
+                  ns=ns_path.read_text().strip().split(); declared_side=ns[0] if ns else ""
+                  if fields!=25 or any(len(row)!=25 for row in data): blockers.append("SCHEMA_NORMALIZED_DIVERGENTE")
+                  if rows!=nm.get("linhas_normalized"): blockers.append("CONTAGEM_NORMALIZED_DIVERGENTE")
+                  if norm_sha!=nm.get("normalized_sha256"): blockers.append("NORMALIZED_SHA256_DIVERGENTE_MANIFESTO")
+                  if norm_sha!=declared_side: blockers.append("NORMALIZED_SHA256_DIVERGENTE_SIDECAR")
+                  if nm.get("ano")!=2023 or nm.get("source")!="B3" or nm.get("campos")!=25: blockers.append("METADADOS_NORMALIZED_INVALIDOS")
+                  if invalid or out_year: blockers.append("DATAS_NORMALIZED_INVALIDAS")
+                  if first!=nm.get("primeira_data") or last!=nm.get("ultima_data"): blockers.append("INTERVALO_DE_DATAS_DIVERGENTE")
+                  if rows!=counts.get("01",0): blockers.append("CONTAGEM_RAW_NORMALIZED_DIVERGENTE")
+                  if not blockers:
+                      norm.parent.mkdir(parents=True,exist_ok=True); norm.write_bytes(tmp.read_bytes())
+          f04={"schema_version":"1.0.0","year":2023,"phase":"FASE04","status":"VALIDADO" if not blockers and norm_sha else "BLOQUEADO","decision":"LIBERADO_PARA_FASE05" if not blockers and norm_sha else "BLOQUEADO_PARA_FASE05","entry_gate":"FASE03","validation_method":"normalizacao_deterministica_com_reconciliacao_manifesto_e_sidecar","raw_path":str(raw),"raw_sha256":raw_sha,"normalized_path":str(norm),"normalized_sha256_calculated":norm_sha,"normalized_sha256_manifest":nm.get("normalized_sha256"),"normalized_sha256_sidecar":declared_side,"manifest_parser_version":nm.get("parser_version"),"normalizer_script_version":parser_version,"rows":rows,"fields":fields,"first_date":first,"last_date":last,"blockers":blockers,"raw_modified":False,"deduplication_performed":False,"validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()}
+          f04p.write_text(json.dumps(f04,ensure_ascii=False,indent=2)+"\\n")
+          print(json.dumps({"FASE02":f02,"FASE03":f03,"FASE04":f04},ensure_ascii=False,indent=2))
+          if blockers: sys.exit("FASE04 bloqueada: "+";".join(blockers))
+          PY
+      - name: Persistir evidencias e CSV apenas se validado
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2023_FASE02_INTEGRIDADE_FONTE_V1.json dados/cotahist/quality/COTAHIST_2023_FASE03_PARSING_V1.json dados/cotahist/quality/COTAHIST_2023_FASE04_NORMALIZACAO_V1.json
+          status="$(python -c 'import json; print(json.load(open("dados/cotahist/quality/COTAHIST_2023_FASE04_NORMALIZACAO_V1.json")).get("status","BLOQUEADO"))' 2>/dev/null || echo BLOQUEADO)"
+          if [ "$status" = "VALIDADO" ]; then
+            test -s dados/cotahist/normalized/anual/COTAHIST_A2023.csv
+            git add dados/cotahist/normalized/anual/COTAHIST_A2023.csv
+          fi
+          git diff --cached --quiet && exit 0
+          if [ "$status" = "VALIDADO" ]; then git commit -m "data(cotahist): validar normalizacao 2023 fase04"; else git commit -m "audit(cotahist): registar diagnostico normalizacao 2023"; fi
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              unexpected=false
+              while IFS= read -r f; do
+                case "$f" in
+                  dados/cotahist/quality/COTAHIST_2023_FASE02_INTEGRIDADE_FONTE_V1.json|dados/cotahist/quality/COTAHIST_2023_FASE03_PARSING_V1.json|dados/cotahist/quality/COTAHIST_2023_FASE04_NORMALIZACAO_V1.json) git checkout --theirs -- "$f"; git add "$f" ;;
+                  *) echo "Conflito inesperado: $f"; unexpected=true ;;
+                esac
+              done < <(git diff --name-only --diff-filter=U)
+              if [ "$unexpected" = true ]; then git rebase --abort || true; exit 1; fi
+              GIT_EDITOR=true git rebase --continue
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2023 — FASE02/03/04"
+            echo "- Revalidacao estrutural RAW e reconciliacao NORMALIZED."
+            echo "- CSV so e publicado se hash, schema, contagem e datas coincidirem."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
