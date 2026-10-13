@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T22:56:37.026515+00:00
-Workflows auditados: 486
+Gerado em UTC: 2026-10-13T23:01:36.359353+00:00
+Workflows auditados: 491
 
 ## Regra de decisão
 
@@ -316,7 +316,10 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase08-calendario-2018-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2019-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2020-v1.yml | 8 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase08-calendario-2021-v1.yml | 8 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase08-calendario-2021-v2.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-consistencia-1998-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-fase08-diagnostico-ordem-2021-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-semantica-k4-1995-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-semantica-k4-1996-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -358,6 +361,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase09-prerelease-2018-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2019-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09-prerelease-2020-v1.yml | 9 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase09-prerelease-2021-v1.yml | 9 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase09b-multiplicidade-term-1986-v1.yml | 9 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1988-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase10-integridade-1989-v1.yml | 10 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
@@ -471,6 +475,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-gate-06-08-2018-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-06-08-2019-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-06-08-2020-v1.yml | — | **CONFORME** | — | — |
+| .github/workflows/cotahist-gate-06-08-2021-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-historico-1986.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-importacao-diaria-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-integridade-campos-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
