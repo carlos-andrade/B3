@@ -1,0 +1,64 @@
+name: B3 — validação WATCHDOG
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "WATCHDOG/**"
+      - ".github/workflows/watchdog-b3-validation.yml"
+      - ".github/workflows/b3-monitor-execucoes-v1.yml"
+      - "README.md"
+  pull_request:
+    paths:
+      - "WATCHDOG/**"
+      - ".github/workflows/watchdog-b3-validation.yml"
+      - ".github/workflows/b3-monitor-execucoes-v1.yml"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validar inventários WATCHDOG
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path(".")
+          systems_path = root / "WATCHDOG/registry/sistemas-monitorizados.json"
+          controls_path = root / "WATCHDOG/registry/controlos-obrigatorios.json"
+          systems = json.loads(systems_path.read_text(encoding="utf-8"))
+          controls = json.loads(controls_path.read_text(encoding="utf-8"))
+
+          assert systems.get("schema_version") == 1
+          assert systems.get("project") == "B3"
+          assert isinstance(systems.get("systems"), list) and systems["systems"]
+          ids = set()
+          for system in systems["systems"]:
+              for field in ("id", "name", "owner", "criticality", "monitor", "checks"):
+                  assert field in system, f"Campo ausente: {field}"
+              assert system["id"] not in ids, f"ID duplicado: {system['id']}"
+              ids.add(system["id"])
+              workflow = root / system["monitor"]["workflow"]
+              assert workflow.is_file(), f"Workflow monitorizado ausente: {workflow}"
+              assert "*/15 * * * *" in workflow.read_text(encoding="utf-8"), "Cadência esperada não encontrada"
+              check_ids = set()
+              for check in system["checks"]:
+                  assert check.get("id") and check["id"] not in check_ids, "ID de controlo ausente/duplicado"
+                  check_ids.add(check["id"])
+                  assert check.get("state") in {"IMPLEMENTADO_NO_WORKFLOW", "PENDENTE", "PARCIAL"}
+          assert controls.get("schema_version") == 1
+          assert controls.get("project") == "B3"
+          assert controls.get("controls"), "Catálogo de controlos vazio"
+          print(f"PASS: {len(systems['systems'])} sistema(s), inventário e workflow validados.")
+          print(f"Controlos catalogados: {len(controls['controls'])}; pendências mantidas explicitamente.")
+          PY
