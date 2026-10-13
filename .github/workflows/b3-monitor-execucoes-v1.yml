@@ -117,8 +117,13 @@ jobs:
               f"**Execuções ativas:** {len(active)}",
               f"**Distribuição:** {dict(counts)}",
               "",
-              "## Execuções não favoráveis"
+              "## Falhas agrupadas por workflow"
           ]
+          if bad_by_workflow:
+              lines.extend([f"- {name}: {count}" for name, count in bad_by_workflow.most_common(20)])
+          else:
+              lines.append("- Nenhuma.")
+          lines += ["", "## Execuções não favoráveis"]
           if bad:
               lines.extend([
                   f"- {r['name']} | run #{r['run_number']} | {r['conclusion'] or r['status']} | {r['html_url']}"
