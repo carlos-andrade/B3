@@ -1644,3 +1644,14 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE05: apenas após FASE04 VALIDADO.
 4. Preservar RAW e linhas; não deduplicar.
 
+## 61. COTAHIST 2021 — otimização operacional da FASE04 e preparação da FASE05 (2026-10-13)
+
+- Identificada ineficiência no primeiro run da FASE04: checkout completo do repositório com `fetch-depth: 0` e LFS.
+- Workflow corrigido para checkout esparso (`sparse-checkout`) apenas dos artefactos necessários e `fetch-depth: 1`, mantendo LFS e o normalizador canónico.
+- Workflow corrigido: `.github/workflows/cotahist-fase04-normalizacao-2021-v1.yml`.
+- Commit de correção: `9e983eae18868522be30e64ea0e8f3996d016fad`.
+- Run inicial: https://github.com/carlos-andrade/B3/actions/runs/38480393973 — em execução no último ponto de observação, na etapa de normalização; não declarar resultado final.
+- Run com checkout otimizado: https://github.com/carlos-andrade/B3/actions/runs/38480513763 — pendente atrás do run inicial, por `concurrency` sem cancelamento.
+- FASE05 preparada: `.github/workflows/cotahist-fase05-manifesto-checksum-2021-v1.yml`, commit `f0d1fd8dfae54872d84d841d8676baa8547dd3dd`. O disparo automático foi limitado à evidência FASE04, evitando execução prematura na criação do workflow.
+- Próximo passo: aguardar o run FASE04 inicial terminar; validar a evidência e o CSV persistidos. Se o run inicial falhar/expirar, o run otimizado poderá assumir após a libertação do grupo de concorrência.
+
