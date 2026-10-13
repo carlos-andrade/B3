@@ -1,0 +1,235 @@
+# FASE08 2023: consistencia temporal interna sem reordenar ou remover registos.
+name: COTAHIST 2023 - FASE08 Calendario e Consistencia
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase08-calendario-2023-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2023_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2023_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2023.csv"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase08-calendario-2023-v1
+  cancel-in-progress: false
+
+jobs:
+  calendario:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase08-calendario-2023-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2023.csv
+            dados/cotahist/quality/COTAHIST_2023_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2023_FASE07_IDENTIDADE_CHAVES_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter NORMALIZED via Git LFS
+        run: |
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2023.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2023.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2023.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED permanece como ponteiro Git LFS."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar datas e consistencia temporal em streaming
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys
+          from collections import Counter
+
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2023.csv")
+          f6_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2023_FASE06_RECONCILIACAO_V1.json")
+          f7_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2023_FASE07_IDENTIDADE_CHAVES_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json")
+          out = {
+              "schema_version": "1.0.0", "year": 2023, "phase": "FASE08",
+              "status": "BLOQUEADO", "decision": "BLOQUEADO_PARA_GATE_06_08",
+              "validation_type": "CONSISTENCIA_TEMPORAL_INTERNA_STREAMING",
+              "normalized_path": str(csv_path), "blockers": [], "exceptions": [],
+              "deduplication_performed": False, "rows_removed": 0,
+              "official_calendar_reference": "NOT_PERSISTED",
+              "limitations": ["Esta fase verifica consistência interna; não prova equivalência com calendário oficial B3.",
+                              "A sequência física é preservada. Nenhuma linha é reordenada ou removida."]
+          }
+          try:
+              for p in (csv_path, f6_path, f7_path):
+                  if not p.is_file() or p.stat().st_size == 0:
+                      raise RuntimeError(f"Arquivo ausente/vazio: {p}")
+              f6 = json.loads(f6_path.read_text(encoding="utf-8"))
+              f7 = json.loads(f7_path.read_text(encoding="utf-8"))
+              digest = hashlib.sha256()
+              with csv_path.open("rb") as bf:
+                  for chunk in iter(lambda: bf.read(1024 * 1024), b""):
+                      digest.update(chunk)
+              physical_hash = digest.hexdigest()
+              out["normalized_sha256"] = physical_hash
+              if not (f6.get("year") == 2023 and f6.get("phase") == "FASE06" and
+                      f6.get("status") == "VALIDADO" and
+                      f6.get("decision") == "LIBERADO_PARA_FASE07" and f6.get("mismatch_count") == 0):
+                  raise RuntimeError("FASE06 não VALIDADO/liberado")
+              if not (f7.get("year") == 2023 and f7.get("phase") == "FASE07" and
+                      f7.get("status") == "VALIDADO" and
+                      f7.get("decision") == "LIBERADO_PARA_FASE08"):
+                  raise RuntimeError("FASE07 não VALIDADO/liberado")
+              if f6.get("normalized_sha256") != physical_hash or f7.get("source_normalized_sha256") != physical_hash:
+                  raise RuntimeError("Hash NORMALIZED diverge das evidências FASE06/FASE07")
+
+              dates = []
+              invalid = []
+              chronology = []
+              last_by_instrument = {}
+              instrument_date_regressions = 0
+              instrument_date_samples = []
+              instrument_order_regressions = 0
+              previous_date = None
+              previous_instrument = None
+              weekday_counts = Counter()
+              sessions = set()
+              rows = 0
+              first_date = None
+              last_date = None
+              with csv_path.open(encoding="utf-8", newline="") as f:
+                  reader = csv.DictReader(f)
+                  fields = reader.fieldnames or []
+                  required = {"data_pregao", "codbdi", "codneg", "tpmerc", "prazot", "dismes"}
+                  missing = sorted(required - set(fields))
+                  if missing:
+                      raise RuntimeError("Campos necessários ausentes: " + ", ".join(missing))
+                  for row in reader:
+                      rows += 1
+                      value = row.get("data_pregao", "")
+                      try:
+                          dt = datetime.date.fromisoformat(value)
+                          if dt.year != 2023:
+                              invalid.append({"row": rows, "date": value, "reason": "OUT_OF_YEAR"})
+                              continue
+                      except ValueError:
+                          invalid.append({"row": rows, "date": value, "reason": "INVALID_ISO_DATE"})
+                          continue
+                      ordinal = dt.toordinal()
+                      dates.append(ordinal)
+                      sessions.add(ordinal)
+                      weekday_counts[dt.strftime("%A")] += 0
+                      first_date = dt if first_date is None else min(first_date, dt)
+                      last_date = dt if last_date is None else max(last_date, dt)
+                      if previous_date is not None and dt < previous_date and len(chronology) < 100:
+                          chronology.append({"row": rows, "previous_date": previous_date.isoformat(), "current_date": dt.isoformat()})
+                      previous_date = dt
+                      key = tuple(row.get(k, "") or "" for k in ("codbdi", "codneg", "tpmerc", "prazot", "dismes"))
+                      if previous_instrument is not None and key < previous_instrument:
+                          instrument_order_regressions += 1
+                      previous_instrument = key
+                      prev = last_by_instrument.get(key)
+                      if prev is not None and dt < prev:
+                          instrument_date_regressions += 1
+                          if len(instrument_date_samples) < 20:
+                              instrument_date_samples.append({"row": rows, "instrument": list(key), "previous_date": prev.isoformat(), "current_date": dt.isoformat()})
+                      last_by_instrument[key] = dt
+              if invalid:
+                  out["invalid_dates_sample"] = invalid[:20]
+                  out["invalid_dates"] = len(invalid)
+                  raise RuntimeError(f"{len(invalid)} datas inválidas/fora do ano")
+              if rows != f6.get("normalized_records") or rows != f7.get("records"):
+                  raise RuntimeError("Contagem de linhas diverge das fases anteriores")
+              if first_date.isoformat() != f6.get("first_date") or last_date.isoformat() != f6.get("last_date"):
+                  raise RuntimeError("Intervalo de datas diverge da FASE06")
+
+              session_dates = sorted(sessions)
+              weekday_counts = Counter(datetime.date.fromordinal(d).strftime("%A") for d in session_dates)
+              weekend_dates = [datetime.date.fromordinal(d).isoformat() for d in session_dates if datetime.date.fromordinal(d).weekday() >= 5]
+              gaps = [{"from": datetime.date.fromordinal(session_dates[i-1]).isoformat(),
+                       "to": datetime.date.fromordinal(session_dates[i]).isoformat(),
+                       "calendar_days": session_dates[i]-session_dates[i-1]}
+                      for i in range(1, len(session_dates)) if session_dates[i]-session_dates[i-1] > 4]
+              source_order_classified = f6.get("status") == "VALIDADO" and f6.get("mismatch_count") == 0 and f6.get("normalized_sha256") == physical_hash
+              if chronology:
+                  out["exceptions"].append({"code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+                      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_SEMANTICA" if source_order_classified else "EXCECAO_A_VALIDAR",
+                      "blocking": not source_order_classified, "samples": chronology[:20],
+                      "detail": "A sequência física tem regressões de data; nenhuma linha foi reordenada. FASE06 reconciliou os 25 campos em ordem original."})
+              if instrument_date_regressions:
+                  out["exceptions"].append({"code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+                      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO" if source_order_classified else "EXCECAO_A_VALIDAR",
+                      "blocking": not source_order_classified, "count": instrument_date_regressions,
+                      "samples": instrument_date_samples,
+                      "detail": "Regressões na ordem física por instrumento não são, isoladamente, prova de erro semântico."})
+              out["exceptions"].append({"code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+                  "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA", "blocking": False})
+              out["exceptions"].append({"code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+                  "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_INTERNA", "blocking": False})
+              out.update({
+                  "status": "VALIDADO_COM_EXCECAO", "decision": "LIBERADO_PARA_GATE_06_08",
+                  "phase06_status": f6.get("status"), "phase07_status": f7.get("status"),
+                  "rows_checked": rows, "unique_trading_dates": len(session_dates),
+                  "first_trading_date": first_date.isoformat(), "last_trading_date": last_date.isoformat(),
+                  "invalid_dates": 0, "out_of_year_dates": 0,
+                  "chronological_regressions_observed": sum(1 for i in range(1, len(dates)) if dates[i] < dates[i-1]),
+                  "chronological_regression_samples": chronology[:20],
+                  "instrument_order_regressions": instrument_order_regressions,
+                  "instrument_date_regressions": instrument_date_regressions,
+                  "instrument_date_regression_samples": instrument_date_samples,
+                  "source_order_classified_by_row_reconciliation": source_order_classified,
+                  "weekday_distribution": dict(weekday_counts), "weekend_dates_observed": weekend_dates,
+                  "calendar_gaps_over_4_days": gaps
+              })
+          except Exception as exc:
+              out["blockers"].append(str(exc))
+              out["status"] = "BLOQUEADO"
+              out["decision"] = "BLOQUEADO_PARA_GATE_06_08"
+          out["validated_at_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          if out["status"] == "BLOQUEADO":
+              sys.exit("FASE08 BLOQUEADA: verificar blockers na evidência")
+          PY
+
+      - name: Persistir evidência FASE08 inclusive em caso de bloqueio
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json || {
+            echo "Evidência FASE08 não produzida; pré-condição falhou."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir consistencia temporal 2023 fase08"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2023 — FASE08"
+            echo "- Datas e consistência temporal em streaming; sem reordenação ou remoção."
+            echo "- Não certifica equivalência com calendário oficial B3."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
