@@ -493,3 +493,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 4. A transição não certifica 2018. A FASE04/etapas subsequentes de 2018 permanecem condicionadas à existência e validação do NORMALIZED.
 5. Preservar RAW e registos: nenhuma deduplicação ou remoção. REC-001 B3 × BLOOMBERG_MAIL continua independente.
 
+
+
+---
+
+## Secção 20 — FASE12 validada; ciclo 2018 preparado com gate de governação (2026-10-13)
+
+### FASE12 — fechamento de 2017 e transição para 2018
+- Evidência: `dados/cotahist/quality/COTAHIST_2017_FASE12_FECHAMENTO_2018_ABERTURA_V1.json`
+- URL: https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2017_FASE12_FECHAMENTO_2018_ABERTURA_V1.json
+- Estado: `FECHADO_COM_TRANSICAO_CONTROLADA`.
+- Decisão: `FECHAR_2017_E_AUTORIZAR_CONTINUACAO_2018`.
+- Bloqueadores: zero.
+- FASE10 2017: `VALIDADO`; FASE11 2017: `CERTIFICADO`.
+- RAW 2018 SHA-256 calculado = manifesto = sidecar: `9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507`.
+- ZIP: 1 membro; 580.155 registos tipo 01; zero comprimentos inválidos; header 00 e trailer 99 presentes.
+- NORMALIZED CSV 2018 ausente; FASE04 continua por executar/validar. A FASE12 não certifica 2018.
+- O workflow FASE12 foi ajustado para `lfs: true`, para garantir leitura do ficheiro RAW real no runner.
+- Commit do workflow: `827e82a5631683404a912a09bc835268373e5e36`.
+
+### Ciclo 2018 — FASE00 publicada, evidência pendente
+- Workflow: `.github/workflows/cotahist-fase00-governanca-2018-v1.yml`
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase00-governanca-2018-v1.yml
+- Commit da correção LFS: `971e60d337e5fc87eff8ba5dd746766cfc6aba6a`.
+- A FASE00 valida a autorização da transição, o Layout Mestre, a proveniência e a presença dos artefactos 2018.
+- **Estado: workflow publicado; evidência FASE00 ainda não encontrada.** O avanço para FASE01/FASE02 fica condicionado à evidência `COTAHIST_2018_FASE00_GOVERNANCA_V1.json` com decisão `AUTORIZAR_FASE01`.
+
+### Próximos passos
+1. Executar manualmente `COTAHIST 2018 - FASE00 Governanca e Pre-condicoes` na branch `main`, se não tiver iniciado automaticamente.
+2. Verificar a evidência FASE00 antes de criar/acionar a FASE01; depois seguir sequencialmente FASE01 → FASE02 → FASE03 → FASE04.
+3. FASE04 deve regenerar o NORMALIZED usando o script canónico e só publicar o CSV se hash, contagem, esquema e datas coincidirem com o manifesto/sidecar existentes.
+4. Sem deduplicação e sem remoção de linhas. REC-001 B3 × BLOOMBERG_MAIL continua independente.
+
