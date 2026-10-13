@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/cotahist-fase03-parsing-2022-v1.yml"
       - "dados/cotahist/quality/COTAHIST_2022_FASE02_INTEGRIDADE_FONTE_V1.json"
 
 permissions:
