@@ -1683,3 +1683,36 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE06 (2021): preparada; executar após FASE05 validada e reconciliar os 12 campos críticos.
 4. Preservar RAW/linhas; não deduplicar.
 
+## 63. COTAHIST 2021 — FASE05 validada; FASE06 reexecutada (2026-10-13)
+
+### FASE05 — Manifesto e checksum
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json`, blob `3c5993d25db3d8df2b519e3df9e1e71930daf3e3`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480769247 — `completed / success`.
+- Decisão: `LIBERADO_PARA_FASE06`.
+- RAW SHA-256: `b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705`; manifesto, sidecar e FASE01/02/04 concordantes.
+- NORMALIZED SHA-256: `0d0be90795918373ccbf2da068d563bef1d0ad83ca6b36f708730498aecfb3c2`; manifesto, sidecar e FASE04 concordantes.
+- 1.831.862 linhas, 25 campos, datas de 2021 válidas; ZIP `PASS`. RAW não modificado; nenhuma deduplicação.
+
+### Correção de persistência da FASE04
+- O run otimizado `38480513763` concluiu a validação, mas falhou ao persistir porque o CSV NORMALIZED não estava incluído no sparse-checkout.
+- A lista sparse-checkout foi corrigida para incluir `dados/cotahist/normalized/anual/COTAHIST_A2021.csv`.
+- Commit: `b8860f15a88dbfe760e745c20e1557fbcdfeb15b`.
+- Run de verificação da correção: https://github.com/carlos-andrade/B3/actions/runs/38480963443 — enfileirado no último ponto de observação. A FASE04 original continua válida; o retry serve para provar persistência idempotente.
+
+### FASE06 — Reconciliação semântica
+**Estado: RUN EM EXECUÇÃO; evidência ainda não confirmada.**
+
+- Workflow: `.github/workflows/cotahist-fase06-reconciliacao-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480911087.
+- O primeiro run `38480779003` ocorreu antes da evidência FASE05 e falhou na pré-condição; não foi encontrado artefacto FASE06 persistido desse run.
+- Novo run disparado após FASE05 e após alteração controlada da definição; verificar evidência `dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json`.
+- Avançar para FASE07 somente se `VALIDADO`, `LIBERADO_PARA_FASE07`, `mismatch_count=0` e hashes/contagens concordantes.
+
+### Roadmap operacional imediato
+1. FASE00–FASE05 (2021): VALIDADO.
+2. FASE06: execução em curso; verificar resultado e evidência.
+3. Retry FASE04: aguardar e verificar persistência idempotente.
+4. FASE07: somente após FASE06 sem divergências.
+
