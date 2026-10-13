@@ -1716,3 +1716,35 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Retry FASE04: aguardar e verificar persistência idempotente.
 4. FASE07: somente após FASE06 sem divergências.
 
+## 64. COTAHIST 2021 — FASE06 validada; FASE07 em execução (2026-10-13)
+
+### FASE06 — Reconciliação semântica
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json`, blob `f7a3a56f63312b6714405041e16cb065549203c0`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480911087 — validação concluída com sucesso.
+- Decisão: `LIBERADO_PARA_FASE07`; divergências: zero.
+- 1.831.862 registos RAW e NORMALIZED; hashes concordantes.
+- 12 campos críticos reconciliados: data, código BDI, ticker, mercado, preços de abertura/máximo/mínimo/médio/último, número de negócios, quantidade e volume financeiro.
+- Chave/identidade fica deliberadamente para FASE07; nenhuma linha removida e nenhuma deduplicação.
+
+### FASE07 — Identidade e cardinalidade
+**Estado: RUN EM EXECUÇÃO; evidência pendente.**
+
+- Workflow: `.github/workflows/cotahist-fase07-identidade-2021-v1.yml`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38481092183.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json`.
+- Testa chave-base e candidata com `prazot`, mede cardinalidade/colisões e preserva todas as linhas.
+- Só avançar para FASE08 se a evidência confirmar `VALIDADO`, decisão de chave candidata validada por cardinalidade e zero colisões na chave aprovada.
+
+### FASE04 — retry de persistência
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38480963443 — em execução na última observação.
+- A primeira FASE04 permanece VALIDADO e o CSV/manifesto/sidecar estão persistidos. O retry testa a correção do sparse-checkout para evitar falha de indexação ao persistir o CSV LFS.
+- Não tratar o retry pendente como falha da validação original nem como uma nova certificação.
+
+### Roadmap operacional imediato
+1. FASE00–FASE06 (2021): VALIDADO.
+2. FASE07: aguardar evidência de identidade/cardinalidade.
+3. FASE08: preparada; executar após FASE07 validada.
+4. Acompanhar retry FASE04 até término e confirmar resultado.
+
