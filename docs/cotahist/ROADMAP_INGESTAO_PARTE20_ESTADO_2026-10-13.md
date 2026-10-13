@@ -1065,3 +1065,31 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. FASE08–FASE12: dependem da evidência FASE07 e fases seguintes.
 4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 39. COTAHIST 2019 — FASE07 validada; FASE08 publicada (2026-10-13)
+
+### FASE07 — Identidade e cardinalidade
+**Estado: VALIDADO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE07_IDENTIDADE_CHAVES_V1.json`, blob `4f8d849964e7f721f0d17a329658df6b9567bef5`.
+- Decisão: `CHAVE_CANDIDATA_COM_PRAZOT_VALIDADA_POR_CARDINALIDADE`.
+- 779.229 registos analisados.
+- Chave-base `data_pregao+codbdi+codneg+tpmerc+dismes`: 740.249 chaves distintas, 15.805 grupos duplicados e 38.980 linhas excedentes; nenhum grupo colidente era uma repetição integral da linha.
+- Chave candidata com `prazot`: 779.229 chaves distintas, zero colisões; 15.805 grupos da chave-base separados por `prazot`.
+- `deduplication_performed=false`; `source_rows_removed=0`. Conclusão restrita ao COTAHIST 2019 e ao hash NORMALIZED auditado.
+
+### FASE08 — Calendário e consistência temporal
+**Estado: WORKFLOW PUBLICADO; execução/evidência pendentes.**
+
+- Workflow: `.github/workflows/cotahist-fase08-calendario-2019-v1.yml`.
+- URL: https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-fase08-calendario-2019-v1.yml
+- Commit: `cbd4e227291e71cffdffd04b4b155efe216168d7`.
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE08_SEMANTICA_CALENDARIO_V1.json`.
+- Valida datas, cronologia e consistência temporal por instrumento sem reordenar nem remover linhas. A ausência de calendário oficial histórico persistido deve permanecer como limitação explícita.
+- Só avançar para o Gate 06–08 após evidência FASE08 válida/liberada, zero bloqueadores e exceções classificadas.
+
+### Roadmap operacional imediato
+1. FASE00–FASE07 (2019): VALIDADO.
+2. FASE08 (2019): workflow publicado; verificar run/evidência.
+3. Gate 06–08 e FASE09: somente após FASE08.
+4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
+
