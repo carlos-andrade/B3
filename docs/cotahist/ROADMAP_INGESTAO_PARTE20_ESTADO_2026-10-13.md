@@ -79,7 +79,8 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 - FASE04: `VALIDADO`, decisão `LIBERADO_PARA_FASE05`; NORMALIZED persistido, 414.177 linhas, 25 campos, zero datas inválidas/fora do ano, hash calculado igual ao manifesto e sidecar: `9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d`. Evidência `COTAHIST_2015_FASE04_NORMALIZACAO_V1.json`.
 - Divergência de versão registada: manifesto declara parser `1.1.0`; script canónico atual declara `1.1.2`. O hash calculado coincide, por isso a versão não foi usada isoladamente como bloqueio nem o manifesto foi alterado.
 - FASE05: `VALIDADO`, decisão `LIBERADO_PARA_FASE06`; RAW e NORMALIZED físicos coincidem com os respetivos manifestos e sidecars; ZIP PASS; 414.177 linhas, 25 campos; intervalo 2015-01-02 a 2015-12-30; nenhuma deduplicação. Evidência commit `9516220f561bda61325b5d1ad044a3baf9dce1eb`.
-- FASE06: workflow publicado em `.github/workflows/cotahist-fase06-reconciliacao-2015-v1.yml` (commit `e1cecb906d10044f38d04d520bb31cf7218c2c09`), com gatilho confirmado no commit `a27329ccff8042c4f9c8392cf2fb991844c9a6d5`; a evidência ainda não foi encontrada na consulta. Não avançar para FASE07 antes da reconciliação crítica RAW × NORMALIZED.
+- FASE06: `VALIDADO`, decisão `LIBERADO_PARA_FASE07`; 414.177 registos RAW e NORMALIZED, 12 campos críticos, zero divergências, sem alteração RAW ou deduplicação. Evidência commit `a360c26e98dc5d6028cb4a41486b6bc9d0fe200f`.
+- FASE07: workflow publicado em `.github/workflows/cotahist-fase07-identidade-2015-v1.yml` (commit `590409163834a4639611acb1e9689239354ec104`), com gatilho confirmado no commit `e65923f392631f606d5441f3e7e3d3a116a0b498`; evidência ainda não encontrada na última consulta. Não avançar para FASE08 até validar a chave candidata e a cardinalidade.
 
 ## 4. Roadmap por marco
 
@@ -89,7 +90,7 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 | COTAHIST 2004–2013 | Ciclos anteriores registrados como concluídos/fechados, com exceções de calendário documentadas por ano | Não reexecutar sem causa/evidência |
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
 | COTAHIST 2014 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
-| COTAHIST 2015 | FASE00–FASE05 validadas; NORMALIZED persistido e hashes reconciliados | Confirmar FASE06 antes de autorizar FASE07 |
+| COTAHIST 2015 | FASE00–FASE06 validadas; reconciliação crítica com zero divergências | Confirmar FASE07 e não deduplicar linhas |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
 | Dataset oficial / certificação anual | README anterior registra execuções bem-sucedidas; esta continuação não reexecutou esses workflows | Revalidar matriz, manifestos e hashes antes de qualquer nova declaração |
