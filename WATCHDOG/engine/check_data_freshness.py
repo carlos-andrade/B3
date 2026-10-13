@@ -108,14 +108,16 @@ def evaluate(config: dict[str, Any], root: Path = ROOT, today: dt.date | None = 
         raise ValueError("Configuração inválida: esperado schema_version=1 e datasets como lista.")
     today = today or dt.datetime.now(dt.timezone.utc).date()
     ids: set[str] = set()
-    results = []
     for entry in config["datasets"]:
         if not isinstance(entry, dict):
             raise ValueError("Cada dataset deve ser um objeto.")
-        if entry.get("id") in ids:
-            raise ValueError(f"ID de dataset duplicado: {entry.get('id')}")
-        ids.add(entry.get("id"))
-        results.append(evaluate_dataset(entry, root, today))
+        dataset_id = entry.get("id")
+        if not isinstance(dataset_id, str) or not dataset_id.strip():
+            raise ValueError("Cada dataset deve ter um ID não vazio.")
+        if dataset_id in ids:
+            raise ValueError(f"ID de dataset duplicado: {dataset_id}")
+        ids.add(dataset_id)
+    results = [evaluate_dataset(entry, root, today) for entry in config["datasets"]]
     counts = {state: sum(1 for item in results if item["state"] == state) for state in ("PASS", "STALE", "UNKNOWN")}
     return {
         "schema_version": 1,
