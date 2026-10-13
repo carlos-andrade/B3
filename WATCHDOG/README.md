@@ -10,7 +10,7 @@ O projeto B3 tem um workflow de monitorização de execuções GitHub Actions:
 - Workflow: [B3 - Monitor independente de execuções V1](../.github/workflows/b3-monitor-execucoes-v1.yml)
 - Guia de heartbeat externo: [heartbeat-supervisor-externo.md](heartbeat-supervisor-externo.md)
 - Cadência declarada: a cada 15 minutos, além de execução manual.
-- Janela analisada: últimas 24 horas.
+- Janela analisada: últimas 24 horas, com paginação da API até ultrapassar o corte temporal; não se limita à primeira página de 100 execuções.
 - Sinais recolhidos: execuções desfavoráveis e execuções ainda ativas.
 - Evidência: JSON e Markdown publicados como artefacto GitHub Actions, com retenção configurada de 30 dias.
 - Alerta: cria ou atualiza uma issue aberta para execuções desfavoráveis.
@@ -24,9 +24,9 @@ O resultado `FAVORAVEL` significa apenas que, na janela analisada pelo script, n
 
 ## Monitorização da atualidade dos dados
 
-Foi adicionado o avaliador [check_data_freshness.py](engine/check_data_freshness.py), com catálogo explícito de limites em [datasets-monitorizados.json](registry/datasets-monitorizados.json). A verificação lê datas de observação declaradas nos manifestos; não transforma timestamps de ingestão em datas de mercado. O workflow [WATCHDOG de atualidade dos dados](../.github/workflows/watchdog-data-freshness.yml) executa testes, publica JSON/Markdown como artefacto de 30 dias e cria/atualiza uma issue quando identifica datasets fora do limite.
+Foi adicionado o avaliador [check_data_freshness.py](engine/check_data_freshness.py), com catálogo explícito de limites em [datasets-monitorizados.json](registry/datasets-monitorizados.json). A verificação lê datas de observação declaradas nos manifestos; não transforma timestamps de ingestão em datas de mercado. O workflow [WATCHDOG de atualidade dos dados](../.github/workflows/watchdog-data-freshness.yml) executa testes, publica JSON/Markdown como artefacto de 30 dias e cria/atualiza uma issue quando identifica datasets fora do limite e falha o workflow tanto em `STALE` como em `UNKNOWN`.
 
-**Primeira avaliação real (2026-10-13): 5 PASS, 1 STALE e 1 UNKNOWN.** A primeira execução encontrou BDI DailyAverageStocks em 2026-09-22 (21 dias), acima do limite de 5 dias, e abriu a [issue de atualidade #8](https://github.com/carlos-andrade/B3/issues/8). A captura automática foi corrigida e encontrou registos válidos em **2026-10-09**, preservando RAW, SHA-256 e manifesto em [dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json](../dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json). [Execução da captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38387032896).
+**Primeira avaliação real (2026-10-13): 5 PASS, 1 STALE e 1 UNKNOWN.** A primeira execução encontrou BDI DailyAverageStocks em 2026-09-22 (21 dias), acima do limite de 5 dias, e abriu a [issue de atualidade #8](https://github.com/carlos-andrade/B3/issues/8). A captura automática foi corrigida e encontrou registos válidos em **2026-10-09**, preservando RAW, SHA-256 e manifesto em [dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json](../dados/bdi/manifests/DailyAverageStocks/2026-10-09_page_0001.json). [Execução da captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38387168872).
 
 O manifesto anual COTAHIST 2026 declara a última data de observação **2026-09-23**, suportada pelo manifesto de qualidade NORMALIZED e pelo registo de reconciliação. O catálogo monitoriza também os manifestos diários COTAHIST, separadamente do snapshot anual. A reavaliação concluiu **8 PASS, 0 STALE e 0 UNKNOWN**, dentro dos limites configurados. [Execução de reavaliação](https://github.com/carlos-andrade/B3/actions/runs/38387593511). A [issue #8](https://github.com/carlos-andrade/B3/issues/8) permanece aberta para revisão humana e aprovação dos limiares.
 
