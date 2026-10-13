@@ -51,7 +51,8 @@ jobs:
               workflow = root / system["monitor"]["workflow"]
               assert workflow.is_file(), f"Workflow monitorizado ausente: {workflow}"
               workflow_text = workflow.read_text(encoding="utf-8")
-              assert "*/15 * * * *" in workflow_text, "Cadência esperada não encontrada"
+              schedule = system["monitor"].get("schedule")
+              assert schedule and schedule in workflow_text, f"Cadência declarada não encontrada: {schedule}"
               assert "upload-artifact@v4" in workflow_text, "Publicação de evidência ausente"
               assert "retention-days: 30" in workflow_text, "Retenção de evidência não declarada"
               assert "issues: write" in workflow_text, "Permissão de alertas não declarada"
@@ -61,9 +62,21 @@ jobs:
                   assert check.get("id") and check["id"] not in check_ids, "ID de controlo ausente/duplicado"
                   check_ids.add(check["id"])
                   assert check.get("state") in {"IMPLEMENTADO_NO_WORKFLOW", "PENDENTE", "PARCIAL"}
+          datasets_path = root / "WATCHDOG/registry/datasets-monitorizados.json"
+          freshness_script = root / "WATCHDOG/engine/check_data_freshness.py"
+          assert datasets_path.is_file(), "Catálogo de datasets ausente"
+          assert freshness_script.is_file(), "Avaliador de atualidade ausente"
+          datasets = json.loads(datasets_path.read_text(encoding="utf-8"))
+          assert datasets.get("schema_version") == 1
+          assert isinstance(datasets.get("datasets"), list) and datasets["datasets"]
+          dataset_ids = set()
+          for dataset in datasets["datasets"]:
+              assert dataset.get("id") and dataset["id"] not in dataset_ids, "ID de dataset ausente/duplicado"
+              dataset_ids.add(dataset["id"])
+              assert dataset.get("max_age_days", 0) > 0, "Limite de atualidade inválido"
           assert controls.get("schema_version") == 1
           assert controls.get("project") == "B3"
           assert controls.get("controls"), "Catálogo de controlos vazio"
-          print(f"PASS: {len(systems['systems'])} sistema(s), inventário e workflow validados.")
-          print(f"Controlos catalogados: {len(controls['controls'])}; pendências mantidas explicitamente.")
+          print(f"PASS: {len(systems['systems'])} sistema(s), inventários e workflows validados.")
+          print(f"Datasets monitorizados: {len(datasets['datasets'])}. Controlos catalogados: {len(controls['controls'])}.")
           PY
