@@ -1,5 +1,6 @@
 # Execução controlada após evidência FASE01 2017.
 # Reexecucao controlada da fase 02 de 2017.
+# Rerun 2017.
 name: COTAHIST 2017 - FASE02 Integridade da Fonte
 
 on:
