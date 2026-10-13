@@ -1,0 +1,140 @@
+name: COTAHIST 2011 - FASE04 Recuperar Normalized
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-recuperar-normalized-2011-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2011_FASE03_PARSING_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase04-recuperar-normalized-2011-v1
+  cancel-in-progress: false
+
+jobs:
+  recuperar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase04-recuperar-normalized-2011-v1.yml
+            scripts/ingestao/normalize_cotahist.py
+            dados/cotahist/quality/COTAHIST_2011_FASE03_PARSING_V1.json
+            dados/cotahist/raw/anual/COTAHIST_A2011.ZIP
+            dados/cotahist/normalized/manifests/COTAHIST_A2011_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2011.csv.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2011.csv
+            dados/cotahist/quality/COTAHIST_2011_FASE04_RECUPERACAO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerar NORMALIZED a partir do RAW
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/normalize_cotahist.py --zip dados/cotahist/raw/anual/COTAHIST_A2011.ZIP --output dados/cotahist/normalized/anual/COTAHIST_A2011.csv
+
+      - name: Auditar resultado sem corrigir manifesto silenciosamente
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, pathlib, datetime, sys
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2011.ZIP")
+          norm = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2011.csv")
+          mp = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2011_quality.json")
+          sp = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2011.csv.sha256")
+          f3p = pathlib.Path("dados/cotahist/quality/COTAHIST_2011_FASE03_PARSING_V1.json")
+          ev = pathlib.Path("dados/cotahist/quality/COTAHIST_2011_FASE04_RECUPERACAO_V1.json")
+          for p in (raw,norm,mp,sp,f3p):
+              if not p.is_file() or p.stat().st_size == 0:
+                  sys.exit(f"FASE04 BLOQUEADA: arquivo ausente/vazio: {p}")
+          m = json.loads(mp.read_text(encoding="utf-8"))
+          f3 = json.loads(f3p.read_text(encoding="utf-8"))
+          raw_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+          norm_sha = hashlib.sha256(norm.read_bytes()).hexdigest()
+          side = sp.read_text(encoding="utf-8").strip().split()
+          side_sha = side[0] if side else ""
+          if f3.get("status") != "VALIDADO" or f3.get("decision") != "LIBERADO_PARA_FASE04":
+              sys.exit("FASE04 BLOQUEADA: FASE03 não VALIDADO")
+          if raw_sha != m.get("raw_sha256"):
+              sys.exit("FASE04 BLOQUEADA: SHA do RAW diverge do manifesto")
+          with norm.open(encoding="utf-8", newline="") as f:
+              rd = csv.DictReader(f)
+              fields = rd.fieldnames or []
+              rows = list(rd)
+          if len(fields) != 25 or any(len(row) != 25 for row in rows):
+              sys.exit("FASE04 BLOQUEADA: esquema inválido")
+          dates = [row.get("data_pregao", "") for row in rows]
+          if not dates or any(not d.startswith("2011-") for d in dates):
+              sys.exit("FASE04 BLOQUEADA: datas inválidas ou fora de 2011")
+          count_ok = len(rows) == m.get("linhas_normalized")
+          dates_ok = min(dates) == m.get("primeira_data") and max(dates) == m.get("ultima_data")
+          manifest_ok = norm_sha == m.get("normalized_sha256")
+          sidecar_ok = norm_sha == side_sha
+          all_ok = count_ok and dates_ok and manifest_ok and sidecar_ok
+          out = {
+            "schema_version":"1.0.0","year":2011,"phase":"FASE04",
+            "status":"EVIDENCIA_RECONSTRUIDA_AGUARDA_VALIDACAO_INDEPENDENTE" if all_ok else "BLOQUEADO_PARA_PROMOCAO",
+            "decision":"AGUARDA_VALIDACAO_INDEPENDENTE" if all_ok else "BLOQUEADO_PARA_FASE05",
+            "recovery_type":"REGENERACAO_DETERMINISTICA_A_PARTIR_DO_RAW_IMUTAVEL",
+            "raw_path":str(raw),"raw_sha256_calculated":raw_sha,
+            "normalized_path":str(norm),"normalized_sha256_calculated":norm_sha,
+            "normalized_sha256_manifest":m.get("normalized_sha256"),
+            "normalized_sha256_sidecar":side_sha,
+            "manifest_hash_match":manifest_ok,"sidecar_hash_match":sidecar_ok,
+            "rows_calculated":len(rows),"rows_manifest":m.get("linhas_normalized"),
+            "fields":len(fields),"count_match":count_ok,"dates_match_manifest":dates_ok,
+            "first_date":min(dates),"last_date":max(dates),
+            "phase03_evidence_path":str(f3p),"phase03_status":f3.get("status"),
+            "raw_modified":False,"deduplication_performed":False,
+            "blockers":[reason for reason,ok in [
+              ("contagem diverge do manifesto",count_ok),
+              ("datas divergem do manifesto",dates_ok),
+              ("hash diverge do manifesto",manifest_ok),
+              ("hash diverge do sidecar",sidecar_ok)
+            ] if not ok],
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          ev.parent.mkdir(parents=True, exist_ok=True)
+          ev.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False))
+          PY
+
+      - name: Persistir CSV e auditoria FASE04
+        if: success()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/normalized/anual/COTAHIST_A2011.csv dados/cotahist/quality/COTAHIST_2011_FASE04_RECUPERACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "fix(cotahist): recuperar normalized 2011 e auditar integridade"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2011 — FASE04"
+            echo "- Regenera CSV a partir do RAW sem alterar manifesto/sidecar."
+            echo "- A validação independente é uma etapa separada."
+            echo "- Resultado: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
