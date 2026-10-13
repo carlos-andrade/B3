@@ -1093,3 +1093,38 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 3. Gate 06–08 e FASE09: somente após FASE08.
 4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL independente e bloqueada.
 
+## 40. COTAHIST 2019 — FASE08 classificada com exceções; Gate 06–08 liberado (2026-10-13)
+
+### FASE08 — Calendário e consistência temporal
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida após correção auditável do contrato.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_FASE08_SEMANTICA_CALENDARIO_V1.json`, blob `c7b72f23b418da47a9ae3f0e177ff2c72d67ab0a`.
+- Decisão: `LIBERADO_PARA_GATE_06_08`.
+- 779.229 linhas; 248 datas de negociação entre 2019-01-02 e 2019-12-30; zero datas inválidas/fora do ano; nenhuma data de fim de semana.
+- Foram observadas 568 regressões cronológicas na ordem física e 132 regressões temporais por instrumento. A primeira execução bloqueou a fase e preservou a evidência diagnóstica.
+- Revisão: como a FASE06 confirmou zero divergências nos 12 campos críticos por ordem original, as regressões de ordenação foram reclassificadas como exceções explícitas não bloqueadoras, sem reordenar dados. A FASE10 continua obrigada a validar independentemente os 25 campos.
+- Exceções adicionais: 191.432 transições lexicográficas de instrumentos (métrica informativa); calendário oficial histórico B3 não persistido.
+- Nenhuma linha removida; deduplicação não executada.
+
+### Gate independente FASE06–FASE08
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2019_GATE_06_08_V1.json`, blob `61d5efea7445f75dd1d707e3ba8dae36c0cb693b`.
+- Run: https://github.com/carlos-andrade/B3/actions/runs/38434296602 — validação e persistência concluídas com sucesso.
+- Decisão: `LIBERADO_PARA_FASE09`; zero bloqueadores.
+- Hash NORMALIZED confirmado nas FASE06/07/08; 779.229 linhas, 25 campos, 248 datas; exceções de ordenação explicitamente classificadas; ausência de deduplicação confirmada.
+- A primeira execução do Gate consumiu a evidência FASE08 anterior à correção e bloqueou. O workflow foi reexecutado após a correção, e a evidência final acima é a versão válida.
+
+### FASE09 — Pre-release
+**Estado: próximo workflow a publicar/executar.**
+
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2019_FASE09_PRE_RELEASE_V1.json`.
+- Pré-condições: Gate `VALIDADO_COM_EXCECAO` / `LIBERADO_PARA_FASE09`, zero bloqueadores; hashes RAW/NORMALIZED iguais aos manifestos/sidecars; FASE03–FASE08 presentes e válidas.
+- FASE10 deve verificar independentemente os 25 campos e preservar a ordem física original.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 (2019): validadas; FASE08 e Gate têm exceções explícitas não bloqueadoras.
+2. FASE09 (2019): publicar, executar e validar pre-release.
+3. FASE10: só após FASE09 liberada; qualquer divergência real nos 25 campos bloqueia FASE11.
+4. RAW/linhas imutáveis; REC-001 B3 × BLOOMBERG_MAIL permanece independente e bloqueada.
+
