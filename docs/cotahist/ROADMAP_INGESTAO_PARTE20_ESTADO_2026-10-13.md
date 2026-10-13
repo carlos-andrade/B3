@@ -104,7 +104,14 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 - Gate 06–08: `VALIDADO_COM_EXCECAO`, decisão `LIBERADO_PARA_FASE09`; 466.734 registos, 25 campos, hash NORMALIZED `2d918553c976c74fcab7c065a25fa98efbffaf67f0fda73b46bbc7c8779ea66b`, zero bloqueadores, sem deduplicação/remoção de linhas. Evidência: [COTAHIST_2016_GATE_06_08_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_GATE_06_08_V1.json), commit `d7421e534a630d4571e9c782f63729c61f434fdd`.
 - FASE09: `LIBERADO_PARA_FASE10`; pré-condições completas, zero ausências/bloqueios, hashes RAW/NORMALIZED e contagens confirmados. Evidência: [COTAHIST_2016_FASE09_PRE_RELEASE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE09_PRE_RELEASE_V1.json), commit `1ff8794a583c07f0584f444fbcf7cf24cbd6aefe`.
 - FASE10: `VALIDADO`, decisão `LIBERADO_PARA_FASE11`; 466.734 registos RAW/NORMALIZED, 25 campos comparados, zero divergências, sem mutação do RAW ou deduplicação. Evidência: [COTAHIST_2016_FASE10_VALIDACAO_INDEPENDENTE_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE10_VALIDACAO_INDEPENDENTE_V1.json), blob `1321b70bd2c704965120b311cbaed5fa5a02ac2c`.
-- FASE11: primeira evidência `BLOQUEADO` por execução anterior à persistência da FASE10; workflow atualizado no commit `84e5be62ce680d297bd62a8af86528a2ac20a983`; nova evidência ainda pendente. Não avançar para FASE12 até `CERTIFICADO`.
+- FASE11: `CERTIFICADO`, decisão `LIBERADO_PARA_FASE12`; zero bloqueadores, 25 campos conferidos e zero divergências, hashes RAW/NORMALIZED confirmados. Evidência: [COTAHIST_2016_FASE11_CERTIFICACAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE11_CERTIFICACAO_V1.json), blob `dfc06ea03afad14bd1f0d218ddba246b07f0ed92`.
+- FASE12: `FECHADO_COM_TRANSICAO_CONTROLADA`, decisão `FECHAR_2016_E_AUTORIZAR_CONTINUACAO_2017`; zero bloqueadores. RAW 2017 coincide com manifesto/sidecar, ZIP com um membro, zero comprimentos inválidos, 489.115 registos tipo 01. NORMALIZED CSV 2017 ausente; FASE04 de 2017 aguarda reconstrução. Evidência: [COTAHIST_2016_FASE12_FECHAMENTO_2017_ABERTURA_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2016_FASE12_FECHAMENTO_2017_ABERTURA_V1.json), commit `39d371d4f683c3f668e71eddec4e951f0a99dba5`.
+
+### COTAHIST 2017 — estado inicial após transição
+
+- FASE12 de 2016 autorizou a continuação de 2017 sem certificar o novo ano.
+- RAW 2017 SHA-256: `af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86`, coincide com manifesto e sidecar; ZIP íntegro, 489.115 registos tipo 01.
+- NORMALIZED CSV 2017 ausente; iniciar FASE00 de governança e avançar sequencialmente, reconstruindo o CSV apenas na FASE04.
 
 ## 4. Roadmap por marco
 
@@ -115,7 +122,8 @@ A transição **não certifica 2015**. O NORMALIZED CSV 2015 ainda não existe; 
 | COTAHIST 2010 | FASE00–FASE12 concluídas; FASE11 certificado; FASE12 fechado com transição controlada | Preservar exceção de calendário oficial histórico não persistido |
 | COTAHIST 2014 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
 | COTAHIST 2015 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
-| COTAHIST 2016 | FASE00–FASE09 validadas; Gate `VALIDADO_COM_EXCECAO`; FASE10 em execução/verificação | Confirmar evidência independente dos 25 campos antes de FASE11 |
+| COTAHIST 2016 | FASE00–FASE12 concluídas; FASE11 `CERTIFICADO`; FASE12 `FECHADO_COM_TRANSICAO_CONTROLADA` | Preservar evidências e não reabrir sem causa concreta |
+| COTAHIST 2017 | RAW íntegro e transição autorizada; NORMALIZED CSV ausente | Iniciar FASE00 e avançar sequencialmente até reconstrução/validação FASE04 |
 | REC-001 B3 × BLOOMBERG_MAIL | Promoção bloqueada por variação de ordem e diferença de multiplicidades | Reconciliar por data os 151.071 registos adicionais e classificar a variação de ordem |
 | Auditoria de workflows | Correção de persistência após push concorrente registrada; fila final ainda precisa de confirmação independente | Verificar execuções recentes antes de declarar fila limpa |
 | Dataset oficial / certificação anual | README anterior registra execuções bem-sucedidas; esta continuação não reexecutou esses workflows | Revalidar matriz, manifestos e hashes antes de qualquer nova declaração |
