@@ -1404,3 +1404,27 @@ Verificação da evidência na branch `main`, em 2026-10-13.
 2. FASE08 (2020): workflow publicado; verificar resultado.
 3. Gate 06–08 e FASE09: somente após FASE08.
 
+## 52. COTAHIST 2020 — FASE08 validada com exceção; Gate 06–08 a publicar (2026-10-13)
+
+### FASE08 — Calendário e consistência temporal
+**Estado: VALIDADO_COM_EXCECAO — evidência persistida.**
+
+- Evidência: `dados/cotahist/quality/COTAHIST_2020_FASE08_SEMANTICA_CALENDARIO_V1.json`, blob `553acb572207cdf89767a66b691077309e1c96c9`.
+- Decisão: `LIBERADO_PARA_GATE_06_08`.
+- 1.251.646 linhas; 249 datas de negociação entre 2020-01-02 e 2020-12-30; zero datas inválidas/fora do ano; nenhuma data de fim de semana.
+- 45.574 regressões cronológicas na sequência física; zero regressões temporais por instrumento. As regressões de ordenação foram classificadas como exceção não bloqueadora com base na reconciliação FASE06 dos campos críticos por ordem original. FASE10 continuará a verificar os 25 campos.
+- 266.523 transições lexicográficas de instrumentos: métrica informativa; calendário oficial histórico B3 não persistido.
+- Nenhuma linha removida; deduplicação não executada.
+
+### Gate independente FASE06–FASE08
+**Estado: próximo workflow a publicar/executar.**
+
+- Evidência esperada: `dados/cotahist/quality/COTAHIST_2020_GATE_06_08_V1.json`.
+- Deve revalidar hashes, contagens, 25 campos, datas, exceções e ausência de mutação; aceitar regressões de ordenação somente se classificadas explicitamente como não bloqueadoras pela FASE08.
+- Só avançar para FASE09 após Gate `VALIDADO_COM_EXCECAO` / `LIBERADO_PARA_FASE09` e zero bloqueadores.
+
+### Roadmap operacional imediato
+1. FASE00–FASE08 (2020): validadas; FASE08 contém exceção de ordem física explicitamente classificada.
+2. Gate 06–08 (2020): publicar, executar e verificar.
+3. FASE09–FASE12: somente após o Gate.
+
