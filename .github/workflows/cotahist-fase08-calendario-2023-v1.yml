@@ -33,6 +33,7 @@ jobs:
             dados/cotahist/normalized/anual/COTAHIST_A2023.csv
             dados/cotahist/quality/COTAHIST_2023_FASE06_RECONCILIACAO_V1.json
             dados/cotahist/quality/COTAHIST_2023_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json
           sparse-checkout-cone-mode: false
 
       - name: Obter NORMALIZED via Git LFS
@@ -211,7 +212,7 @@ jobs:
           }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json
+          git add --sparse dados/cotahist/quality/COTAHIST_2023_FASE08_SEMANTICA_CALENDARIO_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): persistir consistencia temporal 2023 fase08"
           for attempt in 1 2 3 4 5; do
