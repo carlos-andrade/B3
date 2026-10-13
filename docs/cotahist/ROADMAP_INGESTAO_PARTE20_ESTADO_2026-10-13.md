@@ -84,5 +84,5 @@ Não classificar os 151.071 registos como mera extensão temporal sem reconcilia
 - Qualquer falha deve ser corrigida na fase de origem.
 
 ## 8. Registro desta continuação
-Esta atualização registra o estado observado do repositório em 13/10/2026 e corrige a prioridade do roadmap: **a próxima fase técnica é FASE07 de 2014**. A FASE07 ainda não é declarada executada por este documento. A REC-001 continua bloqueada. A próxima atualização deve registrar run, artefato, hashes, resultado independente e commit correspondente.
+A prioridade do roadmap foi corrigida: **a próxima fase técnica é FASE07 de 2014**. O workflow específico foi criado em `.github/workflows/cotahist-fase07-identidade-2014-v1.yml`, commit `fc173f5c5ae25937929a05833e0da4b30d16deac`. O workflow segue o padrão de 2013, testa a chave base e a candidata com `prazot`, não remove linhas e persiste evidência mesmo quando a validação bloqueia. A verificação posterior confirmou que o workflow existe na branch `main`; a evidência FASE07 ainda não estava presente na consulta imediata, portanto a execução não é declarada concluída. Próximo passo: verificar a execução real e a evidência persistida antes de avançar para FASE08. A REC-001 continua bloqueada.
 
