@@ -1,6 +1,10 @@
 name: B3 - Monitor independente de execuções V1
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-monitor-execucoes-v1.yml"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
