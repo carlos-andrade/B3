@@ -53,6 +53,49 @@
           "limitation": "Artefacto GitHub não equivale a arquivo imutável nem a retenção permanente."
         }
       ]
+    },
+    {
+      "id": "B3-DATA-FRESHNESS",
+      "name": "Atualidade de dados BCB SGS, BDI e COTAHIST",
+      "owner": "Responsável de dados do projeto B3",
+      "criticality": "high",
+      "monitor": {
+        "workflow": ".github/workflows/watchdog-data-freshness.yml",
+        "schedule": "15 7 * * 1-6",
+        "manual_trigger": true,
+        "timezone": "UTC",
+        "evidence_retention_days": 30
+      },
+      "checks": [
+        {
+          "id": "B3-WD-DATA-001",
+          "name": "Atualidade BCB SGS por série",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "required": true,
+          "limitation": "Limites de idade configurados por série e sujeitos a revisão do proprietário."
+        },
+        {
+          "id": "B3-WD-DATA-002",
+          "name": "Atualidade B3 BDI DailyAverageStocks",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "required": true,
+          "limitation": "Baseia-se na data do manifesto mais recente disponível no repositório."
+        },
+        {
+          "id": "B3-WD-DATA-003",
+          "name": "Data de observação COTAHIST declarada",
+          "state": "PARCIAL",
+          "required": true,
+          "limitation": "O manifesto anual atual não declara ultima_data_observacao; o resultado correto é UNKNOWN."
+        },
+        {
+          "id": "B3-WD-DATA-004",
+          "name": "Relatório JSON/Markdown com evidência",
+          "state": "IMPLEMENTADO_NO_WORKFLOW",
+          "required": true,
+          "limitation": "Artefactos retidos por 30 dias; não são armazenamento imutável."
+        }
+      ]
     }
   ]
 }
