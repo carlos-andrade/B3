@@ -1,4 +1,5 @@
 name: COTAHIST 2014 - Gate independente FASE06-08
+# Revalida a classificação explícita da métrica de ordenação dos instrumentos na FASE08.
 
 on:
   workflow_dispatch:
