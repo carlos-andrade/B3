@@ -104,7 +104,18 @@ jobs:
           git commit -m "audit(cotahist): validar fase 03 parsing 2015"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
+            if ! git rebase origin/main; then
+              if git diff --name-only --diff-filter=U | grep -Fxq "dados/cotahist/quality/COTAHIST_2015_FASE03_PARSING_V1.json"; then
+                echo "Conflito apenas na evidência determinística; preservar a versão gerada por esta execução."
+                git checkout --theirs -- "dados/cotahist/quality/COTAHIST_2015_FASE03_PARSING_V1.json"
+                git add "dados/cotahist/quality/COTAHIST_2015_FASE03_PARSING_V1.json"
+                GIT_EDITOR=true git rebase --continue
+              else
+                echo "Conflito de rebase fora da evidência esperada; abortar para evitar perda silenciosa."
+                git rebase --abort || true
+                exit 1
+              fi
+            fi
             if git push origin HEAD:main; then exit 0; fi
             echo "Push concorrente; nova tentativa ${attempt}/5."
             sleep $((attempt * 2))
