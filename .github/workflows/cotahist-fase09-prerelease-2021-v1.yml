@@ -36,7 +36,7 @@ jobs:
             dados/cotahist/quality/COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json
             dados/cotahist/quality/COTAHIST_2021_FASE06_RECONCILIACAO_V1.json
             dados/cotahist/quality/COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json
-            dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json
+            dados/cotahist/quality/COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json
             dados/cotahist/quality/COTAHIST_2021_FASE09_PRE_RELEASE_V1.json
           sparse-checkout-cone-mode: false
 
@@ -55,7 +55,7 @@ jobs:
             "FASE05": "COTAHIST_2021_FASE05_MANIFESTO_CHECKSUM_V1.json",
             "FASE06": "COTAHIST_2021_FASE06_RECONCILIACAO_V1.json",
             "FASE07": "COTAHIST_2021_FASE07_IDENTIDADE_CHAVES_V1.json",
-            "FASE08": "COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V1.json",
+            "FASE08": "COTAHIST_2021_FASE08_SEMANTICA_CALENDARIO_V2.json",
             "GATE_06_08": "COTAHIST_2021_GATE_06_08_V1.json"
           }
           required = {
