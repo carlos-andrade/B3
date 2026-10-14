@@ -9,6 +9,7 @@ on:
       - "dados/cotahist/certificacao/v2/**"
       - "dados/cotahist/normalized/manifests/**"
       - "scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py"
+      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
       - ".github/workflows/cotahist-dataset-oficial-v2.yml"
 
 permissions:
