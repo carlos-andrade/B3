@@ -116,3 +116,29 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - **Gates:** hash SHA-256, tamanho, linhas, 25 campos e datas antes da alteração; ponteiro LFS com OID/tamanho esperados; checkout limpo após push; revalidação física global e regeneração do Dataset Oficial V2.
 - **Estado real:** workflow integrado em `main`, mas ainda não executado. Nenhum CSV ou manifesto foi alterado pela preparação. A incidência de armazenamento A1987 permanece aberta até evidência pós-migração aprovada.
 - **Próximo passo:** executar primeiro `preflight`; executar `migrate` somente depois de analisar o log de preflight. Não repetir workflows concluídos sem mudança de código/dados.
+
+
+## Atualização final — migração Git LFS A1987 (2026-10-14)
+
+**Estado atual da incidência: RESOLVIDA COM EVIDÊNCIA.** Esta adenda substitui apenas o estado operacional anterior da incidência LFS; os registos anteriores permanecem como histórico.
+
+- Workflow manual [38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646): `success`, modo `migrate`; todas as etapas, incluindo as pós-migração, concluídas com sucesso.
+- Commit da migração do CSV A1987: [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
+- Representação Git confirmada como ponteiro LFS de 133 bytes; OID `sha256:5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`; tamanho do objeto 15.518.211 bytes.
+- Checkout limpo e materialização do objeto LFS validados: SHA-256 idêntico, 130.665 linhas de dados, 25 campos, primeira data 1987-01-02 e última 1987-12-30.
+- Auditoria física global pós-migração: `APROVADO`, 41 anos auditados, 41 validados, zero falhas. Evidência canónica: [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json).
+- Dataset Oficial V2 regenerado após a auditoria, incluindo 41 anos: [COTAHIST_DATASET_OFICIAL_V2.0.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json). As evidências geradas já coincidiam com as canónicas, portanto não foi necessário novo commit de evidência.
+- Incidência detalhada encerrada em [INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md).
+
+### Roadmap imediato
+
+| Etapa | Estado | Decisão |
+|---|---|---|
+| Migração controlada da representação A1987 para Git LFS | Concluída | Conteúdo preservado; sem reescrita de histórico |
+| Checkout limpo + SHA/bytes/linhas/campos/datas | Aprovado | Hash antes/depois idêntico |
+| Auditoria física global 1986–2026 | Aprovada | 41/41 anos; zero falhas |
+| Regeneração Dataset Oficial V2 | Concluída | 41 anos incluídos; estado vigente |
+| Fecho da incidência LFS A1987 | Concluído | Não repetir sem nova evidência de anomalia |
+| Ingestão histórica 1986–2025 | Congelada para consulta | Não alterar no ciclo diário |
+| Atualização diária 2026 | Ativa | Continuar a validar cada publicação e preservar fail-closed |
+| Fecho anual 2026 | Pendente | Só após fim do ano e publicação anual oficial |
