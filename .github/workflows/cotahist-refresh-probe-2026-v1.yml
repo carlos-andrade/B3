@@ -1,0 +1,150 @@
+# Probe read-only da fonte anual oficial antes de qualquer substituição do dataset canónico.
+name: COTAHIST 2026 - Verificar fonte oficial atualizada
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-refresh-probe-2026-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-refresh-probe-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-refresh-probe-2026-v1.yml
+            dados/cotahist/manifests/COTAHIST_A2026.json
+            dados/cotahist/quality/COTAHIST_2026_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE08_SEMANTICA_CALENDARIO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Descarregar anual oficial para área temporária
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/cotahist-refresh
+          curl --fail --location --retry 3 --retry-delay 3 --connect-timeout 30 \
+            "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP" \
+            --output /tmp/cotahist-refresh/COTAHIST_A2026.ZIP
+          test -s /tmp/cotahist-refresh/COTAHIST_A2026.ZIP
+          file /tmp/cotahist-refresh/COTAHIST_A2026.ZIP
+          sha256sum /tmp/cotahist-refresh/COTAHIST_A2026.ZIP
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Auditar fonte oficial sem alterar o dataset canónico
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, pathlib, zipfile
+          root=pathlib.Path(".")
+          tmp=pathlib.Path("/tmp/cotahist-refresh/COTAHIST_A2026.ZIP")
+          report_path=pathlib.Path("dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json")
+          report_path.parent.mkdir(parents=True,exist_ok=True)
+          report={"schema_version":"1.0.0","year":2026,"phase":"FONTE_OFICIAL_REFRESH_PROBE",
+            "source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+            "status":"BLOQUEADO","decision":"NAO_SUBSTITUIR_CANONICO_SEM_VALIDACAO",
+            "canonical_mutated":False,"raw_committed":False,"normalized_committed":False,"blockers":[]}
+          try:
+            current=json.loads(pathlib.Path("dados/cotahist/manifests/COTAHIST_A2026.json").read_text(encoding="utf-8"))
+            sha=hashlib.sha256(tmp.read_bytes()).hexdigest()
+            report["candidate_sha256"]=sha
+            report["candidate_bytes"]=tmp.stat().st_size
+            report["current_manifest_sha256"]=current.get("sha256")
+            report["current_acquired_at_utc"]=current.get("acquired_at_utc")
+            report["current_last_observed_date"]=current.get("ultima_data_observacao")
+            with zipfile.ZipFile(tmp) as z:
+              bad=z.testzip()
+              members=[n for n in z.namelist() if not n.endswith("/")]
+              if bad: raise RuntimeError("ZIP com membro corrompido: "+str(bad))
+              if len(members)!=1: raise RuntimeError(f"Esperado 1 membro, encontrado {len(members)}")
+              counts={}; bad_lengths=0; first=None; last=None; header_date=None; records=0
+              with z.open(members[0]) as f:
+                for line in f:
+                  line=line.rstrip(b"\r\n")
+                  if len(line)!=245: bad_lengths+=1
+                  kind=line[:2].decode("ascii","replace")
+                  counts[kind]=counts.get(kind,0)+1
+                  if kind=="00" and len(line)>=31:
+                    rawdate=line[23:31].decode("ascii","replace")
+                    if rawdate.isdigit():
+                      try: header_date=datetime.datetime.strptime(rawdate,"%Y%m%d").date().isoformat()
+                      except ValueError: pass
+                  if kind=="01":
+                    records+=1
+                    if len(line)>=10:
+                      rawdate=line[2:10].decode("ascii","replace")
+                      try: d=datetime.datetime.strptime(rawdate,"%Y%m%d").date()
+                      except ValueError: raise RuntimeError(f"Data inválida em registo {records}: {rawdate}")
+                      if d.year!=2026: raise RuntimeError(f"Data fora de 2026 no registo {records}: {rawdate}")
+                      ds=d.isoformat()
+                      first=ds if first is None else min(first,ds)
+                      last=ds if last is None else max(last,ds)
+              if bad_lengths or counts.get("00")!=1 or counts.get("99")!=1:
+                raise RuntimeError(f"Estrutura inválida: bad_lengths={bad_lengths}, counts={counts}")
+            report.update({"zip_member":members[0],"zip_test":"OK","record_type_counts":counts,
+              "invalid_record_lengths":bad_lengths,"record_count":records,"header_generation_date":header_date,
+              "first_trading_date":first,"last_trading_date":last,
+              "candidate_sha256_matches_current":sha==current.get("sha256")})
+            if last and last > (current.get("ultima_data_observacao") or ""):
+              report["status"]="CANDIDATO_MAIS_RECENTE_VALIDADO_ESTRUTURALMENTE"
+              report["decision"]="REPROCESSAR_NORMALIZED_E_REEXECUTAR_FASES_04_08"
+              report["newer_than_canonical"]=True
+            elif sha==current.get("sha256"):
+              report["status"]="FONTE_SEM_MUDANCA"
+              report["decision"]="MANTER_CANONICO_E_INVESTIGAR_COBERTURA"
+              report["newer_than_canonical"]=False
+            else:
+              report["status"]="CANDIDATO_NAO_MAIS_RECENTE"
+              report["decision"]="NAO_SUBSTITUIR_CANONICO"
+              report["newer_than_canonical"]=False
+            report["limitations"]=[
+              "Probe valida ZIP, header, contagem, comprimento de registos e intervalo de datas; não compara os 25 campos com NORMALIZED.",
+              "O dataset canónico não é alterado nesta fase read-only.",
+              "O ficheiro candidato não é persistido no Git; é necessário processamento versionado antes de qualquer substituição."
+            ]
+          except Exception as e:
+            report["blockers"].append(str(e))
+          report["validated_at_utc"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if report["blockers"]: raise SystemExit(1)
+          PY
+
+      - name: Persistir relatório do probe
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json || exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): verificar atualidade da fonte oficial 2026"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          echo "## COTAHIST 2026 — probe read-only da fonte oficial" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Não substitui nem altera RAW/NORMALIZED canónicos." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Resultado do job: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
