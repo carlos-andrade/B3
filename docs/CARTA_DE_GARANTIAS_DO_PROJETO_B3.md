@@ -1,9 +1,27 @@
 # CARTA DE GARANTIAS DO PROJETO B3
 
-**Versão:** 1.1  
-**Data:** 2026-10-01  
-**Status:** VIGENTE  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-CARTA-GARANTIAS-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | CARTA_GARANTIAS |
+| **Fase** | Governança, preservação e execução do projeto |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.2.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
+| **Commit de referência (versão anterior)** | [f8379d4dfd9f56cb5a9db4931fcee205f2807a60](https://github.com/carlos-andrade/B3/commit/f8379d4dfd9f56cb5a9db4931fcee205f2807a60) |
+| **Data de criação** | 2026-10-01 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal desta versão normalizada |
+| **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git, versões anteriores e evidências referenciadas no corpo |
+| **Escopo** | Garantias operacionais para integridade, rastreabilidade, continuidade e auditabilidade. |
+| **Objetivo** | Estabelecer controles verificáveis de preservação, promoção e recuperação. |
+| **Dependências** | Fontes oficiais, contratos de dados, evidências de workflow e políticas aplicáveis |
 
 ## 1. Finalidade
 
