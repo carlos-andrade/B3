@@ -1,0 +1,154 @@
+# Gate formal das evidências COTAHIST 2026 FASE06–FASE08.
+name: COTAHIST 2026 - Gate FASE06-08
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-gate-06-08-2026-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2026_FASE04_NORMALIZACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2026_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2026_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2026_FASE08_SEMANTICA_CALENDARIO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-gate-06-08-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows/cotahist-gate-06-08-2026-v1.yml
+            dados/cotahist/quality/COTAHIST_2026_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE08_SEMANTICA_CALENDARIO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_GATE_06_08_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar gate 06-08
+        run: |
+          python - <<'PY'
+          import datetime, json, pathlib, sys
+          base = pathlib.Path("dados/cotahist/quality")
+          names = {
+            "FASE04": "COTAHIST_2026_FASE04_NORMALIZACAO_V1.json",
+            "FASE05": "COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json",
+            "FASE06": "COTAHIST_2026_FASE06_RECONCILIACAO_V1.json",
+            "FASE07": "COTAHIST_2026_FASE07_IDENTIDADE_CHAVES_V1.json",
+            "FASE08": "COTAHIST_2026_FASE08_SEMANTICA_CALENDARIO_V1.json",
+          }
+          ev = {
+            "schema_version": "1.0.0", "year": 2026, "phase": "GATE_06_08",
+            "status": "BLOQUEADO", "decision": "BLOQUEADO_PARA_FASE09",
+            "evidence": {}, "blockers": [], "accepted_non_blocking_exceptions": [],
+            "normalized_sha256_expected": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9",
+            "records_expected": 2919760, "fields_expected": 25,
+            "mutations_performed": False,
+            "scope_limitations": [
+              "Gate consolida evidências de qualidade e consistência interna; não certifica equivalência com calendário oficial B3.",
+              "A aprovação deste gate não equivale à aprovação global M3-1E nem autoriza migração histórica 1986–2025."
+            ]
+          }
+          try:
+            docs = {}
+            for phase, filename in names.items():
+              path = base / filename
+              if not path.is_file():
+                raise RuntimeError(f"Evidência ausente: {path}")
+              docs[phase] = json.loads(path.read_text(encoding="utf-8"))
+              ev["evidence"][phase] = {"path": str(path), "status": docs[phase].get("status"), "decision": docs[phase].get("decision")}
+            f4, f5, f6, f7, f8 = (docs[x] for x in ("FASE04","FASE05","FASE06","FASE07","FASE08"))
+            expected_hash = ev["normalized_sha256_expected"]
+            expected_rows = ev["records_expected"]
+            expected_first, expected_last = "2026-01-02", "2026-09-23"
+            for phase, d in docs.items():
+              if d.get("year", d.get("ano")) != 2026:
+                raise RuntimeError(f"{phase}: ano ausente ou diferente de 2026")
+            if not (f4.get("status") == "VALIDADO" and f4.get("decision") == "LIBERADO_PARA_FASE05"):
+              raise RuntimeError("FASE04 não liberada")
+            if not (f5.get("status") == "VALIDADO" and f5.get("decision") == "LIBERADO_PARA_RECONCILIACAO" and f5.get("blockers") == []):
+              raise RuntimeError("FASE05 não validada/liberada")
+            if not (f6.get("status") == "VALIDADO" and f6.get("decision") == "LIBERADO_PARA_FASE07" and f6.get("mismatch_count") == 0):
+              raise RuntimeError("FASE06 não validada ou existem divergências")
+            if not (f7.get("status") == "VALIDADO" and f7.get("decision") == "LIBERADO_PARA_FASE08" and f7.get("blockers") == []):
+              raise RuntimeError("FASE07 não validada/liberada")
+            if not (f8.get("status") == "VALIDADO_COM_EXCECAO" and f8.get("decision") == "LIBERADO_PARA_GATE_06_08" and f8.get("blockers") == []):
+              raise RuntimeError("FASE08 não validada ou contém bloqueios")
+            hashes = [f4.get("normalized_sha256"), f5.get("normalized_sha256"), f6.get("normalized_sha256"), f7.get("source_normalized_sha256"), f8.get("normalized_sha256")]
+            if any(h != expected_hash for h in hashes):
+              raise RuntimeError("Hash NORMALIZED inconsistente entre fases")
+            if f6.get("raw_records") != expected_rows or f6.get("normalized_records") != expected_rows or f8.get("rows_checked") != expected_rows:
+              raise RuntimeError("Contagem de registos inconsistente")
+            if f6.get("field_count") != 25 or f8.get("invalid_dates") != 0 or f8.get("out_of_year_dates") != 0:
+              raise RuntimeError("Campos ou datas fora dos critérios de aceitação")
+            if f6.get("first_date") != expected_first or f6.get("last_date") != expected_last or f8.get("first_trading_date") != expected_first or f8.get("last_trading_date") != expected_last:
+              raise RuntimeError("Intervalo temporal inconsistente")
+            blocking = [x for x in f8.get("exceptions", []) if x.get("blocking", False)]
+            if blocking:
+              raise RuntimeError(f"FASE08 contém exceções bloqueantes: {blocking}")
+            ev["accepted_non_blocking_exceptions"] = [
+              {"phase":"FASE08", "code":x.get("code"), "classification":x.get("classification")}
+              for x in f8.get("exceptions", []) if not x.get("blocking", False)
+            ]
+            ev.update({
+              "status": "APROVADO_COM_EXCECOES_NAO_BLOQUEANTES",
+              "decision": "LIBERADO_PARA_FASE09",
+              "records_reconciled": expected_rows, "fields_reconciled": 25,
+              "first_date": expected_first, "last_date": expected_last,
+              "normalized_sha256": expected_hash,
+              "deduplication_performed": False, "rows_removed": 0,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+            })
+          except Exception as e:
+            ev["blockers"].append(str(e))
+            ev["validated_at_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          out = base / "COTAHIST_2026_GATE_06_08_V1.json"
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps(ev, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+          print(json.dumps(ev, ensure_ascii=False, indent=2))
+          if ev["status"] == "BLOQUEADO":
+            sys.exit("GATE 06-08 BLOQUEADO; consultar blockers.")
+          PY
+
+      - name: Persistir evidência do gate
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2026_GATE_06_08_V1.json || exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_GATE_06_08_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): consolidar gate fases 06-08 2026"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          echo "## COTAHIST 2026 — Gate FASE06–FASE08" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Consolida FASE04–FASE08; não certifica o calendário oficial B3." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Resultado do job: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
