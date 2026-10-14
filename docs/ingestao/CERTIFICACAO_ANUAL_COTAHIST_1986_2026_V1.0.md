@@ -36,7 +36,8 @@ Para 1986, a certificação é registrada como CERTIFICADO_NORMALIZAÇÃO_COM_EX
 - 41/41 registram zero datas inválidas.
 - 41/41 registram zero datas fora do ano.
 - 1986 permanece explicitamente segregado como exceção semântica histórica.
-- 2026 é um ano corrente/parcial no conjunto disponível; o manifesto canónico atualizado em 14/10/2026 regista 3.142.910 linhas e última data 2026-10-13. A matriz CSV foi sincronizada com parser 1.1.2 e a contagem atualizada.
+- 1986–2025 ficam encerrados para ingestão rotineira e disponíveis apenas para consulta, nos termos de `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md`. Este congelamento operacional não equivale a certificação semântica integral; 1986 mantém exceção semântica controlada.
+- 2026 é o único ano no ciclo de atualização diária e permanece parcial; o manifesto canónico atualizado em 14/10/2026 regista 3.142.910 linhas e última data 2026-10-13. A matriz CSV foi sincronizada com parser 1.1.2 e a contagem atualizada.
 
 ## 4. Limite da certificação
 
@@ -57,6 +58,6 @@ dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
 
 ## 6. Regra de governança
 
-A matriz deve ser regenerada quando houver alteração em RAW, parser, normalização ou manifest. Nenhum ano deve ser promovido silenciosamente para uma categoria superior de confiança.
+A matriz deve ser regenerada quando houver alteração validada em RAW, parser, normalização ou manifest de 2026. Os anos 1986–2025 não devem ser alterados no ciclo rotineiro; qualquer reabertura exige decisão formal e auditoria. Nenhum ano deve ser promovido silenciosamente para uma categoria superior de confiança.
 
 **Regra final:** certificação estrutural não equivale a validação semântica total.
