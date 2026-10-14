@@ -15,6 +15,8 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from normalize_cotahist import PARSER_VERSION
+
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "dados/cotahist/raw/diario"
 NORM_DIR = ROOT / "dados/cotahist/normalized/diario"
@@ -103,7 +105,7 @@ def import_day(ref_date: date) -> str:
             "status": "VALIDADO",
             "tipo": "DIARIO",
             "data_referencia": iso_date,
-            "parser_version": "1.1.0",
+            "parser_version": PARSER_VERSION,
             "source": "B3",
             "url": url,
             "raw_file": str(raw_out.relative_to(ROOT)).replace("\\", "/"),
