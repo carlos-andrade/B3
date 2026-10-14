@@ -48,7 +48,20 @@ A execução começa por documentos humanos de governança, cartas, planos e roa
 
 ## Resultado
 
-Plano publicado como marco de governação. A conclusão da normalização será declarada por lote e acompanhada de evidência verificável, não por presunção de cobertura integral.
+Lote inicial aplicado diretamente em `main`. Foram normalizados cabeçalhos e campos de autoridade nos seguintes documentos: cartas de confiança/garantias/carta magna, Plano Mestre de Execução, Carta de Incidente COTAHIST 1999, Modelo-Mestre de Governança, roadmaps COTAHIST de 1999–2005, PARTE18, PARTE20, PARTE23 e roadmap mestre 1986–2026, além da incidência Git LFS A1987. Os conteúdos históricos dos documentos foram preservados. A verificação de existência dos campos passou nos ficheiros reconsultados; os SHA-256 canónicos continuam explicitamente pendentes e a conformidade integral não é declarada.
+
+## Estado do lote 1
+
+| Métrica | Resultado |
+|---|---:|
+| Documentos Markdown no repositório | 284 |
+| Documentos em `docs/` | 217 |
+| Documentos prioritários identificados no inventário inicial | 45 |
+| Documentos com cabeçalho normalizado e reconsultados nesta tranche | 11 |
+| Incidente A1987 reconciliado e com cabeçalho normalizado | 1 |
+| Hashes canónicos recalculados/verificados independentemente | 0 — pendentes |
+
+Esta contagem reflete apenas os documentos explicitamente alterados e reverificados, não a conformidade do restante repositório.
 
 ## Próxima Ação
 
