@@ -21,7 +21,7 @@ Um ano recebe CERTIFICADO_NORMALIZAÇÃO quando:
 1. o RAW anual está presente;
 2. o manifest de qualidade está presente;
 3. o manifest informa status = VALIDADO;
-4. o parser registrado é 1.1.0;
+4. o parser registrado pertence à lista explicitamente homologada: 1.1.0, 1.1.1 ou 1.1.2;
 5. o manifest registra 25 campos;
 6. datas_invalidas = 0;
 7. datas_fora_do_ano = 0.
@@ -36,7 +36,7 @@ Para 1986, a certificação é registrada como CERTIFICADO_NORMALIZAÇÃO_COM_EX
 - 41/41 registram zero datas inválidas.
 - 41/41 registram zero datas fora do ano.
 - 1986 permanece explicitamente segregado como exceção semântica histórica.
-- 2026 é um ano corrente/parcial no conjunto disponível; a última data registrada no manifest é 2026-09-22.
+- 2026 é um ano corrente/parcial no conjunto disponível; o manifesto canónico atualizado em 14/10/2026 regista 3.142.910 linhas e última data 2026-10-13. A matriz CSV foi sincronizada com parser 1.1.2 e a contagem atualizada.
 
 ## 4. Limite da certificação
 
