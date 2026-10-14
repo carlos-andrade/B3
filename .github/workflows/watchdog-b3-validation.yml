@@ -87,7 +87,8 @@ jobs:
           assert freshness_workflow_path.is_file(), "Workflow de atualidade ausente"
           freshness_workflow = freshness_workflow_path.read_text(encoding="utf-8")
           assert "dados/bdi/manifests/**" in freshness_workflow, "Trigger por manifesto BDI ausente no WATCHDOG"
-          assert "gh workflow run" not in bdi_workflow, "Captura BDI não deve invocar outro workflow"
+          forbidden_call = "gh workflow " + "run"
+          assert forbidden_call not in bdi_workflow, "Captura BDI não deve invocar outro workflow"
           assert controls.get("schema_version") == 1
           assert controls.get("project") == "B3"
           assert controls.get("controls"), "Catálogo de controlos vazio"
