@@ -18,8 +18,8 @@
 - A sequência original de registos foi preservada: sem deduplicação, remoção ou reordenação.
 
 ### Pendências do escopo B3
-1. **A matriz agregada de certificação anual foi sincronizada para 2026**: a linha CSV agora regista parser 1.1.2 e 3.142.910 linhas, coerentes com o manifesto canónico de 14/10. Falta executar a certificação automática e verificar a matriz completa contra todos os manifestos.
-2. **O Dataset Oficial e os artefactos agregados precisam de auditoria final**: verificar alinhamento entre manifestos, matriz, dataset oficial, checksums, sidecars e documentação.
+1. **Matriz anual sincronizada e certificada automaticamente**: o workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) terminou com sucesso. O CSV contém 41 anos e a linha 2026 regista parser 1.1.2 e 3.142.910 linhas.
+2. **Dataset Oficial V1 gerado com sucesso** no workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845), com 41 registos anuais e 2026 até 13/10. A reconciliação física independente de todos os 41 NORMALIZED permanece distinta da certificação estrutural agregada.
 3. **O ano de 2026 não está fechado**: o conjunto está atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 4. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
 5. Exceções de calendário histórico de anos antigos e exceções de ordenação/regressão devem continuar explícitas; não corrigir a fonte reordenando ou removendo linhas.
@@ -95,8 +95,8 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 | Prioridade | Trabalho | Critério de conclusão | Estado |
 |---|---|---|---|
-| P0 | Executar certificação automática da matriz anual | Workflow verde; CSV reconstruído a partir dos manifestos e todos os 41 anos verificados; confirmar a linha 2026 (parser 1.1.2, 3.142.910 linhas) | **PENDENTE DE EXECUÇÃO/VERIFICAÇÃO** |
-| P1 | Auditar e reconciliar o Dataset Oficial | Manifestos, matriz anual, dataset oficial, checksums, sidecars e documentação concordam em versões, contagens, hashes e data de corte | **PENDENTE DE AUDITORIA** |
+| P0 | Certificação automática da matriz anual | Workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) verde; CSV com 41 anos e linha 2026 sincronizada (parser 1.1.2, 3.142.910 linhas) | **CONCLUÍDO** |
+| P1 | Dataset Oficial V1 | Workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 anos, registo 2026 alinhado com manifesto. A reconciliação física independente dos 41 CSV continua como melhoria de garantia | **GERADO/VALIDADO; AUDITORIA FÍSICA TOTAL PENDENTE** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
 | P3 | Monitorização incremental diária e de erratas | Atualização com hash, data de corte, validação, alerta de falha e reconciliação idempotente | **ATIVA; manter e auditar** |
@@ -104,12 +104,12 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 ## 7. Sequência executável para encerramento do escopo B3
 
-1. Regenerar e validar a matriz de certificação anual a partir dos manifestos atuais, sobretudo a linha de 2026.
-2. Executar a auditoria física do Dataset Oficial e reconciliar manifesto, matriz, sidecars e checksums.
-3. Verificar que o dataset oficial publicado corresponde aos dados canónicos e que as limitações de 1986 e 2026 estão explícitas.
-4. Executar a auditoria final do Layout Mestre e dos workflows internos; verificar runs, artefactos e commits.
-5. Atualizar a documentação agregada apenas depois da validação dos dados e das evidências.
-6. Publicar um relatório de encerramento B3 com hashes, escopo, limitações, exceções, runs e decisão formal.
+1. Matriz anual sincronizada e workflow de certificação concluído: [run 38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685).
+2. Dataset Oficial V1 gerado/validado com sucesso: [run 38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845).
+3. Corrigidas as duas divergências críticas detetadas na auditoria de workflows; teste BDI e validação WATCHDOG concluídos com sucesso.
+4. Auditoria de conformidade atual: 549 workflows auditados, **zero divergências críticas**, 406 conformes e 143 conformes com observação. Run final: [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38561328869).
+5. Próximo controlo de garantia: auditoria física independente dos 41 CSV NORMALIZED contra manifestos e Dataset Oficial, caso se pretenda uma certificação física integral além da validação estrutural atual.
+6. Atualizar documentação agregada apenas depois da validação dos dados e evidências; não alterar README fora da janela governada.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
 
 ## 8. Regras invioláveis de integridade
@@ -127,7 +127,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Escopo B3 — ingestão COTAHIST:** **EM FINALIZAÇÃO**. As pendências imediatas são executar/verificar a certificação automática da matriz anual, auditar o Dataset Oficial e concluir a auditoria interna de governança. O fecho anual 2026 permanece pendente até existir a fonte anual final.
+**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. A matriz anual foi certificada automaticamente, o Dataset Oficial V1 foi gerado com sucesso e a auditoria de 549 workflows terminou sem divergências críticas. Permanecem a auditoria física independente de todos os 41 CSV NORMALIZED, as exceções semânticas/calendárias históricas e o fecho anual de 2026 após a fonte final.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
