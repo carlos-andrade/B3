@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenera a matriz oficial de certificação anual do COTAHIST."""
+"""Preserva as linhas históricas e recalcula a certificação de 2026."""
 
 from __future__ import annotations
 
