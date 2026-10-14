@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2025,
+  "phase": "FASE07",
+  "status": "VALIDADO",
+  "decision": "LIBERADO_PARA_FASE08",
+  "validation_type": "AUDITORIA_DE_IDENTIDADE_E_CARDINALIDADE_STREAMING_SEM_MUTACAO",
+  "source_normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2025.csv",
+  "deduplication_performed": false,
+  "source_rows_removed": 0,
+  "blockers": [],
+  "limitations": [
+    "Conclusao restrita ao ficheiro COTAHIST 2025 e ao hash NORMALIZED registado.",
+    "Ausencia de colisoes numa chave candidata nao autoriza deduplicacao nem prova, isoladamente, uma regra normativa universal."
+  ],
+  "source_normalized_sha256": "04a55e83fdb4ec76c897ed74abeb1b7016ffd51f585999bcbd3ecaef3dde4b25",
+  "phase06_evidence_path": "dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json",
+  "phase06_status": "VALIDADO",
+  "phase06_decision": "LIBERADO_PARA_FASE07",
+  "phase06_mismatch_count": 0,
+  "records": 3174698,
+  "first_date": "2025-01-02",
+  "last_date": "2025-12-30",
+  "phase06_records_match": true,
+  "phase06_date_range_match": true,
+  "base_candidate": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "dismes"
+    ],
+    "distinct_keys": 3157935,
+    "duplicate_groups": 8478,
+    "duplicate_rows_excess": 16763,
+    "groups_with_different_full_rows": 8478,
+    "sample_collisions": [
+      {
+        "key": [
+          "2025-02-14",
+          "62",
+          "IRBR3T",
+          "030",
+          "112"
+        ],
+        "occurrences": 18,
+        "distinct_full_rows": 18
+      },
+      {
+        "key": [
+          "2025-06-05",
+          "62",
+          "PETR4T",
+          "030",
+          "219"
+        ],
+        "occurrences": 18,
+        "distinct_full_rows": 18
+      },
+      {
+        "key": [
+          "2025-04-04",
+          "62",
+          "PETR4T",
+          "030",
+          "217"
+        ],
+        "occurrences": 17,
+        "distinct_full_rows": 17
+      },
+      {
+        "key": [
+          "2025-04-11",
+          "62",
+          "PETR4T",
+          "030",
+          "217"
+        ],
+        "occurrences": 17,
+        "distinct_full_rows": 17
+      },
+      {
+        "key": [
+          "2025-05-16",
+          "62",
+          "BBAS3T",
+          "030",
+          "329"
+        ],
+        "occurrences": 17,
+        "distinct_full_rows": 17
+      },
+      {
+        "key": [
+          "2025-11-07",
+          "62",
+          "PETR4T",
+          "030",
+          "221"
+        ],
+        "occurrences": 17,
+        "distinct_full_rows": 17
+      },
+      {
+        "key": [
+          "2025-08-08",
+          "62",
+          "PETR4T",
+          "030",
+          "219"
+        ],
+        "occurrences": 16,
+        "distinct_full_rows": 16
+      },
+      {
+        "key": [
+          "2025-08-15",
+          "62",
+          "PETR4T",
+          "030",
+          "220"
+        ],
+        "occurrences": 16,
+        "distinct_full_rows": 16
+      },
+      {
+        "key": [
+          "2025-08-01",
+          "62",
+          "BBAS3T",
+          "030",
+          "331"
+        ],
+        "occurrences": 15,
+        "distinct_full_rows": 15
+      },
+      {
+        "key": [
+          "2025-10-10",
+          "62",
+          "PETR4T",
+          "030",
+          "221"
+        ],
+        "occurrences": 15,
+        "distinct_full_rows": 15
+      }
+    ]
+  },
+  "candidate_with_prazot": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "prazot",
+      "dismes"
+    ],
+    "distinct_keys": 3174698,
+    "duplicate_groups": 0,
+    "duplicate_rows_excess": 0,
+    "groups_with_different_full_rows": 0,
+    "sample_collisions": []
+  },
+  "candidate_with_prazot_especi_codisi": {
+    "key_fields": [
+      "data_pregao",
+      "codbdi",
+      "codneg",
+      "tpmerc",
+      "prazot",
+      "dismes",
+      "especi",
+      "codisi"
+    ],
+    "distinct_keys": 3174698,
+    "duplicate_groups": 0,
+    "duplicate_rows_excess": 0,
+    "groups_with_different_full_rows": 0,
+    "sample_collisions": []
+  },
+  "selected_key": [
+    "data_pregao",
+    "codbdi",
+    "codneg",
+    "tpmerc",
+    "prazot",
+    "dismes",
+    "especi",
+    "codisi"
+  ],
+  "identity_decision": "CHAVE_CANDIDATA_AMPLIADA_SEM_COLISOES_OBSERVADAS_NESTE_ANO",
+  "validated_at_utc": "2026-10-14T08:52:02.753239+00:00"
+}
