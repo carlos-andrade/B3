@@ -6,14 +6,8 @@
   "sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
   "status": "VALIDADO",
   "validacao": "ZIP com 1 arquivo COTAHIST; CRC OK; registos de 245 bytes; header 00; cotacoes 01; trailer 99; reconciliacao NORMALIZED integral",
-  "acquired_at_utc": "2026-10-14T10:22:42.684700+00:00",
+  "acquired_at_utc": "2026-10-14T11:20:01.289453+00:00",
   "ultima_data_observacao": "2026-10-13",
   "fonte_data_observacao": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-  "nota_data_observacao": "Derivada do NORMALIZED produzido pelo parser versionado e reconciliado integralmente com RAW.",
-  "auditoria_promocao_fase11": {
-    "evidence_path": "dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json",
-    "promotion_commit": "3e4914638dedb5bec1935abd4a9821e5ddc4cfc6",
-    "verified_at_utc": "2026-10-14T10:35:00Z",
-    "note": "Referência documental; não altera o conteúdo nem o SHA-256 do arquivo RAW."
-  }
+  "nota_data_observacao": "Derivada do NORMALIZED produzido pelo parser versionado e reconciliado integralmente com RAW."
 }
