@@ -19,6 +19,12 @@
 - FASE11: `PROMOVIDO_COM_HASHES_COHERENTES`; hashes promovidos coincidem com as evidências revalidadas após a promoção.
 - Auditoria do Layout Mestre: run [38556380160](https://github.com/carlos-andrade/B3/actions/runs/38556380160) concluído com sucesso.
 
+## Auditoria física histórica 1986–2026 — atualização
+
+**Resultado:** `APROVADO`. Foram auditados 41 anos; 41 validados, zero com falha. Em 1998, SHA-256 físico, sidecar e manifesto coincidem em `21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79`. Contagem física e manifesto: 104.971 linhas; 25 campos; zero datas inválidas e zero datas fora do ano. A execução [38576260466](https://github.com/carlos-andrade/B3/actions/runs/38576260466) concluiu com sucesso. O incidente está encerrado; não houve reescrita do CSV nem alteração dos dados RAW.
+
+Evidência canónica: [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json).
+
 ## Auditoria integrada pós-promoção
 
 Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json).
@@ -52,7 +58,7 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | 13 | Persistência idempotente da evidência | Verificada com sucesso | Run [38558710582](https://github.com/carlos-andrade/B3/actions/runs/38558710582): comparação e persistência concluídas sem conflito |
 | 14 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
 | 15 | Histórico 1986–2025 | Encerrado para ingestão; somente consulta | Preservar RAW/NORMALIZED/manifestos; reabertura só por decisão formal |
-| 16 | Auditoria física 1986–2026 | Correção do sidecar 1998 aplicada; revalidação completa em execução (run [38576260466](https://github.com/carlos-andrade/B3/actions/runs/38576260466)) | Confirmar 41/41 anos e atualizar estado após conclusão do workflow |
+| 16 | Auditoria física 1986–2026 | `APROVADO`; 41/41 anos validados, zero falhas (run [38576260466](https://github.com/carlos-andrade/B3/actions/runs/38576260466)) | Manter auditoria como gate de integridade e reexecutar quando CSV, sidecars ou regras de auditoria mudarem |
 | 17 | Pipeline de atualização diária 2026 | Código e workflow atualizados; execução operacional validada sem conflitos | Verificar cada run diário, manifestos e dataset corrente |
 
 ## Regras de integridade
@@ -87,4 +93,4 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)
 - [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
 
-**Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026. A execução diária mais recente [38570797936](https://github.com/carlos-andrade/B3/actions/runs/38570797936) terminou com sucesso: a fonte de 14/10 ainda não estava publicada, os dados até 13/10 permaneceram inalterados e foram registados zero conflitos de hash. A reconciliação do índice corrente foi idempotente. A auditoria de conformidade dos workflows [38570797752](https://github.com/carlos-andrade/B3/actions/runs/38570797752) validou 550 workflows, zero divergências críticas e 143 observações não bloqueadoras. O calendário oficial foi reconciliado para o intervalo observado, sem divergências. O histórico 1986–2025 está congelado para consulta. A divergência do sidecar de 1998 foi corrigida com o hash confirmado pelo CSV e manifesto; a auditoria física completa foi reacionada e ainda precisa concluir para certificar 41/41 anos. Até ao resultado do run [38576260466](https://github.com/carlos-andrade/B3/actions/runs/38576260466), não declarar aprovação global. O fecho anual 2026 permanece pendente até ao fim do ano.
+**Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026. A execução diária mais recente [38570797936](https://github.com/carlos-andrade/B3/actions/runs/38570797936) terminou com sucesso: a fonte de 14/10 ainda não estava publicada, os dados até 13/10 permaneceram inalterados e foram registados zero conflitos de hash. A reconciliação do índice corrente foi idempotente. A auditoria de conformidade dos workflows [38570797752](https://github.com/carlos-andrade/B3/actions/runs/38570797752) validou 550 workflows, zero divergências críticas e 143 observações não bloqueadoras. O calendário oficial foi reconciliado para o intervalo observado, sem divergências. O histórico 1986–2025 está congelado para consulta. A exceção histórica de 1998 foi resolvida: o sidecar foi alinhado ao SHA-256 confirmado pelo CSV e manifesto. A auditoria física completa terminou com sucesso no run [38576260466](https://github.com/carlos-andrade/B3/actions/runs/38576260466), com `APROVADO`, 41/41 anos validados e zero falhas. O incidente está encerrado; os dados CSV e manifestos históricos foram preservados. O fecho anual 2026 permanece pendente até ao fim do ano.
