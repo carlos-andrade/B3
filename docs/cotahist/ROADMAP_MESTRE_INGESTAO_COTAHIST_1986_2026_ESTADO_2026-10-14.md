@@ -1,11 +1,27 @@
 # B3 — ROADMAP MESTRE DE INGESTÃO COTAHIST 1986–2026
-**Data de referência:** 2026-10-14  
-**Repositório oficial:** https://github.com/carlos-andrade/B3  
-**Branch:** main  
-**Estado global:** **CICLO OPERACIONAL VALIDADO — CONTINUIDADE ANUAL GOVERNADA**  
-**Norma operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
-> Este roadmap cobre exclusivamente o projeto B3: ingestão COTAHIST, normalização, qualidade, calendário, certificação anual, dataset oficial, workflows e governança. Não substitui as evidências JSON de cada fase.
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-ROADMAP-MESTRE-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | ROADMAP_MESTRE |
+| **Fase** | Governação documental e rastreabilidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [23df98911bb9bed5d3f6a1a670508fbfde5dc36d](https://github.com/carlos-andrade/B3/commit/23df98911bb9bed5d3f6a1a670508fbfde5dc36d) |
+| **Data de criação** | 2026-10-14 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Origem** | Documento B3 preexistente; corpo histórico preservado |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
+| **Escopo** | Visão operacional mestre da ingestão COTAHIST 1986–2026 |
+| **Objetivo** | Manter uma visão consolidada com distinção entre evidência estrutural e semântica histórica. |
+| **Dependências** | Layout Mestre B3, evidências por fase e documentação oficial aplicável |
 
 ## 1. Resumo executivo
 
