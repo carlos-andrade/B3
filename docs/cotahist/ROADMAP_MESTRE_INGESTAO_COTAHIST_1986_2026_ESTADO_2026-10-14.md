@@ -20,7 +20,7 @@
 ### Estado atual e limites residuais
 1. **Matriz anual certificada automaticamente**: workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) concluído com sucesso; 41 anos presentes e linha 2026 sincronizada com parser 1.1.2 e 3.142.910 linhas.
 2. **Dataset Oficial V1 gerado/validado**: workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 registos anuais, incluindo 2026 até 13/10.
-3. **Auditoria de workflows concluída**: 549 workflows avaliados, zero divergências críticas, 406 conformes e 143 conformes com observação. Run [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38561328869).
+3. **Auditoria de workflows concluída**: 550 workflows avaliados, zero divergências críticas, 407 conformes sem observações críticas e 143 conformes com observações. Run [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
 4. **Testes operacionais BDI e WATCHDOG concluídos**: [captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38561123974) e [validação WATCHDOG](https://github.com/carlos-andrade/B3/actions/runs/38561328911) terminaram com sucesso.
 5. **O ano de 2026 permanece parcial**, atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 6. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
@@ -102,7 +102,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 | P1 | Auditoria física independente dos 41 CSV NORMALIZED | Relatório [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json); workflow [38568351293](https://github.com/carlos-andrade/B3/actions/runs/38568351293) | **EXECUTADA: 40/41 validados; 1998 reprovado por divergência de sidecar, controlada sem alterar o histórico** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
-| P1 | Pipeline diário COTAHIST 2026 | Parser do manifesto alinhado com `PARSER_VERSION`; conflito de hash não substitui RAW canónico; relatórios de execução/conflito persistidos antes do gate; checkout sem baixar todo o histórico LFS | **ALTERAÇÕES PUBLICADAS; workflow de validação em curso** |
+| P1 | Pipeline diário COTAHIST 2026 | Parser do manifesto alinhado com `PARSER_VERSION`; conflito de hash não substitui RAW canónico; relatórios persistidos antes do gate; reconciliação idempotente; refresh de `main` após espera de concorrência; checkout sem baixar todo o histórico LFS | **RUN 38569219335 VERDE; validação da revisão mais recente em curso** |
 | P3 | Monitorização incremental diária e de erratas | Atualização com hash, data de corte, validação, alerta de falha e reconciliação idempotente | **ATIVA; manter e auditar** |
 | P3 | Certificação semântica de estratégia/uso quantitativo | Validar adequação dos campos e eventos à finalidade antes de qualquer backtest/uso de decisão | **FORA DO FECHO DE INGESTÃO; posterior** |
 
@@ -111,7 +111,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 1. Matriz anual sincronizada e workflow de certificação concluído: [run 38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685).
 2. Dataset Oficial V1 gerado/validado com sucesso: [run 38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845).
 3. Corrigidas as duas divergências críticas detetadas na auditoria de workflows; teste BDI e validação WATCHDOG concluídos com sucesso.
-4. Auditoria de conformidade atual: 549 workflows auditados, **zero divergências críticas**, 406 conformes e 143 conformes com observação. Run final: [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38561328869).
+4. Auditoria de conformidade atual: 549 workflows auditados, **zero divergências críticas**, 406 conformes e 143 conformes com observação. Run final: [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
 5. Auditoria física executada sobre os 41 anos: **40 validados; 1998 com divergência isolada de sidecar**. O hash físico do CSV coincide com o manifesto (`21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79`), mas difere do sidecar (`d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee`). Relatório persistido; workflow [38568351293](https://github.com/carlos-andrade/B3/actions/runs/38568351293) reprovou pelo gate fail-closed. Incidência documentada em [INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md). Por regra de histórico somente consulta, CSV, manifesto e sidecar não foram alterados.
 6. Atualizar documentação agregada apenas depois da validação dos dados e evidências; não alterar README fora da janela governada.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
@@ -136,6 +136,13 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 - 2026 só poderá ser fechado após o fim do ano, aquisição e validação da fonte anual final e conclusão das fases aplicáveis, incluindo FASE12.
 
 Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md
+
+### Histórico de execução do pipeline diário — 14/10/2026
+
+- Run [38568954914](https://github.com/carlos-andrade/B3/actions/runs/38568954914): sucesso; importador consultou 14/10–08/10, não encontrou fonte publicada para 14/10 e manteve o último dia válido em 13/10; zero conflitos.
+- Run [38569195580](https://github.com/carlos-andrade/B3/actions/runs/38569195580): falha na rebase por concorrência com uma execução anterior que atualizou o índice oficial corrente. A falha foi preservada; a correção implementa reconciliação idempotente e refresh de `main` após a fila de concorrência.
+- Run [38569219335](https://github.com/carlos-andrade/B3/actions/runs/38569219335): sucesso; índice corrente validado até 13/10/2026, zero conflitos de fonte.
+- Run [38569675449](https://github.com/carlos-andrade/B3/actions/runs/38569675449): validação da revisão mais recente com refresh de `main` e reconciliação idempotente; estado em curso no momento desta atualização.
 
 ## 10. Decisão atual — escopo exclusivo B3
 
