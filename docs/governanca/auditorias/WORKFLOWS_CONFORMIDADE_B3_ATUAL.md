@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-13T23:46:42.187008+00:00
-Workflows auditados: 514
+Gerado em UTC: 2026-10-14T00:00:54.384589+00:00
+Workflows auditados: 515
 
 ## Regra de decisão
 
@@ -499,6 +499,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-gate-06-08-2020-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-06-08-2021-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-06-08-2022-v1.yml | — | **CONFORME** | — | — |
+| .github/workflows/cotahist-gate-06-08-2023-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-gate-historico-1986.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-importacao-diaria-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-integridade-campos-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
