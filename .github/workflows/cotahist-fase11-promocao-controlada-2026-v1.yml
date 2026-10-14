@@ -72,10 +72,12 @@ jobs:
                   for chunk in iter(lambda:f.read(1024*1024),b""): h.update(chunk)
               return h.hexdigest()
           raw_sha=sha(raw); candidate_sha=sha(candidate); old_sha=sha(canonical)
-          if phase10.get("status")!="VALIDADO_COM_DIFERENCAS_A_REVISAR":
-              sys.exit("Gate FASE10 não tem o estado esperado; promoção bloqueada")
-          if phase10.get("decision")!="REVISAO_DAS_DIFERENCAS_ANTES_DA_PROMOCAO":
-              sys.exit("Decisão FASE10 não autoriza esta revisão")
+          if phase10.get("status")!="VALIDADO_SEM_DIFERENCAS_DE_LINHAS":
+              sys.exit("Gate FASE10 não confirma igualdade integral; promoção bloqueada")
+          if phase10.get("decision")!="CANDIDATO_ELEGIVEL_A_GATE_DE_PROMOCAO":
+              sys.exit("Decisão FASE10 não autoriza o gate de promoção")
+          if phase10.get("blockers") or phase10.get("candidate_rows_added_vs_canonical")!=0 or phase10.get("canonical_rows_absent_from_candidate")!=0:
+              sys.exit("FASE10 contém bloqueios ou diferenças; promoção bloqueada")
           if phase10.get("candidate_raw_sha256")!=raw_sha or probe.get("candidate_sha256")!=raw_sha:
               sys.exit("SHA-256 RAW atual diverge da FASE10/probe")
           if phase10.get("candidate_normalized_sha256")!=candidate_sha:
