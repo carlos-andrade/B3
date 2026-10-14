@@ -41,7 +41,7 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | 2 | FASE04–05 | Validadas após promoção | Reabrir apenas se RAW/NORMALIZED ou regras mudarem |
 | 3 | FASE06 | Validada; 25 campos, zero divergências | Preservar evidência; não deduplicar |
 | 4 | FASE07 | Validada; chave candidata ampliada sem colisões observadas | Não generalizar a conclusão para outros anos |
-| 5 | FASE08 | Validada com exceções não bloqueadoras | Persistir calendário oficial e executar comparação externa |
+| 5 | FASE08 | Validada com exceções não bloqueadoras | Preservar sequência original e exceções; calendário validado separadamente |
 | 6 | Gate 06–08 | Aprovado com exceções | Reabrir apenas se dados/regras mudarem |
 | 7 | FASE09 | Liberada para FASE10; run success | Manter evidência atual; documento antigo fica histórico |
 | 8 | FASE10 | Candidato validado sem diferenças | Não repetir sem mudança do candidato ou dos hashes |
