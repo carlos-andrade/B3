@@ -121,7 +121,7 @@ jobs:
             ev["validated_at_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
           out = base / "COTAHIST_2026_GATE_06_08_V1.json"
           out.parent.mkdir(parents=True, exist_ok=True)
-          out.write_text(json.dumps(ev, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+          out.write_text(json.dumps(ev, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(json.dumps(ev, ensure_ascii=False, indent=2))
           if ev["status"] == "BLOQUEADO":
             sys.exit("GATE 06-08 BLOQUEADO; consultar blockers.")
