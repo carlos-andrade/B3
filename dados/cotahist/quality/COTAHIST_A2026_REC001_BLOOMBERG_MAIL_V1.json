@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0-rec001-b3-cross-repo",
-  "result": "PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE",
+  "result": "FAIL_CONTENT_DIVERGENCE",
   "raw_preserved": true,
   "b3_snapshot": {
     "path": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
-    "zip_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+    "zip_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
     "member": "COTAHIST_A2026.TXT",
-    "member_size": 721181214,
+    "member_size": 776299264,
     "zip_integrity": true,
     "stats": {
-      "record01_count": 2919760,
-      "first_record00": "00COTAHIST.2026BOVESPA 20260923                                                                                                                                                                                                                      ",
-      "first_record01": "012026010202LEVE3       010METAL LEVE  ON      NM   R$  000000000341700000000034840000000003316000000000335700000000033500000000003347000000000335001954000000000000320100000000001074616400000000000000009999123100000010000000000000BRLEVEACNOR2202",
-      "last_record01": "012026092382YDUQX803    080YDUQE       ON      NM000R$  000000000005200000000000520000000000052000000000005200000000000520000000000010000000000004800001000000000000000100000000000000005200000000000074602027121700000010000000000000BRYDUQACNOR3107",
-      "trailer_record99": "99COTAHIST.2026BOVESPA 2026092300002919760                                                                                                                                                                                                           ",
+      "record01_count": 3142910,
+      "first_record00": "00COTAHIST.2026BOVESPA 20261013                                                                                                                                                                                                                      ",
+      "first_record01": "012026010734MACY34      010MACY S      DRN          R$  000000001263800000000126380000000012300000000001243900000000123000000000000001000000001350000003000000000000000011000000000000136838000000000000009999123100000010000000000000BRMACYBDR000134",
+      "last_record01": "012026101378TAEEJ443    070TAEEE       UNT     N2000R$  000000000031000000000003100000000000225000000000026100000000002500000000000220000000000000000004000000000000000800000000000000209500000000000438502026101600000010000000000000BRTAEECDAM10155",
+      "trailer_record99": "99COTAHIST.2026BOVESPA 2026101300003142910                                                                                                                                                                                                           ",
       "date_min": "20260102",
-      "date_max": "20260923",
-      "member_sha256": "6ff05a4e3997375ac637252776b6e3e2a41a782bfa3354b491f50a74334c7b81"
+      "date_max": "20261013",
+      "member_sha256": "da09a5a4ccf1adf0a501f4f517901a3c2d5cf6bfbb37ab81201a9e4cc380ddb9"
     }
   },
   "bloomberg_mail_raw": {
@@ -37,180 +37,126 @@
     }
   },
   "comparison": {
-    "common_record01_prefix": 222002,
+    "common_record01_prefix": 0,
     "first_difference": {
-      "record01_position": 222003,
-      "b3_date": "20260102",
+      "record01_position": 1,
+      "b3_date": "20260107",
       "bloomberg_date": "20260102",
-      "b3_sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
-      "bloomberg_sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
-      "b3_prefix": "012026010278ABCBA235    070ABCB    /EJSP",
-      "bloomberg_prefix": "012026010278ABCBA243    070ABCBE    /EJP",
+      "b3_sha256": "bba63663808ecc5094cb56ad441abb0449449ca7f0f84b9af76a7ce6a0e2854d",
+      "bloomberg_sha256": "6b3e694beb689b18aed1cf063f0b71ea5eb468861d6c3b4f655ed5f9e107af0d",
+      "b3_prefix": "012026010734MACY34      010MACY S      D",
+      "bloomberg_prefix": "012026010202LEVE3       010METAL LEVE  O",
       "context_window": {
         "b3": [
           {
-            "record01_position": 222000,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PATI3F",
-            "tpmerc": "020",
-            "sha256": "9ae2a528f74286d5d37dcdb6fe5392614d2bfa2b092142cba35947ccbf79a530",
-            "prefix": "012026063096PATI3F      020PANATLANTICAON       "
+            "record01_position": 1,
+            "date": "20260107",
+            "codbdi": "34",
+            "codneg": "MACY34",
+            "tpmerc": "010",
+            "sha256": "bba63663808ecc5094cb56ad441abb0449449ca7f0f84b9af76a7ce6a0e2854d",
+            "prefix": "012026010734MACY34      010MACY S      DRN      "
           },
           {
-            "record01_position": 222001,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PATI4F",
-            "tpmerc": "020",
-            "sha256": "870f524091dac8ef2c6d07662b72fe1286dc0f6c2db23c4e5994bb4a5ad77856",
-            "prefix": "012026063096PATI4F      020PANATLANTICAPN       "
+            "record01_position": 2,
+            "date": "20260107",
+            "codbdi": "12",
+            "codneg": "MAGM11",
+            "tpmerc": "010",
+            "sha256": "f314afcfb645b2f14914d41527ee5772db4aea406fde333323cf94f3067978b5",
+            "prefix": "012026010712MAGM11      010FII MAGM    CI       "
           },
           {
-            "record01_position": 222002,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PCAR3F",
-            "tpmerc": "020",
-            "sha256": "15422fb25d77decec97095f65a3c9f202677c2beff82216dd51e2ffa18b56927",
-            "prefix": "012026063096PCAR3F      020P.ACUCAR-CBDON      N"
+            "record01_position": 3,
+            "date": "20260107",
+            "codbdi": "12",
+            "codneg": "MANA11",
+            "tpmerc": "010",
+            "sha256": "e7e3b66cbb6e66e367fb82e120adb761827712fe6c70e9a0f168f84db3fb5f8f",
+            "prefix": "012026010712MANA11      010FII MANATI  CI  ER   "
           },
           {
-            "record01_position": 222003,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA235",
-            "tpmerc": "070",
-            "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
-            "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+            "record01_position": 4,
+            "date": "20260107",
+            "codbdi": "14",
+            "codneg": "MATB11",
+            "tpmerc": "010",
+            "sha256": "beb7f30a9392d36a63d87dd6c07058c479ba3e65a52ea207d6c6aea97bb472a3",
+            "prefix": "012026010714MATB11      010IT NOW IMAT CI       "
           },
           {
-            "record01_position": 222004,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA243",
-            "tpmerc": "070",
-            "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
-            "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+            "record01_position": 5,
+            "date": "20260107",
+            "codbdi": "02",
+            "codneg": "MATD3",
+            "tpmerc": "010",
+            "sha256": "659bddf4c8e9498d1c4163c164edbb2ec5e40132faa89d5c1d9347529dddb54b",
+            "prefix": "012026010702MATD3       010MATER DEI   ON      N"
           },
           {
-            "record01_position": 222005,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA253",
-            "tpmerc": "070",
-            "sha256": "4dff0bb6d80e1afdc246550d01dd4183f3bdf04ea005cbd58dbc17ee59dd5c27",
-            "prefix": "012026010278ABCBA253    070ABCBE    /EJPN      N"
-          },
-          {
-            "record01_position": 222006,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA268",
-            "tpmerc": "070",
-            "sha256": "9b13ba7ed1ec414a4a02237b3e387eb13e194d8d3b16e031349b938804100a6e",
-            "prefix": "012026010278ABCBA268    070ABCBE    /EJPN      N"
-          },
-          {
-            "record01_position": 222007,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBB235",
-            "tpmerc": "070",
-            "sha256": "cfdd98c93572f3ad354ed40f0361ff785adccd03762cffb9dd993782b689e7f4",
-            "prefix": "012026010278ABCBB235    070ABCB    /EJSPN      N"
-          },
-          {
-            "record01_position": 222008,
-            "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBB240",
-            "tpmerc": "070",
-            "sha256": "24cb31c0cfc61951ab689549e966611b705aa7eccbd22085ab495ac3c6145087",
-            "prefix": "012026010278ABCBB240    070ABCB    /EJSPN      N"
+            "record01_position": 6,
+            "date": "20260107",
+            "codbdi": "12",
+            "codneg": "MAXR11",
+            "tpmerc": "010",
+            "sha256": "1f6cee88f9eb1830ea4b55e9460e01d628893d0b2cefdab1114c6378cb6dfa1e",
+            "prefix": "012026010712MAXR11      010FII MAX RET CI       "
           }
         ],
         "bloomberg_mail": [
           {
-            "record01_position": 222000,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PATI3F",
-            "tpmerc": "020",
-            "sha256": "9ae2a528f74286d5d37dcdb6fe5392614d2bfa2b092142cba35947ccbf79a530",
-            "prefix": "012026063096PATI3F      020PANATLANTICAON       "
-          },
-          {
-            "record01_position": 222001,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PATI4F",
-            "tpmerc": "020",
-            "sha256": "870f524091dac8ef2c6d07662b72fe1286dc0f6c2db23c4e5994bb4a5ad77856",
-            "prefix": "012026063096PATI4F      020PANATLANTICAPN       "
-          },
-          {
-            "record01_position": 222002,
-            "date": "20260630",
-            "codbdi": "96",
-            "codneg": "PCAR3F",
-            "tpmerc": "020",
-            "sha256": "15422fb25d77decec97095f65a3c9f202677c2beff82216dd51e2ffa18b56927",
-            "prefix": "012026063096PCAR3F      020P.ACUCAR-CBDON      N"
-          },
-          {
-            "record01_position": 222003,
+            "record01_position": 1,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA243",
-            "tpmerc": "070",
-            "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
-            "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
+            "codbdi": "02",
+            "codneg": "LEVE3",
+            "tpmerc": "010",
+            "sha256": "6b3e694beb689b18aed1cf063f0b71ea5eb468861d6c3b4f655ed5f9e107af0d",
+            "prefix": "012026010202LEVE3       010METAL LEVE  ON      N"
           },
           {
-            "record01_position": 222004,
+            "record01_position": 2,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA235",
-            "tpmerc": "070",
-            "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
-            "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+            "codbdi": "02",
+            "codneg": "LJQQ3",
+            "tpmerc": "010",
+            "sha256": "cc49b9c11df6e43c699b69b775c36e3b8447380dee0cba608fdc2092fae3409e",
+            "prefix": "012026010202LJQQ3       010QUERO-QUERO ON      N"
           },
           {
-            "record01_position": 222005,
+            "record01_position": 3,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBA268",
-            "tpmerc": "070",
-            "sha256": "9b13ba7ed1ec414a4a02237b3e387eb13e194d8d3b16e031349b938804100a6e",
-            "prefix": "012026010278ABCBA268    070ABCBE    /EJPN      N"
+            "codbdi": "02",
+            "codneg": "LOGG3",
+            "tpmerc": "010",
+            "sha256": "c36c7944b7bd92bae015969c3be2e8c2a01eb6e9a84002aec81a460f50b0fb4a",
+            "prefix": "012026010202LOGG3       010LOG COM PROPON  ED  N"
           },
           {
-            "record01_position": 222006,
+            "record01_position": 4,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBB235",
-            "tpmerc": "070",
-            "sha256": "cfdd98c93572f3ad354ed40f0361ff785adccd03762cffb9dd993782b689e7f4",
-            "prefix": "012026010278ABCBB235    070ABCB    /EJSPN      N"
+            "codbdi": "02",
+            "codneg": "LOGN3",
+            "tpmerc": "010",
+            "sha256": "b00b91b44f9dfa41a9c0a0873a2bbe0599bd481a28903ad52c110f6caa2ca570",
+            "prefix": "012026010202LOGN3       010LOG-IN      ON      N"
           },
           {
-            "record01_position": 222007,
+            "record01_position": 5,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBB240",
-            "tpmerc": "070",
-            "sha256": "24cb31c0cfc61951ab689549e966611b705aa7eccbd22085ab495ac3c6145087",
-            "prefix": "012026010278ABCBB240    070ABCB    /EJSPN      N"
+            "codbdi": "02",
+            "codneg": "LPSB3",
+            "tpmerc": "010",
+            "sha256": "cf647d40c984b1691c087bd5b62fed4c8ce37a16e9ebb4cc1e55ef0124b1d227",
+            "prefix": "012026010202LPSB3       010LOPES BRASILON      N"
           },
           {
-            "record01_position": 222008,
+            "record01_position": 6,
             "date": "20260102",
-            "codbdi": "78",
-            "codneg": "ABCBB245",
-            "tpmerc": "070",
-            "sha256": "27aa884af790f37827eac72f67bdc2fd5915faa8775478cb25535d7192da5032",
-            "prefix": "012026010278ABCBB245    070ABCB    /EJSPN      N"
+            "codbdi": "02",
+            "codneg": "LREN3",
+            "tpmerc": "010",
+            "sha256": "d47f06baa5cbfcd12755baa79654db87d6d43ae2ac67269e69c680cc6e61c01f",
+            "prefix": "012026010202LREN3       010LOJAS RENNERON      N"
           }
         ]
       }
@@ -221,373 +167,859 @@
   },
   "unordered_content_reconciliation": {
     "method": "SHA-256 multiset of type-01 payload bytes with line terminators excluded; duplicate multiplicity preserved; ordering ignored",
-    "b3_record01_count": 2919760,
+    "b3_record01_count": 3142910,
     "bloomberg_mail_record01_count": 3070831,
-    "b3_unique_payload_hashes": 2919760,
+    "b3_unique_payload_hashes": 3142910,
     "bloomberg_mail_unique_payload_hashes": 3070831,
-    "b3_records_missing_from_bloomberg_multiplicity": 0,
-    "bloomberg_records_missing_from_b3_multiplicity": 151071,
-    "bloomberg_contains_all_b3_records_as_exact_payload_multiset": true,
+    "b3_records_missing_from_bloomberg_multiplicity": 72079,
+    "bloomberg_records_missing_from_b3_multiplicity": 0,
+    "bloomberg_contains_all_b3_records_as_exact_payload_multiset": false,
     "unordered_multiset_exact_match": false,
-    "b3_only_hash_count_sample": [],
-    "bloomberg_only_hash_count_sample": [
+    "b3_only_hash_count_sample": [
       {
-        "sha256": "0000b50cb69f2465c9c777839e1745848b2a3db1edfdf3daa94ddfeb93747dd2",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "0000115806ed10b6e959927cbbfaa42224663e3fac1fe2c30349eb951673b1d3",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0000f6b420ba5481bb7a0fe5ed772d8dc13774b42b4517280d7588f563eed381",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "0002da661816829ae36b13c52dbe6256162fb681f1d44cceba5a82a49c178cfc",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0002281f2865876df920bf7392a27a2bd1b9b85b723679aad36d58ddd4d65126",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "0004b767ef436dee0b35e08c165ca42278590633f600f2a4e4fb334754e7f77f",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00027b5719105c660954386e3bb91e8b05c30839b5b9bcbdb53eea5712922237",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000579411aee531af16c14ba023a163492ecfeb16929de556d2264842186cf63",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "000351ada7c7c4f82e7f7f3fb7749bc58535b5da727eb6d033d5abe6e5892b03",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000a7acd9b4340092c287581d1bffa2bbeef10b3d4acb4aa357c25ae86ba0d72",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00042859355abbf1237d5afbf8a0e9c9f12f6db5927aa9894f0653cf10ef725b",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000aa45f380392d03639eb2dccf590fd2c4f0d535f1edba44d2cefc1d1d5ce85",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00046c0a16a876245f0e2d0b941bcf8b88715b55be8a6970f99fd95c68b430be",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000b1532851be99c7cecbf8e620fe096c9c85644ff02f57e264e36fb984c91b6",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00049bd513c670edbd6ab507c6bb90f0f9a612662deca800b3c1e00e59b1574c",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000beb172c98c5d437ea81d2aa272725c56ca4e1f63899802f8ba0b6a1aaa921",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "000538c9dd5ed24487e84709695084d83ba4aff5eb82224087877210f6c518ea",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000c2d4a805e79887c920745640696812fbb1515e2053318702bdc7dd1c3752a",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0005446baa2ae0035dd69823591b71d9981c9682532160847a2c56b63aef783c",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000c68003514cb5c43619816f0b9fc5fc62c09dd42c39d9815ae655eda4cf128",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00054bbc3604807279df5d7733d4b0bfdca7aaa0b5c4e84c001026ee0033707e",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000d2e260328ee468c3784d608114e2883f25a7a7f9dcfd67a40cb27277c4e60",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00059137641446184f1b409f7fe2e237091d1603d5fb300b7addc20f824ce5a0",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000d54d787678583bd7247ac91b3e77abb3cf9d2d298c3bc421eba30285e5fc7",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0005a0cdb32912831845fd74b9c71d95a674e8b6be7ae435f40046d3b1176625",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000dc2b789ea8446a6c3b12b4639fbb48920044eed5102f0c543b9ef049cc4ca",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0006446bd0f278ea0829447110a5308748546870ff7a7bfc6491938cc728c50c",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000ebe1cf8d88e60024704dd919cf6d22f3e413f7d859369c269123239412db6",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0006594cf13c2f25ed2d51321ee46a91408010e861eb1f83320f439de8322ec7",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000f23aae785971c5b62e7bdf814a4c99ca5e51e869050fa342ebb7d02fbeade",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "000692a9c0178cd41c86c3ae1b22659a9259cd1f5bce406380b898d53bab0c81",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000f3d453a4fe78b14589ad954ece76d58a45d75a799ff72f986abb2a0ad154c",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0007149c7eeeeeb0d3accfd5c8b83287098514c563f3adc08197457faf8a2074",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "000feb5ebbb6d929fe6100d5af734bb65cdd47f1230639c72d1837c3e7ec97fd",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0007e25b4df6238e7cc644ce8d554a464efa1308ea51ebe7e9367896711fbc38",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "00104b60f118a223be26005938d22f68b25984146c656fe2011448e9eddda1e2",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "00081d09822f55857202ba903e67019a3d1f1042f232fb267dce99a56baba53c",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "0010854703ab3748b03305beba16de97058a0d9fe98294bfffeb7e2367c5cc2a",
+        "b3_count": 1,
+        "bloomberg_count": 0
       },
       {
-        "sha256": "0008be1f616ad074cb9b4548bd372386a6daa216295c2df19f04ecd8bcc31f3a",
-        "bloomberg_count": 1,
-        "b3_count": 0
+        "sha256": "0012029346ee506e407a8d1edd78900b8647b12643b18cb82ddc31ddc42893a9",
+        "b3_count": 1,
+        "bloomberg_count": 0
       }
     ],
+    "bloomberg_only_hash_count_sample": [],
     "interpretation_limit": "A multiset match proves payload equality independent of ordering, not equal source ordering or a promotion decision."
   },
   "divergence_diagnostics": {
     "purpose": "Diagnosticar se a primeira divergência decorre de registo ausente, ticker distinto ou deslocamento local; não altera o critério byte-a-byte.",
     "target_tickers": [
-      "ABCBA235",
-      "ABCBA243"
+      "LEVE3",
+      "MACY34"
     ],
     "b3_occurrences": {
-      "ABCBA235": [
+      "LEVE3": [
         {
-          "record01_position": 222003,
-          "date": "20260102",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
-          "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+          "record01_position": 833,
+          "date": "20260317",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6f9008a122ab569467da66905628b25300ee94d3f2eda90c36fdd63393e4837b",
+          "prefix": "012026031702LEVE3       010METAL LEVE  ON      N"
         },
         {
-          "record01_position": 268970,
-          "date": "20260108",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "7d66e386c743acf6e2bcc596e469f2dc86c86177819f5e104b994385ac9065c8",
-          "prefix": "012026010878ABCBA235    070ABCB    /EJSPN      N"
+          "record01_position": 1756,
+          "date": "20260105",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "53d4a79a5de41ea94c1b605c32d577278119861b2d701c17a915edc2715e39b9",
+          "prefix": "012026010502LEVE3       010METAL LEVE  ON      N"
         },
         {
-          "record01_position": 334865,
-          "date": "20260115",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "519325c6fcf5a70a027f6cbf475a09ad90a4c3b76f64c4f4665e3be96c94bdb9",
-          "prefix": "012026011578ABCBA235    070ABCB        PN      N"
+          "record01_position": 3959,
+          "date": "20260519",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "ee6b8a2f6fa93c830713f9203f36ddb020ff7245fdb2c50f59737f49a6729047",
+          "prefix": "012026051902LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 6544,
+          "date": "20260318",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "f054df87d1c8ff75dcd4e5663f8de48f82f2be5d21a55872229dd311225e17fe",
+          "prefix": "012026031802LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 7121,
+          "date": "20260406",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "40950433f2635778774430a7611403a1080b63e800f099fb5db463eca5759fc8",
+          "prefix": "012026040602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 7232,
+          "date": "20260629",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "5d2229a0c8bc4b36871af4c4864cf3a5ffcee4dbe2d50cfa99dd04157b418281",
+          "prefix": "012026062902LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 9993,
+          "date": "20260320",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "1d305963d9c04ae36d0ddc3b300f45b900a46db8e84d84510ff8203fc9be1553",
+          "prefix": "012026032002LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 11891,
+          "date": "20260226",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "36b84e64df67e97bc9d7071751700f7f40d50092f42bef90de21b42d337be70e",
+          "prefix": "012026022602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 12533,
+          "date": "20260410",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "8ecc4edd5826154ce18b9ed90a9359fa27d421724f1e52eecf201cc2b3b50a77",
+          "prefix": "012026041002LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 17619,
+          "date": "20260522",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "0990513e47d205d18f0358adcb393a04df8933abae51369fc28d7bf16416efb3",
+          "prefix": "012026052202LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 17885,
+          "date": "20260526",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "86fd9bb486a834af268a021b262a408f20a803eaad8c1ef68b912e7ee70d1ee0",
+          "prefix": "012026052602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 20517,
+          "date": "20260224",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "3781ba7714dcc66e9257b8334929a0f970f624999dfc6d0fd0d9cc24800f8c2e",
+          "prefix": "012026022402LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 21599,
+          "date": "20260114",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "9b4570274d754d3c56f9d69db45909ae7a8238ae8e75a56fc23ffaa2f176e6b9",
+          "prefix": "012026011402LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 21883,
+          "date": "20260310",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "c03d8f92a80aa3339a3bb6b0a04d7149af9cdfc03b8d67298597fed798c41aba",
+          "prefix": "012026031002LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 24226,
+          "date": "20260223",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "8771e100d59594b1d2940d7e1725f373ebf8b0631c114b7648fb3f18d5ea494b",
+          "prefix": "012026022302LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 25103,
+          "date": "20260121",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6f6e3774ca444d4c902b4c53addb27a3c7e95176e50d16ea4ef4f94a959e92c5",
+          "prefix": "012026012102LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 25938,
+          "date": "20260209",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "efcf6322e7cbfecb4807c8f57b5d7d73dabf3f2d39bed9d10ed09c841fdb8ee4",
+          "prefix": "012026020902LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 32042,
+          "date": "20260423",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "faaa7287c562c5f8cde619377a57d9b541cf3b2dc590f7841a67e096a1a35a46",
+          "prefix": "012026042302LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 32220,
+          "date": "20260203",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "cda494b94b6c9130093b630aeb30e46d28a41e09ee606b2539a90e4cebfedba1",
+          "prefix": "012026020302LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 35147,
+          "date": "20260513",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "d97dfc91b3d501fbe548eda47a332bf221f505854e2d21578e77024299d81bd8",
+          "prefix": "012026051302LEVE3       010METAL LEVE  ON      N"
         }
       ],
-      "ABCBA243": [
+      "MACY34": [
         {
-          "record01_position": 222004,
-          "date": "20260102",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
-          "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
-        },
-        {
-          "record01_position": 233121,
-          "date": "20260105",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "ff6279fecc498757dcd773ae078e8f3bbebf9c6ff6fde72d6235c7314d921ae1",
-          "prefix": "012026010578ABCBA243    070ABCBE    /EJPN      N"
-        },
-        {
-          "record01_position": 245065,
-          "date": "20260106",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "d6ae94080503f018dc4be6f4d62a222d72cdaa6dfb6521ad89956aae928e4576",
-          "prefix": "012026010678ABCBA243    070ABCBE    /EJPN      N"
-        },
-        {
-          "record01_position": 257193,
+          "record01_position": 1,
           "date": "20260107",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "e6b33383cdb0dbe8b58fb979c8302f84e85384d64d77723a66f0b081ec8e79d6",
-          "prefix": "012026010778ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "bba63663808ecc5094cb56ad441abb0449449ca7f0f84b9af76a7ce6a0e2854d",
+          "prefix": "012026010734MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 280823,
-          "date": "20260109",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "86b62c025024b6b1f1ccae9a8b124a3c5eb269b979e24131e3d88279e21bdde3",
-          "prefix": "012026010978ABCBA243    070ABCBE    /EJPN      N"
+          "record01_position": 3127,
+          "date": "20260316",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "2d1b1535d09c3984a9593f5e4d7b79a00992357cb28bac95cb5fd2f5b1c7613c",
+          "prefix": "012026031634MACY34      010MACY S      DRN ED   "
         },
         {
-          "record01_position": 293595,
-          "date": "20260112",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "7e58c00d6d1a149aa99948e2b4087f24ca820ecbc6018cf47e91af69aa056028",
-          "prefix": "012026011278ABCBA243    070ABCBE    /EJPN      N"
+          "record01_position": 5107,
+          "date": "20260327",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "515c5142605b2962c299169fa1af7b3c2dcdb7e9e11af33481c67d9777ed3a34",
+          "prefix": "012026032734MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 306925,
-          "date": "20260113",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "b061350c0a4d51c58c59fd7f3cd971add07f548ba75fab9945c0b32a2693402e",
-          "prefix": "012026011378ABCBA243    070ABCBE       PN      N"
+          "record01_position": 5694,
+          "date": "20260615",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "964516ec75cd6e882331a686395edb459d548c5352cbe95280a59775008f8bc8",
+          "prefix": "012026061534MACY34      010MACY S      DRN ED   "
         },
         {
-          "record01_position": 320853,
-          "date": "20260114",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "7795c559d203dbb050710f6ee575977d963f1aad876fa7d31f7a424e794a0d79",
-          "prefix": "012026011478ABCBA243    070ABCBE       PN      N"
+          "record01_position": 7710,
+          "date": "20260106",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "c6bf4dbaf578fca10ae138ebec9125766f83fcacb5b16aa6f827584676d23065",
+          "prefix": "012026010634MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 334868,
-          "date": "20260115",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "0c0e3abd84bb8215552fbd1ad70282206b5d1b79602f040fe1ab6ebd4b0331f5",
-          "prefix": "012026011578ABCBA243    070ABCBE       PN      N"
+          "record01_position": 8728,
+          "date": "20260408",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "2d7256787e1d54851f9108e8260c15731ad30390a60f4316506c2528cbdc17ef",
+          "prefix": "012026040834MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 349559,
-          "date": "20260116",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "b6051d5621fa346fd8435233319c137a860431d56f0ed2aa1e4fb908a274881f",
-          "prefix": "012026011678ABCBA243    070ABCBE       PN      N"
+          "record01_position": 10966,
+          "date": "20260420",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "01ed2556849ccf11aacaa209f7da50684bc0e2e926769226566a23c2d03adfb1",
+          "prefix": "012026042034MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 12445,
+          "date": "20260519",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "12c3aad697722f524d9885151f6afc6ad3ae60603ea86ceb213e83b7666d85a4",
+          "prefix": "012026051934MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 16042,
+          "date": "20260522",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "fa8c256b8e96c0be1bfdb0a391506eff61ab7267520cc44e17ec7578290210b3",
+          "prefix": "012026052234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 31291,
+          "date": "20260121",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e100e935855a84bbe0154581a49c01211f688d4156c90930b5256b13aa638277",
+          "prefix": "012026012134MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 32347,
+          "date": "20260311",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e4e46e21325616dd7e2940d2f0b13b70f1f5acb6b0b6e89d7c6a5a17efe6b460",
+          "prefix": "012026031134MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 37700,
+          "date": "20260128",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "f5bdefcc818f951820ba1d40d7157225abd84f8a5124616c4c0c2e9169e6158a",
+          "prefix": "012026012834MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 37740,
+          "date": "20260211",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "82abb6cb88aa4644d7dd5bc3458654f1efc0be17ca1eb164598f368e1b8f3955",
+          "prefix": "012026021134MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 39968,
+          "date": "20260514",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "c2155fd23b8948a6fc270343fd610c288e47ea9cb63b7b0346bd136c9f59193e",
+          "prefix": "012026051434MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 42347,
+          "date": "20260304",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "beb362bc0c0a9367edb4297fcad1afc6f0de10c894ef6f268a6beb5fe6327f49",
+          "prefix": "012026030434MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 43514,
+          "date": "20260402",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "11b2fa150365742466c5de02065b44627135015bb8a42e65e8c7cf7bb9d7a9e7",
+          "prefix": "012026040234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 48333,
+          "date": "20260527",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "043c90d135c38259a639cafd230eba6067382a0f63496b612194d74544d709c0",
+          "prefix": "012026052734MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 51184,
+          "date": "20260313",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "08c0054cbe1d934af8779aaf14168c562e88f342a1905a33fe29f3ce1747b554",
+          "prefix": "012026031334MACY34      010MACY S      DRN ED   "
+        },
+        {
+          "record01_position": 52247,
+          "date": "20260212",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "767f9a0974e5522f7e6bb797ff891065219316c14d9d87baeb9380c46297d200",
+          "prefix": "012026021234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 57525,
+          "date": "20260318",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "4f2f040b9759f2199cab62cfe7df25527a6f3aae2291d28aecfed53e73f1de7d",
+          "prefix": "012026031834MACY34      010MACY S      DRN ED   "
         }
       ]
     },
     "bloomberg_mail_occurrences": {
-      "ABCBA235": [
+      "LEVE3": [
         {
-          "record01_position": 222004,
+          "record01_position": 1,
           "date": "20260102",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "d6352b082f68643024aa016bdf4ce2d06b3d0e7190af87e75b03b17908471e3d",
-          "prefix": "012026010278ABCBA235    070ABCB    /EJSPN      N"
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6b3e694beb689b18aed1cf063f0b71ea5eb468861d6c3b4f655ed5f9e107af0d",
+          "prefix": "012026010202LEVE3       010METAL LEVE  ON      N"
         },
         {
-          "record01_position": 268970,
+          "record01_position": 1897,
+          "date": "20260105",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "53d4a79a5de41ea94c1b605c32d577278119861b2d701c17a915edc2715e39b9",
+          "prefix": "012026010502LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 3819,
+          "date": "20260106",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "c66d3dca386daa436a12bc4f3fce3f2c6b6077a5c27a25968d02b0fa4ed02ada",
+          "prefix": "012026010602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 5592,
+          "date": "20260107",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "071135a3ed2a3b4e6e496d3908963c9ffd2c95113e68b4dfd435a7a0ffb92658",
+          "prefix": "012026010702LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 7349,
           "date": "20260108",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "7d66e386c743acf6e2bcc596e469f2dc86c86177819f5e104b994385ac9065c8",
-          "prefix": "012026010878ABCBA235    070ABCB    /EJSPN      N"
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "0992302251e2b4f015af937801d6e576ebda04c6eb30307781120b6d8174db1a",
+          "prefix": "012026010802LEVE3       010METAL LEVE  ON      N"
         },
         {
-          "record01_position": 334865,
+          "record01_position": 9358,
+          "date": "20260109",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "5302d307ac1f52ed82213a2256978f0e9afc909d831d052d8e28cbcc9adc6723",
+          "prefix": "012026010902LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 11063,
+          "date": "20260112",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "dff541fbe816cd76b2607a38dda219f5728a1e2fe7dfbee88844776f35ae27b0",
+          "prefix": "012026011202LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 12787,
+          "date": "20260113",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "acea9a762a485c99270e87dc2ce4492179683ad3eb524ffccc9dd15a7e425cf4",
+          "prefix": "012026011302LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 14873,
+          "date": "20260114",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "9b4570274d754d3c56f9d69db45909ae7a8238ae8e75a56fc23ffaa2f176e6b9",
+          "prefix": "012026011402LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 16693,
           "date": "20260115",
-          "codbdi": "78",
-          "codneg": "ABCBA235",
-          "tpmerc": "070",
-          "sha256": "519325c6fcf5a70a027f6cbf475a09ad90a4c3b76f64c4f4665e3be96c94bdb9",
-          "prefix": "012026011578ABCBA235    070ABCB        PN      N"
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "7af1e953f58f3eb56cd6bcf4bfbf0ffcfc4c0002e4aabb66e971556d1fa1fd6a",
+          "prefix": "012026011502LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 18190,
+          "date": "20260116",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "cbeb17d66b3e6bcd124fbd98d7a5e2060fbedf7fe9718b63a2efea5c0a11aad3",
+          "prefix": "012026011602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 20039,
+          "date": "20260119",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "5cabcc9cf6a8cf22e7c51a979a0e0ab6f373277fbbddebefad8f2bbc36f1d4ab",
+          "prefix": "012026011902LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 21794,
+          "date": "20260120",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "a930daf0d22621d45d1a4a016b05b8c87b8997186179228d38fa25f307e73bfd",
+          "prefix": "012026012002LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 23781,
+          "date": "20260121",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6f6e3774ca444d4c902b4c53addb27a3c7e95176e50d16ea4ef4f94a959e92c5",
+          "prefix": "012026012102LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 25505,
+          "date": "20260122",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "ddc3b15de1da5bf75892c7cc1ac4217d94be730b700b26e237cc2287d214fadb",
+          "prefix": "012026012202LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 27284,
+          "date": "20260123",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "45437965b77476adfc1b53cba4331b921b67f4adcc68a75290993f5b30868ca2",
+          "prefix": "012026012302LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 29356,
+          "date": "20260126",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6582ae92b1433c15b0a25e775e46a6216dfa13b364dd2a3709a19444fd5cadcf",
+          "prefix": "012026012602LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 31299,
+          "date": "20260127",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "6be9511bbb884e1714160e7d43a0d23abfba48169433d4477cb96f030215516c",
+          "prefix": "012026012702LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 32971,
+          "date": "20260128",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "8a5d80e42dbe18b99ba1540de239dc0bd914ac7a2075e60aa9a217b78212d231",
+          "prefix": "012026012802LEVE3       010METAL LEVE  ON      N"
+        },
+        {
+          "record01_position": 34705,
+          "date": "20260129",
+          "codbdi": "02",
+          "codneg": "LEVE3",
+          "tpmerc": "010",
+          "sha256": "da1254b327099df2fe12e59dd452ea947b73304f59221f27de5f51a4e1ac27f4",
+          "prefix": "012026012902LEVE3       010METAL LEVE  ON      N"
         }
       ],
-      "ABCBA243": [
+      "MACY34": [
         {
-          "record01_position": 222003,
-          "date": "20260102",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "dcaac3efc9eae9bd5cd223d4af31378254e5709c6348a7cff8b42d5e989fa308",
-          "prefix": "012026010278ABCBA243    070ABCBE    /EJPN      N"
-        },
-        {
-          "record01_position": 233122,
+          "record01_position": 2946,
           "date": "20260105",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "ff6279fecc498757dcd773ae078e8f3bbebf9c6ff6fde72d6235c7314d921ae1",
-          "prefix": "012026010578ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "edf887a8adb7faa77d34901be4777d8ef75999e38c8bc1d2d25b29259151ff81",
+          "prefix": "012026010534MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 245064,
+          "record01_position": 4618,
           "date": "20260106",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "d6ae94080503f018dc4be6f4d62a222d72cdaa6dfb6521ad89956aae928e4576",
-          "prefix": "012026010678ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "c6bf4dbaf578fca10ae138ebec9125766f83fcacb5b16aa6f827584676d23065",
+          "prefix": "012026010634MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 257193,
+          "record01_position": 6662,
           "date": "20260107",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "e6b33383cdb0dbe8b58fb979c8302f84e85384d64d77723a66f0b081ec8e79d6",
-          "prefix": "012026010778ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "bba63663808ecc5094cb56ad441abb0449449ca7f0f84b9af76a7ce6a0e2854d",
+          "prefix": "012026010734MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 280822,
+          "record01_position": 10166,
           "date": "20260109",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "86b62c025024b6b1f1ccae9a8b124a3c5eb269b979e24131e3d88279e21bdde3",
-          "prefix": "012026010978ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "d05a4a9b8734c69140cae1ef7457ae657296f4e7b9ad138f67a586741c33e116",
+          "prefix": "012026010934MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 293591,
+          "record01_position": 12002,
           "date": "20260112",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "7e58c00d6d1a149aa99948e2b4087f24ca820ecbc6018cf47e91af69aa056028",
-          "prefix": "012026011278ABCBA243    070ABCBE    /EJPN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "7a2626da2d7e80c47604a4ef2d21f21067e09493c13203b615db6ddba468ca04",
+          "prefix": "012026011234MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 306923,
+          "record01_position": 13790,
           "date": "20260113",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "b061350c0a4d51c58c59fd7f3cd971add07f548ba75fab9945c0b32a2693402e",
-          "prefix": "012026011378ABCBA243    070ABCBE       PN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "2bf0ca0de14d33aeb75c4141743dfc3b897ee4d05232a3363581299413ba9099",
+          "prefix": "012026011334MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 320852,
+          "record01_position": 15774,
           "date": "20260114",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "7795c559d203dbb050710f6ee575977d963f1aad876fa7d31f7a424e794a0d79",
-          "prefix": "012026011478ABCBA243    070ABCBE       PN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "7057146222e173bbfe458419c8bbedfa885c55af8e68a2bc0b661b6c58c350fc",
+          "prefix": "012026011434MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 334863,
+          "record01_position": 17273,
           "date": "20260115",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "0c0e3abd84bb8215552fbd1ad70282206b5d1b79602f040fe1ab6ebd4b0331f5",
-          "prefix": "012026011578ABCBA243    070ABCBE       PN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e36c55f23e9905afa6dd871075c20492a797410bd3c8cbb8906eedf0f01e8784",
+          "prefix": "012026011534MACY34      010MACY S      DRN      "
         },
         {
-          "record01_position": 349561,
+          "record01_position": 19118,
           "date": "20260116",
-          "codbdi": "78",
-          "codneg": "ABCBA243",
-          "tpmerc": "070",
-          "sha256": "b6051d5621fa346fd8435233319c137a860431d56f0ed2aa1e4fb908a274881f",
-          "prefix": "012026011678ABCBA243    070ABCBE       PN      N"
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "bfca4eab9093736a074a69bbca4062e5f205a10e78474ccbcf47ef427adc7a0a",
+          "prefix": "012026011634MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 24715,
+          "date": "20260121",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e100e935855a84bbe0154581a49c01211f688d4156c90930b5256b13aa638277",
+          "prefix": "012026012134MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 26357,
+          "date": "20260122",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "00191613f03308f99c9500eebebb9626f45e91599dd6ee903e8d49fc9d8dc2aa",
+          "prefix": "012026012234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 34108,
+          "date": "20260128",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "f5bdefcc818f951820ba1d40d7157225abd84f8a5124616c4c0c2e9169e6158a",
+          "prefix": "012026012834MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 35922,
+          "date": "20260129",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "069f1c8c66eae170b06d1c4f7a8e98286674dcf3704515607dd28f4fe4cc4c1e",
+          "prefix": "012026012934MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 37507,
+          "date": "20260130",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "fb144d2e7cf18dcc5f1710875cad2b3483eba2159cf538b7f5ecaedec50b76be",
+          "prefix": "012026013034MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 39680,
+          "date": "20260202",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "d348b655591a7bbe37aa01b24dd7c3713b7e2adbe857243d100aff56e5663a71",
+          "prefix": "012026020234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 41133,
+          "date": "20260203",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e83c32a6a34d8bdff39951cadd4a6cdcc5e836e5365f22674abdc0e982325261",
+          "prefix": "012026020334MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 42969,
+          "date": "20260204",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "2e400b348cc35c3aa693e01de1bd432e4ba1ee6bc91c7ea6a7ede22d78490689",
+          "prefix": "012026020434MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 52413,
+          "date": "20260211",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "82abb6cb88aa4644d7dd5bc3458654f1efc0be17ca1eb164598f368e1b8f3955",
+          "prefix": "012026021134MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 54290,
+          "date": "20260212",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "767f9a0974e5522f7e6bb797ff891065219316c14d9d87baeb9380c46297d200",
+          "prefix": "012026021234MACY34      010MACY S      DRN      "
+        },
+        {
+          "record01_position": 55841,
+          "date": "20260213",
+          "codbdi": "34",
+          "codneg": "MACY34",
+          "tpmerc": "010",
+          "sha256": "e4080dffdbbf1a2950bcc0f960ec4bdef9b9a01be6a05463da416f398628d057",
+          "prefix": "012026021334MACY34      010MACY S      DRN      "
         }
       ]
     },
     "interpretation_limit": "A presença de um ticker noutra posição não prova equivalência semântica nem autoriza promoção automática."
   },
   "interpretation": "PASS_OVERLAP_EXACT means the ordered B3 type-01 stream is an exact prefix. PASS_OVERLAP_CONTENT_EXACT_ORDER_VARIANCE means every B3 type-01 payload occurs in BLOOMBERG_MAIL with at least the same multiplicity, but source order differs; content reconciliation passes while promotion remains blocked for explicit order-variance review. Additional Bloomberg rows are not automatically classified as temporal-only without date-level reconciliation.",
-  "promotion_impact": "BLOCKED_ORDER_VARIANCE_REVIEW"
+  "promotion_impact": "BLOCKED_CONTENT_DIVERGENCE"
 }
