@@ -225,7 +225,7 @@ jobs:
             "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
           }
           p=root/"quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json"
-          p.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+          p.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           print(json.dumps(report,ensure_ascii=False,indent=2))
           PY
 
@@ -254,5 +254,5 @@ jobs:
             echo "## COTAHIST 2026 — FASE11"
             echo "- Promoção controlada apenas após validar SHA, ZIP, 25 campos e preservação de todas as linhas antigas."
             echo "- Nenhuma deduplicação."
-            echo "- Resultado do job: \${{ job.status }}"
+            echo "- Resultado do job: ${{ job.status }}"
           } >> "$GITHUB_STEP_SUMMARY"
