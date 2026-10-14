@@ -10,6 +10,7 @@ on:
       - "dados/cotahist/normalized/manifests/**"
       - "scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py"
       - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
+      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
       - ".github/workflows/cotahist-dataset-oficial-v2.yml"
 
 permissions:
@@ -24,8 +25,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout
+      - name: Checkout sem materialização LFS global
         uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Instalar Git LFS e materializar apenas NORMALIZED anual
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
 
       - name: Gerar Dataset Oficial V2
         run: python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
