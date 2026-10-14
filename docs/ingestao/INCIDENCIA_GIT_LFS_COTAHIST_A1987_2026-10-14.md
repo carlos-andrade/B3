@@ -35,7 +35,9 @@ O conteúdo do CSV A1987 está acessível no repositório; a inconsistência é 
 - **Armazenamento:** exceção ao padrão Git LFS para CSV anuais.
 - **Operação:** aviso não bloqueante no checkout, deve ser eliminado por uma correção controlada.
 
-## Plano de resolução
+## Plano de resolução histórico — concluído
+
+Os passos abaixo registam o plano original; a execução e o encerramento constam da secção final deste documento.
 
 1. Não reescrever nem deduplicar o CSV.
 2. Antes de qualquer migração, registar o SHA-256 atual do conteúdo, tamanho, contagem de linhas, 25 campos e intervalo de datas.
@@ -59,7 +61,7 @@ Foi preparado e publicado diretamente em `main` (o repositório está configurad
 
 O workflow tem apenas `workflow_dispatch`, sem cron nem gatilho push. O modo padrão é `preflight`; a opção `migrate` exige seleção manual. Antes de converter, verifica SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`, 15.518.211 bytes, 130.665 linhas, 25 campos e datas 1987-01-02–1987-12-30. Depois do push, exige checkout limpo, materialização LFS, igualdade do hash/estrutura, auditoria física global e regeneração do Dataset Oficial V2.
 
-**Estado atualizado (2026-10-14):** workflow e runbook publicados diretamente em `main`, sem reescrever histórico, porque Pull Requests estão desativadas no repositório. O workflow ainda não tinha sido executado no momento deste registo intermediário. O estado posterior e autoritativo está documentado na secção Fecho pós-migração controlada, abaixo.
+**Estado atualizado (2026-10-14):** workflow e runbook publicados diretamente em `main`, sem reescrever histórico, porque Pull Requests estão desativadas no repositório. O estado posterior e autoritativo está documentado na secção Fecho pós-migração controlada, abaixo.
 
 
 ## Fecho pós-migração controlada — 2026-10-14
