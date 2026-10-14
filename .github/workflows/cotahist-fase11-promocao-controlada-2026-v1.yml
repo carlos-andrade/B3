@@ -35,6 +35,7 @@ jobs:
             dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
             dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
             dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -177,6 +178,67 @@ jobs:
             dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
           git diff --cached --quiet && { echo "Sem diferenças para commit."; exit 0; }
           git commit -m "data(cotahist): atualizar COTAHIST 2026 ate 2026-10-13"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+
+      - name: Registar evidência FASE11
+        if: always()
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, pathlib
+          root=pathlib.Path("dados/cotahist")
+          def read_json(path):
+              try: return json.loads(path.read_text(encoding="utf-8"))
+              except Exception: return {}
+          def sha(path):
+              if not path.is_file(): return None
+              h=hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda:f.read(1048576),b""): h.update(chunk)
+              return h.hexdigest()
+          raw=root/"raw/anual/COTAHIST_A2026.ZIP"
+          norm=root/"normalized/anual/COTAHIST_A2026.csv"
+          rm=read_json(root/"manifests/COTAHIST_A2026.json")
+          nm=read_json(root/"normalized/manifests/COTAHIST_A2026_quality.json")
+          f10=read_json(root/"quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json")
+          raw_sha=sha(raw); norm_sha=sha(norm)
+          promoted=(raw_sha is not None and norm_sha is not None and
+                    raw_sha==rm.get("sha256")==nm.get("raw_sha256") and
+                    norm_sha==nm.get("normalized_sha256") and
+                    nm.get("ultima_data")=="2026-10-13" and nm.get("linhas_normalized")==3142910)
+          report={
+            "schema_version":"1.0.0","year":2026,"phase":"FASE11_PROMOCAO_CONTROLADA",
+            "status":"PROMOVIDO_COM_HASHES_COHERENTES" if promoted else "PROMOCAO_NAO_CONFIRMADA",
+            "decision":"REEXECUTAR_FASES_04_08" if promoted else "MANTER_BLOQUEIO_E_INVESTIGAR",
+            "raw_sha256_observed":raw_sha,"normalized_sha256_observed":norm_sha,
+            "raw_manifest_sha256":rm.get("sha256"),"normalized_manifest_raw_sha256":nm.get("raw_sha256"),
+            "normalized_manifest_sha256":nm.get("normalized_sha256"),
+            "normalized_rows":nm.get("linhas_normalized"),"first_date":nm.get("primeira_data"),
+            "last_date":nm.get("ultima_data"),"phase10_status":f10.get("status"),
+            "canonical_mutated_by_phase11":promoted,"deduplication_performed":False,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          p=root/"quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json"
+          p.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Persistir evidência FASE11
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir resultado da promocao FASE11"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
