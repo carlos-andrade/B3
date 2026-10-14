@@ -18,7 +18,7 @@
 - A sequência original de registos foi preservada: sem deduplicação, remoção ou reordenação.
 
 ### Pendências do escopo B3
-1. **A matriz agregada de certificação anual precisa ser sincronizada**: o CSV apresenta 2.919.760 linhas e última data 22/09 para 2026, enquanto os manifestos canónicos atuais descrevem 3.142.910 linhas e última data 13/10. Atualizar a matriz a partir dos manifestos e validar a alteração.
+1. **A matriz agregada de certificação anual foi sincronizada para 2026**: a linha CSV agora regista parser 1.1.2 e 3.142.910 linhas, coerentes com o manifesto canónico de 14/10. Falta executar a certificação automática e verificar a matriz completa contra todos os manifestos.
 2. **O Dataset Oficial e os artefactos agregados precisam de auditoria final**: verificar alinhamento entre manifestos, matriz, dataset oficial, checksums, sidecars e documentação.
 3. **O ano de 2026 não está fechado**: o conjunto está atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 4. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
@@ -95,7 +95,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 | Prioridade | Trabalho | Critério de conclusão | Estado |
 |---|---|---|---|
-| P0 | Sincronizar a matriz de certificação anual | CSV 1986–2026 reconstruído dos manifestos canónicos atuais; 2026 reflete 3.142.910 linhas e data 13/10; execução e evidência persistidas | **PENDENTE** |
+| P0 | Executar certificação automática da matriz anual | Workflow verde; CSV reconstruído a partir dos manifestos e todos os 41 anos verificados; confirmar a linha 2026 (parser 1.1.2, 3.142.910 linhas) | **PENDENTE DE EXECUÇÃO/VERIFICAÇÃO** |
 | P1 | Auditar e reconciliar o Dataset Oficial | Manifestos, matriz anual, dataset oficial, checksums, sidecars e documentação concordam em versões, contagens, hashes e data de corte | **PENDENTE DE AUDITORIA** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
@@ -127,7 +127,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Escopo B3 — ingestão COTAHIST:** **EM FINALIZAÇÃO**. As pendências imediatas são sincronizar a matriz anual, auditar o Dataset Oficial e concluir a auditoria interna de governança. O fecho anual 2026 permanece pendente até existir a fonte anual final.
+**Escopo B3 — ingestão COTAHIST:** **EM FINALIZAÇÃO**. As pendências imediatas são executar/verificar a certificação automática da matriz anual, auditar o Dataset Oficial e concluir a auditoria interna de governança. O fecho anual 2026 permanece pendente até existir a fonte anual final.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
