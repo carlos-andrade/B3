@@ -18,9 +18,9 @@
 - A sequência original de registos foi preservada: sem deduplicação, remoção ou reordenação.
 
 ### Estado atual e limites residuais
-1. **Matriz anual certificada automaticamente**: workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38570114992) concluído com sucesso; 41 anos presentes e linha 2026 sincronizada com parser 1.1.2 e 3.142.910 linhas.
-2. **Dataset Oficial V1 gerado/validado**: workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38570165775) concluído com sucesso; 41 registos anuais, incluindo 2026 até 13/10.
-3. **Auditoria de workflows concluída**: 550 workflows avaliados, zero divergências críticas, 407 conformes sem observações e 143 conformes com observações. Run [38569675201](https://github.com/carlos-andrade/B3/actions/runs/38570189171).
+1. **Matriz anual certificada automaticamente**: workflow [38570114992](https://github.com/carlos-andrade/B3/actions/runs/38570114992) concluído com sucesso; 41 anos presentes e linha 2026 sincronizada com parser 1.1.2 e 3.142.910 linhas.
+2. **Dataset Oficial V1 gerado/validado**: workflow [38570165775](https://github.com/carlos-andrade/B3/actions/runs/38570165775) concluído com sucesso; 41 registos anuais, incluindo 2026 até 13/10.
+3. **Auditoria de workflows concluída**: 550 workflows avaliados, zero divergências críticas, 407 conformes sem observações e 143 conformes com observações. Run [38570189171](https://github.com/carlos-andrade/B3/actions/runs/38570189171).
 4. **Testes operacionais BDI e WATCHDOG concluídos**: [captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38561123974) e [validação WATCHDOG](https://github.com/carlos-andrade/B3/actions/runs/38561328911) terminaram com sucesso.
 5. **O ano de 2026 permanece parcial**, atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 6. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
@@ -97,8 +97,8 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 | Prioridade | Trabalho | Critério de conclusão | Estado |
 |---|---|---|---|
-| P0 | Certificação automática da matriz anual | Workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38570114992) verde; CSV com 41 anos e linha 2026 sincronizada (parser 1.1.2, 3.142.910 linhas) | **CONCLUÍDO** |
-| P1 | Dataset Oficial V1 | Workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38570165775) concluído com sucesso; 41 anos e registo 2026 alinhado com manifesto | **CONCLUÍDO NO ESCOPO V1** |
+| P0 | Certificação automática da matriz anual | Workflow [38570114992](https://github.com/carlos-andrade/B3/actions/runs/38570114992) verde; CSV com 41 anos e linha 2026 sincronizada (parser 1.1.2, 3.142.910 linhas) | **CONCLUÍDO** |
+| P1 | Dataset Oficial V1 | Workflow [38570165775](https://github.com/carlos-andrade/B3/actions/runs/38570165775) concluído com sucesso; 41 anos e registo 2026 alinhado com manifesto | **CONCLUÍDO NO ESCOPO V1** |
 | P1 | Auditoria física independente dos 41 CSV NORMALIZED | Relatório [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json); workflow [38568351293](https://github.com/carlos-andrade/B3/actions/runs/38568351293) | **EXECUTADA: 40/41 validados; 1998 reprovado por divergência de sidecar, controlada sem alterar o histórico** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
@@ -109,10 +109,10 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 ## 7. Sequência executável para encerramento do escopo B3
 
-1. Matriz anual sincronizada e workflow de certificação concluído: [run 38560732685](https://github.com/carlos-andrade/B3/actions/runs/38570114992).
-2. Dataset Oficial V1 gerado/validado com sucesso: [run 38560574845](https://github.com/carlos-andrade/B3/actions/runs/38570165775).
+1. Matriz anual sincronizada e workflow de certificação concluído: [run 38570114992](https://github.com/carlos-andrade/B3/actions/runs/38570114992).
+2. Dataset Oficial V1 gerado/validado com sucesso: [run 38570165775](https://github.com/carlos-andrade/B3/actions/runs/38570165775).
 3. Corrigidas as duas divergências críticas detetadas na auditoria de workflows; teste BDI e validação WATCHDOG concluídos com sucesso.
-4. Auditoria de conformidade atual: 550 workflows auditados, **zero divergências críticas**, 407 conformes sem observações e 143 conformes com observações. Run final: [38569218992](https://github.com/carlos-andrade/B3/actions/runs/38570189171).
+4. Auditoria de conformidade atual: 550 workflows auditados, **zero divergências críticas**, 407 conformes sem observações e 143 conformes com observações. Run final: [38570189171](https://github.com/carlos-andrade/B3/actions/runs/38570189171).
 5. Auditoria física executada sobre os 41 anos: **40 validados; 1998 com divergência isolada de sidecar**. O hash físico do CSV coincide com o manifesto (`21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79`), mas difere do sidecar (`d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee`). Relatório persistido; workflow [38568351293](https://github.com/carlos-andrade/B3/actions/runs/38568351293) reprovou pelo gate fail-closed. Incidência documentada em [INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md). Por regra de histórico somente consulta, CSV, manifesto e sidecar não foram alterados.
 6. Atualizar documentação agregada apenas depois da validação dos dados e evidências; não alterar README fora da janela governada.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
