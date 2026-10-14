@@ -39,7 +39,11 @@ Para 1986, a certificação é registrada como CERTIFICADO_NORMALIZAÇÃO_COM_EX
 - 1986–2025 ficam encerrados para ingestão rotineira e disponíveis apenas para consulta, nos termos de `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md`. Este congelamento operacional não equivale a certificação semântica integral; 1986 mantém exceção semântica controlada.
 - 2026 é o único ano no ciclo de atualização diária e permanece parcial; o manifesto canónico atualizado em 14/10/2026 regista 3.142.910 linhas e última data 2026-10-13. A matriz CSV foi sincronizada com parser 1.1.2 e a contagem atualizada.
 
-## 4. Limite da certificação
+## 4. Auditoria física independente — 14/10/2026
+
+A auditoria física dos 41 CSV NORMALIZED foi executada com materialização Git LFS, SHA-256 físico, comparação com manifesto/sidecar, contagem de linhas, 25 campos e validação das datas. Resultado: **40/41 anos validados**. O único bloqueio foi 1998: SHA-256 físico e manifesto coincidem (`21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79`), mas o sidecar contém `d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee`. A evidência está em [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json) e a incidência em [INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md). Em respeito à política de histórico somente consulta, não houve correção automática do sidecar nem mutação do CSV/manifesto de 1998. A auditoria física global permanece reprovada até reabertura formal e resolução documentada.
+
+## 5. Limite da certificação
 
 Esta matriz não certifica:
 - interpretação econômica de códigos históricos;
@@ -49,14 +53,14 @@ Esta matriz não certifica:
 - adequação dos dados para qualquer estratégia específica;
 - certificação semântica plena de 1986.
 
-## 5. Fonte primária
+## 6. Fonte primária
 
 A fonte operacional são os manifests versionados em dados/cotahist/normalized/manifests/.
 
 O artefato máquina-a-máquina correspondente é:
 dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
 
-## 6. Regra de governança
+## 7. Regra de governança
 
 A matriz deve ser regenerada quando houver alteração validada em RAW, parser, normalização ou manifest de 2026. Os anos 1986–2025 não devem ser alterados no ciclo rotineiro; qualquer reabertura exige decisão formal e auditoria. Nenhum ano deve ser promovido silenciosamente para uma categoria superior de confiança.
 
