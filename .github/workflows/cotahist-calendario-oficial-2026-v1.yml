@@ -1,4 +1,5 @@
 name: COTAHIST 2026 - Auditoria Calendario Oficial B3
+# Reexecucao inicial pos-persistencia da referencia oficial.
 
 on:
   workflow_dispatch:
