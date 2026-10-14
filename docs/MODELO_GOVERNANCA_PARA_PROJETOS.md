@@ -1,15 +1,27 @@
 # MODELO-MESTRE DE GOVERNANÇA PARA PROJETOS
 
-**Arquivo:** MODELO_GOVERNANCA_PARA_PROJETOS.md  
-**Projeto de origem:** B3 — A BOLSA DO BRASIL  
-**Caminho:** docs/MODELO_GOVERNANCA_PARA_PROJETOS.md  
-**Data de criação:** 25/09/2026  
-**Repositório:** carlos-andrade/B3  
-**Versão:** 1.4  
-**Status:** VIGENTE  
-**Natureza:** Norma-modelo reutilizável
-
----
+| Campo | Valor |
+|---|---|
+| **ID** | B3-MODELO-GOV-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | MODELO_GOVERNANCA |
+| **Fase** | Governação documental e rastreabilidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.5.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [2fa187d32ee4b5d97fc64b4b91b208c3befc15c9](https://github.com/carlos-andrade/B3/commit/2fa187d32ee4b5d97fc64b4b91b208c3befc15c9) |
+| **Data de criação** | 2026-09-25 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Origem** | Documento B3 preexistente; corpo histórico preservado |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
+| **Escopo** | Modelo de governança aplicado ao projeto B3 |
+| **Objetivo** | Padronizar a governança do projeto, subordinada ao Layout Mestre operacional. |
+| **Dependências** | Layout Mestre B3, evidências por fase e documentação oficial aplicável |
 
 ## 1. FINALIDADE
 
