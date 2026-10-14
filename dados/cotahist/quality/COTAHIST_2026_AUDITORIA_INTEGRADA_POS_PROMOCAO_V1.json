@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1",
+  "year": 2026,
+  "audit_type": "AUDITORIA_CROSS_PHASE_POS_PROMOCAO",
+  "status": "APROVADO_COM_LIMITACOES_NAO_BLOQUEANTES",
+  "decision": "CICLO_TECNICO_2026_VALIDADO_ATE_2026-10-13; CALENDARIO_OFICIAL_E_FECHO_ANUAL_PENDENTES",
+  "audited_at_utc": "2026-10-14T11:25:50Z",
+  "repository": "https://github.com/carlos-andrade/B3",
+  "branch": "main",
+  "dataset": {
+    "source": "B3",
+    "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+    "raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+    "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+    "raw_bytes": 85075031,
+    "normalized_bytes": 421981550,
+    "rows": 3142910,
+    "fields": 25,
+    "first_date": "2026-01-02",
+    "last_date": "2026-10-13",
+    "invalid_dates": 0,
+    "out_of_year_dates": 0,
+    "deduplication_performed": false,
+    "row_reordering_performed": false
+  },
+  "phase_results": {
+    "FASE04": {"status": "VALIDADO", "decision": "LIBERADO_PARA_FASE05", "raw_sha256_match": true, "normalized_sha256_match": true, "blockers": []},
+    "FASE05": {"status": "VALIDADO", "decision": "LIBERADO_PARA_RECONCILIACAO", "raw_hash_match": true, "normalized_hash_match": true, "manifest_sidecar_coherent": true, "blockers": []},
+    "FASE06": {"status": "VALIDADO", "decision": "LIBERADO_PARA_FASE07", "validation_type": "RECONCILIACAO_SEMANTICA_INTEGRAL_25_CAMPOS_STREAMING", "raw_records": 3142910, "normalized_records": 3142910, "fields_checked": 25, "mismatch_count": 0, "blockers": []},
+    "FASE07": {"status": "VALIDADO", "decision": "LIBERADO_PARA_FASE08", "records": 3142910, "source_normalized_sha256_match": true, "deduplication_performed": false, "source_rows_removed": 0, "blockers": []},
+    "FASE08": {"status": "VALIDADO_COM_EXCECAO", "decision": "LIBERADO_PARA_GATE_06_08", "normalized_sha256_match": true, "blockers": [], "non_blocking_exceptions": ["ORDEM_DA_FONTE_NAO_CRONOLOGICA", "REGRESSAO_TEMPORAL_POR_INSTRUMENTO", "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA", "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO"]},
+    "GATE_06_08": {"status": "APROVADO_COM_EXCECOES_NAO_BLOQUEANTES", "decision": "LIBERADO_PARA_FASE09", "blockers": [], "mutations_performed": false, "deduplication_performed": false, "rows_removed": 0},
+    "FASE09": {"status": "LIBERADO_PARA_FASE10", "decision": "LIBERADO_PARA_FASE10", "missing": [], "blocked": [], "run_id": 38556379769, "run_conclusion": "success"},
+    "FASE10": {"status": "VALIDADO_SEM_DIFERENCAS_DE_LINHAS", "decision": "CANDIDATO_ELEGIVEL_A_GATE_DE_PROMOCAO", "candidate_rows_added_vs_canonical": 0, "canonical_rows_absent_from_candidate": 0, "full_row_multiset_unchanged": true, "candidate_raw_sha_matches_probe": true, "blockers": []},
+    "FASE11": {"status": "PROMOVIDO_COM_HASHES_COHERENTES", "decision_at_promotion": "REEXECUTAR_FASES_04_08", "post_promotion_revalidation": "COMPLETED", "raw_manifest_hash_coherent": true, "normalized_manifest_hash_coherent": true, "canonical_hashes_match_revalidated_phases": true, "deduplication_performed": false},
+    "LAYOUT_MASTER_AUDIT": {"run_id": 38556380160, "run_conclusion": "success"}
+  },
+  "cross_phase_checks": {
+    "raw_sha256_consistent_across_manifest_and_phases": true,
+    "normalized_sha256_consistent_across_manifest_and_phases": true,
+    "row_count_consistent": true,
+    "field_count_consistent": true,
+    "date_range_consistent": true,
+    "phase04_to_phase09_hash_chain_consistent": true,
+    "phase10_candidate_equal_to_canonical_by_full_row_multiset": true,
+    "phase11_promotion_hashes_match_post_promotion_revalidation": true,
+    "blockers": []
+  },
+  "limitations": [
+    "A FASE04 é uma auditoria de integridade/documentação; a comparação independente integral dos 25 campos RAW x NORMALIZED é certificada pela FASE06.",
+    "FASE08 observa regressões de ordenação na sequência física; as linhas foram preservadas e não reordenadas.",
+    "O calendário oficial histórico B3 não está persistido nesta evidência; não declarar equivalência oficial do calendário.",
+    "Os dados terminam em 2026-10-13; isto não representa fecho anual de 2026.",
+    "A validação deste ciclo 2026 não certifica nem autoriza migração histórica de 1986-2025."
+  ],
+  "next_actions": [
+    "Atualizar o roadmap canónico com esta auditoria integrada.",
+    "Persistir e validar uma referência de calendário oficial B3 antes de promover a conformidade temporal externa.",
+    "Manter monitorização da fonte oficial; reabrir aquisição e fases dependentes apenas se o RAW mudar.",
+    "Não reexecutar FASE10/FASE11 sem mudança de candidato, hashes ou regra de promoção."
+  ]
+}
