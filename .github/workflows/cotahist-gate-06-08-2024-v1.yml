@@ -1,0 +1,184 @@
+# Gate independente 06-08 de 2024; valida evidencias e ficheiro fisico sem mutacao.
+name: COTAHIST 2024 - Gate independente FASE06-08
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-gate-06-08-2024-v1.yml"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2024.csv"
+      - "dados/cotahist/quality/COTAHIST_2024_FASE06_RECONCILIACAO_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2024_FASE07_IDENTIDADE_CHAVES_V1.json"
+      - "dados/cotahist/quality/COTAHIST_2024_FASE08_SEMANTICA_CALENDARIO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-gate-06-08-2024-v1
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-gate-06-08-2024-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2024.csv
+            dados/cotahist/quality/COTAHIST_2024_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2024_FASE07_IDENTIDADE_CHAVES_V1.json
+            dados/cotahist/quality/COTAHIST_2024_FASE08_SEMANTICA_CALENDARIO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter NORMALIZED via Git LFS
+        run: |
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2024.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2024.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2024.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED permanece como ponteiro Git LFS."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar gate, hashes, contagens e excecoes
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys
+          root = pathlib.Path("dados/cotahist")
+          csv_path = root / "normalized/anual/COTAHIST_A2024.csv"
+          q = root / "quality"
+          paths = {
+            "FASE06": q / "COTAHIST_2024_FASE06_RECONCILIACAO_V1.json",
+            "FASE07": q / "COTAHIST_2024_FASE07_IDENTIDADE_CHAVES_V1.json",
+            "FASE08": q / "COTAHIST_2024_FASE08_SEMANTICA_CALENDARIO_V1.json"
+          }
+          out_path = q / "COTAHIST_2024_GATE_06_08_V1.json"
+          blockers, checks = [], {}
+          for p in [csv_path, *paths.values()]:
+              if not p.is_file() or p.stat().st_size == 0:
+                  blockers.append("ARTEFACTO_AUSENTE_OU_VAZIO:" + str(p))
+          ev = {k: json.loads(p.read_text(encoding="utf-8")) if p.is_file() and p.stat().st_size else {} for k,p in paths.items()}
+          f6, f7, f8 = ev["FASE06"], ev["FASE07"], ev["FASE08"]
+          checks["phase06_validated"] = f6.get("status") == "VALIDADO" and f6.get("decision") == "LIBERADO_PARA_FASE07" and f6.get("mismatch_count") == 0
+          checks["phase07_validated"] = f7.get("status") == "VALIDADO" and f7.get("decision") == "LIBERADO_PARA_FASE08"
+          checks["phase08_accepted"] = f8.get("status") == "VALIDADO_COM_EXCECAO" and f8.get("decision") == "LIBERADO_PARA_GATE_06_08" and f8.get("blockers") == []
+          for k,v in checks.items():
+              if not v: blockers.append("CHECK_FAILED:" + k)
+          normalized_sha = None
+          rows_checked = 0
+          fields = []
+          unique_dates = set()
+          first_date = last_date = None
+          invalid_dates = 0
+          weekend_dates = []
+          chronology_regressions = 0
+          previous_date = None
+          if csv_path.is_file() and csv_path.stat().st_size:
+              digest = hashlib.sha256()
+              with csv_path.open("rb") as fh:
+                  for chunk in iter(lambda: fh.read(1024*1024), b""):
+                      digest.update(chunk)
+              normalized_sha = digest.hexdigest()
+              with csv_path.open(encoding="utf-8", newline="") as fh:
+                  reader = csv.DictReader(fh)
+                  fields = reader.fieldnames or []
+                  if not {"data_pregao","codbdi","codneg","tpmerc","prazot","dismes"} <= set(fields):
+                      blockers.append("CAMPOS_OBRIGATORIOS_AUSENTES")
+                  for row in reader:
+                      rows_checked += 1
+                      try:
+                          d = datetime.date.fromisoformat(row.get("data_pregao",""))
+                          if d.year != 2024:
+                              invalid_dates += 1
+                              continue
+                      except ValueError:
+                          invalid_dates += 1
+                          continue
+                      if previous_date is not None and d < previous_date:
+                          chronology_regressions += 1
+                      previous_date = d
+                      unique_dates.add(d)
+                      first_date = d if first_date is None or d < first_date else first_date
+                      last_date = d if last_date is None or d > last_date else last_date
+              weekend_dates = sorted(d.isoformat() for d in unique_dates if d.weekday() >= 5)
+              checks.update({
+                "normalized_sha_matches_phase06": normalized_sha == f6.get("normalized_sha256"),
+                "normalized_sha_matches_phase07": normalized_sha == f7.get("source_normalized_sha256"),
+                "normalized_sha_matches_phase08": normalized_sha == f8.get("normalized_sha256"),
+                "row_count_matches_phase06": rows_checked == f6.get("normalized_records"),
+                "row_count_matches_phase07": rows_checked == f7.get("records"),
+                "row_count_matches_phase08": rows_checked == f8.get("rows_checked"),
+                "field_count_25": len(fields) == 25,
+                "dates_valid_and_in_year": invalid_dates == 0,
+                "date_range_matches_phase06": bool(first_date and last_date) and first_date.isoformat() == f6.get("first_date") and last_date.isoformat() == f6.get("last_date"),
+                "date_range_matches_phase08": bool(first_date and last_date) and first_date.isoformat() == f8.get("first_trading_date") and last_date.isoformat() == f8.get("last_trading_date"),
+                "unique_dates_match_phase08": len(unique_dates) == f8.get("unique_trading_dates"),
+                "weekend_dates_absent": len(weekend_dates) == 0,
+                "no_deduplication_phase07": f7.get("deduplication_performed") is False and f7.get("source_rows_removed") == 0,
+                "no_deduplication_phase08": f8.get("deduplication_performed") is False and f8.get("rows_removed") == 0,
+                "chronology_exception_classified": any(e.get("code") == "ORDEM_DA_FONTE_NAO_CRONOLOGICA" and e.get("blocking") is False for e in f8.get("exceptions",[])),
+                "instrument_date_exception_classified": (f8.get("instrument_date_regressions") == 0) or any(e.get("code") == "REGRESSAO_TEMPORAL_POR_INSTRUMENTO" and e.get("blocking") is False for e in f8.get("exceptions",[])),
+                "calendar_limitation_explicit": any(e.get("code") == "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO" and e.get("blocking") is False for e in f8.get("exceptions",[]))
+              })
+              for k,v in checks.items():
+                  if not v: blockers.append("CHECK_FAILED:" + k)
+          out = {
+            "schema_version":"1.0.0", "year":2024, "phase":"GATE_06_08",
+            "status":"GATE_APROVADO" if not blockers else "BLOQUEADO",
+            "decision":"APROVADO_PARA_ANALISE_FASE09" if not blockers else "BLOQUEADO_PARA_FASE09",
+            "normalized_path":str(csv_path), "normalized_sha256_calculated":normalized_sha,
+            "rows_checked":rows_checked, "field_count":len(fields),
+            "unique_trading_dates":len(unique_dates),
+            "first_trading_date":first_date.isoformat() if first_date else None,
+            "last_trading_date":last_date.isoformat() if last_date else None,
+            "invalid_date_count":invalid_dates, "chronological_regressions":chronology_regressions,
+            "weekend_dates_observed":weekend_dates, "checks":checks, "blockers":blockers,
+            "exceptions":f8.get("exceptions",[]) if not blockers else [],
+            "deduplication_performed":False, "rows_removed":0,
+            "official_calendar_equivalence_certified":False,
+            "validated_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          if blockers: sys.exit("GATE 06-08 BLOQUEADO")
+          PY
+
+      - name: Persistir evidencia do gate
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2024_GATE_06_08_V1.json || { echo "Evidência do gate não produzida."; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2024_GATE_06_08_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): registrar gate 06-08 2024"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2024 — Gate FASE06-08"
+            echo "- Verifica hashes, contagens, datas e exceções persistidas."
+            echo "- Não prova equivalência com calendário oficial B3."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
