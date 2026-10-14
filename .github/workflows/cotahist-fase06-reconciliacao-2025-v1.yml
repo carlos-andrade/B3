@@ -1,0 +1,200 @@
+# FASE06: reconciliação semântica integral, streaming, sem deduplicação.
+name: COTAHIST 2025 - FASE06 Reconciliacao Semantica Integral
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase06-reconciliacao-2025-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2025_FASE05_MANIFESTO_CHECKSUM_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase06-reconciliacao-2025-v1
+  cancel-in-progress: false
+
+jobs:
+  reconciliacao:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase06-reconciliacao-2025-v1.yml
+            scripts/ingestao/normalize_cotahist.py
+            dados/cotahist/raw/anual/COTAHIST_A2025.ZIP
+            dados/cotahist/normalized/anual/COTAHIST_A2025.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2025_quality.json
+            dados/cotahist/quality/COTAHIST_2025_FASE05_MANIFESTO_CHECKSUM_V1.json
+            dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter apenas o RAW anual via Git LFS
+        run: git lfs pull --include="dados/cotahist/raw/anual/COTAHIST_A2025.ZIP,dados/cotahist/normalized/anual/COTAHIST_A2025.csv" --exclude=""
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconciliar todos os 25 campos linha a linha em streaming
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, importlib.util, json, pathlib, sys, zipfile
+
+          raw = pathlib.Path("dados/cotahist/raw/anual/COTAHIST_A2025.ZIP")
+          normalized = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2025.csv")
+          manifest = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2025_quality.json")
+          phase05 = pathlib.Path("dados/cotahist/quality/COTAHIST_2025_FASE05_MANIFESTO_CHECKSUM_V1.json")
+          evidence = pathlib.Path("dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json")
+
+          for path in (raw, normalized, manifest, phase05):
+              if not path.is_file() or path.stat().st_size == 0:
+                  sys.exit(f"FASE06 BLOQUEADA: arquivo ausente/vazio: {path}")
+
+          def sha256_file(path):
+              digest = hashlib.sha256()
+              with path.open("rb") as stream:
+                  for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                      digest.update(chunk)
+              return digest.hexdigest()
+
+          f5 = json.loads(phase05.read_text(encoding="utf-8"))
+          m = json.loads(manifest.read_text(encoding="utf-8"))
+          if (f5.get("year"), f5.get("phase"), f5.get("status"), f5.get("decision")) != (2025, "FASE05", "VALIDADO", "LIBERADO_PARA_FASE06"):
+              sys.exit("FASE06 BLOQUEADA: gate FASE05 não validado/liberado")
+
+          raw_sha = sha256_file(raw)
+          normalized_sha = sha256_file(normalized)
+          if raw_sha != f5.get("raw_sha256_calculated"):
+              sys.exit("FASE06 BLOQUEADA: SHA-256 RAW diverge da FASE05")
+          if normalized_sha != f5.get("normalized_sha256_calculated"):
+              sys.exit("FASE06 BLOQUEADA: SHA-256 NORMALIZED diverge da FASE05")
+
+          spec = importlib.util.spec_from_file_location("normalize_cotahist", "scripts/ingestao/normalize_cotahist.py")
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          mismatch_count = 0
+          mismatch_sample = []
+          raw_records = 0
+          normalized_records = 0
+          first_date = None
+          last_date = None
+
+          with zipfile.ZipFile(raw) as archive:
+              members = [name for name in archive.namelist() if not name.endswith("/")]
+              if len(members) != 1 or members[0] != "COTAHIST_A2025.TXT" or archive.testzip() is not None:
+                  sys.exit("FASE06 BLOQUEADA: estrutura ou CRC do ZIP inválido")
+              with archive.open(members[0]) as raw_stream, normalized.open(encoding="utf-8", newline="") as csv_stream:
+                  reader = csv.reader(csv_stream)
+                  header = next(reader, None)
+                  if header != module.HEADER or len(header or []) != 25:
+                      sys.exit("FASE06 BLOQUEADA: cabeçalho NORMALIZED diverge do schema do normalizador")
+                  normalized_iter = iter(reader)
+                  for line_number, raw_line in enumerate(raw_stream, start=1):
+                      line = raw_line.rstrip(b"\r\n")
+                      if line[:2] != b"01":
+                          continue
+                      raw_records += 1
+                      try:
+                          expected = module.normalize_line(line)
+                      except Exception as exc:
+                          mismatch_count += 1
+                          if len(mismatch_sample) < 20:
+                              mismatch_sample.append({"raw_line": line_number, "type": "RAW_PARSE_ERROR", "detail": str(exc)})
+                          continue
+                      actual = next(normalized_iter, None)
+                      if actual is None:
+                          mismatch_count += 1
+                          if len(mismatch_sample) < 20:
+                              mismatch_sample.append({"raw_line": line_number, "type": "NORMALIZED_EARLY_EOF"})
+                          continue
+                      normalized_records += 1
+                      if actual != expected:
+                          mismatch_count += 1
+                          if len(mismatch_sample) < 20:
+                              fields = [name for name, a, b in zip(module.HEADER, expected, actual) if a != b]
+                              mismatch_sample.append({"record": raw_records, "type": "FIELD_MISMATCH", "fields": fields[:25]})
+                      date = expected[0]
+                      if date:
+                          first_date = date if first_date is None else min(first_date, date)
+                          last_date = date if last_date is None else max(last_date, date)
+                  for extra in normalized_iter:
+                      normalized_records += 1
+                      mismatch_count += 1
+                      if len(mismatch_sample) < 20:
+                          mismatch_sample.append({"normalized_record": normalized_records, "type": "NORMALIZED_EXTRA_ROW"})
+
+          count_matches = raw_records == normalized_records == f5.get("rows_calculated") == m.get("linhas_normalized")
+          date_matches = first_date == f5.get("first_date") and last_date == f5.get("last_date")
+          ok = mismatch_count == 0 and count_matches and date_matches
+          result = {
+              "schema_version": "1.0.0",
+              "year": 2025,
+              "phase": "FASE06",
+              "status": "VALIDADO" if ok else "BLOQUEADO",
+              "decision": "LIBERADO_PARA_FASE07" if ok else "BLOQUEADO_PARA_FASE07",
+              "validation_type": "RECONCILIACAO_SEMANTICA_INTEGRAL_25_CAMPOS_STREAMING",
+              "raw_sha256": raw_sha,
+              "normalized_sha256": normalized_sha,
+              "phase05_status": f5.get("status"),
+              "raw_records": raw_records,
+              "normalized_records": normalized_records,
+              "fields_checked": module.HEADER,
+              "field_count": len(module.HEADER),
+              "mismatch_count": mismatch_count,
+              "mismatch_sample": mismatch_sample,
+              "record_count_matches": count_matches,
+              "date_range_matches": date_matches,
+              "first_date": first_date,
+              "last_date": last_date,
+              "raw_immutable": True,
+              "deduplication_performed": False,
+              "validated_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          evidence.parent.mkdir(parents=True, exist_ok=True)
+          evidence.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          if not ok:
+              sys.exit("FASE06 BLOQUEADA: divergência semântica ou estrutural")
+          PY
+
+      - name: Persistir evidência FASE06 inclusive em caso de bloqueio
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json || {
+            echo "Nenhuma evidência FASE06 foi produzida."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir reconciliacao semantica 2025 fase06"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa \${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2025 — FASE06"
+            echo "- Reconciliação semântica dos 25 campos por registo, em streaming."
+            echo "- Sem deduplicação; RAW imutável."
+            echo "- FASE07 só pode avançar com evidência FASE06 VALIDADO."
+            echo "- Resultado do job: \${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
