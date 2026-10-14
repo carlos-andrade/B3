@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-14T11:25:42.937242+00:00
-Workflows auditados: 548
+Gerado em UTC: 2026-10-14T11:41:56.505345+00:00
+Workflows auditados: 549
 
 ## Regra de decisão
 
@@ -46,6 +46,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-cadeia-1994-06-12-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-calendario-1986-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/cotahist-calendario-oficial-2026-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-certificacao-anual-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-certificacao-final-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-chave-logica-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
