@@ -28,11 +28,30 @@ def raw_exists(year: int) -> bool:
 
 
 def main() -> None:
+    if not OUT.is_file():
+        raise SystemExit(
+            "Matriz histórica ausente: não reconstruir anos encerrados automaticamente; "
+            "reabertura formal necessária."
+        )
+    with OUT.open(encoding="utf-8", newline="") as handle:
+        existing_rows = {int(row["ano"]): row for row in csv.DictReader(handle)}
+    missing_historical = [year for year in range(1986, 2026) if year not in existing_rows]
+    if missing_historical:
+        raise SystemExit(
+            f"Linhas históricas ausentes na matriz: {missing_historical}; "
+            "histórico congelado, sem reconstrução automática."
+        )
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     rows = []
     failures = []
 
     for year in YEARS:
+        if year < 2026:
+            # Congelar as linhas históricas: não reavaliar nem reescrever 1986–2025 na rotina.
+            rows.append(existing_rows[year])
+            continue
+
         manifest_path = MANIFESTS / f"COTAHIST_A{year}_quality.json"
         present = manifest_path.is_file()
         raw = raw_exists(year)
