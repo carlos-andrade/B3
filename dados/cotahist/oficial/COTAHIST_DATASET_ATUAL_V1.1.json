@@ -3,7 +3,7 @@
   "dataset_id": "COTAHIST_OFICIAL_ATUAL",
   "status": "VIGENTE",
   "status_frescor": "VALIDADO",
-  "generated_at_utc": "2026-10-14T02:04:34.980027+00:00",
+  "generated_at_utc": "2026-10-14T13:07:29.525984+00:00",
   "source": "B3",
   "ano_corrente": 2026,
   "ultima_data": "2026-10-13",
@@ -11,155 +11,11 @@
     "snapshot_anual": {
       "normalized_file": "COTAHIST_A2026.csv",
       "quality_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-      "ultima_data": "2026-09-23",
-      "linhas_normalized": 2919760,
-      "normalized_sha256": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9"
+      "ultima_data": "2026-10-13",
+      "linhas_normalized": 3142910,
+      "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc"
     },
-    "incrementos_diarios": [
-      {
-        "data_referencia": "2026-10-01",
-        "primeira_data": "2026-10-01",
-        "ultima_data": "2026-10-01",
-        "linhas_normalized": 15700,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D01102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D01102026.csv",
-        "raw_sha256": "472277bad1e2b4c1af7b1de58abf0c367fab1dad48818b04608782faff59ddd2",
-        "normalized_sha256": "1506605d3f2f989ae6289f2e60a65d02de9db45ea99aacb2546f16a61e1b4935",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D01102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-02",
-        "primeira_data": "2026-10-02",
-        "ultima_data": "2026-10-02",
-        "linhas_normalized": 17948,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D02102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D02102026.csv",
-        "raw_sha256": "ed74b2743182a951390dd8d4bc505c38ab08bdc99d790fcfc21829b466831ea0",
-        "normalized_sha256": "c8dc4d3eb5f2910a538e69cd8d8d3736731ee5c92b8246043ba1c8accac3095a",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D02102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-05",
-        "primeira_data": "2026-10-05",
-        "ultima_data": "2026-10-05",
-        "linhas_normalized": 20720,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D05102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D05102026.csv",
-        "raw_sha256": "7a49be907565cffd1ef7765083540a36742ecc50b147c5475249527c126d3d7e",
-        "normalized_sha256": "661eb315f3c5f0abeee2deacff05ba1fc87e7ffb598eaf83735a3bd20c293fbc",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D05102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-06",
-        "primeira_data": "2026-10-06",
-        "ultima_data": "2026-10-06",
-        "linhas_normalized": 17453,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D06102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D06102026.csv",
-        "raw_sha256": "f523461ce199293426fbb0c9d10adc8ab366adb3752850ddbd391e1af82f3e5c",
-        "normalized_sha256": "d98b9e5b809653d40029a4b816566d64d84a6a2771756c139b6b81e5782e3a83",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D06102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-07",
-        "primeira_data": "2026-10-07",
-        "ultima_data": "2026-10-07",
-        "linhas_normalized": 17311,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D07102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D07102026.csv",
-        "raw_sha256": "400e20ced76928bf78374e700551a7af21165b0ae8dff84c005253070af6c217",
-        "normalized_sha256": "d979a2dc94482c92bb3d1fbff94eca9c0d87b3c1b677503df2af8f94f11a2a21",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D07102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-08",
-        "primeira_data": "2026-10-08",
-        "ultima_data": "2026-10-08",
-        "linhas_normalized": 17544,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D08102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D08102026.csv",
-        "raw_sha256": "b83a0c32c2f3cf3584920f2690bcb17f8fc44d202d79711c86bb832634f81d3c",
-        "normalized_sha256": "14d7e73904cf56710105013ec1265cb6c3cf481a028de06c524988de8ac069f8",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D08102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-09",
-        "primeira_data": "2026-10-09",
-        "ultima_data": "2026-10-09",
-        "linhas_normalized": 19213,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D09102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D09102026.csv",
-        "raw_sha256": "84f1bbf0a7f7d7d1f27c3d508c44c467797b2d44ce563fb46a6d667dd88e4029",
-        "normalized_sha256": "f39ec9919b27aa5716a2aa4cebea852f38849389067627238bf2bcf8e17eeed2",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D09102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-10-13",
-        "primeira_data": "2026-10-13",
-        "ultima_data": "2026-10-13",
-        "linhas_normalized": 18011,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D13102026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D13102026.csv",
-        "raw_sha256": "42cd24ddaed465a8069fe5721b419b4c7367293a1a92b49fb8b5d9e6822ce90c",
-        "normalized_sha256": "696ced1f4d8ca3a74b99b7de811271cb91bbab2a5d11c337f09f69e36c86f78e",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D13102026_quality.json"
-      },
-      {
-        "data_referencia": "2026-09-24",
-        "primeira_data": "2026-09-24",
-        "ultima_data": "2026-09-24",
-        "linhas_normalized": 15903,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D24092026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D24092026.csv",
-        "raw_sha256": "7ef9fb0e832f2c67effaf65be66c736f593fecbe3c4598ad9d0be6ff5e6d5bfc",
-        "normalized_sha256": "99962bd581e476908b97a5261f73eb973c4ef4d4373a7683a7b88e977a80d464",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D24092026_quality.json"
-      },
-      {
-        "data_referencia": "2026-09-25",
-        "primeira_data": "2026-09-25",
-        "ultima_data": "2026-09-25",
-        "linhas_normalized": 16593,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D25092026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D25092026.csv",
-        "raw_sha256": "1d62e1d49777c8b85dba3e546a5040d0f78765fb1cd439433c5303f5320ae4a8",
-        "normalized_sha256": "f195a090d38055951972208c97f5cce49b221e462c60df9bc1c29d62ae8c93cc",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D25092026_quality.json"
-      },
-      {
-        "data_referencia": "2026-09-28",
-        "primeira_data": "2026-09-28",
-        "ultima_data": "2026-09-28",
-        "linhas_normalized": 15524,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D28092026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D28092026.csv",
-        "raw_sha256": "95b6a2f5eaf73a002b5606f481eb61214e3fe01003646de79a3b72fb5213caf2",
-        "normalized_sha256": "45de6d222cfd1c840007a0c87633939c992454089351c27251a1fb9356b8984f",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D28092026_quality.json"
-      },
-      {
-        "data_referencia": "2026-09-29",
-        "primeira_data": "2026-09-29",
-        "ultima_data": "2026-09-29",
-        "linhas_normalized": 14966,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D29092026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D29092026.csv",
-        "raw_sha256": "314009c0c629c92e1582122bb33ee166f091e66df774679db49b3941b4d6a345",
-        "normalized_sha256": "fc328ff76cf74b0a80503e94db9f6a1644a580a7eac8c1226eb6be6112ac45f3",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D29092026_quality.json"
-      },
-      {
-        "data_referencia": "2026-09-30",
-        "primeira_data": "2026-09-30",
-        "ultima_data": "2026-09-30",
-        "linhas_normalized": 16264,
-        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D30092026.ZIP",
-        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D30092026.csv",
-        "raw_sha256": "03d535cb8f04e3026b13d78dc48a69723ea11efa24acaf98abbae18644ae7ce1",
-        "normalized_sha256": "a51f5707a03b411e563237b38853bd468c7731f3c7ef7f5fba048670f386c28b",
-        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D30092026_quality.json"
-      }
-    ]
+    "incrementos_diarios": []
   },
   "regra": "Dataset corrente = snapshot anual B3 + todos os manifests diarios VALIDADO posteriores ao snapshot. O RAW anual permanece imutavel.",
   "fail_closed": true
