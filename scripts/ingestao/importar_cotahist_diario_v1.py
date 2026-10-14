@@ -113,7 +113,7 @@ def import_day(ref_date: date) -> str:
                     "decisao": "Preservar os artefactos canónicos e exigir revisão; não reescrever dados automaticamente."
                 }
                 conflict_path = CONFLICT_DIR / f"{name}_INTEGRIDADE_{normalized_sha[:12]}.json"
-                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
                 print(f"CONFLITO_INTEGRIDADE_NAO_PROMOVIDO: {name} erros={integrity_errors}")
                 return "CONFLICT"
 
