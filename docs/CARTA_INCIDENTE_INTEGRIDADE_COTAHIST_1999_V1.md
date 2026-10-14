@@ -1,12 +1,27 @@
 # CARTA DE INCIDENTE E INTEGRIDADE — COTAHIST 1999
 
-**Projeto:** B3 — A BOLSA DO BRASIL  
-**Repositório:** `carlos-andrade/B3`  
-**Versão:** 1.0.0  
-**Data:** 2026-10-12  
-**Estado:** COTAHIST 1999 e 2000 fechados/certificados; COTAHIST 2001 validado até FASE06  
-**Artefatos afetados:** COTAHIST anual de 1999, normalizador e evidência FASE04  
-**Autoridade normativa operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+| Campo | Valor |
+|---|---|
+| **ID** | B3-INC-COTAHIST-1999-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | CARTA_INCIDENTE |
+| **Fase** | Governação documental e rastreabilidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [a82b72a6fe09312a8ba2d93901da5d6c0db81312](https://github.com/carlos-andrade/B3/commit/a82b72a6fe09312a8ba2d93901da5d6c0db81312) |
+| **Data de criação** | 2026-10-12 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Origem** | Documento B3 preexistente; corpo histórico preservado |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
+| **Escopo** | Incidente histórico e integridade de COTAHIST 1999–2001 |
+| **Objetivo** | Preservar a cronologia, diagnóstico e decisões corretivas com evidência rastreável. |
+| **Dependências** | Layout Mestre B3, evidências por fase e documentação oficial aplicável |
 
 ## 1. Fato observado
 
