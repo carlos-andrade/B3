@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "year": 2026,
   "phase": "GATE_06_08",
-  "status": "BLOQUEADO",
-  "decision": "BLOQUEADO_PARA_FASE09",
+  "status": "APROVADO_COM_EXCECOES_NAO_BLOQUEANTES",
+  "decision": "LIBERADO_PARA_FASE09",
   "evidence": {
     "FASE04": {
       "path": "dados/cotahist/quality/COTAHIST_2026_FASE04_NORMALIZACAO_V1.json",
@@ -31,17 +31,43 @@
       "decision": "LIBERADO_PARA_GATE_06_08"
     }
   },
-  "blockers": [
-    "Hash NORMALIZED inconsistente entre fases"
+  "blockers": [],
+  "accepted_non_blocking_exceptions": [
+    {
+      "phase": "FASE08",
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_SEMANTICA"
+    },
+    {
+      "phase": "FASE08",
+      "code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO"
+    },
+    {
+      "phase": "FASE08",
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA"
+    },
+    {
+      "phase": "FASE08",
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_INTERNA"
+    }
   ],
-  "accepted_non_blocking_exceptions": [],
-  "normalized_sha256_expected": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9",
-  "records_expected": 2919760,
+  "normalized_sha256_expected": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "records_expected": 3142910,
   "fields_expected": 25,
   "mutations_performed": false,
   "scope_limitations": [
     "Gate consolida evidências de qualidade e consistência interna; não certifica equivalência com calendário oficial B3.",
     "A aprovação deste gate não equivale à aprovação global M3-1E nem autoriza migração histórica 1986–2025."
   ],
-  "validated_at_utc": "2026-10-14T10:52:01.473960+00:00"
+  "records_reconciled": 3142910,
+  "fields_reconciled": 25,
+  "first_date": "2026-01-02",
+  "last_date": "2026-10-13",
+  "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "deduplication_performed": false,
+  "rows_removed": 0,
+  "validated_at_utc": "2026-10-14T10:52:22.406432+00:00"
 }
