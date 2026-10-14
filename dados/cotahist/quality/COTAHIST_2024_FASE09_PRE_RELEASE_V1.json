@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2024,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "decision": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "FASE03": "OK",
+    "FASE04": "OK",
+    "FASE05": "OK",
+    "FASE06": "OK",
+    "FASE07": "OK",
+    "FASE08": "OK",
+    "GATE_06_08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "FASE03": "VALIDADO",
+    "FASE04": "VALIDADO",
+    "FASE05": "VALIDADO",
+    "FASE06": "VALIDADO",
+    "FASE07": "VALIDADO",
+    "FASE08": "VALIDADO_COM_EXCECAO",
+    "GATE_06_08": "GATE_APROVADO"
+  },
+  "gate_06_08_status": "GATE_APROVADO",
+  "gate_06_08_decision": "APROVADO_PARA_ANALISE_FASE09",
+  "gate_status_accepted": true,
+  "gate_decision_accepted": true,
+  "raw_sha256": "96a003d10fab0fa2ace0c64cdc2b892b4c111adf9da8e538aa0b28437bd2a172",
+  "normalized_sha256": "156f0610e3810186cd05632e4726ab12441a46e6d20b123c3ed299892d24076b",
+  "missing": [],
+  "blocked": [],
+  "phase08_exceptions": [
+    {
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_SEMANTICA",
+      "blocking": false,
+      "samples": [
+        {
+          "row": 209210,
+          "previous_date": "2024-06-28",
+          "current_date": "2024-01-02"
+        },
+        {
+          "row": 1446202,
+          "previous_date": "2024-12-30",
+          "current_date": "2024-07-01"
+        }
+      ],
+      "detail": "A sequência física tem regressões de data; nenhuma linha foi reordenada. FASE06 reconciliou os 25 campos em ordem original."
+    },
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_INTERNA",
+      "blocking": false
+    }
+  ],
+  "note": "FASE09 consolida evidências persistidas; não substitui nem retrocertifica FASE00–08 e não executa FASE10.",
+  "validated_at_utc": "2026-10-14T00:54:25.859473+00:00"
+}
