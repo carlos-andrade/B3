@@ -99,3 +99,5 @@ jobs:
           done
           echo "Falha persistente ao publicar auditoria após 5 tentativas."
           exit 1
+
+# Reexecução auditável após consolidação do roadmap B3 e sincronização da matriz anual em 2026-10-14.
