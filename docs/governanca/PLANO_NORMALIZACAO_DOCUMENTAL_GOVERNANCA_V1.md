@@ -9,7 +9,7 @@
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular após normalização |
+| **SHA-256 (conteúdo canónico)** | 2bd63adf1d7f251a0e3c27f7052e7db3f85cf5b815ead43c57ee8b3a90cb011a |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-14 |
