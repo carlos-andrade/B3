@@ -1,0 +1,156 @@
+# Auditoria operacional de normalizacao e manifesto COTAHIST 2026.
+# Nao deduplica, nao altera RAW nem reescreve o CSV normalizado.
+name: COTAHIST 2026 - Auditoria FASE04 Normalizacao e FASE05 Manifesto
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase04-normalizacao-2026-v1.yml"
+      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
+      - "dados/cotahist/manifests/COTAHIST_A2026.json"
+      - "dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase04-normalizacao-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase04-normalizacao-2026-v1.yml
+            dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+            dados/cotahist/manifests/COTAHIST_A2026.json
+            dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+            dados/cotahist/quality/COTAHIST_2026_FASE04_NORMALIZACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Auditar hashes, estrutura e consistencia do NORMALIZED 2026
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys, zipfile
+          root=pathlib.Path("dados/cotahist")
+          raw=root/"raw/anual/COTAHIST_A2026.ZIP"
+          rm_path=root/"manifests/COTAHIST_A2026.json"
+          rs_path=root/"checksums/COTAHIST_A2026.ZIP.sha256"
+          norm=root/"normalized/anual/COTAHIST_A2026.csv"
+          nm_path=root/"normalized/manifests/COTAHIST_A2026_quality.json"
+          ns_path=root/"normalized/manifests/COTAHIST_A2026.csv.sha256"
+          q=root/"quality"; q.mkdir(parents=True,exist_ok=True)
+          f04p=q/"COTAHIST_2026_FASE04_NORMALIZACAO_V1.json"
+          f05p=q/"COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json"
+          blockers=[]
+          required=(raw,rm_path,rs_path,norm,nm_path,ns_path)
+          for p in required:
+              if not p.is_file() or p.stat().st_size==0: blockers.append("ARQUIVO_AUSENTE_OU_VAZIO:"+str(p))
+          if blockers:
+              print(json.dumps({"status":"BLOQUEADO","blockers":blockers},ensure_ascii=False,indent=2))
+              sys.exit(1)
+          rm=json.loads(rm_path.read_text(encoding="utf-8"))
+          nm=json.loads(nm_path.read_text(encoding="utf-8"))
+          raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
+          csv_sha=hashlib.sha256(norm.read_bytes()).hexdigest()
+          raw_parts=rs_path.read_text(encoding="utf-8").strip().split()
+          csv_parts=ns_path.read_text(encoding="utf-8").strip().split()
+          raw_side=raw_parts[0] if raw_parts else ""
+          csv_side=csv_parts[0] if csv_parts else ""
+          if raw_sha != rm.get("sha256") or raw_sha != raw_side: blockers.append("RAW_SHA256_DIVERGENTE")
+          if csv_sha != nm.get("normalized_sha256") or csv_sha != csv_side: blockers.append("NORMALIZED_SHA256_DIVERGENTE")
+          if nm.get("raw_sha256") != raw_sha: blockers.append("NORMALIZED_ASSOCIADO_A_RAW_DIFERENTE")
+          raw_counts={}; bad_lengths=0; zip_error=None; member_count=0
+          try:
+              with zipfile.ZipFile(raw) as z:
+                  zip_error=z.testzip()
+                  members=[n for n in z.namelist() if not n.endswith("/")]
+                  member_count=len(members)
+                  if member_count==1:
+                      with z.open(members[0]) as f:
+                          for line in f:
+                              line=line.rstrip(b"\r\n")
+                              if len(line)!=245: bad_lengths+=1
+                              raw_counts[line[:2].decode("ascii","replace")]=raw_counts.get(line[:2].decode("ascii","replace"),0)+1
+          except Exception as e: zip_error=str(e)
+          if zip_error is not None or member_count!=1 or bad_lengths or raw_counts.get("00")!=1 or raw_counts.get("99")!=1:
+              blockers.append("RAW_ESTRUTURA_INVALIDA")
+          fields=["data_pregao","codbdi","codneg","tpmerc","nomres","especi","prazot","modref","preabe","premax","premin","premed","preult","preofc","preofv","totneg","quatot","voltot","preexe","indopc","datven","fatcot","ptoexe","codisi","dismes"]
+          row_count=0; invalid_dates=0; out_of_year=0; first_date=None; last_date=None
+          try:
+              with norm.open(encoding="utf-8",newline="") as f:
+                  reader=csv.DictReader(f)
+                  if reader.fieldnames != fields: blockers.append("CABECALHO_25_CAMPOS_INVALIDO")
+                  for row in reader:
+                      row_count+=1
+                      value=row.get("data_pregao","")
+                      try:
+                          dt=datetime.date.fromisoformat(value)
+                          if dt.year!=2026: out_of_year+=1
+                          first_date=dt.isoformat() if first_date is None else min(first_date,dt.isoformat())
+                          last_date=dt.isoformat() if last_date is None else max(last_date,dt.isoformat())
+                      except Exception: invalid_dates+=1
+          except Exception as e:
+              blockers.append("CSV_LEITURA_FALHOU:"+str(e))
+          if row_count != nm.get("linhas_normalized"): blockers.append("CONTAGEM_NORMALIZED_DIVERGENTE")
+          if invalid_dates: blockers.append("DATAS_INVALIDAS")
+          if out_of_year: blockers.append("DATAS_FORA_DE_2026")
+          if first_date != nm.get("primeira_data") or last_date != nm.get("ultima_data"): blockers.append("INTERVALO_DE_DATAS_DIVERGENTE")
+          ok=not blockers
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          base={"schema_version":"1.0.0","year":2026,"raw_sha256":raw_sha,"normalized_sha256":csv_sha,"raw_record_type_counts":raw_counts,"raw_invalid_record_lengths":bad_lengths,"normalized_rows":row_count,"normalized_fields":len(fields),"first_date":first_date,"last_date":last_date,"invalid_dates":invalid_dates,"dates_out_of_year":out_of_year,"blockers":blockers,"validated_at_utc":now,"raw_modified":False,"deduplication_performed":False,"scope_note":"Auditoria de integridade e consistencia documental; nao substitui comparacao independente de todos os 25 campos RAW x NORMALIZED."}
+          f04={**base,"phase":"FASE04","status":"VALIDADO" if ok else "BLOQUEADO","decision":"LIBERADO_PARA_FASE05" if ok else "BLOQUEADO"}
+          f05={**base,"phase":"FASE05","status":"VALIDADO" if ok else "BLOQUEADO","decision":"LIBERADO_PARA_RECONCILIACAO" if ok else "BLOQUEADO","raw_manifest_sha256":rm.get("sha256"),"raw_sidecar_sha256":raw_side,"normalized_manifest_sha256":nm.get("normalized_sha256"),"normalized_sidecar_sha256":csv_side,"raw_hash_match":raw_sha==rm.get("sha256")==raw_side,"normalized_hash_match":csv_sha==nm.get("normalized_sha256")==csv_side}
+          f04p.write_text(json.dumps(f04,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          f05p.write_text(json.dumps(f05,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps({"FASE04":f04,"FASE05":f05},ensure_ascii=False,indent=2))
+          if not ok: sys.exit("Auditoria bloqueada: corrigir divergencias antes de avancar")
+          PY
+
+      - name: Persistir evidencias de auditoria
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_FASE04_NORMALIZACAO_V1.json dados/cotahist/quality/COTAHIST_2026_FASE05_MANIFESTO_CHECKSUM_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar normalizacao e manifesto 2026"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2026 — auditoria FASE04/FASE05"
+            echo "- Confere integridade RAW/NORMALIZED, hashes, estrutura, contagem e datas."
+            echo "- Não deduplica nem altera os dados de origem."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
