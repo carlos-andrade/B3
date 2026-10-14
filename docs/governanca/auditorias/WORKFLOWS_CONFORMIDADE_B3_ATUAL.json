@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-14T12:03:03.833751+00:00",
+  "generated_at_utc": "2026-10-14T12:05:06.903130+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 549,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 141,
+    "CONFORME_COM_OBSERVACAO": 142,
     "CONFORME": 406,
-    "DIVERGENTE_CRITICA": 2
+    "DIVERGENTE_CRITICA": 1
   },
   "results": [
     {
@@ -43426,7 +43426,7 @@
     {
       "workflow": ".github/workflows/testar-captura-bdi.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -43442,8 +43442,8 @@
         },
         {
           "code": "NO_CROSS_WORKFLOW_EXECUTION",
-          "ok": false,
-          "detail": "gh\\s+(?:workflow\\s+run|api\\s+.*?/actions/workflows)",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
           "severity": "CRITICA"
         },
         {
@@ -43495,9 +43495,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "NO_CROSS_WORKFLOW_EXECUTION"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY"
       ]
@@ -43602,8 +43600,8 @@
         },
         {
           "code": "NO_README_TRIGGER",
-          "ok": false,
-          "detail": "README aparece nos paths do push",
+          "ok": true,
+          "detail": "sem README em gatilho",
           "severity": "ALTA"
         },
         {
@@ -43650,8 +43648,7 @@
         }
       ],
       "blocking_divergences": [
-        "NO_CROSS_WORKFLOW_EXECUTION",
-        "NO_README_TRIGGER"
+        "NO_CROSS_WORKFLOW_EXECUTION"
       ],
       "observability_or_advisory": [
         "STEP_SUMMARY",

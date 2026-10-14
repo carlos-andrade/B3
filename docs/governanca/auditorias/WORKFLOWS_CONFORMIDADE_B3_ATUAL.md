@@ -1,7 +1,7 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-14T12:03:03.833751+00:00
+Gerado em UTC: 2026-10-14T12:05:06.903130+00:00
 Workflows auditados: 549
 
 ## Regra de decisão
@@ -574,7 +574,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/processar-inventario-bvbg028.yml | — | **CONFORME** | — | — |
 | .github/workflows/rec001-cotahist-bloomberg-mail.yml | — | **CONFORME** | — | — |
 | .github/workflows/sincronizar-wiki-b3.yml | — | **CONFORME** | — | — |
-| .github/workflows/testar-captura-bdi.yml | — | **DIVERGENTE_CRITICA** | NO_CROSS_WORKFLOW_EXECUTION | STEP_SUMMARY |
+| .github/workflows/testar-captura-bdi.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/validar-bvbg02802.yml | — | **CONFORME** | — | — |
-| .github/workflows/watchdog-b3-validation.yml | — | **DIVERGENTE_CRITICA** | NO_CROSS_WORKFLOW_EXECUTION, NO_README_TRIGGER | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
+| .github/workflows/watchdog-b3-validation.yml | — | **DIVERGENTE_CRITICA** | NO_CROSS_WORKFLOW_EXECUTION | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
 | .github/workflows/watchdog-data-freshness.yml | — | **CONFORME** | — | — |
