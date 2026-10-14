@@ -7,15 +7,15 @@
   "phase10_2025_status": "VALIDADO",
   "phase11_2025_status": "CERTIFICADO",
   "year2026_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
-  "year2026_raw_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
-  "year2026_manifest_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
-  "year2026_sidecar_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+  "year2026_raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "year2026_manifest_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "year2026_sidecar_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
   "year2026_raw_hash_match": true,
   "year2026_zip_member_count": 1,
   "year2026_invalid_record_lengths": 0,
   "year2026_record_type_counts": {
     "00": 1,
-    "01": 2919760,
+    "01": 3142910,
     "99": 1
   },
   "year2026_normalized_csv_exists": true,
@@ -23,5 +23,5 @@
   "blockers": [],
   "transition_scope": "Fecha 2025 após certificação; não certifica 2026. A existência de manifesto ou hash NORMALIZED declarado não prova a existência física do CSV 2026; FASE04/FASE05 devem ser verificadas e executadas no ciclo seguinte.",
   "deduplication_performed": false,
-  "validated_at_utc": "2026-10-14T09:13:19.733395+00:00"
+  "validated_at_utc": "2026-10-14T10:34:36.235643+00:00"
 }
