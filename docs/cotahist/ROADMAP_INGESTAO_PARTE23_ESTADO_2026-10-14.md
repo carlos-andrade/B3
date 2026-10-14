@@ -2,7 +2,7 @@
 
 **Data de referência:** 2026-10-14  
 **Repositório:** https://github.com/carlos-andrade/B3  
-**Estado:** auditoria integrada pós-promoção concluída; calendário oficial B3 reconciliado sem divergências para 02/01–13/10/2026; persistência idempotente verificada com sucesso; dados validados até 13/10/2026; fecho anual permanece pendente.
+**Estado:** auditoria integrada pós-promoção concluída; calendário oficial B3 reconciliado sem divergências para 02/01–13/10/2026; persistência idempotente verificada com sucesso; dados validados até 13/10/2026; fecho anual permanece pendente. Decisão de ciclo de vida: 1986–2025 somente consulta; 2026 atualização diária.
 
 ## Estado verificado no branch main
 
@@ -51,7 +51,9 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | 12 | Auditoria calendário oficial 2026 | Concluída sem divergências | 195 sessões observadas = 195 esperadas; zero ausentes/inesperadas ([run](https://github.com/carlos-andrade/B3/actions/runs/38558710582)) |
 | 13 | Persistência idempotente da evidência | Verificada com sucesso | Run [38558710582](https://github.com/carlos-andrade/B3/actions/runs/38558710582): comparação e persistência concluídas sem conflito |
 | 14 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
-| 15 | Histórico 1986–2025 | Fora do âmbito desta aprovação | Seguir gates e evidências independentes por ano |
+| 15 | Histórico 1986–2025 | Encerrado para ingestão; somente consulta | Preservar RAW/NORMALIZED/manifestos; reabertura só por decisão formal |
+| 16 | Auditoria física 1986–2026 | Executada: 40/41; exceção controlada 1998 | Não alterar histórico; manter auditoria global reprovada até resolução formal |
+| 17 | Pipeline de atualização diária 2026 | Código e workflow atualizados; execução operacional validada sem conflitos | Verificar cada run diário, manifestos e dataset corrente |
 
 ## Regras de integridade
 
@@ -60,7 +62,9 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - Não deduplicar nem reordenar linhas para corrigir exceções da fonte.
 - Não declarar o fecho anual de 2026 prematuramente.
 - Preservar a auditoria antiga de atualidade como registo histórico; a evidência integrada atualiza o diagnóstico, não apaga o histórico.
-- Não usar a aprovação 2026 como certificação dos anos 1986–2025.
+- Não usar a aprovação 2026 como certificação semântica dos anos 1986–2025.
+- Na atualização diária, alinhar a versão do manifesto com o parser efetivo e nunca substituir automaticamente RAW quando o hash da fonte de uma data existente divergir; persistir a incidência e falhar fechado.
+- O workflow diário usa checkout sem materialização integral de Git LFS; o reconciliador do índice corrente depende de manifestos, não da leitura do CSV anual completo.
 
 ## Referências
 
@@ -83,4 +87,4 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)
 - [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
 
-**Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026, com exceções explicitamente classificadas e sem bloqueadores internos. O calendário oficial foi reconciliado para o intervalo observado, sem divergências. O próximo trabalho é monitorizar novas publicações/erratas e manter o fecho anual pendente até ao fim de 2026; não é necessária nova aquisição nem repetição de FASE10/FASE11 enquanto os hashes e regras permanecerem inalterados.
+**Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026; a execução diária de 14/10 não encontrou nova fonte para 14/10 e confirmou os dados existentes até 13/10, sem conflitos de hash. O calendário oficial foi reconciliado para o intervalo observado, sem divergências. O histórico 1986–2025 está congelado para consulta. A auditoria física global mantém uma exceção controlada no sidecar de 1998 e, por isso, não é considerada aprovada. O fecho anual 2026 permanece pendente até ao fim do ano.
