@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2026,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "decision": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "FASE04": "OK",
+    "FASE05": "OK",
+    "FASE06": "OK",
+    "FASE07": "OK",
+    "FASE08": "OK",
+    "GATE_06_08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "FASE04": "VALIDADO",
+    "FASE05": "VALIDADO",
+    "FASE06": "VALIDADO",
+    "FASE07": "VALIDADO",
+    "FASE08": "VALIDADO_COM_EXCECAO",
+    "GATE_06_08": "APROVADO_COM_EXCECOES_NAO_BLOQUEANTES"
+  },
+  "gate_06_08_status": "APROVADO_COM_EXCECOES_NAO_BLOQUEANTES",
+  "gate_06_08_decision": "LIBERADO_PARA_FASE09",
+  "gate_status_accepted": true,
+  "gate_decision_accepted": true,
+  "raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "missing": [],
+  "blocked": [],
+  "phase08_exceptions": [
+    {
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_SEMANTICA",
+      "blocking": false,
+      "samples": [
+        {
+          "row": 94,
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 187,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 249,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 311,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 373,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 590,
+          "previous_date": "2026-03-30",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 741,
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 931,
+          "previous_date": "2026-04-29",
+          "current_date": "2026-04-06"
+        },
+        {
+          "row": 954,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 993,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1030,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1174,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1309,
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1339,
+          "previous_date": "2026-01-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1427,
+          "previous_date": "2026-02-20",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1477,
+          "previous_date": "2026-02-20",
+          "current_date": "2026-02-18"
+        },
+        {
+          "row": 1489,
+          "previous_date": "2026-02-18",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1551,
+          "previous_date": "2026-02-18",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1587,
+          "previous_date": "2026-03-17",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1636,
+          "previous_date": "2026-03-17",
+          "current_date": "2026-02-18"
+        }
+      ],
+      "detail": "A sequência física tem regressões de data; nenhuma linha foi reordenada. FASE06 reconciliou os 25 campos em ordem original."
+    },
+    {
+      "code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO",
+      "blocking": false,
+      "count": 225351,
+      "samples": [
+        {
+          "row": 207,
+          "instrument": [
+            "14",
+            "FTCA11",
+            "010",
+            "",
+            "110"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 208,
+          "instrument": [
+            "12",
+            "FVPQ11",
+            "010",
+            "",
+            "276"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 209,
+          "instrument": [
+            "12",
+            "FYTO11",
+            "010",
+            "",
+            "109"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 210,
+          "instrument": [
+            "34",
+            "G1DS34",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 211,
+          "instrument": [
+            "34",
+            "G1FI34",
+            "010",
+            "",
+            "110"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 212,
+          "instrument": [
+            "34",
+            "G1LP34",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 214,
+          "instrument": [
+            "34",
+            "G1SK34",
+            "010",
+            "",
+            "123"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 216,
+          "instrument": [
+            "35",
+            "G2DI33",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 217,
+          "instrument": [
+            "34",
+            "G2EV34",
+            "010",
+            "",
+            "105"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 249,
+          "instrument": [
+            "12",
+            "GAME11",
+            "010",
+            "",
+            "150"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 250,
+          "instrument": [
+            "12",
+            "GARE11",
+            "010",
+            "",
+            "125"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 251,
+          "instrument": [
+            "14",
+            "GBIT11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 604,
+          "instrument": [
+            "14",
+            "AAGR11",
+            "010",
+            "",
+            "125"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 605,
+          "instrument": [
+            "34",
+            "AALL34",
+            "010",
+            "",
+            "115"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 606,
+          "instrument": [
+            "02",
+            "AALR3",
+            "010",
+            "",
+            "104"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 607,
+          "instrument": [
+            "34",
+            "AAPL34",
+            "010",
+            "",
+            "158"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 608,
+          "instrument": [
+            "14",
+            "AAZQ11",
+            "010",
+            "",
+            "139"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 609,
+          "instrument": [
+            "34",
+            "ABBV34",
+            "010",
+            "",
+            "141"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 610,
+          "instrument": [
+            "10",
+            "ABCB10",
+            "010",
+            "",
+            "149"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 611,
+          "instrument": [
+            "02",
+            "ABCB4",
+            "010",
+            "",
+            "150"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        }
+      ],
+      "detail": "Regressões na ordem física por instrumento não são, isoladamente, prova de erro semântico."
+    },
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_INTERNA",
+      "blocking": false
+    }
+  ],
+  "note": "FASE09 consolida evidências persistidas; não substitui nem retrocertifica FASE04–08 e não executa FASE10.",
+  "validated_at_utc": "2026-10-14T10:53:32.727497+00:00"
+}
