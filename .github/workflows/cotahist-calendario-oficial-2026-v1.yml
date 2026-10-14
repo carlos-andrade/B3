@@ -1,0 +1,195 @@
+name: COTAHIST 2026 - Auditoria Calendario Oficial B3
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-calendario-oficial-2026-v1.yml"
+      - "dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json"
+      - "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-calendario-oficial-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  audit-calendar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-calendario-oficial-2026-v1.yml
+            dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+            dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter NORMALIZED via Git LFS
+        run: |
+          set -euo pipefail
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2026.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED permanece como ponteiro Git LFS."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Comparar sessões COTAHIST com calendário oficial persistido
+        id: audit
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sys
+          root = pathlib.Path(".")
+          csv_path = root / "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
+          cal_path = root / "dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json"
+          manifest_path = root / "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
+          ev_path = root / "dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json"
+          out = {
+              "schema_version": "1.0.0",
+              "year": 2026,
+              "phase": "AUDITORIA_CALENDARIO_OFICIAL_B3",
+              "status": "BLOQUEADO",
+              "decision": "BLOQUEADO_PARA_VALIDACAO_CALENDARIO",
+              "validation_type": "COMPARACAO_EXATA_DAS_DATAS_OBSERVADAS_COM_DIAS_UTEIS_MENOS_FECHAMENTOS_OFICIAIS",
+              "calendar_path": str(cal_path),
+              "normalized_path": str(csv_path),
+              "blockers": [],
+              "deduplication_performed": False,
+              "rows_removed": 0,
+              "rows_reordered": False
+          }
+          try:
+              for p in (csv_path, cal_path, manifest_path):
+                  if not p.is_file() or p.stat().st_size == 0:
+                      raise RuntimeError(f"Arquivo ausente/vazio: {p}")
+              cal = json.loads(cal_path.read_text(encoding="utf-8"))
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              if cal.get("year") != 2026 or cal.get("source_authority") != "B3":
+                  raise RuntimeError("Calendário não identificado como fonte oficial B3 de 2026")
+              sources = cal.get("sources", [])
+              if not sources or not any("b3.com.br" in x.get("url", "") for x in sources):
+                  raise RuntimeError("Referência oficial B3 ausente")
+              closed = {x["date"] for x in cal.get("no_trading_dates", [])}
+              digest = hashlib.sha256()
+              with csv_path.open("rb") as bf:
+                  for chunk in iter(lambda: bf.read(1024 * 1024), b""):
+                      digest.update(chunk)
+              normalized_hash = digest.hexdigest()
+              out["normalized_sha256"] = normalized_hash
+              out["manifest_normalized_sha256"] = manifest.get("normalized_sha256")
+              if normalized_hash != manifest.get("normalized_sha256"):
+                  raise RuntimeError("SHA-256 do NORMALIZED diverge do manifesto")
+              observed = set()
+              rows = 0
+              first_date = None
+              last_date = None
+              with csv_path.open(encoding="utf-8", newline="") as f:
+                  reader = csv.DictReader(f)
+                  if "data_pregao" not in (reader.fieldnames or []):
+                      raise RuntimeError("Campo data_pregao ausente")
+                  for row in reader:
+                      rows += 1
+                      raw = row.get("data_pregao", "")
+                      try:
+                          d = datetime.date.fromisoformat(raw)
+                      except ValueError:
+                          raise RuntimeError(f"Data inválida na linha {rows}: {raw!r}")
+                      if d.year != 2026:
+                          raise RuntimeError(f"Data fora do ano na linha {rows}: {raw}")
+                      observed.add(d.isoformat())
+                      first_date = d if first_date is None else min(first_date, d)
+                      last_date = d if last_date is None else max(last_date, d)
+              if rows != manifest.get("linhas_normalized"):
+                  raise RuntimeError(f"Contagem divergente: CSV={rows}, manifesto={manifest.get('linhas_normalized')}")
+              start, end = first_date, last_date
+              expected = set()
+              d = start
+              while d <= end:
+                  if d.weekday() < 5 and d.isoformat() not in closed:
+                      expected.add(d.isoformat())
+                  d += datetime.timedelta(days=1)
+              missing = sorted(expected - observed)
+              unexpected = sorted(observed - expected)
+              out.update({
+                  "calendar_id": cal.get("calendar_id"),
+                  "calendar_sources": cal.get("sources"),
+                  "no_trading_dates_in_year": sorted(closed),
+                  "rows": rows,
+                  "unique_observed_sessions": len(observed),
+                  "expected_sessions_in_observed_range": len(expected),
+                  "missing_expected_sessions": missing,
+                  "unexpected_observed_sessions": unexpected,
+                  "first_date": start.isoformat(),
+                  "last_date": end.isoformat(),
+                  "normalized_sha256_match": True,
+                  "calendar_session_set_match": not missing and not unexpected,
+                  "deduplication_performed": False,
+                  "rows_removed": 0,
+                  "rows_reordered": False
+              })
+              if missing or unexpected:
+                  out["blockers"].append("Datas observadas diferem do calendário oficial estruturado; revisar a fonte/segmento sem alterar o NORMALIZED.")
+                  out["status"] = "DIVERGENCIAS_DE_CALENDARIO"
+                  out["decision"] = "BLOQUEADO_PARA_VALIDACAO_CALENDARIO"
+              else:
+                  out["status"] = "VALIDADO_SEM_DIVERGENCIAS_DE_DATAS"
+                  out["decision"] = "CALENDARIO_OFICIAL_RECONCILIADO_PARA_INTERVALO_OBSERVADO"
+          except Exception as exc:
+              out["blockers"].append(str(exc))
+              out["status"] = "BLOQUEADO"
+              out["decision"] = "BLOQUEADO_PARA_VALIDACAO_CALENDARIO"
+          out["validated_at_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          ev_path.parent.mkdir(parents=True, exist_ok=True)
+          ev_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          if out["status"] != "VALIDADO_SEM_DIVERGENCIAS_DE_DATAS":
+              sys.exit("Auditoria de calendário não aprovada; consultar blockers e diferenças.")
+          PY
+
+      - name: Persistir evidência da auditoria
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json || {
+            echo "Evidência de calendário não produzida."
+            exit 1
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir reconciliacao calendario oficial 2026"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2026 — Calendário oficial B3"
+            echo "- Comparação exata do conjunto de datas observadas contra dias úteis menos fechamentos oficiais."
+            echo "- Sem deduplicação, reordenação ou remoção de registos."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
