@@ -1,8 +1,27 @@
 # Incidência — armazenamento Git LFS do COTAHIST A1987
 
-**Data:** 2026-10-14  
-**Repositório:** https://github.com/carlos-andrade/B3  
-**Estado documental:** RESOLVIDO COM EVIDÊNCIA. A representação Git LFS foi migrada e verificada em 2026-10-14; o histórico desta incidência é preservado abaixo.
+| Campo | Valor |
+|---|---|
+| **ID** | B3-INC-LFS-1987-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | INCIDENTE |
+| **Fase** | Resolução e auditoria pós-migração |
+| **Estado** | CONCLUIDO |
+| **Versão** | 1.2.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular segundo norma GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [547085a823c33701163cce3519c0fde88429b176](https://github.com/carlos-andrade/B3/commit/547085a823c33701163cce3519c0fde88429b176) |
+| **Data de criação** | 2026-10-14 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico B3 |
+| **Aprovador** | Pendente de aprovação formal; conclusão técnica apoiada em evidência |
+| **Origem** | Aviso de checkout Git LFS e validação posterior |
+| **Autoridade superior** | [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | [Workflow 38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646); [commit e8c6bf21](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a); auditoria física e Dataset Oficial V2 |
+| **Escopo** | Correção da representação do CSV NORMALIZED A1987 no Git LFS; não altera o conteúdo RAW/NORMALIZED |
+| **Objetivo** | Registar a discrepância inicial, a migração controlada e a verificação de integridade |
+| **Dependências** | Workflow de migração, runbook, auditoria física global, manifestos e Dataset Oficial V2 |
 
 ## Resumo
 
