@@ -58,6 +58,21 @@ def main() -> None:
         "regra": "Dataset corrente = snapshot anual B3 + todos os manifests diarios VALIDADO posteriores ao snapshot. O RAW anual permanece imutavel.",
         "fail_closed": True,
     }
+    if OUT.is_file():
+        try:
+            existing = json.loads(OUT.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            existing = None
+        if existing is not None:
+            # Idempotência: não criar commits apenas porque o relógio mudou.
+            stable_existing = dict(existing)
+            stable_payload = dict(payload)
+            stable_existing.pop("generated_at_utc", None)
+            stable_payload.pop("generated_at_utc", None)
+            if stable_existing == stable_payload:
+                print(f"INDICE_SEM_MUDANCA: ultima_data={current_last} incrementos={len(daily)}")
+                return
+
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"INDICE_OFICIAL_ATUALIZADO: ultima_data={current_last} incrementos={len(daily)}")
 
