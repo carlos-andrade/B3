@@ -2,7 +2,7 @@
 
 **Data de referência:** 2026-10-14  
 **Repositório:** https://github.com/carlos-andrade/B3  
-**Estado:** auditoria integrada pós-promoção concluída e persistida; dados 2026 validados até 13/10/2026; calendário oficial externo e fecho anual permanecem pendentes.
+**Estado:** auditoria integrada pós-promoção concluída e persistida; fonte oficial de calendário B3 2026 já persistida; comparação automatizada em execução; dados validados até 13/10/2026; fecho anual permanece pendente.
 
 ## Estado verificado no branch main
 
@@ -29,7 +29,7 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 
 1. FASE04 é auditoria de integridade/documentação; a comparação independente integral dos 25 campos RAW × NORMALIZED é certificada pela FASE06.
 2. A sequência física contém regressões temporais reportadas na FASE08. As linhas foram preservadas, sem reordenação ou deduplicação.
-3. O calendário oficial histórico B3 não está persistido como referência verificável nesta cadeia. Não declarar equivalência com o calendário oficial.
+3. Na auditoria integrada inicial, o calendário oficial ainda não estava persistido. A fonte oficial foi posteriormente registada em `dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json`; a comparação automatizada com as datas observadas está em execução. Não declarar equivalência até ao resultado do workflow.
 4. A última data observada é 2026-10-13. Isto não constitui fecho anual de 2026.
 5. A aprovação deste ciclo não certifica nem autoriza migração histórica 1986–2025.
 
@@ -47,9 +47,9 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | 8 | FASE10 | Candidato validado sem diferenças | Não repetir sem mudança do candidato ou dos hashes |
 | 9 | FASE11 | Promoção e hashes revalidados | Não repetir sem mudança do candidato ou das regras |
 | 10 | Auditoria integrada pós-promoção | Concluída e persistida | Usar como estado consolidado deste ciclo |
-| 11 | Calendário oficial B3 | Pendente | Obter, versionar e validar fonte/calendário oficial |
-| 12 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
-| 13 | Histórico 1986–2025 | Fora do âmbito desta aprovação | Seguir gates e evidências independentes por ano |
+| 11 | Fonte oficial do calendário B3 | Persistida | Validar datas observadas no workflow dedicado |
+| 12 | Auditoria calendário oficial 2026 | Em execução | Confirmar resultado do run [38558347376](https://github.com/carlos-andrade/B3/actions/runs/38558347376); bloquear se houver divergências |\n| 13 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
+| 14 | Histórico 1986–2025 | Fora do âmbito desta aprovação | Seguir gates e evidências independentes por ano |
 
 ## Regras de integridade
 
@@ -73,6 +73,6 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - [FASE09](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE09_PRE_RELEASE_V1.json)
 - [FASE10](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json)
 - [FASE11](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json)
-- [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
+- [Calendário oficial B3 2026 persistido](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json)\n- [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)\n- [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
 
 **Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026, com exceções explicitamente classificadas e sem bloqueadores internos. O próximo trabalho é a validação contra calendário oficial persistido e a monitorização da próxima publicação; não é necessária nova aquisição ou repetição de FASE10/FASE11 enquanto os hashes e regras permanecerem inalterados.
