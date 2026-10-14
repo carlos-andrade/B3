@@ -21,6 +21,8 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "dados/cotahist/raw/diario"
 NORM_DIR = ROOT / "dados/cotahist/normalized/diario"
 MAN_DIR = ROOT / "dados/cotahist/normalized/manifests/diario"
+CONFLICT_DIR = ROOT / "dados/cotahist/quality/diario/conflitos"
+RUN_DIR = ROOT / "dados/cotahist/quality/diario/execucoes"
 BASE_URL = "https://bvmf.bmfbovespa.com.br/InstDados/SerHist"
 BACKFILL_DAYS = 7
 
@@ -70,9 +72,31 @@ def import_day(ref_date: date) -> str:
                 return "SKIPPED"
 
         tmp_sha = sha256(tmp_path)
-        if raw_out.exists() and sha256(raw_out) == tmp_sha and norm_out.exists() and manifest_out.exists():
-            print(f"SEM_MUDANCA: {name} sha256={tmp_sha}")
-            return "UNCHANGED"
+        if raw_out.exists():
+            existing_sha = sha256(raw_out)
+            if existing_sha == tmp_sha and norm_out.exists() and manifest_out.exists():
+                print(f"SEM_MUDANCA: {name} sha256={tmp_sha}")
+                return "UNCHANGED"
+            if existing_sha != tmp_sha:
+                # Fail closed: uma correção da fonte não pode substituir silenciosamente o RAW já validado.
+                CONFLICT_DIR.mkdir(parents=True, exist_ok=True)
+                conflict = {
+                    "schema_version": "1.0.0",
+                    "tipo": "CONFLITO_HASH_FONTE_COTAHIST_DIARIO",
+                    "status": "NAO_PROMOVIDO",
+                    "data_referencia": iso_date,
+                    "source": "B3",
+                    "url": url,
+                    "raw_canonico_preservado": str(raw_out.relative_to(ROOT)).replace("\\\\", "/"),
+                    "raw_sha256_canonico": existing_sha,
+                    "raw_sha256_recebido": tmp_sha,
+                    "detectado_em_utc": datetime.now(timezone.utc).isoformat(),
+                    "decisao": "Preservar versão canónica e exigir revisão formal antes de promover correção."
+                }
+                conflict_path = CONFLICT_DIR / f"{name}_{existing_sha[:12]}_{tmp_sha[:12]}.json"
+                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+                print(f"CONFLITO_FONTE_NAO_PROMOVIDO: {name} canonico={existing_sha} recebido={tmp_sha}")
+                return "CONFLICT"
 
         tmp_path.replace(raw_out)
 
@@ -133,13 +157,31 @@ def main() -> None:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     NORM_DIR.mkdir(parents=True, exist_ok=True)
     MAN_DIR.mkdir(parents=True, exist_ok=True)
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
 
     results = {}
     for offset in range(BACKFILL_DAYS):
         ref_date = today - timedelta(days=offset)
         results[ref_date.isoformat()] = import_day(ref_date)
 
+    conflicts = [day for day, status in results.items() if status == "CONFLICT"]
+    run_report = {
+        "schema_version": "1.0.0",
+        "tipo": "EXECUCAO_IMPORTACAO_COTAHIST_DIARIO",
+        "executado_em_utc": datetime.now(timezone.utc).isoformat(),
+        "data_referencia_local": today.isoformat(),
+        "janela_backfill_dias": BACKFILL_DAYS,
+        "resultados": results,
+        "dias_com_conflito": conflicts,
+        "status": "CONFLITO_FONTE_NAO_PROMOVIDO" if conflicts else "EXECUCAO_SEM_CONFLITOS",
+        "regra": "Nenhum RAW canónico é substituído se o hash da fonte divergir; revisão formal necessária."
+    }
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    report_path = RUN_DIR / f"COTAHIST_DIARIO_EXECUCAO_{stamp}.json"
+    report_path.write_text(json.dumps(run_report, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
     print("RESUMO_BACKFILL=" + json.dumps(results, ensure_ascii=False, sort_keys=True))
+    print(f"RELATORIO_EXECUCAO={report_path.relative_to(ROOT)}")
+    print(f"CONFLITOS_FONTE={len(conflicts)}")
 
 
 if __name__ == "__main__":
