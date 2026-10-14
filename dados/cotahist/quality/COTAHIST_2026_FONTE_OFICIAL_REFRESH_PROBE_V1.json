@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2026,
+  "phase": "FONTE_OFICIAL_REFRESH_PROBE",
+  "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "status": "CANDIDATO_MAIS_RECENTE_VALIDADO_ESTRUTURALMENTE",
+  "decision": "REPROCESSAR_NORMALIZED_E_REEXECUTAR_FASES_04_08",
+  "canonical_mutated": false,
+  "raw_committed": false,
+  "normalized_committed": false,
+  "blockers": [],
+  "candidate_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "candidate_bytes": 85075031,
+  "current_manifest_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+  "current_acquired_at_utc": "2026-09-24T07:52:17.798962+00:00",
+  "current_last_observed_date": "2026-09-23",
+  "zip_member": "COTAHIST_A2026.TXT",
+  "zip_test": "OK",
+  "record_type_counts": {
+    "00": 1,
+    "01": 3142910,
+    "99": 1
+  },
+  "invalid_record_lengths": 0,
+  "record_count": 3142910,
+  "header_generation_date": "2026-10-13",
+  "first_trading_date": "2026-01-02",
+  "last_trading_date": "2026-10-13",
+  "candidate_sha256_matches_current": false,
+  "newer_than_canonical": true,
+  "limitations": [
+    "Probe valida ZIP, header, contagem, comprimento de registos e intervalo de datas; não compara os 25 campos com NORMALIZED.",
+    "O dataset canónico não é alterado nesta fase read-only.",
+    "O ficheiro candidato não é persistido no Git; é necessário processamento versionado antes de qualquer substituição."
+  ],
+  "validated_at_utc": "2026-10-14T10:00:20.386764+00:00"
+}
