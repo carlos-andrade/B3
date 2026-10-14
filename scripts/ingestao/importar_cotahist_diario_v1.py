@@ -75,8 +75,48 @@ def import_day(ref_date: date) -> str:
         if raw_out.exists():
             existing_sha = sha256(raw_out)
             if existing_sha == tmp_sha and norm_out.exists() and manifest_out.exists():
-                print(f"SEM_MUDANCA: {name} sha256={tmp_sha}")
-                return "UNCHANGED"
+                integrity_errors = []
+                manifest_data = None
+                try:
+                    manifest_data = json.loads(manifest_out.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    integrity_errors.append("MANIFESTO_JSON_INVALIDO")
+                normalized_sha = sha256(norm_out)
+                if manifest_data is not None:
+                    if manifest_data.get("status") != "VALIDADO":
+                        integrity_errors.append("MANIFESTO_NAO_VALIDADO")
+                    if manifest_data.get("raw_sha256") != existing_sha:
+                        integrity_errors.append("RAW_SHA_DIVERGE_DO_MANIFESTO")
+                    if manifest_data.get("normalized_sha256") != normalized_sha:
+                        integrity_errors.append("NORMALIZED_SHA_DIVERGE_DO_MANIFESTO")
+                    if manifest_data.get("campos") != 25:
+                        integrity_errors.append("CONTAGEM_CAMPOS_DIVERGE")
+                if not integrity_errors:
+                    print(f"SEM_MUDANCA: {name} raw_sha256={tmp_sha} normalized_sha256={normalized_sha}")
+                    return "UNCHANGED"
+
+                CONFLICT_DIR.mkdir(parents=True, exist_ok=True)
+                conflict = {
+                    "schema_version": "1.0.0",
+                    "tipo": "CONFLITO_INTEGRIDADE_COTAHIST_DIARIO",
+                    "status": "NAO_PROMOVIDO",
+                    "data_referencia": iso_date,
+                    "source": "B3",
+                    "url": url,
+                    "raw_sha256_canonico": existing_sha,
+                    "normalized_file": str(norm_out.relative_to(ROOT)).replace("\\\\", "/"),
+                    "normalized_sha256_fisico": normalized_sha,
+                    "normalized_sha256_manifesto": manifest_data.get("normalized_sha256") if manifest_data else None,
+                    "manifest_file": str(manifest_out.relative_to(ROOT)).replace("\\\\", "/"),
+                    "erros": integrity_errors,
+                    "detectado_em_utc": datetime.now(timezone.utc).isoformat(),
+                    "decisao": "Preservar os artefactos canónicos e exigir revisão; não reescrever dados automaticamente."
+                }
+                conflict_path = CONFLICT_DIR / f"{name}_INTEGRIDADE_{normalized_sha[:12]}.json"
+                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+                print(f"CONFLITO_INTEGRIDADE_NAO_PROMOVIDO: {name} erros={integrity_errors}")
+                return "CONFLICT"
+
             if existing_sha != tmp_sha:
                 # Fail closed: uma correção da fonte não pode substituir silenciosamente o RAW já validado.
                 CONFLICT_DIR.mkdir(parents=True, exist_ok=True)
