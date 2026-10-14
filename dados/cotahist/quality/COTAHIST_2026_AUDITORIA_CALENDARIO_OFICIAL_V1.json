@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2026,
+  "phase": "AUDITORIA_CALENDARIO_OFICIAL_B3",
+  "status": "VALIDADO_SEM_DIVERGENCIAS_DE_DATAS",
+  "decision": "CALENDARIO_OFICIAL_RECONCILIADO_PARA_INTERVALO_OBSERVADO",
+  "validation_type": "COMPARACAO_EXATA_DAS_DATAS_OBSERVADAS_COM_DIAS_UTEIS_MENOS_FECHAMENTOS_OFICIAIS",
+  "calendar_path": "dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json",
+  "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
+  "blockers": [],
+  "deduplication_performed": false,
+  "rows_removed": 0,
+  "rows_reordered": false,
+  "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "manifest_normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "calendar_id": "B3_CALENDARIO_NEGOCIACAO_2026",
+  "calendar_sources": [
+    {
+      "type": "official_market_calendar",
+      "url": "https://www.b3.com.br/main.jsp?lumA=1&lumII=8A80CB81633FBF0B0163402956733E3A&lumPageId=8A6882694E91F2D4014E9248DBB001C9",
+      "title": "Calendário de Negociação — Calendário do mercado 2026",
+      "publisher": "B3",
+      "role": "Fonte primária para dias sem negociação e funcionamento por segmento"
+    },
+    {
+      "type": "official_circular_errata",
+      "url": "https://www.b3.com.br/data/files/20/57/01/AA/06A1F910ADC36BE9AC094EA8/OC%20041-2026-VNC%20ERRATA%20-%20CALENDARIO%20DE%20FERIADOS%20EM%202026_PT.pdf",
+      "title": "Ofício Circular 041/2026-VNC — Errata ao calendário de feriados 2026",
+      "published_date": "2026-06-30",
+      "publisher": "B3",
+      "role": "Errata oficial ao Ofício Circular 003/2026-VNC; atualiza informação sobre 03/07/2026 para o casado de dólar e informa que os demais quadros permanecem inalterados"
+    },
+    {
+      "type": "official_news_notice",
+      "url": "https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm",
+      "title": "Calendário de negociação da B3: confira o funcionamento da bolsa em 2026",
+      "published_date": "2026-01-09",
+      "publisher": "B3",
+      "role": "Publicação explicativa oficial com feriados e sessão especial em 18/02/2026"
+    }
+  ],
+  "no_trading_dates_in_year": [
+    "2026-01-01",
+    "2026-02-16",
+    "2026-02-17",
+    "2026-04-03",
+    "2026-04-21",
+    "2026-05-01",
+    "2026-06-04",
+    "2026-09-07",
+    "2026-10-12",
+    "2026-11-02",
+    "2026-11-20",
+    "2026-12-24",
+    "2026-12-25",
+    "2026-12-31"
+  ],
+  "rows": 3142910,
+  "unique_observed_sessions": 195,
+  "expected_sessions_in_observed_range": 195,
+  "missing_expected_sessions": [],
+  "unexpected_observed_sessions": [],
+  "first_date": "2026-01-02",
+  "last_date": "2026-10-13",
+  "normalized_sha256_match": true,
+  "calendar_session_set_match": true,
+  "validated_at_utc": "2026-10-14T11:42:42.231227+00:00"
+}
