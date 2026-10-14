@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2026,
+  "phase": "FASE11_PROMOCAO_CONTROLADA",
+  "status": "PROMOVIDO_COM_HASHES_COHERENTES",
+  "decision": "REEXECUTAR_FASES_04_08",
+  "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "raw_sha256_observed": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "normalized_sha256_observed": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "raw_manifest_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "normalized_manifest_raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "normalized_manifest_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "normalized_rows": 3142910,
+  "first_date": "2026-01-02",
+  "last_date": "2026-10-13",
+  "phase10_status": "VALIDADO_COM_DIFERENCAS_A_REVISAR",
+  "canonical_mutated_by_phase11": true,
+  "deduplication_performed": false,
+  "validation_basis": [
+    "Run 38548092815 concluiu com sucesso",
+    "Commit 3e4914638dedb5bec1935abd4a9821e5ddc4cfc6 contém a promoção do dataset",
+    "Manifesto RAW, checksum RAW, manifesto NORMALIZED e checksum NORMALIZED conferem no main",
+    "Run 38548149197 falhou numa execução subsequente de promoção repetida; não reverteu o commit de promoção já persistido"
+  ],
+  "follow_up": "Reexecutar FASE04/05 e fases dependentes sobre os hashes promovidos; corrigir tratamento idempotente de commits/evidências no workflow FASE11.",
+  "validated_at_utc": "2026-10-14T10:34:00Z"
+}
