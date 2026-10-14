@@ -85,6 +85,8 @@ jobs:
               sources = cal.get("sources", [])
               if not sources or not any("b3.com.br" in x.get("url", "") for x in sources):
                   raise RuntimeError("Referência oficial B3 ausente")
+              calendar_sha256 = hashlib.sha256(cal_path.read_bytes()).hexdigest()
+              out["calendar_sha256"] = calendar_sha256
               closed = {x["date"] for x in cal.get("no_trading_dates", [])}
               digest = hashlib.sha256()
               with csv_path.open("rb") as bf:
@@ -172,12 +174,37 @@ jobs:
           }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --sparse dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json
+          evidence="dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json"
+          git add --sparse "$evidence"
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): persistir reconciliacao calendario oficial 2026"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
+            # Idempotência: preservar evidência existente se os mesmos inputs já foram validados.
+            if git show "origin/main:$evidence" > /tmp/remote-calendar-evidence.json 2>/dev/null; then
+              if python - "$evidence" /tmp/remote-calendar-evidence.json <<'PY'
+          import json, sys
+          with open(sys.argv[1], encoding="utf-8") as f:
+              local = json.load(f)
+          with open(sys.argv[2], encoding="utf-8") as f:
+              remote = json.load(f)
+          same_inputs = (local.get("calendar_sha256") == remote.get("calendar_sha256") and
+                         local.get("normalized_sha256") == remote.get("normalized_sha256"))
+          valid_remote = (remote.get("status") == "VALIDADO_SEM_DIVERGENCIAS_DE_DATAS" and
+                          remote.get("calendar_session_set_match") is True and not remote.get("blockers"))
+          sys.exit(0 if same_inputs and valid_remote else 1)
+          PY
+              then
+                echo "Evidência equivalente já persistida para os mesmos inputs; sem commit duplicado."
+                exit 0
+              fi
+            fi
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "Rebase concorrente; nova tentativa ${attempt}/5."
+              sleep $((attempt * 2))
+              continue
+            fi
             if git push origin HEAD:main; then exit 0; fi
             echo "Push concorrente; nova tentativa ${attempt}/5."
             sleep $((attempt * 2))
