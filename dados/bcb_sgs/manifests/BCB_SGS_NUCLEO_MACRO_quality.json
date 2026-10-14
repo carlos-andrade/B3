@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-13T00:38:43.620127-03:00",
+  "generated_at": "2026-10-13T22:59:40.193467-03:00",
   "status": "VALIDADO",
   "series": [
     {
@@ -13,8 +13,8 @@
     {
       "codigo_sgs": 11,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-09",
-      "linhas": 10117,
+      "ultima_data": "2026-10-13",
+      "linhas": 10118,
       "manifest": "dados/bcb_sgs/manifests/SGS_11_quality.json"
     },
     {
@@ -27,8 +27,8 @@
     {
       "codigo_sgs": 1,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-09",
-      "linhas": 10492,
+      "ultima_data": "2026-10-13",
+      "linhas": 10493,
       "manifest": "dados/bcb_sgs/manifests/SGS_1_quality.json"
     },
     {
