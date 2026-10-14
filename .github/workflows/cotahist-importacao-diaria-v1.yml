@@ -66,6 +66,8 @@ jobs:
           name: cotahist-importacao-diaria-v1
           path: |
             dados/cotahist/normalized/manifests/diario/*.json
+            dados/cotahist/quality/diario/execucoes/*.json
+            dados/cotahist/quality/diario/conflitos/*.json
           retention-days: 30
 
       - name: Resumo de execução — observabilidade
