@@ -99,7 +99,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 |---|---|---|---|
 | P0 | Certificação automática da matriz anual | Workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) verde; CSV com 41 anos e linha 2026 sincronizada (parser 1.1.2, 3.142.910 linhas) | **CONCLUÍDO** |
 | P1 | Dataset Oficial V1 | Workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 anos e registo 2026 alinhado com manifesto | **CONCLUÍDO NO ESCOPO V1** |
-| P2 | Auditoria física independente dos 41 CSV NORMALIZED | Comparar SHA-256 e contagens físicas de cada CSV contra manifestos e Dataset Oficial; ampliar a garantia além das validações por fase já existentes | **MELHORIA DE GARANTIA — NÃO BLOQUEIA O CICLO OPERACIONAL ATUAL** |
+| P1 | Auditoria física independente dos 41 CSV NORMALIZED | Workflow [cotahist-auditoria-fisica-normalized-v1](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-auditoria-fisica-normalized-v1.yml); comparar SHA-256 físico, sidecar, manifesto, contagens, 25 campos e datas após materialização LFS | **IMPLEMENTADA; EXECUÇÃO INICIAL EM CURSO** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
 | P3 | Monitorização incremental diária e de erratas | Atualização com hash, data de corte, validação, alerta de falha e reconciliação idempotente | **ATIVA; manter e auditar** |
@@ -111,7 +111,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 2. Dataset Oficial V1 gerado/validado com sucesso: [run 38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845).
 3. Corrigidas as duas divergências críticas detetadas na auditoria de workflows; teste BDI e validação WATCHDOG concluídos com sucesso.
 4. Auditoria de conformidade atual: 549 workflows auditados, **zero divergências críticas**, 406 conformes e 143 conformes com observação. Run final: [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38561328869).
-5. Próximo controlo de garantia: auditoria física independente dos 41 CSV NORMALIZED contra manifestos e Dataset Oficial, caso se pretenda uma certificação física integral além da validação estrutural atual.
+5. Auditoria física independente implementada em `scripts/ingestao/auditar_integridade_fisica_cotahist_v1.py` e workflow [cotahist-auditoria-fisica-normalized-v1](https://github.com/carlos-andrade/B3/actions/workflows/cotahist-auditoria-fisica-normalized-v1.yml). A execução inicial materializa apenas os CSV NORMALIZED via Git LFS, compara hash físico/sidecar/manifesto, contagem de linhas, 25 campos e datas, e deve persistir evidência mesmo quando falha. Resultado ainda não certificado até conclusão da execução.
 6. Atualizar documentação agregada apenas depois da validação dos dados e evidências; não alterar README fora da janela governada.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
 
@@ -129,7 +129,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 ## 9. Política de ciclo de vida — decisão de 14/10/2026
 
 - **1986–2025: ENCERRADOS PARA INGESTÃO ROTINEIRA; DISPONÍVEIS APENAS PARA CONSULTA.** Preservar RAW, NORMALIZED, manifestos, hashes e evidências; não alterar no ciclo rotineiro.
-- **2026: ATUALIZAÇÃO INCREMENTAL DIÁRIA**, com data de corte, hashes, normalização, reconciliação, validação, persistência idempotente e atualização controlada dos artefactos agregados.
+- **2026: ATUALIZAÇÃO INCREMENTAL DIÁRIA**, com data de corte, hashes, normalização, reconciliação, validação, persistência idempotente e atualização controlada dos artefactos agregados. O importador diário passou a obter `parser_version` diretamente de `normalize_cotahist.PARSER_VERSION`, evitando divergência declarativa entre manifesto diário e parser executado.
 - Achados históricos devem ser registados sem alteração silenciosa. Reabrir um ano exige decisão formal, motivo, fonte/evidência, escopo, versionamento e auditoria antes/depois.
 - O encerramento operacional de 1986–2025 **não equivale a certificação semântica integral**. A exceção semântica de 1986 e demais exceções documentadas permanecem vigentes.
 - 2026 só poderá ser fechado após o fim do ano, aquisição e validação da fonte anual final e conclusão das fases aplicáveis, incluindo FASE12.
@@ -140,7 +140,7 @@ Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governa
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. Matriz anual certificada automaticamente, Dataset Oficial V1 gerado com sucesso, testes BDI/WATCHDOG verdes e auditoria de 549 workflows sem divergências críticas. O projeto permanece em continuidade anual governada: o fecho de 2026 aguarda a fonte anual final; a exceção semântica de 1986 e as exceções históricas permanecem explicitamente controladas. A auditoria física independente dos 41 CSV é uma melhoria adicional de garantia, não um bloqueador do ciclo operacional já validado.
+**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. Matriz anual certificada automaticamente, Dataset Oficial V1 gerado com sucesso, testes BDI/WATCHDOG verdes e auditoria de 549 workflows sem divergências críticas. Pela decisão de 14/10/2026, 1986–2025 ficam somente para consulta e 2026 segue atualização diária. A auditoria física independente dos 41 CSV foi implementada e a execução inicial está em curso; não declarar essa auditoria concluída até haver relatório persistido e workflow terminado.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
