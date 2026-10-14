@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-14T09:56:07.992566+00:00
-Workflows auditados: 544
+Gerado em UTC: 2026-10-14T09:58:53.304918+00:00
+Workflows auditados: 545
 
 ## Regra de decisão
 
@@ -561,6 +561,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-reconciliacao-semantica-1986.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-reconciliacao-tpmerc021-bvbg028-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-recuperar-normalized-1999-v1.yml | — | **CONFORME** | — | — |
+| .github/workflows/cotahist-refresh-probe-2026-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-semantica-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-semantica-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-validacao-independente-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
