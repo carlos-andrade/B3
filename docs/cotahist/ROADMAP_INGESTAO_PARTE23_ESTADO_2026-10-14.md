@@ -78,6 +78,7 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - [Calendário oficial B3 2026 persistido](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json)
 - [Auditoria automatizada do calendário oficial — evidência](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json)
 - [Execução final da auditoria e persistência idempotente](https://github.com/carlos-andrade/B3/actions/runs/38558710582)
+- [Auditoria de persistência idempotente — evidência JSON](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_PERSISTENCIA_IDEMPOTENTE_V1.json)
 - [Auditoria pós-promoção complementar](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_POS_PROMOCAO_CALENDARIO_OFICIAL_V1.json)
 - [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)
 - [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
