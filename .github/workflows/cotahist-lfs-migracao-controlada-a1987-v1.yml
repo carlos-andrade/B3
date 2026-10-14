@@ -1,0 +1,229 @@
+name: COTAHIST - migração controlada Git LFS A1987
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "preflight apenas valida; migrate converte e executa auditorias pós-migração"
+        required: true
+        type: choice
+        options:
+          - preflight
+          - migrate
+        default: preflight
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-lfs-a1987-migracao-controlada
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout sem materializar LFS
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          lfs: false
+
+      - name: Instalar Git LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+
+      - name: Validar conteúdo original A1987
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, hashlib, pathlib, sys
+          p = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A1987.csv")
+          expected_sha = "5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc"
+          expected_bytes = 15518211
+          expected_rows = 130665
+          expected_first = "1987-01-02"
+          expected_last = "1987-12-30"
+          b = p.read_bytes()
+          sha = hashlib.sha256(b).hexdigest()
+          if sha != expected_sha:
+              sys.exit(f"FAIL: SHA-256 inesperado: {sha}")
+          if len(b) != expected_bytes:
+              sys.exit(f"FAIL: tamanho inesperado: {len(b)}")
+          with p.open("r", encoding="utf-8-sig", newline="") as f:
+              reader = csv.reader(f)
+              header = next(reader, None)
+              if header is None or len(header) != 25:
+                  sys.exit("FAIL: cabeçalho não tem 25 campos")
+              rows = 0
+              first = last = None
+              for row in reader:
+                  if len(row) != 25:
+                      sys.exit(f"FAIL: linha {rows + 2} não tem 25 campos")
+                  rows += 1
+                  first = first or row[0].strip()
+                  last = row[0].strip()
+          if (rows, first, last) != (expected_rows, expected_first, expected_last):
+              sys.exit(f"FAIL: estrutura divergente: rows={rows}, first={first}, last={last}")
+          print(f"PRE_MIGRATION_OK sha256={sha} bytes={len(b)} rows={rows} fields=25 first={first} last={last}")
+          PY
+
+      - name: Aplicar filtro LFS apenas ao ficheiro A1987 e validar ponteiro staged
+        id: stage
+        shell: bash
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -euo pipefail
+          FILE="dados/cotahist/normalized/anual/COTAHIST_A1987.csv"
+          git check-attr filter -- "$FILE"
+          test "$(git check-attr filter -- "$FILE" | awk '{print $3}')" = "lfs"
+          git add --renormalize -- "$FILE"
+          git show ":$FILE" > /tmp/COTAHIST_A1987.staged
+          python - <<'PY'
+          import hashlib, pathlib, re, sys
+          p = pathlib.Path("/tmp/COTAHIST_A1987.staged")
+          b = p.read_bytes()
+          text = b.decode("ascii")
+          oid = re.search(r"^oid sha256:([0-9a-f]{64})$", text, re.M)
+          size = re.search(r"^size (\d+)$", text, re.M)
+          expected = "5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc"
+          expected_size = 15518211
+          if not text.startswith("version https://git-lfs.github.com/spec/v1\n") or not oid or not size:
+              sys.exit("FAIL: o blob staged não é um ponteiro Git LFS válido")
+          if oid.group(1) != expected or int(size.group(1)) != expected_size:
+              sys.exit(f"FAIL: ponteiro divergente: oid={oid.group(1)}, size={size.group(1)}")
+          print(f"LFS_POINTER_OK oid={oid.group(1)} size={size.group(1)}")
+          PY
+          if [ "$MODE" = "preflight" ]; then
+            git reset HEAD -- "$FILE"
+            git checkout -- "$FILE"
+            echo "MODE=preflight; nenhum commit ou push realizado."
+          elif [ "$MODE" = "migrate" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "fix(cotahist): armazenar NORMALIZED A1987 via Git LFS"
+            pushed=0
+            for tentativa in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                pushed=1
+                break
+              fi
+            done
+            test "$pushed" -eq 1
+            echo "MIGRATION_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            echo "Modo inválido: $MODE"
+            exit 2
+          fi
+
+      - name: Verificar objeto LFS num checkout limpo após migração
+        if: inputs.mode == 'migrate'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: verify-checkout
+          fetch-depth: 1
+          lfs: true
+
+      - name: Validar hash e estrutura após checkout limpo
+        if: inputs.mode == 'migrate'
+        working-directory: verify-checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs version
+          git lfs ls-files --long | grep 'COTAHIST_A1987.csv'
+          python - <<'PY'
+          import csv, hashlib, pathlib, sys
+          p = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A1987.csv")
+          expected_sha = "5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc"
+          expected_bytes = 15518211
+          expected_rows = 130665
+          expected_first = "1987-01-02"
+          expected_last = "1987-12-30"
+          b = p.read_bytes()
+          sha = hashlib.sha256(b).hexdigest()
+          if sha != expected_sha or len(b) != expected_bytes:
+              sys.exit(f"FAIL pós-checkout: sha={sha}, bytes={len(b)}")
+          with p.open("r", encoding="utf-8-sig", newline="") as f:
+              reader = csv.reader(f)
+              header = next(reader, None)
+              if header is None or len(header) != 25:
+                  sys.exit("FAIL pós-checkout: cabeçalho inválido")
+              rows = 0
+              first = last = None
+              for row in reader:
+                  if len(row) != 25:
+                      sys.exit(f"FAIL pós-checkout: linha {rows + 2} com campos inválidos")
+                  rows += 1
+                  first = first or row[0].strip()
+                  last = row[0].strip()
+          if (rows, first, last) != (expected_rows, expected_first, expected_last):
+              sys.exit(f"FAIL pós-checkout: rows={rows}, first={first}, last={last}")
+          print(f"POST_MIGRATION_OK sha256={sha} bytes={len(b)} rows={rows} fields=25 first={first} last={last}")
+          PY
+
+      - name: Reauditar integridade física global 1986–2026
+        if: inputs.mode == 'migrate'
+        working-directory: verify-checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
+          python scripts/ingestao/auditar_integridade_fisica_cotahist_v1.py
+
+      - name: Regenerar Dataset Oficial V2 após auditoria
+        if: inputs.mode == 'migrate'
+        working-directory: verify-checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
+
+      - name: Persistir evidências pós-migração
+        if: inputs.mode == 'migrate'
+        working-directory: verify-checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json
+          git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
+          if git diff --cached --quiet; then
+            echo "Evidências já estavam atualizadas."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): revalidar dataset após migração LFS A1987"
+          pushed=0
+          for tentativa in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              pushed=1
+              break
+            fi
+          done
+          test "$pushed" -eq 1
+
+      - name: Resumo de execução
+        if: always()
+        run: |
+          {
+            echo "## Migração controlada Git LFS — COTAHIST A1987"
+            echo "- Modo: ${{ inputs.mode }}"
+            echo "- Pré-condição: SHA-256, bytes, linhas, 25 campos e datas esperadas"
+            echo "- Pós-condição (modo migrate): checkout limpo, objeto LFS materializado, hash e estrutura preservados"
+            echo "- Auditoria física global e Dataset Oficial V2 são repetidos após a migração"
+            echo "- Sem cron; workflow exclusivamente manual; sem reescrita de histórico"
+          } >> "$GITHUB_STEP_SUMMARY"
