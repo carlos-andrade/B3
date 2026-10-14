@@ -25,8 +25,26 @@ def main() -> None:
     by_year = {int(row["ano"]): row for row in rows}
     failures = []
 
+    if not OUT.is_file():
+        raise SystemExit(
+            "Dataset Oficial V1 histórico ausente: não reconstruir o período encerrado automaticamente."
+        )
+    existing_payload = json.loads(OUT.read_text(encoding="utf-8"))
+    existing_records = {int(item["ano"]): item for item in existing_payload.get("records", [])}
+    missing_historical = [year for year in range(1986, 2026) if year not in existing_records]
+    if missing_historical:
+        raise SystemExit(
+            f"Registos históricos ausentes no Dataset Oficial V1: {missing_historical}; "
+            "reabertura formal necessária."
+        )
+
     records = []
     for year in EXPECTED_YEARS:
+        if year < 2026:
+            # Histórico fechado: conservar o registo oficial persistido sem reler manifestos antigos.
+            records.append(existing_records[year])
+            continue
+
         row = by_year.get(year)
         manifest_path = MANIFESTS / f"COTAHIST_A{year}_quality.json"
 
@@ -86,6 +104,15 @@ def main() -> None:
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    stable_existing = dict(existing_payload)
+    stable_payload = dict(payload)
+    stable_existing.pop("generated_at", None)
+    stable_payload.pop("generated_at", None)
+    if stable_existing == stable_payload:
+        print(f"Dataset oficial sem alteração material: {OUT}")
+        print(f"Anos incluídos: {len(records)}")
+        return
+
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Dataset oficial gerado: {OUT}")
     print(f"Anos incluídos: {len(records)}")
