@@ -1,8 +1,26 @@
 # B3 — ROADMAP DE INGESTÃO COTAHIST — PARTE23 (RECONCILIADO)
 
-**Data de referência:** 2026-10-14  
-**Repositório:** https://github.com/carlos-andrade/B3  
-**Estado:** auditoria integrada pós-promoção concluída; calendário oficial B3 reconciliado sem divergências para 02/01–13/10/2026; persistência idempotente verificada com sucesso; dados validados até 13/10/2026; fecho anual permanece pendente. Decisão de ciclo de vida: 1986–2025 somente consulta; 2026 atualização diária.
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-ROADMAP-PARTE23-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | ROADMAP |
+| **Fase** | Atualização operacional e governança documental |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular conforme a norma GOVERNANCA |
+| **Commit de referência (versão anterior)** | [b372140a1ead563b373e5eace26cb5e923d06642](https://github.com/carlos-andrade/B3/commit/b372140a1ead563b373e5eace26cb5e923d06642) |
+| **Data de criação** | 2026-10-14 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico B3 |
+| **Aprovador** | Pendente de aprovação formal deste documento |
+| **Origem** | Evidências COTAHIST e workflows do repositório B3 |
+| **Autoridade superior** | [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Norma de cabeçalho GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Escopo** | Estado operacional PARTE23 e transição anual COTAHIST |
+| **Objetivo** | Consolidar o estado comprovado e orientar a próxima atualização diária de 2026 |
+| **Dependências** | Dataset Oficial V2, auditoria física 1986–2026, manifestos e workflows |
 
 ## Estado verificado no branch main
 
@@ -142,3 +160,11 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | Ingestão histórica 1986–2025 | Congelada para consulta | Não alterar no ciclo diário |
 | Atualização diária 2026 | Ativa | Continuar a validar cada publicação e preservar fail-closed |
 | Fecho anual 2026 | Pendente | Só após fim do ano e publicação anual oficial |
+
+
+## Governação documental — adoção da norma transversal
+
+Este documento foi normalizado para a norma de cabeçalho da GOVERNANCA v1.0.3. A normalização não altera as evidências de dados citadas nem substitui os JSON canónicos.
+
+- Plano de adoção: [PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md](../governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md)
+- Incidência Git LFS A1987 encerrada com evidência: [INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md](../ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md)
