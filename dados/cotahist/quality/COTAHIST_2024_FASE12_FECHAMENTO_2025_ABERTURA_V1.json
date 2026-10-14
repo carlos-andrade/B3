@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "year_closed": 2024,
+  "phase": "FASE12",
+  "status": "FECHADO_COM_TRANSICAO_CONTROLADA",
+  "decision": "FECHAR_2024_E_AUTORIZAR_CONTINUACAO_2025",
+  "phase10_2024_status": "VALIDADO",
+  "phase11_2024_status": "CERTIFICADO",
+  "year2025_raw_path": "dados/cotahist/raw/anual/COTAHIST_A2025.ZIP",
+  "year2025_raw_sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+  "year2025_manifest_sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+  "year2025_sidecar_sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+  "year2025_raw_hash_match": true,
+  "year2025_zip_member_count": 1,
+  "year2025_invalid_record_lengths": 0,
+  "year2025_record_type_counts": {
+    "00": 1,
+    "01": 3174698,
+    "99": 1
+  },
+  "year2025_normalized_csv_exists": false,
+  "year2025_phase04_status": "AGUARDA_RECONSTRUCAO_CSV",
+  "blockers": [],
+  "transition_scope": "Fecha 2024 após certificação; não certifica 2025. A existência de manifesto ou hash NORMALIZED declarado não prova a existência física do CSV 2025; FASE04/FASE05 devem ser verificadas e executadas no ciclo seguinte.",
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-14T01:00:59.862089+00:00"
+}
