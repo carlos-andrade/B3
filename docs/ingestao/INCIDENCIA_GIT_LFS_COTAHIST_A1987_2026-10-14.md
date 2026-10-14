@@ -51,3 +51,12 @@ O conteúdo do CSV A1987 está acessível no repositório; a inconsistência é 
 - Não regenerar manifestos para fazer coincidir hashes incorretos.
 - Não marcar como corrigido apenas porque o workflow passa.
 - Manter a geração fail-closed e preservar a evidência histórica.
+
+
+## Adenda — workflow de migração controlada preparado (2026-10-14)
+
+Foi preparado em branch de proposta o workflow manual [cotahist-lfs-migracao-controlada-a1987-v1.yml](https://github.com/carlos-andrade/B3/blob/feature/cotahist-lfs-a1987-controlled-migration/.github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml) e o respetivo [runbook](https://github.com/carlos-andrade/B3/blob/feature/cotahist-lfs-a1987-controlled-migration/docs/ingestao/RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md).
+
+O workflow tem apenas `workflow_dispatch`, sem cron nem gatilho push. O modo padrão é `preflight`; a opção `migrate` exige seleção manual. Antes de converter, verifica SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`, 15.518.211 bytes, 130.665 linhas, 25 campos e datas 1987-01-02–1987-12-30. Depois do push, exige checkout limpo, materialização LFS, igualdade do hash/estrutura, auditoria física global e regeneração do Dataset Oficial V2.
+
+**Atenção:** o workflow está preparado em branch de proposta e ainda não foi integrado nem executado. A incidência permanece aberta. Nenhuma migração de dados foi realizada nesta etapa.
