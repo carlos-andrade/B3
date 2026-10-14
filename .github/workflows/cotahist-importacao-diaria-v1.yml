@@ -29,6 +29,13 @@ jobs:
           fetch-depth: 0
           lfs: false
 
+      - name: Atualizar branch após espera de concorrência
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Importar e validar COTAHIST diário
         run: python scripts/ingestao/importar_cotahist_diario_v1.py
 
