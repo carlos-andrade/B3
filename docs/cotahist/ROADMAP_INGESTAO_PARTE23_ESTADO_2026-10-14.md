@@ -48,7 +48,8 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | 9 | FASE11 | Promoção e hashes revalidados | Não repetir sem mudança do candidato ou das regras |
 | 10 | Auditoria integrada pós-promoção | Concluída e persistida | Usar como estado consolidado deste ciclo |
 | 11 | Fonte oficial do calendário B3 | Persistida e reconciliada | Preservar evidência e monitorizar futuras erratas oficiais |
-| 12 | Auditoria calendário oficial 2026 | Em execução | Confirmar resultado do run [38558347376](https://github.com/carlos-andrade/B3/actions/runs/38558347376); bloquear se houver divergências |\n| 13 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
+| 12 | Auditoria calendário oficial 2026 | Concluída sem divergências | 195 sessões observadas = 195 esperadas; zero ausentes/inesperadas ([run](https://github.com/carlos-andrade/B3/actions/runs/38558347376)) |
+| 13 | Fecho anual 2026 | Pendente | Aguardar fim do ano e publicação anual oficial |
 | 14 | Histórico 1986–2025 | Fora do âmbito desta aprovação | Seguir gates e evidências independentes por ano |
 
 ## Regras de integridade
@@ -73,6 +74,10 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - [FASE09](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE09_PRE_RELEASE_V1.json)
 - [FASE10](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json)
 - [FASE11](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_FASE11_PROMOCAO_V1.json)
-- [Calendário oficial B3 2026 persistido](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json)\n- [Auditoria automatizada do calendário oficial — evidência](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json)\n- [Auditoria pós-promoção complementar](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_POS_PROMOCAO_CALENDARIO_OFICIAL_V1.json)\n- [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)\n- [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
+- [Calendário oficial B3 2026 persistido](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json)
+- [Auditoria automatizada do calendário oficial — evidência](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_CALENDARIO_OFICIAL_V1.json)
+- [Auditoria pós-promoção complementar](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_2026_AUDITORIA_POS_PROMOCAO_CALENDARIO_OFICIAL_V1.json)
+- [Workflow de auditoria do calendário oficial](https://github.com/carlos-andrade/B3/blob/main/.github/workflows/cotahist-calendario-oficial-2026-v1.yml)
+- [Auditoria histórica de atualidade](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md)
 
 **Conclusão operacional:** o ciclo técnico COTAHIST 2026 está validado e promovido até 13/10/2026, com exceções explicitamente classificadas e sem bloqueadores internos. O calendário oficial foi reconciliado para o intervalo observado, sem divergências. O próximo trabalho é monitorizar novas publicações/erratas e manter o fecho anual pendente até ao fim de 2026; não é necessária nova aquisição nem repetição de FASE10/FASE11 enquanto os hashes e regras permanecerem inalterados.
