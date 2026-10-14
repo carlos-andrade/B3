@@ -107,3 +107,12 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 - **Auditoria pós-correção:** Layout Mestre concluído com sucesso no run [38583879502](https://github.com/carlos-andrade/B3/actions/runs/38583879502), commit auditado `54425d583a07ef9caef481e7e9425fe48bd33be1`. A reexecução FASE03 acionada pelo push terminou com sucesso no run [38583879352](https://github.com/carlos-andrade/B3/actions/runs/38583879352); a evidência foi persistida no commit `917c0caf3955fd05c829790c4edb08c476705421`.
 - **Controlo anti-loop:** removido o cron de cinco minutos; o workflow só responde a execução manual ou alterações nos paths explicitamente listados. A evidência FASE03 não consta dos paths do gatilho `push`, pelo que o commit gerado pela própria execução não dispara outra execução. O teste pós-correção concluiu com sucesso; não é necessário rerun adicional.
 - **Próximos passos:** manter a migração de armazenamento Git LFS do CSV 1987 isolada e pendente até ser possível provar preservação byte a byte e disponibilidade do objeto LFS; continuar a atualização diária de 2026 sem tocar nos anos históricos.
+
+
+## Adenda de continuidade — preparação da migração LFS A1987 (2026-10-14)
+
+- **Implementação direta:** o proprietário informou que o repositório desativou Pull Requests. Para não bloquear o trabalho, os ficheiros de controlo foram publicados diretamente em `main` por commits normais de avanço, sem reescrita de histórico.
+- **Anti-loop:** workflow exclusivamente manual (`workflow_dispatch`), sem cron e sem gatilho push. Modo predefinido `preflight`; migração exige escolha manual de `migrate`.
+- **Gates:** hash SHA-256, tamanho, linhas, 25 campos e datas antes da alteração; ponteiro LFS com OID/tamanho esperados; checkout limpo após push; revalidação física global e regeneração do Dataset Oficial V2.
+- **Estado real:** workflow integrado em `main`, mas ainda não executado. Nenhum CSV ou manifesto foi alterado pela preparação. A incidência de armazenamento A1987 permanece aberta até evidência pós-migração aprovada.
+- **Próximo passo:** executar primeiro `preflight`; executar `migrate` somente depois de analisar o log de preflight. Não repetir workflows concluídos sem mudança de código/dados.
