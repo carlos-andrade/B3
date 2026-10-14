@@ -94,7 +94,7 @@ def import_day(ref_date: date) -> str:
                     "decisao": "Preservar versão canónica e exigir revisão formal antes de promover correção."
                 }
                 conflict_path = CONFLICT_DIR / f"{name}_{existing_sha[:12]}_{tmp_sha[:12]}.json"
-                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+                conflict_path.write_text(json.dumps(conflict, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
                 print(f"CONFLITO_FONTE_NAO_PROMOVIDO: {name} canonico={existing_sha} recebido={tmp_sha}")
                 return "CONFLICT"
 
@@ -178,7 +178,7 @@ def main() -> None:
     }
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     report_path = RUN_DIR / f"COTAHIST_DIARIO_EXECUCAO_{stamp}.json"
-    report_path.write_text(json.dumps(run_report, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    report_path.write_text(json.dumps(run_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("RESUMO_BACKFILL=" + json.dumps(results, ensure_ascii=False, sort_keys=True))
     print(f"RELATORIO_EXECUCAO={report_path.relative_to(ROOT)}")
     print(f"CONFLITOS_FONTE={len(conflicts)}")
