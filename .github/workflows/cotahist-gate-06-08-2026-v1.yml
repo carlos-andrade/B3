@@ -1,4 +1,4 @@
-# Reexecução controlada após validação FASE08 atualizada (2026-10-14).
+# Gate atualizado para hashes e cardinalidade da promoção COTAHIST 2026 (2026-10-14).
 # Gate formal das evidências COTAHIST 2026 FASE06–FASE08.
 name: COTAHIST 2026 - Gate FASE06-08
 
@@ -76,9 +76,11 @@ jobs:
               docs[phase] = json.loads(path.read_text(encoding="utf-8"))
               ev["evidence"][phase] = {"path": str(path), "status": docs[phase].get("status"), "decision": docs[phase].get("decision")}
             f4, f5, f6, f7, f8 = (docs[x] for x in ("FASE04","FASE05","FASE06","FASE07","FASE08"))
-            expected_hash = ev["normalized_sha256_expected"]
-            expected_rows = ev["records_expected"]
-            expected_first, expected_last = "2026-01-02", "2026-09-23"
+            expected_hash = "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc"
+            ev["normalized_sha256_expected"] = expected_hash
+            expected_rows = 3142910
+            ev["records_expected"] = expected_rows
+            expected_first, expected_last = "2026-01-02", "2026-10-13"
             for phase, d in docs.items():
               if d.get("year", d.get("ano")) != 2026:
                 raise RuntimeError(f"{phase}: ano ausente ou diferente de 2026")
