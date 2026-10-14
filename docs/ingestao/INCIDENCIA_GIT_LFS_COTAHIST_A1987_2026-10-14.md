@@ -60,3 +60,17 @@ Foi preparado e publicado diretamente em `main` (o repositório está configurad
 O workflow tem apenas `workflow_dispatch`, sem cron nem gatilho push. O modo padrão é `preflight`; a opção `migrate` exige seleção manual. Antes de converter, verifica SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`, 15.518.211 bytes, 130.665 linhas, 25 campos e datas 1987-01-02–1987-12-30. Depois do push, exige checkout limpo, materialização LFS, igualdade do hash/estrutura, auditoria física global e regeneração do Dataset Oficial V2.
 
 **Estado atualizado (2026-10-14):** workflow e runbook publicados diretamente em `main`, sem reescrever histórico, porque Pull Requests estão desativadas no repositório. O workflow ainda não foi executado. A incidência permanece aberta e nenhuma migração de dados foi realizada.
+
+
+## Fecho pós-migração controlada — 2026-10-14
+
+**Estado: RESOLVIDO COM EVIDÊNCIA.** A execução [38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646) concluiu com sucesso em modo `migrate`. Commit de migração: [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
+
+Gates pós-migração aprovados:
+- O ficheiro `dados/cotahist/normalized/anual/COTAHIST_A1987.csv` está agora representado no Git por ponteiro LFS (133 bytes), com OID SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc` e tamanho declarado de 15.518.211 bytes.
+- Checkout limpo materializou o objeto LFS e confirmou o conteúdo: SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`, 15.518.211 bytes, 130.665 linhas de dados, 25 campos, intervalo 1987-01-02–1987-12-30.
+- Auditoria física global executada após a migração: `APROVADO`, 41/41 anos validados, zero falhas. Evidência: [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json).
+- Dataset Oficial V2 foi regenerado no checkout pós-migração, com 41 anos incluídos. [Dataset Oficial V2](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json).
+- O workflow concluiu todas as etapas pós-migração; nenhuma etapa de validação pós-migração foi ignorada. A persistência não precisou de novo commit porque as evidências geradas já coincidiam com as evidências canónicas existentes.
+
+**Decisão:** fechar a incidência de representação Git LFS A1987. A migração alterou apenas a representação de armazenamento Git/LFS; o conteúdo NORMALIZED, o RAW e os manifestos foram preservados. Não houve reescrita de histórico. A atualização diária de 2026 continua independente deste incidente.
