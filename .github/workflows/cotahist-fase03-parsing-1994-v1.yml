@@ -2,8 +2,6 @@ name: COTAHIST - auditoria retrospectiva 1994 FASE03 V1
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
   push:
     paths:
       - ".github/workflows/cotahist-fase03-parsing-1994-v1.yml"
