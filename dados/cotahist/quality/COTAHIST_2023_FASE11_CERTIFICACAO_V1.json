@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2023,
+  "phase": "FASE11",
+  "status": "CERTIFICADO",
+  "decision": "LIBERADO_PARA_FASE12",
+  "certification_scope": "Integridade e consistência do conjunto COTAHIST 2023 conforme evidências FASE00-10; não certifica estratégia de investimento nem autoriza deduplicação.",
+  "evidence_statuses": {
+    "FASE09": "LIBERADO_PARA_FASE10",
+    "FASE10": "VALIDADO",
+    "GATE_06_08": "GATE_APROVADO",
+    "MANIFEST": "VALIDADO"
+  },
+  "phase10_mismatch_count": 0,
+  "phase10_fields_checked": 25,
+  "gate_06_08_status": "GATE_APROVADO",
+  "gate_06_08_decision": "APROVADO_PARA_ANALISE_FASE09",
+  "raw_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+  "normalized_sha256": "abe7e17072dc4499af7cfd0eacebd7b7fbe0d579777fced9ad1deda97bb1d87d",
+  "blockers": [],
+  "certified_at_utc": "2026-10-14T00:36:54.539347+00:00"
+}
