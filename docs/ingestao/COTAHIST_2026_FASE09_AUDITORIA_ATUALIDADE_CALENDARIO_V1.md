@@ -1,3 +1,7 @@
+> **AVISO DE ESTADO HISTÓRICO — 14/10/2026:** Esta auditoria descreve o NORMALIZED anterior, terminado em 23/09/2026. Após atualização do dataset, o manifesto e as evidências atuais indicam última data 13/10/2026, RAW SHA-256 `580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e` e NORMALIZED SHA-256 `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`. Não usar a decisão de bloqueio abaixo como estado operacional atual. Consultar a auditoria pós-promoção [COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md](COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md) e o [roadmap PARTE23](../cotahist/ROADMAP_INGESTAO_PARTE23_ESTADO_2026-10-14.md). O conteúdo original foi preservado como histórico do estado anterior.
+
+---
+
 # COTAHIST 2026 — FASE09: auditoria de atualidade e calendário oficial
 
 **Data da auditoria:** 2026-10-14  
