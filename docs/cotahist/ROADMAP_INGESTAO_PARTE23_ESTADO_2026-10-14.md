@@ -9,7 +9,7 @@
 | **Fase** | Atualização operacional e governança documental |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular conforme a norma GOVERNANCA |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular segundo norma GOVERNANCA v1.0.3 |
 | **Commit de referência (versão anterior)** | [b372140a1ead563b373e5eace26cb5e923d06642](https://github.com/carlos-andrade/B3/commit/b372140a1ead563b373e5eace26cb5e923d06642) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-14 |
