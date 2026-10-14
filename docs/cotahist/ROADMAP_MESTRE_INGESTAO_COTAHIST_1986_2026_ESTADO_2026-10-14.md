@@ -2,10 +2,10 @@
 **Data de referência:** 2026-10-14  
 **Repositório oficial:** https://github.com/carlos-andrade/B3  
 **Branch:** main  
-**Estado global:** **PARCIALMENTE CONCLUÍDO — NÃO ENCERRAR A PUBLICAÇÃO INTEGRADA**  
+**Estado global:** **EM FINALIZAÇÃO DO ESCOPO B3 — INGESTÃO COTAHIST**  
 **Norma operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
-> Este roadmap consolida a certificação estrutural histórica, a cadeia de fases anuais, o ciclo corrente de 2026 e os bloqueios de publicação cruzada. Não substitui as evidências JSON de cada fase.
+> Este roadmap cobre exclusivamente o projeto B3: ingestão COTAHIST, normalização, qualidade, calendário, certificação anual, dataset oficial, workflows e governança. Não substitui as evidências JSON de cada fase.
 
 ## 1. Resumo executivo
 
@@ -17,10 +17,10 @@
 - A persistência idempotente da evidência do calendário foi validada; execução final e auditoria do Layout Mestre concluídas com sucesso.
 - A sequência original de registos foi preservada: sem deduplicação, remoção ou reordenação.
 
-### Ainda impede declarar o processo totalmente finalizado
-1. **REC-001 B3 × BLOOMBERG_MAIL permanece em `FAIL_CONTENT_DIVERGENCE`**. Não liberar publicação integrada nem declarar reconciliação entre fontes até classificar e resolver a diferença com evidência verificável.
-2. **A matriz agregada de certificação anual precisa ser regenerada**: o CSV atual ainda descreve 2026 com 2.919.760 linhas e última data 22/09, enquanto os manifestos canónicos atuais descrevem 3.142.910 linhas e última data 13/10. Esta é uma defasagem documental identificada; não é, por si só, prova de corrupção do NORMALIZED.
-3. **O ano de 2026 não está fechado**: é um conjunto parcial até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
+### Pendências do escopo B3
+1. **A matriz agregada de certificação anual precisa ser sincronizada**: o CSV apresenta 2.919.760 linhas e última data 22/09 para 2026, enquanto os manifestos canónicos atuais descrevem 3.142.910 linhas e última data 13/10. Atualizar a matriz a partir dos manifestos e validar a alteração.
+2. **O Dataset Oficial e os artefactos agregados precisam de auditoria final**: verificar alinhamento entre manifestos, matriz, dataset oficial, checksums, sidecars e documentação.
+3. **O ano de 2026 não está fechado**: o conjunto está atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 4. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
 5. Exceções de calendário histórico de anos antigos e exceções de ordenação/regressão devem continuar explícitas; não corrigir a fonte reordenando ou removendo linhas.
 
@@ -83,51 +83,33 @@ A árvore `dados/cotahist/quality/` contém artefactos por ano para reconciliaç
 | 1999–2005 | Fechamentos anuais/transições e FASE10/11/12 persistidos para os anos indicados nos artefactos; evidência independente de 25 campos em vários anos | Preservar exceções de calendário e semântica de cada ano |
 | 2006–2013 | Cadeia de fases anuais e artefactos de FASE10/11/12 persistidos; reconciliações independentes reportadas sem divergências nos anos documentados | Gate e estado devem ser lidos na evidência de cada ano; calendário histórico oficial pode não estar persistido |
 | 2014–2025 | Existem evidências anuais de FASE06, FASE10, FASE11 e FASE12 para os anos listados no repositório; a documentação recente regista validações independentes e transições controladas | A presença de um ficheiro não substitui a inspeção do seu status/hash; exceções continuam válidas até serem resolvidas por evidência |
-| 2026 | FASE04–11, Gate 06–08, calendário oficial do intervalo observado e persistência idempotente concluídos | Ano parcial; fecho anual pendente; REC-001 bloqueia a publicação integrada entre repositórios |
+| 2026 | FASE04–11, Gate 06–08, calendário oficial do intervalo observado e persistência idempotente concluídos | Ano parcial; fecho anual pendente; matriz anual e artefactos agregados requerem sincronização final |
 
 **Regra de encerramento por ano:** um ano só pode ser declarado fechado quando a sua própria FASE12 e todas as pré-condições requeridas estiverem validadas e persistidas. A existência de RAW, NORMALIZED ou manifesto não substitui o fechamento.
 
-## 5. REC-001 — bloqueio de reconciliação entre B3 e BLOOMBERG_MAIL
+## 5. Auditoria final interna do projeto B3
 
-Evidência canónica: [COTAHIST_A2026_REC001_BLOOMBERG_MAIL_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/COTAHIST_A2026_REC001_BLOOMBERG_MAIL_V1.json).
+O encerramento deste roadmap é determinado exclusivamente pela integridade dos dados e artefactos mantidos no repositório B3. Os critérios são: coerência entre RAW, NORMALIZED, manifestos, checksums, matriz de certificação, dataset oficial, calendário, workflows e documentação; evidência de validação persistida; e preservação das exceções históricas. Cada fonte e integração externa tem o seu próprio âmbito de governança e não é uma dependência deste roadmap.
 
-**Estado observado:** `FAIL_CONTENT_DIVERGENCE`. **Não liberar publicação integrada** até à resolução documentada.
-
-A evidência consultada apresenta snapshots com datas de corte diferentes:
-- B3: 3.142.910 registos tipo 01, última data 2026-10-13.
-- BLOOMBERG_MAIL: 3.070.831 registos tipo 01, última data 2026-10-06.
-- Comparação de multiconjunto de payloads: 72.079 registos B3 ausentes no snapshot BLOOMBERG_MAIL; zero payloads exclusivos de BLOOMBERG_MAIL.
-- A comparação posicional inicial diverge porque as ordenações/datas de corte são diferentes. Um registo histórico anterior documentou ainda a divergência `ABCBA235` versus `ABCBA243` após 222.002 registos coincidentes; esta ocorrência precisa de ser reconciliada com os snapshots e a evidência REC-001 mais recentes, sem assumir automaticamente que é retificação legítima ou erro.
-
-### Trabalho obrigatório para desbloquear REC-001
-1. Capturar/persistir ambos os snapshots e os respetivos hashes, datas de corte, cabeçalhos, trailers e contagens.
-2. Comparar períodos efetivamente sobrepostos, sem usar comparação posicional de snapshots com ordenações ou datas de corte diferentes.
-3. Reconciliar payloads byte a byte e por multiplicidade, preservando duplicados legítimos; produzir listas determinísticas de registos exclusivos de cada lado.
-4. Investigar o par `ABCBA235`/`ABCBA243` na fonte oficial e em eventuais erratas/retificações, com proveniência.
-5. Classificar cada diferença: diferença de corte, ordenação, retificação oficial, ausência de captura ou divergência não explicada.
-6. Persistir nova evidência REC-001 e teste reproduzível; executar workflow e auditoria do Layout Mestre.
-7. **Só desbloquear a publicação integrada quando não restarem divergências bloqueadoras sem classificação e decisão formal.** Não alterar nem deduplicar o RAW para forçar igualdade.
-
-## 6. Backlog para finalizar, em ordem de dependência
+## 6. Backlog B3 para finalizar, em ordem de dependência
 
 | Prioridade | Trabalho | Critério de conclusão | Estado |
 |---|---|---|---|
-| P0 | Resolver REC-001 B3 × BLOOMBERG_MAIL | Evidência reproduzível, diferenças classificadas, decisão formal e workflow verde; sem divergência bloqueadora inexplicada | **BLOQUEADO / PENDENTE** |
-| P1 | Regenerar a matriz de certificação anual | CSV 1986–2026 reconstruído dos manifestos canónicos atuais; 2026 passa a refletir 3.142.910 linhas e data 13/10; hashes e validação persistidos | **PENDENTE** |
-| P1 | Reconciliar artefactos agregados de dataset oficial com o estado atual | Manifestos, matriz anual, dataset oficial e README concordam em versões, contagens, hashes e data de corte; publicação integrada só após P0 | **PENDENTE DE AUDITORIA** |
+| P0 | Sincronizar a matriz de certificação anual | CSV 1986–2026 reconstruído dos manifestos canónicos atuais; 2026 reflete 3.142.910 linhas e data 13/10; execução e evidência persistidas | **PENDENTE** |
+| P1 | Auditar e reconciliar o Dataset Oficial | Manifestos, matriz anual, dataset oficial, checksums, sidecars e documentação concordam em versões, contagens, hashes e data de corte | **PENDENTE DE AUDITORIA** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
 | P3 | Monitorização incremental diária e de erratas | Atualização com hash, data de corte, validação, alerta de falha e reconciliação idempotente | **ATIVA; manter e auditar** |
 | P3 | Certificação semântica de estratégia/uso quantitativo | Validar adequação dos campos e eventos à finalidade antes de qualquer backtest/uso de decisão | **FORA DO FECHO DE INGESTÃO; posterior** |
 
-## 7. Sequência executável para encerramento
+## 7. Sequência executável para encerramento do escopo B3
 
-1. **Não executar nova promoção de dataset integrado enquanto REC-001 estiver bloqueada.**
-2. Corrigir e reexecutar REC-001 usando snapshots com datas de corte comparáveis; persistir evidência e auditoria.
-3. Regenerar a matriz de certificação anual a partir dos manifestos atuais e validar o diff, sobretudo a linha de 2026.
-4. Reconciliar os manifestos do Dataset Oficial, matriz CSV, sidecars e referências de README/Wiki; confirmar os hashes físicos.
-5. Executar auditoria final do Layout Mestre e dos workflows; verificar runs, artefactos e commits.
-6. Publicar um relatório final com hashes, escopo, limitações, exceções, runs e decisão formal. Apenas declarar **ENCERRADO** o escopo que cumprir todos os critérios.
+1. Regenerar e validar a matriz de certificação anual a partir dos manifestos atuais, sobretudo a linha de 2026.
+2. Executar a auditoria física do Dataset Oficial e reconciliar manifesto, matriz, sidecars e checksums.
+3. Verificar que o dataset oficial publicado corresponde aos dados canónicos e que as limitações de 1986 e 2026 estão explícitas.
+4. Executar a auditoria final do Layout Mestre e dos workflows internos; verificar runs, artefactos e commits.
+5. Atualizar a documentação agregada apenas depois da validação dos dados e das evidências.
+6. Publicar um relatório de encerramento B3 com hashes, escopo, limitações, exceções, runs e decisão formal.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
 
 ## 8. Regras invioláveis de integridade
@@ -138,15 +120,14 @@ A evidência consultada apresenta snapshots com datas de corte diferentes:
 - Nunca tratar snapshots com datas de corte diferentes como se fossem o mesmo universo.
 - Nunca declarar certificação estrutural como certificação semântica completa.
 - Nunca declarar o fecho anual de 2026 antes da fonte anual final.
-- Não promover/publicar a camada integrada enquanto REC-001 tiver divergência bloqueadora.
+- Não declarar o Dataset Oficial certificado sem hashes, contagens, manifestos e evidências coerentes.
 - Atualizar primeiro cartas normativas e evidências; depois verificar; só então atualizar README/Wiki.
 
-## 9. Decisão atual
+## 9. Decisão atual — escopo exclusivo B3
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Publicação integrada B3 × BLOOMBERG_MAIL:** **NÃO LIBERADA** — REC-001 está em `FAIL_CONTENT_DIVERGENCE`.  
-**Projeto de ingestão completo:** **AINDA NÃO**. O fecho depende, no mínimo, de resolver REC-001, sincronizar a matriz anual/artefactos agregados e preservar o fecho anual 2026 como pendente.
+**Escopo B3 — ingestão COTAHIST:** **EM FINALIZAÇÃO**. As pendências imediatas são sincronizar a matriz anual, auditar o Dataset Oficial e concluir a auditoria interna de governança. O fecho anual 2026 permanece pendente até existir a fonte anual final.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
