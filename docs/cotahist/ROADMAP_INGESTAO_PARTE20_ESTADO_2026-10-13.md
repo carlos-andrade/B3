@@ -1,4 +1,28 @@
-# B3 — A BOLSA DO BRASIL
+# B3 — A BOLSA DO BRASIL — PARTE20: Roadmap de ingestão e certificação COTAHIST
+
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-ROADMAP-PARTE20-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | ROADMAP |
+| **Fase** | Governação documental e rastreabilidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [4ed123a726a7a1c9b777c2991b37b21966ef2cc1](https://github.com/carlos-andrade/B3/commit/4ed123a726a7a1c9b777c2991b37b21966ef2cc1) |
+| **Data de criação** | 2026-10-13 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Origem** | Documento B3 preexistente; corpo histórico preservado |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
+| **Escopo** | Estado histórico da continuação PARTE20 |
+| **Objetivo** | Preservar evidências da execução controlada e não substituir o roadmap PARTE23. |
+| **Dependências** | Layout Mestre B3, evidências por fase e documentação oficial aplicável |
+
 ## PARTE20 — Roadmap de ingestão e certificação COTAHIST
 **Data de referência:** 2026-10-13  
 **Repositório oficial:** https://github.com/carlos-andrade/B3  
