@@ -126,7 +126,17 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 - Não declarar o Dataset Oficial certificado sem hashes, contagens, manifestos e evidências coerentes.
 - Atualizar primeiro cartas normativas e evidências; depois verificar; só então atualizar README/Wiki.
 
-## 9. Decisão atual — escopo exclusivo B3
+## 9. Política de ciclo de vida — decisão de 14/10/2026
+
+- **1986–2025: ENCERRADOS PARA INGESTÃO ROTINEIRA; DISPONÍVEIS APENAS PARA CONSULTA.** Preservar RAW, NORMALIZED, manifestos, hashes e evidências; não alterar no ciclo rotineiro.
+- **2026: ATUALIZAÇÃO INCREMENTAL DIÁRIA**, com data de corte, hashes, normalização, reconciliação, validação, persistência idempotente e atualização controlada dos artefactos agregados.
+- Achados históricos devem ser registados sem alteração silenciosa. Reabrir um ano exige decisão formal, motivo, fonte/evidência, escopo, versionamento e auditoria antes/depois.
+- O encerramento operacional de 1986–2025 **não equivale a certificação semântica integral**. A exceção semântica de 1986 e demais exceções documentadas permanecem vigentes.
+- 2026 só poderá ser fechado após o fim do ano, aquisição e validação da fonte anual final e conclusão das fases aplicáveis, incluindo FASE12.
+
+Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md
+
+## 10. Decisão atual — escopo exclusivo B3
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
