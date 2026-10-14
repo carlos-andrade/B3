@@ -2,7 +2,7 @@
 **Data de referência:** 2026-10-14  
 **Repositório oficial:** https://github.com/carlos-andrade/B3  
 **Branch:** main  
-**Estado global:** **EM FINALIZAÇÃO DO ESCOPO B3 — INGESTÃO COTAHIST**  
+**Estado global:** **CICLO OPERACIONAL VALIDADO — CONTINUIDADE ANUAL GOVERNADA**  
 **Norma operacional:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
 > Este roadmap cobre exclusivamente o projeto B3: ingestão COTAHIST, normalização, qualidade, calendário, certificação anual, dataset oficial, workflows e governança. Não substitui as evidências JSON de cada fase.
@@ -17,12 +17,14 @@
 - A persistência idempotente da evidência do calendário foi validada; execução final e auditoria do Layout Mestre concluídas com sucesso.
 - A sequência original de registos foi preservada: sem deduplicação, remoção ou reordenação.
 
-### Pendências do escopo B3
-1. **Matriz anual sincronizada e certificada automaticamente**: o workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) terminou com sucesso. O CSV contém 41 anos e a linha 2026 regista parser 1.1.2 e 3.142.910 linhas.
-2. **Dataset Oficial V1 gerado com sucesso** no workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845), com 41 registos anuais e 2026 até 13/10. A reconciliação física independente de todos os 41 NORMALIZED permanece distinta da certificação estrutural agregada.
-3. **O ano de 2026 não está fechado**: o conjunto está atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
-4. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
-5. Exceções de calendário histórico de anos antigos e exceções de ordenação/regressão devem continuar explícitas; não corrigir a fonte reordenando ou removendo linhas.
+### Estado atual e limites residuais
+1. **Matriz anual certificada automaticamente**: workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) concluído com sucesso; 41 anos presentes e linha 2026 sincronizada com parser 1.1.2 e 3.142.910 linhas.
+2. **Dataset Oficial V1 gerado/validado**: workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 registos anuais, incluindo 2026 até 13/10.
+3. **Auditoria de workflows concluída**: 549 workflows avaliados, zero divergências críticas, 406 conformes e 143 conformes com observação. Run [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38561328869).
+4. **Testes operacionais BDI e WATCHDOG concluídos**: [captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38561123974) e [validação WATCHDOG](https://github.com/carlos-andrade/B3/actions/runs/38561328911) terminaram com sucesso.
+5. **O ano de 2026 permanece parcial**, atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
+6. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
+7. Exceções de calendário histórico de anos antigos e de ordenação/regressão permanecem documentadas; não corrigir a fonte reordenando ou removendo linhas.
 
 ## 2. Estado canónico COTAHIST 2026
 
@@ -96,7 +98,8 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 | Prioridade | Trabalho | Critério de conclusão | Estado |
 |---|---|---|---|
 | P0 | Certificação automática da matriz anual | Workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) verde; CSV com 41 anos e linha 2026 sincronizada (parser 1.1.2, 3.142.910 linhas) | **CONCLUÍDO** |
-| P1 | Dataset Oficial V1 | Workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 anos, registo 2026 alinhado com manifesto. A reconciliação física independente dos 41 CSV continua como melhoria de garantia | **GERADO/VALIDADO; AUDITORIA FÍSICA TOTAL PENDENTE** |
+| P1 | Dataset Oficial V1 | Workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 anos e registo 2026 alinhado com manifesto | **CONCLUÍDO NO ESCOPO V1** |
+| P2 | Auditoria física independente dos 41 CSV NORMALIZED | Comparar SHA-256 e contagens físicas de cada CSV contra manifestos e Dataset Oficial; ampliar a garantia além das validações por fase já existentes | **MELHORIA DE GARANTIA — NÃO BLOQUEIA O CICLO OPERACIONAL ATUAL** |
 | P2 | Rever exceções semânticas históricas e calendários antigos | Inventário por ano com fonte oficial, estado, risco e decisão; não apagar exceções antigas sem evidência | **PARCIAL / POR ANO** |
 | P2 | Fecho anual COTAHIST 2026 | Fonte anual final disponível após 31/12/2026; repetir fases exigidas, calendário, reconciliação, certificação e FASE12 | **AGUARDAR** |
 | P3 | Monitorização incremental diária e de erratas | Atualização com hash, data de corte, validação, alerta de falha e reconciliação idempotente | **ATIVA; manter e auditar** |
@@ -127,7 +130,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. A matriz anual foi certificada automaticamente, o Dataset Oficial V1 foi gerado com sucesso e a auditoria de 549 workflows terminou sem divergências críticas. Permanecem a auditoria física independente de todos os 41 CSV NORMALIZED, as exceções semânticas/calendárias históricas e o fecho anual de 2026 após a fonte final.
+**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. Matriz anual certificada automaticamente, Dataset Oficial V1 gerado com sucesso, testes BDI/WATCHDOG verdes e auditoria de 549 workflows sem divergências críticas. O projeto permanece em continuidade anual governada: o fecho de 2026 aguarda a fonte anual final; a exceção semântica de 1986 e as exceções históricas permanecem explicitamente controladas. A auditoria física independente dos 41 CSV é uma melhoria adicional de garantia, não um bloqueador do ciclo operacional já validado.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
