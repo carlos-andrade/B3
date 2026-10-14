@@ -1,12 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-14T12:05:45.028143+00:00",
+  "generated_at_utc": "2026-10-14T12:06:43.452811+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 549,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 142,
-    "CONFORME": 406,
-    "DIVERGENTE_CRITICA": 1
+    "CONFORME_COM_OBSERVACAO": 143,
+    "CONFORME": 406
   },
   "results": [
     {
@@ -43578,7 +43577,7 @@
     {
       "workflow": ".github/workflows/watchdog-b3-validation.yml",
       "current_phase": null,
-      "status": "DIVERGENTE_CRITICA",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -43594,8 +43593,8 @@
         },
         {
           "code": "NO_CROSS_WORKFLOW_EXECUTION",
-          "ok": false,
-          "detail": "gh\\s+(?:workflow\\s+run|api\\s+.*?/actions/workflows)",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
           "severity": "CRITICA"
         },
         {
@@ -43647,9 +43646,7 @@
           "severity": "BAIXA"
         }
       ],
-      "blocking_divergences": [
-        "NO_CROSS_WORKFLOW_EXECUTION"
-      ],
+      "blocking_divergences": [],
       "observability_or_advisory": [
         "STEP_SUMMARY",
         "IDEMPOTENCE_SIGNAL"
