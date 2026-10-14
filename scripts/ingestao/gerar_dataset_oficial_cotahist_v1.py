@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera o manifesto oficial do dataset COTAHIST a partir da certificação anual."""
+"""Preserva registos históricos e valida apenas o ano corrente 2026."""
 
 from __future__ import annotations
 
