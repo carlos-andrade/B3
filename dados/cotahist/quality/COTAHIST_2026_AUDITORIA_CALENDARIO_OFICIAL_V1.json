@@ -11,6 +11,7 @@
   "deduplication_performed": false,
   "rows_removed": 0,
   "rows_reordered": false,
+  "calendar_sha256": "afd9b9eedf8cdaa2a0834321b6a257393091e1d281c5a252d8667863684d350e",
   "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
   "manifest_normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
   "calendar_id": "B3_CALENDARIO_NEGOCIACAO_2026",
@@ -64,5 +65,5 @@
   "last_date": "2026-10-13",
   "normalized_sha256_match": true,
   "calendar_session_set_match": true,
-  "validated_at_utc": "2026-10-14T11:42:42.231227+00:00"
+  "validated_at_utc": "2026-10-14T11:45:41.432652+00:00"
 }
