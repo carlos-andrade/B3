@@ -20,7 +20,7 @@
 ### Estado atual e limites residuais
 1. **Matriz anual certificada automaticamente**: workflow [38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685) concluído com sucesso; 41 anos presentes e linha 2026 sincronizada com parser 1.1.2 e 3.142.910 linhas.
 2. **Dataset Oficial V1 gerado/validado**: workflow [38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845) concluído com sucesso; 41 registos anuais, incluindo 2026 até 13/10.
-3. **Auditoria de workflows concluída**: 550 workflows avaliados, zero divergências críticas, 407 conformes sem observações críticas e 143 conformes com observações. Run [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
+3. **Auditoria de workflows concluída**: 550 workflows avaliados, zero divergências críticas, 407 conformes sem observações críticas e 143 conformes com observações. Run [38569218992](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
 4. **Testes operacionais BDI e WATCHDOG concluídos**: [captura BDI](https://github.com/carlos-andrade/B3/actions/runs/38561123974) e [validação WATCHDOG](https://github.com/carlos-andrade/B3/actions/runs/38561328911) terminaram com sucesso.
 5. **O ano de 2026 permanece parcial**, atualizado até 13/10/2026. O fecho anual só pode ocorrer após o fim do ano e a aquisição/validação da fonte anual final.
 6. A exceção semântica histórica de 1986 permanece controlada; não declarar equivalência semântica plena de todo o período 1986–2026.
@@ -111,7 +111,7 @@ O encerramento deste roadmap é determinado exclusivamente pela integridade dos 
 1. Matriz anual sincronizada e workflow de certificação concluído: [run 38560732685](https://github.com/carlos-andrade/B3/actions/runs/38560732685).
 2. Dataset Oficial V1 gerado/validado com sucesso: [run 38560574845](https://github.com/carlos-andrade/B3/actions/runs/38560574845).
 3. Corrigidas as duas divergências críticas detetadas na auditoria de workflows; teste BDI e validação WATCHDOG concluídos com sucesso.
-4. Auditoria de conformidade atual: 549 workflows auditados, **zero divergências críticas**, 406 conformes e 143 conformes com observação. Run final: [38561328869](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
+4. Auditoria de conformidade atual: 550 workflows auditados, **zero divergências críticas**, 407 conformes sem observações críticas e 143 conformes com observações. Run final: [38569218992](https://github.com/carlos-andrade/B3/actions/runs/38569218992).
 5. Auditoria física executada sobre os 41 anos: **40 validados; 1998 com divergência isolada de sidecar**. O hash físico do CSV coincide com o manifesto (`21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79`), mas difere do sidecar (`d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee`). Relatório persistido; workflow [38568351293](https://github.com/carlos-andrade/B3/actions/runs/38568351293) reprovou pelo gate fail-closed. Incidência documentada em [INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md). Por regra de histórico somente consulta, CSV, manifesto e sidecar não foram alterados.
 6. Atualizar documentação agregada apenas depois da validação dos dados e evidências; não alterar README fora da janela governada.
 7. Manter 2026 como **PARCIAL** até ao fecho anual e manter a exceção semântica de 1986 explicitamente visível.
@@ -148,7 +148,7 @@ Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governa
 
 **COTAHIST 2026 interno:** validado e promovido até 13/10/2026, com hashes coerentes, calendário reconciliado para o intervalo observado e exceções não bloqueadoras documentadas.  
 **Cobertura estrutural anual:** 41/41 anos conforme a matriz vigente, com 1986 em exceção semântica controlada; a matriz agregada precisa de atualização para refletir o snapshot atual de 2026.  
-**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. Matriz anual certificada automaticamente, Dataset Oficial V1 gerado com sucesso, testes BDI/WATCHDOG verdes e auditoria de 549 workflows sem divergências críticas. Pela decisão de 14/10/2026, 1986–2025 ficam somente para consulta e 2026 segue atualização diária. A auditoria física independente foi executada e persistida: 40/41 aprovados; 1998 mantém exceção controlada de sidecar, sem alteração do histórico congelado. O pipeline diário recebeu controles fail-closed e a execução operacional atual deve terminar antes de certificar a alteração do workflow.
+**Escopo B3 — ingestão COTAHIST:** **CICLO OPERACIONAL VALIDADO ATÉ 13/10/2026**. Matriz anual certificada automaticamente, Dataset Oficial V1 gerado com sucesso, testes BDI/WATCHDOG verdes e auditoria de 550 workflows sem divergências críticas. Pela decisão de 14/10/2026, 1986–2025 ficam somente para consulta e 2026 segue atualização diária. A auditoria física independente foi executada e persistida: 40/41 aprovados; 1998 mantém exceção controlada de sidecar, sem alteração do histórico congelado. O pipeline diário recebeu controles fail-closed e a execução operacional atual deve terminar antes de certificar a alteração do workflow.
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
