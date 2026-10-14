@@ -31,8 +31,8 @@ Os dados, RAW, NORMALIZED, manifestos, checksums, evidências de qualidade, cert
 4. Atualizar manifestos, matriz anual, Dataset Oficial e evidências agregadas somente após validação bem-sucedida.
 5. Manter registo explícito da data de corte; snapshots com cortes diferentes não são equivalentes.
 6. Em falha ou divergência, manter a última versão validada, preservar evidências e sinalizar a atualização como não promovida.
-6. A rotina de certificação e o Dataset Oficial devem recalcular apenas a linha/registo de 2026; as linhas/registos de 1986–2025 ficam congelados. Se faltar algum registo histórico previamente publicado, a rotina deve falhar fechado em vez de reconstruí-lo automaticamente.
-7. **Não declarar 2026 fechado antes da fonte anual final, após 31/12/2026, e da conclusão das fases de validação e FASE12 aplicáveis.**
+7. A rotina de certificação e o Dataset Oficial devem recalcular apenas a linha/registo de 2026; as linhas/registos de 1986–2025 ficam congelados. Se faltar algum registo histórico previamente publicado, a rotina deve falhar fechado em vez de reconstruí-lo automaticamente.
+8. **Não declarar 2026 fechado antes da fonte anual final, após 31/12/2026, e da conclusão das fases de validação e FASE12 aplicáveis.**
 
 ## 4. Limites de certificação
 
