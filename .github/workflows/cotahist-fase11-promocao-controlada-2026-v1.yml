@@ -1,0 +1,196 @@
+name: COTAHIST 2026 - FASE11 Promocao controlada do candidato
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase11-promocao-controlada-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  promover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml
+            scripts/ingestao/normalize_cotahist.py
+            dados/cotahist/raw/anual/COTAHIST_A2026.ZIP
+            dados/cotahist/manifests/COTAHIST_A2026.json
+            dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+            dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+            dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Revalidar gate e preparar atualização atómica
+        run: |
+          set -euo pipefail
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2026.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED canónico é apenas ponteiro LFS; abortar."
+            exit 1
+          fi
+          mkdir -p /tmp/cotahist-fase11
+          curl --fail --location --retry 3 --retry-delay 3 --connect-timeout 30 \
+            "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP" \
+            --output /tmp/cotahist-fase11/COTAHIST_A2026.ZIP
+          python scripts/ingestao/normalize_cotahist.py \
+            --zip /tmp/cotahist-fase11/COTAHIST_A2026.ZIP \
+            --output /tmp/cotahist-fase11/COTAHIST_A2026.csv
+          python - <<'PY'
+          import csv, datetime, hashlib, importlib.util, json, pathlib, sqlite3, sys, zipfile
+          root=pathlib.Path("dados/cotahist")
+          raw=pathlib.Path("/tmp/cotahist-fase11/COTAHIST_A2026.ZIP")
+          candidate=pathlib.Path("/tmp/cotahist-fase11/COTAHIST_A2026.csv")
+          canonical=root/"normalized/anual/COTAHIST_A2026.csv"
+          probe=json.loads((root/"quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json").read_text(encoding="utf-8"))
+          phase10=json.loads((root/"quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json").read_text(encoding="utf-8"))
+          def sha(path):
+              h=hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda:f.read(1024*1024),b""): h.update(chunk)
+              return h.hexdigest()
+          raw_sha=sha(raw); candidate_sha=sha(candidate); old_sha=sha(canonical)
+          if phase10.get("status")!="VALIDADO_COM_DIFERENCAS_A_REVISAR":
+              sys.exit("Gate FASE10 não tem o estado esperado; promoção bloqueada")
+          if phase10.get("decision")!="REVISAO_DAS_DIFERENCAS_ANTES_DA_PROMOCAO":
+              sys.exit("Decisão FASE10 não autoriza esta revisão")
+          if phase10.get("candidate_raw_sha256")!=raw_sha or probe.get("candidate_sha256")!=raw_sha:
+              sys.exit("SHA-256 RAW atual diverge da FASE10/probe")
+          if phase10.get("candidate_normalized_sha256")!=candidate_sha:
+              sys.exit("SHA-256 NORMALIZED atual diverge da FASE10")
+          if phase10.get("canonical_normalized_sha256")!=old_sha:
+              sys.exit("NORMALIZED canónico mudou desde FASE10; repetir auditoria")
+          if phase10.get("canonical_rows_absent_from_candidate")!=0:
+              sys.exit("Há registos canónicos ausentes no candidato; promoção proibida")
+          if phase10.get("candidate_rows_added_vs_canonical")!=phase10.get("candidate_rows",0)-phase10.get("canonical_rows",0):
+              sys.exit("Métrica de adições FASE10 inconsistente")
+          spec=importlib.util.spec_from_file_location("normalizer","scripts/ingestao/normalize_cotahist.py")
+          normalizer=importlib.util.module_from_spec(spec); spec.loader.exec_module(normalizer)
+          # Gate semântico: candidato tem de ser exatamente o RAW recém-descarregado, linha a linha.
+          raw_count=0; bad_lengths=0; types={}
+          with zipfile.ZipFile(raw) as z:
+              members=[n for n in z.namelist() if not n.endswith("/")]
+              if len(members)!=1 or z.testzip() is not None: sys.exit("ZIP inválido")
+              with z.open(members[0]) as src, candidate.open(encoding="utf-8",newline="") as f:
+                  reader=csv.reader(f)
+                  if next(reader,None)!=normalizer.HEADER: sys.exit("Cabeçalho NORMALIZED inválido")
+                  it=iter(reader)
+                  for line_no,raw_line in enumerate(src,start=1):
+                      line=raw_line.rstrip(b"\r\n"); typ=line[:2].decode("ascii","replace"); types[typ]=types.get(typ,0)+1
+                      if len(line)!=245: bad_lengths+=1
+                      if typ!="01": continue
+                      raw_count+=1
+                      if next(it,None)!=normalizer.normalize_line(line):
+                          sys.exit(f"Reconciliação dos 25 campos falhou na linha RAW {line_no}")
+                  if next(it,None) is not None: sys.exit("NORMALIZED contém linhas extra")
+          if bad_lengths or types.get("00")!=1 or types.get("99")!=1: sys.exit("Estrutura RAW inválida")
+          # Exige que todas as linhas antigas estejam preservadas, com multiplicidade integral.
+          db=sqlite3.connect("/tmp/cotahist-fase11/compare.sqlite")
+          db.execute("CREATE TABLE rows(side TEXT,row_hash TEXT)")
+          for side,path in (("old",canonical),("new",candidate)):
+              batch=[]
+              with path.open(encoding="utf-8",newline="") as f:
+                  reader=csv.reader(f)
+                  if next(reader,None)!=normalizer.HEADER: sys.exit("Cabeçalho inválido em "+side)
+                  for row in reader:
+                      batch.append((side,hashlib.sha256("\x1f".join(row).encode("utf-8")).hexdigest()))
+                      if len(batch)>=20000:
+                          db.executemany("INSERT INTO rows VALUES (?,?)",batch); db.commit(); batch.clear()
+                  if batch: db.executemany("INSERT INTO rows VALUES (?,?)",batch); db.commit()
+          db.execute("CREATE INDEX idx_rows ON rows(side,row_hash)")
+          db.execute("CREATE TABLE counts AS SELECT side,row_hash,COUNT(*) n FROM rows GROUP BY side,row_hash")
+          db.execute("CREATE INDEX idx_counts ON counts(row_hash,side)")
+          missing=db.execute("SELECT COALESCE(SUM(MAX(o.n-COALESCE(n.n,0),0)),0) FROM counts o LEFT JOIN counts n ON n.row_hash=o.row_hash AND n.side='new' WHERE o.side='old'").fetchone()[0]
+          added=db.execute("SELECT COALESCE(SUM(MAX(n.n-COALESCE(o.n,0),0)),0) FROM counts n LEFT JOIN counts o ON o.row_hash=n.row_hash AND o.side='old' WHERE n.side='new'").fetchone()[0]
+          old_count=db.execute("SELECT COUNT(*) FROM rows WHERE side='old'").fetchone()[0]
+          new_count=db.execute("SELECT COUNT(*) FROM rows WHERE side='new'").fetchone()[0]
+          db.close()
+          if missing!=0: sys.exit(f"Há {missing} ocorrências antigas ausentes; promoção bloqueada")
+          if added!=new_count-old_count: sys.exit("Contagem de adições inconsistente")
+          if raw_count!=new_count: sys.exit("Contagem RAW/NORMALIZED divergente")
+          dates=[]
+          with candidate.open(encoding="utf-8",newline="") as f:
+              for row in csv.DictReader(f):
+                  d=datetime.date.fromisoformat(row["data_pregao"])
+                  if d.year!=2026: sys.exit("Data fora de 2026")
+                  dates.append(d.isoformat())
+          first=min(dates); last=max(dates)
+          if last!=probe.get("last_trading_date"): sys.exit("Última data difere do probe")
+          # Manifestos são gerados só depois de todos os gates acima.
+          acquired=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          raw_manifest={
+              "ano":2026,"fonte":"B3","arquivo_original":"COTAHIST_A2026.ZIP",
+              "url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+              "sha256":raw_sha,"status":"VALIDADO",
+              "validacao":"ZIP com 1 arquivo COTAHIST; CRC OK; registos de 245 bytes; header 00; cotacoes 01; trailer 99; reconciliacao NORMALIZED integral",
+              "acquired_at_utc":acquired,"ultima_data_observacao":last,
+              "fonte_data_observacao":"dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
+              "nota_data_observacao":"Derivada do NORMALIZED produzido pelo parser versionado e reconciliado integralmente com RAW."
+          }
+          norm_manifest={
+              "schema_version":"1.0.0","status":"VALIDADO","ano":2026,"parser_version":normalizer.PARSER_VERSION,
+              "source":"B3","raw_file":"COTAHIST_A2026.ZIP","raw_sha256":raw_sha,
+              "normalized_file":"COTAHIST_A2026.csv","normalized_sha256":candidate_sha,
+              "linhas_normalized":new_count,"campos":25,"primeira_data":first,"ultima_data":last,
+              "datas_invalidas":0,"datas_fora_do_ano":0
+          }
+          (root/"raw/anual/COTAHIST_A2026.ZIP").write_bytes(raw.read_bytes())
+          (root/"normalized/anual/COTAHIST_A2026.csv").write_bytes(candidate.read_bytes())
+          (root/"manifests/COTAHIST_A2026.json").write_text(json.dumps(raw_manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          (root/"checksums/COTAHIST_A2026.ZIP.sha256").write_text(raw_sha+"  dados/cotahist/raw/anual/COTAHIST_A2026.ZIP\n",encoding="utf-8")
+          (root/"normalized/manifests/COTAHIST_A2026_quality.json").write_text(json.dumps(norm_manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          (root/"normalized/manifests/COTAHIST_A2026.csv.sha256").write_text(candidate_sha+"\n",encoding="utf-8")
+          print(json.dumps({"promotion_prepared":True,"raw_sha256":raw_sha,"normalized_sha256":candidate_sha,"old_rows":old_count,"new_rows":new_count,"additions":added,"old_rows_missing":missing,"fields":25,"first_date":first,"last_date":last,"deduplication":False},ensure_ascii=False,indent=2))
+          PY
+
+      - name: Commitar atualização após validação
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- dados/cotahist/raw/anual/COTAHIST_A2026.ZIP \
+            dados/cotahist/manifests/COTAHIST_A2026.json \
+            dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256 \
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv \
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json \
+            dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256
+          git diff --cached --quiet && { echo "Sem diferenças para commit."; exit 0; }
+          git commit -m "data(cotahist): atualizar COTAHIST 2026 ate 2026-10-13"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2026 — FASE11"
+            echo "- Promoção controlada apenas após validar SHA, ZIP, 25 campos e preservação de todas as linhas antigas."
+            echo "- Nenhuma deduplicação."
+            echo "- Resultado do job: \${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
