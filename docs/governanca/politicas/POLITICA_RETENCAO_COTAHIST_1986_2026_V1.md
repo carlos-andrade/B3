@@ -20,7 +20,8 @@ Os dados, RAW, NORMALIZED, manifestos, checksums, evidências de qualidade, cert
 2. Não alterar RAW, NORMALIZED, manifestos, hashes ou evidências já persistidas.
 3. Consultas, análises e backtests podem ler esses dados, respeitando as limitações e exceções documentadas de cada ano.
 4. Um problema encontrado durante consulta deve ser registado como achado; não autoriza alteração silenciosa do histórico.
-5. Qualquer reabertura futura de um ano histórico exige decisão explícita, escopo, motivo, evidência de origem, plano de impacto, versionamento e auditoria antes/depois. Sem essa autorização formal, o ano permanece somente para leitura.
+5. A matriz de certificação anual e o Dataset Oficial podem continuar a listar os anos históricos, mas os registos de 1986–2025 devem ser copiados da última versão oficial persistida, sem recalcular os seus metadados a partir de fontes históricas durante a rotina diária.
+6. Qualquer reabertura futura de um ano histórico exige decisão explícita, escopo, motivo, evidência de origem, plano de impacto, versionamento e auditoria antes/depois. Sem essa autorização formal, o ano permanece somente para leitura.
 
 ## 3. Regime operacional para 2026
 
