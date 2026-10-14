@@ -1,0 +1,211 @@
+# FASE07 2025: auditoria de identidade/cardinalidade sem mutacao ou deduplicacao.
+name: COTAHIST 2025 - FASE07 Identidade e Cardinalidade
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase07-identidade-2025-v1.yml"
+      - "dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase07-identidade-2025-v1
+  cancel-in-progress: false
+
+jobs:
+  identidade:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase07-identidade-2025-v1.yml
+            dados/cotahist/normalized/anual/COTAHIST_A2025.csv
+            dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json
+            dados/cotahist/quality/COTAHIST_2025_FASE07_IDENTIDADE_CHAVES_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter NORMALIZED via Git LFS
+        run: |
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2025.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2025.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2025.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED permanece como ponteiro Git LFS."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Auditar chaves candidatas em streaming sem mutacao
+        run: |
+          python - <<'PY'
+          import csv, datetime, hashlib, json, pathlib, sqlite3, sys
+          from collections import defaultdict
+
+          csv_path = pathlib.Path("dados/cotahist/normalized/anual/COTAHIST_A2025.csv")
+          f6_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2025_FASE06_RECONCILIACAO_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2025_FASE07_IDENTIDADE_CHAVES_V1.json")
+          result = {
+              "schema_version": "1.0.0", "year": 2025, "phase": "FASE07",
+              "status": "BLOQUEADO", "decision": "BLOQUEADO_PARA_FASE08",
+              "validation_type": "AUDITORIA_DE_IDENTIDADE_E_CARDINALIDADE_STREAMING_SEM_MUTACAO",
+              "source_normalized_path": str(csv_path),
+              "deduplication_performed": False, "source_rows_removed": 0,
+              "blockers": [], "limitations": [
+                  "Conclusao restrita ao ficheiro COTAHIST 2025 e ao hash NORMALIZED registado.",
+                  "Ausencia de colisoes numa chave candidata nao autoriza deduplicacao nem prova, isoladamente, uma regra normativa universal."
+              ]
+          }
+          try:
+              if not csv_path.is_file() or not f6_path.is_file():
+                  raise RuntimeError("NORMALIZED ou evidência FASE06 ausente")
+              f6 = json.loads(f6_path.read_text(encoding="utf-8"))
+              physical_hash = hashlib.sha256()
+              with csv_path.open("rb") as binary:
+                  for chunk in iter(lambda: binary.read(1024 * 1024), b""):
+                      physical_hash.update(chunk)
+              normalized_hash = physical_hash.hexdigest()
+              result["source_normalized_sha256"] = normalized_hash
+              result["phase06_evidence_path"] = str(f6_path)
+              result["phase06_status"] = f6.get("status")
+              result["phase06_decision"] = f6.get("decision")
+              result["phase06_mismatch_count"] = f6.get("mismatch_count")
+              if (f6.get("year") != 2025 or f6.get("phase") != "FASE06" or
+                  f6.get("status") != "VALIDADO" or
+                  f6.get("decision") != "LIBERADO_PARA_FASE07" or
+                  f6.get("mismatch_count") != 0):
+                  raise RuntimeError("FASE06 não está VALIDADO/liberado com zero divergências")
+              if f6.get("normalized_sha256") != normalized_hash:
+                  raise RuntimeError("hash físico NORMALIZED diverge da FASE06")
+
+              base_key = ["data_pregao", "codbdi", "codneg", "tpmerc", "dismes"]
+              key_with_prazo = ["data_pregao", "codbdi", "codneg", "tpmerc", "prazot", "dismes"]
+              key_extended = ["data_pregao", "codbdi", "codneg", "tpmerc", "prazot", "dismes", "especi", "codisi"]
+              db_path = pathlib.Path("fase07_identity.sqlite")
+              if db_path.exists():
+                  db_path.unlink()
+              conn = sqlite3.connect(str(db_path))
+              conn.execute("PRAGMA journal_mode=OFF")
+              conn.execute("PRAGMA synchronous=OFF")
+              conn.execute("PRAGMA temp_store=FILE")
+              conn.execute("CREATE TABLE records (data_pregao TEXT, codbdi TEXT, codneg TEXT, tpmerc TEXT, prazot TEXT, dismes TEXT, especi TEXT, codisi TEXT, row_hash TEXT)")
+              required = set(base_key + key_with_prazo + key_extended)
+              rows = 0
+              first_date = None
+              last_date = None
+              with csv_path.open(encoding="utf-8", newline="") as source:
+                  reader = csv.DictReader(source)
+                  fields = reader.fieldnames or []
+                  missing = sorted(required - set(fields))
+                  if missing:
+                      raise RuntimeError("Campos necessários ausentes: " + ", ".join(missing))
+                  batch = []
+                  for row in reader:
+                      values = [row.get(k, "") or "" for k in ("data_pregao","codbdi","codneg","tpmerc","prazot","dismes","especi","codisi")]
+                      row_digest = hashlib.sha256("\x1f".join(row.get(k, "") or "" for k in fields).encode("utf-8")).hexdigest()
+                      batch.append((*values, row_digest))
+                      rows += 1
+                      d = values[0]
+                      first_date = d if first_date is None else min(first_date, d)
+                      last_date = d if last_date is None else max(last_date, d)
+                      if len(batch) >= 10000:
+                          conn.executemany("INSERT INTO records VALUES (?,?,?,?,?,?,?,?,?)", batch)
+                          conn.commit()
+                          batch.clear()
+                  if batch:
+                      conn.executemany("INSERT INTO records VALUES (?,?,?,?,?,?,?,?,?)", batch)
+                      conn.commit()
+              result["records"] = rows
+              result["first_date"] = first_date
+              result["last_date"] = last_date
+              result["phase06_records_match"] = rows == f6.get("normalized_records") == f6.get("raw_records")
+              result["phase06_date_range_match"] = first_date == f6.get("first_date") and last_date == f6.get("last_date")
+              if not result["phase06_records_match"]:
+                  raise RuntimeError("Cardinalidade diverge da evidência FASE06")
+              if not result["phase06_date_range_match"]:
+                  raise RuntimeError("Intervalo de datas diverge da evidência FASE06")
+
+              def metrics(key_fields):
+                  cols = ", ".join(key_fields)
+                  q = f"SELECT COUNT(*), COALESCE(SUM(n-1),0), COALESCE(SUM(CASE WHEN distinct_rows > 1 THEN 1 ELSE 0 END),0) FROM (SELECT {cols}, COUNT(*) n, COUNT(DISTINCT row_hash) distinct_rows FROM records GROUP BY {cols} HAVING COUNT(*) > 1)"
+                  groups, excess, differing = conn.execute(q).fetchone()
+                  sample_q = f"SELECT {cols}, COUNT(*) n, COUNT(DISTINCT row_hash) distinct_rows FROM records GROUP BY {cols} HAVING COUNT(*) > 1 ORDER BY n DESC LIMIT 10"
+                  samples = []
+                  for item in conn.execute(sample_q):
+                      samples.append({"key": list(item[:len(key_fields)]), "occurrences": item[len(key_fields)], "distinct_full_rows": item[len(key_fields)+1]})
+                  return {"key_fields": key_fields, "distinct_keys": conn.execute(f"SELECT COUNT(*) FROM (SELECT {cols} FROM records GROUP BY {cols})").fetchone()[0],
+                          "duplicate_groups": groups, "duplicate_rows_excess": excess,
+                          "groups_with_different_full_rows": differing, "sample_collisions": samples}
+              base = metrics(base_key)
+              with_prazo = metrics(key_with_prazo)
+              extended = metrics(key_extended)
+              conn.close()
+              result.update({
+                  "base_candidate": base,
+                  "candidate_with_prazot": with_prazo,
+                  "candidate_with_prazot_especi_codisi": extended,
+                  "selected_key": key_extended if extended["duplicate_groups"] == 0 else None,
+                  "identity_decision": (
+                      "CHAVE_CANDIDATA_AMPLIADA_SEM_COLISOES_OBSERVADAS_NESTE_ANO"
+                      if extended["duplicate_groups"] == 0 else
+                      "COLISOES_REMANESCENTES_EXIGEM_REVISAO_NORMATIVA"
+                  )
+              })
+              if extended["duplicate_groups"] == 0:
+                  result["status"] = "VALIDADO"
+                  result["decision"] = "LIBERADO_PARA_FASE08"
+              else:
+                  result["blockers"].append("COLISOES_NA_CHAVE_CANDIDATA_AMPLIADA")
+                  result["decision"] = "BLOQUEADO_PARA_FASE08"
+          except Exception as exc:
+              result["blockers"].append(str(exc))
+          finally:
+              result["validated_at_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+              ev_path.parent.mkdir(parents=True, exist_ok=True)
+              ev_path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+              print(json.dumps(result, ensure_ascii=False, indent=2))
+          if result["status"] != "VALIDADO":
+              sys.exit("FASE07 BLOQUEADA: identidade/cardinalidade requer investigação")
+          PY
+
+      - name: Persistir evidência FASE07 inclusive em caso de bloqueio
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2025_FASE07_IDENTIDADE_CHAVES_V1.json || {
+            echo "Evidência FASE07 não produzida; pré-condição falhou."
+            exit 0
+          }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/COTAHIST_2025_FASE07_IDENTIDADE_CHAVES_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): persistir identidade e cardinalidade 2025 fase07"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push concorrente; nova tentativa ${attempt}/5."
+            sleep $((attempt * 2))
+          done
+          echo "Falha de persistência após 5 tentativas."
+          exit 1
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2025 — FASE07"
+            echo "- Auditoria de chaves candidatas, sem alteração nem deduplicação."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
