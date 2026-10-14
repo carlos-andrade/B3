@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-14T09:45:12.367306+00:00
-Workflows auditados: 542
+Gerado em UTC: 2026-10-14T09:49:55.638012+00:00
+Workflows auditados: 543
 
 ## Regra de decisão
 
@@ -346,6 +346,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase08-calendario-2023-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2024-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-calendario-2025-v1.yml | 8 | **CONFORME** | — | — |
+| .github/workflows/cotahist-fase08-calendario-2026-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-consistencia-1998-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-fase08-diagnostico-ordem-2021-v1.yml | 8 | **CONFORME** | — | — |
 | .github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml | 8 | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
