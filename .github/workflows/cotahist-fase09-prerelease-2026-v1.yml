@@ -1,4 +1,5 @@
 # FASE09 consolida evidências persistidas; não retrocertifica fases anteriores.
+# Reexecucao pós-promoção após Gate 06-08 atualizado (2026-10-14).
 name: COTAHIST 2026 - FASE09 Pre-Release
 
 on:
