@@ -98,3 +98,5 @@ if __name__ == "__main__":
     main()
 
 # Retrigger: evidencia FASE10 1991 materializada no main.
+
+# Retrigger auditável: sincronização do manifesto canónico COTAHIST 2026 em 2026-10-14.
