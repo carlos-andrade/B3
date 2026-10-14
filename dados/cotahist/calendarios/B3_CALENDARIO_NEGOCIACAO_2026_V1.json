@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "calendar_id": "B3_CALENDARIO_NEGOCIACAO_2026",
+  "year": 2026,
+  "source_authority": "B3",
+  "source_status": "OFICIAL_PERSISTIDO_PARA_VALIDACAO",
+  "retrieved_at_utc": "2026-10-14T11:30:00Z",
+  "sources": [
+    {
+      "type": "official_market_calendar",
+      "url": "https://www.b3.com.br/main.jsp?lumA=1&lumII=8A80CB81633FBF0B0163402956733E3A&lumPageId=8A6882694E91F2D4014E9248DBB001C9",
+      "title": "Calendário de Negociação — Calendário do mercado 2026",
+      "publisher": "B3",
+      "role": "Fonte primária para dias sem negociação e funcionamento por segmento"
+    },
+    {
+      "type": "official_circular_errata",
+      "url": "https://www.b3.com.br/data/files/20/57/01/AA/06A1F910ADC36BE9AC094EA8/OC%20041-2026-VNC%20ERRATA%20-%20CALENDARIO%20DE%20FERIADOS%20EM%202026_PT.pdf",
+      "title": "Ofício Circular 041/2026-VNC — Errata ao calendário de feriados 2026",
+      "published_date": "2026-06-30",
+      "publisher": "B3",
+      "role": "Errata oficial ao Ofício Circular 003/2026-VNC; atualiza informação sobre 03/07/2026 para o casado de dólar e informa que os demais quadros permanecem inalterados"
+    },
+    {
+      "type": "official_news_notice",
+      "url": "https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm",
+      "title": "Calendário de negociação da B3: confira o funcionamento da bolsa em 2026",
+      "published_date": "2026-01-09",
+      "publisher": "B3",
+      "role": "Publicação explicativa oficial com feriados e sessão especial em 18/02/2026"
+    }
+  ],
+  "no_trading_dates": [
+    {"date": "2026-01-01", "reason": "Confraternização Universal"},
+    {"date": "2026-02-16", "reason": "Carnaval"},
+    {"date": "2026-02-17", "reason": "Carnaval"},
+    {"date": "2026-04-03", "reason": "Sexta-feira Santa"},
+    {"date": "2026-04-21", "reason": "Tiradentes"},
+    {"date": "2026-05-01", "reason": "Dia do Trabalho"},
+    {"date": "2026-06-04", "reason": "Corpus Christi"},
+    {"date": "2026-09-07", "reason": "Independência do Brasil"},
+    {"date": "2026-10-12", "reason": "Nossa Senhora Aparecida"},
+    {"date": "2026-11-02", "reason": "Finados"},
+    {"date": "2026-11-20", "reason": "Dia Nacional de Zumbi e da Consciência Negra"},
+    {"date": "2026-12-24", "reason": "Véspera de Natal — sem sessão de negociação"},
+    {"date": "2026-12-25", "reason": "Natal"},
+    {"date": "2026-12-31", "reason": "Véspera de Ano Novo — sem sessão de negociação"}
+  ],
+  "special_sessions": [
+    {
+      "date": "2026-02-18",
+      "description": "Quarta-feira de Cinzas: pré-abertura às 12h45 e negociações a partir das 13h",
+      "is_trading_day": true
+    },
+    {
+      "date": "2026-07-09",
+      "description": "Revolução Constitucionalista: funcionamento normal do pregão",
+      "is_trading_day": true
+    }
+  ],
+  "scope": {
+    "date_range_validated_by_this_calendar": "2026-01-02/2026-10-13",
+    "segments": "Calendário geral de negociação B3; especificidades por mercado/segmento podem ter exceções próprias",
+    "note": "Esta lista é uma transcrição estruturada das datas gerais sem sessão de negociação publicadas pela B3. A validação de COTAHIST deve comparar as datas observadas e preservar a sequência original dos registos."
+  }
+}
