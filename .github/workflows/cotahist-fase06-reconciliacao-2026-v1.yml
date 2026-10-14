@@ -1,4 +1,5 @@
 # FASE06: reconciliação semântica integral, streaming, sem deduplicação.
+# Reexecução controlada pós-promoção do COTAHIST 2026 (2026-10-14).
 name: COTAHIST 2026 - FASE06 Reconciliação Semântica Integral
 
 on:
