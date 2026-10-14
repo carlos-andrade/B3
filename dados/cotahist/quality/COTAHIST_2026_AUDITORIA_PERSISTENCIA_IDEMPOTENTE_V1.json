@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "COTAHIST_2026_AUDITORIA_PERSISTENCIA_IDEMPOTENTE_V1",
+  "year": 2026,
+  "status": "VALIDADO",
+  "decision": "PERSISTENCIA_IDEMPOTENTE_VERIFICADA",
+  "audited_at_utc": "2026-10-14T11:45:47Z",
+  "repository": "https://github.com/carlos-andrade/B3",
+  "workflow_path": ".github/workflows/cotahist-calendario-oficial-2026-v1.yml",
+  "workflow_commit": "baf24c66183252f93211789428f3d80928b0e6f1",
+  "final_run": {
+    "id": 38558710582,
+    "url": "https://github.com/carlos-andrade/B3/actions/runs/38558710582",
+    "conclusion": "success",
+    "steps": {
+      "checkout": "success",
+      "git_lfs_normalized": "success",
+      "calendar_comparison": "success",
+      "persist_evidence": "success"
+    }
+  },
+  "layout_master_audit": {
+    "id": 38558710892,
+    "url": "https://github.com/carlos-andrade/B3/actions/runs/38558710892",
+    "conclusion": "success"
+  },
+  "previous_concurrency_failure": {
+    "run_id": 38558365560,
+    "url": "https://github.com/carlos-andrade/B3/actions/runs/38558365560",
+    "conclusion": "failure",
+    "root_cause": "Duas execuções concorrentes tentaram criar a mesma evidência; o rebase teve conflito add/add durante a persistência.",
+    "data_validation_step": "success",
+    "calendar_comparison_step": "success",
+    "resolved_by": "Persistência idempotente: se a evidência remota já for válida e corresponder aos mesmos hashes de calendário e NORMALIZED, não cria commit duplicado; em conflito de rebase, aborta e tenta novamente."
+  },
+  "validated_inputs": {
+    "calendar_path": "dados/cotahist/calendarios/B3_CALENDARIO_NEGOCIACAO_2026_V1.json",
+    "calendar_sha256": "afd9b9eedf8cdaa2a0834321b6a257393091e1d281c5a252d8667863684d350e",
+    "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
+    "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+    "manifest_normalized_sha256_match": true,
+    "rows": 3142910,
+    "unique_observed_sessions": 195,
+    "expected_sessions_in_observed_range": 195,
+    "missing_expected_sessions": [],
+    "unexpected_observed_sessions": [],
+    "calendar_session_set_match": true
+  },
+  "integrity_controls": {
+    "raw_mutated": false,
+    "normalized_mutated": false,
+    "deduplication_performed": false,
+    "rows_removed": 0,
+    "rows_reordered": false,
+    "blockers": []
+  },
+  "limitations": [
+    "Calendário reconciliado apenas para 2026-01-02 a 2026-10-13.",
+    "O sucesso do workflow confirma a validação do conjunto de datas e a persistência idempotente; não constitui fecho anual de 2026.",
+    "A validação de 2026 não certifica os anos 1986-2025."
+  ]
+}
