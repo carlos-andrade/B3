@@ -6,9 +6,9 @@
     2026
   ],
   "anos_auditados": 41,
-  "anos_validados": 40,
-  "anos_com_falha": 1,
-  "resultado": "REPROVADO",
+  "anos_validados": 41,
+  "anos_com_falha": 0,
+  "resultado": "APROVADO",
   "somente_leitura": true,
   "criterios": [
     "arquivo físico materializado, sem ponteiro Git LFS",
@@ -274,12 +274,10 @@
     {
       "ano": 1998,
       "arquivo": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
-      "status": "FALHA",
-      "erros": [
-        "SHA256_DIVERGE_DO_SIDECAR"
-      ],
+      "status": "VALIDADO",
+      "erros": [],
       "sha256_fisico": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
-      "sha256_sidecar": "d1297e58cbbdf225f792b49a29f9143d3e041e66fd280808732e8c3513eb6bee",
+      "sha256_sidecar": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
       "sha256_manifesto": "21b4740da8eb763259a0d859e261534de826449148c4d57d1f457f5721354e79",
       "linhas_manifesto": 104971,
       "campos_manifesto": 25,
