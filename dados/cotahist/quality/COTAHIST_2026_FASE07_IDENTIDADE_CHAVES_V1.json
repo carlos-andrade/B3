@@ -13,14 +13,14 @@
     "Conclusao restrita ao ficheiro COTAHIST 2026 e ao hash NORMALIZED registado.",
     "Ausencia de colisoes numa chave candidata nao autoriza deduplicacao nem prova, isoladamente, uma regra normativa universal."
   ],
-  "source_normalized_sha256": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9",
+  "source_normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
   "phase06_evidence_path": "dados/cotahist/quality/COTAHIST_2026_FASE06_RECONCILIACAO_V1.json",
   "phase06_status": "VALIDADO",
   "phase06_decision": "LIBERADO_PARA_FASE07",
   "phase06_mismatch_count": 0,
-  "records": 2919760,
+  "records": 3142910,
   "first_date": "2026-01-02",
-  "last_date": "2026-09-23",
+  "last_date": "2026-10-13",
   "phase06_records_match": true,
   "phase06_date_range_match": true,
   "base_candidate": {
@@ -31,11 +31,22 @@
       "tpmerc",
       "dismes"
     ],
-    "distinct_keys": 2910749,
-    "duplicate_groups": 5149,
-    "duplicate_rows_excess": 9011,
-    "groups_with_different_full_rows": 5149,
+    "distinct_keys": 3132828,
+    "duplicate_groups": 5680,
+    "duplicate_rows_excess": 10082,
+    "groups_with_different_full_rows": 5680,
     "sample_collisions": [
+      {
+        "key": [
+          "2026-09-25",
+          "62",
+          "GOLX11T",
+          "030",
+          "100"
+        ],
+        "occurrences": 36,
+        "distinct_full_rows": 36
+      },
       {
         "key": [
           "2026-08-10",
@@ -134,17 +145,6 @@
         ],
         "occurrences": 12,
         "distinct_full_rows": 12
-      },
-      {
-        "key": [
-          "2026-01-30",
-          "62",
-          "TECK11T",
-          "030",
-          "100"
-        ],
-        "occurrences": 12,
-        "distinct_full_rows": 12
       }
     ]
   },
@@ -157,7 +157,7 @@
       "prazot",
       "dismes"
     ],
-    "distinct_keys": 2919760,
+    "distinct_keys": 3142910,
     "duplicate_groups": 0,
     "duplicate_rows_excess": 0,
     "groups_with_different_full_rows": 0,
@@ -174,7 +174,7 @@
       "especi",
       "codisi"
     ],
-    "distinct_keys": 2919760,
+    "distinct_keys": 3142910,
     "duplicate_groups": 0,
     "duplicate_rows_excess": 0,
     "groups_with_different_full_rows": 0,
@@ -191,5 +191,5 @@
     "codisi"
   ],
   "identity_decision": "CHAVE_CANDIDATA_AMPLIADA_SEM_COLISOES_OBSERVADAS_NESTE_ANO",
-  "validated_at_utc": "2026-10-14T09:46:59.561809+00:00"
+  "validated_at_utc": "2026-10-14T10:42:48.598843+00:00"
 }
