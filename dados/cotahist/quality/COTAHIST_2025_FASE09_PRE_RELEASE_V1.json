@@ -1,0 +1,407 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2025,
+  "phase": "FASE09",
+  "status": "LIBERADO_PARA_FASE10",
+  "decision": "LIBERADO_PARA_FASE10",
+  "preconditions": {
+    "FASE03": "OK",
+    "FASE04": "OK",
+    "FASE05": "OK",
+    "FASE06": "OK",
+    "FASE07": "OK",
+    "FASE08": "OK",
+    "GATE_06_08": "OK",
+    "RAW": "OK",
+    "NORMALIZED": "OK",
+    "MANIFEST": "OK"
+  },
+  "evidence_statuses": {
+    "FASE03": "VALIDADO",
+    "FASE04": "VALIDADO",
+    "FASE05": "VALIDADO",
+    "FASE06": "VALIDADO",
+    "FASE07": "VALIDADO",
+    "FASE08": "VALIDADO_COM_EXCECAO",
+    "GATE_06_08": "GATE_APROVADO"
+  },
+  "gate_06_08_status": "GATE_APROVADO",
+  "gate_06_08_decision": "APROVADO_PARA_ANALISE_FASE09",
+  "gate_status_accepted": true,
+  "gate_decision_accepted": true,
+  "raw_sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+  "normalized_sha256": "04a55e83fdb4ec76c897ed74abeb1b7016ffd51f585999bcbd3ecaef3dde4b25",
+  "missing": [],
+  "blocked": [],
+  "phase08_exceptions": [
+    {
+      "code": "ORDEM_DA_FONTE_NAO_CRONOLOGICA",
+      "classification": "EXCECAO_NAO_BLOQUEADORA_COMPROVADA_POR_RECONCILIACAO_SEMANTICA",
+      "blocking": false,
+      "samples": [
+        {
+          "row": 241,
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 541,
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-27"
+        },
+        {
+          "row": 590,
+          "previous_date": "2025-05-28",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 683,
+          "previous_date": "2025-05-29",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 755,
+          "previous_date": "2025-05-29",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 807,
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 1024,
+          "previous_date": "2025-05-29",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 1086,
+          "previous_date": "2025-05-29",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 1167,
+          "previous_date": "2025-05-29",
+          "current_date": "2025-05-27"
+        },
+        {
+          "row": 1197,
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 1516,
+          "previous_date": "2025-05-27",
+          "current_date": "2025-01-27"
+        },
+        {
+          "row": 1566,
+          "previous_date": "2025-05-26",
+          "current_date": "2025-01-29"
+        },
+        {
+          "row": 1581,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-28"
+        },
+        {
+          "row": 1613,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-28"
+        },
+        {
+          "row": 1627,
+          "previous_date": "2025-01-28",
+          "current_date": "2025-01-27"
+        },
+        {
+          "row": 1675,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-27"
+        },
+        {
+          "row": 1737,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-27"
+        },
+        {
+          "row": 1799,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-27"
+        },
+        {
+          "row": 1861,
+          "previous_date": "2025-01-29",
+          "current_date": "2025-01-28"
+        },
+        {
+          "row": 1871,
+          "previous_date": "2025-01-28",
+          "current_date": "2025-01-27"
+        }
+      ],
+      "detail": "A sequência física tem regressões de data; nenhuma linha foi reordenada. FASE06 reconciliou os 25 campos em ordem original."
+    },
+    {
+      "code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO",
+      "blocking": false,
+      "count": 123091,
+      "samples": [
+        {
+          "row": 331,
+          "instrument": [
+            "14",
+            "FNAM11",
+            "010",
+            "",
+            "002"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 332,
+          "instrument": [
+            "14",
+            "FNOR11",
+            "010",
+            "",
+            "002"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 333,
+          "instrument": [
+            "14",
+            "FOOD11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 334,
+          "instrument": [
+            "12",
+            "FPAB11",
+            "010",
+            "",
+            "321"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 358,
+          "instrument": [
+            "02",
+            "ITUB3",
+            "010",
+            "",
+            "346"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 375,
+          "instrument": [
+            "02",
+            "ENGI11",
+            "010",
+            "",
+            "136"
+          ],
+          "previous_date": "2025-01-21",
+          "current_date": "2025-01-20"
+        },
+        {
+          "row": 619,
+          "instrument": [
+            "14",
+            "BRAX11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 620,
+          "instrument": [
+            "14",
+            "BRAZ11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 683,
+          "instrument": [
+            "02",
+            "BRBI11",
+            "010",
+            "",
+            "114"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 684,
+          "instrument": [
+            "12",
+            "BRCO11",
+            "010",
+            "",
+            "168"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 685,
+          "instrument": [
+            "12",
+            "BRCR11",
+            "010",
+            "",
+            "278"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 686,
+          "instrument": [
+            "14",
+            "BREW11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 687,
+          "instrument": [
+            "02",
+            "BRFS3",
+            "010",
+            "",
+            "124"
+          ],
+          "previous_date": "2025-05-27",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 822,
+          "instrument": [
+            "12",
+            "FLCR11",
+            "010",
+            "",
+            "154"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 823,
+          "instrument": [
+            "12",
+            "FLMA11",
+            "010",
+            "",
+            "353"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 824,
+          "instrument": [
+            "12",
+            "FLRP11",
+            "010",
+            "",
+            "283"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 825,
+          "instrument": [
+            "02",
+            "FLRY3",
+            "010",
+            "",
+            "141"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 826,
+          "instrument": [
+            "12",
+            "IRDM11",
+            "010",
+            "",
+            "197"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 827,
+          "instrument": [
+            "14",
+            "IRIF11",
+            "010",
+            "",
+            "106"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        },
+        {
+          "row": 828,
+          "instrument": [
+            "12",
+            "IRIM11",
+            "010",
+            "",
+            "146"
+          ],
+          "previous_date": "2025-05-28",
+          "current_date": "2025-05-26"
+        }
+      ],
+      "detail": "Regressões na ordem física por instrumento não são, isoladamente, prova de erro semântico."
+    },
+    {
+      "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
+      "classification": "METRICA_INFORMATIVA_NAO_BLOQUEADORA",
+      "blocking": false
+    },
+    {
+      "code": "CALENDARIO_OFICIAL_HISTORICO_NAO_PERSISTIDO",
+      "classification": "LIMITACAO_NAO_BLOQUEADORA_PARA_CONSISTENCIA_INTERNA",
+      "blocking": false
+    }
+  ],
+  "note": "FASE09 consolida evidências persistidas; não substitui nem retrocertifica FASE00–08 e não executa FASE10.",
+  "validated_at_utc": "2026-10-14T09:03:22.523337+00:00"
+}
