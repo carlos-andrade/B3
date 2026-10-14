@@ -108,7 +108,7 @@ jobs:
                   sys.exit("FASE10 BLOQUEADA: cabeçalho/ordem de campos divergente")
               normalized_iter=iter(reader)
               for line in raw_stream:
-                  line=line.rstrip(b"\\r\\n")
+                  line=line.rstrip(b"\r\n")
                   if len(line)!=245:
                       bad_lengths+=1
                   kind=line[:2].decode("ascii","replace")
