@@ -1,6 +1,7 @@
 # Auditoria operacional de normalizacao e manifesto COTAHIST 2026.
 # Nao deduplica, nao altera RAW nem reescreve o CSV normalizado.
 # Revalidacao pos-promocao controlada do candidato oficial de 2026 (2026-10-14).
+# Reexecucao explicita apos FASE11 concluida com hashes coerentes (2026-10-14).
 name: COTAHIST 2026 - Auditoria FASE04 Normalizacao e FASE05 Manifesto
 
 on:
