@@ -3,11 +3,11 @@
   "fonte": "B3",
   "arquivo_original": "COTAHIST_A2026.ZIP",
   "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
-  "sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+  "sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
   "status": "VALIDADO",
-  "validacao": "ZIP com 1 arquivo COTAHIST; registros de 245 bytes; header 00; cotacoes 01; trailer 99",
-  "acquired_at_utc": "2026-09-24T07:52:17.798962+00:00",
-  "ultima_data_observacao": "2026-09-23",
+  "validacao": "ZIP com 1 arquivo COTAHIST; CRC OK; registos de 245 bytes; header 00; cotacoes 01; trailer 99; reconciliacao NORMALIZED integral",
+  "acquired_at_utc": "2026-10-14T10:22:42.684700+00:00",
+  "ultima_data_observacao": "2026-10-13",
   "fonte_data_observacao": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-  "nota_data_observacao": "Derivada do manifesto de qualidade NORMALIZED e confirmada pelo registo de reconciliação do manifesto anual; acquired_at_utc permanece apenas a data de aquisição."
+  "nota_data_observacao": "Derivada do NORMALIZED produzido pelo parser versionado e reconciliado integralmente com RAW."
 }
