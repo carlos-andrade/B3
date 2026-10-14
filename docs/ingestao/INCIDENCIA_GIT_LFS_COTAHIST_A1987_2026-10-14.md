@@ -2,7 +2,7 @@
 
 **Data:** 2026-10-14  
 **Repositório:** https://github.com/carlos-andrade/B3  
-**Estado:** identificada; não bloqueia a geração do Dataset Oficial V2; correção de armazenamento pendente de plano controlado.
+**Estado documental:** RESOLVIDO COM EVIDÊNCIA. A representação Git LFS foi migrada e verificada em 2026-10-14; o histórico desta incidência é preservado abaixo.
 
 ## Resumo
 
@@ -59,10 +59,32 @@ Foi preparado e publicado diretamente em `main` (o repositório está configurad
 
 O workflow tem apenas `workflow_dispatch`, sem cron nem gatilho push. O modo padrão é `preflight`; a opção `migrate` exige seleção manual. Antes de converter, verifica SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`, 15.518.211 bytes, 130.665 linhas, 25 campos e datas 1987-01-02–1987-12-30. Depois do push, exige checkout limpo, materialização LFS, igualdade do hash/estrutura, auditoria física global e regeneração do Dataset Oficial V2.
 
-**Estado atualizado (2026-10-14):** workflow e runbook publicados diretamente em `main`, sem reescrever histórico, porque Pull Requests estão desativadas no repositório. O workflow ainda não foi executado. A incidência permanece aberta e nenhuma migração de dados foi realizada.
+**Estado atualizado (2026-10-14):** workflow e runbook publicados diretamente em `main`, sem reescrever histórico, porque Pull Requests estão desativadas no repositório. O workflow ainda não tinha sido executado no momento deste registo intermediário. O estado posterior e autoritativo está documentado na secção Fecho pós-migração controlada, abaixo.
 
 
 ## Fecho pós-migração controlada — 2026-10-14
+
+| Campo | Valor |
+|---|---|
+| **ID** | B3-INC-LFS-1987-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | INCIDENTE |
+| **Fase** | Resolução e validação pós-migração |
+| **Estado** | CONCLUIDO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após normalização documental |
+| **Commit de referência (versão anterior)** | [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a) |
+| **Data de criação** | 2026-10-14 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico B3 |
+| **Aprovador** | Pendente — encerramento técnico baseado na evidência do workflow, sem alegar aprovação separada |
+| **Origem** | Aviso de checkout Git LFS e auditorias pós-migração |
+| **Autoridade superior** | [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Workflow [38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646); commit [e8c6bf21](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a); auditoria física global e Dataset Oficial V2 |
+
+
 
 **Estado: RESOLVIDO COM EVIDÊNCIA.** A execução [38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646) concluiu com sucesso em modo `migrate`. Commit de migração: [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
 
