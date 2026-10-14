@@ -14,17 +14,356 @@
       "blocking": false,
       "samples": [
         {
-          "row": 222003,
-          "previous_date": "2026-06-30",
+          "row": 94,
+          "previous_date": "2026-01-08",
           "current_date": "2026-01-02"
         },
         {
-          "row": 2019379,
-          "previous_date": "2026-09-23",
-          "current_date": "2026-07-01"
+          "row": 187,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 249,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 311,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 373,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 590,
+          "previous_date": "2026-03-30",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 741,
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 931,
+          "previous_date": "2026-04-29",
+          "current_date": "2026-04-06"
+        },
+        {
+          "row": 954,
+          "previous_date": "2026-04-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 993,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1030,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1174,
+          "previous_date": "2026-01-07",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1309,
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-06"
+        },
+        {
+          "row": 1339,
+          "previous_date": "2026-01-06",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1427,
+          "previous_date": "2026-02-20",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1477,
+          "previous_date": "2026-02-20",
+          "current_date": "2026-02-18"
+        },
+        {
+          "row": 1489,
+          "previous_date": "2026-02-18",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1551,
+          "previous_date": "2026-02-18",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1587,
+          "previous_date": "2026-03-17",
+          "current_date": "2026-01-05"
+        },
+        {
+          "row": 1636,
+          "previous_date": "2026-03-17",
+          "current_date": "2026-02-18"
         }
       ],
       "detail": "A sequência física tem regressões de data; nenhuma linha foi reordenada. FASE06 reconciliou os 25 campos em ordem original."
+    },
+    {
+      "code": "REGRESSAO_TEMPORAL_POR_INSTRUMENTO",
+      "classification": "EXCECAO_DE_ORDENACAO_NAO_BLOQUEADORA_COM_RECONCILIACAO",
+      "blocking": false,
+      "count": 225351,
+      "samples": [
+        {
+          "row": 207,
+          "instrument": [
+            "14",
+            "FTCA11",
+            "010",
+            "",
+            "110"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 208,
+          "instrument": [
+            "12",
+            "FVPQ11",
+            "010",
+            "",
+            "276"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 209,
+          "instrument": [
+            "12",
+            "FYTO11",
+            "010",
+            "",
+            "109"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 210,
+          "instrument": [
+            "34",
+            "G1DS34",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 211,
+          "instrument": [
+            "34",
+            "G1FI34",
+            "010",
+            "",
+            "110"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 212,
+          "instrument": [
+            "34",
+            "G1LP34",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 214,
+          "instrument": [
+            "34",
+            "G1SK34",
+            "010",
+            "",
+            "123"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 216,
+          "instrument": [
+            "35",
+            "G2DI33",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 217,
+          "instrument": [
+            "34",
+            "G2EV34",
+            "010",
+            "",
+            "105"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 249,
+          "instrument": [
+            "12",
+            "GAME11",
+            "010",
+            "",
+            "150"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 250,
+          "instrument": [
+            "12",
+            "GARE11",
+            "010",
+            "",
+            "125"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 251,
+          "instrument": [
+            "14",
+            "GBIT11",
+            "010",
+            "",
+            "100"
+          ],
+          "previous_date": "2026-01-08",
+          "current_date": "2026-01-02"
+        },
+        {
+          "row": 604,
+          "instrument": [
+            "14",
+            "AAGR11",
+            "010",
+            "",
+            "125"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 605,
+          "instrument": [
+            "34",
+            "AALL34",
+            "010",
+            "",
+            "115"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 606,
+          "instrument": [
+            "02",
+            "AALR3",
+            "010",
+            "",
+            "104"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 607,
+          "instrument": [
+            "34",
+            "AAPL34",
+            "010",
+            "",
+            "158"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 608,
+          "instrument": [
+            "14",
+            "AAZQ11",
+            "010",
+            "",
+            "139"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 609,
+          "instrument": [
+            "34",
+            "ABBV34",
+            "010",
+            "",
+            "141"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 610,
+          "instrument": [
+            "10",
+            "ABCB10",
+            "010",
+            "",
+            "149"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        },
+        {
+          "row": 611,
+          "instrument": [
+            "02",
+            "ABCB4",
+            "010",
+            "",
+            "150"
+          ],
+          "previous_date": "2026-03-30",
+          "current_date": "2026-03-17"
+        }
+      ],
+      "detail": "Regressões na ordem física por instrumento não são, isoladamente, prova de erro semântico."
     },
     {
       "code": "ORDEM_LEXICOGRAFICA_DOS_INSTRUMENTOS_NAO_EXIGIDA",
@@ -44,38 +383,369 @@
     "Esta fase verifica consistência interna; não prova equivalência com calendário oficial B3.",
     "A sequência física é preservada. Nenhuma linha é reordenada ou removida."
   ],
-  "normalized_sha256": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9",
+  "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
   "phase06_status": "VALIDADO",
   "phase07_status": "VALIDADO",
-  "rows_checked": 2919760,
-  "unique_trading_dates": 182,
+  "rows_checked": 3142910,
+  "unique_trading_dates": 195,
   "first_trading_date": "2026-01-02",
-  "last_trading_date": "2026-09-23",
+  "last_trading_date": "2026-10-13",
   "invalid_dates": 0,
   "out_of_year_dates": 0,
-  "chronological_regressions_observed": 2,
+  "chronological_regressions_observed": 337412,
   "chronological_regression_samples": [
     {
-      "row": 222003,
-      "previous_date": "2026-06-30",
+      "row": 94,
+      "previous_date": "2026-01-08",
       "current_date": "2026-01-02"
     },
     {
-      "row": 2019379,
-      "previous_date": "2026-09-23",
-      "current_date": "2026-07-01"
+      "row": 187,
+      "previous_date": "2026-04-06",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 249,
+      "previous_date": "2026-04-06",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 311,
+      "previous_date": "2026-04-06",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 373,
+      "previous_date": "2026-04-06",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 590,
+      "previous_date": "2026-03-30",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 741,
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 931,
+      "previous_date": "2026-04-29",
+      "current_date": "2026-04-06"
+    },
+    {
+      "row": 954,
+      "previous_date": "2026-04-06",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 993,
+      "previous_date": "2026-01-07",
+      "current_date": "2026-01-06"
+    },
+    {
+      "row": 1030,
+      "previous_date": "2026-01-07",
+      "current_date": "2026-01-06"
+    },
+    {
+      "row": 1174,
+      "previous_date": "2026-01-07",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1309,
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-06"
+    },
+    {
+      "row": 1339,
+      "previous_date": "2026-01-06",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1427,
+      "previous_date": "2026-02-20",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1477,
+      "previous_date": "2026-02-20",
+      "current_date": "2026-02-18"
+    },
+    {
+      "row": 1489,
+      "previous_date": "2026-02-18",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1551,
+      "previous_date": "2026-02-18",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1587,
+      "previous_date": "2026-03-17",
+      "current_date": "2026-01-05"
+    },
+    {
+      "row": 1636,
+      "previous_date": "2026-03-17",
+      "current_date": "2026-02-18"
     }
   ],
-  "instrument_order_regressions": 104214,
-  "instrument_date_regressions": 0,
-  "instrument_date_regression_samples": [],
+  "instrument_order_regressions": 276862,
+  "instrument_date_regressions": 225351,
+  "instrument_date_regression_samples": [
+    {
+      "row": 207,
+      "instrument": [
+        "14",
+        "FTCA11",
+        "010",
+        "",
+        "110"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 208,
+      "instrument": [
+        "12",
+        "FVPQ11",
+        "010",
+        "",
+        "276"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 209,
+      "instrument": [
+        "12",
+        "FYTO11",
+        "010",
+        "",
+        "109"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 210,
+      "instrument": [
+        "34",
+        "G1DS34",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 211,
+      "instrument": [
+        "34",
+        "G1FI34",
+        "010",
+        "",
+        "110"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 212,
+      "instrument": [
+        "34",
+        "G1LP34",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 214,
+      "instrument": [
+        "34",
+        "G1SK34",
+        "010",
+        "",
+        "123"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 216,
+      "instrument": [
+        "35",
+        "G2DI33",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 217,
+      "instrument": [
+        "34",
+        "G2EV34",
+        "010",
+        "",
+        "105"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 249,
+      "instrument": [
+        "12",
+        "GAME11",
+        "010",
+        "",
+        "150"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 250,
+      "instrument": [
+        "12",
+        "GARE11",
+        "010",
+        "",
+        "125"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 251,
+      "instrument": [
+        "14",
+        "GBIT11",
+        "010",
+        "",
+        "100"
+      ],
+      "previous_date": "2026-01-08",
+      "current_date": "2026-01-02"
+    },
+    {
+      "row": 604,
+      "instrument": [
+        "14",
+        "AAGR11",
+        "010",
+        "",
+        "125"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 605,
+      "instrument": [
+        "34",
+        "AALL34",
+        "010",
+        "",
+        "115"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 606,
+      "instrument": [
+        "02",
+        "AALR3",
+        "010",
+        "",
+        "104"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 607,
+      "instrument": [
+        "34",
+        "AAPL34",
+        "010",
+        "",
+        "158"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 608,
+      "instrument": [
+        "14",
+        "AAZQ11",
+        "010",
+        "",
+        "139"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 609,
+      "instrument": [
+        "34",
+        "ABBV34",
+        "010",
+        "",
+        "141"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 610,
+      "instrument": [
+        "10",
+        "ABCB10",
+        "010",
+        "",
+        "149"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    },
+    {
+      "row": 611,
+      "instrument": [
+        "02",
+        "ABCB4",
+        "010",
+        "",
+        "150"
+      ],
+      "previous_date": "2026-03-30",
+      "current_date": "2026-03-17"
+    }
+  ],
   "source_order_classified_by_row_reconciliation": true,
   "weekday_distribution": {
-    "Friday": 36,
-    "Monday": 36,
-    "Tuesday": 36,
-    "Wednesday": 38,
-    "Thursday": 36
+    "Friday": 39,
+    "Monday": 38,
+    "Tuesday": 39,
+    "Wednesday": 40,
+    "Thursday": 39
   },
   "weekend_dates_observed": [],
   "calendar_gaps_over_4_days": [
@@ -85,5 +755,5 @@
       "calendar_days": 5
     }
   ],
-  "validated_at_utc": "2026-10-14T09:50:46.720030+00:00"
+  "validated_at_utc": "2026-10-14T10:50:28.323198+00:00"
 }
