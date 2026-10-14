@@ -7,7 +7,6 @@ on:
       - "WATCHDOG/**"
       - ".github/workflows/watchdog-b3-validation.yml"
       - ".github/workflows/b3-monitor-execucoes-v1.yml"
-      - "README.md"
   pull_request:
     paths:
       - "WATCHDOG/**"
@@ -84,7 +83,11 @@ jobs:
           assert "candidate_dates" in bdi_script and "BDI_ALREADY_CURRENT=true" in bdi_script, "Seleção automática/idempotência BDI ausente"
           assert "não sobrescrever sem reconciliação explícita" in bdi_script, "Proteção contra divergência BDI ausente"
           assert "0 11 * * 1-5" in bdi_workflow and "default: \"auto\"" in bdi_workflow, "Agenda ou data automática BDI ausente"
-          assert "gh workflow run watchdog-data-freshness.yml" in bdi_workflow, "Reavaliação pós-captura ausente"
+          freshness_workflow_path = root / ".github/workflows/watchdog-data-freshness.yml"
+          assert freshness_workflow_path.is_file(), "Workflow de atualidade ausente"
+          freshness_workflow = freshness_workflow_path.read_text(encoding="utf-8")
+          assert "dados/bdi/manifests/**" in freshness_workflow, "Trigger por manifesto BDI ausente no WATCHDOG"
+          assert "gh workflow run" not in bdi_workflow, "Captura BDI não deve invocar outro workflow"
           assert controls.get("schema_version") == 1
           assert controls.get("project") == "B3"
           assert controls.get("controls"), "Catálogo de controlos vazio"
