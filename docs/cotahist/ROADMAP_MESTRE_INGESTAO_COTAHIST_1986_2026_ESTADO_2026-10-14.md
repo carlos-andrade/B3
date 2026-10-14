@@ -71,7 +71,7 @@ Fonte: [Documento de certificação anual](https://github.com/carlos-andrade/B3/
 - Resultado estrutural reportado pela matriz: **41/41 anos** com manifesto, estado `VALIDADO`, 25 campos, zero datas inválidas e zero datas fora do ano.
 - **1986:** mantém `CERTIFICADO_NORMALIZACAO_COM_EXCECAO_SEMANTICA`; não equivale a certificação semântica plena.
 - **1998:** parser `1.1.1`; a lista de versões aceites deve continuar explicitamente homologada, sem inferir equivalência apenas pelo número da versão.
-- **2026:** a linha atual da matriz está desatualizada relativamente aos manifestos canónicos de 14/10. Regenerar a matriz a partir dos manifestos atuais e validar contagem, datas, parser e hash antes de a voltar a declarar sincronizada.
+- **2026:** a linha da matriz foi sincronizada com o manifesto canónico de 14/10/2026 (parser 1.1.2; 3.142.910 linhas). Revalidar contagem, datas, parser e hash em cada atualização diária.
 - Esta matriz certifica estrutura/normalização; não certifica por si só completude económica por pregão, semântica universal dos códigos, calendário oficial histórico de cada ano nem aptidão para uma estratégia.
 
 ## 4. Histórico de fases e transições
