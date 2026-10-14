@@ -1,10 +1,27 @@
 # ROADMAP COTAHIST 1999–2005 — Estado em 2026-10-12
 
-**Projeto:** B3 — A BOLSA DO BRASIL  
-**Repositório:** `carlos-andrade/B3`  
-**Estado:** 1999–2004 fechados/certificados; transição 2005 autorizada; COTAHIST 2005 com FASE00–FASE08 validadas; GATE 06–08 aprovado; FASE09 liberada; FASE10 validada; FASE11 certificada; próxima FASE12  
-**Norma:** `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` v1.0.1  
-**Incidente de referência:** `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md`
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-ROADMAP-1999-2005-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | ROADMAP |
+| **Fase** | Governação documental e rastreabilidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | [016523c8093e202da8fcc1327277dea5e03eccad](https://github.com/carlos-andrade/B3/commit/016523c8093e202da8fcc1327277dea5e03eccad) |
+| **Data de criação** | 2026-10-12 |
+| **Data de atualização** | 2026-10-14 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Origem** | Documento B3 preexistente; corpo histórico preservado |
+| **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
+| **Escopo** | Cadeia faseada de ingestão COTAHIST 1999–2005 |
+| **Objetivo** | Consolidar as transições anuais e orientar execução a partir das evidências. |
+| **Dependências** | Layout Mestre B3, evidências por fase e documentação oficial aplicável |
 
 ## Resumo executivo
 
