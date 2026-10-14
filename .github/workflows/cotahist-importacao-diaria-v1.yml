@@ -39,10 +39,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
+          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/quality/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
           git commit -m "data(cotahist): importacao diaria automatica" || exit 0
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Gate de conflitos após persistência
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          reports = sorted(Path("dados/cotahist/quality/diario/execucoes").glob("COTAHIST_DIARIO_EXECUCAO_*.json"))
+          if not reports:
+              raise SystemExit("RELATORIO_EXECUCAO_AUSENTE")
+          report = json.loads(reports[-1].read_text(encoding="utf-8"))
+          print(json.dumps({"relatorio": str(reports[-1]), "status": report["status"], "dias_com_conflito": report["dias_com_conflito"]}, ensure_ascii=False))
+          if report["status"] != "EXECUCAO_SEM_CONFLITOS":
+              raise SystemExit("CONFLITO_FONTE: dados canónicos preservados; rever evidência persistida")
+          PY
 
       - name: Publicar evidências
         uses: actions/upload-artifact@v4
