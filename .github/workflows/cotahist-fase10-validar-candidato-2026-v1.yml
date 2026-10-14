@@ -1,0 +1,169 @@
+name: COTAHIST 2026 - FASE10 Validar candidato sem promover canonico
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-fase10-validar-candidato-2026-v1
+  cancel-in-progress: false
+
+jobs:
+  validar-candidato:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          sparse-checkout: |
+            .gitattributes
+            .github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml
+            scripts/ingestao/normalize_cotahist.py
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+            dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
+          sparse-checkout-cone-mode: false
+
+      - name: Obter NORMALIZED canónico via Git LFS
+        run: |
+          set -euo pipefail
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv" --exclude=""
+          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2026.csv | grep -q "oid sha256"; then
+            echo "NORMALIZED canónico permanece como ponteiro LFS."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Descarregar e normalizar candidato em área temporária
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/cotahist-fase10
+          curl --fail --location --retry 3 --retry-delay 3 --connect-timeout 30 \
+            "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP" \
+            --output /tmp/cotahist-fase10/COTAHIST_A2026.ZIP
+          python scripts/ingestao/normalize_cotahist.py \
+            --zip /tmp/cotahist-fase10/COTAHIST_A2026.ZIP \
+            --output /tmp/cotahist-fase10/COTAHIST_A2026.csv
+          python - <<'PY'
+          import csv, datetime, hashlib, importlib.util, json, pathlib, sqlite3, sys, zipfile
+          root=pathlib.Path("dados/cotahist")
+          raw=pathlib.Path("/tmp/cotahist-fase10/COTAHIST_A2026.ZIP")
+          candidate=pathlib.Path("/tmp/cotahist-fase10/COTAHIST_A2026.csv")
+          canonical=root/"normalized/anual/COTAHIST_A2026.csv"
+          probe_path=root/"quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json"
+          output=root/"quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json"
+          output.parent.mkdir(parents=True,exist_ok=True)
+          spec=importlib.util.spec_from_file_location("normalizer","scripts/ingestao/normalize_cotahist.py")
+          normalizer=importlib.util.module_from_spec(spec); spec.loader.exec_module(normalizer)
+          def sha(path):
+              h=hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda:f.read(1048576),b""): h.update(chunk)
+              return h.hexdigest()
+          report={"schema_version":"1.0.0","year":2026,"phase":"FASE10_VALIDACAO_CANDIDATO","status":"BLOQUEADO","decision":"NAO_PROMOVER_CANONICO","canonical_mutated":False,"raw_committed":False,"normalized_committed":False,"deduplication_performed":False,"blockers":[]}
+          conn=None
+          try:
+              probe=json.loads(probe_path.read_text(encoding="utf-8"))
+              raw_sha=sha(raw); candidate_sha=sha(candidate); canonical_sha=sha(canonical)
+              report.update({"source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP","candidate_raw_sha256":raw_sha,"candidate_raw_bytes":raw.stat().st_size,"candidate_normalized_sha256":candidate_sha,"candidate_normalized_bytes":candidate.stat().st_size,"canonical_normalized_sha256":canonical_sha,"probe_candidate_sha256":probe.get("candidate_sha256"),"candidate_raw_sha_matches_probe":raw_sha==probe.get("candidate_sha256")})
+              if raw_sha!=probe.get("candidate_sha256"): raise RuntimeError("SHA-256 do download atual difere do probe; repetir a auditoria da fonte")
+              raw_count=0; bad_lengths=0; types={}
+              with zipfile.ZipFile(raw) as z:
+                  members=[n for n in z.namelist() if not n.endswith("/")]
+                  if len(members)!=1 or z.testzip() is not None: raise RuntimeError("ZIP inválido ou número de membros diferente de 1")
+                  with z.open(members[0]) as src, candidate.open(encoding="utf-8",newline="") as f:
+                      reader=csv.reader(f)
+                      if next(reader,None)!=normalizer.HEADER or len(normalizer.HEADER)!=25: raise RuntimeError("Cabeçalho NORMALIZED inválido")
+                      it=iter(reader)
+                      for line_no,raw_line in enumerate(src,start=1):
+                          line=raw_line.rstrip(b"\r\n"); typ=line[:2].decode("ascii","replace"); types[typ]=types.get(typ,0)+1
+                          if len(line)!=245: bad_lengths+=1
+                          if typ!= "01": continue
+                          raw_count+=1
+                          expected=normalizer.normalize_line(line); actual=next(it,None)
+                          if actual!=expected: raise RuntimeError(f"Reconciliação dos 25 campos falhou no registo {raw_count}, linha RAW {line_no}")
+                      if next(it,None) is not None: raise RuntimeError("NORMALIZED candidato contém linhas extra")
+              if bad_lengths or types.get("00")!=1 or types.get("99")!=1: raise RuntimeError("Estrutura RAW inválida")
+              report.update({"raw_record_type_counts":types,"raw_invalid_record_lengths":bad_lengths,"candidate_rows_reconciled":raw_count,"candidate_field_count":25,"raw_to_normalized_all_rows_match":True})
+              conn=sqlite3.connect("/tmp/cotahist-fase10/diff.sqlite")
+              conn.execute("PRAGMA journal_mode=OFF"); conn.execute("PRAGMA synchronous=OFF"); conn.execute("PRAGMA temp_store=FILE")
+              conn.execute("CREATE TABLE rows (side TEXT,row_hash TEXT)")
+              for side,path in (("canonical",canonical),("candidate",candidate)):
+                  batch=[]
+                  with path.open(encoding="utf-8",newline="") as f:
+                      reader=csv.reader(f)
+                      if next(reader,None)!=normalizer.HEADER: raise RuntimeError("Cabeçalho inválido em "+side)
+                      for row in reader:
+                          batch.append((side,hashlib.sha256("\x1f".join(row).encode("utf-8")).hexdigest()))
+                          if len(batch)>=20000: conn.executemany("INSERT INTO rows VALUES (?,?)",batch); conn.commit(); batch.clear()
+                      if batch: conn.executemany("INSERT INTO rows VALUES (?,?)",batch); conn.commit()
+              conn.execute("CREATE INDEX idx_rows ON rows(side,row_hash)"); conn.commit()
+              conn.execute("CREATE TABLE counts AS SELECT side,row_hash,COUNT(*) n FROM rows GROUP BY side,row_hash")
+              conn.execute("CREATE INDEX idx_counts ON counts(row_hash,side)")
+              added=conn.execute("SELECT COALESCE(SUM(MAX(c.n-COALESCE(o.n,0),0)),0) FROM counts c LEFT JOIN counts o ON o.row_hash=c.row_hash AND o.side='canonical' WHERE c.side='candidate'").fetchone()[0]
+              removed=conn.execute("SELECT COALESCE(SUM(MAX(o.n-COALESCE(c.n,0),0)),0) FROM counts o LEFT JOIN counts c ON c.row_hash=o.row_hash AND c.side='candidate' WHERE o.side='canonical'").fetchone()[0]
+              old_n=conn.execute("SELECT COUNT(*) FROM rows WHERE side='canonical'").fetchone()[0]
+              new_n=conn.execute("SELECT COUNT(*) FROM rows WHERE side='candidate'").fetchone()[0]
+              report.update({"canonical_rows":old_n,"candidate_rows":new_n,"candidate_rows_added_vs_canonical":added,"canonical_rows_absent_from_candidate":removed,"full_row_multiset_unchanged":added==0 and removed==0,"comparison_method":"SHA-256 por linha integral e multiplicidade em SQLite; sem deduplicação"})
+              first=None; last=None
+              with candidate.open(encoding="utf-8",newline="") as f:
+                  for row in csv.DictReader(f):
+                      value=row.get("data_pregao","")
+                      try: dt=datetime.date.fromisoformat(value)
+                      except ValueError: raise RuntimeError("Data inválida: "+value)
+                      if dt.year!=2026: raise RuntimeError("Data fora de 2026: "+value)
+                      first=value if first is None else min(first,value); last=value if last is None else max(last,value)
+              report.update({"first_trading_date":first,"last_trading_date":last})
+              if last!=probe.get("last_trading_date"): raise RuntimeError("Última data NORMALIZED difere do probe")
+              if added or removed:
+                  report["status"]="VALIDADO_COM_DIFERENCAS_A_REVISAR"; report["decision"]="REVISAO_DAS_DIFERENCAS_ANTES_DA_PROMOCAO"
+              else:
+                  report["status"]="VALIDADO_SEM_DIFERENCAS_DE_LINHAS"; report["decision"]="CANDIDATO_ELEGIVEL_A_GATE_DE_PROMOCAO"
+          except Exception as exc:
+              report["blockers"].append(str(exc)); report["status"]="BLOQUEADO"; report["decision"]="NAO_PROMOVER_CANONICO"
+          finally:
+              if conn is not None: conn.close()
+              report["validated_at_utc"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
+              output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+              print(json.dumps(report,ensure_ascii=False,indent=2))
+          if report["status"]=="BLOQUEADO": sys.exit("FASE10 bloqueada; dataset canónico permanece intacto")
+          PY
+
+      - name: Persistir evidência FASE10
+        if: always()
+        run: |
+          set -euo pipefail
+          test -s dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --sparse dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
+          git diff --cached --quiet && exit 0
+          git commit -m "audit(cotahist): validar candidato 2026 sem promover canonico"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Resumo
+        if: always()
+        run: |
+          {
+            echo "## COTAHIST 2026 — FASE10"
+            echo "- Candidato normalizado e reconciliado sem modificar dados canónicos."
+            echo "- Diferenças face ao NORMALIZED atual são medidas por linha integral, com multiplicidade preservada."
+            echo "- Resultado do job: \${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"
