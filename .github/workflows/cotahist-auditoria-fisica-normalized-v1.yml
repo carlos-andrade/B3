@@ -1,0 +1,76 @@
+name: COTAHIST — auditoria física independente NORMALIZED 1986–2026
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/auditar_integridade_fisica_cotahist_v1.py"
+      - ".github/workflows/cotahist-auditoria-fisica-normalized-v1.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cotahist-auditoria-fisica-normalized-v1
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout sem download LFS global
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+
+      - name: Instalar Git LFS
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+
+      - name: Materializar apenas NORMALIZED anual
+        run: |
+          set -euo pipefail
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
+
+      - name: Executar auditoria física independente
+        run: python scripts/ingestao/auditar_integridade_fisica_cotahist_v1.py
+
+      - name: Persistir evidência auditável
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json
+          if git diff --cached --quiet; then
+            echo "Evidência física sem alterações."
+            exit 0
+          fi
+          git commit -m "audit(cotahist): persistir auditoria fisica NORMALIZED 1986-2026"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar evidência como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-auditoria-fisica-normalized-v1
+          path: dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Resumo operacional
+        if: always()
+        run: |
+          {
+            echo "## Auditoria física independente COTAHIST"
+            echo "- Âmbito: NORMALIZED anual 1986–2026"
+            echo "- Método: SHA-256 físico, sidecar, manifesto, contagem, campos e datas"
+            echo "- Regra: falhar fechado perante divergência"
+            echo "- Dados históricos: somente leitura; nenhuma alteração ao CSV é feita"
+          } >> "$GITHUB_STEP_SUMMARY"
