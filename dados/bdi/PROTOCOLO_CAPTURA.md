@@ -75,6 +75,10 @@ Cada captura deve possuir manifesto contendo:
 
 Se o arquivo não foi efetivamente capturado, o projeto deve registrar somente a existência/documentação da fonte. Não estimar quantidade de registros nem inventar campos.
 
+## Gate de acesso e termos
+
+Antes de ativar captura automatizada, confirmar e registar os termos aplicáveis ao endpoint específico, autorização de acesso, limites de uso e permissões de armazenamento/reutilização. A página Pesquisa por Pregão da B3 veda coleta automatizada a partir da própria página, inclusive por ferramentas de IA; não implementar scraping dessa página. Uma API ou endpoint alternativo exige revisão de termos independente.
+
 ## 8. Microestrutura
 
 BDI consolidado não deve ser confundido com dados intradiários. Estudos de agressão, Cumulative Delta, VWAP, TWAP e fluxo exigem dados com granularidade compatível.
