@@ -1,5 +1,25 @@
 # AUDITORIA DE ESTADO DO REPOSITÓRIO — PONTO ZERO DA FASE DE CONSOLIDAÇÃO
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-009-ORIO-2026-09-25-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_AUDITORIA |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | c45fe953fe27e10df2486b495c280e8b07da0cd555b406e37c453926fbbbdf73 |
+| **Commit de referência (versão anterior)** | [7a09339f3244b84dd165400279b6da090bd2bb80](https://github.com/carlos-andrade/B3/commit/7a09339f3244b84dd165400279b6da090bd2bb80) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 **Arquivo:** AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md  
 **Projeto:** B3 — A BOLSA DO BRASIL  
 **Caminho:** docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md  
