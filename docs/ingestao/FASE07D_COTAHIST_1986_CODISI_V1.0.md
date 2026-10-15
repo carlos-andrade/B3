@@ -30,7 +30,7 @@
 Determinar como CODISI deve ser interpretado para 1986 e medir presença, cardinalidade e relações com CODNEG/TPMERC.
 
 ## Evidência oficial B3
-CODISI ocupa as posições 231–242. O layout B3 descreve o campo como código do papel no sistema ISIN ou código interno do papel e estabelece que o código ISIN é utilizado a partir de 15/05/1995. Portanto, para COTAHIST 1986, esta frente trata CODISI como código interno, não como ISIN. Fonte: B3, Layout do Arquivo – Cotações Históricas, revisão 02. citeturn1view0
+CODISI ocupa as posições 231–242. O layout B3 descreve o campo como código do papel no sistema ISIN ou código interno do papel e estabelece que o código ISIN é utilizado a partir de 15/05/1995. Portanto, para COTAHIST 1986, esta frente trata CODISI como código interno, não como ISIN. Fonte: B3, Layout do Arquivo – Cotações Históricas, revisão 02. Referência pública para layouts: [Layout dos arquivos — Pesquisa por Pregão, B3](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/layout-dos-arquivos/). A cópia exata da revisão 02 deve ser preservada com data e hash antes de ser usada como evidência primária.
 
 ## Regras
 - CODISI de 1986 não será rotulado como ISIN.
