@@ -1,9 +1,23 @@
 # Fase C — Triagem técnica preliminar das execuções desfavoráveis
 
-**Data da análise:** 2026-10-15  
-**Repositório:** `carlos-andrade/B3`  
-**Issue de origem:** [WATCHDOG #11](https://github.com/carlos-andrade/B3/issues/11)  
-**Estado:** `TRIAGEM PARCIAL — NÃO ENCERRAR INCIDENTE`
+| Campo | Valor |
+|---|---|
+| **ID** | B3-WD-TRIAGE-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_TRIAGEM |
+| **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 986b3adb5d2fa3467a96f67af42b2e1666038b78e3ec29ab9d72e31d98a03c0a |
+| **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
+| **Data de criação** | 2026-10-15 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável operacional do projeto B3 |
+| **Aprovador** | Pendente — não representa aprovação formal |
+| **Origem** | Logs GitHub Actions referenciados na Issue #11 e análise técnica registada no projeto B3 |
+| **Autoridade superior** | [CONSTITUICAO.md](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Norma de Cabeçalho v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md), [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Objetivo e limites
 
@@ -48,3 +62,4 @@ Isto comprova o sucesso daquela execução posterior; não elimina o histórico 
 - [ ] Prosseguir com C2–C6 do [plano de fecho da Fase C](FASE_C_FECHAMENTO_OPERACAO_GOVERNANCA_2026-10-15.md).
 
 **Decisão:** a triagem já identifica causas técnicas acionáveis, mas continua parcial. Não encerrar a Issue #11 nem a Fase C até as ações e evidências acima serem verificadas.
+
