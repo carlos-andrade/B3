@@ -7,7 +7,9 @@ permissões, persistência, decisão e sinais de idempotência.
 """
 from __future__ import annotations
 import datetime as dt
+import hashlib
 import json
+import subprocess
 import pathlib
 import re
 
@@ -312,7 +314,45 @@ def main() -> int:
             + (", ".join(r["blocking_divergences"]) or "—") + " | "
             + (", ".join(r["observability_or_advisory"]) or "—") + " |"
         )
-    OUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    # O relatório gerado também obedece ao cabeçalho canónico GOVERNANCA 1.0.3.
+    baseline = subprocess.run(
+        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+    ).stdout.strip()
+    title = lines[0]
+    body = "\\n".join(lines[1:]) + "\\n"
+    metadata = [
+        "| Campo | Valor |",
+        "|---|---|",
+        "| **ID** | B3-AUD-WORKFLOWS-CURRENT |",
+        "| **Projeto** | B3 — A BOLSA DO BRASIL |",
+        "| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |",
+        "| **Tipo documental** | RELATORIO_DE_AUDITORIA |",
+        "| **Fase** | GOVERNANCA_CONTINUA |",
+        "| **Estado** | EM_REVISAO |",
+        "| **Versão** | 2.0.0 |",
+        "| **SHA-256 (conteúdo canónico)** | CALCULAR |",
+        f"| **Commit de referência (versão anterior)** | [{baseline}](https://github.com/carlos-andrade/B3/commit/{baseline}) |",
+        "| **Data de criação** | N/A — relatório regenerado automaticamente |",
+        f"| **Data de atualização** | {payload['generated_at_utc'][:10]} |",
+        "| **Responsável** | Automação de auditoria de governança B3 |",
+        "| **Aprovador** | Pendente — relatório diagnóstico, não constitui aprovação normativa |",
+        "| **Origem** | Gerado por scripts/governanca/auditar_workflows_b3.py |",
+        "| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |",
+        "| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |",
+    ]
+    rendered = title + "\\n\\n" + "\\n".join(metadata) + "\\n\\n" + body
+    canonical = "".join(
+        line for line in rendered.splitlines(keepends=True)
+        if not (line.startswith("|") and "**SHA-256 (conteúdo canónico)**" in line)
+        and not (line.startswith("|") and "**Commit de referência" in line)
+    )
+    digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    rendered = rendered.replace(
+        "| **SHA-256 (conteúdo canónico)** | CALCULAR |",
+        f"| **SHA-256 (conteúdo canónico)** | {digest} |",
+        1,
+    )
+    OUT_MD.write_text(rendered, encoding="utf-8", newline="\\n")
     print(json.dumps({
         "workflow_count": len(results),
         "status_counts": counts,
