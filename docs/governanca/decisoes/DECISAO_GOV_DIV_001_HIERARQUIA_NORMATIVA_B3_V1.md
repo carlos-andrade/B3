@@ -7,7 +7,7 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DECISAO_NORMATIVA |
 | **Fase** | Governança — reconciliação normativa |
-| **Estado** | DECISAO_REGISTADA; HASH_CANONICO_CALCULADO; AUDITORIA_GLOBAL_PENDENTE |
+| **Estado** | DECISAO_REGISTADA; AUDITORIA_SHA256_GLOBAL_CONFORME; REVISAO_SEMANTICA_INTEGRAL_EM_CURSO |
 | **Versão** | 1.0.0 |
 | **SHA-256 (conteúdo canónico)** | 6c2a37b91d750ccdc0006b1cb95da82130603e64d3c85aa47bb19fb69eea4687 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
@@ -62,10 +62,10 @@ As duas listas pretendiam ser universais e eram incompatíveis. Esta decisão su
 
 ## 5. Critérios de validação e encerramento
 
-- [ ] Os dois documentos normativos expressam a mesma hierarquia por domínio.
-- [ ] O presente registo de decisão tem hash canónico validado pelo auditor.
-- [ ] A auditoria SHA-256 posterior às alterações termina com sucesso e sem estados inválidos/divergentes.
-- [ ] A Issue #11 regista decisão, commits e evidência.
+- [x] Os dois documentos normativos expressam a mesma hierarquia por domínio.
+- [x] O presente registo de decisão tem hash canónico validado pelo auditor.
+- [x] A auditoria SHA-256 posterior às alterações termina com sucesso e sem estados inválidos/divergentes.
+- [x] A Issue #11 regista decisão, commits e evidência.
 - [ ] A revisão semântica integral dos 302 Markdown tem matriz por ficheiro, classe documental, autoridade, conflitos, estado e evidência; não basta a auditoria estrutural.
 
 A decisão substantiva está registada; a validação criptográfica e o inventário semântico integral só serão considerados concluídos depois de produzidas as evidências correspondentes.
