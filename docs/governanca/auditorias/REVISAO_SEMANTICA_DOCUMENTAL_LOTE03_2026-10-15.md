@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por ferramenta reprodutível conforme GOVERNANCA v1.0.3 |
+| **SHA-256 (conteúdo canónico)** | 8edcc3d7a1f8390e3db1df2d867e4210b0b56d3ccfbeb8acbcd7f1fec18ba21a |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
