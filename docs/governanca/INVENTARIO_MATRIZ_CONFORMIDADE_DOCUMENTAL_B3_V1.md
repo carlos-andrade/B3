@@ -371,3 +371,11 @@ A execução [38716296153](https://github.com/carlos-andrade/B3/actions/runs/387
 | 1.2.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas e registo de dívida de metadados legados | [Relatório Lote 02](REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
 | 1.3.0 | 2026-10-15 | Revisão semântica de três contratos de ingestão/identidade; registados conflitos potenciais de versão/estado | [Relatório Lote 03](REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) |
 | 1.4.0 | 2026-10-15 | Classificação semântica por natureza documental numa amostra de 12 ficheiros; preservadas as pendências globais | [Relatório Lote 04](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md) |
+
+## Auditoria automática de integridade — atualização 2026-10-15
+
+- Execução oficial: [run 38719803051](https://github.com/carlos-andrade/B3/actions/runs/38719803051), commit `8b3797da39cc04ae778e2a289e34b384c6a2c907`, conclusão `success`.
+- 289 ficheiros Markdown analisados: 7 `CONFORME`, 10 `PENDENTE`, 271 `CABECALHO_CONTROLO_INVALIDO`, 1 `SEM_CABECALHO_H1`; zero `DIVERGENTE` no relatório.
+- Os sete documentos cujo SHA-256 foi recalculado com base no relatório oficial foram confirmados como `CONFORME` nesta execução.
+- Limite: o workflow valida integridade dos hashes onde o cabeçalho permite comparação; não certifica a conformidade semântica dos 289 documentos. A dívida estrutural dos 271 cabeçalhos continua aberta.
+- Artefacto JSON preservado como evidência no run, sem alegar que foi commitado.
