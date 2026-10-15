@@ -116,3 +116,11 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 - Os hashes dos quatro relatórios semânticos e dos três documentos de controlo/roadmap foram confirmados pela ferramenta canónica, sem divergência nesta execução.
 - A normalização global não está concluída. Não alterar contratos de dados, evidências de máquina, históricos ou documentos normativos conflitantes sem revisão específica e autorização versionada.
 - Próximo gate: selecionar documentos humanos não normativos com cabeçalho válido, editar apenas metadados autorizados, recalcular hash e verificar por workflow antes de promover o lote.
+
+## Atualização de execução — validação dos 10 hashes pendentes — 2026-10-15
+
+- Execução final confirmada: [run 38723560993](https://github.com/carlos-andrade/B3/actions/runs/38723560993), commit `5b2cbde2693fe8f1cd93bd9f9d71e45a5796cc3c`, `success`.
+- Auditor oficial: 289 Markdown; 17 `CONFORME`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`; zero `PENDENTE` e zero `DIVERGENTE`.
+- Os 10 hashes foram preenchidos com os candidatos calculados pela ferramenta oficial e a execução subsequente confirmou a correspondência entre hash declarado e calculado.
+- A normalização global permanece incompleta: não converter os 271 cabeçalhos inválidos em alterações em massa sem classificação semântica; o ficheiro sem H1 exige triagem por tipo documental.
+- Preservar o conteúdo substantivo das cartas normativas; `GOV-DIV-001` continua aberta até decisão autorizada e versionada.
