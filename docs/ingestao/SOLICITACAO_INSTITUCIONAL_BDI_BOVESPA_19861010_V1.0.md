@@ -150,7 +150,7 @@ O objetivo dos exemplares adjacentes é reconstruir a convenção documental, n�
 
 ## 10. Resultado da rodada de 25/09/2026
 
-A pesquisa pública adicional confirmou novamente o comunicado institucional que identifica **Cotações do Histórico Regular (BDI — Segmento BOVESPA)** e os canais históricos de distribuição, incluindo Pesquisa por Pregão, FTP e DIN/MTA. citeturn0search21
+A pesquisa pública adicional confirmou novamente o comunicado institucional que identifica **Cotações do Histórico Regular (BDI — Segmento BOVESPA)** e referências a canais históricos de distribuição. A [Pesquisa por Pregão — B3](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/) é uma referência pública; a existência e o acesso ao exemplar específico por FTP/DIN/MTA não foram confirmados neste registo.
 
 Não foi encontrado um identificador público inequívoco para o exemplar de 10/10/1986.
 
