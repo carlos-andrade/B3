@@ -440,9 +440,9 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 
 ### Gates e próximas ações
 
-1. Confirmar a execução corrigida e arquivar o artefacto de auditoria.
-2. Refinar a classificação do baseline para separar documentação humana, histórica, gerada e artefactos com contrato próprio.
-3. Resolver a divergência normativa GOV-DIV-001 por decisão versionada.
+1. Registar a execução corrigida já confirmada no run 38713567162; preservar o artefacto JSON como evidência do run, sem alegar que foi commitado.
+2. Refinar a classificação do baseline para separar documentação humana, histórica, gerada e artefactos com contrato próprio — iniciado no Lote 04, ainda incompleto.
+3. Resolver a divergência normativa GOV-DIV-001 por decisão versionada, sem editar silenciosamente a Carta Magna ou o Layout Mestre.
 4. Normalizar os próximos lotes de metadados sem alterar o corpo técnico e validar referências.
 5. Calcular os hashes canónicos após estabilizar cada lote. Não declarar conformidade global antecipadamente.
 
