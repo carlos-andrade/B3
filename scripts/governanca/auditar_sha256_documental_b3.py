@@ -67,14 +67,20 @@ def read_status(path: Path) -> dict:
         }
     match = re.match(r"^\|\s*\*\*SHA-256 \(conteúdo canónico\)\*\*\s*\|\s*(.*?)\s*\|\s*$", sha_lines[0])
     declared = match.group(1).strip() if match else ""
-    if not declared or "PENDENTE" in declared.upper() or "CALCULAR" in declared.upper():
-        return {"path": path.as_posix(), "status": "PENDENTE", "declared": declared}
-    if not HASH_RE.fullmatch(declared):
-        return {"path": path.as_posix(), "status": "FORMATO_HASH_INVALIDO", "declared": declared}
     try:
         calculated = canonical_digest(text)
     except ValueError as exc:
         return {"path": path.as_posix(), "status": "CABECALHO_CONTROLO_INVALIDO", "detail": str(exc)}
+    if not declared or "PENDENTE" in declared.upper() or "CALCULAR" in declared.upper():
+        return {
+            "path": path.as_posix(), "status": "PENDENTE",
+            "declared": declared, "calculated": calculated,
+        }
+    if not HASH_RE.fullmatch(declared):
+        return {
+            "path": path.as_posix(), "status": "FORMATO_HASH_INVALIDO",
+            "declared": declared, "calculated": calculated,
+        }
     return {
         "path": path.as_posix(),
         "status": "CONFORME" if declared.lower() == calculated else "DIVERGENTE",
