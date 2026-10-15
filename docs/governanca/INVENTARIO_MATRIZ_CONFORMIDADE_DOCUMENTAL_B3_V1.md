@@ -8,7 +8,7 @@
 | **Tipo documental** | INVENTARIO_MATRIZ |
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
-| **Versão** | 1.0.0 |
+| **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — validar por ferramenta reprodutível |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
@@ -107,11 +107,11 @@
 | 057 | `dados/market_data/microestrutura/README.md` | README_INDICE | PENDENTE_ANALISE_CONTEUDO |
 | 058 | `dashboards/README.md` | README_INDICE | PENDENTE_ANALISE_CONTEUDO |
 | 059 | `docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md` | INCIDENTES_AUDITORIAS | PENDENTE_ANALISE_CONTEUDO |
-| 060 | `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
-| 061 | `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 060 | `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
+| 061 | `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
 | 062 | `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
-| 063 | `docs/CARTA_MAGNA_GOVERNANCA_B3.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
-| 064 | `docs/MODELO_GOVERNANCA_PARA_PROJETOS.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 063 | `docs/CARTA_MAGNA_GOVERNANCA_B3.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
+| 064 | `docs/MODELO_GOVERNANCA_PARA_PROJETOS.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
 | 065 | `docs/NEGOCIO/00-VISAO-EXECUTIVA.md` | DOCUMENTACAO_TEMATICA | PENDENTE_ANALISE_CONTEUDO |
 | 066 | `docs/NEGOCIO/01-MERCADOS-ALVO/README.md` | README_INDICE | PENDENTE_ANALISE_CONTEUDO |
 | 067 | `docs/NEGOCIO/02-PRODUTOS/B3-QUANT-LAB.md` | DOCUMENTACAO_TEMATICA | PENDENTE_ANALISE_CONTEUDO |
@@ -188,7 +188,7 @@
 | 138 | `docs/governanca/auditorias/FASE05_5_GRUPO_06_IDEMPOTENCIA_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 139 | `docs/governanca/auditorias/FASE05_CLASSIFICACAO_DIVERGENCIAS_WORKFLOWS_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 140 | `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
-| 141 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 141 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
 | 142 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 143 | `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 144 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
@@ -335,6 +335,8 @@
 
 ## Estado de execução
 
+Revisão semântica por amostragem prioritária registada em [Revisão semântica documental — Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md). Cinco documentos foram inspecionados; uma divergência de autoridade normativa foi registada para reconciliação antes de qualquer alteração normativa. Esta revisão não certifica os hashes canónicos.
+
 - [x] Capturar árvore Git recursiva de `main`.
 - [x] Enumerar todos os ficheiros Markdown encontrados.
 - [x] Classificar preliminarmente por caminho/nome.
@@ -349,3 +351,4 @@
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
 | 1.0.0 | 2026-10-15 | Inventário estrutural completo e classificação preliminar gerados a partir da árvore Git | Árvore `7ad90741f07bdb5f2872a5a5a35bff4d6324e201`; total `284` ficheiros Markdown |
+| 1.1.0 | 2026-10-15 | Revisão semântica de cinco documentos prioritários e registo de divergência de autoridade | [Relatório Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
