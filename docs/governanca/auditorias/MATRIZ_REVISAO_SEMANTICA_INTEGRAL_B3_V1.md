@@ -7,8 +7,8 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | MATRIZ_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
-| **Estado** | INVENTARIO_INTEGRAL; REVISAO_DE_CONTEUDO_EM_CURSO |
-| **Versão** | 1.0.0 |
+| **Estado** | INVENTARIO_INTEGRAL; 281_PENDENTES_ORIGINAIS_REVISTOS; REVALIDACAO_GLOBAL_RESIDUAL_ABERTA |
+| **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | 1afb0bb0ff1cbf33723ff6e8036b90a301588c762c1fb5e7009401e886658bcc |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
@@ -355,7 +355,7 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 
 ## 4. Gate de fecho integral
 
-A revisão só poderá ser marcada CONCLUÍDA quando:
+A revisão da fila original de 281 pendências está concluída. O fecho global dos 303 documentos só poderá ser marcado CONCLUÍDO quando:
 - todos os documentos elegíveis tiverem estado final explícito;
 - todos os conflitos tiverem decisão versionada ou bloqueio formal;
 - documentos históricos/gerados/formatos de máquina estiverem classificados e tratados segundo o contrato aplicável;
