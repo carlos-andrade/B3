@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.7.0|
-| **SHA-256 (conteúdo canónico)** | 78df99d052f800cb0020cce11460c34b44ce6fd46c6c4efbf0f83281c7e4e07d |
-| **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
+| **Versão** | 1.8.0 |
+| **SHA-256 (conteúdo canónico)** | c543f92f92fca8e6623b45c727c17f782fb3b709d06d1b593de635d0c7bae86c |
+| **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -505,3 +505,45 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 - A auditoria confirmou os 10 hashes normalizados pela ferramenta canónica. A integridade dos hashes válidos foi verificada, mas a conformidade estrutural dos 271 documentos continua pendente.
 - Próximo gate: classificar os cabeçalhos inválidos por tipo (humano, normativo, histórico, gerado, contrato/máquina) e normalizar lotes aprovados individualmente; triagem do documento COTAHIST 2026 sem H1 antes de editar.
 - `GOV-DIV-001` continua aberta. COTAHIST 1986–2025 mantém-se somente para consulta de rotina; 2026 continua incremental diário; `BLOOMBERG_MAIL` permanece isolado e fora do escopo B3.
+
+
+## 22. Atualização do roadmap — normalização documental concluída — 2026-10-15
+
+### Resultado confirmado
+
+A auditoria SHA-256 documental foi reexecutada após a normalização dos cabeçalhos e confirmou:
+
+| Indicador | Resultado |
+|---|---:|
+| Ficheiros Markdown analisados | 302 |
+| CONFORME | 302 |
+| CABECALHO_CONTROLO_INVALIDO | 0 |
+| DIVERGENTE | 0 |
+| Outros estados inválidos reportados | 0 |
+
+- Evidência primária: [auditoria SHA-256, run 159](https://github.com/carlos-andrade/B3/actions/runs/38768768725), conclusão `success`.
+- Artefacto inspecionado: `sha256_documental_b3_report.json`; `files_scanned=302`, `status_counts={"CONFORME":302}`.
+- Normalização automatizada: [workflow de normalização, run 1](https://github.com/carlos-andrade/B3/actions/runs/38767785791).
+- Commit do lote automatizado de 190 documentos: [1e1870479431f49d4786fa89afbd41e4c40f60c0](https://github.com/carlos-andrade/B3/commit/1e1870479431f49d4786fa89afbd41e4c40f60c0).
+- A correção incluiu o relatório gerado automaticamente `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md`, para evitar que a sua regeneração reintroduza um cabeçalho inválido.
+- O resultado foi registado na [Issue #11](https://github.com/carlos-andrade/B3/issues/11).
+
+### Decisão do roadmap
+
+**Concluída:** normalização estrutural dos cabeçalhos e validação de integridade SHA-256 canónico para os 302 ficheiros Markdown abrangidos pelo auditor.
+
+**Não abrangido por esta conclusão:** validade semântica de cada documento, certificação operacional dos dados, resolução de `GOV-DIV-001`, proveniência RAW COTAHIST, captura da lista oficial `ExternalSecurityCategoryCode`, ativação do heartbeat externo, aprovação dos limiares WATCHDOG e aceitação operacional final. Estes itens mantêm os estados próprios e não são promovidos por inferência.
+
+### Próximas ações
+
+1. Prosseguir a revisão semântica e a resolução versionada de divergências normativas, sem alterar silenciosamente documentos de autoridade.
+2. Manter a revisão independente da proveniência RAW COTAHIST e a aquisição da lista oficial `ExternalSecurityCategoryCode` como dependências explícitas.
+3. Continuar o encerramento da Fase C WATCHDOG: triagem de falhas, aprovação humana dos limiares, heartbeat externo, escalonamento e retenção durável.
+4. Preservar COTAHIST 1986–2025 em modo de consulta e manter 2026 em atualização incremental diária.
+5. Manter BLOOMBERG_MAIL isolado e fora do âmbito deste roadmap B3.
+
+### Histórico de atualização
+
+| Data | Alteração | Evidência |
+|---|---|---|
+| 2026-10-15 | Fecho da pendência dos 225 controlos inválidos; auditoria final confirmou 302/302 conformes, zero inválidos e zero divergentes | [Run 38768768725](https://github.com/carlos-andrade/B3/actions/runs/38768768725); [Issue #11](https://github.com/carlos-andrade/B3/issues/11) |
