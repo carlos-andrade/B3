@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–08; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–09; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -117,22 +117,22 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/CARTA_MAGNA_GOVERNANCA_B3.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/MODELO_GOVERNANCA_PARA_PROJETOS.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/NEGOCIO/00-VISAO-EXECUTIVA.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/01-MERCADOS-ALVO/README.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/02-PRODUTOS/B3-QUANT-LAB.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/02-PRODUTOS/PRO-FLUXO.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/02-PRODUTOS/RADAR-B3.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/03-B2B/API-WHITELABEL-ENTERPRISE.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/03-B2B/B2B-ANALYTICS.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/04-IMPLEMENTACAO/PROJETOS-ENGENHARIA.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/BREAK-EVEN.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/CAC-LTV-CHURN.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/ICP.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/MATRIZ-ECONOMICA-B3.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/PRICING.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/README.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/TAM-SAM-SOM.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/NEGOCIO/05-ECONOMIA/UNIT-ECONOMICS.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/NEGOCIO/00-VISAO-EXECUTIVA.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/01-MERCADOS-ALVO/README.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/02-PRODUTOS/B3-QUANT-LAB.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/02-PRODUTOS/PRO-FLUXO.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/02-PRODUTOS/RADAR-B3.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/03-B2B/API-WHITELABEL-ENTERPRISE.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/03-B2B/B2B-ANALYTICS.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/04-IMPLEMENTACAO/PROJETOS-ENGENHARIA.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/BREAK-EVEN.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/CAC-LTV-CHURN.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/ICP.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/MATRIZ-ECONOMICA-B3.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/PRICING.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/README.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/TAM-SAM-SOM.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
+| `docs/NEGOCIO/05-ECONOMIA/UNIT-ECONOMICS.md` | NEGOCIO_PRODUTO | REVISTO_LOTE09; HIPOTESES_COMERCIAIS_NAO_VALIDADAS |
 | `docs/NEGOCIO/06-GOVERNANCA-LICENCIAMENTO-REGULACAO/B3-MARKET-DATA/CHANGELOG.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/NEGOCIO/06-GOVERNANCA-LICENCIAMENTO-REGULACAO/B3-MARKET-DATA/DATASETS-E-CLASSIFICACOES.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/NEGOCIO/06-GOVERNANCA-LICENCIAMENTO-REGULACAO/B3-MARKET-DATA/FONTE-PRIMARIA.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
