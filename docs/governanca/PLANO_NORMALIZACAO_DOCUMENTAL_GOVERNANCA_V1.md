@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.3.0 |
+| **Versão** | 1.4.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
@@ -65,6 +65,9 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 
 ## Inventário e próximo passo
 
+- Lote 03 concluído como revisão semântica parcial: três contratos de ingestão/identidade analisados. O relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) mapeia a evolução Dataset Oficial V1.0 → FASE10A M2/V2.0 e preserva o bloqueio de publicação global até M3.
+- O auditor SHA-256 corrigido e os testes unitários passaram no [run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162). O snapshot analisou 287 Markdown: 271 com cabeçalho de controlo inválido, 15 hashes pendentes e 1 sem H1. Nenhum hash foi validado por comparação no baseline; a dívida de cabeçalho impede ainda a comparação em massa.
+
 - A revisão semântica avançou para o Lote 02, com seis contratos/políticas examinados. O relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) regista dívida de metadados legados e as salvaguardas para não alterar o conteúdo técnico.
 - Foi adicionado um auditor SHA-256 canónico somente de leitura e um workflow de evidência. A primeira execução (run [38713037198](https://github.com/carlos-andrade/B3/actions/runs/38713037198)) falhou devido à regra inicial que convertia o baseline de cabeçalhos legados em falha de job. O script foi corrigido para modo report-only em relação ao baseline; ainda não foi confirmada uma execução posterior dessa versão corrigida.
 - O baseline inicial da auditoria reportou 286 Markdown: 271 cabeçalhos de controlo inválidos, 14 hashes pendentes e 1 ficheiro sem H1. Estes números são triagem estrutural, não classificação semântica nem certificação.
@@ -88,3 +91,4 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 | 1.1.1 | 2026-10-15 | Esclarecimento do snapshot e contagem atual de 285 ficheiros Markdown/218 em `docs/` | Responsável técnico B3 | Reconsulta da árvore Git após publicação da matriz |
 | 1.2.0 | 2026-10-15 | Registo da revisão semântica Lote 01 e divergência normativa GOV-DIV-001; contagem atual de 286 Markdown/219 em `docs/` | Responsável técnico B3 | [Relatório semântico Lote 01](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
 | 1.3.0 | 2026-10-15 | Revisão semântica Lote 02; adição do auditor SHA-256 e registo transparente da execução inicial falhada e correção | Responsável técnico B3 | [Relatório semântico Lote 02](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
+| 1.4.0 | 2026-10-15 | Registo do Lote 03 e validação técnica do auditor SHA-256 com testes unitários | Responsável técnico B3 | [Lote 03](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md); [Run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162) |
