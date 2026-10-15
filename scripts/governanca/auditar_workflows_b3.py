@@ -352,7 +352,7 @@ def main() -> int:
         f"| **SHA-256 (conteúdo canónico)** | {digest} |",
         1,
     )
-    OUT_MD.write_text(rendered, encoding="utf-8", newline="\n")
+    OUT_MD.write_text(rendered, encoding="utf-8")
     print(json.dumps({
         "workflow_count": len(results),
         "status_counts": counts,
