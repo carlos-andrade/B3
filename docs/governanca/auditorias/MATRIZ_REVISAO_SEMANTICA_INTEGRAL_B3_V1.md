@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; REVISAO_DE_CONTEUDO_EM_CURSO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | 1afb0bb0ff1cbf33723ff6e8036b90a301588c762c1fb5e7009401e886658bcc |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
