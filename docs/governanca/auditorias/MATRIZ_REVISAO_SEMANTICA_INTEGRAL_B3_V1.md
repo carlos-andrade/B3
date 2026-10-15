@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–16; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–17; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -209,19 +209,19 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md` | GOVERNANCA_NORMATIVA | DECISAO_GOV_DIV_001_REGISTADA; VALIDACAO_FINAL_PENDENTE |
 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/ingestao/CONTRATO_NORMALIZED_ANUAL_COTAHIST_V2.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/ingestao/COTAHIST_1986_2026_RESULTADO_AUDITORIA_V2.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/COTAHIST_1986_2026_RESULTADO_AUDITORIA_V2.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/COTAHIST_1986_CONTRATO_IDENTIDADE_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_2026_FASE10_GATE_VALIDACAO_CANDIDATO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_2026_FASE11_REVISAO_E_PROMOCAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_AUDITORIA_CONTINUIDADE_V2.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/COTAHIST_VALIDACAO_CALENDARIO_1986_2026.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/DIAGNOSTICO_COTAHIST_NORMALIZACAO_V4_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_2026_FASE10_GATE_VALIDACAO_CANDIDATO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_2026_FASE11_REVISAO_E_PROMOCAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_AUDITORIA_CONTINUIDADE_V2.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/COTAHIST_VALIDACAO_CALENDARIO_1986_2026.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/DIAGNOSTICO_COTAHIST_NORMALIZACAO_V4_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/FASE07B_COTAHIST_1986_TPMERC_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/FASE07C_COTAHIST_1986_CODBDI_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/FASE07D_COTAHIST_1986_CODISI_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
