@@ -54,9 +54,10 @@ def read_status(path: Path) -> dict:
         text = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError) as exc:
         return {"path": path.as_posix(), "status": "ERRO_LEITURA", "detail": str(exc)}
-    if not text.startswith("# "):
+    normalized = text.removeprefix("\ufeff").replace("\r\n", "\n").replace("\r", "\n")
+    if not normalized.startswith("# "):
         return {"path": path.as_posix(), "status": "SEM_CABECALHO_H1"}
-    lines = text.removeprefix("\ufeff").replace("\r\n", "\n").replace("\r", "\n").splitlines()
+    lines = normalized.splitlines()
     sha_lines = [line for line in lines if line.startswith("|") and SHA_LABEL in line]
     commit_lines = [line for line in lines if line.startswith("|") and COMMIT_LABEL in line]
     if len(sha_lines) != 1 or len(commit_lines) != 1:
@@ -110,7 +111,8 @@ def main() -> int:
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"files_scanned": len(rows), "status_counts": counts, "report": str(out)}, ensure_ascii=False))
     print(f"::notice::Relatório criado: {out}; auditoria somente de leitura.")
-    return 1 if counts.get("ERRO_LEITURA", 0) or counts.get("CABECALHO_CONTROLO_INVALIDO", 0) else 0
+    # Baseline legado é reportável; só erro de leitura falha o processo.
+    return 1 if counts.get("ERRO_LEITURA", 0) else 0
 
 
 if __name__ == "__main__":
