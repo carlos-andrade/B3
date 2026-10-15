@@ -1,7 +1,27 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-AUD-WORKFLOWS-CURRENT |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_AUDITORIA |
+| **Fase** | GOVERNANCA_CONTINUA |
+| **Estado** | EM_REVISAO |
+| **Versão** | 2.0.0 |
+| **SHA-256 (conteúdo canónico)** | 4fc0f0619ee0142dabc4edf5dfa9c16e22c12ec35c96f6c863b5ec4d3d717428 |
+| **Commit de referência (versão anterior)** | [789f55e242fb00f6bd666bc11a7a8826263d7c2f](https://github.com/carlos-andrade/B3/commit/789f55e242fb00f6bd666bc11a7a8826263d7c2f) |
+| **Data de criação** | N/A — relatório regenerado automaticamente |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Automação de auditoria de governança B3 |
+| **Aprovador** | Pendente — relatório diagnóstico, não constitui aprovação normativa |
+| **Origem** | Gerado por scripts/governanca/auditar_workflows_b3.py |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-15T16:19:41.825763+00:00
+Gerado em UTC: 2026-10-15T16:21:52.058764+00:00
 Workflows auditados: 553
 
 ## Regra de decisão
