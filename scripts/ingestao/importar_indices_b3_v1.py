@@ -36,6 +36,15 @@ for p in (RAW_DIR, NORM_DIR, MAN_DIR, OFF_DIR):
 def sha256_bytes(b):
     return hashlib.sha256(b).hexdigest()
 
+
+def iso_date(value):
+    """Normaliza datetime.date, datetime ou uma data ISO para YYYY-MM-DD."""
+    if isinstance(value, datetime):
+        return value.date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    return date.fromisoformat(str(value)).isoformat()
+
 def fetch(code):
     api_code = CODE_ALIAS.get(code, code)
     payload = {"language": "pt-br", "pageNumber": 1, "pageSize": 1000, "index": api_code, "segment": "1"}
@@ -165,9 +174,10 @@ def main():
             raw, api_obj, url = fetch(code)
             raw_sha = sha256_bytes(raw)
             ref_date, rows, total, redutor = parse_api(code, api_obj)
+            ref_date_iso = iso_date(ref_date)
 
-            raw_path = RAW_DIR / ref_date[:4] / f"{code}_{ref_date}.json"
-            norm_path = NORM_DIR / ref_date[:4] / f"{code}_{ref_date}.csv"
+            raw_path = RAW_DIR / ref_date_iso[:4] / f"{code}_{ref_date_iso}.json"
+            norm_path = NORM_DIR / ref_date_iso[:4] / f"{code}_{ref_date_iso}.csv"
             raw_path.parent.mkdir(parents=True, exist_ok=True)
             norm_path.parent.mkdir(parents=True, exist_ok=True)
             raw_path.write_bytes(raw)
@@ -187,7 +197,7 @@ def main():
                 "source_url": url,
                 "source_page_url": f"https://sistemaswebb3-listados.b3.com.br/indexPage/day/{CODE_ALIAS.get(code, code)}?language=pt-br",
                 "captured_at": captured_at,
-                "reference_date": ref_date.isoformat(),
+                "reference_date": ref_date_iso,
                 "raw_file": str(raw_path.relative_to(ROOT)).replace("\\","/"),
                 "raw_sha256": raw_sha,
                 "normalized_file": str(norm_path.relative_to(ROOT)).replace("\\","/"),
@@ -196,13 +206,13 @@ def main():
                 "participation_sum_pct": total,
                 "redutor": redutor,
                 "duplicates": 0,
-                "future_reference_date": ref_date > TODAY.isoformat(),
-                "future_reference_days": (datetime.fromisoformat(ref_date).date() - TODAY).days,
+                "future_reference_date": date.fromisoformat(ref_date_iso) > TODAY,
+                "future_reference_days": (date.fromisoformat(ref_date_iso) - TODAY).days,
                 "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
                 "status": "VALIDADO",
                 "fail_closed": True
             }
-            mp = MAN_DIR / f"{code}_{ref_date}.json"
+            mp = MAN_DIR / f"{code}_{ref_date_iso}.json"
             mp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             results.append(manifest)
         except Exception as e:
