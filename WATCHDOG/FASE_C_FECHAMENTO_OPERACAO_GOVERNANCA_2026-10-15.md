@@ -1,10 +1,23 @@
 # FASE C — Fechamento de Operação e Governança do B3
 
-**Data da auditoria:** 2026-10-15  
-**Repositório:** `carlos-andrade/B3`  
-**Branch:** `main`  
-**Escopo:** WATCHDOG, atualidade dos dados, alertas, evidências e governança operacional.  
-**Estado global:** `PARCIAL — NÃO ENCERRAR A FASE`
+| Campo | Valor |
+|---|---|
+| **ID** | B3-WD-FC-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_AUDITORIA |
+| **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 2ae47460304997acfd64a61b19c6cd1b098220c3917b0ed4d6c97eb144780a7f |
+| **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
+| **Data de criação** | 2026-10-15 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável operacional do projeto B3 |
+| **Aprovador** | Pendente — não representa aprovação formal |
+| **Origem** | Auditoria operacional WATCHDOG e Issue #11; revisão segundo GOVERNANCA |
+| **Autoridade superior** | [CONSTITUICAO.md](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Norma de Cabeçalho v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md), [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Resumo executivo
 
@@ -123,3 +136,4 @@ As URLs devem pertencer a um serviço externo à execução GitHub Actions. Não
 - [Issue #11 — Execuções desfavoráveis](https://github.com/carlos-andrade/B3/issues/11)
 - [Issue #8 — Atualidade de dados](https://github.com/carlos-andrade/B3/issues/8)
 - [Norma central WATCHDOG — GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md)
+
