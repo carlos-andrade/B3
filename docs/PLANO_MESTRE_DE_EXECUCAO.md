@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.5.0 |
+| **Versão** | 1.6.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
@@ -435,8 +435,8 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 - Script somente de leitura: `scripts/governanca/auditar_sha256_documental_b3.py`.
 - Workflow: `.github/workflows/b3-auditoria-sha256-documental.yml`.
 - Evidência da primeira execução: [run 38713037198](https://github.com/carlos-andrade/B3/actions/runs/38713037198), conclusão `failure`.
-- Baseline reportado: 286 Markdown; 271 cabeçalhos de controlo inválidos; 14 hashes pendentes; 1 ficheiro sem H1. Os estados refletem a ausência de metadados em documentos legados, não 271 divergências de hash.
-- Correção efetuada: o auditor passa a tratar não conformidade documental legada como resultado reportável, e reserva falha do job para erro de leitura. A execução posterior com a versão corrigida ainda carece de confirmação; portanto, a ferramenta não é declarada validada.
+- Baseline inicial: 286 Markdown; 271 cabeçalhos de controlo inválidos; 14 hashes pendentes; 1 ficheiro sem H1. Os estados refletem a ausência de metadados em documentos legados, não 271 divergências de hash.
+- Correção efetuada: o auditor trata não conformidade documental legada como resultado reportável e reserva falha do job para erro de leitura. A versão corrigida foi executada com sucesso no run 38713567162; isso valida os testes e a triagem, não a conformidade dos hashes de produção.
 
 ### Gates e próximas ações
 
@@ -470,3 +470,14 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 2. Resolver GOV-DIV-001 por decisão normativa versionada.
 3. Normalizar metadados nos próximos documentos aprovados para edição, sem alterar o corpo técnico.
 4. Reexecutar auditoria após cada lote e confirmar pelo menos uma comparação real de hash antes de declarar o algoritmo validado contra documentos de produção.
+
+
+## 18. Classificação semântica por natureza documental — Lote 04 — 2026-10-15
+
+- Relatório publicado: [REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md](governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md).
+- Amostra de 12 documentos analisada por conteúdo: regras de ingestão histórica, runbook de migração LFS, rotina diária, contratos COTAHIST e políticas/contratos de evidência e monitorização.
+- Resultado: classificação mais precisa entre documento normativo de domínio, runbook operacional, contrato de dados/identidade, contrato de evidência e política. Não foram alterados contratos-fonte nem dados.
+- Limite: classificação global dos 288 Markdown (snapshot atual da árvore) não está concluída; artefactos gerados, históricos, modelos e formatos de máquina permanecem pendentes de triagem.
+- Regras preservadas: COTAHIST 1986–2025 encerrado para ingestão de rotina e disponível para consulta; 2026 atualizado diariamente; BLOOMBERG_MAIL fora do âmbito.
+- GOV-DIV-001 permanece aberta. A precedência operacional provisória do Layout Mestre em operações de código é aplicada sem declarar alteração da Carta Magna.
+- Próximo gate: selecionar pequeno lote de documentos humanos com estado/autoridade claros, normalizar apenas metadados autorizados e validar pelo menos um hash documental real (CONFORME ou DIVERGENTE).
