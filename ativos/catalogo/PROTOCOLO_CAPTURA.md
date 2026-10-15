@@ -1,9 +1,23 @@
-# Protocolo de Captura do Cadastro B3
+# Protocolo de captura do Cadastro de Instrumentos B3
 
-**Projeto:** B3 - A Bolsa do Brasil  
-**Repositório:** `carlos-andrade/B3`  
-**Data:** 23/09/2026  
-**Fonte:** B3 — Cadastro de Instrumentos (Listado), BVBG.028.02
+| Campo | Valor |
+|---|---|
+| **ID** | B3-ATIVOS-CATALOGO-PROTOCOLO-CAPTURA-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | PROTOCOLO_INGESTAO |
+| **Fase** | Catálogo B3 — captura de instrumentos |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 6b6e2775f6737c5bfef149da84894bab56371b925d26c35abdab09b50464fdd9 |
+| **Commit de referência (versão anterior)** | N/A — normalização inicial do cabeçalho |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — validação técnica e aprovação humana |
+| **Origem** | B3 — Cadastro de Instrumentos (Listado), BVBG.028.02 |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## Objetivo
 
