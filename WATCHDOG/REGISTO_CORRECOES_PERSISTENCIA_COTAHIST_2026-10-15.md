@@ -28,17 +28,17 @@
 
 - [Índices B3 run #24](https://github.com/carlos-andrade/B3/actions/runs/38751655690) concluiu com sucesso após a lógica de retry já existente no workflow: 6 testes passaram, 34 índices validados, zero rejeitados; commit de dados remoto confirmado nos logs.
 - [Importação diária run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492) foi iniciado pelo commit da correção. O resultado final precisa ser consultado antes de declarar a persistência diária validada.
-- [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349) foi iniciado após o commit da correção e ainda estava em curso nesta atualização. Mesmo que a persistência funcione, a publicação continuará bloqueada enquanto a auditoria física global não confirmar os hashes.
+- [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349) terminou com sucesso. O script fail-closed gerou e persistiu o dataset com 41 anos (1986–2026), após materializar os CSVs anuais via Git LFS; o commit de dados foi rebased e enviado para `main`, e o artefacto foi publicado. O código validou em runtime o estado da auditoria global, hashes físicos contra auditoria/sidecar/manifesto, contagem de linhas e campos, e datas. Esta validação corresponde à evidência disponível no repositório e na execução, não substituindo uma revisão independente da proveniência dos ficheiros RAW.
 
 ## 4. Riscos e gates pendentes
 
 - Não recalcular ou alterar sidecars/manifests para forçar correspondência: reconciliar proveniência e bytes físicos por ano.
 - Execução diária #35 verificada: sucesso, gate de conflitos aprovado e artefactos publicados.
-- Confirmar uma execução do Dataset Oficial V2 com o código atualizado.
+- Dataset Oficial V2 #11 verificado: geração de 41 anos, persistência e publicação do artefacto concluídas com sucesso; manter monitorização e revisão independente de proveniência RAW.
 - Corrigir os cabeçalhos documentais em lotes controlados; auditoria #86 reportou 301 ficheiros: 52 conformes, 248 com cabeçalho de controlo inválido e 1 sem H1.
 - Manter a [Issue #11](https://github.com/carlos-andrade/B3/issues/11) aberta até resolver os incidentes e obter evidência final.
 - Aprovar formalmente os limiares provisórios de atualidade e testar heartbeat independente, escalonamento/SLA e retenção duradoura.
 
 ## 5. Decisão
 
-As correções de persistência foram implementadas. A eficácia está **parcialmente demonstrada**: o workflow de índices teve sucesso após a mitigação; a importação diária e o Dataset Oficial V2 ainda exigem verificação posterior. A Fase C permanece EM_CURSO e a Fase D permanece BLOQUEADA pela reconciliação física COTAHIST.
+As correções de persistência foram implementadas. A eficácia da persistência está **demonstrada para índices, importação diária e Dataset Oficial V2** nas execuções verificadas. O gate físico do Dataset Oficial V2 aceitou os 41 anos no runtime da run #11. A Fase C permanece EM_CURSO; a Fase D pode avançar para validação de proveniência RAW e revisão independente, sem declarar certificação global final antes dessa revisão.
