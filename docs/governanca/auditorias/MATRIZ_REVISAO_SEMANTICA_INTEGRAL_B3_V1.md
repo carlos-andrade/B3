@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–13; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–14; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -95,21 +95,21 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `ativos/opcoes/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
 | `ativos/renda_fixa/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
 | `ativos/termo/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
-| `dados/bdi/2026/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/bdi/PROTOCOLO_CAPTURA.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/bdi/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/bdi/fontes/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/calendario_economico/raw/bcb_copom_281_ata_2026-09-24.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/calendario_economico/raw/bcb_copom_281_comunicado_2026-09-24.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/calendario_economico/raw/ibge_calendario_conjunturais_2026_20260924.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/cotahist/manifests/STATUS_AQUISICAO_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/fontes/DIAGNOSTICO_MIGRACAO_API_B3_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/fontes/STATUS_MIGRACAO_FONTES_B3_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/market_data/PROVEDORES_E_GRANULARIDADE.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/market_data/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/market_data/fontes/INVENTARIO_PESQUISA_POR_PREGAO_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/market_data/historico/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dados/market_data/microestrutura/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
+| `dados/bdi/2026/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/bdi/PROTOCOLO_CAPTURA.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; GATE_DE_TERMOS_REGISTADO |
+| `dados/bdi/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; GATE_DE_TERMOS_REGISTADO |
+| `dados/bdi/fontes/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/calendario_economico/raw/bcb_copom_281_ata_2026-09-24.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; CAPTURA_RAW_PENDENTE |
+| `dados/calendario_economico/raw/bcb_copom_281_comunicado_2026-09-24.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; CAPTURA_RAW_PENDENTE |
+| `dados/calendario_economico/raw/ibge_calendario_conjunturais_2026_20260924.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; CAPTURA_RAW_PENDENTE |
+| `dados/cotahist/manifests/STATUS_AQUISICAO_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/fontes/DIAGNOSTICO_MIGRACAO_API_B3_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/fontes/STATUS_MIGRACAO_FONTES_B3_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/market_data/PROVEDORES_E_GRANULARIDADE.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
+| `dados/market_data/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; GATE_DE_TERMOS_REGISTADO |
+| `dados/market_data/fontes/INVENTARIO_PESQUISA_POR_PREGAO_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; GATE_DE_TERMOS_REGISTADO |
+| `dados/market_data/historico/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; GATE_DE_TERMOS_REGISTADO |
+| `dados/market_data/microestrutura/README.md` | DADOS_FONTES_E_EVIDENCIAS | REVISTO_LOTE14; SNAPSHOT_HISTORICO_PRESERVADO |
 | `dashboards/README.md` | RAIZ_E_INDICES | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md` | DOCUMENTACAO_PROJETO | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
