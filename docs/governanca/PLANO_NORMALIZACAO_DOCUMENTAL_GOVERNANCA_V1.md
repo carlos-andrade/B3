@@ -109,3 +109,10 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 - O estado `CABECALHO_CONTROLO_INVALIDO` significa que faltam ou são inválidos metadados de controlo; não deve ser reportado como hash divergente.
 - Próxima ação: preencher apenas hashes canónicos em documentos com as duas linhas de controlo válidas e não pendentes, começando pelos relatórios de revisão semântica; verificar depois no workflow e manter os artefactos de execução como evidência ligada ao run.
 
+## Atualização de auditoria — hashes confirmados — 2026-10-15
+
+- [Run 38719803051](https://github.com/carlos-andrade/B3/actions/runs/38719803051) terminou com `success` no commit `8b3797da39cc04ae778e2a289e34b384c6a2c907`.
+- Resultado do auditor: 289 Markdown; 7 `CONFORME`; 10 `PENDENTE`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`; zero `DIVERGENTE`.
+- Os hashes dos quatro relatórios semânticos e dos três documentos de controlo/roadmap foram confirmados pela ferramenta canónica, sem divergência nesta execução.
+- A normalização global não está concluída. Não alterar contratos de dados, evidências de máquina, históricos ou documentos normativos conflitantes sem revisão específica e autorização versionada.
+- Próximo gate: selecionar documentos humanos não normativos com cabeçalho válido, editar apenas metadados autorizados, recalcular hash e verificar por workflow antes de promover o lote.
