@@ -9,7 +9,7 @@
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
 | **Versão** | 1.5.0|
-| **SHA-256 (conteúdo canónico)** | a032a6d49f4bbea7ab05e348ff17ed8cd644b08f7d4677430e34525d7f62ef04 |
+| **SHA-256 (conteúdo canónico)** | 7a2f53953b82e35c66ca732cb8ec1700711c416de84bc9abb587014f54c5b3d8 |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
