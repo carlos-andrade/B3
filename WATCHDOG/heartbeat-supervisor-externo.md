@@ -1,5 +1,24 @@
 # Configuração de supervisão independente por heartbeat
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-WD-HEARTBEAT-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | GUIA_OPERACIONAL |
+| **Fase** | WATCHDOG — supervisão independente |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 4f2f87a87acca1fd71add4c13546cdc52e5f1c0d16b24d140e55159141894ce4 |
+| **Commit de referência (versão anterior)** | [8c75b57e4d9c11b5ff3545ff25ad54b76018c583](https://github.com/carlos-andrade/B3/commit/8c75b57e4d9c11b5ff3545ff25ad54b76018c583) |
+| **Data de criação** | 2026-10-15 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável operacional do projeto B3 |
+| **Aprovador** | Pendente — teste de aceitação e aprovação humana necessários |
+| **Origem** | Workflows WATCHDOG e configuração de heartbeat externo do repositório B3 |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) e [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Estado:** hooks de integração preparados; supervisão externa ainda inativa até configurar as duas URLs secretas.
 
 ## Objetivo
