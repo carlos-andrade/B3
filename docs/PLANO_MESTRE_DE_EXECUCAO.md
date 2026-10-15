@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.4.0 |
+| **Versão** | 1.5.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
@@ -445,3 +445,28 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 3. Resolver a divergência normativa GOV-DIV-001 por decisão versionada.
 4. Normalizar os próximos lotes de metadados sem alterar o corpo técnico e validar referências.
 5. Calcular os hashes canónicos após estabilizar cada lote. Não declarar conformidade global antecipadamente.
+
+
+## 17. Validação técnica do auditor SHA-256 e Lote 03 — 2026-10-15
+
+### Evidência executada
+
+- Testes unitários e auditoria somente de leitura concluídos com sucesso no [run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162).
+- Os testes cobrem: exclusão exata das duas linhas de controlo, normalização UTF-8/BOM/CRLF e rejeição quando faltam linhas de controlo.
+- O snapshot analisou 287 Markdown: 271 `CABECALHO_CONTROLO_INVALIDO`, 15 `PENDENTE`, 1 `SEM_CABECALHO_H1`.
+- **Limite:** nenhum documento foi classificado como `CONFORME` ou `DIVERGENTE` por hash no baseline; a execução valida o funcionamento técnico e a triagem, não a integridade dos hashes documentais atuais.
+- Artefacto JSON de auditoria: disponível no separador Artifacts do run; a execução não alterou ficheiros documentais automaticamente.
+
+### FASE 3 — Lotes semânticos
+
+- Lote 01: cinco documentos de governança revistos; divergência GOV-DIV-001 aberta.
+- Lote 02: seis contratos/políticas revistos; dívida de metadados legados registada.
+- Lote 03: três contratos de ingestão/identidade revistos; evolução V1.0 → FASE10A M2/V2.0 do Dataset Oficial mapeada. Publicação global V2 continua bloqueada até M3.
+- Os relatórios dos lotes estão ligados a partir do inventário documental e não substituem os contratos-fonte.
+
+### Gate seguinte
+
+1. Refinar a matriz semântica para separar documentos humanos, históricos, gerados e artefactos com contrato próprio.
+2. Resolver GOV-DIV-001 por decisão normativa versionada.
+3. Normalizar metadados nos próximos documentos aprovados para edição, sem alterar o corpo técnico.
+4. Reexecutar auditoria após cada lote e confirmar pelo menos uma comparação real de hash antes de declarar o algoritmo validado contra documentos de produção.
