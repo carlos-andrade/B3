@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.6.0|
-| **SHA-256 (conteúdo canónico)** | 314e89f617d2dfba802ad3562d5bb54289f30a74ea87cbd56c2c4360213ef7af |
-| **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
+| **Versão** | 1.7.0 |
+| **SHA-256 (conteúdo canónico)** | a3ae882341cbdd7179c02f5c3f8ddcd59544e774412ff7f7d911f4e984d59702 |
+| **Commit de referência (versão anterior)** | [17f30edd2b4400ede9253ea8f028572dd9409657](https://github.com/carlos-andrade/B3/commit/17f30edd2b4400ede9253ea8f028572dd9409657) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -124,3 +124,44 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 - Os 10 hashes foram preenchidos com os candidatos calculados pela ferramenta oficial e a execução subsequente confirmou a correspondência entre hash declarado e calculado.
 - A normalização global permanece incompleta: não converter os 271 cabeçalhos inválidos em alterações em massa sem classificação semântica; o ficheiro sem H1 exige triagem por tipo documental.
 - Preservar o conteúdo substantivo das cartas normativas; `GOV-DIV-001` continua aberta até decisão autorizada e versionada.
+
+
+## Atualização final da auditoria documental — 2026-10-15
+
+Esta secção substitui os números de baseline anteriores para o estado atual da auditoria. Os números históricos acima permanecem no documento para preservar a cronologia das execuções e não devem ser usados como fotografia vigente.
+
+### Resultado confirmado
+
+| Métrica | Resultado |
+|---|---:|
+| Ficheiros Markdown analisados | 302 |
+| `CONFORME` | 302 |
+| `CABECALHO_CONTROLO_INVALIDO` | 0 |
+| `DIVERGENTE` | 0 |
+| Outros estados inválidos no relatório | 0 |
+
+- Auditoria final: [run 38768768725](https://github.com/carlos-andrade/B3/actions/runs/38768768725), conclusão `success`.
+- Artefacto inspecionado: `sha256_documental_b3_report.json`; contagem de estado `{"CONFORME":302}`.
+- Workflow de normalização controlada: [run 38767785791](https://github.com/carlos-andrade/B3/actions/runs/38767785791), conclusão `success`.
+- A normalização foi executada em lotes: 35 documentos corrigidos previamente e 190 documentos no lote automatizado. A regeneração do relatório automático de conformidade foi também corrigida para incluir cabeçalho e hash canónicos.
+- A conclusão foi registada na [Issue #11](https://github.com/carlos-andrade/B3/issues/11) e no [Plano Mestre de Execução](../PLANO_MESTRE_DE_EXECUCAO.md).
+
+### Critério de encerramento do plano documental estrutural
+
+**CONCLUÍDO para os 302 ficheiros Markdown abrangidos pela execução final.** O auditor confirma a correspondência entre hash declarado e calculado e não reporta cabeçalhos de controlo inválidos.
+
+Este fecho é estritamente estrutural e criptográfico. Não significa que a revisão semântica integral de cada documento esteja concluída, não resolve a divergência normativa `GOV-DIV-001`, e não certifica os dados COTAHIST ou o catálogo BVBG.028.02.
+
+### Próximas ações — fora do gate de cabeçalhos
+
+1. Prosseguir a classificação e revisão semântica documental, priorizando contratos e documentos de autoridade.
+2. Resolver `GOV-DIV-001` por decisão autorizada e versionada; não editar silenciosamente a Carta Magna ou o Layout Mestre.
+3. Manter pendente a verificação independente da proveniência RAW COTAHIST.
+4. Capturar e validar a lista oficial vigente `ExternalSecurityCategoryCode`; não inferir códigos a partir de listas históricas.
+5. Continuar as ações operacionais WATCHDOG: heartbeat externo, aprovação dos limiares, confirmação/escalonamento e retenção durável.
+
+### Histórico de alterações
+
+| Versão | Data | Alteração | Responsável | Evidência |
+|---|---|---|---|---|
+| 1.7.0 | 2026-10-15 | Registo do encerramento estrutural: 302/302 conformes, zero cabeçalhos inválidos e zero hashes divergentes; baseline anterior preservado como histórico | Responsável técnico B3 | [Auditoria final run 38768768725](https://github.com/carlos-andrade/B3/actions/runs/38768768725) |
