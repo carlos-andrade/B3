@@ -4,41 +4,42 @@
 |---|---|
 | **ID** | B3-WD-COTAHIST-PERSIST-002 |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | REGISTO_DE_CORRECAO |
 | **Fase** | FASE_C_OPERACAO_E_GOVERNANCA / FASE_D_INTEGRIDADE_DOS_DADOS |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.0.0 |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 35ff57753921d501684cf149f05a153ea865213cd34e04f8e3626d48cb2f9cf3 |
+| **Commit de referência (versão anterior)** | [0e89f25a38e10b7efcf129647dd9de906b4d7d5e](https://github.com/carlos-andrade/B3/commit/0e89f25a38e10b7efcf129647dd9de906b4d7d5e) |
+| **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
-| **Aprovador** | Pendente |
-| **Autoridade superior** | [Constituição GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md) e [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — requer aprovação humana |
+| **Origem** | Runs de GitHub Actions referenciadas neste registo e histórico Git do repositório |
+| **Autoridade superior** | [Constituição GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) e [Norma de cabeçalho 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
-## 1. Contexto e evidência anterior
+## 1. Estado e evidências verificadas
 
-- [COTAHIST importação diária run #30](https://github.com/carlos-andrade/B3/actions/runs/38569195580): captura e reconciliação passaram, mas a persistência falhou.
-- [COTAHIST Dataset Oficial V2 run #9](https://github.com/carlos-andrade/B3/actions/runs/38577021350): o gate bloqueou corretamente a publicação devido a divergências de hash entre bytes físicos, auditoria, sidecar e manifesto.
-- A análise do workflow diário mostrou um `git pull --rebase` seguido de um único `git push`, sem repetição em caso de atualização concorrente. O comando `git commit ... || exit 0` também podia terminar o job antes do gate e da publicação de evidências quando não havia alterações.
+- [Índices B3 run #24](https://github.com/carlos-andrade/B3/actions/runs/38751655690): 6 testes passaram, 34 índices validados, zero rejeitados e persistência remota confirmada.
+- [Importação diária COTAHIST run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492): importação e reconciliação anual 2026 aprovadas, persistência concluída, zero dias em conflito e 23 ficheiros de evidência publicados.
+- [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349): dataset de 41 anos (1986–2026) gerado e persistido após materialização Git LFS; validação runtime dos hashes físicos, contagens, campos e datas. Não substitui revisão independente da proveniência RAW.
+- [Auditoria documental canónica run #89](https://github.com/carlos-andrade/B3/actions/runs/38756553376): execução e artefacto concluídos; 302 ficheiros analisados, 52 CONFORME, 249 CABECALHO_CONTROLO_INVALIDO e 1 SEM_CABECALHO_H1. Sucesso técnico não equivale a conformidade global.
+- [Validação WATCHDOG run #59](https://github.com/carlos-andrade/B3/actions/runs/38756553870): validação estrutural passou para 2 sistemas, 8 datasets monitorizados e 6 controlos catalogados. Não prova receção efetiva de heartbeat externo nem aprovação humana de limiares/SLA.
 
-## 2. Alterações aplicadas
+## 2. Correções de persistência
 
-1. **Importação diária** — commit [d79f1d311a41e8dfa7d04b6230c60f9bf02a2909](https://github.com/carlos-andrade/B3/commit/d79f1d311a41e8dfa7d04b6230c60f9bf02a2909): persistência condicional e até cinco tentativas de `fetch` + `rebase` + `push`; falha explícita se as tentativas não forem bem-sucedidas; ausência de alterações já não termina o job antes dos gates.
-2. **Dataset Oficial V2** — commit [b8a8e9836251343b9287376e0957a48ee77e38a0](https://github.com/carlos-andrade/B3/commit/b8a8e9836251343b9287376e0957a48ee77e38a0): mesma estratégia de persistência; correção do redirecionamento de `GITHUB_STEP_SUMMARY`; remoção de duplicação no trigger de auditoria física.
+1. [Commit diário d79f1d3](https://github.com/carlos-andrade/B3/commit/d79f1d311a41e8dfa7d04b6230c60f9bf02a2909): até cinco tentativas de fetch/rebase/push e falha explícita após esgotamento; ausência de alterações não interrompe gates.
+2. [Commit Dataset V2 b8a8e98](https://github.com/carlos-andrade/B3/commit/b8a8e9836251343b9287376e0957a48ee77e38a0): retry de persistência, correção de GITHUB_STEP_SUMMARY e remoção de trigger duplicado de auditoria física.
 
-## 3. Verificação posterior
+## 3. Riscos e próxima ação
 
-- [Índices B3 run #24](https://github.com/carlos-andrade/B3/actions/runs/38751655690) concluiu com sucesso após a lógica de retry já existente no workflow: 6 testes passaram, 34 índices validados, zero rejeitados; commit de dados remoto confirmado nos logs.
-- [Importação diária run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492) terminou com sucesso: importação diária e reconciliação anual 2026 aprovadas; commit, rebase e push remoto concluídos; gate `EXECUCAO_SEM_CONFLITOS` com zero dias em conflito; 23 ficheiros de evidência publicados.
-- [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349) terminou com sucesso. O script fail-closed gerou e persistiu o dataset com 41 anos (1986–2026), após materializar os CSVs anuais via Git LFS; o commit de dados foi rebased e enviado para `main`, e o artefacto foi publicado. O código validou em runtime o estado da auditoria global, hashes físicos contra auditoria/sidecar/manifesto, contagem de linhas e campos, e datas. Esta validação corresponde à evidência disponível no repositório e na execução, não substituindo uma revisão independente da proveniência dos ficheiros RAW.
+- Não alterar RAW, sidecars ou manifestos para forçar correspondência de hashes; reconciliar bytes físicos e proveniência por ano.
+- Corrigir cabeçalhos em lotes pequenos, inspecionados e validados, preservando o corpo e o histórico.
+- Aprovar formalmente limiares de atualidade e testar heartbeat independente, SLA/escalonamento e retenção duradoura.
+- Manter a [Issue #11](https://github.com/carlos-andrade/B3/issues/11) aberta até os gates pendentes serem resolvidos.
+- A Fase C permanece EM_CURSO; a Fase D permanece em revisão independente de proveniência RAW. Não declarar certificação global.
 
-## 4. Riscos e gates pendentes
+## 4. Decisão
 
-- Não recalcular ou alterar sidecars/manifests para forçar correspondência: reconciliar proveniência e bytes físicos por ano.
-- Execução diária #35 verificada: sucesso, gate de conflitos aprovado e artefactos publicados.
-- Dataset Oficial V2 #11 verificado: geração de 41 anos, persistência e publicação do artefacto concluídas com sucesso; manter monitorização e revisão independente de proveniência RAW.
-- Corrigir os cabeçalhos documentais em lotes controlados; auditoria #86 reportou 301 ficheiros: 52 conformes, 248 com cabeçalho de controlo inválido e 1 sem H1.
-- Manter a [Issue #11](https://github.com/carlos-andrade/B3/issues/11) aberta até resolver os incidentes e obter evidência final.
-- Aprovar formalmente os limiares provisórios de atualidade e testar heartbeat independente, escalonamento/SLA e retenção duradoura.
-
-## 5. Decisão
-
-As correções de persistência foram implementadas. A eficácia da persistência está **demonstrada para índices, importação diária e Dataset Oficial V2** nas execuções verificadas. O gate físico do Dataset Oficial V2 aceitou os 41 anos no runtime da run #11. A Fase C permanece EM_CURSO; a Fase D pode avançar para validação de proveniência RAW e revisão independente, sem declarar certificação global final antes dessa revisão.
+A eficácia da persistência está demonstrada para os três fluxos verificados (índices, importação diária e Dataset Oficial V2). Próxima ação: corrigir um lote piloto reduzido de cabeçalhos e reexecutar a auditoria, medindo a redução objetiva de não conformidades.
