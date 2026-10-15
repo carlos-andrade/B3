@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/ingestao/importar_indices_b3_v1.py"
+      - "tests/ingestao/test_importar_indices_b3_v1.py"
       - ".github/workflows/indices-b3-composicao-v1.yml"
       - "governanca/indices_b3/INVENTARIO_INDICES_B3_V1.md"
   schedule:
