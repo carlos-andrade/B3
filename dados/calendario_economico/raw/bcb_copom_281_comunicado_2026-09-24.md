@@ -1,13 +1,13 @@
-# RAW — BCB/COPOM — 281ª REUNIÃO — COMUNICADO
+# REGISTO DE FONTE — BCB/COPOM — 281ª REUNIÃO — COMUNICADO
 
 | Campo | Valor |
 |---|---|
 | **ID** | B3-DOC-003-CADO-2026-09-24-MD |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
-| **Tipo documental** | EVIDENCIA_RAW_DOCUMENTAL |
+| **Tipo documental** | REGISTO_DE_FONTE_PENDENTE_RAW |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
+| **Estado** | METADADOS_IDENTIFICADOS; CAPTURA_RAW_PENDENTE |
 | **Versão** | 1.0.0 |
 | **SHA-256 (conteúdo canónico)** | 12d3847a67295f0916254c111c5d031f2aefe1881173fed74841d6f88cc19c59 |
 | **Commit de referência (versão anterior)** | [abadd5fd84dc2d6f8898c452b1f30e92e1469a2b](https://github.com/carlos-andrade/B3/commit/abadd5fd84dc2d6f8898c452b1f30e92e1469a2b) |
