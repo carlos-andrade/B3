@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–12; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–13; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -49,8 +49,8 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 
 | Caminho | Classe de triagem | Estado de revisão |
 |---|---|---|
-| `PROMPT_MESTRE_B3_799_CARACTERES.md` | RAIZ_E_INDICES | PENDENTE_REVISAO_DE_CONTEUDO |
-| `README.md` | RAIZ_E_INDICES | PENDENTE_REVISAO_DE_CONTEUDO |
+| `PROMPT_MESTRE_B3_799_CARACTERES.md` | RAIZ_E_INDICES | REVISTO_LOTE13; CORRIGIDO |
+| `README.md` | RAIZ_E_INDICES | REVISTO_LOTE13; CORRIGIDO |
 | `WATCHDOG/FASE_C_FECHAMENTO_OPERACAO_GOVERNANCA_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
 | `WATCHDOG/README.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
 | `WATCHDOG/REGISTO_CORRECOES_PERSISTENCIA_COTAHIST_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
@@ -63,9 +63,9 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `WIKI/01-GOVERNANCA/MODELO_DE_GOVERNANCA.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
 | `WIKI/01-GOVERNANCA/POLITICA_DE_EVIDENCIAS.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
 | `WIKI/02-ARQUITETURA/ARQUITETURA_GERAL.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
-| `WIKI/09-AUTOMACAO/INCIDENTE_PUBLICACAO_WIKI_2026-09-29.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/09-AUTOMACAO/WIKI_NATIVA.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/README.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
+| `WIKI/09-AUTOMACAO/INCIDENTE_PUBLICACAO_WIKI_2026-09-29.md` | WIKI | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
+| `WIKI/09-AUTOMACAO/WIKI_NATIVA.md` | WIKI | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
+| `WIKI/README.md` | WIKI | REVISTO_LOTE13; ESTADO_ATUAL_WIKI_REQUER_ATUALIZACAO |
 | `ativos/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
 | `ativos/acoes/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
 | `ativos/balcao/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
@@ -110,8 +110,8 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `dados/market_data/fontes/INVENTARIO_PESQUISA_POR_PREGAO_2026-09-23.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `dados/market_data/historico/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `dados/market_data/microestrutura/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `dashboards/README.md` | RAIZ_E_INDICES | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md` | DOCUMENTACAO_PROJETO | PENDENTE_REVISAO_DE_CONTEUDO |
+| `dashboards/README.md` | RAIZ_E_INDICES | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md` | DOCUMENTACAO_PROJETO | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
@@ -147,7 +147,7 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/NEGOCIO/08-CENARIOS-RECEITA/README.md` | NEGOCIO_PRODUTO | REVISTO_LOTE10; VALIDACAO_OFICIAL_LICENCA_PENDENTE |
 | `docs/NEGOCIO/09-ROADMAP-COMERCIAL/README.md` | NEGOCIO_PRODUTO | REVISTO_LOTE10; VALIDACAO_OFICIAL_LICENCA_PENDENTE |
 | `docs/NEGOCIO/10-REGISTRO-DE-DECISOES/README.md` | NEGOCIO_PRODUTO | REVISTO_LOTE10; VALIDACAO_OFICIAL_LICENCA_PENDENTE |
-| `docs/PLANO_MESTRE_DE_EXECUCAO.md` | DOCUMENTACAO_PROJETO | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/PLANO_MESTRE_DE_EXECUCAO.md` | DOCUMENTACAO_PROJETO | REVISTO_LOTE13; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/cotahist/AUDITORIA_WORKFLOWS_COTAHIST_V2.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/cotahist/CADENA_EXECUCAO_1994_FASE06_12_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/cotahist/COMPARATIVO_BASELINE_1993_VS_1994_FASE06_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
