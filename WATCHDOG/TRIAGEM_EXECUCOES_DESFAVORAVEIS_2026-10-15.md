@@ -9,7 +9,7 @@
 | **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.0.5 |
-| **SHA-256 (conteúdo canónico)** | 09e874c32b1a71c4f23abd87264b26c1cf637240b673348714ca973003e290b0 |
+| **SHA-256 (conteúdo canónico)** | 3aecfcdda45b127f7e844723385ab079756884c2f6e51a2acf669dc5a64eb5bb |
 | **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
