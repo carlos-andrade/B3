@@ -41,8 +41,18 @@ jobs:
           git add dados/indices_b3
           git diff --cached --quiet && exit 0
           git commit -m "data(indices): atualizar composicoes B3"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              pushed=1
+              break
+            fi
+            echo "Push concorrente falhou (tentativa $attempt/5); será feita nova sincronização."
+            sleep 2
+          done
+          test "$pushed" -eq 1
 
       - name: Publicar manifestos
         uses: actions/upload-artifact@v4
