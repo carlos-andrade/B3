@@ -8,15 +8,15 @@
 | **Tipo documental** | REGISTO_DE_GOVERNANCA |
 | **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | CALCULAR_APÓS_PREENCHER |
-| **Commit de referência (versão anterior)** | N/A — documento inicial |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 44f007d85e5fd928bd9c511d5c9c8274245bc8191c493b472a750412dcefb74e |
+| **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável operacional do projeto B3 |
-| **Aprovador** | Pendente de aprovação formal, quando exigida |
+| **Aprovador** | Pendente — não representa aprovação formal |
 | **Origem** | Auditoria da Fase C, triagem técnica e normas centrais GOVERNANCA |
-| **Autoridade superior** | [Constituição da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Norma de cabeçalho v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md), [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Autoridade superior** | [CONSTITUICAO.md](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Norma de Cabeçalho v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md), [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Objetivo
