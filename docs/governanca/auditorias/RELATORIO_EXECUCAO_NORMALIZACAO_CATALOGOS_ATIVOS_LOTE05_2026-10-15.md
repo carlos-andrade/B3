@@ -9,7 +9,7 @@
 | **Fase** | Normalização documental e auditoria |
 | **Estado** | CONFORME |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 1d7f763b0357e708f1bd145510ac681789759890bc0a5354874c6d1cb259513a |
+| **SHA-256 (conteúdo canónico)** | be9426128049e85079123365e7f63adb769c47089fb301af16b46f486b50995b |
 | **Commit de referência (versão anterior)** | [715ce33c3a2f6456993e920900f45863e37578c7](https://github.com/carlos-andrade/B3/commit/715ce33c3a2f6456993e920900f45863e37578c7) |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
