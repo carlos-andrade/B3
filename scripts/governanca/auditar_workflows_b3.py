@@ -319,7 +319,7 @@ def main() -> int:
         ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
     ).stdout.strip()
     title = lines[0]
-    body = "\\n".join(lines[1:]) + "\\n"
+    body = "\n".join(lines[1:]) + "\n"
     metadata = [
         "| Campo | Valor |",
         "|---|---|",
@@ -340,7 +340,7 @@ def main() -> int:
         "| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |",
         "| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |",
     ]
-    rendered = title + "\\n\\n" + "\\n".join(metadata) + "\\n\\n" + body
+    rendered = title + "\n\n" + "\n".join(metadata) + "\n\n" + body
     canonical = "".join(
         line for line in rendered.splitlines(keepends=True)
         if not (line.startswith("|") and "**SHA-256 (conteúdo canónico)**" in line)
@@ -352,7 +352,7 @@ def main() -> int:
         f"| **SHA-256 (conteúdo canónico)** | {digest} |",
         1,
     )
-    OUT_MD.write_text(rendered, encoding="utf-8", newline="\\n")
+    OUT_MD.write_text(rendered, encoding="utf-8", newline="\n")
     print(json.dumps({
         "workflow_count": len(results),
         "status_counts": counts,
