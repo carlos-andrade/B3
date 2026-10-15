@@ -497,3 +497,11 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 - Os sete documentos selecionados para correção de hash foram confirmados pelo auditor oficial. Isto não equivale a conformidade global: os cabeçalhos legados e a revisão semântica do restante repositório continuam pendentes.
 - Próxima etapa: iniciar normalização controlada de um lote pequeno de documentos humanos com cabeçalhos de controlo claros; preservar contratos, históricos, relatórios gerados e dados brutos.
 - Restrições: COTAHIST 1986–2025 permanece fechado para ingestão rotineira e disponível para consulta; 2026 permanece incremental diário; BLOOMBERG_MAIL fora do escopo.
+
+## 21. Auditoria SHA-256 após normalização dos 10 metadados — 2026-10-15
+
+- Execução oficial: [run 38723560993](https://github.com/carlos-andrade/B3/actions/runs/38723560993), commit `5b2cbde2693fe8f1cd93bd9f9d71e45a5796cc3c`, conclusão `success`.
+- Resultado auditado: 289 Markdown; 17 `CONFORME`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`; zero `PENDENTE`, zero `DIVERGENTE` e zero `ERRO_LEITURA`.
+- A auditoria confirmou os 10 hashes normalizados pela ferramenta canónica. A integridade dos hashes válidos foi verificada, mas a conformidade estrutural dos 271 documentos continua pendente.
+- Próximo gate: classificar os cabeçalhos inválidos por tipo (humano, normativo, histórico, gerado, contrato/máquina) e normalizar lotes aprovados individualmente; triagem do documento COTAHIST 2026 sem H1 antes de editar.
+- `GOV-DIV-001` continua aberta. COTAHIST 1986–2025 mantém-se somente para consulta de rotina; 2026 continua incremental diário; `BLOOMBERG_MAIL` permanece isolado e fora do escopo B3.
