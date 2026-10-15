@@ -28,12 +28,12 @@
 
 - [Índices B3 run #24](https://github.com/carlos-andrade/B3/actions/runs/38751655690) concluiu com sucesso após a lógica de retry já existente no workflow: 6 testes passaram, 34 índices validados, zero rejeitados; commit de dados remoto confirmado nos logs.
 - [Importação diária run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492) foi iniciado pelo commit da correção. O resultado final precisa ser consultado antes de declarar a persistência diária validada.
-- O workflow Dataset Oficial V2 precisa de uma execução posterior para validar a nova persistência. Mesmo que a persistência funcione, a publicação continuará bloqueada enquanto a auditoria física global não confirmar os hashes.
+- [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349) foi iniciado após o commit da correção e ainda estava em curso nesta atualização. Mesmo que a persistência funcione, a publicação continuará bloqueada enquanto a auditoria física global não confirmar os hashes.
 
 ## 4. Riscos e gates pendentes
 
 - Não recalcular ou alterar sidecars/manifests para forçar correspondência: reconciliar proveniência e bytes físicos por ano.
-- Confirmar que a execução diária #35 terminou com sucesso, que o gate de conflitos passou e que os artefactos foram publicados.
+- Execução diária #35 verificada: sucesso, gate de conflitos aprovado e artefactos publicados.
 - Confirmar uma execução do Dataset Oficial V2 com o código atualizado.
 - Corrigir os cabeçalhos documentais em lotes controlados; auditoria #86 reportou 301 ficheiros: 52 conformes, 248 com cabeçalho de controlo inválido e 1 sem H1.
 - Manter a [Issue #11](https://github.com/carlos-andrade/B3/issues/11) aberta até resolver os incidentes e obter evidência final.
