@@ -8,11 +8,11 @@
 | **Tipo documental** | CARTA_MAGNA |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.2.0 |
+| **Versão** | 1.3.0 |
 | **SHA-256 (conteúdo canónico)** | 7522fa13e441b4eac2e2e7f76db77a3ce1d8b3a4392c28e84d10b447343bba94 |
 | **Commit de referência (versão anterior)** | [32b87934d4c7ede73c3699af1c9353d7ecb78e27](https://github.com/carlos-andrade/B3/commit/32b87934d4c7ede73c3699af1c9353d7ecb78e27) |
 | **Data de criação** | 2026-10-01 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -29,18 +29,19 @@ Esta Carta Magna adapta o Modelo-Mestre de Governança ao Projeto B3 — A BOLSA
 
 Ela rege as decisões de ingestão, armazenamento, validação, certificação, publicação, automação e auditoria dos dados governados pelo projeto.
 
-## 2. Hierarquia
+## 2. Hierarquia e delegação normativa — decisão GOV-DIV-001
 
-Em caso de conflito, aplica-se:
+A hierarquia é por domínio de autoridade, não por uma regra de precedência universal que permita a um documento anular silenciosamente o outro:
 
-1. esta Carta Magna;
-2. Carta de Confiança dos Dados;
-3. normas técnicas específicas;
-4. contratos de pipeline;
-5. procedimentos operacionais;
-6. implementação.
+1. **Carta Magna:** autoridade superior para princípios constitucionais do projeto, competências, limites de autoridade e regras de alteração normativa.
+2. **Layout Mestre Canónico:** especificação operacional única para execução, dados, pipelines, workflows e geração/validação de código, dentro dos limites definidos pela Carta Magna.
+3. **Carta de Confiança dos Dados e outras cartas:** políticas e garantias de domínio subordinadas à Carta Magna e reconciliadas com o Layout Mestre.
+4. **Contratos técnicos específicos:** concretizam regras do respetivo domínio e não podem contrariar os níveis superiores.
+5. **Procedimentos, implementação e evidências:** executam ou demonstram os níveis anteriores; não criam autoridade normativa por si só.
 
-Alterações desta Carta devem ser versionadas e preservar o histórico anterior.
+Quando uma regra operacional parecer contrariar um princípio da Carta Magna, a execução afetada fica bloqueada para a decisão em causa (`fail-closed`) até existir reconciliação versionada. O Layout Mestre continua a ser a única especificação operacional para código, mas não pode revogar nem redefinir unilateralmente princípios da Carta Magna. A Carta Magna, por sua vez, não substitui contratos técnicos nem autoriza código diretamente sem consolidação no Layout Mestre.
+
+Esta regra resolve a divergência `GOV-DIV-001` por separação explícita de domínio e delegação. A decisão e as alterações correlatas estão registadas em [DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md](governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md). Alterações desta Carta devem ser versionadas e preservar o histórico anterior.
 
 ## 3. Princípios
 
