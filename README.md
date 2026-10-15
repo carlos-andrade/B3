@@ -23,7 +23,16 @@ Repositório central de pesquisa, ingestão, normalização, certificação e di
 
 > **Estado do projeto:** ativo e em evolução contínua.  
 > **Branch principal:** `main`  
-> **Última atualização deste README:** 01/10/2026
+> **Última atualização deste README:** 15/10/2026
+
+### Estado semântico e governança — 15/10/2026
+
+- A divergência normativa GOV-DIV-001 tem decisão versionada em [DECISÃO GOV-DIV-001](./docs/governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md).
+- A [matriz integral de revisão semântica](./docs/governanca/auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) acompanha 303 documentos do snapshot inicial: 105 passaram por revisão de conteúdo nos Lotes 05–12; 176 continuam pendentes; os restantes correspondem a documentos previamente revistos/a amostras e exigem revalidação conforme a matriz.
+- A auditoria SHA-256 comprova integridade canónica, não a validade semântica ou operacional do conteúdo.
+- COTAHIST 1986–2025 permanece em consulta/read-only; 2026 mantém atualização diária.
+- A proveniência RAW COTAHIST, a lista oficial ExternalSecurityCategoryCode e os controlos operacionais WATCHDOG permanecem frentes próprias, com estado explícito no roadmap.
+
 
 ---
 
@@ -48,7 +57,7 @@ O princípio central é simples:
 
 ## WATCHDOG — monitorização transversal
 
-O projeto adota o padrão central [WATCHDOG da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG). O piloto inclui o [monitor de execuções GitHub Actions](./WATCHDOG/README.md), com cadência de 15 minutos, relatórios JSON/Markdown retidos por 30 dias e alertas por issue para falhas. O [avaliador de atualidade](./.github/workflows/watchdog-data-freshness.yml) verificou 5 séries BCB SGS dentro dos limites e detetou inicialmente o manifesto BDI DailyAverageStocks desatualizado. A captura automática foi corrigida e encontrou registos BDI válidos em 2026-10-09. O manifesto anual COTAHIST passou a declarar a última observação 2026-09-23 com referência ao manifesto NORMALIZED, e o avaliador também verifica manifestos diários. A última reavaliação confirmou **8 PASS, 0 STALE e 0 UNKNOWN**; os limiares permanecem provisórios e exigem aprovação dos proprietários. [Reavaliação](https://github.com/carlos-andrade/B3/actions/runs/38387593511). [Issue de atualidade #8](https://github.com/carlos-andrade/B3/issues/8). Os hooks de heartbeat externo estão preparados, mas a supervisão independente só fica ativa após configurar as secrets no [guia de heartbeat](./WATCHDOG/heartbeat-supervisor-externo.md). Confirmação de receção dos alertas e armazenamento imutável continuam pendentes.
+O projeto adota o padrão central [WATCHDOG da GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG). O [monitor de execuções GitHub Actions](./WATCHDOG/README.md) e o [avaliador de atualidade](./.github/workflows/watchdog-data-freshness.yml) publicam evidências e alertas, mas os artefactos têm retenção limitada e não constituem arquivo imutável. A avaliação histórica de 8 PASS, 0 STALE e 0 UNKNOWN no [run 38387593511](https://github.com/carlos-andrade/B3/actions/runs/38387593511) descreve apenas aquela execução. Os limiares continuam provisórios; a supervisão externa depende de secrets e serviço externo, e ACK/escalonamento/retensão duradoura ainda exigem validação. Consulte [WATCHDOG — estado e limitações](./WATCHDOG/README.md), [fecho da Fase C](./WATCHDOG/FASE_C_FECHAMENTO_OPERACAO_GOVERNANCA_2026-10-15.md) e [Issue #11](https://github.com/carlos-andrade/B3/issues/11).
 
 ---
 
@@ -132,13 +141,7 @@ O objetivo dessa separação é impedir que uma hipótese de pesquisa seja confu
 
 A base B3 é atualizada por incrementos e não depende apenas de snapshots. Para COTAHIST, os incrementos diários são preservados, validados e incorporados sem substituir RAW histórico.
 
-A integração com o repositório **BLOOMBERG_MAIL** segue o fluxo:
-
-**fonte oficial → BLOOMBERG_MAIL RAW → validação/reconciliação → B3**
-
-Documento de governança: [Carta de recebimento incremental](./governanca/CARTA_RECEBIMENTO_INCREMENTAL_BLOOMBERG_MAIL_V1_0_2026-10-08.md).
-
-Regra: toda atualização incremental deve manter proveniência, SHA-256, período, validação e rastreabilidade. Divergências de uma mesma competência não são sobrescritas silenciosamente.
+**Isolamento de projetos:** BLOOMBERG_MAIL está fora do âmbito operacional atual do repositório B3. A carta de recebimento incremental de 2026-10-08 é preservada apenas como histórico e foi marcada como não aplicável à execução corrente. Não há autorização vigente neste README para transferir dados, criar dependências de workflow ou integrar os dois repositórios. Qualquer integração futura exige decisão explícita, versionada e aprovada. A atualização diária COTAHIST de B3 é gerida pelos próprios workflows e contratos B3.
 
 ---
 
