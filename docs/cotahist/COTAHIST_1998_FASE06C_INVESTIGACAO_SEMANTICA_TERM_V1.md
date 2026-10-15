@@ -1,5 +1,25 @@
 # COTAHIST 1998 — FASE06C — Investigação semântica do TPMERC=030
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-017-MANTICA-TERM-V1-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO_COTAHIST |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | ea516da29af6caf3edb9ae9496db833d154e1d4e0ffd7b4384f5815260e61e66 |
+| **Commit de referência (versão anterior)** | [b65ba085fcb987a4457198fc0d31e4e9f7364fbb](https://github.com/carlos-andrade/B3/commit/b65ba085fcb987a4457198fc0d31e4e9f7364fbb) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 **Data:** 2026-10-02  
 **Escopo:** registros TPMERC=030 (mercado a termo) do COTAHIST 1998  
 **Objetivo:** determinar se a regra convencional PREMIN <= PREMED <= PREMAX e PREMIN <= PREULT <= PREMAX pode ser usada como regra de rejeição para registros históricos de termo.
