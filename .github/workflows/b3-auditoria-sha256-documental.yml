@@ -16,6 +16,7 @@ permissions:
 
 # Auditoria integral pós-normalização documental em lote; executar sobre o HEAD vigente.
 # Inclui também relatórios Markdown gerados automaticamente pelos workflows.
+# Revalidação final após regeneração do relatório de conformidade.
 concurrency:
   group: b3-auditoria-sha256-documental
   cancel-in-progress: false
