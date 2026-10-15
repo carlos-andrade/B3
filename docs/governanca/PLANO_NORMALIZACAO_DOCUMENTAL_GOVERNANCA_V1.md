@@ -9,7 +9,7 @@
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.6.0|
-| **SHA-256 (conteúdo canónico)** | 567c9dd0f3177fce4caa3706a6086ef0bf85970d581fd47eeafad23947eb8db1 |
+| **SHA-256 (conteúdo canónico)** | 314e89f617d2dfba802ad3562d5bb54289f30a74ea87cbd56c2c4360213ef7af |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-15 |
