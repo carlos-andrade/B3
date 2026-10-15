@@ -8,8 +8,8 @@
 | **Tipo documental** | RELATORIO_DE_TRIAGEM |
 | **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.0.2 |
-| **SHA-256 (conteúdo canónico)** | 8a7816f403136a46d0cb2ceb712b2ec8b1f4b984dc5c4cd16dd6739b7adffc71 |
+| **Versão** | 1.0.3 |
+| **SHA-256 (conteúdo canónico)** | eb71be6c400fab34e83476c43899c703d1f0be6d85ebaada563418be7d7acb55 |
 | **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
@@ -69,5 +69,5 @@ Isto comprova o sucesso daquela execução posterior; não elimina o histórico 
 
 - **Composição de carteiras B3:** [execução #21](https://github.com/carlos-andrade/B3/actions/runs/38749902429) falhou após os quatro testes unitários passarem. A captura validou 32 índices e rejeitou IEE e IGCNM. Para ambos, a API devolveu HTTP 200 com JSON `{"page":{"pageNumber":1,"pageSize":1000,"totalRecords":null,"totalPages":null},"header":null,"results":null}`. O diagnóstico aponta resposta sem dados/sem contrato utilizável, não um erro de normalização de data. A publicação e a persistência do dataset vigente foram corretamente bloqueadas pelo gate `fail-closed`. Não excluir os dois índices nem converter `results: null` em lista vazia para contornar a validação.
 - **Auditoria documental:** [execução #75](https://github.com/carlos-andrade/B3/actions/runs/38749840001) terminou com `success` e executou os testes de hash canónico, cálculo/comparação e geração do relatório. Foram analisados 298 ficheiros: 44 `CONFORME`, 253 `CABECALHO_CONTROLO_INVALIDO` e 1 `SEM_CABECALHO_H1`. O workflow é somente de leitura; o sucesso atesta a execução da auditoria, não a conformidade do repositório.
-- **Próxima ação técnica:** comparar os códigos de índice `IEE` e `IGCNM` com os identificadores efetivamente aceites pela fonte B3 e com a página oficial de carteira diária; implementar fallback apenas com evidência verificável e teste. Manter a rejeição explícita até que a fonte seja reconciliada.
+- **Causa provável identificada e correção aplicada:** o catálogo oficial atual da B3 usa `IEEX` e `IGNM`, enquanto a ingestão solicitava os códigos legados `IEE` e `IGCNM`. A página pública de composição/listagem da B3 confirma `IEEX` no catálogo de ações e disponibiliza a prévia de `IGNM` ([catálogo oficial de índices](https://sistemaswebb3-listados.b3.com.br/indexPage/stocks), [prévia oficial IGNM](https://sistemaswebb3-listados.b3.com.br/indexPage/preview/IGNM?language=pt-br)). Foram adicionados aliases `IEE → IEEX` e `IGCNM → IGNM` e dois testes unitários. A causa fica classificada como provável até a captura remota confirmar dados válidos; não considerar corrigida apenas pelo commit.
 - **Governança:** manter a Issue #11 aberta. A contagem atualizada da auditoria não elimina as pendências de integridade COTAHIST, limiares provisórios, heartbeat externo, ACK/escalonamento, arquivo duradouro e regressão integrada.
