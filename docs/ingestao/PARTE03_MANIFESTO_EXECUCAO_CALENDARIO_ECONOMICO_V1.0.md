@@ -74,4 +74,4 @@ Isso evita look-ahead bias.
 
 IBGE mantém calendário de indicadores conjunturais e páginas específicas por indicador. Em 2026, por exemplo, o calendário oficial lista IPCA-15 em 25/09/2026, PNAD Contínua mensal em 29/09/2026 e IPCA em 09/10/2026. citeturn0search1turn0search7
 
-O Banco Central documenta o calendário operacional do Copom e a publicação de comunicado/ata, além de disponibilizar calendário de divulgação do Relatório de Política Monetária. citeturn0search8turn0search4
+O Banco Central documenta o calendário operacional do Copom e a publicação de comunicados/atas em [Comunicados do Copom — BCB](https://www.bcb.gov.br/controleinflacao/comunicadoscopom) e [Atas do Copom — BCB](https://www.bcb.gov.br/controleinflacao/atascopom). O calendário de divulgação do Relatório de Política Monetária deve ser consultado na fonte oficial correspondente antes da captura.
