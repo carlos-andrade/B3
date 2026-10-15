@@ -64,7 +64,12 @@ def fetch(code):
                 except json.JSONDecodeError as e:
                     raise ValueError(f"resposta nao JSON; content-type={ctype}; preview={data[:200]!r}") from e
                 if not isinstance(obj, dict) or not isinstance(obj.get("results"), list):
-                    raise ValueError("resposta JSON sem lista 'results'")
+                    if isinstance(obj, dict):
+                        top_level = sorted(str(key) for key in obj.keys())
+                        detail = f"tipo={type(obj).__name__}; chaves={top_level}; content-type={ctype}; preview={data[:240]!r}"
+                    else:
+                        detail = f"tipo={type(obj).__name__}; content-type={ctype}; preview={data[:240]!r}"
+                    raise ValueError(f"resposta JSON fora do contrato esperado (lista 'results' ausente): {detail}")
                 return data, obj, url
         except (HTTPError, URLError, TimeoutError, ValueError) as e:
             last = str(e)
