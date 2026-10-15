@@ -7,6 +7,7 @@ on:
       - "scripts/governanca/auditar_sha256_documental_b3.py"
       - ".github/workflows/b3-auditoria-sha256-documental.yml"
   workflow_dispatch:
+  # Reexecução manual após revisão do auditor; o baseline legado é report-only.
 
 permissions:
   contents: read
