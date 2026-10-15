@@ -9,7 +9,7 @@
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
 | **Estado** | SNAPSHOT_DESCRITIVO; CAPTURA_RAW_PENDENTE |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | b172c894de0bf30e6cd885fc783f024a5ff32f5eb03e7b546f3ce1cff380ca7b |
+| **SHA-256 (conteúdo canónico)** | a817474863f544f3ea7d3b5519eab9671bff17cd0b1d4974ef1ac006287af2ff |
 | **Commit de referência (versão anterior)** | [abadd5fd84dc2d6f8898c452b1f30e92e1469a2b](https://github.com/carlos-andrade/B3/commit/abadd5fd84dc2d6f8898c452b1f30e92e1469a2b) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
 | **Data de atualização** | 2026-10-15 |

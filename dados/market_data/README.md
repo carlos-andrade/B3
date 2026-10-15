@@ -9,7 +9,7 @@
 | **Fase** | Market Data histórico e microestrutura |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 43d0c4160b91aff4383f66505da911f8025f5f0c5c702e6e01b1ce697b089e34 |
+| **SHA-256 (conteúdo canónico)** | fd5f0c76f535bbd74985739b7ac03b1df123ab498ce762c9f7e5a4e968be8580 |
 | **Commit de referência (versão anterior)** | N/A — primeira normalização do cabeçalho |
 | **Data de criação** | 2026-09-23 |
 | **Data de atualização** | 2026-10-15 |
