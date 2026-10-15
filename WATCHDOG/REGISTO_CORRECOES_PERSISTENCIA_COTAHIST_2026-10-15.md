@@ -27,7 +27,7 @@
 ## 3. Verificação posterior
 
 - [Índices B3 run #24](https://github.com/carlos-andrade/B3/actions/runs/38751655690) concluiu com sucesso após a lógica de retry já existente no workflow: 6 testes passaram, 34 índices validados, zero rejeitados; commit de dados remoto confirmado nos logs.
-- [Importação diária run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492) foi iniciado pelo commit da correção. O resultado final precisa ser consultado antes de declarar a persistência diária validada.
+- [Importação diária run #35](https://github.com/carlos-andrade/B3/actions/runs/38755834492) terminou com sucesso: importação diária e reconciliação anual 2026 aprovadas; commit, rebase e push remoto concluídos; gate `EXECUCAO_SEM_CONFLITOS` com zero dias em conflito; 23 ficheiros de evidência publicados.
 - [Dataset Oficial V2 run #11](https://github.com/carlos-andrade/B3/actions/runs/38755859349) terminou com sucesso. O script fail-closed gerou e persistiu o dataset com 41 anos (1986–2026), após materializar os CSVs anuais via Git LFS; o commit de dados foi rebased e enviado para `main`, e o artefacto foi publicado. O código validou em runtime o estado da auditoria global, hashes físicos contra auditoria/sidecar/manifesto, contagem de linhas e campos, e datas. Esta validação corresponde à evidência disponível no repositório e na execução, não substituindo uma revisão independente da proveniência dos ficheiros RAW.
 
 ## 4. Riscos e gates pendentes
