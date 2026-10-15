@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.4.0 |
+| **Versão** | 1.5.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
@@ -92,3 +92,12 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 | 1.2.0 | 2026-10-15 | Registo da revisão semântica Lote 01 e divergência normativa GOV-DIV-001; contagem atual de 286 Markdown/219 em `docs/` | Responsável técnico B3 | [Relatório semântico Lote 01](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
 | 1.3.0 | 2026-10-15 | Revisão semântica Lote 02; adição do auditor SHA-256 e registo transparente da execução inicial falhada e correção | Responsável técnico B3 | [Relatório semântico Lote 02](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
 | 1.4.0 | 2026-10-15 | Registo do Lote 03 e validação técnica do auditor SHA-256 com testes unitários | Responsável técnico B3 | [Lote 03](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md); [Run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162) |
+
+
+## Atualização de execução — Lote 04 — 2026-10-15
+
+- Publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md).
+- Classificados por conteúdo 12 documentos da amostra, distinguindo regra operacional, runbook, contrato de dados/identidade, contrato de evidência e política.
+- A classificação não foi estendida artificialmente ao inventário inteiro. Relatórios históricos, artefactos gerados, modelos e formatos de máquina continuam sujeitos a triagem específica.
+- Não foram alterados contratos-fonte nem os dados COTAHIST. Mantêm-se as regras: 1986–2025 read-only para rotina; 2026 com atualização diária; BLOOMBERG_MAIL fora de âmbito.
+- O próximo gate é normalizar metadados de um lote pequeno de documentos humanos com autoridade/estado claros e validar um hash real. A divergência GOV-DIV-001 permanece aberta e não pode ser resolvida por alteração silenciosa dos documentos normativos.
