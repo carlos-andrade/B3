@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.3.0 |
+| **Versão** | 1.4.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
@@ -422,3 +422,26 @@ A Carta Magna, secção 2, diz que a própria Carta Magna prevalece em caso de c
 3. Separar documentos humanos, históricos e artefactos gerados.
 4. Preparar cálculo canónico reprodutível SHA-256, conforme GOVERNANCA v1.0.3.
 5. Não declarar conformidade global enquanto os hashes e a revisão semântica não estiverem concluídos.
+
+
+## 16. Revisão semântica e auditoria SHA-256 — 2026-10-15
+
+### FASE 3 — Lote 02
+
+Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md), cobrindo seis contratos/políticas COTAHIST e monitorização. A dívida de metadados legados foi registada; os contratos-fonte não foram alterados. A política de retenção mantém 1986–2025 fechados para ingestão rotineira e 2026 em atualização incremental diária.
+
+### FASE 4 — Ferramenta de integridade documental
+
+- Script somente de leitura: `scripts/governanca/auditar_sha256_documental_b3.py`.
+- Workflow: `.github/workflows/b3-auditoria-sha256-documental.yml`.
+- Evidência da primeira execução: [run 38713037198](https://github.com/carlos-andrade/B3/actions/runs/38713037198), conclusão `failure`.
+- Baseline reportado: 286 Markdown; 271 cabeçalhos de controlo inválidos; 14 hashes pendentes; 1 ficheiro sem H1. Os estados refletem a ausência de metadados em documentos legados, não 271 divergências de hash.
+- Correção efetuada: o auditor passa a tratar não conformidade documental legada como resultado reportável, e reserva falha do job para erro de leitura. A execução posterior com a versão corrigida ainda carece de confirmação; portanto, a ferramenta não é declarada validada.
+
+### Gates e próximas ações
+
+1. Confirmar a execução corrigida e arquivar o artefacto de auditoria.
+2. Refinar a classificação do baseline para separar documentação humana, histórica, gerada e artefactos com contrato próprio.
+3. Resolver a divergência normativa GOV-DIV-001 por decisão versionada.
+4. Normalizar os próximos lotes de metadados sem alterar o corpo técnico e validar referências.
+5. Calcular os hashes canónicos após estabilizar cada lote. Não declarar conformidade global antecipadamente.
