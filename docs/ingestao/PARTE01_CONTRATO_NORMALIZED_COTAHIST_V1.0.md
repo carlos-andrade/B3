@@ -119,4 +119,4 @@ INSTRUMENT MASTER
 MARKET DATA / FEATURES
 ```
 
-COTAHIST é uma série histórica de cotações EOD. Ela não substitui dados tick-by-tick, book, agressão ou fluxo institucional. A B3 disponibiliza produtos específicos para outros tipos de dados de mercado. citeturn0search1
+COTAHIST é uma série histórica de cotações EOD. Ela não substitui dados tick-by-tick, book, agressão ou fluxo institucional. A B3 disponibiliza produtos específicos para outros tipos de dados de mercado; os produtos e permissões aplicáveis devem ser confirmados na documentação oficial vigente.
