@@ -1,0 +1,65 @@
+# Revisão semântica documental — Lote 02
+
+| Campo | Valor |
+|---|---|
+| **ID** | B3-GOV-REV-SEM-002 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_REVISAO_SEMANTICA |
+| **Fase** | FASE 3 — Classificação semântica e reconciliação |
+| **Estado** | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por ferramenta reprodutível conforme GOVERNANCA v1.0.3 |
+| **Commit de referência (versão anterior)** | N/A — documento inicial |
+| **Data de criação** | 2026-10-15 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente de aprovação específica |
+| **Origem** | Inspeção direta dos seis documentos listados e norma GOVERNANCA v1.0.3 |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](../layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
+| **Cadeia de autoridade** | FONTES → CONTRATOS/POLÍTICAS → LAYOUT MESTRE → CÓDIGO/WORKFLOWS → EVIDÊNCIAS → VALIDAÇÃO |
+| **Escopo** | Classificação semântica de contratos e política; sem alteração de dados históricos ou workflows operacionais |
+| **Objetivo** | Confirmar domínio e função dos contratos, identificar lacunas de metadados e impedir alterações incompatíveis com a governança técnica |
+| **Dependências** | Norma GOVERNANCA v1.0.3; Layout Mestre B3; Política de ciclo de vida COTAHIST |
+
+## 1. Resultado executivo
+
+Foram revistos seis documentos. Todos têm função técnica reconhecível e devem preservar os contratos substantivos existentes. Cinco dos seis apresentam um formato legado sem a tabela de metadados exigida pela norma transversal; a política de ciclo de vida também usa metadados em texto corrido, sem cabeçalho tabular canónico. Esta constatação é dívida documental, não prova de falha dos pipelines nem autorização para alterar regras operacionais.
+
+## 2. Matriz
+
+| Documento | Classificação semântica | Observação | Ação recomendada |
+|---|---|---|---|
+| [Contrato de Evidência FASES 06–09](../../cotahist/CONTRATOS_EVIDENCIA_FASES_06_09_V1.md) | CONTRATO_EVIDENCIA_FASES | Define evidência mínima e estados para FASE06–09, com critério de aprovação e bloqueios. | Preservar o conteúdo técnico; normalizar metadados após mapear versão, autoridade, origem e hash. |
+| [Contrato de Evidência FASES 00–09](../../cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md) | CONTRATO_EVIDENCIA_CADEIA | O nome mantém 00–09, mas o próprio corpo declara que a versão atual cobre 00–12. | Tratar o nome do ficheiro como referência histórica; decidir se título/nome devem ser reconciliados sem quebrar links. |
+| [Contrato de Execução Sequencial COTAHIST](../../cotahist/CONTRATO_EXECUCAO_SEQUENCIAL_FASES_COTAHIST_V1.md) | CONTRATO_EXECUCAO_SEQUENCIAL | Define gates fail-closed, monotonicidade e responsabilidade por fase. | Preservar regras; mapear referências de workflow e compatibilidade com o Layout Mestre. |
+| [Contrato Gate 06–08](../../cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md) | CONTRATO_GATE_PROMOCAO | Define entrada autorizada, estados permitidos e critérios do gate. | Preservar a semântica; verificar referências de evidência contra os workflows atuais antes de alterar. |
+| [Contrato de Retorno e Monitoramento](../CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md) | CONTRATO_MONITORAMENTO_EXECUCOES | Define estados operacionais, retorno no Step Summary, monitor e anti-reexecução. | Revisar referências atuais e manter monitor como observador, não executor. |
+| [Política de Retenção COTAHIST 1986–2026](../politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md) | POLITICA_CICLO_VIDA_DADOS | Regista 1986–2025 fechados para ingestão rotineira e 2026 em atualização diária; ressalva que encerramento não equivale a certificação integral. | Preservar integralmente as restrições históricas; qualquer normalização deve ser só de metadados e sem alterar política substantiva. |
+
+## 3. Achados transversais
+
+1. **Metadados legados:** a norma GOVERNANCA v1.0.3 exige título H1 e tabela Markdown de metadados; contratos antigos ainda usam linhas em texto corrido ou não têm cabeçalho padrão.
+2. **Compatibilidade de referências:** não renomear contratos ou workflows sem mapear referências entrantes e preservar aliases/links.
+3. **Autoridade operacional:** os contratos detalham responsabilidades técnicas; mudanças normativas devem ser reconciliadas com o Layout Mestre, não gerar autoridade paralela.
+4. **Preservação do histórico:** não usar normalização de cabeçalho como razão para alterar dados, evidências ou regras COTAHIST.
+
+## 4. Validação do auditor SHA-256
+
+Foi criado um auditor somente de leitura em [auditar_sha256_documental_b3.py](../../../scripts/governanca/auditar_sha256_documental_b3.py) e workflow [b3-auditoria-sha256-documental.yml](../../../.github/workflows/b3-auditoria-sha256-documental.yml). A primeira execução identificou 286 ficheiros Markdown, com 271 classificados como cabeçalho de controlo inválido, 14 hashes pendentes e 1 ficheiro sem H1. Essa execução terminou em falha porque o auditor inicial tratava a dívida documental legada como erro de processo. O script foi corrigido para reportar o baseline legado sem falhar o job, mantendo erro de leitura como falha operacional; a reexecução da versão corrigida ainda não foi confirmada nesta revisão.
+
+Este resultado é um baseline de triagem, não uma certificação: a categoria CABECALHO_CONTROLO_INVALIDO agrega documentos que não contêm as duas linhas de controlo e requer subdivisão entre documento humano, histórico, gerado e artefacto com contrato próprio.
+
+## 5. Próximos passos
+
+1. Confirmar execução bem-sucedida do auditor corrigido e arquivar o artefacto JSON de evidência.
+2. Refinar o auditor para distinguir documentos que exigem cabeçalho padrão dos que possuem contrato de geração próprio.
+3. Reconciliar a divergência GOV-DIV-001 antes de qualquer alteração normativa.
+4. Normalizar metadados de contratos em lotes pequenos, preservando integralmente o corpo e validando referências.
+5. Calcular hashes canónicos após a versão final de cada lote; não preencher valores por estimativa.
+
+## 6. Histórico
+
+| Versão | Data | Alteração | Evidência |
+|---|---|---|---|
+| 1.0.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas; dívida de metadados e estado inicial do auditor registados | Inspeção direta dos documentos-fonte; workflow de auditoria SHA-256 |
