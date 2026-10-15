@@ -1,5 +1,25 @@
 # SNAPSHOT RAW — IBGE CALENDÁRIO CONJUNTURAIS
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-004-S-2026-20260924-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | EVIDENCIA_RAW_DOCUMENTAL |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 335cc9a2e5c5758cc94e11c3465e148ae514bdb993e4c4dc7c0dd2ca09724440 |
+| **Commit de referência (versão anterior)** | [abadd5fd84dc2d6f8898c452b1f30e92e1469a2b](https://github.com/carlos-andrade/B3/commit/abadd5fd84dc2d6f8898c452b1f30e92e1469a2b) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; ver evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 Fonte: IBGE — Indicadores conjunturais
 URL: https://www.ibge.gov.br/calendario/conjunturais.html
 Capturado em: 2026-09-24
