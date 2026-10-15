@@ -8,11 +8,11 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.0.0 |
+| **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de aprovação específica deste plano |
 | **Origem** | Norma de cabeçalho da [GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
@@ -28,7 +28,7 @@ A norma de cabeçalho documental padrão da GOVERNANCA v1.0.3 foi aprovada em 20
 
 ## Estado
 
-A execução começa por documentos humanos de governança, cartas, planos e roadmaps ativos. Não se considerará todo o repositório conforme com base num lote parcial.
+A fase de inventário estrutural foi concluída: 284 ficheiros Markdown enumerados a partir da árvore Git de `main` e classificados preliminarmente por caminho/nome. A classificação semântica e a conformidade continuam pendentes de revisão do conteúdo. Não se considera todo o repositório conforme com base num lote parcial.
 
 ## Evidências
 
@@ -55,20 +55,25 @@ Lote inicial aplicado diretamente em `main`. Foram normalizados cabeçalhos e ca
 | Métrica | Resultado |
 |---|---:|
 | Documentos Markdown no repositório | 284 |
-| Documentos em `docs/` | 217 |
-| Documentos prioritários identificados no inventário inicial | 45 |
+| Documentos em `docs/` | 217 (referência anterior; reconfirmar no inventário atual por prefixo) |
+| Documentos prioritários identificados no inventário inicial | 45 (conjunto inicial; classificação em revisão) |
 | Documentos com cabeçalho normalizado e reconsultados nesta tranche | 11 |
 | Incidente A1987 reconciliado e com cabeçalho normalizado | 1 |
 | Hashes canónicos recalculados/verificados independentemente | 0 — pendentes |
 
 Esta contagem reflete apenas os documentos explicitamente alterados e reverificados, não a conformidade do restante repositório.
 
-## Próxima Ação
+## Inventário e próximo passo
 
-Normalizar os documentos prioritários em lotes pequenos, verificar conteúdo e referências, calcular os checksums canónicos e atualizar este registo com os commits reais.
+- Inventário estrutural completo: [Inventário e Matriz de Conformidade Documental B3 v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md).
+- A extração identificou 284 ficheiros Markdown na árvore Git; a classificação preliminar é baseada em caminho/nome e não equivale à classificação semântica.
+- Classes preliminares: INGESTAO_DADOS 130; GOVERNANCA_CARTAS_LAYOUT 60; README_INDICE 35; OUTROS_MARKDOWN 24; DOCUMENTACAO_TEMATICA 14; INCIDENTES_AUDITORIAS 13; ROADMAP_PLANOS 8.
+- Próximo passo obrigatório: validar a matriz por conteúdo e distinguir documentação humana, histórico, modelos e artefactos gerados antes de normalizar novos lotes.
+- SHA-256 canónicos: continuam pendentes de cálculo independente; não declarar conformidade integral até existir evidência reprodutível.
 
 ## Histórico de alterações
 
 | Versão | Data | Alteração | Responsável | Evidência |
 |---|---|---|---|---|
-| 1.0.0 | 2026-10-14 | Criação do plano de adoção documental B3 | Responsável técnico B3 | Commit do arquivo no repositório |
+| 1.0.0 | 2026-10-14 | Criação do plano de adoção documental B3 | Responsável técnico B3 | Commit inicial no repositório |
+| 1.1.0 | 2026-10-15 | Inclusão do inventário estrutural de 284 ficheiros Markdown e atualização do próximo passo | Responsável técnico B3 | [Inventário v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md) |
