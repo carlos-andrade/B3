@@ -32,6 +32,10 @@ Manter a base histórica COTAHIST atualizada diariamente a partir da fonte B3, p
 
 A rotina não possui data final. A cada execução ela consulta o arquivo anual correspondente ao ano corrente, valida sua estrutura, calcula SHA-256, gera/atualiza o manifesto e persiste a nova versão no repositório somente quando houver alteração.
 
+## 2. Gate de acesso e automação
+
+Antes de ativar ou alterar captura automatizada, verificar e registar os termos aplicáveis ao endpoint específico, autorização, limites de acesso, armazenamento e reutilização. A página Pesquisa por Pregão da B3 veda coleta automatizada a partir da própria página, inclusive por ferramentas de IA; não implementar scraping dessa página. A utilização de um endpoint direto de ZIP ou API deve ser avaliada separadamente e não é automaticamente autorizada pela sua disponibilidade técnica.
+
 ## 2. Automação
 
 Workflow:
