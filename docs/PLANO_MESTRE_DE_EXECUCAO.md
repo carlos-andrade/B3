@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.6.0 |
+| **Versão** | 1.7.0|
 | **SHA-256 (conteúdo canónico)** | 7ad758b25a026ecb777dc7f7856dbe9d962bdcbcbe1c65fc94eca1f42c33d1b7 |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
@@ -481,3 +481,12 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 - Regras preservadas: COTAHIST 1986–2025 encerrado para ingestão de rotina e disponível para consulta; 2026 atualizado diariamente; BLOOMBERG_MAIL fora do âmbito.
 - GOV-DIV-001 permanece aberta. A precedência operacional provisória do Layout Mestre em operações de código é aplicada sem declarar alteração da Carta Magna.
 - Próximo gate: selecionar pequeno lote de documentos humanos com estado/autoridade claros, normalizar apenas metadados autorizados e validar pelo menos um hash documental real (CONFORME ou DIVERGENTE).
+
+## 19. Resultado da auditoria SHA-256 pós-Lote 04 — 2026-10-15
+
+- Execução confirmada: [run 38716296153](https://github.com/carlos-andrade/B3/actions/runs/38716296153), commit `4e09de3d7f6d2e87afb72788c84b16e285b35a8e`, conclusão `success`.
+- Baseline auditado: 289 Markdown; 4 `CONFORME`; 13 `PENDENTE`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`.
+- Interpretação: os 271 casos são falhas de controlo/metadados, não 271 hashes divergentes. O artefacto JSON está anexado ao run, não commitado no repositório.
+- O workflow passou a incluir alterações Markdown nos gatilhos de push. O run acima confirma que o workflow executou e produziu relatório no commit indicado.
+- Próximo gate: normalizar apenas linhas de hash canónico em relatórios documentais cuja estrutura já satisfaça o contrato, recalcular hashes e confirmar nova execução automática. Não editar contratos normativos de autoridade para resolver `GOV-DIV-001`.
+
