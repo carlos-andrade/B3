@@ -1,11 +1,23 @@
 # NOTA DE CLASSIFICAÇÃO — BVBG.028.02 / CFI / SctyCtgy
 
-**Arquivo:** NOTA_CLASSIFICACAO_CFI_SCTYCTGY_2026-09-23.md  
-**Projeto:** B3 - A Bolsa do Brasil  
-**Tema:** Validação de classificação de instrumentos  
-**Data:** 2026-09-23  
-**Fonte primária:** B3 / ISO  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-CAT-FONTE-004 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | NOTA_TECNICA_DE_CLASSIFICACAO |
+| **Fase** | CLASSIFICACAO_CADASTRAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 8e669eff062aae29e5579d8ab5de668a85732e96e56dbc8f7509c167840002f7 |
+| **Commit de referência (versão anterior)** | [fd4b1ae4d4d9f5479a9d03e1f01f8ccc42da01be](https://github.com/carlos-andrade/B3/commit/fd4b1ae4d4d9f5479a9d03e1f01f8ccc42da01be) |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório |
+| **Origem** | Documentação B3 sobre SctyCtgy e ISO 10962:2021 para a estrutura do CFI; tradução oficial requer lista B3 vigente |
+| **Autoridade superior** | [Norma de cabeçalho documental da GOVERNANÇA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Evidência B3
 
@@ -41,4 +53,3 @@ Ticker e ativo-base são apenas campos auxiliares.
 ## 5. Próximo passo
 
 Capturar a lista externa `ExternalSecurityCategoryCode` da B3, preservá-la como fonte, calcular a correspondência dos códigos `SctyCtgy` observados e gerar uma classificação normalizada auditável.
-
