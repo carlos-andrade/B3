@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.1.0 |
+| **Versão** | 1.2.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
@@ -65,6 +65,9 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 
 ## Inventário e próximo passo
 
+- Em 2026-10-15 foi executada uma revisão semântica inicial de cinco documentos prioritários. O relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) regista uma divergência normativa aberta entre a precedência definida pela Carta Magna e a precedência operacional definida pelo Layout Mestre.
+- A árvore atual após publicação do relatório contém 286 ficheiros Markdown, dos quais 219 em `docs/`; o inventário-base mantém o snapshot original de 284 ficheiros e não se apresenta como uma listagem autorreferente atualizada automaticamente.
+
 - A fotografia inicial enumerou 284 ficheiros Markdown antes de criar a própria matriz. Na árvore atual, após publicar a matriz, existem 285 ficheiros Markdown, dos quais 218 em `docs/`; a matriz lista os 284 ficheiros que existiam no instante da captura e exclui-se a si própria para evitar autorreferência.
 - Inventário estrutural completo: [Inventário e Matriz de Conformidade Documental B3 v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md).
 - A extração identificou 284 ficheiros Markdown na árvore Git; a classificação preliminar é baseada em caminho/nome e não equivale à classificação semântica.
@@ -79,3 +82,4 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 | 1.0.0 | 2026-10-14 | Criação do plano de adoção documental B3 | Responsável técnico B3 | Commit inicial no repositório |
 | 1.1.0 | 2026-10-15 | Inclusão do inventário estrutural inicial de 284 ficheiros Markdown e atualização do próximo passo | Responsável técnico B3 | [Inventário v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md) |
 | 1.1.1 | 2026-10-15 | Esclarecimento do snapshot e contagem atual de 285 ficheiros Markdown/218 em `docs/` | Responsável técnico B3 | Reconsulta da árvore Git após publicação da matriz |
+| 1.2.0 | 2026-10-15 | Registo da revisão semântica Lote 01 e divergência normativa GOV-DIV-001; contagem atual de 286 Markdown/219 em `docs/` | Responsável técnico B3 | [Relatório semântico Lote 01](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
