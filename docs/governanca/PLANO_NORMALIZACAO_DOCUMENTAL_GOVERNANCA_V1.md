@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.5.0 |
+| **Versão** | 1.6.0|
 | **SHA-256 (conteúdo canónico)** | 9e82198c87af66f6070787cedd6dfe5ff370aa8afefdf8a450e3972cc45616ee |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
@@ -101,3 +101,11 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 - A classificação não foi estendida artificialmente ao inventário inteiro. Relatórios históricos, artefactos gerados, modelos e formatos de máquina continuam sujeitos a triagem específica.
 - Não foram alterados contratos-fonte nem os dados COTAHIST. Mantêm-se as regras: 1986–2025 read-only para rotina; 2026 com atualização diária; BLOOMBERG_MAIL fora de âmbito.
 - O próximo gate é normalizar metadados de um lote pequeno de documentos humanos com autoridade/estado claros e validar um hash real. A divergência GOV-DIV-001 permanece aberta e não pode ser resolvida por alteração silenciosa dos documentos normativos.
+
+## Resultado da auditoria automática — 2026-10-15
+
+- Run confirmado: [38716296153](https://github.com/carlos-andrade/B3/actions/runs/38716296153), conclusão `success`.
+- 289 Markdown analisados: 4 `CONFORME`, 13 `PENDENTE`, 271 `CABECALHO_CONTROLO_INVALIDO`, 1 `SEM_CABECALHO_H1`.
+- O estado `CABECALHO_CONTROLO_INVALIDO` significa que faltam ou são inválidos metadados de controlo; não deve ser reportado como hash divergente.
+- Próxima ação: preencher apenas hashes canónicos em documentos com as duas linhas de controlo válidas e não pendentes, começando pelos relatórios de revisão semântica; verificar depois no workflow e manter os artefactos de execução como evidência ligada ao run.
+
