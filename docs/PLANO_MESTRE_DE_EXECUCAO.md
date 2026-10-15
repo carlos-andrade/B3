@@ -490,3 +490,10 @@ Foi publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](g
 - O workflow passou a incluir alterações Markdown nos gatilhos de push. O run acima confirma que o workflow executou e produziu relatório no commit indicado.
 - Próximo gate: normalizar apenas linhas de hash canónico em relatórios documentais cuja estrutura já satisfaça o contrato, recalcular hashes e confirmar nova execução automática. Não editar contratos normativos de autoridade para resolver `GOV-DIV-001`.
 
+## 20. Auditoria SHA-256 confirmada após correção — 2026-10-15
+
+- Execução oficial: [run 38719803051](https://github.com/carlos-andrade/B3/actions/runs/38719803051), commit `8b3797da39cc04ae778e2a289e34b384c6a2c907`, conclusão `success`.
+- Resultado: 289 Markdown; 7 `CONFORME`; 10 `PENDENTE`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`; zero `DIVERGENTE`.
+- Os sete documentos selecionados para correção de hash foram confirmados pelo auditor oficial. Isto não equivale a conformidade global: os cabeçalhos legados e a revisão semântica do restante repositório continuam pendentes.
+- Próxima etapa: iniciar normalização controlada de um lote pequeno de documentos humanos com cabeçalhos de controlo claros; preservar contratos, históricos, relatórios gerados e dados brutos.
+- Restrições: COTAHIST 1986–2025 permanece fechado para ingestão rotineira e disponível para consulta; 2026 permanece incremental diário; BLOOMBERG_MAIL fora do escopo.
