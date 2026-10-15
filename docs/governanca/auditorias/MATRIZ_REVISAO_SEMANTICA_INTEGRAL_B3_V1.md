@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–05; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–06; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu conteúdo de 12 documentos WATCHDOG/Wiki; a revisão destes ficheiros não encerra as ações operacionais assinaladas. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki e o Lote 06 reviu 15 documentos de governança/auditorias de workflows. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -114,7 +114,7 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/AUDITORIA_ESTADO_REPOSITORIO_2026-09-25.md` | DOCUMENTACAO_PROJETO | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/CARTA_INCIDENTE_INTEGRIDADE_COTAHIST_1999_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/CARTA_MAGNA_GOVERNANCA_B3.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/MODELO_GOVERNANCA_PARA_PROJETOS.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/NEGOCIO/00-VISAO-EXECUTIVA.md` | NEGOCIO_PRODUTO | PENDENTE_REVISAO_DE_CONTEUDO |
@@ -179,20 +179,20 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/cotahist/ROADMAP_MESTRE_INGESTAO_COTAHIST_1986_2026_ESTADO_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
-| `docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE04_AUDITORIA_WORKFLOWS_LAYOUT_MESTRE_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_2_CLASSIFICACAO_FUNCIONAL_WORKFLOWS_B3_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_3_VALIDACAO_HISTORICOS_CASOS_AMBIGUOS_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_4_CLASSIFICACAO_SEMANTICA_MATRIZ_CONFORMIDADE_WORKFLOWS_B3_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_CASOS_ESPECIAIS_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_CORRECOES_GRUPO_01_OBSERVABILIDADE_ATIVOS_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_GRUPO_02_TRIGGERS_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_GRUPO_03_ISOLAMENTO_DIRECIONALIDADE_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_GRUPO_04_PERMISSOES_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_GRUPO_05_PERSISTENCIA_DECISAO_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_5_GRUPO_06_IDEMPOTENCIA_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/FASE05_CLASSIFICACAO_DIVERGENCIAS_WORKFLOWS_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE04_AUDITORIA_WORKFLOWS_LAYOUT_MESTRE_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_2_CLASSIFICACAO_FUNCIONAL_WORKFLOWS_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_3_VALIDACAO_HISTORICOS_CASOS_AMBIGUOS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_4_CLASSIFICACAO_SEMANTICA_MATRIZ_CONFORMIDADE_WORKFLOWS_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_CASOS_ESPECIAIS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_CORRECOES_GRUPO_01_OBSERVABILIDADE_ATIVOS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_GRUPO_02_TRIGGERS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_GRUPO_03_ISOLAMENTO_DIRECIONALIDADE_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_GRUPO_04_PERMISSOES_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_GRUPO_05_PERSISTENCIA_DECISAO_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_5_GRUPO_06_IDEMPOTENCIA_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/FASE05_CLASSIFICACAO_DIVERGENCIAS_WORKFLOWS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE02_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE03_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE04_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
