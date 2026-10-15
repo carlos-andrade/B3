@@ -385,9 +385,9 @@ A frente de governança documental segue o plano [B3-GOV-PLANO-001](governanca/P
 
 ### Estado verificado
 
-- Inventário estrutural de Markdown concluído: 284 ficheiros na árvore Git de `main` consultada em 2026-10-15.
+- Inventário estrutural inicial concluído: 284 ficheiros enumerados antes de publicar a matriz; a árvore atual contém 285 ficheiros Markdown, incluindo a própria matriz, e 218 estão em `docs/`.
 - Matriz publicada: [INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md](governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md).
-- Classificação atual é preliminar por caminho/nome; ainda não é uma auditoria semântica nem certificação de conformidade.
+- A matriz lista os 284 ficheiros presentes no instante da captura e exclui-se a si própria; a classificação é preliminar por caminho/nome, não uma auditoria semântica nem certificação de conformidade.
 - Hashes canónicos dos documentos normalizados continuam pendentes de cálculo/verificação independente.
 
 ### Próximas ações obrigatórias
