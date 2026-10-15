@@ -20,7 +20,7 @@ CODES = [
     "IVBX2","MLCX","SMLL","UTIL"
 ]
 API_URL = "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/{encoded}"
-CODE_ALIAS = {"IBRX": "IBXX", "IBRX50": "IBXL", "ISE": "ISEE", "IVBX2": "IVBX"}
+CODE_ALIAS = {"IBRX": "IBXX", "IBRX50": "IBXL", "IEE": "IEEX", "IGCNM": "IGNM", "ISE": "ISEE", "IVBX2": "IVBX"}
 TZ = ZoneInfo("America/Sao_Paulo")
 NOW = datetime.now(TZ)
 TODAY = NOW.date()
