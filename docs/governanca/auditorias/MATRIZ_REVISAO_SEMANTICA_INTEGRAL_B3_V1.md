@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–24; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–25; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A; o Lote 22 reviu nove documentos de incidentes e armazenamento NORMALIZED; o Lote 23 reviu dez documentos de catálogo de fontes, parser e contratos NORMALIZED; o Lote 24 reviu dez documentos intraday/SPRD/negócio a negócio. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A; o Lote 22 reviu nove documentos de incidentes e armazenamento NORMALIZED; o Lote 23 reviu dez documentos de catálogo de fontes, parser e contratos NORMALIZED; o Lote 24 reviu dez documentos intraday/SPRD/negócio a negócio; o Lote 25 reviu 15 documentos de Copom, IBGE e calendário económico. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -308,23 +308,23 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/ingestao/PARTE03_B3_NEGOCIO_A_NEGOCIO_ESPECIFICACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE24; CAPTURA_BLOQUEADA_ATE_TERMOS_AUTORIZADOS |
 | `docs/ingestao/PARTE03_B3_SPRD_AQUISICAO_STATUS_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE24; CAPTURA_BLOQUEADA_ATE_TERMOS_AUTORIZADOS |
 | `docs/ingestao/PARTE03_B3_SPRD_PARSER_VALIDACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE24; CAPTURA_BLOQUEADA_ATE_TERMOS_AUTORIZADOS |
-| `docs/ingestao/PARTE03_BCB_COPOM_281_COMUNICADO_RECONCILIACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_281_RECONCILIACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_API_ENDPOINTS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_AUDITORIA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_B3_JANELA_EVENTO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_CONTRATO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_EVENTOS_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_FONTES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_PIPELINE_API_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BCB_COPOM_STATUS_API_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_BDM_NEGOCIO_A_NEGOCIO_ROTA_HISTORICA_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_CALENDARIO_ECONOMICO_CONTRATO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/PARTE03_BCB_COPOM_281_COMUNICADO_RECONCILIACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_281_RECONCILIACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_API_ENDPOINTS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_AUDITORIA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_B3_JANELA_EVENTO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_CONTRATO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_EVENTOS_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_FONTES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_PIPELINE_API_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BCB_COPOM_STATUS_API_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_BDM_NEGOCIO_A_NEGOCIO_ROTA_HISTORICA_2026-09-24.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_CALENDARIO_ECONOMICO_CONTRATO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
 | `docs/ingestao/PARTE03_COTAHIST_AUDITORIA_A1986_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/PARTE03_COTAHIST_NORMALIZACAO_CONTROLADA_V7.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_FONTES_CALENDARIO_ECONOMICO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_IBGE_CAPTURA_NORMALIZACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/PARTE03_MANIFESTO_EXECUCAO_CALENDARIO_ECONOMICO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/PARTE03_FONTES_CALENDARIO_ECONOMICO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; RAW_E_RECONCILIACAO_PENDENTES |
+| `docs/ingestao/PARTE03_IBGE_CAPTURA_NORMALIZACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; REFERENCIAS_CORRIGIDAS; RAW_PENDENTE |
+| `docs/ingestao/PARTE03_MANIFESTO_EXECUCAO_CALENDARIO_ECONOMICO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE25; REFERENCIAS_CORRIGIDAS; RAW_PENDENTE |
 | `docs/ingestao/PARTE03_NEGOCIO_A_NEGOCIO_CONTRATO_V1.1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/PARTE03_NEGOCIO_A_NEGOCIO_ENDPOINT_DERIV_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/PARTE03_NEGOCIO_A_NEGOCIO_FONTE_OFICIAL_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
