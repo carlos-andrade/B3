@@ -1,5 +1,24 @@
 # FASE05.5 — GRUPO 04 — PERMISSÕES
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-5824F4AC6BED |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_AUDITORIA |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 67d3e8cde4a3e32734cc09ab16eba028bb2fb15d8da4833c61798a6396a9b61f |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Data:** 2026-10-01  
 **Repositório:** `carlos-andrade/B3`  
 **Escopo:** compatibilidade entre permissões declaradas e operação efetiva dos workflows.

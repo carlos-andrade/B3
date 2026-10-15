@@ -1,5 +1,24 @@
 # FASE 05.5 — GRUPO 05 — PERSISTÊNCIA E DECISÃO
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-ADE295934AF9 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | RELATORIO_DE_AUDITORIA |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 50cebfbdda73397a0e27d39b6ace926ea022f2e9a464d4605cae7afd41c33940 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Data:** 2026-10-01  
 **Run auditor:** #49 — `36908738096`  
 **Commit auditado:** `e81bdce77ffa32e69bd0c5109927436b54d4abe4`

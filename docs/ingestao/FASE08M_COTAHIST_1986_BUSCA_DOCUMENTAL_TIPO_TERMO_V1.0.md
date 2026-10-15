@@ -1,5 +1,24 @@
 # FASE 08M — Busca Documental Dirigida pela Coluna Tipo — Mercado a Termo 1986–1989
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-DEB21C47BF76 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | b61120a2bb54d92f090644fc395726920243a19ee60db5e9c4f83a3b4d35b034 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Arquivo:** FASE08M_COTAHIST_1986_BUSCA_DOCUMENTAL_TIPO_TERMO_V1.0.md  
 **Projeto:** B3 - A BOLSA DO BRASIL  
 **Tema:** Investigação da dimensão histórica `Tipo` e sua possível relação com a colisão K4 de 10/10/1986  

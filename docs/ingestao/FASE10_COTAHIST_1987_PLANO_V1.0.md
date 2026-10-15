@@ -1,5 +1,24 @@
 # FASE 10 — COTAHIST 1987 — Plano de Execução e Critérios de Fechamento V1.0
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-42B273CE9200 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | b888218781275a6ae30a9eea369eb414beb9b9f3b9c2f4d8b551613a3f846aca |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Arquivo:** FASE10_COTAHIST_1987_PLANO_V1.0.md  
 **Projeto:** B3 — A Bolsa do Brasil  
 **Caminho:** docs/ingestao/FASE10_COTAHIST_1987_PLANO_V1.0.md  

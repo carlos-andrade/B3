@@ -1,5 +1,24 @@
 # FASE 09C — Busca Primária do BDI de 10/10/1986 — V1.0
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-80BD29D9E3D5 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | aa68f2ae014234d8ab085d5cce4dbe3d7edfd5cd9aa5c76f9f521b30ecd9b2a5 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Arquivo:** FASE09C_COTAHIST_1986_BUSCA_PRIMARIA_BDI_10101986_V1.0.md  
 **Projeto:** B3 - A BOLSA DO BRASIL  
 **Tema:** Recuperação da fonte primária para explicar a colisão K4 Vigor/VGO 2 de 10/10/1986  

@@ -1,5 +1,24 @@
 # PARTE 01 — Matriz de Validação NORMALIZED COTAHIST 1986–2026
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-534F744E1DC1 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | b73fa33f6f2f54c14b342e505f3da6652c0d1aadc111afa9bbf4ec4f5a5fe716 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Arquivo:** PARTE01_MATRIZ_VALIDACAO_NORMALIZED_1986_2026_V1.0.md  
 **Projeto:** B3 - A BOLSA DO BRASIL  
 **Tema:** Matriz consolidada de validação da camada NORMALIZED do COTAHIST  

@@ -1,5 +1,24 @@
 # FASE 08I — Reconstrução da Regra de Agregação da Colisão K4
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-9C3AC8C0A309 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 46d77806cbfac292d902c366c4d8fccf3c93a7e3e86833faa37d8ee096531ef9 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Arquivo:** FASE08I_COTAHIST_1986_RECONSTRUCAO_REGRA_AGREGACAO_V1.0.md  
 **Projeto:** B3 - A BOLSA DO BRASIL  
 **Tema:** Reconstrução estrutural da regra de publicação/agregação da colisão K4 de 10/10/1986  

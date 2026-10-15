@@ -2,6 +2,25 @@
 
 | Campo | Valor |
 |---|---|
+| **ID** | B3-DOC-35B40975D8A9 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 0a980274c291ad529bd168815bd6b44761962ebaa3c1301cfe7457cd76caca50 |
+| **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+| Campo | Valor |
+|---|---|
 | **ID** | B3-INC-LFS-1987-001 |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
@@ -9,8 +28,6 @@
 | **Fase** | Resolução e auditoria pós-migração |
 | **Estado** | CONCLUIDO |
 | **Versão** | 1.2.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular segundo norma GOVERNANCA v1.0.3 |
-| **Commit de referência (versão anterior)** | [547085a823c33701163cce3519c0fde88429b176](https://github.com/carlos-andrade/B3/commit/547085a823c33701163cce3519c0fde88429b176) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-14 |
 | **Responsável** | Responsável técnico B3 |
@@ -94,8 +111,6 @@ O workflow tem apenas `workflow_dispatch`, sem cron nem gatilho push. O modo pad
 | **Fase** | Resolução e validação pós-migração |
 | **Estado** | CONCLUIDO |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após normalização documental |
-| **Commit de referência (versão anterior)** | [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-14 |
 | **Responsável** | Responsável técnico B3 |
