@@ -1,7 +1,26 @@
 # WATCHDOG — Supervisão operacional do projeto B3
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-WD-README-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_OPERACIONAL |
+| **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | fb4b98d1f270a84c5c98708e96b67c4f6dc8bdd94caf66de60850130ec6a5e2e |
+| **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
+| **Data de criação** | 2026-10-13 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável operacional do projeto B3 |
+| **Aprovador** | Pendente — não representa aprovação formal |
+| **Origem** | Configuração WATCHDOG, workflows do repositório B3 e avaliações documentadas |
+| **Autoridade superior** | [Constituição GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CONSTITUICAO.md), [Norma de cabeçalho 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) e [Carta WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/blob/main/WATCHDOG/CARTA-WATCHDOG.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Padrão central:** [GOVERNANCA/WATCHDOG](https://github.com/carlos-andrade/GOVERNANCA/tree/main/WATCHDOG)  
-**Estado local:** piloto operacional em teste; última avaliação de atualidade: **8 PASS, 0 STALE, 0 UNKNOWN**. Os limiares permanecem provisórios, e a supervisão externa do próprio monitor ainda está pendente.
+**Estado local:** piloto operacional em teste; última avaliação documentada de atualidade: **8 PASS, 0 STALE, 0 UNKNOWN**. Os limiares permanecem provisórios, e a supervisão externa do próprio monitor ainda está pendente.
 
 ## Âmbito inicial
 
