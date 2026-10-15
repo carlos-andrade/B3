@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.8.0 |
+| **Versão** | 1.9.0 |
 | **SHA-256 (conteúdo canónico)** | 12e2b4eb472ccc06a64a1c5b97d639801c0fb76af51ecfa697034630765b8435 |
 | **Commit de referência (versão anterior)** | [17f30edd2b4400ede9253ea8f028572dd9409657](https://github.com/carlos-andrade/B3/commit/17f30edd2b4400ede9253ea8f028572dd9409657) |
 | **Data de criação** | 2026-10-14 |
@@ -175,3 +175,12 @@ Este fecho é estritamente estrutural e criptográfico. Não significa que a rev
 - A revisão semântica integral não está concluída: os Lotes 01–04 são amostrais. A [Matriz integral de controlo](auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) enumerou 303 Markdown no snapshot: 17 documentos com revisão prévia a revalidar, quatro relatórios amostrais, a decisão GOV-DIV-001 e 281 documentos pendentes de revisão de conteúdo. A matriz impede que inventário seja confundido com revisão concluída; avançar por lotes com classificação baseada em conteúdo, autoridade, dependências, conflitos e evidência.
 - Permanecem sob revisão os conflitos de versão/estado identificados nos Lotes 02–03, incluindo Dataset Oficial V1.0 versus V2.0 e o estado de adoção do contrato NORMALIZED V2.0.
 - Não alterar dados RAW, históricos COTAHIST ou artefactos de máquina por motivo de normalização documental.
+
+
+## Atualização — fecho da fila de 281 revisões — 2026-10-15
+
+A fila original de **281 documentos pendentes foi revista integralmente nos Lotes 05–26**. A [matriz semântica](auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) tem zero linhas PENDENTE_REVISAO_DE_CONTEUDO. O relatório de fecho é [REVISAO_SEMANTICA_PENDENCIAS_281_FECHO_2026-10-15.md](auditorias/REVISAO_SEMANTICA_PENDENCIAS_281_FECHO_2026-10-15.md).
+
+Este resultado fecha a fila original, mas não certifica o fecho global dos 303 documentos: 17 documentos previamente revistos continuam a exigir revalidação após GOV-DIV-001 e quatro relatórios amostrais não equivalem a revisão integral por ficheiro. A auditoria SHA-256 pós-alterações ainda tem de confirmar todos os hashes.
+
+Permanecem as ações de seguimento por lote: fonte primária para a colisão K4 de 1986, captura oficial ExternalSecurityCategoryCode, proveniência RAW, termos/autorização de endpoints B3, captura RAW Copom/IBGE, dataset negócio a negócio, estado da Wiki e gates operacionais WATCHDOG. COTAHIST 1986–2025 permanece somente para consulta; 2026 mantém atualização diária; BLOOMBERG_MAIL permanece isolado.
