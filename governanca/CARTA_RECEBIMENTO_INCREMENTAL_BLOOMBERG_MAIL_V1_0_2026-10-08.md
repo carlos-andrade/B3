@@ -9,7 +9,7 @@
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
 | **Estado** | HISTORICO; FORA_ESCOPO_OPERACIONAL_ATUAL_B3 |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 64ac4a94bcea519df11a0f446f122a28bc8086d352f50ae387bd511c722e9693 |
+| **SHA-256 (conteúdo canónico)** | a835750242d312403e8ce0b77ce5cf33b0c0c749167a5673c20b8b894e72c3fc |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
 | **Data de atualização** | 2026-10-15 |
