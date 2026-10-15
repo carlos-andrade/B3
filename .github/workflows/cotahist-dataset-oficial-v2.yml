@@ -46,9 +46,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
-          git diff --cached --quiet || git commit -m "data(oficial): publicar dataset COTAHIST V2"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          if git diff --cached --quiet; then
+            echo "Sem alterações novas para persistir."
+          else
+            git commit -m "data(oficial): publicar dataset COTAHIST V2"
+            pushed=0
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                pushed=1
+                break
+              fi
+              echo "Push concorrente falhou (tentativa $attempt/5); nova sincronização."
+              sleep 2
+            done
+            test "$pushed" -eq 1
+          fi
 
       - name: Publicar evidência
         uses: actions/upload-artifact@v4
@@ -65,4 +79,4 @@ jobs:
             echo "- Workflow: cotahist-dataset-oficial-v2.yml"
             echo "- Resultado do job: ${{ job.status }}"
             echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "\$GITHUB_STEP_SUMMARY"
+          } >> "$GITHUB_STEP_SUMMARY"
