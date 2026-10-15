@@ -1,8 +1,8 @@
 # Auditoria de Conformidade dos Workflows B3 — v2
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-15T08:22:02.615411+00:00
-Workflows auditados: 551
+Gerado em UTC: 2026-10-15T09:27:47.753772+00:00
+Workflows auditados: 552
 
 ## Regra de decisão
 
@@ -31,6 +31,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 |---|---:|---|---|---|
 | .github/workflows/atualizar-catalogo-b3.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/atualizar-readme-b3.yml | — | **CONFORME** | — | — |
+| .github/workflows/b3-auditoria-sha256-documental.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-cotahist-rebase-conflict-hardening.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/b3-monitor-execucoes-v1.yml | — | **CONFORME** | — | — |
