@@ -27,6 +27,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Testes unitários de ingestão
+        run: python -m unittest discover -s tests/ingestao -p "test_*.py" -v
+
       - name: Capturar e validar composicoes
         run: python scripts/ingestao/importar_indices_b3_v1.py
 
