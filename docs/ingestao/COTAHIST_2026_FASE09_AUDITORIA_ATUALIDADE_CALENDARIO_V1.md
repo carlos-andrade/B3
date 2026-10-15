@@ -1,8 +1,29 @@
+# Registo histórico — COTAHIST 2026, FASE09: auditoria de atualidade e calendário oficial
+
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-FASE09-AUDITORIA-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | AUDITORIA_HISTORICA |
+| **Fase** | COTAHIST 2026 — FASE09 |
+| **Estado** | HISTORICO — consultar evidências pós-promoção para estado atual |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 279575c90574047bc49acf5c45b94b8981abfb448e1f0d5a99283406281b37ef |
+| **Commit de referência (versão anterior)** | N/A — normalização inicial do cabeçalho |
+| **Data de criação** | 2026-10-14 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — revisão documental; não constitui aprovação operacional atual |
+| **Origem** | Evidências internas COTAHIST e calendário oficial B3 referenciados no corpo |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 > **AVISO DE ESTADO HISTÓRICO — 14/10/2026:** Esta auditoria descreve o NORMALIZED anterior, terminado em 23/09/2026. Após atualização do dataset, o manifesto e as evidências atuais indicam última data 13/10/2026, RAW SHA-256 `580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e` e NORMALIZED SHA-256 `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`. Não usar a decisão de bloqueio abaixo como estado operacional atual. Consultar a auditoria pós-promoção [COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md](COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md) e o [roadmap PARTE23](../cotahist/ROADMAP_INGESTAO_PARTE23_ESTADO_2026-10-14.md). O conteúdo original foi preservado como histórico do estado anterior.
 
 ---
 
-# COTAHIST 2026 — FASE09: auditoria de atualidade e calendário oficial
+## COTAHIST 2026 — FASE09: auditoria de atualidade e calendário oficial
 
 **Data da auditoria:** 2026-10-14  
 **Repositório:** `carlos-andrade/B3`  
