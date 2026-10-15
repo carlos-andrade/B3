@@ -28,7 +28,7 @@
 
 A primeira captura operacional do calendário conjuntural do IBGE foi estruturada.
 
-A fonte oficial informa, entre outros eventos, IPCA-15 em 25/09/2026, PNAD Contínua mensal em 29/09/2026, IPP em 30/09/2026, PIM-PF em 02/10/2026, INPC e IPCA em 09/10/2026, PMS em 14/10/2026 e PMC em 15/10/2026. citeturn0search0
+O calendário oficial do IBGE informa, entre outros eventos, IPCA-15 em 25/09/2026, PNAD Contínua mensal em 29/09/2026, IPP em 30/09/2026, PIM-PF em 02/10/2026, INPC e IPCA em 09/10/2026, PMS em 14/10/2026 e PMC em 15/10/2026. Fonte: [Calendário de divulgação — IBGE](https://www.ibge.gov.br/calendario-de-divulgacao-novoportal.html).
 
 ## Regra de horário
 
