@@ -9,7 +9,7 @@
 | **Fase** | Catálogo B3 — captura de instrumentos |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.0.1 |
-| **SHA-256 (conteúdo canónico)** | 6b6e2775f6737c5bfef149da84894bab56371b925d26c35abdab09b50464fdd9 |
+| **SHA-256 (conteúdo canónico)** | 0e9fa5bc9e71121b2665bcc7a36cb3625dd514039517b78e49102d9527cc15b9 |
 | **Commit de referência (versão anterior)** | N/A — normalização inicial do cabeçalho |
 | **Data de criação** | 2026-09-23 |
 | **Data de atualização** | 2026-10-15 |
