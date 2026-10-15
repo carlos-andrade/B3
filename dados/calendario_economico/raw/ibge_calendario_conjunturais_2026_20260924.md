@@ -1,13 +1,13 @@
-# SNAPSHOT RAW — IBGE CALENDÁRIO CONJUNTURAIS
+# REGISTO DE OBSERVAÇÕES — IBGE CALENDÁRIO CONJUNTURAIS
 
 | Campo | Valor |
 |---|---|
 | **ID** | B3-DOC-004-S-2026-20260924-MD |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
-| **Tipo documental** | EVIDENCIA_RAW_DOCUMENTAL |
+| **Tipo documental** | REGISTO_DE_FONTE_PENDENTE_RAW |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
+| **Estado** | SNAPSHOT_DESCRITIVO; CAPTURA_RAW_PENDENTE |
 | **Versão** | 1.0.0 |
 | **SHA-256 (conteúdo canónico)** | b172c894de0bf30e6cd885fc783f024a5ff32f5eb03e7b546f3ce1cff380ca7b |
 | **Commit de referência (versão anterior)** | [abadd5fd84dc2d6f8898c452b1f30e92e1469a2b](https://github.com/carlos-andrade/B3/commit/abadd5fd84dc2d6f8898c452b1f30e92e1469a2b) |
@@ -25,6 +25,8 @@ URL: https://www.ibge.gov.br/calendario/conjunturais.html
 Capturado em: 2026-09-24
 Tipo: snapshot de evidência web oficial
 Hash: será calculado pelo pipeline quando o conteúdo bruto for baixado diretamente.
+
+Este ficheiro é um registo estruturado de observações identificadas na página oficial, não o payload HTTP bruto. O downloader oficial continua a ser a fonte canónica para futuras capturas e para o cálculo do hash do conteúdo efetivamente recebido.
 
 ## Registros observados na fonte oficial
 
