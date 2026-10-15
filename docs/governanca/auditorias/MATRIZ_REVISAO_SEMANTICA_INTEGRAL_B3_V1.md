@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–10; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–11; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -66,21 +66,21 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `WIKI/09-AUTOMACAO/INCIDENTE_PUBLICACAO_WIKI_2026-09-29.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
 | `WIKI/09-AUTOMACAO/WIKI_NATIVA.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
 | `WIKI/README.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/acoes/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/balcao/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/bdrs/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/INVENTARIO_B3_2026-09-21.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/PROTOCOLO_CAPTURA.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/classificacao/ESTATISTICAS_CLASSIFICACAO_B3_2026-09-22.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/classificacao/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/classificacao/REGRAS_CLASSIFICACAO_ESTRUTURAL_2026-09-23.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/estatisticas/ANALISE_ESTRUTURAL_BVBG028_2026-09-22.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/fontes/EVIDENCIA_VIGENTE_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/fontes/NOTA_CLASSIFICACAO_CFI_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/fontes/NOTA_FONTE_B3_2026-09-23.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/catalogo/fontes/REFERENCIA_HISTORICA_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
+| `ativos/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/acoes/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/balcao/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/bdrs/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/INVENTARIO_B3_2026-09-21.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/PROTOCOLO_CAPTURA.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/classificacao/ESTATISTICAS_CLASSIFICACAO_B3_2026-09-22.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/classificacao/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/classificacao/REGRAS_CLASSIFICACAO_ESTRUTURAL_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/estatisticas/ANALISE_ESTRUTURAL_BVBG028_2026-09-22.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/fontes/EVIDENCIA_VIGENTE_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/fontes/NOTA_CLASSIFICACAO_CFI_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/fontes/NOTA_FONTE_B3_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
+| `ativos/catalogo/fontes/REFERENCIA_HISTORICA_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
 | `ativos/cepac/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `ativos/commodities/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `ativos/criptoativos/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
