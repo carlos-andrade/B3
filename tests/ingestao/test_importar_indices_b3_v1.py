@@ -6,7 +6,7 @@ Tipo documental: TESTES_UNITARIOS
 Fase: GOVERNANCA / CORREÇÃO DE INGESTÃO
 Estado: EM_CURSO
 Versão: 1.0.0
-Origem: Issue WATCHDOG #11 e falha observada no run 38666819065.
+Origem: Issue WATCHDOG #11; runs 38666819065 e 38749902429; códigos atuais conferidos no catálogo público B3.
 Autoridade: GOVERNANCA — Norma de Cabeçalho e princípios de evidência antes de alegação.
 """
 
@@ -19,6 +19,14 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "ingestao"))
 
 import importar_indices_b3_v1 as ingest
+
+
+class IndexAliasTests(unittest.TestCase):
+    def test_legacy_iee_maps_to_current_ieex_code(self):
+        self.assertEqual(ingest.CODE_ALIAS["IEE"], "IEEX")
+
+    def test_legacy_igcnm_maps_to_current_ignm_code(self):
+        self.assertEqual(ingest.CODE_ALIAS["IGCNM"], "IGNM")
 
 
 class ReferenceDateTests(unittest.TestCase):
