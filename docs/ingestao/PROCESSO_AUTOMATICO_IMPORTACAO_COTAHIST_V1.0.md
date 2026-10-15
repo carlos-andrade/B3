@@ -59,4 +59,4 @@ Cada aquisição bem-sucedida deve preservar, conforme aplicável: nome do arqui
 
 ## 8. Fallback
 
-Se a aquisição automática deixar de funcionar, o procedimento manual da página oficial da B3 poderá ser utilizado como contingência. A substituição não deve ocorrer silenciosamente. citeturn0search0
+Se a aquisição automática deixar de funcionar, poderá ser usada uma contingência manual a partir da [página oficial de Cotações Históricas da B3](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/mercado-a-vista/cotacoes-historicas/), desde que os termos aplicáveis permitam esse uso. Não automatizar scraping da página Pesquisa por Pregão. A substituição da rota deve ser documentada, com fonte, data e hash.
