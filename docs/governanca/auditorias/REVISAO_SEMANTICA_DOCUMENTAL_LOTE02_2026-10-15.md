@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 160b0ed853e2433466d70d3ede4b4f68bf4c7dbd7481cb2f1e3a44d3a9b7d2da |
+| **SHA-256 (conteúdo canónico)** | dba112c0a1daced2b80e53615fa361b15758cfc6bc381bbc817c6d169928fe55 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
