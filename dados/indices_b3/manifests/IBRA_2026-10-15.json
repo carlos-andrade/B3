@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IBRA",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lCUkEnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBRA?language=pt-br",
+  "captured_at": "2026-10-15T11:26:22.547372-03:00",
+  "reference_date": "2026-10-15",
+  "raw_file": "dados/indices_b3/raw/2026/IBRA_2026-10-15.json",
+  "raw_sha256": "5ce65841ea7306b0ad8f264e6ad31f69cb05ae637b7df7290f27f66299b4d9a7",
+  "normalized_file": "dados/indices_b3/normalized/2026/IBRA_2026-10-15.csv",
+  "normalized_sha256": "b12c3e98d164710ae53983ded6109062ff546b94d7e3a5db8f2b9023523e11da",
+  "rows": 148,
+  "participation_sum_pct": 100.0,
+  "redutor": "390.021.752,43092054",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
