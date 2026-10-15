@@ -8,7 +8,7 @@
 | **Tipo documental** | INVENTARIO_MATRIZ |
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
-| **Versão** | 1.2.0 |
+| **Versão** | 1.3.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — validar por ferramenta reprodutível |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
@@ -191,10 +191,10 @@
 | 141 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
 | 142 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE02 |
 | 143 | `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 144 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 145 | `docs/ingestao/CONTRATO_NORMALIZED_ANUAL_COTAHIST_V2.0.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 144 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE03 |
+| 145 | `docs/ingestao/CONTRATO_NORMALIZED_ANUAL_COTAHIST_V2.0.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE03 |
 | 146 | `docs/ingestao/COTAHIST_1986_2026_RESULTADO_AUDITORIA_V2.md` | INCIDENTES_AUDITORIAS | PENDENTE_ANALISE_CONTEUDO |
-| 147 | `docs/ingestao/COTAHIST_1986_CONTRATO_IDENTIDADE_K4_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
+| 147 | `docs/ingestao/COTAHIST_1986_CONTRATO_IDENTIDADE_K4_V1.0.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE03 |
 | 148 | `docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md` | INCIDENTES_AUDITORIAS | PENDENTE_ANALISE_CONTEUDO |
 | 149 | `docs/ingestao/COTAHIST_2026_FASE10_GATE_VALIDACAO_CANDIDATO_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 150 | `docs/ingestao/COTAHIST_2026_FASE11_AUDITORIA_POS_PROMOCAO_PARTE23_V1.md` | INCIDENTES_AUDITORIAS | PENDENTE_ANALISE_CONTEUDO |
@@ -335,6 +335,8 @@
 
 ## Estado de execução
 
+A revisão semântica do Lote 03 abrange três contratos de ingestão/identidade. Relatório: [REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md). Os documentos-fonte não foram alterados.
+
 A revisão semântica do Lote 02 abrange seis contratos/políticas COTAHIST e monitorização; relatório em [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md). Não houve alteração dos contratos-fonte nesta etapa.
 
 Revisão semântica por amostragem prioritária registada em [Revisão semântica documental — Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md). Cinco documentos foram inspecionados; uma divergência de autoridade normativa foi registada para reconciliação antes de qualquer alteração normativa. Esta revisão não certifica os hashes canónicos.
@@ -355,3 +357,4 @@ Revisão semântica por amostragem prioritária registada em [Revisão semântic
 | 1.0.0 | 2026-10-15 | Inventário estrutural completo e classificação preliminar gerados a partir da árvore Git | Árvore `7ad90741f07bdb5f2872a5a5a35bff4d6324e201`; total `284` ficheiros Markdown |
 | 1.1.0 | 2026-10-15 | Revisão semântica de cinco documentos prioritários e registo de divergência de autoridade | [Relatório Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
 | 1.2.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas e registo de dívida de metadados legados | [Relatório Lote 02](REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
+| 1.3.0 | 2026-10-15 | Revisão semântica de três contratos de ingestão/identidade; registados conflitos potenciais de versão/estado | [Relatório Lote 03](REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) |
