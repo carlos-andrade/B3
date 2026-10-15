@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; 281_PENDENTES_ORIGINAIS_REVISTOS; REVALIDACAO_GLOBAL_RESIDUAL_ABERTA |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 1afb0bb0ff1cbf33723ff6e8036b90a301588c762c1fb5e7009401e886658bcc |
+| **SHA-256 (conteúdo canónico)** | aa0af04e4483ae131ee35630b69497e3f858d37a29fdeda29f35d33d1e1d3dce |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |

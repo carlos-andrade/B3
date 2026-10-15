@@ -9,7 +9,7 @@
 | **Fase** | Ingestão de dados BDI |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 101c7b67fee0eefa6723340df0b4620762bfbc68ff04cb2822d1e64c1e4fbab7 |
+| **SHA-256 (conteúdo canónico)** | dc4d12535e19aa425ba49b9e1518a4d34ce04c16fc91378af6e80c98a8b11f21 |
 | **Commit de referência (versão anterior)** | N/A — primeira normalização do cabeçalho |
 | **Data de criação** | 2026-09-23 |
 | **Data de atualização** | 2026-10-15 |
