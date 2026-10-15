@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.9.0 |
+| **Versão** | 2.0.0 |
 | **SHA-256 (conteúdo canónico)** | 6fa80b0fda2f99dd7071ede80c78b8e81c70630f56532ba4cd2df4292a77e9fc |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
@@ -577,3 +577,27 @@ A auditoria do commit de decisão [run 38773908484](https://github.com/carlos-an
 - Proveniência RAW COTAHIST, lista oficial ExternalSecurityCategoryCode e WATCHDOG permanecem frentes separadas.
 - COTAHIST 1986–2025 continua apenas para consulta; 2026 mantém atualização diária.
 - BLOOMBERG_MAIL permanece isolado e fora do escopo B3.
+
+
+## 24. Fecho da fila de revisão de conteúdo — 281 documentos — 2026-10-15
+
+### Resultado confirmado na matriz
+
+- **281/281** documentos originalmente marcados PENDENTE_REVISAO_DE_CONTEUDO foram revistos nos Lotes 05–26.
+- A matriz tem **zero** linhas restantes nesse estado.
+- Relatório de fecho: [REVISAO_SEMANTICA_PENDENCIAS_281_FECHO_2026-10-15.md](governanca/auditorias/REVISAO_SEMANTICA_PENDENCIAS_281_FECHO_2026-10-15.md).
+- Matriz: [MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md](governanca/auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md).
+
+### Limite do fecho
+
+A fila original de 281 está fechada. **A revisão semântica global dos 303 documentos não está certificada como totalmente encerrada**, porque 17 documentos previamente revistos requerem revalidação após GOV-DIV-001 e quatro relatórios amostrais ainda não equivalem a revisão integral por ficheiro. A auditoria SHA-256 pós-alterações também deve terminar com sucesso antes do fecho estrutural.
+
+### Ações abertas
+
+1. Revalidar os 17 documentos de autoridade/contrato que constam na matriz.
+2. Resolver ou formalmente manter bloqueadas as ações de seguimento dos lotes, incluindo K4 1986, lista oficial ExternalSecurityCategoryCode, proveniência RAW, termos de endpoints B3, captura RAW Copom/IBGE, aquisição intraday e estado corrente da Wiki.
+3. Tratar colisões concorrentes de persistência em workflows sem alterar RAW ou evidências históricas.
+4. Manter WATCHDOG em curso até heartbeat externo, ACK/escalonamento, retenção duradoura e aprovação humana dos limiares.
+5. Confirmar auditoria canónica final dos documentos alterados.
+
+As restrições permanecem: COTAHIST 1986–2025 somente para consulta/read-only; 2026 com atualização diária; BLOOMBERG_MAIL isolado e fora do escopo operacional B3.
