@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–11; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–12; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -81,20 +81,20 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `ativos/catalogo/fontes/NOTA_CLASSIFICACAO_CFI_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
 | `ativos/catalogo/fontes/NOTA_FONTE_B3_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
 | `ativos/catalogo/fontes/REFERENCIA_HISTORICA_SCTYCTGY_2026-09-23.md` | CATALOGO_ATIVOS | REVISTO_LOTE11; MAPEAMENTO_OFICIAL_PENDENTE |
-| `ativos/cepac/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/commodities/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/criptoativos/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/emprestimo_ativos/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/etfs/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/fiis/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/fundos/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/futuros/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/indices/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/juros/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/moedas/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/opcoes/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/renda_fixa/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
-| `ativos/termo/README.md` | CATALOGO_ATIVOS | PENDENTE_REVISAO_DE_CONTEUDO |
+| `ativos/cepac/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/commodities/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/criptoativos/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/emprestimo_ativos/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/etfs/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/fiis/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/fundos/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/futuros/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/indices/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/juros/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/moedas/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/opcoes/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/renda_fixa/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
+| `ativos/termo/README.md` | CATALOGO_ATIVOS | REVISTO_LOTE12; LISTAGEM_CORRENTE_EXIGE_FONTE_OFICIAL |
 | `dados/bdi/2026/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `dados/bdi/PROTOCOLO_CAPTURA.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
 | `dados/bdi/README.md` | DADOS_FONTES_E_EVIDENCIAS | PENDENTE_REVISAO_DE_CONTEUDO |
