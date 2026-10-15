@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
+| **SHA-256 (conteúdo canónico)** | c5509e30659b7f6441be452f749e4347a22c6bfde5acc095ab6e2593dc18964a |
 | **Commit de referência (versão anterior)** | [dd97e488701c62645a3cc2ca855897efcd3162db](https://github.com/carlos-andrade/B3/commit/dd97e488701c62645a3cc2ca855897efcd3162db) |
 | **Data de criação** | 2026-09-24 |
 | **Data de atualização** | 2026-10-14 |
