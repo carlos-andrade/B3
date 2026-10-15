@@ -1,10 +1,23 @@
 # REFERÊNCIA HISTÓRICA — SctyCtgy
 
-**Arquivo:** REFERENCIA_HISTORICA_SCTYCTGY_2026-09-23.md  
-**Projeto:** B3 - A Bolsa do Brasil  
-**Tema:** Correspondência histórica do campo SecurityCategory  
-**Data:** 2026-09-23  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-CAT-FONTE-003 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | REFERENCIA_HISTORICA |
+| **Fase** | CLASSIFICACAO_CADASTRAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | b6917c72d2ca86e41df28eb6e61d9dbabcca80555e69c576a2b5570019fb21f7 |
+| **Commit de referência (versão anterior)** | [f8e2816d73849bf55c76e0dfabbe9923d4893fa7](https://github.com/carlos-andrade/B3/commit/f8e2816d73849bf55c76e0dfabbe9923d4893fa7) |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório |
+| **Origem** | Definição histórica do Cadastro de Instrumento B3, datada de 2013; não representa a lista vigente |
+| **Autoridade superior** | [Norma de cabeçalho documental da GOVERNANÇA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Fonte
 
