@@ -9,7 +9,7 @@
 | **Fase** | Governança — reconciliação normativa |
 | **Estado** | DECISAO_REGISTADA; HASH_CANONICO_CALCULADO; AUDITORIA_GLOBAL_PENDENTE |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 010661d79963294938036a358f0966c683a461b48b55fa3d3683809fb6992b4f |
+| **SHA-256 (conteúdo canónico)** | 6c2a37b91d750ccdc0006b1cb95da82130603e64d3c85aa47bb19fb69eea4687 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
