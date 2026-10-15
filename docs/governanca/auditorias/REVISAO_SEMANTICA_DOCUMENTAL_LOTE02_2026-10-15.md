@@ -50,6 +50,8 @@ Foi criado um auditor somente de leitura em [auditar_sha256_documental_b3.py](..
 
 Este resultado é um baseline de triagem, não uma certificação: a categoria CABECALHO_CONTROLO_INVALIDO agrega documentos que não contêm as duas linhas de controlo e requer subdivisão entre documento humano, histórico, gerado e artefacto com contrato próprio.
 
+A versão atual inclui testes unitários para exclusão das duas linhas de controlo, normalização BOM/CRLF e rejeição de cabeçalho incompleto. Os testes e a auditoria passaram no [run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162). O snapshot desse run continha 287 Markdown: 271 com controlos de cabeçalho inválidos, 15 pendentes e 1 sem H1. O resultado confirma execução técnica do auditor e dos testes; não confirma nenhum hash documental existente, pois nenhum documento chegou ao estado de comparação CONFORME/DIVERGENTE nesse baseline.
+
 ## 5. Próximos passos
 
 1. Executar e validar os testes unitários do hash canónico adicionados em `tests/governanca/test_auditar_sha256_documental_b3.py`; a execução automatizada está em curso no momento desta atualização.
@@ -64,3 +66,4 @@ Este resultado é um baseline de triagem, não uma certificação: a categoria C
 |---|---|---|---|
 | 1.0.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas; dívida de metadados e estado inicial do auditor registados | Inspeção direta dos documentos-fonte; workflow de auditoria SHA-256 |
 | 1.1.0 | 2026-10-15 | Reexecução do auditor corrigido concluída com sucesso; artefacto JSON publicado no run | [Run 38713381853](https://github.com/carlos-andrade/B3/actions/runs/38713381853) |
+| 1.2.0 | 2026-10-15 | Testes unitários do algoritmo e nova auditoria concluídos com sucesso; hashes existentes continuam sem validação efetiva no baseline | [Run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162) |
