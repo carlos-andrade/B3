@@ -38,9 +38,9 @@ Foram inspecionados três contratos de ingestão/identidade. Os conteúdos têm 
 
 ### GOV-DATASET-VERSAO-001 — V1.0 versus Dataset Oficial V2.0
 
-**Fato:** o contrato V1.0 aponta para `COTAHIST_DATASET_OFICIAL_V1.0.json`. O contexto atual do projeto também referencia `COTAHIST_DATASET_OFICIAL_V2.0.json` como Dataset Oficial. Isso exige mapeamento explícito de compatibilidade e vigência, mas não prova que V1.0 seja inválido ou que V2.0 viole os seus critérios.
+**Fato:** o contrato V1.0 aponta para `COTAHIST_DATASET_OFICIAL_V1.0.json`, enquanto [FASE10A M2 — Integração física com Dataset Oficial COTAHIST V2.0](../../ingestao/FASE10A_M2_DATASET_OFICIAL_FISICO_V2.0.md) especifica a V2 e está marcada `IMPLEMENTADO — PUBLICAÇÃO BLOQUEADA ATÉ M3`. A V2 exige NORMALIZED físico e certificação física; a publicação global continua bloqueada até M3. Trata-se de evolução de versão com condições de publicação explícitas, não de prova de incompatibilidade.
 
-**Ação:** localizar contrato V2.0 e comparar critérios, campos, estado de 1986, atualização de 2026 e política de congelamento 1986–2025. Não editar o contrato V1.0 até a comparação.
+**Ação:** mapear formalmente V1.0 (contrato histórico) → FASE10A M2/V2.0 (contrato físico) → workflow V2 e Dataset Oficial V2.0. Comparar critérios, estados, 1986, atualização de 2026 e congelamento de 1986–2025; preservar o bloqueio de publicação global enquanto M3 não autorizar.
 
 ### GOV-NORMALIZED-ESTADO-001 — proposta técnica versus implementação
 
@@ -58,7 +58,7 @@ Foram inspecionados três contratos de ingestão/identidade. Os conteúdos têm 
 
 ## 5. Próximos passos
 
-1. Localizar o contrato do Dataset Oficial V2.0 e comparar V1.0/V2.0.
+1. Consolidar o mapa de precedência entre contrato V1.0, FASE10A M2/V2.0, workflow V2 e manifesto oficial.
 2. Verificar evidência formal de adoção do contrato NORMALIZED V2.0.
 3. Continuar a revisão de contratos de dados restantes, mantendo as regras técnicas intactas.
 4. Após fechar a classificação semântica, normalizar cabeçalhos em lotes controlados e calcular hashes por ferramenta reprodutível.
