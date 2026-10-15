@@ -379,3 +379,11 @@ A execução [38716296153](https://github.com/carlos-andrade/B3/actions/runs/387
 - Os sete documentos cujo SHA-256 foi recalculado com base no relatório oficial foram confirmados como `CONFORME` nesta execução.
 - Limite: o workflow valida integridade dos hashes onde o cabeçalho permite comparação; não certifica a conformidade semântica dos 289 documentos. A dívida estrutural dos 271 cabeçalhos continua aberta.
 - Artefacto JSON preservado como evidência no run, sem alegar que foi commitado.
+
+## Auditoria automática SHA-256 — confirmação após normalização dos 10 metadados — 2026-10-15
+
+- Execução oficial: [run 38723560993](https://github.com/carlos-andrade/B3/actions/runs/38723560993), commit `5b2cbde2693fe8f1cd93bd9f9d71e45a5796cc3c`, conclusão `success`.
+- Resultado: 289 Markdown; 17 `CONFORME`; 271 `CABECALHO_CONTROLO_INVALIDO`; 1 `SEM_CABECALHO_H1`; zero `PENDENTE`, zero `DIVERGENTE` e zero `ERRO_LEITURA`.
+- Os dez metadados de SHA-256 anteriormente pendentes foram confirmados como `CONFORME` pela ferramenta canónica. Isto não certifica a conformidade estrutural/semântica dos 271 documentos com controlo inválido nem classifica o ficheiro sem H1.
+- Próximo gate: classificar os 271 casos por natureza documental antes de definir lotes de normalização; triagem específica para `docs/ingestao/COTAHIST_2026_FASE09_AUDITORIA_ATUALIDADE_CALENDARIO_V1.md` antes de qualquer alteração.
+- A evidência JSON está anexada ao run e não foi commitada como ficheiro de relatório.
