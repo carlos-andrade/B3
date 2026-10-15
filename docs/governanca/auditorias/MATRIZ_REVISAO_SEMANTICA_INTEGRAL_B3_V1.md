@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–06; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–07; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki e o Lote 06 reviu 15 documentos de governança/auditorias de workflows. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -193,19 +193,19 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/governanca/auditorias/FASE05_5_GRUPO_05_PERSISTENCIA_DECISAO_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/auditorias/FASE05_5_GRUPO_06_IDEMPOTENCIA_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/auditorias/FASE05_CLASSIFICACAO_DIVERGENCIAS_WORKFLOWS_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE02_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE03_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE04_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE05_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGO_ATIVOS_LOTE06_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_MERCADOS_ALVO_LOTE07_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_READMES_NEGOCIO_LOTE06_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE02_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE03_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE04_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGOS_ATIVOS_LOTE05_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_CATALOGO_ATIVOS_LOTE06_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_MERCADOS_ALVO_LOTE07_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/RELATORIO_EXECUCAO_NORMALIZACAO_READMES_NEGOCIO_LOTE06_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md` | GOVERNANCA_NORMATIVA | EVIDENCIA_DE_REVISAO_PARCIAL |
 | `docs/governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md` | GOVERNANCA_NORMATIVA | EVIDENCIA_DE_REVISAO_PARCIAL |
 | `docs/governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md` | GOVERNANCA_NORMATIVA | EVIDENCIA_DE_REVISAO_PARCIAL |
 | `docs/governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md` | GOVERNANCA_NORMATIVA | EVIDENCIA_DE_REVISAO_PARCIAL |
-| `docs/governanca/auditorias/TRIAGEM_FAMILIAS_DOCUMENTAIS_SHA256_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/governanca/auditorias/TRIAGEM_FAMILIAS_DOCUMENTAIS_SHA256_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md` | GOVERNANCA_NORMATIVA | DECISAO_GOV_DIV_001_REGISTADA; VALIDACAO_FINAL_PENDENTE |
 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
