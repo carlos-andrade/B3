@@ -9,7 +9,7 @@
 | **Fase** | Governança — reconciliação normativa |
 | **Estado** | DECISAO_REGISTADA; AUDITORIA_SHA256_GLOBAL_CONFORME; REVISAO_SEMANTICA_INTEGRAL_EM_CURSO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 6c2a37b91d750ccdc0006b1cb95da82130603e64d3c85aa47bb19fb69eea4687 |
+| **SHA-256 (conteúdo canónico)** | b5da3a9fa0d4ec2512c939bbb0ccd6b592b14e4611f1b956ce8df4a071ed112b |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
