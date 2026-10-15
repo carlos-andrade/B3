@@ -1,5 +1,24 @@
 # Revisão e aprovação dos limiares de atualidade — WATCHDOG B3
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-WATCHDOG-LIMIARES-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | REGISTO_DE_REVISAO |
+| **Fase** | WATCHDOG — governação de atualidade |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 90ced4a73c9fe78032cdf63bcda433292c3551399f076711e2a6a4169df961b1 |
+| **Commit de referência (versão anterior)** | [5d3149818dbd44e56790f364c50beedba7fac64a](https://github.com/carlos-andrade/B3/commit/5d3149818dbd44e56790f364c50beedba7fac64a) |
+| **Data de criação** | 2026-10-13 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Proprietário do repositório B3 |
+| **Aprovador** | Pendente — aprovação explícita do proprietário necessária |
+| **Origem** | Inventário `WATCHDOG/registry/datasets-monitorizados.json` e revisão dos controlos de atualidade |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
 **Estado:** para revisão do proprietário; nenhum limiar fica aprovado por este documento.  
 **Data de preparação:** 2026-10-13  
 **Fonte de configuração:** `WATCHDOG/registry/datasets-monitorizados.json`  
