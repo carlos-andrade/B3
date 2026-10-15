@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.7.0 |
+| **Versão** | 1.8.0 |
 | **SHA-256 (conteúdo canónico)** | a3ae882341cbdd7179c02f5c3f8ddcd59544e774412ff7f7d911f4e984d59702 |
 | **Commit de referência (versão anterior)** | [17f30edd2b4400ede9253ea8f028572dd9409657](https://github.com/carlos-andrade/B3/commit/17f30edd2b4400ede9253ea8f028572dd9409657) |
 | **Data de criação** | 2026-10-14 |
@@ -155,7 +155,7 @@ Este fecho é estritamente estrutural e criptográfico. Não significa que a rev
 ### Próximas ações — fora do gate de cabeçalhos
 
 1. Prosseguir a classificação e revisão semântica documental, priorizando contratos e documentos de autoridade.
-2. Resolver `GOV-DIV-001` por decisão autorizada e versionada; não editar silenciosamente a Carta Magna ou o Layout Mestre.
+2. GOV-DIV-001 foi reconciliada por decisão versionada [DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md](decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md); validar a auditoria SHA-256 após a correção final do hash e preservar o histórico normativo.
 3. Manter pendente a verificação independente da proveniência RAW COTAHIST.
 4. Capturar e validar a lista oficial vigente `ExternalSecurityCategoryCode`; não inferir códigos a partir de listas históricas.
 5. Continuar as ações operacionais WATCHDOG: heartbeat externo, aprovação dos limiares, confirmação/escalonamento e retenção durável.
@@ -165,3 +165,13 @@ Este fecho é estritamente estrutural e criptográfico. Não significa que a rev
 | Versão | Data | Alteração | Responsável | Evidência |
 |---|---|---|---|---|
 | 1.7.0 | 2026-10-15 | Registo do encerramento estrutural: 302/302 conformes, zero cabeçalhos inválidos e zero hashes divergentes; baseline anterior preservado como histórico | Responsável técnico B3 | [Auditoria final run 38768768725](https://github.com/carlos-andrade/B3/actions/runs/38768768725) |
+
+
+## Atualização — decisão GOV-DIV-001 e revisão semântica — 2026-10-15
+
+- Decisão versionada: [GOV-DIV-001 — hierarquia normativa por domínio](decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md).
+- Carta Magna atualizada para v1.3.0; Layout Mestre atualizado para v1.1.0. A Carta Magna governa princípios constitucionais, competências e alterações normativas; o Layout Mestre governa a especificação operacional dentro desses limites.
+- A auditoria pós-hash da decisão deve confirmar o hash canónico antes do fecho estrutural desta alteração.
+- A revisão semântica integral não está concluída: os Lotes 01–04 são amostrais e não certificam os 303 Markdown do snapshot. O próximo passo é publicar uma matriz integral por ficheiro e avançar por lotes com classificação baseada em conteúdo, autoridade, dependências, conflitos e evidência.
+- Permanecem sob revisão os conflitos de versão/estado identificados nos Lotes 02–03, incluindo Dataset Oficial V1.0 versus V2.0 e o estado de adoção do contrato NORMALIZED V2.0.
+- Não alterar dados RAW, históricos COTAHIST ou artefactos de máquina por motivo de normalização documental.
