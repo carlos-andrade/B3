@@ -65,10 +65,10 @@ Ele não substitui os workflows de produção e não executa qualquer promoção
 | Fase | Gate do DRY-RUN | Evidência principal |
 |---|---|---|
 | 00 | Governança existente | `docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md` |
-| 01 | RAW anual existente | `dados/cotahist/raw/anual/COTAHIST_AAAAAA.ZIP` |
+| 01 | RAW anual existente | `dados/cotahist/raw/anual/COTAHIST_A<AAAA>.ZIP` |
 | 02 | Integridade da fonte comprovada | `...FASE02_INTEGRIDADE_FONTE_V1.json` |
 | 03 | Parser versionado e compatível | `scripts/ingestao/normalize_cotahist.py` + versão do manifesto |
-| 04 | Normalizado existente | `dados/cotahist/normalized/anual/COTAHIST_AAAAAA.csv` |
+| 04 | Normalizado existente | `dados/cotahist/normalized/anual/COTAHIST_A<AAAA>.csv` |
 | 05 | Manifesto válido | `..._quality.json` |
 | 06 | Reconciliação comprovada | `...FASE06_RECONCILIACAO_V1.json` |
 | 07 | Identidade/chaves comprovadas | `...FASE07_IDENTIDADE_CHAVES_V1.json` |
