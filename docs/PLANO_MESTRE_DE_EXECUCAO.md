@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.8.0 |
+| **Versão** | 1.9.0 |
 | **SHA-256 (conteúdo canónico)** | c543f92f92fca8e6623b45c727c17f782fb3b709d06d1b593de635d0c7bae86c |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
@@ -547,3 +547,33 @@ A auditoria SHA-256 documental foi reexecutada após a normalização dos cabeç
 | Data | Alteração | Evidência |
 |---|---|---|
 | 2026-10-15 | Fecho da pendência dos 225 controlos inválidos; auditoria final confirmou 302/302 conformes, zero inválidos e zero divergentes | [Run 38768768725](https://github.com/carlos-andrade/B3/actions/runs/38768768725); [Issue #11](https://github.com/carlos-andrade/B3/issues/11) |
+
+
+## 23. Reconciliação normativa GOV-DIV-001 e revisão semântica — 2026-10-15
+
+### Decisão registada
+
+A divergência GOV-DIV-001 foi reconciliada por separação de competências normativas, com decisão versionada em [DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md](governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md).
+
+- Carta Magna B3 v1.3.0: princípios constitucionais, competências e processo de alteração normativa.
+- Layout Mestre B3 v1.1.0: especificação operacional única para pipelines, workflows e código, subordinada aos limites constitucionais.
+- Conflito aparente: fail-closed para a decisão afetada, reconciliação versionada e continuidade das trilhas independentes.
+- Evidência da decisão e registo: [Issue #11](https://github.com/carlos-andrade/B3/issues/11).
+
+### Estado da revisão semântica integral
+
+A revisão semântica integral **continua em curso**. Os Lotes 01–04 são amostras documentadas, não uma revisão integral dos 303 Markdown presentes no snapshot de 2026-10-15. A auditoria SHA-256 valida integridade canónica, não a verdade, atualidade, coerência normativa ou validade operacional do conteúdo.
+
+A próxima entrega deve ser uma matriz por ficheiro com classificação por conteúdo, domínio, autoridade, dependências, contradições, estado de revisão, decisão requerida e evidência. Os documentos de autoridade e os contratos de dados têm prioridade; históricos e artefactos gerados exigem tratamento próprio, sem reescrita do passado.
+
+### Resultado de auditoria estrutural pós-decisão
+
+A auditoria do commit de decisão [run 38773908484](https://github.com/carlos-andrade/B3/actions/runs/38773908484) confirmou Carta Magna e Layout Mestre conformes, mas identificou hash divergente na própria decisão, corrigido no commit [7b0db7bef8cfb48ea4986629d8fd0a10ed44c333](https://github.com/carlos-andrade/B3/commit/7b0db7bef8cfb48ea4986629d8fd0a10ed44c333). A auditoria posterior a essa correção é obrigatória antes de declarar o conjunto documental conforme.
+
+### Pendências não promovidas
+
+- Revisão semântica de todos os documentos do inventário, sem inferir conclusão a partir de amostra.
+- Outros conflitos de versão/estado identificados nos Lotes 02 e 03, incluindo contrato Dataset Oficial V1.0 versus V2.0 e estado de adoção do contrato NORMALIZED V2.0.
+- Proveniência RAW COTAHIST, lista oficial ExternalSecurityCategoryCode e WATCHDOG permanecem frentes separadas.
+- COTAHIST 1986–2025 continua apenas para consulta; 2026 mantém atualização diária.
+- BLOOMBERG_MAIL permanece isolado e fora do escopo B3.
