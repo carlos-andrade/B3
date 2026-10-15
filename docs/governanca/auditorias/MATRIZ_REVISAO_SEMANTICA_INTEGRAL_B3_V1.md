@@ -20,14 +20,14 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–04; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–05; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu conteúdo de 12 documentos WATCHDOG/Wiki; a revisão destes ficheiros não encerra as ações operacionais assinaladas. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
-- Os Lotes 01–04 são amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
+- Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
 - Relatórios históricos preservam o estado à data da execução; não devem ser reescritos para simular que uma decisão posterior já existia.
 - RAW, datasets, manifestos e evidências de máquina ficam fora da normalização semântica documental, salvo contrato específico e autorização formal.
 
@@ -51,18 +51,18 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 |---|---|---|
 | `PROMPT_MESTRE_B3_799_CARACTERES.md` | RAIZ_E_INDICES | PENDENTE_REVISAO_DE_CONTEUDO |
 | `README.md` | RAIZ_E_INDICES | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/FASE_C_FECHAMENTO_OPERACAO_GOVERNANCA_2026-10-15.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/README.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/REGISTO_CORRECOES_PERSISTENCIA_COTAHIST_2026-10-15.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/TRIAGEM_EXECUCOES_DESFAVORAVEIS_2026-10-15.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/VERIFICACAO_REGRESSO_E_EVIDENCIAS_2026-10-15.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/heartbeat-supervisor-externo.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WATCHDOG/limiares-provisorios-revisao.md` | WATCHDOG_OPERACIONAL | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/00-INICIO/ESTADO_ATUAL.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/00-INICIO/VISAO_GERAL.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/01-GOVERNANCA/MODELO_DE_GOVERNANCA.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/01-GOVERNANCA/POLITICA_DE_EVIDENCIAS.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
-| `WIKI/02-ARQUITETURA/ARQUITETURA_GERAL.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
+| `WATCHDOG/FASE_C_FECHAMENTO_OPERACAO_GOVERNANCA_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/README.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/REGISTO_CORRECOES_PERSISTENCIA_COTAHIST_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/TRIAGEM_EXECUCOES_DESFAVORAVEIS_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/VERIFICACAO_REGRESSO_E_EVIDENCIAS_2026-10-15.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/heartbeat-supervisor-externo.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WATCHDOG/limiares-provisorios-revisao.md` | WATCHDOG_OPERACIONAL | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WIKI/00-INICIO/ESTADO_ATUAL.md` | WIKI | REVISTO_LOTE05; ATUALIZACAO_DE_ESTADO_REQUERIDA |
+| `WIKI/00-INICIO/VISAO_GERAL.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WIKI/01-GOVERNANCA/MODELO_DE_GOVERNANCA.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WIKI/01-GOVERNANCA/POLITICA_DE_EVIDENCIAS.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
+| `WIKI/02-ARQUITETURA/ARQUITETURA_GERAL.md` | WIKI | REVISTO_LOTE05; ACOES_DE_SEGUIMENTO_ABERTAS |
 | `WIKI/09-AUTOMACAO/INCIDENTE_PUBLICACAO_WIKI_2026-09-29.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
 | `WIKI/09-AUTOMACAO/WIKI_NATIVA.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
 | `WIKI/README.md` | WIKI | PENDENTE_REVISAO_DE_CONTEUDO |
