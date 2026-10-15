@@ -8,11 +8,11 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.1.0 |
+| **Versão** | 1.2.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -378,3 +378,28 @@ Este documento é **derivado/operacional** e não constitui fonte independente p
 **Regra:** Layout Mestre → especificação da tarefa → código/workflow → evidência.
 
 Se houver divergência, o Layout Mestre prevalece até reconciliação e versionamento formal.
+
+## 14. Execução documental governada — 2026-10-15
+
+A frente de governança documental segue o plano [B3-GOV-PLANO-001](governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md) e a norma GOVERNANCA v1.0.3, sem substituir contratos técnicos específicos do pipeline.
+
+### Estado verificado
+
+- Inventário estrutural de Markdown concluído: 284 ficheiros na árvore Git de `main` consultada em 2026-10-15.
+- Matriz publicada: [INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md](governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md).
+- Classificação atual é preliminar por caminho/nome; ainda não é uma auditoria semântica nem certificação de conformidade.
+- Hashes canónicos dos documentos normalizados continuam pendentes de cálculo/verificação independente.
+
+### Próximas ações obrigatórias
+
+1. Validar a classificação por conteúdo, separando documentos humanos, históricos, modelos, relatórios gerados e artefactos com contrato próprio.
+2. Priorizar governança/cartas/layout, planos/roadmaps ativos, contratos e políticas; não modificar em massa os históricos nem relatórios gerados.
+3. Implementar cálculo canónico reproduzível UTF-8/LF conforme a norma, excluindo apenas as linhas SHA-256 e commit de referência.
+4. Recalcular e verificar os hashes em lote, registrar evidências e commits reais.
+5. Atualizar o roadmap após cada fase e não declarar conformidade global com base em amostra parcial.
+
+### Restrições preservadas
+
+- COTAHIST 1986–2025: fechado, apenas consulta e sem alteração sem decisão formal.
+- COTAHIST 2026: atualização diária com validação de integridade e preservação da última versão válida.
+- `BLOOMBERG_MAIL`: isolado; não é dependência para concluir o projeto B3.
