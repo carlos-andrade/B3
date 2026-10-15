@@ -1,5 +1,25 @@
 # CONTRATOS DE EVIDÊNCIA — FASES 06–09 COTAHIST V1
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-016--FASES-06-09-V1-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO_COTAHIST |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 2bddb0232b279cb3f9b4b0fff32c000f15f1a27d257534e5a5de028f837f1a8e |
+| **Commit de referência (versão anterior)** | [b65ba085fcb987a4457198fc0d31e4e9f7364fbb](https://github.com/carlos-andrade/B3/commit/b65ba085fcb987a4457198fc0d31e4e9f7364fbb) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 **Data:** 2026-09-29  
 **Escopo:** pipeline anual COTAHIST  
 **Repositório:** `carlos-andrade/B3`  
@@ -254,7 +274,8 @@ A FASE10 continua sendo uma validação independente.
 
 O novo contrato altera apenas a **pré-condição documental** da FASE10:
 
-`FASES 01	ext{–}09 aprovadas ightarrow FASE10 liberada`
+`FASES 01	ext{–}09 aprovadas 
+ightarrow FASE10 liberada`
 
 A FASE10 não pode retrocertificar FASES 06–09.
 
