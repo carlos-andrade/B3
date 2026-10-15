@@ -1,0 +1,81 @@
+name: B3 - Auditoria SHA-256 documental canónico
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/governanca/auditar_sha256_documental_b3.py"
+      - ".github/workflows/b3-auditoria-sha256-documental.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: b3-auditoria-sha256-documental
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Calcular e comparar SHA-256 canónicos
+        id: audit
+        run: |
+          set +e
+          python scripts/governanca/auditar_sha256_documental_b3.py | tee sha256_auditoria_stdout.json
+          status=${PIPESTATUS[0]}
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          exit "$status"
+
+      - name: Publicar resumo
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("sha256_documental_b3_report.json")
+          if not p.exists():
+              print("Relatório não foi produzido.")
+              raise SystemExit(0)
+          d = json.loads(p.read_text(encoding="utf-8"))
+          lines = [
+              "# Auditoria SHA-256 documental canónico B3",
+              "",
+              f"**Ficheiros analisados:** {d['files_scanned']}",
+              "",
+              "| Estado | Quantidade |",
+              "|---|---:|",
+          ]
+          lines += [f"| {k} | {v} |" for k, v in sorted(d["status_counts"].items())]
+          lines += [
+              "",
+              "Modo somente leitura: nenhum documento foi alterado.",
+              "O SHA-256 canónico é distinto do Git blob SHA.",
+          ]
+          summary = "\n".join(lines) + "\n"
+          Path("$GITHUB_STEP_SUMMARY").write_text(summary, encoding="utf-8")
+          print(summary)
+          PY
+
+      - name: Guardar relatório como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-auditoria-sha256-documental
+          path: |
+            sha256_documental_b3_report.json
+            sha256_auditoria_stdout.json
+          if-no-files-found: warn
+          retention-days: 30
