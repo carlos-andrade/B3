@@ -65,6 +65,7 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 
 ## Inventário e próximo passo
 
+- A fotografia inicial enumerou 284 ficheiros Markdown antes de criar a própria matriz. Na árvore atual, após publicar a matriz, existem 285 ficheiros Markdown, dos quais 218 em `docs/`; a matriz lista os 284 ficheiros que existiam no instante da captura e exclui-se a si própria para evitar autorreferência.
 - Inventário estrutural completo: [Inventário e Matriz de Conformidade Documental B3 v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md).
 - A extração identificou 284 ficheiros Markdown na árvore Git; a classificação preliminar é baseada em caminho/nome e não equivale à classificação semântica.
 - Classes preliminares: INGESTAO_DADOS 130; GOVERNANCA_CARTAS_LAYOUT 60; README_INDICE 35; OUTROS_MARKDOWN 24; DOCUMENTACAO_TEMATICA 14; INCIDENTES_AUDITORIAS 13; ROADMAP_PLANOS 8.
@@ -76,4 +77,5 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 | Versão | Data | Alteração | Responsável | Evidência |
 |---|---|---|---|---|
 | 1.0.0 | 2026-10-14 | Criação do plano de adoção documental B3 | Responsável técnico B3 | Commit inicial no repositório |
-| 1.1.0 | 2026-10-15 | Inclusão do inventário estrutural de 284 ficheiros Markdown e atualização do próximo passo | Responsável técnico B3 | [Inventário v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md) |
+| 1.1.0 | 2026-10-15 | Inclusão do inventário estrutural inicial de 284 ficheiros Markdown e atualização do próximo passo | Responsável técnico B3 | [Inventário v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md) |
+| 1.1.1 | 2026-10-15 | Esclarecimento do snapshot e contagem atual de 285 ficheiros Markdown/218 em `docs/` | Responsável técnico B3 | Reconsulta da árvore Git após publicação da matriz |
