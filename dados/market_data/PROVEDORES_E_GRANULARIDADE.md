@@ -1,10 +1,23 @@
-# Provedores e Granularidade
+# Provedores e granularidade de Market Data B3
 
-**Projeto:** B3 - A Bolsa do Brasil  
-**Tema:** Matriz de fontes para microestrutura  
-**Caminho:** dados/market_data/PROVEDORES_E_GRANULARIDADE.md  
-**Data de criação:** 23/09/2026  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-MARKETDATA-PROVEDORES-GRANULARIDADE-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | MATRIZ_FONTES |
+| **Fase** | Market Data — avaliação de provedores e granularidade |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 4098c1507167e1566f6012f3fe1bb18381e8e1ab6e925ea48241a985a855e7c8 |
+| **Commit de referência (versão anterior)** | N/A — normalização inicial do cabeçalho |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — validação técnica e aprovação humana |
+| **Origem** | Documentação B3 de Market Data e matriz de avaliação interna |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## Matriz inicial
 
