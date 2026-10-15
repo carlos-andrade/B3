@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.2.0 |
+| **Versão** | 1.3.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — calcular por UTF-8/LF excluindo esta linha e a linha de commit |
 | **Commit de referência (versão anterior)** | [3ff61cb55887e93c596c9df14039d2a2221de51c](https://github.com/carlos-andrade/B3/commit/3ff61cb55887e93c596c9df14039d2a2221de51c) |
 | **Data de criação** | 2026-09-25 |
@@ -403,3 +403,22 @@ A frente de governança documental segue o plano [B3-GOV-PLANO-001](governanca/P
 - COTAHIST 1986–2025: fechado, apenas consulta e sem alteração sem decisão formal.
 - COTAHIST 2026: atualização diária com validação de integridade e preservação da última versão válida.
 - `BLOOMBERG_MAIL`: isolado; não é dependência para concluir o projeto B3.
+
+
+## 15. Revisão semântica documental — 2026-10-15
+
+A FASE 3 iniciou a classificação por conteúdo de documentos prioritários. Foram inspecionados cinco documentos e publicado o relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md](governanca/auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md). O inventário inicial cobre 284 ficheiros no snapshot de origem; a árvore atual contém 286 ficheiros Markdown, dos quais 219 em `docs/`, após a publicação da matriz e do relatório.
+
+### Divergência normativa aberta — GOV-DIV-001
+
+A Carta Magna, secção 2, diz que a própria Carta Magna prevalece em caso de conflito. O Layout Mestre, secção 2.2, determina que o Layout Mestre prevalece operacionalmente e que as cartas são fontes de entrada, não autoridades paralelas. Não é possível satisfazer simultaneamente as duas regras em caso de conflito.
+
+**Controlo:** para criação/alteração/validação de código, seguir provisoriamente a precedência operacional do Layout Mestre, sem declarar revogação da Carta Magna. A correção exige decisão normativa versionada e evidência autorizada. Até essa reconciliação, não alterar a Carta Magna nem normalizar conteúdo que consolide a contradição.
+
+### Gate seguinte
+
+1. Prosseguir revisão semântica dos contratos, políticas e procedimentos prioritários.
+2. Registar as divergências adicionais antes de alterar documentos normativos.
+3. Separar documentos humanos, históricos e artefactos gerados.
+4. Preparar cálculo canónico reprodutível SHA-256, conforme GOVERNANCA v1.0.3.
+5. Não declarar conformidade global enquanto os hashes e a revisão semântica não estiverem concluídos.
