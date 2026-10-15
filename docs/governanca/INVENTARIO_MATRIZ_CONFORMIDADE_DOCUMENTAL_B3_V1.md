@@ -8,7 +8,7 @@
 | **Tipo documental** | INVENTARIO_MATRIZ |
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
-| **Versão** | 1.4.0 |
+| **Versão** | 1.5.0|
 | **SHA-256 (conteúdo canónico)** | 847d5154c7aefb95767e5e8838be9cde4ab2f3f0db643ac6689f1be68ad159f4 |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
@@ -357,6 +357,10 @@ Relatório: [Revisão semântica documental — Lote 04](auditorias/REVISAO_SEMA
 O Lote 04 analisou por conteúdo 12 documentos de ingestão, contratos, runbooks e políticas. A classificação distingue documentos humanos, contratos de dados/evidência, runbooks operacionais e políticas. Foram registadas cautelas específicas para: estado “ATIVA” sem prova de aprovação no próprio ficheiro; rotina documentada que não prova execução; contrato V1.0 histórico face à FASE10A M2/V2.0; proposta NORMALIZED anual ainda sem prova de adoção; e preservação da identidade K4 sem deduplicação automática do RAW de 1986.
 
 Esta amostra não equivale à classificação integral do inventário. Artefactos gerados, relatórios históricos, modelos e formatos de máquina ainda precisam de classificação própria. Nenhum contrato-fonte foi alterado.
+
+## Resultado da auditoria automática SHA-256 — 2026-10-15
+
+A execução [38716296153](https://github.com/carlos-andrade/B3/actions/runs/38716296153), no commit `4e09de3d7f6d2e87afb72788c84b16e285b35a8e`, terminou com sucesso. Foram analisados 289 Markdown: 4 `CONFORME`, 13 `PENDENTE`, 271 `CABECALHO_CONTROLO_INVALIDO` e 1 `SEM_CABECALHO_H1`. Os 271 casos são falhas estruturais de metadados e não divergências de hash. O artefacto JSON foi publicado no run e permanece como evidência temporária; não foi incorporado ao repositório. Esta execução valida o funcionamento da ferramenta, mas não certifica o inventário global.
 
 ## Histórico de alterações
 
