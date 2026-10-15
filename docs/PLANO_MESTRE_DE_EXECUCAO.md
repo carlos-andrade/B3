@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
 | **Versão** | 1.9.0 |
-| **SHA-256 (conteúdo canónico)** | c543f92f92fca8e6623b45c727c17f782fb3b709d06d1b593de635d0c7bae86c |
+| **SHA-256 (conteúdo canónico)** | 6fa80b0fda2f99dd7071ede80c78b8e81c70630f56532ba4cd2df4292a77e9fc |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-15 |
