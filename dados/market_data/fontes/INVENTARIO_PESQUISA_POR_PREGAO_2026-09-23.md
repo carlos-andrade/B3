@@ -26,7 +26,9 @@
 **Data de criação:** 23/09/2026  
 **Repositório:** carlos-andrade/B3
 
-Fonte oficial: Pesquisa por Pregão — B3.
+Fonte oficial: [Pesquisa por Pregão — B3](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/).
+
+**Ressalva de acesso:** a página informa que a coleta automatizada a partir dela, inclusive por ferramentas de IA, é vedada. Este inventário é uma observação documental datada; não autoriza scraping. Qualquer API/endpoint alternativo exige revisão própria dos termos e autorização.
 
 ## Escopo observado
 
