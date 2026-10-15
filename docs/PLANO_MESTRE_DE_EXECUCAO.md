@@ -564,7 +564,7 @@ A divergência GOV-DIV-001 foi reconciliada por separação de competências nor
 
 A revisão semântica integral **continua em curso**. Os Lotes 01–04 são amostras documentadas, não uma revisão integral dos 303 Markdown presentes no snapshot de 2026-10-15. A auditoria SHA-256 valida integridade canónica, não a verdade, atualidade, coerência normativa ou validade operacional do conteúdo.
 
-A próxima entrega deve ser uma matriz por ficheiro com classificação por conteúdo, domínio, autoridade, dependências, contradições, estado de revisão, decisão requerida e evidência. Os documentos de autoridade e os contratos de dados têm prioridade; históricos e artefactos gerados exigem tratamento próprio, sem reescrita do passado.
+A matriz integral de controlo foi publicada em [MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md](governanca/auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md), enumerando 303 Markdown no snapshot. A matriz distingue 17 documentos com revisão prévia a revalidar, quatro relatórios amostrais, a decisão GOV-DIV-001 e 281 documentos ainda pendentes de revisão de conteúdo. A matriz é inventário/controlo de execução, não certificação de que todos foram revistos. A revisão deve avançar por lotes com classificação por conteúdo, domínio, autoridade, dependências, contradições, decisão requerida e evidência. Os documentos de autoridade e os contratos de dados têm prioridade; históricos e artefactos gerados exigem tratamento próprio, sem reescrita do passado.
 
 ### Resultado de auditoria estrutural pós-decisão
 
