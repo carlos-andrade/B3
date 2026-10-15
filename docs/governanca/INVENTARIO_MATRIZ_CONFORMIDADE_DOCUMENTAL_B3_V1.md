@@ -8,7 +8,7 @@
 | **Tipo documental** | INVENTARIO_MATRIZ |
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
-| **Versão** | 1.3.0 |
+| **Versão** | 1.4.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — validar por ferramenta reprodutível |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
@@ -344,11 +344,19 @@ Revisão semântica por amostragem prioritária registada em [Revisão semântic
 - [x] Capturar árvore Git recursiva de `main`.
 - [x] Enumerar todos os ficheiros Markdown encontrados.
 - [x] Classificar preliminarmente por caminho/nome.
-- [ ] Confirmar a classificação pelo conteúdo de cada ficheiro.
-- [ ] Distinguir documentos humanos, artefactos gerados, históricos e modelos.
+- [ ] Confirmar a classificação pelo conteúdo de cada ficheiro (em curso; Lote 04 cobre uma amostra de 12 documentos).
+- [x] Distinguir, na amostra do Lote 04, documentos humanos, contratos, runbooks e políticas; artefactos gerados/históricos continuam por classificar globalmente.
 - [ ] Verificar campos obrigatórios e cadeia de autoridade.
 - [ ] Calcular SHA-256 canónico de forma reprodutível e validar commit de referência.
 - [ ] Publicar relatório de conformidade por lote, sem declarar conformidade global antes da evidência.
+
+## Classificação semântica por natureza — amostra do Lote 04
+
+Relatório: [Revisão semântica documental — Lote 04](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md).
+
+O Lote 04 analisou por conteúdo 12 documentos de ingestão, contratos, runbooks e políticas. A classificação distingue documentos humanos, contratos de dados/evidência, runbooks operacionais e políticas. Foram registadas cautelas específicas para: estado “ATIVA” sem prova de aprovação no próprio ficheiro; rotina documentada que não prova execução; contrato V1.0 histórico face à FASE10A M2/V2.0; proposta NORMALIZED anual ainda sem prova de adoção; e preservação da identidade K4 sem deduplicação automática do RAW de 1986.
+
+Esta amostra não equivale à classificação integral do inventário. Artefactos gerados, relatórios históricos, modelos e formatos de máquina ainda precisam de classificação própria. Nenhum contrato-fonte foi alterado.
 
 ## Histórico de alterações
 
@@ -358,3 +366,4 @@ Revisão semântica por amostragem prioritária registada em [Revisão semântic
 | 1.1.0 | 2026-10-15 | Revisão semântica de cinco documentos prioritários e registo de divergência de autoridade | [Relatório Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
 | 1.2.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas e registo de dívida de metadados legados | [Relatório Lote 02](REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
 | 1.3.0 | 2026-10-15 | Revisão semântica de três contratos de ingestão/identidade; registados conflitos potenciais de versão/estado | [Relatório Lote 03](REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) |
+| 1.4.0 | 2026-10-15 | Classificação semântica por natureza documental numa amostra de 12 ficheiros; preservadas as pendências globais | [Relatório Lote 04](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md) |
