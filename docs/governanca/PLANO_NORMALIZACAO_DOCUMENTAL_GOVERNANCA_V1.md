@@ -8,7 +8,7 @@
 | **Tipo documental** | PLANO_DE_EXECUCAO |
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.2.0 |
+| **Versão** | 1.3.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
@@ -65,6 +65,10 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 
 ## Inventário e próximo passo
 
+- A revisão semântica avançou para o Lote 02, com seis contratos/políticas examinados. O relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) regista dívida de metadados legados e as salvaguardas para não alterar o conteúdo técnico.
+- Foi adicionado um auditor SHA-256 canónico somente de leitura e um workflow de evidência. A primeira execução (run [38713037198](https://github.com/carlos-andrade/B3/actions/runs/38713037198)) falhou devido à regra inicial que convertia o baseline de cabeçalhos legados em falha de job. O script foi corrigido para modo report-only em relação ao baseline; ainda não foi confirmada uma execução posterior dessa versão corrigida.
+- O baseline inicial da auditoria reportou 286 Markdown: 271 cabeçalhos de controlo inválidos, 14 hashes pendentes e 1 ficheiro sem H1. Estes números são triagem estrutural, não classificação semântica nem certificação.
+
 - Em 2026-10-15 foi executada uma revisão semântica inicial de cinco documentos prioritários. O relatório [REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) regista uma divergência normativa aberta entre a precedência definida pela Carta Magna e a precedência operacional definida pelo Layout Mestre.
 - A árvore atual após publicação do relatório contém 286 ficheiros Markdown, dos quais 219 em `docs/`; o inventário-base mantém o snapshot original de 284 ficheiros e não se apresenta como uma listagem autorreferente atualizada automaticamente.
 
@@ -83,3 +87,4 @@ Esta contagem reflete apenas os documentos explicitamente alterados e reverifica
 | 1.1.0 | 2026-10-15 | Inclusão do inventário estrutural inicial de 284 ficheiros Markdown e atualização do próximo passo | Responsável técnico B3 | [Inventário v1](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md) |
 | 1.1.1 | 2026-10-15 | Esclarecimento do snapshot e contagem atual de 285 ficheiros Markdown/218 em `docs/` | Responsável técnico B3 | Reconsulta da árvore Git após publicação da matriz |
 | 1.2.0 | 2026-10-15 | Registo da revisão semântica Lote 01 e divergência normativa GOV-DIV-001; contagem atual de 286 Markdown/219 em `docs/` | Responsável técnico B3 | [Relatório semântico Lote 01](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
+| 1.3.0 | 2026-10-15 | Revisão semântica Lote 02; adição do auditor SHA-256 e registo transparente da execução inicial falhada e correção | Responsável técnico B3 | [Relatório semântico Lote 02](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
