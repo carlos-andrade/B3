@@ -27,7 +27,7 @@
 | BVBG.186.01 | Ações | EOD / simplificado | OHLC, média, negócios e campos disponíveis |
 | BVBG.187.01 | Derivativos | EOD / simplificado | preços, média, negócios, posições/campos disponíveis |
 
-A B3 confirma a disponibilidade desses arquivos na pesquisa por pregão. citeturn0search1
+A B3 lista esses arquivos na [Pesquisa por Pregão oficial](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/).
 
 ## Estrutura por data
 
@@ -40,6 +40,10 @@ Cada captura deve conter:
 - manifesto;
 - validação estrutural;
 - versão normalizada, quando necessária.
+
+## Restrição de acesso e automação
+
+A página oficial declara que os dados são propriedade exclusiva da B3 e veda coleta automatizada a partir da página, inclusive por ferramentas de IA. Não automatizar scraping da página. Qualquer endpoint/API alternativo requer verificação independente dos termos e autorização documentada.
 
 ## Regra
 
