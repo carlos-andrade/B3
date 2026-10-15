@@ -43,7 +43,7 @@ jobs:
         if: always()
         run: |
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           p = Path("sha256_documental_b3_report.json")
           if not p.exists():
@@ -65,7 +65,7 @@ jobs:
               "O SHA-256 canónico é distinto do Git blob SHA.",
           ]
           summary = "\n".join(lines) + "\n"
-          Path("$GITHUB_STEP_SUMMARY").write_text(summary, encoding="utf-8")
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(summary, encoding="utf-8")
           print(summary)
           PY
 
