@@ -9,7 +9,7 @@
 | **Fase** | Governação documental e rastreabilidade |
 | **Estado** | EM_REVISAO |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — recalcular após a normalização conforme GOVERNANCA v1.0.3 |
+| **SHA-256 (conteúdo canónico)** | 099ea327d76d571b499119b3964518ce528abb9803b5aa5c4055abeb04ee478c |
 | **Commit de referência (versão anterior)** | [016523c8093e202da8fcc1327277dea5e03eccad](https://github.com/carlos-andrade/B3/commit/016523c8093e202da8fcc1327277dea5e03eccad) |
 | **Data de criação** | 2026-10-12 |
 | **Data de atualização** | 2026-10-14 |
