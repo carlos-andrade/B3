@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–21; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–22; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A; o Lote 22 reviu nove documentos de incidentes e armazenamento NORMALIZED. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -278,15 +278,15 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/ingestao/FASE10A_M3_MIGRACAO_NORMALIZED_ANUAL_CONTROLADA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE21; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/FASE10A_RECONCILIACAO_DATASET_OFICIAL_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE21; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/FASE10_COTAHIST_1987_PLANO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE21; SNAPSHOT_HISTORICO_PRESERVADO |
-| `docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-0_RESULTADO_GATE_CAPACIDADE_NORMALIZED_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1B_RECONCILIACAO_MANIFEST_NORMALIZED_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1B_RESULTADO_PROVA_LFS_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1C_CI_INTEGRIDADE_NORMALIZED_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1D_DATASET_OFICIAL_COTAHIST_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1E_APROVACAO_GLOBAL_COTAHIST_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/INCIDENCIA_COTAHIST_1998_SIDECAR_SHA256_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-0_RESULTADO_GATE_CAPACIDADE_NORMALIZED_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1B_RECONCILIACAO_MANIFEST_NORMALIZED_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1B_RESULTADO_PROVA_LFS_2026_2026-09-28.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1C_CI_INTEGRIDADE_NORMALIZED_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1D_DATASET_OFICIAL_COTAHIST_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1E_APROVACAO_GLOBAL_COTAHIST_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/ingestao/M3-1_DECISAO_ARMAZENAMENTO_NORMALIZED_COTAHIST_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE22; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/PARTE01_AUDITORIA_SEMANTICA_DUPLICIDADES_COTAHIST_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/PARTE01_CATALOGO_FONTES_DADOS_B3_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/PARTE01_CATALOGO_FONTES_DADOS_B3_V1.1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
