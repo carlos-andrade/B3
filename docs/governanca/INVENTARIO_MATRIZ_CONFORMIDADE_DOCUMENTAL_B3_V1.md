@@ -8,7 +8,7 @@
 | **Tipo documental** | INVENTARIO_MATRIZ |
 | **Fase** | FASE 2 — Inventário e classificação |
 | **Estado** | INVENTARIO_ESTRUTURAL_CONCLUIDO; CONFORMIDADE_PENDENTE |
-| **Versão** | 1.1.0 |
+| **Versão** | 1.2.0 |
 | **SHA-256 (conteúdo canónico)** | PENDENTE — validar por ferramenta reprodutível |
 | **Commit de referência** | PENDENTE — preenchido após commit desta versão |
 | **Data de criação** | 2026-10-15 |
@@ -146,10 +146,10 @@
 | 096 | `docs/cotahist/AUDITORIA_WORKFLOWS_COTAHIST_V2.md` | INCIDENTES_AUDITORIAS | PENDENTE_ANALISE_CONTEUDO |
 | 097 | `docs/cotahist/CADENA_EXECUCAO_1994_FASE06_12_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 098 | `docs/cotahist/COMPARATIVO_BASELINE_1993_VS_1994_FASE06_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 099 | `docs/cotahist/CONTRATOS_EVIDENCIA_FASES_06_09_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 100 | `docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 101 | `docs/cotahist/CONTRATO_EXECUCAO_SEQUENCIAL_FASES_COTAHIST_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 102 | `docs/cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
+| 099 | `docs/cotahist/CONTRATOS_EVIDENCIA_FASES_06_09_V1.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE02 |
+| 100 | `docs/cotahist/CONTRATO_EVIDENCIA_FASES_00_09_V1.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE02 |
+| 101 | `docs/cotahist/CONTRATO_EXECUCAO_SEQUENCIAL_FASES_COTAHIST_V1.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE02 |
+| 102 | `docs/cotahist/CONTRATO_GATE_06_08_PROMOCAO_TECNICA_V1.md` | INGESTAO_DADOS | REVISAO_SEMANTICA_LOTE02 |
 | 103 | `docs/cotahist/COTAHIST_1998_FASE06C_INVESTIGACAO_SEMANTICA_TERM_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 104 | `docs/cotahist/FASE02_1994_INVESTIGACAO_RUN59.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 105 | `docs/cotahist/FASE06_1995_INVESTIGACAO_PROVA_EXECUCAO_E_CAUSA.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
@@ -173,7 +173,7 @@
 | 123 | `docs/cotahist/ROADMAP_INGESTAO_PARTE23_ESTADO_2026-10-14.md` | ROADMAP_PLANOS | PENDENTE_ANALISE_CONTEUDO |
 | 124 | `docs/cotahist/ROADMAP_MESTRE_INGESTAO_COTAHIST_1986_2026_ESTADO_2026-10-14.md` | ROADMAP_PLANOS | PENDENTE_ANALISE_CONTEUDO |
 | 125 | `docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
-| 126 | `docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 126 | `docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE02 |
 | 127 | `docs/governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 128 | `docs/governanca/auditorias/FASE04_AUDITORIA_WORKFLOWS_LAYOUT_MESTRE_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 129 | `docs/governanca/auditorias/FASE05_2_CLASSIFICACAO_FUNCIONAL_WORKFLOWS_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
@@ -189,7 +189,7 @@
 | 139 | `docs/governanca/auditorias/FASE05_CLASSIFICACAO_DIVERGENCIAS_WORKFLOWS_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 140 | `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
 | 141 | `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE01 |
-| 142 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
+| 142 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_CARTAS_LAYOUT | REVISAO_SEMANTICA_LOTE02 |
 | 143 | `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 144 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | INGESTAO_DADOS | PENDENTE_ANALISE_CONTEUDO |
 | 145 | `docs/ingestao/CONTRATO_NORMALIZED_ANUAL_COTAHIST_V2.0.md` | GOVERNANCA_CARTAS_LAYOUT | PENDENTE_ANALISE_CONTEUDO |
@@ -335,6 +335,8 @@
 
 ## Estado de execução
 
+A revisão semântica do Lote 02 abrange seis contratos/políticas COTAHIST e monitorização; relatório em [REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md](auditorias/REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md). Não houve alteração dos contratos-fonte nesta etapa.
+
 Revisão semântica por amostragem prioritária registada em [Revisão semântica documental — Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md). Cinco documentos foram inspecionados; uma divergência de autoridade normativa foi registada para reconciliação antes de qualquer alteração normativa. Esta revisão não certifica os hashes canónicos.
 
 - [x] Capturar árvore Git recursiva de `main`.
@@ -352,3 +354,4 @@ Revisão semântica por amostragem prioritária registada em [Revisão semântic
 |---|---|---|---|
 | 1.0.0 | 2026-10-15 | Inventário estrutural completo e classificação preliminar gerados a partir da árvore Git | Árvore `7ad90741f07bdb5f2872a5a5a35bff4d6324e201`; total `284` ficheiros Markdown |
 | 1.1.0 | 2026-10-15 | Revisão semântica de cinco documentos prioritários e registo de divergência de autoridade | [Relatório Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) |
+| 1.2.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas e registo de dívida de metadados legados | [Relatório Lote 02](REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) |
