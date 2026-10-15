@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–18; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–19; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -233,21 +233,21 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/ingestao/FASE07_COTAHIST_1986_IDENTIDADE_HISTORICA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE18; FASE07_FECHADA_COM_ANOMALIA_K4 |
 | `docs/ingestao/FASE07_COTAHIST_1986_RESULTADO_IDENTIDADE_V1.1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE18; FASE07_FECHADA_COM_ANOMALIA_K4 |
 | `docs/ingestao/FASE07_COTAHIST_1986_STATUS_EXECUCAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE18; FASE07_FECHADA_COM_ANOMALIA_K4 |
-| `docs/ingestao/FASE08A_COTAHIST_1986_MATRIZ_CALENDARIO_PROVISORIA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08B_COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08C_COTAHIST_1986_DUPLICIDADES_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08C_COTAHIST_1986_PADRAO_NEGOCIACAO_ARREDORES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08C_COTAHIST_1986_PADROES_NEGOCIACAO_AUSENCIAS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08D_COTAHIST_1986_RECONSTRUCAO_DOCUMENTAL_10101986_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08E_COTAHIST_1986_CRONOLOGIA_CXX_DIMES_VGO2_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08F_COTAHIST_1986_ESTRUTURA_ESTATISTICA_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08G_COTAHIST_1986_RECORRENCIA_PERFIS_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08H_COTAHIST_RECORRENCIA_K4_MULTIANOS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08I_COTAHIST_1986_RECONSTRUCAO_REGRA_AGREGACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08J_COTAHIST_1986_RECONSTRUCAO_DOCUMENTAL_TERMO_OUTUBRO_1986_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08K_COTAHIST_1986_ARQUEOLOGIA_BDI_TABELA_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08L_COTAHIST_1986_DIMENSOES_OCULTAS_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/ingestao/FASE08M_COTAHIST_1986_BUSCA_DOCUMENTAL_TIPO_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/ingestao/FASE08A_COTAHIST_1986_MATRIZ_CALENDARIO_PROVISORIA_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08B_COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08C_COTAHIST_1986_DUPLICIDADES_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08C_COTAHIST_1986_PADRAO_NEGOCIACAO_ARREDORES_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08C_COTAHIST_1986_PADROES_NEGOCIACAO_AUSENCIAS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08D_COTAHIST_1986_RECONSTRUCAO_DOCUMENTAL_10101986_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08E_COTAHIST_1986_CRONOLOGIA_CXX_DIMES_VGO2_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08F_COTAHIST_1986_ESTRUTURA_ESTATISTICA_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08G_COTAHIST_1986_RECORRENCIA_PERFIS_K4_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08H_COTAHIST_RECORRENCIA_K4_MULTIANOS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08I_COTAHIST_1986_RECONSTRUCAO_REGRA_AGREGACAO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08J_COTAHIST_1986_RECONSTRUCAO_DOCUMENTAL_TERMO_OUTUBRO_1986_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08K_COTAHIST_1986_ARQUEOLOGIA_BDI_TABELA_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08L_COTAHIST_1986_DIMENSOES_OCULTAS_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
+| `docs/ingestao/FASE08M_COTAHIST_1986_BUSCA_DOCUMENTAL_TIPO_TERMO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE19; EXCECOES_HISTORICAS_PRESERVADAS |
 | `docs/ingestao/FASE08N_COTAHIST_1986_INVESTIGACAO_TIPO_CODIGOS_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/FASE08O_COTAHIST_1986_LEGENDA_PRIMARIA_TIPO_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/FASE08P_COTAHIST_1986_TRANSICAO_VIGOR_0910_1310_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
