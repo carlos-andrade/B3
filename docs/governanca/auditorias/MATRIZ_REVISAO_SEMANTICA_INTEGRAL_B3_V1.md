@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–07; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–08; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -342,16 +342,16 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/ingestao/RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/ingestao/SOLICITACAO_INSTITUCIONAL_BDI_BOVESPA_19861010_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
 | `docs/ingestao/VERIFICACAO_AUTOMACAO_COTAHIST_2026-09-25.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/CARTA_DE_CONFIANCA_WORKFLOWS.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/CARTA_RECEBIMENTO_INCREMENTAL_BLOOMBERG_MAIL_V1_0_2026-10-08.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/REGISTO_APLICACAO_GOVERNANCA_FASE_C_2026-10-15.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/bcb_sgs/INVENTARIO_BCB_SGS_NUCLEO_MACRO_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/garantia_atualizacao_dados/CARTA_DE_GARANTIA_ATUALIZACAO_DADOS_2026-09-26.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/garantia_atualizacao_dados/CERTIFICACAO_DOMINIOS_B3_2026-09-27.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/garantia_atualizacao_dados/DIAGNOSTICO_FRESCOR_COTAHIST_2026-09-27.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/garantia_atualizacao_dados/MATRIZ_GLOBAL_FRESCOR_DADOS_B3_2026-09-27.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/garantia_atualizacao_dados/README.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
-| `governanca/indices_b3/INVENTARIO_INDICES_B3_V1.md` | GOVERNANCA_NORMATIVA | PENDENTE_REVISAO_DE_CONTEUDO |
+| `governanca/CARTA_DE_CONFIANCA_WORKFLOWS.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/CARTA_RECEBIMENTO_INCREMENTAL_BLOOMBERG_MAIL_V1_0_2026-10-08.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; HISTORICO_FORA_ESCOPO_B3 |
+| `governanca/REGISTO_APLICACAO_GOVERNANCA_FASE_C_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/bcb_sgs/INVENTARIO_BCB_SGS_NUCLEO_MACRO_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/garantia_atualizacao_dados/CARTA_DE_GARANTIA_ATUALIZACAO_DADOS_2026-09-26.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/garantia_atualizacao_dados/CERTIFICACAO_DOMINIOS_B3_2026-09-27.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/garantia_atualizacao_dados/DIAGNOSTICO_FRESCOR_COTAHIST_2026-09-27.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/garantia_atualizacao_dados/MATRIZ_GLOBAL_FRESCOR_DADOS_B3_2026-09-27.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/garantia_atualizacao_dados/README.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+| `governanca/indices_b3/INVENTARIO_INDICES_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
 
 ## 4. Gate de fecho integral
 
