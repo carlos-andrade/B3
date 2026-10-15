@@ -1,10 +1,23 @@
 # Fontes BDI
 
-**Projeto:** B3 - A Bolsa do Brasil  
-**Tema:** Fontes oficiais do BDI  
-**Caminho:** dados/bdi/fontes/README.md  
-**Data de criação:** 23/09/2026  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DADOS-BDI-FONTES-README-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | README_FONTES |
+| **Fase** | Ingestão BDI — mapeamento de fontes |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 8a5a37117af561954be29483d4ae3742c80ac4ad2c6744e8baf63b1e39ef7988 |
+| **Commit de referência (versão anterior)** | N/A — primeira normalização do cabeçalho |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — validação das fontes e aprovação humana |
+| **Origem** | Mapeamento de fontes BDI e documentação pública da B3 |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## Fonte primária
 
