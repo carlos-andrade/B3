@@ -46,13 +46,13 @@ Foram revistos seis documentos. Todos têm função técnica reconhecível e dev
 
 ## 4. Validação do auditor SHA-256
 
-Foi criado um auditor somente de leitura em [auditar_sha256_documental_b3.py](../../../scripts/governanca/auditar_sha256_documental_b3.py) e workflow [b3-auditoria-sha256-documental.yml](../../../.github/workflows/b3-auditoria-sha256-documental.yml). A primeira execução identificou 286 ficheiros Markdown, com 271 classificados como cabeçalho de controlo inválido, 14 hashes pendentes e 1 ficheiro sem H1. Essa execução terminou em falha porque o auditor inicial tratava a dívida documental legada como erro de processo. O script foi corrigido para reportar o baseline legado sem falhar o job, mantendo erro de leitura como falha operacional; a reexecução da versão corrigida ainda não foi confirmada nesta revisão.
+Foi criado um auditor somente de leitura em [auditar_sha256_documental_b3.py](../../../scripts/governanca/auditar_sha256_documental_b3.py) e workflow [b3-auditoria-sha256-documental.yml](../../../.github/workflows/b3-auditoria-sha256-documental.yml). A primeira execução identificou 286 ficheiros Markdown, com 271 classificados como cabeçalho de controlo inválido, 14 hashes pendentes e 1 ficheiro sem H1. Essa execução terminou em falha porque o auditor inicial tratava a dívida documental legada como erro de processo. O script foi corrigido para reportar o baseline legado sem falhar o job, mantendo erro de leitura como falha operacional; a reexecução corrigida foi concluída com sucesso no [run 38713381853](https://github.com/carlos-andrade/B3/actions/runs/38713381853). O job produziu artefacto JSON, sem modificar os documentos. A contagem desse snapshot foi 287 Markdown: 271 cabeçalhos de controlo inválidos, 15 hashes pendentes e 1 ficheiro sem H1.
 
 Este resultado é um baseline de triagem, não uma certificação: a categoria CABECALHO_CONTROLO_INVALIDO agrega documentos que não contêm as duas linhas de controlo e requer subdivisão entre documento humano, histórico, gerado e artefacto com contrato próprio.
 
 ## 5. Próximos passos
 
-1. Confirmar execução bem-sucedida do auditor corrigido e arquivar o artefacto JSON de evidência.
+1. Executar e validar os testes unitários do hash canónico adicionados em `tests/governanca/test_auditar_sha256_documental_b3.py`; a execução automatizada está em curso no momento desta atualização.
 2. Refinar o auditor para distinguir documentos que exigem cabeçalho padrão dos que possuem contrato de geração próprio.
 3. Reconciliar a divergência GOV-DIV-001 antes de qualquer alteração normativa.
 4. Normalizar metadados de contratos em lotes pequenos, preservando integralmente o corpo e validando referências.
@@ -63,3 +63,4 @@ Este resultado é um baseline de triagem, não uma certificação: a categoria C
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
 | 1.0.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas; dívida de metadados e estado inicial do auditor registados | Inspeção direta dos documentos-fonte; workflow de auditoria SHA-256 |
+| 1.1.0 | 2026-10-15 | Reexecução do auditor corrigido concluída com sucesso; artefacto JSON publicado no run | [Run 38713381853](https://github.com/carlos-andrade/B3/actions/runs/38713381853) |
