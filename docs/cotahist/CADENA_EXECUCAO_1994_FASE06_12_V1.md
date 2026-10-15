@@ -1,5 +1,25 @@
 # Cadeia COTAHIST 1994 — FASE06→FASE12
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-011-94-FASE06-12-V1-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_TECNICO_COTAHIST |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 6a4f6e2922bb9fa22deb42e129f4a6e814bc979615d7c75030c6c510378049c0 |
+| **Commit de referência (versão anterior)** | [7a09339f3244b84dd165400279b6da090bd2bb80](https://github.com/carlos-andrade/B3/commit/7a09339f3244b84dd165400279b6da090bd2bb80) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 Versão: V2.0
 Data: 2026-10-01
 
