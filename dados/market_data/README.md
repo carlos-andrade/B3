@@ -26,7 +26,7 @@ Organizar os arquivos históricos oficiais da B3 usados para reconstruir preços
 ## Hierarquia de fontes
 
 ### BVBG.086.01 — PriceReport
-Arquivo completo de preços e demais valores de negociação, disponibilizado pela B3 ao fim do dia. A documentação oficial descreve o PriceReport como contendo informações completas de preços e valores de negociação. citeturn0search6
+Arquivo completo de preços e demais valores de negociação, disponibilizado pela B3 ao fim do dia. A documentação da B3 descreve o PriceReport como contendo informações de preços e valores de negociação. Fonte oficial: [Pesquisa por Pregão — B3](https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/).
 
 ### BVBG.186.01 — Simplified Price Report — Equities
 Versão simplificada para o mercado de ações.
@@ -41,6 +41,10 @@ A página oficial de pesquisa por pregão disponibiliza atualmente esses três a
 BVBG.186.01 e BVBG.187.01 são relatórios simplificados de fim de dia. Eles não devem ser tratados como feed tick a tick.
 
 Para reconstrução de microestrutura intradiária serão necessários arquivos com granularidade de negócios compatível com a métrica estudada.
+
+## Restrição de acesso e automação
+
+A página oficial de Pesquisa por Pregão declara que os dados são propriedade exclusiva da B3 e veda a coleta automatizada a partir dessa página, inclusive por ferramentas de IA. Não implementar scraping dessa página. Qualquer acesso automatizado por API ou endpoint alternativo exige verificação separada dos termos aplicáveis e autorização documentada antes de ativação.
 
 ## Métricas
 
