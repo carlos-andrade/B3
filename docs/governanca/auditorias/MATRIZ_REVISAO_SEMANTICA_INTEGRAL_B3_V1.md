@@ -20,11 +20,11 @@
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Escopo** | Controlo individual de todos os Markdown identificados no snapshot |
 | **Objetivo** | Impedir declaração de revisão integral sem evidência por documento |
-| **Dependências** | Lotes semânticos 01–15; decisão GOV-DIV-001; auditoria SHA-256 |
+| **Dependências** | Lotes semânticos 01–16; decisão GOV-DIV-001; auditoria SHA-256 |
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -167,17 +167,17 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/cotahist/MATRIZ_DEPENDENCIAS_COTAHIST_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE15; HISTORICO_NAO_REABRIR |
 | `docs/cotahist/MATRIZ_OPERACIONAL_TAREFAS_POR_FASE_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE15; HISTORICO_NAO_REABRIR |
 | `docs/cotahist/MATRIZ_RETROSPECTIVA_EVIDENCIAS_1987_1993_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE15; HISTORICO_NAO_REABRIR |
-| `docs/cotahist/MODELO_CERTIFICACAO_ANUAL_COTAHIST_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ORDEM_OPERACIONAL_ATUALIZACAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ORQUESTRADOR_ANUAL_CANONICO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ORQUESTRADOR_ANUAL_CANONICO_V2.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ROADMAP_COTAHIST_1999_2001_ESTADO_2026-10-12.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ROADMAP_INGESTAO_PARTE18_ESTADO_2026-10-12.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ROADMAP_INGESTAO_PARTE20_ESTADO_2026-10-13.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ROADMAP_INGESTAO_PARTE23_ESTADO_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/ROADMAP_MESTRE_INGESTAO_COTAHIST_1986_2026_ESTADO_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
-| `docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md` | CONTRATO_PIPELINE_COTAHIST | PENDENTE_REVISAO_DE_CONTEUDO |
+| `docs/cotahist/MODELO_CERTIFICACAO_ANUAL_COTAHIST_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ORDEM_OPERACIONAL_ATUALIZACAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ORQUESTRADOR_ANUAL_CANONICO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ORQUESTRADOR_ANUAL_CANONICO_V2.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; PLACEHOLDER_CORRIGIDO; HASH_PENDENTE_AUDITORIA |
+| `docs/cotahist/REGRA_GERAL_EXISTENCIA_E_VALIDACAO_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ROADMAP_COTAHIST_1999_2001_ESTADO_2026-10-12.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ROADMAP_INGESTAO_PARTE18_ESTADO_2026-10-12.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ROADMAP_INGESTAO_PARTE20_ESTADO_2026-10-13.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ROADMAP_INGESTAO_PARTE23_ESTADO_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/ROADMAP_MESTRE_INGESTAO_COTAHIST_1986_2026_ESTADO_2026-10-14.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
+| `docs/cotahist/WORKFLOW_ORDEM_E_DEPENDENCIAS_V1.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE16; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/CONTRATO_RETORNO_E_MONITORAMENTO_EXECUCOES_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISAO_PREVIA_REGISTADA; REVALIDAR_APOS_GOV_DIV_001 |
 | `docs/governanca/INVENTARIO_MATRIZ_CONFORMIDADE_DOCUMENTAL_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/PLANO_NORMALIZACAO_DOCUMENTAL_GOVERNANCA_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE06; SNAPSHOT_HISTORICO_PRESERVADO |
