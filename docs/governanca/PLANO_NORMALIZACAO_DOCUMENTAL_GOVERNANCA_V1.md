@@ -9,7 +9,7 @@
 | **Fase** | Adoção transversal da norma documental |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.5.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE — checksum existente não foi validado de forma independente |
+| **SHA-256 (conteúdo canónico)** | 9e82198c87af66f6070787cedd6dfe5ff370aa8afefdf8a450e3972cc45616ee |
 | **Commit de referência (versão anterior)** | [16cb7f018923e42409f60ec685a339420ecbcd73](https://github.com/carlos-andrade/B3/commit/16cb7f018923e42409f60ec685a339420ecbcd73) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-15 |
