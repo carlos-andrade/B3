@@ -8,8 +8,8 @@
 | **Tipo documental** | RELATORIO_DE_TRIAGEM |
 | **Fase** | FASE_C_OPERACAO_E_GOVERNANCA |
 | **Estado** | EM_CURSO |
-| **Versão** | 1.0.1 |
-| **SHA-256 (conteúdo canónico)** | 986b3adb5d2fa3467a96f67af42b2e1666038b78e3ec29ab9d72e31d98a03c0a |
+| **Versão** | 1.0.2 |
+| **SHA-256 (conteúdo canónico)** | 8a7816f403136a46d0cb2ceb712b2ec8b1f4b984dc5c4cd16dd6739b7adffc71 |
 | **Commit de referência (versão anterior)** | N/A — revisão inicial segundo a norma documental |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
@@ -63,3 +63,11 @@ Isto comprova o sucesso daquela execução posterior; não elimina o histórico 
 
 **Decisão:** a triagem já identifica causas técnicas acionáveis, mas continua parcial. Não encerrar a Issue #11 nem a Fase C até as ações e evidências acima serem verificadas.
 
+
+
+## 6. Evidência adicional — verificação de 2026-10-15 14:17 UTC
+
+- **Composição de carteiras B3:** [execução #21](https://github.com/carlos-andrade/B3/actions/runs/38749902429) falhou após os quatro testes unitários passarem. A captura validou 32 índices e rejeitou IEE e IGCNM. Para ambos, a API devolveu HTTP 200 com JSON `{"page":{"pageNumber":1,"pageSize":1000,"totalRecords":null,"totalPages":null},"header":null,"results":null}`. O diagnóstico aponta resposta sem dados/sem contrato utilizável, não um erro de normalização de data. A publicação e a persistência do dataset vigente foram corretamente bloqueadas pelo gate `fail-closed`. Não excluir os dois índices nem converter `results: null` em lista vazia para contornar a validação.
+- **Auditoria documental:** [execução #75](https://github.com/carlos-andrade/B3/actions/runs/38749840001) terminou com `success` e executou os testes de hash canónico, cálculo/comparação e geração do relatório. Foram analisados 298 ficheiros: 44 `CONFORME`, 253 `CABECALHO_CONTROLO_INVALIDO` e 1 `SEM_CABECALHO_H1`. O workflow é somente de leitura; o sucesso atesta a execução da auditoria, não a conformidade do repositório.
+- **Próxima ação técnica:** comparar os códigos de índice `IEE` e `IGCNM` com os identificadores efetivamente aceites pela fonte B3 e com a página oficial de carteira diária; implementar fallback apenas com evidência verificável e teste. Manter a rejeição explícita até que a fonte seja reconciliada.
+- **Governança:** manter a Issue #11 aberta. A contagem atualizada da auditoria não elimina as pendências de integridade COTAHIST, limiares provisórios, heartbeat externo, ACK/escalonamento, arquivo duradouro e regressão integrada.
