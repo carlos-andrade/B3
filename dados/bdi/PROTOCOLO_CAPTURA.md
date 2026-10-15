@@ -1,10 +1,23 @@
-# Protocolo de Captura BDI
+# Protocolo de captura do Boletim Diário do Mercado (BDI)
 
-**Projeto:** B3 - A Bolsa do Brasil  
-**Tema:** Captura e validação do Boletim Diário do Mercado  
-**Caminho:** dados/bdi/PROTOCOLO_CAPTURA.md  
-**Data de criação:** 23/09/2026  
-**Repositório:** carlos-andrade/B3
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DADOS-BDI-PROTOCOLO-CAPTURA-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | PROTOCOLO_INGESTAO |
+| **Fase** | Ingestão BDI |
+| **Estado** | EM_CURSO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 160dec829d2ca2a80a6fd37b5127b26ed391a8d540c970e8d9121a804b6fe35a |
+| **Commit de referência (versão anterior)** | N/A — normalização inicial do cabeçalho |
+| **Data de criação** | 2026-09-23 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Responsável técnico do projeto B3 |
+| **Aprovador** | Pendente — validação técnica e aprovação humana |
+| **Origem** | B3 — Boletim Diário do Mercado (BDI) |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA 1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## 1. Captura
 
