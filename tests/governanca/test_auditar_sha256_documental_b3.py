@@ -41,11 +41,11 @@ class CanonicalDigestTests(unittest.TestCase):
 
     def test_pending_status_exposes_calculated_digest(self) -> None:
         content = (
-            "# Título\\n\\n| Campo | Valor |\\n|---|---|\\n"
-            "| **ID** | X |\\n"
-            "| **SHA-256 (conteúdo canónico)** | PENDENTE |\\n"
-            "| **Commit de referência (versão anterior)** | N/A |\\n"
-            "| **Estado** | RASCUNHO |\\n\\n## Corpo\\ntexto\\n"
+            "# Título\n\n| Campo | Valor |\n|---|---|\n"
+            "| **ID** | X |\n"
+            "| **SHA-256 (conteúdo canónico)** | PENDENTE |\n"
+            "| **Commit de referência (versão anterior)** | N/A |\n"
+            "| **Estado** | RASCUNHO |\n\n## Corpo\ntexto\n"
         )
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "pending.md"
