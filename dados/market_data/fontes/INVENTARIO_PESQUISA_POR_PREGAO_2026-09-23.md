@@ -1,5 +1,25 @@
 # Inventário da Pesquisa por Pregão — 2026-09-23
 
+| Campo | Valor |
+|---|---|
+| **ID** | B3-DOC-008-EGAO-2026-09-23-MD |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | DOCUMENTO_DE_FONTES |
+| **Fase** | NORMALIZACAO_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 15b9b2d946d2aa3ac0d5acb8cf0d2a25d33102c948bd82e42296d1e33db623a9 |
+| **Commit de referência (versão anterior)** | [7a09339f3244b84dd165400279b6da090bd2bb80](https://github.com/carlos-andrade/B3/commit/7a09339f3244b84dd165400279b6da090bd2bb80) |
+| **Data de criação** | N/A — data original não identificada no ficheiro-base |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Origem** | Conteúdo preexistente preservado; evidências e referências no corpo do documento |
+| **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+
 **Projeto:** B3 - A Bolsa do Brasil  
 **Tema:** Inventário dos arquivos disponibilizados para download pela B3  
 **Caminho:** dados/market_data/fontes/INVENTARIO_PESQUISA_POR_PREGAO_2026-09-23.md  
