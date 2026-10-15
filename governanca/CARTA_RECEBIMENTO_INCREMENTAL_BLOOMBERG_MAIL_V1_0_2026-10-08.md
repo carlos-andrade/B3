@@ -7,8 +7,8 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
+| **Estado** | HISTORICO; FORA_ESCOPO_OPERACIONAL_ATUAL_B3 |
+| **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | 64ac4a94bcea519df11a0f446f122a28bc8086d352f50ae387bd511c722e9693 |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
@@ -18,6 +18,16 @@
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+
+## Nota de âmbito e precedência — 2026-10-15
+
+**Estado operacional atual: HISTÓRICO / NÃO APLICÁVEL À EXECUÇÃO CORRENTE DO PROJETO B3.**
+
+O conteúdo abaixo preserva a carta original de 2026-10-08 para rastreabilidade histórica. Não constitui autorização vigente para integrar o repositório BLOOMBERG_MAIL no projeto B3, copiar dados entre repositórios ou criar dependências operacionais entre os dois projetos. O âmbito B3 atual mantém BLOOMBERG_MAIL isolado e fora da execução deste roadmap.
+
+Qualquer futura integração exigirá nova decisão explícita, versionada e aprovada, com contrato de interface, autoridade, licenciamento, proveniência, segurança, segregação de dados, testes e plano de reversão. Até essa decisão, as instruções históricas de fluxo entre repositórios não devem ser executadas nem usadas como dependência por workflows B3.
+
+A nota não apaga nem reescreve o texto original; apenas determina que o mesmo seja lido como histórico, subordinado às decisões de escopo posteriores do projeto.
 
 > Cabeçalho histórico — 2026-10-08.
 > Origem: alinhamento arquitetural com BLOOMBERG_MAIL.
