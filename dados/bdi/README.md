@@ -38,6 +38,10 @@ A B3 informa que dados anteriormente disponibilizados em páginas públicas de c
 
 Nenhum número agregado será tratado como dado oficial do projeto sem identificação de data, tabela/capítulo, fonte B3 e, quando houver arquivo baixado, hash SHA-256.
 
+## Restrição de acesso e automação
+
+A página pública da Pesquisa por Pregão da B3 veda coleta automatizada a partir dessa página, inclusive por ferramentas de IA. Não usar scraping dessa página. O endpoint/API BDI deve ser avaliado separadamente segundo os termos específicos, autorização e limites aplicáveis antes de ativar automação; a existência técnica de um endpoint não é autorização de uso.
+
 ## Fontes
 
 - BDI automatizado da B3;
