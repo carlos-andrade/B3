@@ -1,9 +1,23 @@
 # Inventário B3 — 2026-09-21
 
-**Projeto:** B3 - A Bolsa do Brasil  
-**Repositório:** `carlos-andrade/B3`  
-**Data de referência:** 21/09/2026  
-**Fonte:** B3 — BVBG.028.02 Instruments File / Cadastro de Instrumentos (Listado)
+| Campo | Valor |
+|---|---|
+| **ID** | B3-CAT-INV-001 |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | INVENTARIO_TECNICO |
+| **Fase** | GOVERNANCA_DOCUMENTAL |
+| **Estado** | EM_REVISAO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | a38505ced5f3250acef4180b39c0880a7d4fafd284aa4df0a22d3b7682bcc09c |
+| **Commit de referência (versão anterior)** | [cdd654d7f7f9c7357a5b9dcb68895d525fd67284](https://github.com/carlos-andrade/B3/commit/cdd654d7f7f9c7357a5b9dcb68895d525fd67284) |
+| **Data de criação** | 2026-09-21 |
+| **Data de atualização** | 2026-10-15 |
+| **Responsável** | Manutenção técnica do projeto B3 |
+| **Aprovador** | Pendente — validação do proprietário do repositório |
+| **Origem** | Evidência e protocolo de captura BVBG.028.02 descritos neste documento; confirmar a captura oficial em execução própria |
+| **Autoridade superior** | [Norma de cabeçalho documental da GOVERNANÇA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
 
 ## Evidência da fonte
 
