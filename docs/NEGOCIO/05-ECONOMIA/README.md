@@ -9,8 +9,8 @@
 | **Fase** | Modelo de negócio e validação comercial |
 | **Estado** | EM_REVISAO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 85bbf35d7292b6547dc96d619c84a38e3254436d64407712576d1d4eda04adfa00000000000000000000000000000000000000000000000000000000000000000000000000000000 |
-| **Commit de referência (versão anterior)** | [d8197b5674834a3d1db5bc4e7c32765b7faeb933](https://github.com/carlos-andrade/B3/commit/d8197b5674834a3d1db5bc4e7c32765b7faeb933) |
+| **SHA-256 (conteúdo canónico)** | 73dc11bfd92bad0c535349688c4b372dccc6cbbe81ee209f2a2d44f71fbc63ac |
+| **Commit de referência (versão anterior)** | [8f0b037448d16033a0f21afb421f9baaa876b38d](https://github.com/carlos-andrade/B3/commit/8f0b037448d16033a0f21afb421f9baaa876b38d) |
 | **Data de criação** | 2026-09-23 |
 | **Data de atualização** | 2026-10-15 |
 | **Responsável** | Responsável técnico do projeto B3 |
