@@ -35,9 +35,11 @@
 - Vigência: 17/09/2026
 - Votação: 7 a favor / 0 contra
 - Ata: publicada em 22/09/2026
-- Horário exato da publicação da Ata: UNKNOWN
-- Hash da captura HTTP integral: PENDENTE
-- Comunicado RAW integral: PENDENTE
+- Horário exato da publicação da Ata: UNKNOWN — sem timestamp oficial comprovado
+- RAW da API — Ata 281: CAPTURADO; `dados/calendario_economico/copom/raw/atas_detalhes_281.json`; SHA-256 `fa402b27a6424c01d96fccce81f58347cc35dcb390e23d1fa31f2207792eba98`; 19.791 bytes
+- RAW da API — Comunicado 281: CAPTURADO; `dados/calendario_economico/copom/raw/comunicados_detalhes_281.json`; SHA-256 `c32e5fccaba8d550544472f72f03222eb880fbb543674f77eb89d565d4dc9b66`; 6.503 bytes
+- Listas oficiais de Atas/Comunicados: CAPTURADAS com sidecars SHA-256; ver `dados/calendario_economico/copom/raw/*.meta.json`
+- PDF binário original da Ata: PENDENTE — a resposta JSON/API não é o PDF binário
 
 ## Votantes
 
@@ -58,4 +60,4 @@ Após captura HTTP integral:
 
 ## Limitação
 
-A fonte oficial foi verificada, mas o ambiente atual não permite execução HTTP direta contra os endpoints parametrizados da API. Não será fabricado SHA-256 nem declarado RAW HTTP integral como capturado.
+A captura foi executada pelo workflow [Capturar BCB - Copom](https://github.com/carlos-andrade/B3/actions/runs/38889256929), concluído com sucesso em 2026-10-16. O workflow capturou as respostas JSON da API, persistiu os sidecars com URL, timestamp, bytes e SHA-256 e validou `copom_281.json` (`OK: 1 eventos BCB/Copom validados`). O PDF binário continua pendente e o horário exato de publicação continua `UNKNOWN`; não inferir esses valores.
