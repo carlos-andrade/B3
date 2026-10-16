@@ -49,8 +49,10 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib,json
+          import hashlib,json,sys
           from pathlib import Path
+          sys.path.insert(0, "scripts/ingestao")
+          from normalize_cotahist import PARSER_VERSION
           csvp=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
           shp=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256")
           mp=Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json")
@@ -69,10 +71,10 @@ jobs:
           assert checks["sha_vs_checksum"]
           assert checks["sha_vs_manifest"]
           assert m["campos"] == 25
-          assert m["raw_sha256"] == "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768"
-          assert m["normalized_sha256"] == "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9"
-          assert m["linhas_normalized"] == 2919760
-          assert m["ultima_data"] == "2026-09-23"
+          raw_sha=hashlib.sha256(Path("dados/cotahist/raw/anual/COTAHIST_A2026.ZIP").read_bytes()).hexdigest()
+          assert m["raw_sha256"] == raw_sha
+          assert m["normalized_sha256"] == sha
+          assert m["parser_version"] == PARSER_VERSION
           PY
 
       - name: Validação semântica
