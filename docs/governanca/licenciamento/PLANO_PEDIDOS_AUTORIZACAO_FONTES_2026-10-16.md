@@ -4,13 +4,18 @@
 |---|---|
 | **ID** | B3-LIC-PEDIDOS-FONTES-20261016 |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
-| **Estado** | CONTACTOS OFICIAIS IDENTIFICADOS; PEDIDOS PREPARADOS; ENVIO E RESPOSTAS PENDENTES |
-| **Versão** | 1.0.0 |
+| **Estado** | SUPERSEDIDO PELA POLÍTICA DE CUSTO ZERO; NÃO ENVIAR PEDIDOS COMERCIAIS |
+| **Versão** | 1.0.1 |
 | **Data** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Proprietário do projeto — pendente |
-| **SHA-256 (conteúdo canónico)** | 942d4ec0e44928dfcb30cdca170c46cab23121ab04c10d4a2b86d1e6394b3863 |
+| **SHA-256 (conteúdo canónico)** | 3f0f532cfc045bb20808d1aa6abed41f1b5942e97f595c0cd1cf7b9f5b43d8c6 |
+| **Commit de referência (versão anterior)** | N/A — referência de commit anterior não registada |
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
+
+## Aviso de governação — supersedido em 2026-10-16
+
+**Não enviar os pedidos deste documento.** O proprietário definiu política de custo zero: não contratar feeds, licenças, subscrições ou autorizações pagas. Este ficheiro fica preservado como histórico de pesquisa, não como plano operacional. O trabalho prossegue com fontes gratuitas e licenças abertas verificadas; fontes gratuitas sem direitos de uso demonstrados permanecem bloqueadas. Não há pedidos enviados nem autorizações recebidas.
 
 ## 1. Resultado da pesquisa
 
