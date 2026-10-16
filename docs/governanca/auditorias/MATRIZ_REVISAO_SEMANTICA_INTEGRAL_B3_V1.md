@@ -7,9 +7,9 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | MATRIZ_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
-| **Estado** | INVENTARIO_INTEGRAL; 17_DOCUMENTOS_REVALIDADOS_POS_GOV_DIV_001; AUDITORIA_SHA256_APROVADA; PENDENCIAS_OPERACIONAIS_SEPARADAS |
-| **Versão** | 1.2.0 |
-| **SHA-256 (conteúdo canónico)** | 37775cbedb16e947d1b0e84727511513fa75fe22c7cfd977b1b4e9c3d083daf9|
+| **Estado** | INVENTARIO_INTEGRAL; 281_PENDENCIAS_ORIGINAIS_FECHADAS; 17_DOCUMENTOS_REVALIDADOS; QUATRO_RELATORIOS_FECHADOS; PENDENCIAS_OPERACIONAIS_SEPARADAS |
+| **Versão** | 1.3.0 |
+| **SHA-256 (conteúdo canónico)** | 514e6c133dee447c06bc51faf830dffd5832c9c0d32baa09defcb8481f7cbe01 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
@@ -360,6 +360,17 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `governanca/garantia_atualizacao_dados/MATRIZ_GLOBAL_FRESCOR_DADOS_B3_2026-09-27.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
 | `governanca/garantia_atualizacao_dados/README.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
 | `governanca/indices_b3/INVENTARIO_INDICES_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE08; SNAPSHOT_HISTORICO_PRESERVADO |
+
+## 3A. Fecho dos quatro relatórios semânticos — 2026-10-16
+
+| Relatório | Achado inicial | Resolução verificada | Estado |
+|---|---|---|---|
+| [Lote 01](REVISAO_SEMANTICA_DOCUMENTAL_LOTE01_2026-10-15.md) | Divergência explícita de precedência Carta Magna/Layout (GOV-DIV-001). | Decisão GOV-DIV-001 registada; Layout Mestre v1.2.0 reconciliado; revalidação dos 17 prioritários documentada. Snapshot histórico preservado. | FECHADO_SEMANTICAMENTE |
+| [Lote 02](REVISAO_SEMANTICA_DOCUMENTAL_LOTE02_2026-10-15.md) | Metadados legados; aparente diferença entre nome 00–09 e âmbito 00–12; baseline de auditoria desatualizado. | Cabeçalhos de controlo confirmados nos seis documentos; contrato de evidência declara expressamente FASE00–FASE12 V2.0 e preserva o caminho físico por compatibilidade; auditoria posterior substitui os números históricos do baseline. | FECHADO_SEMANTICAMENTE |
+| [Lote 03](REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) | Ambiguidade V1.0/V2.0 do Dataset Oficial e estado de adoção do NORMALIZED V2.0. | V1.0 classificado como referência histórica; V2.0 como destino sujeito a evidência formal e gate M3. Adoção/publicação não é presumida. | FECHADO_POR_CLASSIFICACAO; GATE_OPERACIONAL_BLOQUEADO |
+| [Lote 04](REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md) | Classificação inicial por amostragem e resolução GOV-DIV-001 pendente. | Lotes 05–27 e matriz por ficheiro ampliaram a cobertura; 281 pendências originais fechadas e 17 prioritários revalidados; snapshot amostral preservado. | FECHADO_SEMANTICAMENTE |
+
+O fecho acima encerra as pendências de **revisão e reconciliação documental** dos quatro relatórios. Não converte em concluídas tarefas que exigem execução ou autorização externa: adoção/publicação NORMALIZED V2.0, migração Git LFS A1987, capturas RAW, licenciamento/termos de fontes, prova de rotina diária, recuperação arquivística e gates WATCHDOG. Estas permanecem ações operacionais separadas e devem ter evidência própria.
 
 ## 4. Gate de fecho integral
 
