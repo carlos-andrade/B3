@@ -5,7 +5,7 @@ A rotina preserva as respostas RAW separadamente e cria um envelope NORMALIZED
 somente quando os recursos de lista/detalhe respondem com JSON válido.
 """
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, hashlib, json, re, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode
@@ -150,15 +150,25 @@ def main() -> int:
     # Persistir o PDF original separado da resposta JSON/API que o referencia.
     ata_pdf_url = field(ata, "urlPdfAta", "url_pdf_ata")
     if ata_pdf_url:
-        pdf_payload, pdf_final_url, pdf_content_type = get_pdf(ata_pdf_url)
-        save_raw_binary(
-            raw_dir,
-            f"ata_{meeting}.pdf",
-            ata_pdf_url,
-            pdf_payload,
-            pdf_final_url,
-            pdf_content_type,
+        repo_root = Path(__file__).resolve().parents[2]
+        license_gate = subprocess.run(
+            ["python", "scripts/governanca/validar_autorizacao_endpoint.py",
+             "--endpoint-id", "BCB_COPOM_PDF_ATTACHMENT"],
+            cwd=repo_root,
+            check=False,
         )
+        if license_gate.returncode == 0:
+            pdf_payload, pdf_final_url, pdf_content_type = get_pdf(ata_pdf_url)
+            save_raw_binary(
+                raw_dir,
+                f"ata_{meeting}.pdf",
+                ata_pdf_url,
+                pdf_payload,
+                pdf_final_url,
+                pdf_content_type,
+            )
+        else:
+            print("PDF_ATTACHMENT_SKIPPED_LICENSE_SCOPE_UNCONFIRMED")
 
     ata_text = text_from_html(field(ata, "textoAta", "texto_ata") or "")
     com_text = text_from_html(field(com, "textoComunicado", "texto_comunicado") or "")
