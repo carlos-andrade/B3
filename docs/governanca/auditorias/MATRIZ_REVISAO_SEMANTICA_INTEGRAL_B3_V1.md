@@ -7,7 +7,7 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | MATRIZ_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
-| **Estado** | INVENTARIO_INTEGRAL; 17_DOCUMENTOS_REVALIDADOS_POS_GOV_DIV_001; PENDENCIAS_OPERACIONAIS_SEPARADAS |
+| **Estado** | INVENTARIO_INTEGRAL; 17_DOCUMENTOS_REVALIDADOS_POS_GOV_DIV_001; AUDITORIA_SHA256_APROVADA; PENDENCIAS_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.2.0 |
 | **SHA-256 (conteúdo canónico)** | 14ece436a634cc6397f37b4d6e42da4c4f5fadb2ccfd999f00988604c91f9163|
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
@@ -37,7 +37,7 @@ Os 17 documentos prioritários listados abaixo foram revalidados quanto a domín
 
 Correções aplicadas: (i) substituição da cadeia de autoridade legada `PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO` por `CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS`; (ii) hierarquia do Modelo-Mestre reescrita por domínio; (iii) aditivo de precedência de 2026-10-01 na Carta Magna qualificado como histórico/processual, subordinado a GOV-DIV-001; (iv) referências ao caminho canónico do Layout corrigidas onde identificadas.
 
-Pendências operacionais que permanecem separadas da revisão semântica: comprovar a adoção do Dataset Oficial/ NORMALIZED V2.0 por artefactos e workflows; executar a migração Git LFS de A1987 conforme preflight e modo migrate; confirmar execuções reais da rotina diária; atualizar hashes canónicos e executar a auditoria SHA-256 pós-commit. Nenhuma dessas pendências autoriza alterar RAW, manifestos ou evidências históricas.
+Pendências operacionais que permanecem separadas da revisão semântica: comprovar a adoção do Dataset Oficial/ NORMALIZED V2.0 por artefactos e workflows; executar a migração Git LFS de A1987 conforme preflight e modo migrate; confirmar execuções reais da rotina diária; atualizar hashes canónicos e executar a auditoria SHA-256 pós-commit. A auditoria SHA-256 do commit `b077c5c6a0fe0a6a255c37546b7c793e54a2a120` (run [38881634574](https://github.com/carlos-andrade/B3/actions/runs/38881634574)) analisou 330 ficheiros: 316 `CONFORME`, 14 `PENDENTE`, zero `DIVERGENTE` e zero `FORMATO_HASH_INVALIDO`. As 14 pendências são dívida documental legada separada; não invalidam os hashes preenchidos. Nenhuma pendência operacional autoriza alterar RAW, manifestos ou evidências históricas.
 
 ## 2. Critérios para concluir cada linha
 
@@ -215,7 +215,7 @@ Não promover automaticamente relatórios históricos, templates, artefactos ger
 | `docs/governanca/auditorias/TRIAGEM_FAMILIAS_DOCUMENTAIS_SHA256_2026-10-15.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md` | GOVERNANCA_NORMATIVA | REVISTO_LOTE07; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md` | GOVERNANCA_NORMATIVA | DECISAO_GOV_DIV_001_REGISTADA; VALIDACAO_FINAL_PENDENTE |
-| `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_POS_GOV_DIV_001; V1_2_0; AUDITORIA_HASH_POS_ALTERACAO_PENDENTE |
+| `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_POS_GOV_DIV_001; V1_2_0; HASH_CANONICO_CONFORME_AUDITORIA_2026_10_16 |
 | `docs/governanca/politicas/POLITICA_RETENCAO_COTAHIST_1986_2026_V1.md` | GOVERNANCA_NORMATIVA | REVISTO_POS_GOV_DIV_001; 1986_2025_READ_ONLY_2026_DIARIO |
 | `docs/ingestao/CERTIFICACAO_ANUAL_COTAHIST_1986_2026_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_LOTE17; SNAPSHOT_HISTORICO_PRESERVADO |
 | `docs/ingestao/CONTRATO_DATASET_OFICIAL_COTAHIST_V1.0.md` | CONTRATO_PIPELINE_COTAHIST | REVISTO_POS_GOV_DIV_001; V1_V2_E_ADOCAO_EXIGEM_EVIDENCIA |
