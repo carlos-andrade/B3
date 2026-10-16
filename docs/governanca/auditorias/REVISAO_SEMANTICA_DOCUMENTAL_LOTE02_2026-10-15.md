@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | REVISAO_SEMANTICA_FECHADA; DIVIDA_HISTORICA_EXPLICITADA; GATES_OPERACIONAIS_SEPARADOS |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | c4e38c3a05cd48a41472953677c45f0acd775c57b19e7133d0a0345daa6b2b8d |
+| **SHA-256 (conteúdo canónico)** | a3e2b350ba9a6a29387387a942aa1bdebd586572546a196bee33f0c8b4cbdca5 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
