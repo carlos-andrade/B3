@@ -17,7 +17,7 @@
 | **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 **Versão:** 1.0  
 **Data de decisão:** 2026-10-14  
