@@ -51,6 +51,8 @@ jobs:
             echo "Nenhuma alteração nova."
           else
             git commit -m "data(bcb): captura Copom RAW e NORMALIZED"
+            # Integrar commits concorrentes de outras capturas antes de publicar.
+            git pull --rebase origin main
             git push
           fi
 
