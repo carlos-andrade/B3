@@ -9,7 +9,7 @@
 | **Data** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Proprietário do projeto — pendente |
-| **SHA-256 (conteúdo canónico)** | PENDENTE |
+| **SHA-256 (conteúdo canónico)** | 942d4ec0e44928dfcb30cdca170c46cab23121ab04c10d4a2b86d1e6394b3863 |
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 ## 1. Resultado da pesquisa
