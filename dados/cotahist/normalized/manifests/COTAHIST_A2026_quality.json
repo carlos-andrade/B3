@@ -16,20 +16,6 @@
   "datas_fora_do_ano": 0,
   "bloqueios": [
     {
-      "codigo": "HISTORICAL_VALIDATION_OUTPUT_CONFLICT",
-      "status": "NEEDS_REPRODUCTION",
-      "expected_manifest_date": "2026-01-02",
-      "observed_in_earlier_runs": "2026-01-07",
-      "latest_observed_date": "2026-01-02",
-      "latest_evidence_run": "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
-      "earlier_evidence_runs": [
-        "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
-        "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
-        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
-      ],
-      "reason": "Os logs de runs anteriores e de uma execução posterior com o mesmo identificador SHA LFS reportam primeiras datas diferentes. A discrepância não pode ser considerada defeito atual confirmado até reprodução controlada."
-    },
-    {
       "codigo": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED",
       "status": "OPEN",
       "endpoint_id": "B3_COTAHIST_DAILY",
@@ -37,5 +23,21 @@
     }
   ],
   "status_decision_utc": "2026-10-16T21:00:00Z",
-  "status_decision_reason": "Manter BLOQUEADO porque a autorização compatível da fonte para a utilização/publicação pretendida não está demonstrada e porque existe conflito histórico entre resultados de validação que exige reprodução controlada. RAW, NORMALIZED e sidecar SHA-256 foram preservados."
+  "status_decision_reason": "Manter BLOQUEADO exclusivamente porque a autorização compatível da fonte para a utilização/publicação pretendida não está demonstrada. A integridade e reprodutibilidade do NORMALIZED atual foram confirmadas pelo M3-1C; a divergência histórica de logs é mantida como observação, não como defeito atual confirmado.",
+  "observacoes_historicas": [
+    {
+      "codigo": "HISTORICAL_VALIDATION_OUTPUT_CONFLICT",
+      "status": "CURRENT_HEAD_REPRODUCED_HISTORICAL_CAUSE_UNKNOWN",
+      "earlier_observed_date": "2026-01-07",
+      "latest_observed_date": "2026-01-02",
+      "latest_evidence_run": "https://github.com/carlos-andrade/B3/actions/runs/38970380649",
+      "earlier_evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
+        "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
+        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
+      ],
+      "conclusion": "M3-1C reproduziu RAW -> NORMALIZED, confirmou SHA e tamanho idênticos e validou 3.142.910 linhas com primeira data 2026-01-02 e última data 2026-10-13. A diferença vista nos logs antigos não foi reproduzida no HEAD atual; a causa histórica dos logs permanece desconhecida, mas não é um bloqueio atual da integridade do NORMALIZED.",
+      "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc"
+    }
+  ]
 }
