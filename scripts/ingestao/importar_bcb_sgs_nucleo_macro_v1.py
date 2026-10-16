@@ -13,6 +13,8 @@ import csv
 import hashlib
 import json
 import os
+import subprocess
+import sys
 import time
 from datetime import date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
@@ -148,6 +150,28 @@ def validate_records(records: list[dict], code: int, allow_future: bool, capture
 
 
 def main():
+    # Gate obrigatório: nenhuma série é descarregada antes de verificar a licença
+    # ODbL do recurso exato no catálogo oficial de Dados Abertos do BCB.
+    series_arg = ",".join(str(code) for code in sorted(SERIES))
+    preflight = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "governanca" / "validar_licenca_bcb_sgs.py"),
+            "--series",
+            series_arg,
+            "--json-output",
+            str(ROOT / "dados" / "bcb_sgs" / "manifests" / "preflight_licencas_sgs.json"),
+        ],
+        cwd=ROOT,
+        check=False,
+        text=True,
+    )
+    if preflight.returncode != 0:
+        raise SystemExit(
+            "SGS_BLOCKED_LICENSE_PREFLIGHT: uma ou mais séries não têm licença ODbL "
+            "demonstrada no catálogo oficial; nenhuma captura foi iniciada."
+        )
+
     capture_dt = datetime.now(ZoneInfo("America/Sao_Paulo"))
     capture_date = capture_dt.date()
     stamp = capture_dt.strftime("%Y%m%dT%H%M%S%z")
