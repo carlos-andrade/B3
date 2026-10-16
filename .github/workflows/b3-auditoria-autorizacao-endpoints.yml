@@ -1,0 +1,131 @@
+name: B3 - Auditoria de licenças e autorização de endpoints
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-auditoria-autorizacao-endpoints.yml"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+      - "scripts/governanca/validar_autorizacao_endpoint.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: b3-auditoria-autorizacao-endpoints
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes unitários do gate
+        run: python -m unittest scripts/governanca/test_validar_autorizacao_endpoint.py -v
+
+      - name: Auditar todos os endpoints registados
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          registry_path = Path("docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json")
+          registry = json.loads(registry_path.read_text(encoding="utf-8"))
+          if registry.get("policy") != "FAIL_CLOSED":
+              raise SystemExit("POLITICA_GLOBAL_INVALIDA")
+          rows = registry.get("endpoints")
+          if not isinstance(rows, list) or not rows:
+              raise SystemExit("REGISTO_SEM_ENDPOINTS")
+          ids = [row.get("id") for row in rows]
+          if any(not item for item in ids) or len(ids) != len(set(ids)):
+              raise SystemExit("IDS_AUSENTES_OU_DUPLICADOS")
+
+          results = []
+          errors = []
+          for row in rows:
+              endpoint_id = row["id"]
+              proc = subprocess.run(
+                  [sys.executable, "scripts/governanca/validar_autorizacao_endpoint.py",
+                   "--endpoint-id", endpoint_id, "--allow-blocked"],
+                  text=True, capture_output=True, check=False,
+              )
+              if proc.returncode != 0:
+                  errors.append(f"{endpoint_id}: gate exit={proc.returncode} {proc.stderr}")
+                  continue
+              try:
+                  result = json.loads(proc.stdout)
+              except json.JSONDecodeError:
+                  errors.append(f"{endpoint_id}: saída JSON inválida")
+                  continue
+              if result.get("endpoint_id") != endpoint_id:
+                  errors.append(f"{endpoint_id}: identidade divergente")
+              status = result.get("authorization_status")
+              authorized = result.get("authorized") is True
+              if status in ("PROHIBITED_AUTOMATED_COLLECTION", "REVIEW_REQUIRED") and authorized:
+                  errors.append(f"{endpoint_id}: autorizado sem prova apesar do estado {status}")
+              elif status == "AUTHORIZED_WITH_CONDITIONS" and not authorized:
+                  errors.append(f"{endpoint_id}: licença condicional não passou pelo gate")
+              elif status not in ("PROHIBITED_AUTOMATED_COLLECTION", "REVIEW_REQUIRED",
+                                  "AUTHORIZED_WITH_CONDITIONS", "AUTHORIZED"):
+                  errors.append(f"{endpoint_id}: estado não reconhecido {status}")
+              result["decision_recorded"] = row.get("decision")
+              results.append(result)
+
+          audit = {
+              "schema_version": "1.0.0",
+              "registry": str(registry_path),
+              "policy": registry["policy"],
+              "endpoint_count": len(rows),
+              "audited_count": len(results),
+              "authorized_count": sum(1 for item in results if item.get("authorized") is True),
+              "blocked_count": sum(1 for item in results if item.get("authorized") is False),
+              "results": results,
+              "errors": errors,
+          }
+          Path("authorization_audit.json").write_text(
+              json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          summary = [
+              "# Auditoria de autorização de endpoints B3", "",
+              f"- Política: **{audit['policy']}**",
+              f"- Endpoints no registo: **{audit['endpoint_count']}**",
+              f"- Endpoints auditados: **{audit['audited_count']}**",
+              f"- Permitidos pelo gate: **{audit['authorized_count']}**",
+              f"- Bloqueados pelo gate: **{audit['blocked_count']}**",
+              f"- Erros de controlo: **{len(errors)}**", "",
+              "A auditoria não consulta endpoints de rede; apenas avalia o registo versionado e o gate.",
+              ""
+          ]
+          Path("authorization_audit_summary.md").write_text("\n".join(summary), encoding="utf-8")
+          Path(__import__("os").environ["GITHUB_STEP_SUMMARY"]).write_text(
+              "\n".join(summary), encoding="utf-8"
+          )
+          print(json.dumps(audit, ensure_ascii=False, indent=2))
+          if errors or len(results) != len(rows):
+              raise SystemExit("AUDITORIA_AUTORIZACAO_FALHOU")
+          PY
+
+      - name: Guardar evidência da auditoria
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-auditoria-autorizacao-endpoints
+          path: |
+            authorization_audit.json
+            authorization_audit_summary.md
+          if-no-files-found: error
+          retention-days: 30
