@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | REVISAO_CONTEUDO_CONCLUIDA; CAPTURA_RAW_E_RECONCILIACAO_INTRADAY_PENDENTES |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | 9ed25e722499d5272db20c16b56783e1a73dd7d79cacad097f004a4029b4880b |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
