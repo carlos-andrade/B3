@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.11 |
-| **SHA-256 (conteúdo canónico)** | 79c9ef13b681dd66f37d26d28a2e7d553462c85bdc14b2d81f8ecbb72e29802a |
-| **Commit de referência (versão anterior)** | [34dae21d2a02af3e8e78efb00409d2960f89f0a1](https://github.com/carlos-andrade/B3/commit/34dae21d2a02af3e8e78efb00409d2960f89f0a1) |
+| **Versão** | 2.3.12 |
+| **SHA-256 (conteúdo canónico)** | b456a1673b492ee23b14b0c254648ebd22dd69ea0a76a037a88f7182cf00235c |
+| **Commit de referência (versão anterior)** | [84a479291406827b4bf482497ecf06b03f768c57](https://github.com/carlos-andrade/B3/commit/84a479291406827b4bf482497ecf06b03f768c57) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -748,6 +748,10 @@ As execuções decorrentes confirmaram o fail-closed:
 - [Dataset Oficial V1 #38969941082](https://github.com/carlos-andrade/B3/actions/runs/38969941082): rejeitou 2026 por `quality status` inválido.
 - [Dataset Oficial V2 #38969941094](https://github.com/carlos-andrade/B3/actions/runs/38969941094): não publicou o dataset por falhas de certificação física.
 - [Auditoria de calendário #38969941018](https://github.com/carlos-andrade/B3/actions/runs/38969941018) e [auditoria FASE04/05 #38969941009](https://github.com/carlos-andrade/B3/actions/runs/38969941009): sucesso. A execução [M3-1E #38969940913](https://github.com/carlos-andrade/B3/actions/runs/38969940913) observou primeira data 2026-01-02, mas passou mesmo com quality manifest BLOQUEADO; este defeito do gate foi corrigido com a asserção `q.status == VALIDADO` no commit [7a6c62d03793cc0c812f61ba1e38eaba309ccd3d](https://github.com/carlos-andrade/B3/commit/7a6c62d03793cc0c812f61ba1e38eaba309ccd3d). A validação dessa correção ainda é necessária.
+- A correção do gate foi confirmada: [M3-1E #38970391616](https://github.com/carlos-andrade/B3/actions/runs/38970391616) terminou em `failure` com `AssertionError: quality status bloqueado: BLOQUEADO`. Neste contexto, a falha é **esperada e favorável ao fail-closed**: impede promoção enquanto a qualidade não estiver VALIDADO.
+- A auditoria SHA-256 do roadmap v2.3.11 passou em [#38970457617](https://github.com/carlos-andrade/B3/actions/runs/38970457617): 336 documentos Markdown examinados, 336 `CONFORME`.
+- A auditoria estática de workflows passou após a correção do gate em [#38970351129](https://github.com/carlos-andrade/B3/actions/runs/38970351129). O grupo de concorrência do orquestrador BCB foi alinhado com SGS/Copom no commit [bf3452e0874cf835a396c45ce4f7dd03617271d8](https://github.com/carlos-andrade/B3/commit/bf3452e0874cf835a396c45ce4f7dd03617271d8); o orquestrador e a auditoria estática passaram em [#38970246963](https://github.com/carlos-andrade/B3/actions/runs/38970246963) e [#38970246970](https://github.com/carlos-andrade/B3/actions/runs/38970246970).
+- A revalidação M3-1C e as execuções posteriores M3-1D/M3-1E iniciadas após os últimos commits ainda estavam em curso no momento desta atualização; não são consideradas concluídas até o estado terminal e revisão dos logs.
 
 ### Decisão e próximos passos
 - COTAHIST 2026 fica **BLOQUEADO / NÃO PROMOVER** enquanto não existir autorização compatível demonstrada. A divergência histórica de primeira data deve ser reproduzida com execução controlada; não inventar registos ausentes.
