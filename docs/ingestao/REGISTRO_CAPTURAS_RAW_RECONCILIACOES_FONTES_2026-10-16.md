@@ -9,7 +9,7 @@
 | **Fase** | CAPTURA_RAW_E_RECONCILIACAO |
 | **Estado** | EM_CURSO_COM_BLOQUEIOS_EXPLICITOS |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 9306ddd65261ac9ea71774c8984976430ed3afad758dcdc14f493a767fe16a1b |
+| **SHA-256 (conteúdo canónico)** | 8c242eb8e6f22de17d59b2d35d831c009036b94f7c2506bbd322ab68bf38d32c |
 | **Commit de referência (versão anterior)** | N/A — registo operacional inicial |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
