@@ -34,7 +34,7 @@ O catálogo oficial de Comunicados do Copom confirma que o BCB publica a decisã
 
 `dados/calendario_economico/raw/bcb_copom_281_comunicado_2026-09-24.md`
 
-O arquivo é snapshot documental. **SHA-256 da resposta HTTP integral: PENDENTE.**
+O snapshot Markdown é evidência documental, não o RAW HTTP. A resposta JSON integral do endpoint oficial `comunicados_detalhes?nro_reuniao=281` foi capturada em `dados/calendario_economico/copom/raw/comunicados_detalhes_281.json`: SHA-256 `c32e5fccaba8d550544472f72f03222eb880fbb543674f77eb89d565d4dc9b66`, 6.503 bytes. Metadados verificáveis em `comunicados_detalhes_281.json.meta.json`. O timestamp intradiário exato continua `UNKNOWN`.
 
 ## 3. Informação temporal
 
@@ -78,9 +78,10 @@ A informação da decisão pode ser usada em backtests somente a partir do times
 
 ## 6. Estado
 
-**COPOM_COMUNICADO:** NORMALIZED  
-**HTTP_RAW_INTEGRAL:** PENDING  
-**SHA256_HTTP:** PENDING  
+**COPOM_COMUNICADO:** NORMALIZED E VALIDADO  
+**BCB_API_JSON_RAW:** CAPTURADO COM SHA-256 E METADADOS  
+**PDF_BINÁRIO_ATA:** PENDENTE — não é equivalente à resposta JSON  
+**TIMESTAMP_EXATO_COMUNICADO:** UNKNOWN  
 **B3_INTRADAY_RECONCILIATION:** PENDING_DATASET
 
 ## 7. Próximo passo técnico
