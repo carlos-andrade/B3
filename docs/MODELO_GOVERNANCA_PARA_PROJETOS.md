@@ -17,7 +17,7 @@
 | **Aprovador** | Pendente de validação formal da versão normalizada |
 | **Origem** | Documento B3 preexistente; corpo histórico preservado |
 | **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
 | **Escopo** | Modelo de governança aplicado ao projeto B3 |
 | **Objetivo** | Padronizar a governança do projeto, subordinada ao Layout Mestre operacional. |
@@ -43,16 +43,16 @@ Nenhum atalho operacional, pressão por velocidade, resultado esperado, hipótes
 
 ## 3. HIERARQUIA DE GOVERNANÇA
 
-Quando houver conflito entre documentos ou decisões, deverá ser aplicada a seguinte ordem:
+A autoridade é definida por domínio, e não por uma precedência universal que permita a um documento anular silenciosamente todos os demais:
 
-1. Carta Magna de Governança do projeto;
-2. políticas e normas técnicas específicas;
-3. carta ou política de confiança dos dados;
-4. contratos e especificações de pipeline;
-5. procedimentos operacionais;
-6. detalhes de implementação.
+1. **Carta Magna do projeto:** princípios constitucionais, competências, limites de autoridade e processo de alteração normativa.
+2. **Layout Mestre:** especificação operacional única para execução, dados, pipelines e geração/validação de código, dentro dos limites da Carta Magna.
+3. **Cartas de domínio, políticas e normas técnicas:** regras específicas do domínio, subordinadas à Carta Magna e reconciliadas com o Layout antes de produzirem comportamento executável.
+4. **Contratos técnicos:** requisitos verificáveis de interface, dados, fases e gates, subordinados às regras normativas aplicáveis.
+5. **Procedimentos e implementação:** executam as regras aprovadas; não criam autoridade normativa por si mesmos.
+6. **Evidência factual externa e interna:** estabelece factos e resultados observados; não altera a hierarquia normativa nem pode ser descartada por uma regra operacional.
 
-Uma implementação nunca poderá contrariar uma norma superior sem uma alteração formal e versionada dessa norma.
+Em conflito, bloquear apenas a decisão afetada, registar documentos/versões/evidências e reconciliar por alteração versionada. A implementação nunca poderá contrariar a Carta Magna nem tratar o Layout como autoridade para revogar princípios constitucionais ou factos comprovados.
 
 ---
 
@@ -798,13 +798,13 @@ Esta carta é **documento de entrada e histórico de governança**. Ela não é 
 
 Toda regra operacional desta carta que deva produzir ou alterar código deve ser consolidada no documento canônico:
 
-`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+`docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
 Fluxo obrigatório:
 
 **CARTA → PROPOSTA/CONTRIBUIÇÃO → RECONCILIAÇÃO → LAYOUT MESTRE → CÓDIGO → EVIDÊNCIA → VALIDAÇÃO.**
 
-A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
+A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em divergência de execução, o Layout Mestre rege apenas a especificação operacional; não pode contrariar a Carta Magna nem substituir evidência factual. A divergência exige reconciliação versionada antes de alterar código ou workflows.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
 
