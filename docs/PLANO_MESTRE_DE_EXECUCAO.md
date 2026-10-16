@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.3 |
-| **SHA-256 (conteúdo canónico)** | 374a3bb9b13b06b5759fa3d861ba6dfdf07458ebf47f35bd365f7e61a210b2f6 |
+| **Versão** | 2.3.4 |
+| **SHA-256 (conteúdo canónico)** | 31bdc308cc42c9c291bb925baabf498e5cbfad624fc08ced02a90eb45ace39d9 |
 | **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -645,3 +645,24 @@ Foi criada a [matriz de pedidos e minutas](governanca/licenciamento/PLANO_PEDIDO
 ### Próximo passo
 
 Manter os gates fechados até receção e validação das evidências externas. Executar auditoria automatizada reproduzível do registo e dos controlos; não contornar endpoints bloqueados. COTAHIST 1986–2025 continua somente para consulta; 2026 permanece incremental apenas dentro do âmbito efetivamente autorizado; BLOOMBERG_MAIL permanece fora do âmbito B3.
+
+## 27. Decisão formal — política de custo zero — 2026-10-16
+
+Foi aprovada a orientação económica de utilizar exclusivamente dados, fontes, APIs, ferramentas, serviços e infraestrutura gratuitos para o projeto B3. Não contratar feeds, subscrições, licenças pagas, planos comerciais ou serviços que impliquem custo.
+
+A política foi registada nas três cartas:
+- [Carta Magna de Governança B3 v1.3.1](CARTA_MAGNA_GOVERNANCA_B3.md);
+- [Carta de Garantias do Projeto B3 v1.2.1](CARTA_DE_GARANTIAS_DO_PROJETO_B3.md);
+- [Carta de Confiança dos Dados v1.0.1](CARTA_DE_CONFIANCA_DOS_DADOS.md).
+
+**Distinção obrigatória:** gratuito não significa automaticamente livre de licença, termos ou restrições. A política não autoriza ignorar licenças gratuitas, termos de uso, atribuição, limites de automação ou direitos de redistribuição. Acesso público ou download possível não constituem, por si só, autorização para automatizar, persistir ou republicar.
+
+### Efeito sobre a Fase 04
+
+- Não serão perseguidas autorizações comerciais ou licenças pagas.
+- Antes de utilizar uma fonte gratuita, documentar a licença/termos e confirmar a compatibilidade com o uso concreto pretendido.
+- Se a fonte gratuita não permitir claramente o uso pretendido, manter esse uso bloqueado (FAIL_CLOSED) e procurar alternativa gratuita com condições compatíveis.
+- Se não existir alternativa gratuita utilizável, declarar a lacuna e reduzir o âmbito; não contornar o bloqueio nem substituir dados ausentes por valores não verificados.
+- Os pedidos preparados anteriormente não foram enviados. A Issue #13 passa a acompanhar a reavaliação das fontes sob a política de custo zero, sem compromisso de contratação ou pagamento.
+
+A política é uma restrição económica do projeto e não uma dispensa de conformidade jurídica.
