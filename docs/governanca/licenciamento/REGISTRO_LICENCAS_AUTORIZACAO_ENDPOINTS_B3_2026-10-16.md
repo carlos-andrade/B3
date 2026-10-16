@@ -16,7 +16,7 @@
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Pendente — titular/autoridade da fonte e responsável jurídico/comercial |
 | **Origem** | Termos oficiais das fontes, políticas de dados e inventário de endpoints do repositório |
-| **Autoridade superior** | [Carta Magna de Governança B3](../CARTA_MAGNA_GOVERNANCA_B3.md); [Layout Mestre Canónico](../layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
+| **Autoridade superior** | [Carta Magna de Governança B3](../../CARTA_MAGNA_GOVERNANCA_B3.md); [Layout Mestre Canónico](../layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 ## 1. Decisão executiva
