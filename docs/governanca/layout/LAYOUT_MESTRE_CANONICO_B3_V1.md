@@ -9,7 +9,7 @@
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
 | **Estado** | EM_REVISAO |
 | **Versão** | 1.2.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO_POS_REVISAO_GOV_DIV_001 |
+| **SHA-256 (conteúdo canónico)** | bf8f1dd8c3aa0998eecb95668053e57f06d878d59806ba2fe5258ee2eda29cec |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
 | **Data de atualização** | 2026-10-16 |
