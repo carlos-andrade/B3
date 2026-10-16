@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.0 |
-| **SHA-256 (conteúdo canónico)** | 58c54f2e83e44fbe05004ff1c8bce5e4f303565989e4d8bdae5bab932b22e25f |
+| **Versão** | 2.3.1 |
+| **SHA-256 (conteúdo canónico)** | 851096c372e7de7a01c1166bfc72f8f2f9c466fc2f9a6f22c16dd2b16521ead8 |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -629,7 +629,7 @@ Relatório de fecho: [FECHO_FASE04_LICENCAS_ENDPOINTS_2026-10-16.md](governanca/
 
 **CONTROLOS TÉCNICOS VERIFICADOS; AUTORIZAÇÕES EXTERNAS PENDENTES; FAIL_CLOSED.** O registo versionado contém seis endpoints. A recolha automatizada de Pesquisa por Pregão permanece proibida; BDI, COTAHIST diário, DRP/Rapinegócios e o PDF Copom continuam bloqueados até prova de autorização aplicável; o JSON Copom pode ser usado apenas sob as condições ODbL documentadas.
 
-Foram inspecionados o validador, os testes unitários e os workflows de COTAHIST diário e BDI, que verificam o gate antes da captura. A fase não concede autorização externa nem retroativa. O RAW histórico foi preservado.
+Foram inspecionados o validador, os testes unitários e os workflows de COTAHIST diário e BDI, que verificam o gate antes da captura. A auditoria automatizada [run 38901173441](https://github.com/carlos-andrade/B3/actions/runs/38901173441) terminou em `success` no HEAD `0e0ae4bfec21648171966e60d7c8a8562965e04e`: seis endpoints auditados, um permitido sob condições, cinco bloqueados e zero erros de controlo. A auditoria SHA-256 do plano [run 38901154111](https://github.com/carlos-andrade/B3/actions/runs/38901154111) terminou em `success` no commit anterior `610c1281e595e10e3529c95f91956205a3b1136e`. A fase não concede autorização externa nem retroativa. O RAW histórico foi preservado.
 
 ### Gates de saída ainda abertos
 
