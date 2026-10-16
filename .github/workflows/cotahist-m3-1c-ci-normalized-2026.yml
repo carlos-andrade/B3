@@ -125,8 +125,8 @@ jobs:
               for row in r:
                   assert len(row)==25
                   n+=1
-                  first=first or row[0]
-                  last=row[0]
+                  first=row[0] if first is None else min(first,row[0])
+                  last=row[0] if last is None else max(last,row[0])
           print(f"ROWS_ACTUAL={n} ROWS_MANIFEST={m['linhas_normalized']} FIRST_ACTUAL={first} FIRST_MANIFEST={m['primeira_data']} LAST_ACTUAL={last} LAST_MANIFEST={m['ultima_data']}")
           assert n == m["linhas_normalized"]
           assert first == m["primeira_data"]
