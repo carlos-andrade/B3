@@ -38,3 +38,7 @@ A classificação inclui Real-Time e modalidades delayed, incluindo continuous e
 ## Regra para o projeto B3
 
 Cada produto comercial deve possuir ficha com dataset, depth, timeliness, display/non-display, finalidade, usuário, localização, distribuição, transformação/derivação, licença, custo, evidência documental e data de validação.
+
+## Gate operacional de endpoints — 16/10/2026
+
+A autorização de cada endpoint, finalidade de uso, armazenamento em repositório público e redistribuição deve ser verificada no [Registo de Licenças e Autorização de Endpoints B3](../../../governanca/licenciamento/REGISTRO_LICENCAS_AUTORIZACAO_ENDPOINTS_B3_2026-10-16.md). Endpoints com estado pendente são bloqueados por código; não se presume autorização por resposta HTTP bem-sucedida.
