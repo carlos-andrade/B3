@@ -7,7 +7,7 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DECISAO_NORMATIVA |
 | **Fase** | Governança — reconciliação normativa |
-| **Estado** | DECISAO_REGISTADA; REVISAO_SEMANTICA_INTEGRAL_CONCLUIDA; AUDITORIA_SHA256_POS_COMMIT_PENDENTE |
+| **Estado** | DECISAO_REGISTADA; FILA_ORIGINAL_281_FECHADA; REVALIDACAO_GLOBAL_RESIDUAL_ABERTA; AUDITORIA_SHA256_POS_NOVA_REVISAO_PENDENTE |
 | **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | 1b9271ba4488d7e75610d0b32ef19e41cbc0950ebb0e8d74e4e98348c32e9142 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
@@ -68,7 +68,7 @@ As duas listas pretendiam ser universais e eram incompatíveis. Esta decisão su
 - [x] A Issue #11 regista decisão, commits e evidência.
 - [x] A revisão semântica integral dos 303 Markdown está registada na matriz por ficheiro, classe de triagem, autoridade/risco principal, estado e evidência por lote; as exceções remanescentes são explícitas.
 
-A decisão substantiva está registada e a revisão semântica integral dos 303 documentos foi reconciliada no Lote 27. A validação criptográfica pós-commit continua pendente até ao run independente posterior a estas alterações.
+A decisão substantiva está registada. A fila original de 281 documentos foi revista nos Lotes 05–26 e o Lote 27 reconciliou a revisão residual; isto não equivale a certificação semântica irrestrita dos 303 documentos. A auditoria SHA-256 do run 38878198916 terminou com sucesso para o commit auditado. Qualquer alteração posterior a esta decisão exige nova execução independente antes de declarar a validação pós-commit concluída.
 
 ## 6. Limites e itens que não são resolvidos por esta decisão
 
