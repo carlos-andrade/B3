@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.12 |
-| **SHA-256 (conteúdo canónico)** | b456a1673b492ee23b14b0c254648ebd22dd69ea0a76a037a88f7182cf00235c |
-| **Commit de referência (versão anterior)** | [84a479291406827b4bf482497ecf06b03f768c57](https://github.com/carlos-andrade/B3/commit/84a479291406827b4bf482497ecf06b03f768c57) |
+| **Versão** | 2.3.13 |
+| **SHA-256 (conteúdo canónico)** | b04781482b24797ea0dbf1fdd34b10bab0670c65ae8e75f278fdade755e4b518 |
+| **Commit de referência (versão anterior)** | [fd09456c341ccb6cd349c106f26292f7da42b590](https://github.com/carlos-andrade/B3/commit/fd09456c341ccb6cd349c106f26292f7da42b590) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -738,7 +738,7 @@ A consulta completa à API do GitHub Actions para a janela de 24 horas iniciada 
 ### Causas confirmadas
 - **Concorrência de escrita Git:** rejeições de push e conflitos de rebase em FASE00 COTAHIST, manifestos SGS e metadados Copom; o orquestrador também esgotou as tentativas de reconciliação. É necessário consolidar a estratégia de persistência e concorrência antes de declarar o WATCHDOG favorável.
 - **Bloqueios esperados de licença:** COTAHIST diário e BDI permanecem com `authorized=false`; Pesquisa por Pregão tem `PROHIBITED_AUTOMATED_COLLECTION`. Os gates continuam fechados; o monitor deve distinguir um bloqueio esperado de um defeito técnico sem contornar a autorização.
-- **Conflito histórico de resultados no NORMALIZED 2026:** alguns runs anteriores registaram primeira data 2026-01-07, enquanto uma execução posterior com materialização Git LFS registou 2026-01-02, igual aos manifestos, com 3.142.910 linhas. Como os logs são contraditórios e o identificador SHA LFS consultado é o mesmo, a discrepância não pode ser declarada defeito atual confirmado; requer reprodução controlada.
+- **Conflito histórico de resultados no NORMALIZED 2026:** alguns runs anteriores registaram primeira data 2026-01-07, enquanto a validação M3-1C atual reprocessou RAW para NORMALIZED e confirmou 3.142.910 linhas, primeira data 2026-01-02, última data 2026-10-13 e SHA/tamanho reproduzidos. A divergência não foi reproduzida no HEAD atual; a causa dos logs antigos permanece desconhecida e fica registada como observação histórica, não como bloqueio atual de integridade.
 
 ### Correção preventiva executada
 Para aplicar fail-closed sem assumir uma divergência ainda não reproduzida, o manifesto de qualidade `COTAHIST_A2026_quality.json` foi alterado para `BLOQUEADO` no commit [7363a76884198450e4d34687cc3ab5e81663b4dd](https://github.com/carlos-andrade/B3/commit/7363a76884198450e4d34687cc3ab5e81663b4dd), depois qualificado para indicar conflito histórico de validação pendente de reprodução no commit [45058d87a8ee076bf6d8f8a8f66a2849e1a87b0c](https://github.com/carlos-andrade/B3/commit/45058d87a8ee076bf6d8f8a8f66a2849e1a87b0c). O manifesto `DATASET_OFICIAL_COTAHIST_2026.json` foi marcado `BLOQUEADO` e a aprovação anterior invalidada no commit [5f2778d86c755bafae4003c5972980de0dc1ac0b](https://github.com/carlos-andrade/B3/commit/5f2778d86c755bafae4003c5972980de0dc1ac0b); a razão foi qualificada no commit [a52b76fe24410e9071a15722b88e9ed2d54e2338](https://github.com/carlos-andrade/B3/commit/a52b76fe24410e9071a15722b88e9ed2d54e2338). O RAW, o NORMALIZED e o sidecar SHA-256 não foram alterados. O bloqueio permanece justificado pela falta de autorização compatível demonstrada, independentemente da reprodução da divergência.
@@ -751,10 +751,10 @@ As execuções decorrentes confirmaram o fail-closed:
 - A correção do gate foi confirmada: [M3-1E #38970391616](https://github.com/carlos-andrade/B3/actions/runs/38970391616) terminou em `failure` com `AssertionError: quality status bloqueado: BLOQUEADO`. Neste contexto, a falha é **esperada e favorável ao fail-closed**: impede promoção enquanto a qualidade não estiver VALIDADO.
 - A auditoria SHA-256 do roadmap v2.3.11 passou em [#38970457617](https://github.com/carlos-andrade/B3/actions/runs/38970457617): 336 documentos Markdown examinados, 336 `CONFORME`.
 - A auditoria estática de workflows passou após a correção do gate em [#38970351129](https://github.com/carlos-andrade/B3/actions/runs/38970351129). O grupo de concorrência do orquestrador BCB foi alinhado com SGS/Copom no commit [bf3452e0874cf835a396c45ce4f7dd03617271d8](https://github.com/carlos-andrade/B3/commit/bf3452e0874cf835a396c45ce4f7dd03617271d8); o orquestrador e a auditoria estática passaram em [#38970246963](https://github.com/carlos-andrade/B3/actions/runs/38970246963) e [#38970246970](https://github.com/carlos-andrade/B3/actions/runs/38970246970).
-- A revalidação M3-1C e as execuções posteriores M3-1D/M3-1E iniciadas após os últimos commits ainda estavam em curso no momento desta atualização; não são consideradas concluídas até o estado terminal e revisão dos logs.
+- A revalidação [M3-1C #38970380649](https://github.com/carlos-andrade/B3/actions/runs/38970380649) terminou em sucesso, incluindo reprodução RAW → NORMALIZED e verificação de datas. A validação M3-1D [#38970391700](https://github.com/carlos-andrade/B3/actions/runs/38970391700) e a geração do Dataset Oficial V2 [#38970391564](https://github.com/carlos-andrade/B3/actions/runs/38970391564) terminaram em failure devido ao estado BLOQUEADO do manifesto; estes resultados são esperados enquanto o gate de autorização permanecer fechado.
 
 ### Decisão e próximos passos
-- COTAHIST 2026 fica **BLOQUEADO / NÃO PROMOVER** enquanto não existir autorização compatível demonstrada. A divergência histórica de primeira data deve ser reproduzida com execução controlada; não inventar registos ausentes.
+- COTAHIST 2026 fica **BLOQUEADO / NÃO PROMOVER** enquanto não existir autorização compatível demonstrada. A integridade/reprodutibilidade estrutural atual passou no M3-1C; a divergência dos logs antigos permanece observação histórica sem causa explicada, não defeito atual reproduzido.
 - Manter a política de custo zero e os gates de licença.
 - Corrigir a persistência concorrente nas famílias de workflows que escrevem no branch principal.
 - Classificar as falhas restantes e os cancelamentos por evidência, sem reexecutar em massa workflows históricos.
