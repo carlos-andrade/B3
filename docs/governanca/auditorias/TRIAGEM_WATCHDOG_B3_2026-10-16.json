@@ -120,14 +120,41 @@
       "confidence": "high",
       "evidence_runs": [
         "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
-        "https://github.com/carlos-andrade/B3/commit/7a6c62d03793cc0c812f61ba1e38eaba309ccd3d"
+        "https://github.com/carlos-andrade/B3/commit/7a6c62d03793cc0c812f61ba1e38eaba309ccd3d",
+        "https://github.com/carlos-andrade/B3/actions/runs/38970391616"
       ],
       "observed_signatures": [
         "M3-1E passou com quality manifest status BLOQUEADO porque não exigia q.status == VALIDADO",
         "A asserção explícita foi adicionada no commit 7a6c62d03793cc0c812f61ba1e38eaba309ccd3d"
       ],
-      "interpretation": "Falha de controlo no gate de promoção identificada e corrigida no código; falta confirmar que o novo gate rejeita BLOQUEADO.",
-      "status": "FIX_COMMITTED_AWAITING_VALIDATION"
+      "interpretation": "Correção validada: M3-1E rejeitou o manifesto de qualidade com status BLOQUEADO no run #38970391616, com AssertionError explícito. A conclusão failure é o resultado esperado para impedir promoção de dataset bloqueado.",
+      "status": "VALIDATED_FAIL_CLOSED"
+    },
+    {
+      "class": "DOCUMENTARY_SHA_AUDIT_CURRENT_HEAD",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38970457617"
+      ],
+      "observed_signatures": [
+        "Auditoria SHA-256 documental passou no HEAD do roadmap v2.3.11",
+        "336 ficheiros Markdown analisados; 336 CONFORME"
+      ],
+      "status": "PASS"
+    },
+    {
+      "class": "BCB_INGESTION_CONCURRENCY_GROUP_ALIGNMENT",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/commit/bf3452e0874cf835a396c45ce4f7dd03617271d8",
+        "https://github.com/carlos-andrade/B3/actions/runs/38970246963",
+        "https://github.com/carlos-andrade/B3/actions/runs/38970246970"
+      ],
+      "observed_signatures": [
+        "Orquestrador central alinhado ao grupo b3-data-ingestion-serialized usado pelos workflows SGS/Copom individuais",
+        "Execução do orquestrador e auditoria estática passaram após a alteração"
+      ],
+      "status": "FIX_VALIDATED_FOR_BCB_WORKFLOWS"
     }
   ],
   "triage_limitations": [
@@ -136,10 +163,10 @@
     "The 144 workflow audit observations remain review items, not 144 runtime failures."
   ],
   "next_actions": [
-    "Confirmar que M3-1E rejeita quality manifest BLOQUEADO e só aceita VALIDADO.",
+    "Aguardar e verificar o resultado da validação de integridade M3-1C e dos gates M3-1D/M3-1E após o bloqueio dos manifestos.",
     "Reproduzir controladamente a divergência histórica de primeira data sem alterar RAW, NORMALIZED ou hashes.",
     "Manter o dataset 2026 bloqueado enquanto os direitos de uso/publicação não forem demonstrados.",
-    "Serializar ou tornar idempotente a persistência concorrente em workflows que escrevem no branch principal.",
+    "Estender a correção de persistência concorrente às restantes famílias de workflows que escrevem no branch principal; o alinhamento BCB foi validado, mas não resolve ainda os escritores COTAHIST independentes.",
     "Continuar a classificação das falhas restantes por logs e evidências; não reexecutar workflows históricos em massa.",
     "Manter issues 12 e 13 abertas até critérios de aceitação aprovados."
   ],
