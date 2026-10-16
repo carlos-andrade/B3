@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "status": "OFICIAL",
+  "status": "BLOQUEADO",
   "dataset": "COTAHIST_NORMALIZED_ANUAL",
   "ano": 2026,
   "source": "B3",
@@ -18,7 +18,27 @@
   "storage": "git-lfs",
   "canonical": true,
   "approved_gate": "M3-1E",
-  "approval_status": "APROVADO_M3_1E",
+  "approval_status": "BLOQUEADO_POR_DIVERGENCIA_DE_COBERTURA_E_LICENCIAMENTO",
   "prepublication_evidence_run_id": 38884816584,
-  "prepublication_evidence_commit": "4813087a622dc7b218267f1bc16197e4d2e24fad"
+  "prepublication_evidence_commit": "4813087a622dc7b218267f1bc16197e4d2e24fad",
+  "previous_status": "OFICIAL",
+  "approval_invalidated_at_utc": "2026-10-16T21:00:00Z",
+  "blocking_reasons": [
+    {
+      "code": "DATA_FIRST_DATE_MISMATCH",
+      "expected_manifest_date": "2026-01-02",
+      "observed_csv_date": "2026-01-07",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
+        "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
+        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
+      ]
+    },
+    {
+      "code": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED",
+      "endpoint_id": "B3_COTAHIST_DAILY",
+      "authorization_registry": "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+    }
+  ],
+  "decision": "Não promover, não declarar oficial e não iniciar nova captura automatizada até reconciliar a divergência com artefactos existentes e autorizados e demonstrar direitos compatíveis com o uso pretendido. O RAW, o NORMALIZED e os respetivos hashes foram preservados."
 }
