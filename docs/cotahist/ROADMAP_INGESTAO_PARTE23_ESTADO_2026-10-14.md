@@ -162,6 +162,10 @@ Evidência canónica: [COTAHIST_2026_AUDITORIA_INTEGRADA_POS_PROMOCAO_V1.json](h
 | Fecho anual 2026 | Pendente | Só após fim do ano e publicação anual oficial |
 
 
+## Adenda operacional — atualização diária até 2026-10-15 (2026-10-16)
+
+A execução [COTAHIST importação diária run 38889032782](https://github.com/carlos-andrade/B3/actions/runs/38889032782) concluiu com sucesso em 2026-10-16. O relatório `dados/cotahist/quality/diario/execucoes/COTAHIST_DIARIO_EXECUCAO_20261016T013436Z.json` registou `2026-10-15: IMPORTED`, `2026-10-14: UNCHANGED`, `2026-10-13: UNCHANGED` e zero conflitos. O manifesto diário de 15/10 está `VALIDADO`, com 18.827 registos e 25 campos; SHA-256 RAW `346a8ec8ab89db34c5ff2388246d6f658a5e04d989fd549d0ba57e52d90967c8`, SHA-256 NORMALIZED `e67473ac5c636f98c755094be50e66e14eeb124b28cb2b503c3384373c00bef0`. O Dataset Corrente V1.1 passou a apontar para 15/10/2026, combinando o snapshot anual imutável até 13/10 com os incrementos diários validados de 14 e 15/10. O histórico 1986–2025 permanece congelado.
+
 ## Governação documental — adoção da norma transversal
 
 Este documento foi normalizado para a norma de cabeçalho da GOVERNANCA v1.0.3. A normalização não altera as evidências de dados citadas nem substitui os JSON canónicos.
