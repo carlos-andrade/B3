@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import py_compile
 import subprocess
 import sys
 import unittest
@@ -42,6 +43,18 @@ class AuthorizationGateTests(unittest.TestCase):
         result = run_gate("ENDPOINT_NOT_REGISTERED")
         self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
         self.assertFalse(json.loads(result.stdout)["authorized"])
+
+    def test_capture_scripts_compile_without_network_access(self):
+        paths = (
+            "scripts/governanca/validar_autorizacao_endpoint.py",
+            "scripts/ingestao/importar_cotahist_diario_v1.py",
+            "scripts/ingestao/capturar_bcb_copom_v2.py",
+            "ferramentas/capturar_bdi.py",
+            "ferramentas/importar_pesquisa_pregao.py",
+        )
+        for relative in paths:
+            with self.subTest(path=relative):
+                py_compile.compile(str(ROOT / relative), doraise=True)
 
 
 if __name__ == "__main__":
