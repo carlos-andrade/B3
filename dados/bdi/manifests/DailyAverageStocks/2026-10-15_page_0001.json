@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-15",
+  "endpoint": "DailyAverageStocks",
+  "page": 1,
+  "page_size": 1000,
+  "source": "B3 BDI",
+  "url": "https://arquivos.b3.com.br/bdi/table/DailyAverageStocks/2026-10-15/2026-10-15/1/1000",
+  "file": "dados/bdi/raw/DailyAverageStocks/2026-10-15/page_0001.json",
+  "size_bytes": 3028,
+  "sha256": "47bebb4f051628db066e1df44e661e31a7013194667bd252b530cd90b0559446",
+  "columns": 4,
+  "records": 9,
+  "captured_at_utc": "2026-10-16T10:44:02.109488+00:00"
+}
