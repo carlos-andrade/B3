@@ -39,7 +39,7 @@ SERIES = {
 }
 
 CHUNK_DAYS = 365 * 9 + 364
-TIMEOUT = 90
+TIMEOUT = 30
 
 
 def sha256_file(path: Path) -> str:
@@ -63,7 +63,7 @@ def fetch(url: str) -> bytes:
         },
     )
     last_error = None
-    for attempt in range(5):
+    for attempt in range(3):
         try:
             with urlopen(req, timeout=TIMEOUT) as response:
                 payload = response.read()
@@ -81,7 +81,7 @@ def fetch(url: str) -> bytes:
             last_error = RuntimeError(
                 f"HTTP {exc.code} da API BCB; content-type={exc.headers.get('Content-Type', '')}; body={body!r}"
             )
-            if exc.code in {429, 500, 502, 503, 504} and attempt < 4:
+            if exc.code in {429, 500, 502, 503, 504} and attempt < 2:
                 time.sleep(2 ** attempt)
                 continue
             raise last_error
