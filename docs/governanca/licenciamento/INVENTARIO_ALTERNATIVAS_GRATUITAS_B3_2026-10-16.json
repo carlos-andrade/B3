@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "project": "B3 — A BOLSA DO BRASIL",
+  "repository": "carlos-andrade/B3",
+  "as_of": "2026-10-16",
+  "policy": {
+    "financial_cost": "ZERO",
+    "paid_licenses_or_subscriptions": "PROHIBITED",
+    "unknown_rights": "FAIL_CLOSED",
+    "public_download_is_not_license": true
+  },
+  "sources": [
+    {
+      "id": "BCB_SGS_SERIES",
+      "provider": "Banco Central do Brasil",
+      "cost": "FREE",
+      "license": "ODbL only when the exact series resource is listed with license_id=odc-odbl in the official open-data catalog",
+      "status": "ELIGIBLE_PER_SERIES_PREFLIGHT",
+      "ingestion": "scripts/governanca/validar_licenca_bcb_sgs.py then scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py",
+      "evidence": [
+        "https://www.bcb.gov.br/acessoinformacao/dadosabertos",
+        "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom"
+      ],
+      "limitations": "Each series must independently pass the catalog preflight; unlisted or ambiguous series are skipped."
+    },
+    {
+      "id": "BCB_COPOM_JSON",
+      "provider": "Banco Central do Brasil",
+      "cost": "FREE",
+      "license": "ODbL",
+      "status": "ELIGIBLE_WITH_CONDITIONS",
+      "ingestion": "scripts/ingestao/capturar_bcb_copom_v2.py",
+      "evidence": [
+        "https://dadosabertos.bcb.gov.br/dataset/atas-comunicados-copom",
+        "https://www.bcb.gov.br/acessoinformacao/dadosabertos"
+      ],
+      "limitations": "Attribute BCB and comply with ODbL obligations. This entry does not automatically cover PDFs linked from the JSON."
+    },
+    {
+      "id": "BCB_COPOM_PDF",
+      "provider": "Banco Central do Brasil",
+      "cost": "FREE_TO_ACCESS_NOT_ENOUGH",
+      "license": "SCOPE_NOT_VERIFIED_FOR_SEPARATE_ATTACHMENT",
+      "status": "BLOCKED_FOR_AUTOMATED_REPUBLICATION",
+      "evidence": [
+        "https://dadosabertos.bcb.gov.br/dataset/atas-comunicados-copom"
+      ],
+      "limitations": "Keep the PDF download gate blocked until the exact attachment license and intended use are evidenced."
+    },
+    {
+      "id": "B3_COTAHIST",
+      "provider": "B3 S.A.",
+      "cost": "PUBLIC_DOWNLOAD_WITHOUT_CONFIRMED_OPEN_REUSE_LICENSE",
+      "license": "AUTOMATION_PUBLICATION_AND_REPOSITORY_REDISTRIBUTION_NOT_DEMONSTRATED",
+      "status": "BLOCKED_FOR_NEW_AUTOMATED_CAPTURE_AND_PUBLIC_REPUBLICATION",
+      "evidence": [
+        "https://www.b3.com.br/pt_br/termos-de-uso-e-protecao-de-dados/termos-de-uso/",
+        "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/distribuidores/perguntas-frequentes/"
+      ],
+      "limitations": "Existing 1986–2025 data remains consultation-only. No 2026 automated capture until a free source with compatible terms is verified."
+    },
+    {
+      "id": "B3_BDI",
+      "provider": "B3 S.A.",
+      "cost": "PUBLIC_ENDPOINT_WITHOUT_CONFIRMED_OPEN_REUSE_LICENSE",
+      "license": "AUTOMATION_STORAGE_AND_NORMALIZATION_NOT_DEMONSTRATED",
+      "status": "BLOCKED",
+      "evidence": [
+        "https://www.b3.com.br/pt_br/termos-de-uso-e-protecao-de-dados/termos-de-uso/"
+      ],
+      "limitations": "Do not invoke the endpoint until free, compatible usage terms are documented."
+    },
+    {
+      "id": "B3_DRP_RAPINEGOCIOS",
+      "provider": "B3 S.A.",
+      "cost": "UNKNOWN",
+      "license": "OFFICIAL_ENDPOINT_AND_RIGHTS_NOT_CONFIRMED",
+      "status": "BLOCKED",
+      "evidence": [
+        "https://github.com/gustavobjorgefo/b3-data-collector"
+      ],
+      "limitations": "Third-party discovery is not evidence of official authorization."
+    },
+    {
+      "id": "B3_PESQUISA_POR_PREGAO",
+      "provider": "B3 S.A.",
+      "cost": "NOT_RELEVANT",
+      "license": "AUTOMATED_COLLECTION_EXPRESSLY_PROHIBITED_ON_OFFICIAL_PAGE",
+      "status": "PROHIBITED_AUTOMATED_COLLECTION",
+      "evidence": [
+        "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/"
+      ],
+      "limitations": "Do not bypass through alternate URLs or manual workarounds."
+    },
+    {
+      "id": "BRAPI_FREE_PLAN",
+      "provider": "brapi.dev",
+      "cost": "FREE_PLAN_WITH_LIMITS",
+      "license": "LIMITED_REVOCABLE_API_LICENSE; RAW_DATA_REDISTRIBUTION_AND_FEED_MIRRORING_PROHIBITED",
+      "status": "NOT_ELIGIBLE_FOR_PUBLIC_RAW_DATASET",
+      "evidence": [
+        "https://brapi.dev/legal/terms-of-use",
+        "https://brapi.dev/faq/quais-as-limitacoes",
+        "https://brapi.dev/faq/a-brapi-e-distribuidora-licenciada-da-b3"
+      ],
+      "limitations": "Free tier is limited (currently documented as 15,000 requests/month, one ticker per request, up to three months history and approximately 30-minute delay). Terms prohibit redistributing raw data or mirroring the API. Do not use as a replacement for public COTAHIST RAW."
+    },
+    {
+      "id": "THIRD_PARTY_GITHUB_MIRRORS",
+      "provider": "Third-party GitHub repositories",
+      "cost": "PUBLICLY_ACCESSIBLE",
+      "license": "NOT_VERIFIED_PER_REPOSITORY",
+      "status": "NOT_ELIGIBLE_UNTIL_LICENSE_AND_PROVENANCE_VERIFIED",
+      "evidence": [
+        "https://github.com/felbuch/B3_daily_historical_data",
+        "https://github.com/cvscarlos/b3-api-dados-historicos"
+      ],
+      "limitations": "Public repository availability alone does not establish data redistribution rights or a valid license for the source data."
+    }
+  ],
+  "operational_decision": "Run only BCB datasets that pass open-license preflight. Keep B3 price endpoints and third-party mirrors blocked where automated collection or public redistribution rights are not demonstrated. No paid license or authorization will be pursued.",
+  "references_checked": "2026-10-16"
+}
