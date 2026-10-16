@@ -193,6 +193,8 @@ def import_day(ref_date: date) -> str:
 
 
 def main() -> None:
+    # Gate legal/contratual: bloqueia nova captura/publicação enquanto o escopo não estiver autorizado.
+    subprocess.run(["python", "scripts/governanca/validar_autorizacao_endpoint.py", "--endpoint-id", "B3_COTAHIST_DAILY"], cwd=ROOT, check=True)
     today = datetime.now(ZoneInfo("America/Sao_Paulo")).date()
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     NORM_DIR.mkdir(parents=True, exist_ok=True)
