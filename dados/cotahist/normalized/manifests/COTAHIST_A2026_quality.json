@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "status": "VALIDADO",
+  "status": "BLOQUEADO",
   "ano": 2026,
   "parser_version": "1.1.2",
   "source": "B3",
@@ -13,5 +13,26 @@
   "primeira_data": "2026-01-02",
   "ultima_data": "2026-10-13",
   "datas_invalidas": 0,
-  "datas_fora_do_ano": 0
+  "datas_fora_do_ano": 0,
+  "bloqueios": [
+    {
+      "codigo": "DATA_FIRST_DATE_MISMATCH",
+      "status": "OPEN",
+      "expected_manifest_date": "2026-01-02",
+      "observed_csv_date": "2026-01-07",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
+        "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
+        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
+      ]
+    },
+    {
+      "codigo": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED",
+      "status": "OPEN",
+      "endpoint_id": "B3_COTAHIST_DAILY",
+      "registry": "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+    }
+  ],
+  "status_decision_utc": "2026-10-16T21:00:00Z",
+  "status_decision_reason": "Retirar o estado VALIDADO até reconciliar a divergência de cobertura e demonstrar autorização compatível para a utilização/publicação pretendida. RAW e NORMALIZED existentes são preservados; nenhum dado foi inventado ou alterado."
 }
