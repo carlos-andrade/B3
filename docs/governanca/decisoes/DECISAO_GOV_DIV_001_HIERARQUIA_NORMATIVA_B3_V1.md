@@ -9,7 +9,7 @@
 | **Fase** | Governança — reconciliação normativa |
 | **Estado** | DECISAO_REGISTADA; FILA_ORIGINAL_281_FECHADA; REVALIDACAO_GLOBAL_RESIDUAL_ABERTA; AUDITORIA_SHA256_POS_NOVA_REVISAO_PENDENTE |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_RECALCULO_POS_AUDITORIA |
+| **SHA-256 (conteúdo canónico)** | 5bb981f6387e9e576d708941008ee3dcb3c1300cc973db668972e83cc90a7179 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
