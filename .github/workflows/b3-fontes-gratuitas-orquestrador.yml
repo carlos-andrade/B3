@@ -15,6 +15,7 @@ on:
       - "scripts/ingestao/validar_bcb_copom_v1.py"
       - "scripts/governanca/test_validar_autorizacao_endpoint.py"
       - "tests/governanca/test_validar_licenca_bcb_sgs.py"
+      - "tests/ingestao/test_bcb_sgs_incremental.py"
       - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
 
 permissions:
@@ -45,6 +46,7 @@ jobs:
           set -euo pipefail
           python -m unittest scripts.governanca.test_validar_autorizacao_endpoint -v
           python -m unittest discover -s tests/governanca -p "test_validar_licenca_bcb_sgs.py" -v
+          python -m unittest discover -s tests/ingestao -p "test_bcb_sgs_incremental.py" -v
 
       - name: Preflight ODbL SGS por série
         id: sgs_preflight
