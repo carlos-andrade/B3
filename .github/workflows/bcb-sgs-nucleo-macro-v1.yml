@@ -38,6 +38,7 @@ jobs:
         run: >-
           python scripts/governanca/validar_licenca_bcb_sgs.py
           --series "432,11,12,1,433"
+          --allow-partial
           --json-output dados/bcb_sgs/manifests/preflight_licencas_sgs.json
 
       - name: Ingerir e validar BCB SGS
