@@ -2,7 +2,7 @@ name: COTAHIST 2006 - Gate 06-08
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [feat/cotahist-2006-offline-recovery]
     paths:
       - "dados/cotahist/quality/COTAHIST_2006_FASE08_SEMANTICA_CALENDARIO_V1.json"
 permissions:
@@ -78,9 +78,9 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): persistir gate 06-08 2006"
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin feat/cotahist-2006-offline-recovery
+            git rebase origin/feat/cotahist-2006-offline-recovery
+            if git push origin HEAD:feat/cotahist-2006-offline-recovery; then exit 0; fi
             sleep $((attempt * 2))
           done
           exit 1
