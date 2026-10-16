@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.8 |
-| **SHA-256 (conteúdo canónico)** | fb7b3dc39f29c25df3b48f396be1b3ee11f9b06b6f2dc51a74324080b3381ba0 |
-| **Commit de referência (versão anterior)** | [0c7b25c9fa648d13827d1a4c439c25da86c6009c](https://github.com/carlos-andrade/B3/commit/0c7b25c9fa648d13827d1a4c439c25da86c6009c) |
+| **Versão** | 2.3.9 |
+| **SHA-256 (conteúdo canónico)** | 0c71fef6901a122e3cf1d6bacf8e90cfeeb55736516b591e55f145e73814ddf8 |
+| **Commit de referência (versão anterior)** | [f7317e8e1d37908e4e18089e1c02b64232ee18b8](https://github.com/carlos-andrade/B3/commit/f7317e8e1d37908e4e18089e1c02b64232ee18b8) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -600,7 +600,7 @@ A fila original de 281 está fechada. **A revisão semântica global dos 303 doc
 4. Manter WATCHDOG em curso até heartbeat externo, ACK/escalonamento, retenção duradoura e aprovação humana dos limiares.
 5. Confirmar auditoria canónica final dos documentos alterados.
 
-As restrições permanecem: COTAHIST 1986–2025 somente para consulta/read-only; 2026 com atualização diária; BLOOMBERG_MAIL isolado e fora do escopo operacional B3.
+As restrições permanecem: COTAHIST 1986–2025 somente para consulta/read-only; a atualização diária de 2026 era a decisão anterior e foi supersedida em 2026-10-16 pela política de custo zero: não haverá captura automática até existir fonte gratuita com direitos compatíveis demonstrados; BLOOMBERG_MAIL isolado e fora do escopo operacional B3.
 
 
 ## 25. Fase 03 operacional — capturas RAW e reconciliações — 2026-10-16
@@ -706,10 +706,10 @@ A execução real inicial demonstrou que a pesquisa por licença encontra recurs
 - HEAD consultado antes desta atualização: `0c7b25c9fa648d13827d1a4c439c25da86c6009c` — auditoria retrospectiva COTAHIST 1994 FASE01.
 - A pasta `.github/workflows` contém **555 ficheiros de workflow**; não é seguro reexecutá-los indiscriminadamente porque incluem fases históricas e tarefas com efeitos de escrita.
 - Na amostra dos 100 runs mais recentes retornados pela API no momento da verificação: **61 success, 12 failure, 27 cancelled**; nenhum run ativo apareceu nessa página. Estes números não representam todas as execuções das últimas 24 horas.
-- A última varredura completa do monitor disponível, executada às 18:37:59 UTC, observou 406 execuções em 24 horas: 220 success, 92 failure, 93 cancelled e 1 ativa. O relatório é histórico e requer nova varredura completa para confirmar a saúde atual.
+- A varredura completa mais recente do monitor, no run [38965905212](https://github.com/carlos-andrade/B3/actions/runs/38965905212), foi verificada às 20:57:03 UTC: **408 execuções**, 220 success, 92 failure, 93 cancelled e 3 ativas naquele instante. As três execuções ativas eram o monitor e duas verificações de governança concorrentes; concluíram posteriormente. O resultado permaneceu `NAO_FAVORAVEL` pelas falhas acumuladas na janela.
 - O orquestrador de fontes gratuitas passou no run [38907125399](https://github.com/carlos-andrade/B3/actions/runs/38907125399), incluindo testes, preflight, ingestão elegível, validação de qualidade, Copom JSON, validação e persistência.
 - A auditoria de autorização de endpoints passou no run [38905389145](https://github.com/carlos-andrade/B3/actions/runs/38905389145), mas a execução antecede o HEAD atual e não substitui a revisão jurídica dos bloqueios.
-- A auditoria SHA-256 documental passou no run [38906570649](https://github.com/carlos-andrade/B3/actions/runs/38906570649) numa versão anterior do roadmap. O hash desta versão deve ser confirmado pelo workflow acionado por esta atualização.
+- A auditoria SHA-256 do roadmap v2.3.8 passou no run [38965772399](https://github.com/carlos-andrade/B3/actions/runs/38965772399). O workflow de integridade é acionado por alterações Markdown e deve continuar a ser verificado após cada atualização documental.
 
 ### Bloqueios que permanecem obrigatórios
 1. Política de custo zero: não contratar feeds, licenças ou subscrições pagas.
@@ -721,10 +721,10 @@ A execução real inicial demonstrou que a pesquisa por licença encontra recurs
 7. Issue [#13 — fontes gratuitas](https://github.com/carlos-andrade/B3/issues/13) permanece aberta pela lacuna de fonte de preços B3 e pelas séries SGS bloqueadas.
 
 ### Próxima sequência autorizada
-1. Confirmar o resultado do workflow SHA-256 acionado pela atualização deste documento.
-2. Executar uma nova varredura completa do watchdog; não substituir a contagem integral por uma amostra de 100 runs.
-3. Executar a auditoria estática de conformidade de workflows sobre o HEAD atual e corrigir violações na fase de origem, sem reexecutar indiscriminadamente workflows históricos.
-4. Revalidar o registo de endpoints e os manifestos de qualidade no mesmo HEAD.
+1. Manter a auditoria SHA-256 após cada alteração documental.
+2. Triar as 92 falhas acumuladas do watchdog, separando falhas reais de bloqueios esperados e cancelamentos; a primeira falha do validador WATCHDOG foi corrigida e o rerun passou.
+3. Executar a auditoria estática de conformidade de workflows após alterações em workflows; o run [38966036826](https://github.com/carlos-andrade/B3/actions/runs/38966036826) auditou 555 workflows no HEAD da sua execução.
+4. Revalidar o registo de endpoints e os manifestos de qualidade sempre que os scripts, registos ou dados correspondentes forem alterados.
 5. Só promover as pendências que tenham evidência de execução atual, hash, manifesto e licença compatível.
 
 **Decisão de saída:** validação transversal em curso; projeto NÃO CONCLUÍDO. Gates de captura sem direitos demonstrados continuam fechados.
