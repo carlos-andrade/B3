@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.5 |
-| **SHA-256 (conteúdo canónico)** | 67e8ea27c668af06bf85a4d0286e61707e3f00b104796afedde405ae1023abd0 |
+| **Versão** | 2.3.6 |
+| **SHA-256 (conteúdo canónico)** | 65ff3596cb4b1194914350adc2e09b9b4005329cf3cdd309c6c9d7807e057737 |
 | **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -682,3 +682,17 @@ A primeira execução real do preflight identificou três séries elegíveis (SG
 
 ### Política para fontes B3 não elegíveis
 COTAHIST diário, BDI e DRP/Rapinegócios permanecem fora da captura automática enquanto não existir fonte gratuita com termos de uso compatíveis demonstrados. Pesquisa por Pregão continua proibida para recolha automatizada. Não contratar nem contornar; procurar alternativas gratuitas e documentar lacunas. COTAHIST 1986–2025 permanece consulta-only; 2026 não é atualizado por uma fonte sem uso compatível demonstrado.
+
+## 29. Orquestrador central — fontes gratuitas — 2026-10-16
+
+Criado .github/workflows/b3-fontes-gratuitas-orquestrador.yml como ponto único de execução normal para:
+1. testar os gates de autorização e licença;
+2. consultar o catálogo ODbL por série SGS;
+3. ingerir apenas séries SGS elegíveis;
+4. capturar e validar o JSON Copom sob ODbL, mantendo PDFs bloqueados;
+5. persistir dados e manifestos num único commit;
+6. publicar artefactos e resumo de estado mesmo em falha parcial.
+
+Os workflows individuais SGS e Copom foram limitados a execução manual de diagnóstico. A agenda normal passa ao orquestrador central. Todos os workflows de ingestão BCB partilham o grupo de concorrência b3-data-ingestion-serialized.
+
+A execução real inicial demonstrou que a pesquisa por licença encontra recursos SGS 1, 11 e 432; as séries 12 e 433 não tinham correspondência exata na primeira consulta. O gate foi ajustado para procurar também por títulos e continuar com séries elegíveis. A conclusão operacional depende do run do orquestrador e dos artefactos finais; não declarar captura concluída até o workflow terminar e a reconciliação ser verificada.
