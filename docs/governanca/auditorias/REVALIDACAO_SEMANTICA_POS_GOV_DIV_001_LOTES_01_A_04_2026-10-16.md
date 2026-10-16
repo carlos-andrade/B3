@@ -37,9 +37,9 @@ A inspeção identificou linguagem em cartas e contratos que diz que o Layout pr
 | [Lote 03](REVISAO_SEMANTICA_DOCUMENTAL_LOTE03_2026-10-15.md) | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES | As questões de versão Dataset Oficial V1/V2 e adoção do contrato NORMALIZED V2.0 permanecem sem resolução automática. | Preservar; exigir evidência de adoção e mapa de versão antes de alterar estados. |
 | [Lote 04](REVISAO_SEMANTICA_DOCUMENTAL_LOTE04_2026-10-15.md) | REVISAO_PARCIAL; CLASSIFICACAO_POR_AMOSTRAGEM | Continua a ser amostra de classificação; não pode sustentar conclusão sobre o restante inventário. Os seus alertas sobre rotina diária, retenção e natureza documental mantêm-se aplicáveis. | Preservar snapshot; completar revisão integral dos documentos elegíveis. |
 
-## 3. Documentos prioritários revalidados — estado parcial
+## 3. Revalidação dos 17 documentos prioritários — revisão concluída
 
-A lista abaixo é a fila de revalidação pós-decisão, extraída da matriz integral. A revisão desta etapa confirma o domínio, as referências de autoridade e os trechos diretamente relacionados com hierarquia; não declara que toda a semântica de cada ficheiro foi certificada.
+A lista abaixo regista o conjunto revalidado pós-decisão e está sincronizada com a matriz integral v1.2.0. Foram verificadas autoridade/domínio, referências canónicas, cadeia de autoridade, afirmações de precedência, limites entre documento normativo e evidência factual, estados/versões declarados e ações de implementação explicitamente descritas. A revalidação documental deste conjunto está concluída; isso não constitui aprovação formal do proprietário, nem prova execução de workflows ou adoção operacional de contratos.
 
 1. `docs/CARTA_DE_CONFIANCA_DOS_DADOS.md`
 2. `docs/CARTA_DE_GARANTIAS_DO_PROJETO_B3.md`
@@ -68,14 +68,23 @@ A lista abaixo é a fila de revalidação pós-decisão, extraída da matriz int
 - **Política COTAHIST:** mantém-se a regra temporal: 1986–2025 apenas consulta/read-only; 2026 com atualização incremental diária. A decisão de hierarquia não certifica dados nem reabre anos encerrados.
 - **Contrato NORMALIZED V2.0 e Dataset Oficial V1.0/V2.0:** estado de adoção e precedência de versão continuam a exigir evidência específica; GOV-DIV-001 não resolve esses temas.
 
+
+### 3.1 Resultado das correções GOV-DIV-001 — 2026-10-16
+
+- A cadeia de autoridade legada foi alinhada nos 17 cabeçalhos para `CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS`.
+- A hierarquia universal da secção 3 do `MODELO_GOVERNANCA_PARA_PROJETOS.md` foi substituída por autoridade por domínio, com distinção explícita entre normas, contratos, implementação e evidência factual.
+- O aditivo de 2026-10-01 da Carta Magna foi qualificado como histórico/processual, sem autoridade para impor precedência universal e sob a regra GOV-DIV-001.
+- Referências ao caminho do Layout Mestre foram corrigidas onde identificadas.
+- Os estados de adoção do NORMALIZED V2.0, execução da rotina diária e migração Git LFS A1987 continuam pendências operacionais próprias; não reabrem a conclusão da revisão semântica documental.
+
 ## 4. Limites e ações ainda abertas
 
-- [ ] Confirmar conclusão das auditorias SHA-256 pós-commit para a versão 1.2.0 do Layout.
-- [ ] Inspecionar integralmente as secções restantes dos 17 documentos e registar por ficheiro conflitos, links, versão e ação final.
-- [ ] Comparar Dataset Oficial V1.0 com FASE10A M2/V2.0, workflow e manifesto em uso; não inferir adoção apenas pela existência de artefactos.
+- [ ] Confirmar auditoria SHA-256 pós-alterações documentais, incluindo Layout v1.2.0 e matriz v1.2.0.
+- [x] Revalidar os 17 documentos prioritários por domínio de autoridade, cadeia normativa, referências, estados/versões e limites entre política, contrato, implementação e evidência; resultado registado na matriz v1.2.0.
+- [ ] Comprovar adoção do Dataset Oficial V1.0 ou NORMALIZED V2.0 por artefactos, manifestos e workflows em execução; não inferir adoção apenas pela existência de documentos.
 - [ ] Confirmar por evidência o estado de adoção do contrato NORMALIZED V2.0.
 - [ ] Reconciliar referências e estados de implementação dos contratos de fase sem reabrir nem reescrever execuções históricas.
-- [ ] Atualizar a matriz integral por ficheiro, com evidência rastreável, apenas após terminar a revisão individual.
+- [x] Atualizar a matriz integral por ficheiro com o resultado da revalidação GOV-DIV-001.
 - [ ] Reexecutar a auditoria canónica e preservar o resultado/artefacto de execução.
 
 ## 5. Salvaguardas
