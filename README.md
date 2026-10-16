@@ -23,12 +23,12 @@ Repositório central de pesquisa, ingestão, normalização, certificação e di
 
 > **Estado do projeto:** ativo e em evolução contínua.  
 > **Branch principal:** `main`  
-> **Última atualização deste README:** 15/10/2026
+> **Última atualização deste README:** 16/10/2026
 
-### Estado semântico e governança — 15/10/2026
+### Estado semântico e governança — 16/10/2026
 
 - A divergência normativa GOV-DIV-001 tem decisão versionada em [DECISÃO GOV-DIV-001](./docs/governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md).
-- A [matriz integral de revisão semântica](./docs/governanca/auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) acompanha 303 documentos do snapshot inicial: 105 passaram por revisão de conteúdo nos Lotes 05–12; 176 continuam pendentes; os restantes correspondem a documentos previamente revistos/a amostras e exigem revalidação conforme a matriz.
+- A [matriz integral de revisão semântica](./docs/governanca/auditorias/MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) acompanha 303 documentos do snapshot inicial. A fila original de 281 documentos pendentes foi revista nos Lotes 05–26 e reconciliada no Lote 27; permanecem abertas a revalidação de 17 documentos previamente revistos após GOV-DIV-001, a revisão integral dos quatro relatórios antes amostrais e as ações residuais por domínio. Não declarar encerramento semântico global apenas com base no fecho da fila original.
 - A auditoria SHA-256 comprova integridade canónica, não a validade semântica ou operacional do conteúdo.
 - COTAHIST 1986–2025 permanece em consulta/read-only; 2026 mantém atualização diária.
 - A proveniência RAW COTAHIST, a lista oficial ExternalSecurityCategoryCode e os controlos operacionais WATCHDOG permanecem frentes próprias, com estado explícito no roadmap.
