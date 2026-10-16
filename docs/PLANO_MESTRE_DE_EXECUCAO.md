@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.2 |
-| **SHA-256 (conteúdo canónico)** | ff27c5e310cfeb12732f8751e3f6c0c168faba983394b8afdd4d8896d6906111 |
+| **Versão** | 2.3.3 |
+| **SHA-256 (conteúdo canónico)** | 374a3bb9b13b06b5759fa3d861ba6dfdf07458ebf47f35bd365f7e61a210b2f6 |
 | **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -637,6 +637,10 @@ Foram inspecionados o validador, os testes unitários e os workflows de COTAHIST
 2. Licença/termos e autorização de automação para BDI.
 3. Confirmação oficial do endpoint DRP/Rapinegócios e direitos de uso.
 4. Confirmação separada dos direitos de uso/redistribuição do PDF Copom.
+
+### Pedidos formais de autorização — estado em 2026-10-16
+
+Foi criada a [matriz de pedidos e minutas](governanca/licenciamento/PLANO_PEDIDOS_AUTORIZACAO_FONTES_2026-10-16.md), com canais oficiais, perguntas de escopo e pedidos preparados para B3 (COTAHIST, BDI e DRP/Rapinegócios) e BCB (PDFs Copom). Foi aberto o [issue #13 de acompanhamento](https://github.com/carlos-andrade/B3/issues/13). Os pedidos **ainda não foram enviados**; não existe protocolo nem autorização concedida. Contactos oficiais B3: `produtos-marketdata@b3.com.br`, `contratacao@b3.com.br`, +55 11 2565-5080. Para o BCB, usar o [formulário oficial de contacto](https://www3.bcb.gov.br/faleconosco/#/login/registrar?natureza=1&tipo=3).
 
 ### Próximo passo
 
