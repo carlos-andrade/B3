@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.2.0 |
-| **SHA-256 (conteúdo canónico)** | 0e0ce4809ec85fc5f155841500a4db9fd67c7fd1781fcc7a7c7033d608ab2db9 |
+| **Versão** | 2.3.0 |
+| **SHA-256 (conteúdo canónico)** | 58c54f2e83e44fbe05004ff1c8bce5e4f303565989e4d8bdae5bab932b22e25f |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -619,3 +619,25 @@ A Fase 03 operacional foi executada em modo de verificação e reconciliação d
 
 ### Próxima ação autorizada
 Obter os arquivos BDM de 2026-09-16 e 2026-09-17 por via autorizada e reconciliar cada arquivo; procurar evidência oficial do horário de publicação Copom; expandir a matriz BDI tabela a tabela com RAW, manifesto e reconciliação próprios. Não alterar o histórico COTAHIST 1986–2025 nem contornar restrições de recolha.
+
+
+## 26. Fase 04 operacional — licenciamento e autorização de endpoints — 2026-10-16
+
+Relatório de fecho: [FECHO_FASE04_LICENCAS_ENDPOINTS_2026-10-16.md](governanca/licenciamento/FECHO_FASE04_LICENCAS_ENDPOINTS_2026-10-16.md).
+
+### Resultado
+
+**CONTROLOS TÉCNICOS VERIFICADOS; AUTORIZAÇÕES EXTERNAS PENDENTES; FAIL_CLOSED.** O registo versionado contém seis endpoints. A recolha automatizada de Pesquisa por Pregão permanece proibida; BDI, COTAHIST diário, DRP/Rapinegócios e o PDF Copom continuam bloqueados até prova de autorização aplicável; o JSON Copom pode ser usado apenas sob as condições ODbL documentadas.
+
+Foram inspecionados o validador, os testes unitários e os workflows de COTAHIST diário e BDI, que verificam o gate antes da captura. A fase não concede autorização externa nem retroativa. O RAW histórico foi preservado.
+
+### Gates de saída ainda abertos
+
+1. Confirmação escrita B3 para automação, armazenamento, backtests, desenvolvimento de produto e publicação/redistribuição COTAHIST.
+2. Licença/termos e autorização de automação para BDI.
+3. Confirmação oficial do endpoint DRP/Rapinegócios e direitos de uso.
+4. Confirmação separada dos direitos de uso/redistribuição do PDF Copom.
+
+### Próximo passo
+
+Manter os gates fechados até receção e validação das evidências externas. Executar auditoria automatizada reproduzível do registo e dos controlos; não contornar endpoints bloqueados. COTAHIST 1986–2025 continua somente para consulta; 2026 permanece incremental apenas dentro do âmbito efetivamente autorizado; BLOOMBERG_MAIL permanece fora do âmbito B3.
