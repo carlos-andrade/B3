@@ -9,7 +9,7 @@
 | **Fase** | FASE 03 — Capturas RAW e reconciliações de fontes |
 | **Estado** | EXECUTADA_PARCIALMENTE; BLOQUEIOS_EXTERNOS_FAIL_CLOSED |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | ef584c564c2241936214aefa9c37e4c6438127845e3455209b4dfe6b87e5a503 |
+| **SHA-256 (conteúdo canónico)** | a88ce6319e74efeef25f4e453d90b7f4ae77d3f888b028760845ea43406ed493 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
