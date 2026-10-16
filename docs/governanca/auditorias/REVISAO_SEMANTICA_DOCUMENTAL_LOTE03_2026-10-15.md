@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | REVISAO_SEMANTICA_FECHADA; PRECEDENCIA_V1_V2_EXPLICITADA; ADocAO_V2_BLOQUEADA_POR_EVIDENCIA |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 8875374871d13430a0c053e66d79093ec30444ff7eef1302d2c96d1b0e825b4f |
+| **SHA-256 (conteúdo canónico)** | 6928e313c934decc3ce3b017b759844500e0a1d2ab747fb5584eeea43baf367e |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
