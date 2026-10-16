@@ -7,10 +7,10 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
-| **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.7 |
-| **SHA-256 (conteúdo canónico)** | f8ccdbaa2d8be9a05619ef0ddb0478969fd698013cc66738dfe9659623c381a3 |
-| **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
+| **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
+| **Versão** | 2.3.8 |
+| **SHA-256 (conteúdo canónico)** | fb7b3dc39f29c25df3b48f396be1b3ee11f9b06b6f2dc51a74324080b3381ba0 |
+| **Commit de referência (versão anterior)** | [0c7b25c9fa648d13827d1a4c439c25da86c6009c](https://github.com/carlos-andrade/B3/commit/0c7b25c9fa648d13827d1a4c439c25da86c6009c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -696,3 +696,35 @@ Criado .github/workflows/b3-fontes-gratuitas-orquestrador.yml como ponto único 
 Os workflows individuais SGS e Copom foram limitados a execução manual de diagnóstico. A agenda normal passa ao orquestrador central. Todos os workflows de ingestão BCB partilham o grupo de concorrência b3-data-ingestion-serialized.
 
 A execução real inicial demonstrou que a pesquisa por licença encontra recursos SGS 1, 11 e 432; as séries 12 e 433 não tinham correspondência exata na primeira consulta. O gate foi ajustado para procurar também por títulos e continuar com séries elegíveis. A ingestão SGS passou a usar janela incremental de sete dias antes da última observação conhecida, preservando o histórico anterior e reconsultando apenas a janela recente para absorver revisões. A lógica foi coberta por testes em tests/ingestao/test_bcb_sgs_incremental.py. A conclusão operacional depende do run do orquestrador e dos artefactos finais; não declarar captura concluída até o workflow terminar e a reconciliação ser verificada.
+
+
+## 30. Auditoria transversal de estado — 2026-10-16
+
+**Escopo verificado:** estado do branch `main`, roadmap, registo de licenças, inventário de fontes, issues abertas e execuções recentes do GitHub Actions. Esta verificação é uma fotografia operacional; não equivale à execução individual de todos os workflows históricos.
+
+### Resultados confirmados
+- HEAD consultado antes desta atualização: `0c7b25c9fa648d13827d1a4c439c25da86c6009c` — auditoria retrospectiva COTAHIST 1994 FASE01.
+- A pasta `.github/workflows` contém **555 ficheiros de workflow**; não é seguro reexecutá-los indiscriminadamente porque incluem fases históricas e tarefas com efeitos de escrita.
+- Na amostra dos 100 runs mais recentes retornados pela API no momento da verificação: **61 success, 12 failure, 27 cancelled**; nenhum run ativo apareceu nessa página. Estes números não representam todas as execuções das últimas 24 horas.
+- A última varredura completa do monitor disponível, executada às 18:37:59 UTC, observou 406 execuções em 24 horas: 220 success, 92 failure, 93 cancelled e 1 ativa. O relatório é histórico e requer nova varredura completa para confirmar a saúde atual.
+- O orquestrador de fontes gratuitas passou no run [38907125399](https://github.com/carlos-andrade/B3/actions/runs/38907125399), incluindo testes, preflight, ingestão elegível, validação de qualidade, Copom JSON, validação e persistência.
+- A auditoria de autorização de endpoints passou no run [38905389145](https://github.com/carlos-andrade/B3/actions/runs/38905389145), mas a execução antecede o HEAD atual e não substitui a revisão jurídica dos bloqueios.
+- A auditoria SHA-256 documental passou no run [38906570649](https://github.com/carlos-andrade/B3/actions/runs/38906570649) numa versão anterior do roadmap. O hash desta versão deve ser confirmado pelo workflow acionado por esta atualização.
+
+### Bloqueios que permanecem obrigatórios
+1. Política de custo zero: não contratar feeds, licenças ou subscrições pagas.
+2. SGS 1, 11 e 432: elegíveis sob preflight ODbL; SGS 12 e 433: bloqueadas enquanto não houver prova exata de licença.
+3. JSON Copom: elegível sob ODbL e atribuição; PDFs Copom: escopo de licença separado ainda não demonstrado para redistribuição.
+4. COTAHIST, BDI e DRP/Rapinegócios: sem captura/publicação automática nova enquanto não houver alternativa gratuita com direitos compatíveis demonstrados. Pesquisa por Pregão continua proibida para coleta automatizada.
+5. COTAHIST 1986–2025 permanece apenas para consulta; 2026 não recebe captura automática sem fonte gratuita e direitos compatíveis comprovados.
+6. Issue [#12 — WATCHDOG](https://github.com/carlos-andrade/B3/issues/12) permanece aberta: é necessário atualizar a varredura completa das últimas 24 horas e classificar falhas reais, cancelamentos por concorrência e bloqueios esperados.
+7. Issue [#13 — fontes gratuitas](https://github.com/carlos-andrade/B3/issues/13) permanece aberta pela lacuna de fonte de preços B3 e pelas séries SGS bloqueadas.
+
+### Próxima sequência autorizada
+1. Confirmar o resultado do workflow SHA-256 acionado pela atualização deste documento.
+2. Executar uma nova varredura completa do watchdog; não substituir a contagem integral por uma amostra de 100 runs.
+3. Executar a auditoria estática de conformidade de workflows sobre o HEAD atual e corrigir violações na fase de origem, sem reexecutar indiscriminadamente workflows históricos.
+4. Revalidar o registo de endpoints e os manifestos de qualidade no mesmo HEAD.
+5. Só promover as pendências que tenham evidência de execução atual, hash, manifesto e licença compatível.
+
+**Decisão de saída:** validação transversal em curso; projeto NÃO CONCLUÍDO. Gates de captura sem direitos demonstrados continuam fechados.
