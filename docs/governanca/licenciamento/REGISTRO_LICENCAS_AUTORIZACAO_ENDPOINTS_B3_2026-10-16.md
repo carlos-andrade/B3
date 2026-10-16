@@ -9,7 +9,7 @@
 | **Fase** | LICENCIAMENTO_E_AUTORIZACAO_DE_FONTES |
 | **Estado** | PARCIAL — GATES FAIL-CLOSED IMPLEMENTADOS; AUTORIZAÇÕES EXTERNAS PENDENTES |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | b494aa5a4555a26a4a10d2019e6400c9c38c25991eb350349a31b64911a6b8e9 |
+| **SHA-256 (conteúdo canónico)** | 6e8ed0c6735dabe2f011c10c861edadf6d67c80f514c1dcdf384ce9b30088586 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
