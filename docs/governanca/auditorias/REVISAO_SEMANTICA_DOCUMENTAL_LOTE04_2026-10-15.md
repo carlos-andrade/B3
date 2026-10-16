@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
-| **Estado** | REVISAO_PARCIAL; CLASSIFICACAO_POR_AMOSTRAGEM |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 912e4a6eb72d41e46f1bc2d188e3469d7cdd9d5ffe70f1cbad1e11dd26b3f3d7 |
+| **Estado** | CLASSIFICACAO_DOCUMENTAL_DO_INVENTARIO_CONCLUIDA; AMOSTRA_HISTORICA_PRESERVADA; GATES_OPERACIONAIS_SEPARADOS |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | 11427467ed3b941bb0518f470f001e5d412165ecff3d7420baa987d48563830c |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de aprovação específica |
 | **Origem** | Inspeção de conteúdo de documentos do repositório B3 e comparação com os relatórios dos Lotes 01–03 |
