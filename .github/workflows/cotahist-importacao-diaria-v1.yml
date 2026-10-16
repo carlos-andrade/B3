@@ -10,6 +10,9 @@ on:
       - ".github/workflows/cotahist-importacao-diaria-v1.yml"
       - "scripts/ingestao/importar_cotahist_diario_v1.py"
       - "scripts/ingestao/reconciliar_cotahist_anual_v1.py"
+      - "scripts/governanca/validar_autorizacao_endpoint.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
   schedule:
     - cron: "30 23 * * *"
   workflow_dispatch:
@@ -29,6 +32,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Testar os controlos de autorização
+        run: python -m unittest scripts/governanca/test_validar_autorizacao_endpoint.py -v
       - name: Verificar autorização de uso do endpoint COTAHIST
         id: gate
         run: python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_COTAHIST_DAILY --allow-blocked --github-output "$GITHUB_OUTPUT"
