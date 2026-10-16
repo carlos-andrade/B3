@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; 17_DOCUMENTOS_REVALIDADOS_POS_GOV_DIV_001; AUDITORIA_SHA256_APROVADA; PENDENCIAS_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.2.0 |
-| **SHA-256 (conteúdo canónico)** | 14ece436a634cc6397f37b4d6e42da4c4f5fadb2ccfd999f00988604c91f9163|
+| **SHA-256 (conteúdo canónico)** | 37775cbedb16e947d1b0e84727511513fa75fe22c7cfd977b1b4e9c3d083daf9|
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
