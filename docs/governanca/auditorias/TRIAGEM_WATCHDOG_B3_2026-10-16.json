@@ -48,20 +48,21 @@
       "status": "OPEN"
     },
     {
-      "class": "COTAHIST_2026_FIRST_DATE_MISMATCH",
-      "confidence": "high",
+      "class": "HISTORICAL_VALIDATION_OUTPUT_CONFLICT",
+      "confidence": "medium",
       "evidence_runs": [
         "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
         "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
-        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
+        "https://github.com/carlos-andrade/B3/actions/runs/38883878143",
+        "https://github.com/carlos-andrade/B3/actions/runs/38969940913"
       ],
       "observed_signatures": [
-        "Actual first date: 2026-01-07",
-        "Official/quality manifest first date: 2026-01-02",
-        "Actual, official and quality row counts: 3142910"
+        "Runs anteriores: primeira data observada 2026-01-07, manifestos indicavam 2026-01-02",
+        "Run posterior com materialização Git LFS: primeira data observada 2026-01-02, igual aos manifestos",
+        "O identificador SHA LFS consultado é o mesmo; a divergência de logs requer reprodução controlada"
       ],
-      "interpretation": "A material data/manifest discrepancy remains despite matching row counts. The normalizer and/or source coverage and manifests must be reconciled from existing authorized artifacts. Do not fabricate missing records or promote the 2026 dataset.",
-      "status": "OPEN_BLOCKER"
+      "interpretation": "Os logs históricos são contraditórios; não é correto declarar a discrepância como defeito atual confirmado. O dataset permanece BLOQUEADO por autorização de fonte não demonstrada e até reprodução controlada resolver a divergência de evidências.",
+      "status": "NEEDS_REPRODUCTION"
     },
     {
       "class": "EXPECTED_SOURCE_AUTHORIZATION_BLOCK",
@@ -113,6 +114,20 @@
       "observed_pattern": "65 cancellations among 157 SHA-256 audit runs and repeated short-interval runs during rapid commit activity.",
       "interpretation": "The pattern is consistent with superseded/concurrency-cancelled runs, but not every cancellation has been individually linked to a newer replacement run. Do not count all cancellations as defects or as successful validations.",
       "status": "PARTIALLY_CLASSIFIED"
+    },
+    {
+      "class": "M3_1E_QUALITY_STATUS_GATE_GAP",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
+        "https://github.com/carlos-andrade/B3/commit/7a6c62d03793cc0c812f61ba1e38eaba309ccd3d"
+      ],
+      "observed_signatures": [
+        "M3-1E passou com quality manifest status BLOQUEADO porque não exigia q.status == VALIDADO",
+        "A asserção explícita foi adicionada no commit 7a6c62d03793cc0c812f61ba1e38eaba309ccd3d"
+      ],
+      "interpretation": "Falha de controlo no gate de promoção identificada e corrigida no código; falta confirmar que o novo gate rejeita BLOQUEADO.",
+      "status": "FIX_COMMITTED_AWAITING_VALIDATION"
     }
   ],
   "triage_limitations": [
@@ -121,11 +136,12 @@
     "The 144 workflow audit observations remain review items, not 144 runtime failures."
   ],
   "next_actions": [
-    "Serialize or make concurrent persistence idempotent for shared manifests and main-branch writes, then validate with a controlled run.",
-    "Investigate COTAHIST 2026 first-date mismatch from existing RAW, parser behavior, manifests and authorized artifacts; do not bypass license gate.",
-    "Change monitoring semantics to report expected license blocks as BLOCKED/SKIPPED while retaining non-zero gate behavior in capture jobs where appropriate.",
-    "Continue classifying remaining failed jobs by workflow and log signature; rerun only after a specific correction and only for eligible workflows.",
-    "Keep issues 12 and 13 open until evidence meets their acceptance criteria."
+    "Confirmar que M3-1E rejeita quality manifest BLOQUEADO e só aceita VALIDADO.",
+    "Reproduzir controladamente a divergência histórica de primeira data sem alterar RAW, NORMALIZED ou hashes.",
+    "Manter o dataset 2026 bloqueado enquanto os direitos de uso/publicação não forem demonstrados.",
+    "Serializar ou tornar idempotente a persistência concorrente em workflows que escrevem no branch principal.",
+    "Continuar a classificação das falhas restantes por logs e evidências; não reexecutar workflows históricos em massa.",
+    "Manter issues 12 e 13 abertas até critérios de aceitação aprovados."
   ],
   "status": "TRIAGE_IN_PROGRESS_NOT_PROJECT_CLOSURE"
 }
