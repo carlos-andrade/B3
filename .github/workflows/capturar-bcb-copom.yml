@@ -1,4 +1,5 @@
 name: Capturar BCB - Copom
+# Revalidacao RAW/API e NORMALIZED Copom em 2026-10-16.
 
 on:
   push:
