@@ -138,6 +138,6 @@ Este registo é um controlo operacional e não substitui aconselhamento jurídic
 | BDI API | [run 38894476389](https://github.com/carlos-andrade/B3/actions/runs/38894476389) | Testes do gate passaram; captura foi **SKIPPED** |
 | BCB Copom JSON | [run 38894476513](https://github.com/carlos-andrade/B3/actions/runs/38894476513) | Sete testes passaram; captura JSON e validação NORMALIZED concluídas |
 | PDF externo da Ata | Incluído na [run 38894476513](https://github.com/carlos-andrade/B3/actions/runs/38894476513) | O gate devolveu authorized=false; log confirmou PDF_ATTACHMENT_SKIPPED_LICENSE_SCOPE_UNCONFIRMED |
-| Auditoria documental anterior à última atualização deste registo | [run 38893920324](https://github.com/carlos-andrade/B3/actions/runs/38893920324) | 332 documentos conformes, zero pendentes e zero divergentes no commit auditado; o registo foi posteriormente atualizado e a auditoria final está associada ao HEAD indicado no resultado desta execução |
+| Auditoria documental anterior à última atualização deste registo | [run 38893920324](https://github.com/carlos-andrade/B3/actions/runs/38893920324) | 332 documentos conformes, zero pendentes e zero divergentes no commit auditado; o registo foi atualizado; a auditoria SHA-256 final é executada automaticamente após este commit |
 
 Os jobs COTAHIST e BDI terminarem com sucesso significa que o controlo de autorização foi aplicado corretamente; **não** significa que a recolha de dados foi executada. O resultado de captura para esses dois endpoints é deliberadamente bloqueado.
