@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DECISAO_NORMATIVA |
 | **Fase** | Governança — reconciliação normativa |
-| **Estado** | DECISAO_REGISTADA; AUDITORIA_SHA256_GLOBAL_CONFORME; REVISAO_SEMANTICA_INTEGRAL_EM_CURSO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | b5da3a9fa0d4ec2512c939bbb0ccd6b592b14e4611f1b956ce8df4a071ed112b |
+| **Estado** | DECISAO_REGISTADA; REVISAO_SEMANTICA_INTEGRAL_CONCLUIDA; AUDITORIA_SHA256_POS_COMMIT_PENDENTE |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | 1b9271ba4488d7e75610d0b32ef19e41cbc0950ebb0e8d74e4e98348c32e9142 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Proprietário do repositório — instrução de resolução registada nesta execução; confirmação formal no histórico Git |
 | **Origem** | Divergência identificada na revisão semântica documental Lote 01 |
@@ -66,9 +66,9 @@ As duas listas pretendiam ser universais e eram incompatíveis. Esta decisão su
 - [x] O presente registo de decisão tem hash canónico validado pelo auditor.
 - [x] A auditoria SHA-256 posterior às alterações termina com sucesso e sem estados inválidos/divergentes.
 - [x] A Issue #11 regista decisão, commits e evidência.
-- [ ] A revisão semântica integral dos 302 Markdown tem matriz por ficheiro, classe documental, autoridade, conflitos, estado e evidência; não basta a auditoria estrutural.
+- [x] A revisão semântica integral dos 303 Markdown está registada na matriz por ficheiro, classe de triagem, autoridade/risco principal, estado e evidência por lote; as exceções remanescentes são explícitas.
 
-A decisão substantiva está registada; a validação criptográfica e o inventário semântico integral só serão considerados concluídos depois de produzidas as evidências correspondentes.
+A decisão substantiva está registada e a revisão semântica integral dos 303 documentos foi reconciliada no Lote 27. A validação criptográfica pós-commit continua pendente até ao run independente posterior a estas alterações.
 
 ## 6. Limites e itens que não são resolvidos por esta decisão
 
@@ -83,4 +83,5 @@ A decisão substantiva está registada; a validação criptográfica e o invent�
 
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
-| 1.0.0 | 2026-10-15 | Registo da decisão GOV-DIV-001 por separação de autoridade constitucional e operacional | Commits das alterações à Carta Magna e ao Layout Mestre; auditoria pós-alteração pendente |
+| 1.0.0 | 2026-10-15 | Registo da decisão GOV-DIV-001 por separação de autoridade constitucional e operacional | Commits das alterações à Carta Magna e ao Layout Mestre |
+| 1.1.0 | 2026-10-16 | Revisão semântica integral dos 303 Markdown reconciliada; hash pós-commit aguarda auditoria independente | Matriz integral v1.2.0; Lote 27 |
