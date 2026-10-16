@@ -8,8 +8,8 @@
 | **Tipo documental** | ROADMAP_MESTRE |
 | **Fase** | Governação documental e rastreabilidade |
 | **Estado** | APROVADO |
-| **Versão** | 1.1.2 |
-| **SHA-256 (conteúdo canónico)** | 387d5f7a53ed4c6b47fb52fe7c720473025f1d18783d569cf41d0394d0699d2c |
+| **Versão** | 1.1.3 |
+| **SHA-256 (conteúdo canónico)** | a47df42e791a2c8d8dad414314944e02d709ef03a5d04a600d7c4bef94e08229 |
 | **Commit de referência (versão anterior)** | [23df98911bb9bed5d3f6a1a670508fbfde5dc36d](https://github.com/carlos-andrade/B3/commit/23df98911bb9bed5d3f6a1a670508fbfde5dc36d) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-16 |
@@ -17,7 +17,7 @@
 | **Aprovador** | Proprietário do repositório — aprovação expressa registada em 2026-10-16 |
 | **Origem** | Documento B3 preexistente; corpo histórico preservado |
 | **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Rastreabilidade** | Histórico Git e evidências citadas no corpo |
 | **Escopo** | Visão operacional mestre da ingestão COTAHIST 1986–2026 |
 | **Objetivo** | Manter uma visão consolidada com distinção entre evidência estrutural e semântica histórica. |
@@ -206,4 +206,4 @@ A aprovação global do mecanismo e a publicação de 2026 **não certificam aut
 - **Runbook:** [RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md).
 - **Incidência:** [INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md).
 
-**Decisão:** A1987 está migrado para Git LFS. Não repetir a migração. A auditoria SHA-256 documental do HEAD mais recente está a ser executada após a atualização deste roadmap; a conclusão será aceite apenas após resultado final conforme.
+**Decisão:** FASE 02 — MIGRAÇÃO GIT LFS COTAHIST A1987 — CONCLUÍDA E RECONCILIADA. Não repetir a migração. A auditoria SHA-256 documental do HEAD anterior a esta atualização terminou com sucesso no [run 38899103876](https://github.com/carlos-andrade/B3/actions/runs/38899103876): 333 ficheiros analisados, 333 `CONFORME`, zero divergentes, zero pendentes e zero inválidos. A atualização deste roadmap exige a nova execução automática de auditoria documental; o estado de integridade será confirmado no run correspondente a este commit. A migração e os dados COTAHIST não foram alterados nesta reconciliação.
