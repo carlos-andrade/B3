@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | REVISAO_CONTEUDO_CONCLUIDA; CALENDARIO_E_K4_MANTIDOS_COM_EXCECAO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | a51509dfcc93fb04cf80f6d1c021f8c241535421358cbaaed9560b4b5f6f36c1 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
