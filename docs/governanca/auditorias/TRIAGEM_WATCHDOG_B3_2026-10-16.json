@@ -1,0 +1,131 @@
+{
+  "document_id": "B3-AUD-WATCHDOG-TRIAGE-2026-10-16",
+  "project": "B3 - A BOLSA DO BRASIL",
+  "repository": "carlos-andrade/B3",
+  "document_type": "AUDIT_EVIDENCE",
+  "version": "1.0.0",
+  "as_of_utc": "2026-10-16T21:00:00Z",
+  "scope": "Initial evidence-based triage of all workflow runs returned for the rolling 24-hour window, with representative log inspection of failure groups.",
+  "governance": {
+    "cost_zero": true,
+    "fail_closed_for_unverified_sources": true,
+    "do_not_bulk_rerun_historical_workflows": true,
+    "do_not_promote_unvalidated_data": true
+  },
+  "window_snapshot": {
+    "runs": 412,
+    "success": 226,
+    "failure": 93,
+    "cancelled": 93,
+    "active_at_snapshot": 0,
+    "source": "GitHub Actions API, created >= 2026-10-15T21:00:00Z, 5 pages queried"
+  },
+  "static_workflow_audit": {
+    "run_url": "https://github.com/carlos-andrade/B3/actions/runs/38966036826",
+    "workflows_examined": 555,
+    "conforme": 411,
+    "conforme_com_observacao": 144,
+    "critical_divergences": 0,
+    "limitation": "Static conformance does not prove runtime success of every workflow."
+  },
+  "confirmed_failure_signatures": [
+    {
+      "class": "CONCURRENT_GIT_WRITE_CONFLICT",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38881560128",
+        "https://github.com/carlos-andrade/B3/actions/runs/38905629305",
+        "https://github.com/carlos-andrade/B3/actions/runs/38905452382",
+        "https://github.com/carlos-andrade/B3/actions/runs/38906875502"
+      ],
+      "observed_signatures": [
+        "COTAHIST FASE00: git push rejected because remote contains work not present locally",
+        "BCB SGS: merge conflicts in shared quality/preflight manifests during rebase",
+        "Copom: merge conflict in dados/calendario_economico/copom/raw/comunicados_lista.json.meta.json",
+        "Free-source orchestrator: commit reconciliation failed after three attempts"
+      ],
+      "interpretation": "Multiple workflows write overlapping files or main concurrently. These are runtime persistence/reconciliation failures, not proof of corrupted RAW data. They require serialization or conflict-safe persistence, not bulk reruns.",
+      "status": "OPEN"
+    },
+    {
+      "class": "COTAHIST_2026_FIRST_DATE_MISMATCH",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
+        "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
+        "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
+      ],
+      "observed_signatures": [
+        "Actual first date: 2026-01-07",
+        "Official/quality manifest first date: 2026-01-02",
+        "Actual, official and quality row counts: 3142910"
+      ],
+      "interpretation": "A material data/manifest discrepancy remains despite matching row counts. The normalizer and/or source coverage and manifests must be reconciled from existing authorized artifacts. Do not fabricate missing records or promote the 2026 dataset.",
+      "status": "OPEN_BLOCKER"
+    },
+    {
+      "class": "EXPECTED_SOURCE_AUTHORIZATION_BLOCK",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38893082749",
+        "https://github.com/carlos-andrade/B3/actions/runs/38893101887",
+        "https://github.com/carlos-andrade/B3/actions/runs/38893150418"
+      ],
+      "observed_signatures": [
+        "COTAHIST daily endpoint: REVIEW_REQUIRED, authorized=false",
+        "BDI endpoint: REVIEW_REQUIRED, authorized=false",
+        "B3 Pesquisa por Pregão: PROHIBITED_AUTOMATED_COLLECTION, authorized=false"
+      ],
+      "interpretation": "The fail-closed gate is correctly preventing unauthorized capture. The workflow conclusion is failure because the guard raises a non-zero exit; monitoring should distinguish expected blocked/skipped outcomes from technical defects without bypassing the gate.",
+      "status": "POLICY_BLOCKED_NOT_AUTHORIZED"
+    },
+    {
+      "class": "STALE_TEST_EXPECTATION_CORRECTED",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38905815795",
+        "https://github.com/carlos-andrade/B3/actions/runs/38966223802"
+      ],
+      "observed_signatures": [
+        "Earlier SHA audit test expected 2 errors but validator correctly returned 3",
+        "Latest canonical SHA-256 audit run passed"
+      ],
+      "interpretation": "The observed unit-test mismatch was corrected by subsequent changes; latest SHA audit is passing. Keep the historical failure in audit history, but do not treat it as an active failure without a new reproduction.",
+      "status": "RESOLVED_FOR_CURRENT_HEAD"
+    },
+    {
+      "class": "WATCHDOG_VALIDATOR_ASSERTION_CORRECTED",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38965905168",
+        "https://github.com/carlos-andrade/B3/actions/runs/38966036952"
+      ],
+      "observed_signatures": [
+        "Run 66 failed on stale BDI schedule expectation",
+        "Run 67 passed after validator was changed to require the license gate and no schedule while blocked"
+      ],
+      "status": "RESOLVED_FOR_CURRENT_HEAD"
+    },
+    {
+      "class": "CANCELLED_RUNS",
+      "confidence": "medium",
+      "count": 93,
+      "observed_pattern": "65 cancellations among 157 SHA-256 audit runs and repeated short-interval runs during rapid commit activity.",
+      "interpretation": "The pattern is consistent with superseded/concurrency-cancelled runs, but not every cancellation has been individually linked to a newer replacement run. Do not count all cancellations as defects or as successful validations.",
+      "status": "PARTIALLY_CLASSIFIED"
+    }
+  ],
+  "triage_limitations": [
+    "The 93 failed runs were counted across the complete 412-run window, but not every failed job log has yet been individually inspected.",
+    "The failure classes above are based on representative logs and cross-run signatures; no unsupported one-to-one assignment of all 93 failures to causes is made.",
+    "The 144 workflow audit observations remain review items, not 144 runtime failures."
+  ],
+  "next_actions": [
+    "Serialize or make concurrent persistence idempotent for shared manifests and main-branch writes, then validate with a controlled run.",
+    "Investigate COTAHIST 2026 first-date mismatch from existing RAW, parser behavior, manifests and authorized artifacts; do not bypass license gate.",
+    "Change monitoring semantics to report expected license blocks as BLOCKED/SKIPPED while retaining non-zero gate behavior in capture jobs where appropriate.",
+    "Continue classifying remaining failed jobs by workflow and log signature; rerun only after a specific correction and only for eligible workflows.",
+    "Keep issues 12 and 13 open until evidence meets their acceptance criteria."
+  ],
+  "status": "TRIAGE_IN_PROGRESS_NOT_PROJECT_CLOSURE"
+}
