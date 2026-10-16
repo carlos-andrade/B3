@@ -2,15 +2,7 @@ name: BCB SGS - nucleo macro V1
 # Execucao automatica + manual; certificacao depende de evidencias persistidas.
 
 on:
-  push:
-    paths:
-      - "scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py"
-      - ".github/workflows/bcb-sgs-nucleo-macro-v1.yml"
-      - "governanca/bcb_sgs/INVENTARIO_BCB_SGS_NUCLEO_MACRO_V1.md"
-      - "scripts/governanca/validar_licenca_bcb_sgs.py"
-      - "tests/governanca/test_validar_licenca_bcb_sgs.py"
-  schedule:
-    - cron: "20 23 * * 1-5"
+  # Execução individual apenas para diagnóstico; o orquestrador central gere a rotina normal.
   workflow_dispatch:
 
 permissions:
