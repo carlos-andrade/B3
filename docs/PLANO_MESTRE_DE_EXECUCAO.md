@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.1 |
-| **SHA-256 (conteúdo canónico)** | 851096c372e7de7a01c1166bfc72f8f2f9c466fc2f9a6f22c16dd2b16521ead8 |
-| **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
+| **Versão** | 2.3.2 |
+| **SHA-256 (conteúdo canónico)** | ff27c5e310cfeb12732f8751e3f6c0c168faba983394b8afdd4d8896d6906111 |
+| **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
