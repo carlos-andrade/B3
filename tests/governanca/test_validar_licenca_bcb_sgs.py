@@ -23,7 +23,24 @@ class BcbSgsLicenseTests(unittest.TestCase):
                 "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
             }],
         }]
-        result = verify_series(432, search_with(datasets))
+        result = verify_series(432, search_with(datasets), show_fn=None)
+        self.assertTrue(result["authorized"])
+        self.assertEqual(result["license"], "ODbL")
+
+    def test_exact_slug_dataset_with_odbl_is_allowed_without_search(self):
+        dataset = {
+            "name": "432-taxa-de-juros---meta-selic-definida-pelo-copom",
+            "title": "Meta Selic",
+            "license_id": "odc-odbl",
+            "license_title": "Open Data Commons Open Database License",
+            "resources": [{
+                "name": "json_serie-sgs-432",
+                "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
+            }],
+        }
+        def unused_search(term):
+            raise AssertionError("package_search não deveria ser chamado")
+        result = verify_series(432, unused_search, show_fn=lambda slug: dataset)
         self.assertTrue(result["authorized"])
         self.assertEqual(result["license"], "ODbL")
 
@@ -36,7 +53,7 @@ class BcbSgsLicenseTests(unittest.TestCase):
                 "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
             }],
         }]
-        result = verify_series(432, search_with(datasets))
+        result = verify_series(432, search_with(datasets), show_fn=None)
         self.assertFalse(result["authorized"])
 
     def test_license_without_exact_series_resource_is_blocked(self):
@@ -48,7 +65,7 @@ class BcbSgsLicenseTests(unittest.TestCase):
                 "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados?formato=json",
             }],
         }]
-        result = verify_series(432, search_with(datasets))
+        result = verify_series(432, search_with(datasets), show_fn=None)
         self.assertFalse(result["authorized"])
 
     def test_catalog_failure_is_blocked(self):
