@@ -9,7 +9,7 @@
 | **Fase** | Atualização operacional e governança documental |
 | **Estado** | EM_CURSO |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | bd478386165a49524707159ce46bd24e575de38335516e823603280ecf71a0ca |
+| **SHA-256 (conteúdo canónico)** | d5a796f99a9f227d078288415757e024bbab6ae853b172037f3faad75acb0225 |
 | **Commit de referência (versão anterior)** | [b372140a1ead563b373e5eace26cb5e923d06642](https://github.com/carlos-andrade/B3/commit/b372140a1ead563b373e5eace26cb5e923d06642) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-14 |
