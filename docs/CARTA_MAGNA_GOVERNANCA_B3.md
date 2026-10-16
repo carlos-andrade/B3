@@ -8,11 +8,11 @@
 | **Tipo documental** | CARTA_MAGNA |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.3.0 |
-| **SHA-256 (conteúdo canónico)** | cb5966fc4b9714794f307819071a3a150344253e3759dcd079d9158907637ad4|
+| **Versão** | 1.3.1 |
+| **SHA-256 (conteúdo canónico)** | 5c106f5a378c2842020ae1402c6bb0bab04232ce84a7ef783fe5b4e99f2ba94b |
 | **Commit de referência (versão anterior)** | [32b87934d4c7ede73c3699af1c9353d7ecb78e27](https://github.com/carlos-andrade/B3/commit/32b87934d4c7ede73c3699af1c9353d7ecb78e27) |
 | **Data de criação** | 2026-10-01 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -334,3 +334,23 @@ Esta regra é contribuição normativa. O documento executável continua sendo:
 `docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
 Nenhuma implementação deve nascer diretamente desta Carta.
+
+
+## Aditivo normativo — política de custo zero e uso legítimo das fontes — 2026-10-16
+
+### Decisão do projeto
+
+O projeto B3 utilizará exclusivamente fontes de dados, ferramentas, serviços, infraestrutura e mecanismos de distribuição que estejam disponíveis sem custo financeiro para o projeto. Não contratar assinaturas, feeds pagos, planos comerciais, serviços cloud pagos, licenças pagas ou contratos que imponham custos.
+
+### Limites obrigatórios
+
+1. **Custo zero não significa ausência de licença ou autorização.** Cada fonte continua sujeita à licença, aos termos de uso, às condições de acesso, à atribuição, à proteção de dados e às restrições de redistribuição aplicáveis.
+2. Utilizar apenas dados gratuitos cuja recolha, armazenamento, transformação e uso pretendido sejam permitidos pelos termos publicados ou por licença aberta aplicável.
+3. A mera acessibilidade pública, a existência de um URL, ou o facto de um ficheiro poder ser descarregado não comprovam autorização para recolha automatizada, armazenamento permanente, publicação no GitHub, redistribuição ou uso comercial.
+4. Não pagar para obter autorização. Se a única via disponível exigir pagamento, contrato comercial ou subscrição, excluir essa fonte/funcionalidade do âmbito e procurar alternativa gratuita com direitos de uso compatíveis.
+5. Quando os termos forem ambíguos, a fonte fica bloqueada para a operação ambígua (FAIL_CLOSED) até ser encontrada uma alternativa gratuita com condições claras. Não presumir permissão nem contornar controlos.
+6. Registar fonte, URL, data de verificação, licença/termos, usos permitidos, atribuição exigida, limites de retenção/redistribuição e decisão. Revalidar quando os termos ou o endpoint mudarem.
+7. Priorizar dados oficiais abertos, APIs públicas documentadas, conjuntos de dados com licença aberta compatível e ferramentas gratuitas de código aberto. Se uma licença aberta exigir atribuição, partilha pela mesma licença ou outras condições, cumpri-las.
+8. Quando não existir fonte gratuita legalmente utilizável para determinado campo ou granularidade, declarar a lacuna e reduzir o escopo analítico. Não fabricar, inferir como facto ou substituir silenciosamente os dados ausentes.
+
+Esta decisão define uma restrição económica do projeto; não dispensa o cumprimento da lei, de licenças gratuitas, de termos de serviço nem de autorizações que sejam efetivamente necessárias para um uso específico.
