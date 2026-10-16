@@ -39,7 +39,7 @@
 - RAW da API — Ata 281: CAPTURADO; `dados/calendario_economico/copom/raw/atas_detalhes_281.json`; SHA-256 `fa402b27a6424c01d96fccce81f58347cc35dcb390e23d1fa31f2207792eba98`; 19.791 bytes
 - RAW da API — Comunicado 281: CAPTURADO; `dados/calendario_economico/copom/raw/comunicados_detalhes_281.json`; SHA-256 `c32e5fccaba8d550544472f72f03222eb880fbb543674f77eb89d565d4dc9b66`; 6.503 bytes
 - Listas oficiais de Atas/Comunicados: CAPTURADAS com sidecars SHA-256; ver `dados/calendario_economico/copom/raw/*.meta.json`
-- PDF binário original da Ata: PENDENTE — a resposta JSON/API não é o PDF binário
+- PDF binário original da Ata: CAPTURADO em `dados/calendario_economico/copom/raw/ata_281.pdf`; SHA-256 `f03423dc25625aa14ae29c10fdacf7b4665b6714ab0667c0dc86a6f77c43665c`; 401.502 bytes; assinatura `%PDF-` validada; metadados em `ata_281.pdf.meta.json`
 
 ## Votantes
 
