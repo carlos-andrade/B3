@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/b3-monitor-execucoes-v1.yml"
+      - "docs/PLANO_MESTRE_DE_EXECUCAO.md"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
