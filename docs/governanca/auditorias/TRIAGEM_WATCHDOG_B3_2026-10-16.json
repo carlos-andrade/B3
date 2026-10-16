@@ -54,15 +54,16 @@
         "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
         "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
         "https://github.com/carlos-andrade/B3/actions/runs/38883878143",
-        "https://github.com/carlos-andrade/B3/actions/runs/38969940913"
+        "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
+        "https://github.com/carlos-andrade/B3/actions/runs/38970380649"
       ],
       "observed_signatures": [
-        "Runs anteriores: primeira data observada 2026-01-07, manifestos indicavam 2026-01-02",
-        "Run posterior com materialização Git LFS: primeira data observada 2026-01-02, igual aos manifestos",
-        "O identificador SHA LFS consultado é o mesmo; a divergência de logs requer reprodução controlada"
+        "Runs anteriores registaram primeira data 2026-01-07, manifestos indicavam 2026-01-02",
+        "M3-1C atual reprocessou RAW para NORMALIZED e confirmou hash/tamanho idênticos e primeira data 2026-01-02",
+        "O identificador SHA LFS é o mesmo; o resultado histórico discrepante não foi reproduzido no HEAD atual"
       ],
-      "interpretation": "Os logs históricos são contraditórios; não é correto declarar a discrepância como defeito atual confirmado. O dataset permanece BLOQUEADO por autorização de fonte não demonstrada e até reprodução controlada resolver a divergência de evidências.",
-      "status": "NEEDS_REPRODUCTION"
+      "interpretation": "A integridade/reprodutibilidade do NORMALIZED atual foi aprovada pelo M3-1C. A discrepância dos logs antigos permanece sem causa histórica explicada, mas não é um defeito atual reproduzido. O dataset continua bloqueado por autorização de fonte não demonstrada.",
+      "status": "RESOLVED_FOR_CURRENT_HEAD_HISTORICAL_CAUSE_UNKNOWN"
     },
     {
       "class": "EXPECTED_SOURCE_AUTHORIZATION_BLOCK",
@@ -121,6 +122,7 @@
       "evidence_runs": [
         "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
         "https://github.com/carlos-andrade/B3/commit/7a6c62d03793cc0c812f61ba1e38eaba309ccd3d",
+        "https://github.com/carlos-andrade/B3/actions/runs/38970391616",
         "https://github.com/carlos-andrade/B3/actions/runs/38970391616"
       ],
       "observed_signatures": [
@@ -155,6 +157,18 @@
         "Execução do orquestrador e auditoria estática passaram após a alteração"
       ],
       "status": "FIX_VALIDATED_FOR_BCB_WORKFLOWS"
+    },
+    {
+      "class": "COTAHIST_2026_M3_1C_REPRODUCIBILITY",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38970380649"
+      ],
+      "observed_signatures": [
+        "M3-1C passou em todas as etapas, incluindo SHA e manifesto, validação semântica, reprodução RAW -> NORMALIZED e contagem/datas",
+        "NORMALIZED: 3.142.910 linhas; primeira data 2026-01-02; última data 2026-10-13; SHA e tamanho reproduzidos"
+      ],
+      "status": "PASS_CURRENT_HEAD"
     }
   ],
   "triage_limitations": [
@@ -163,10 +177,10 @@
     "The 144 workflow audit observations remain review items, not 144 runtime failures."
   ],
   "next_actions": [
-    "Aguardar e verificar o resultado da validação de integridade M3-1C e dos gates M3-1D/M3-1E após o bloqueio dos manifestos.",
-    "Reproduzir controladamente a divergência histórica de primeira data sem alterar RAW, NORMALIZED ou hashes.",
-    "Manter o dataset 2026 bloqueado enquanto os direitos de uso/publicação não forem demonstrados.",
-    "Estender a correção de persistência concorrente às restantes famílias de workflows que escrevem no branch principal; o alinhamento BCB foi validado, mas não resolve ainda os escritores COTAHIST independentes.",
+    "Confirmar o resultado terminal do dataset oficial V2 após a atualização dos manifestos e manter a promoção bloqueada por licenciamento.",
+    "Manter o gate M3-1E fail-closed; a validação demonstrou que status BLOQUEADO é rejeitado.",
+    "Manter o registo histórico da discrepância de logs; não a tratar como defeito atual sem nova reprodução.",
+    "Estender a correção de persistência concorrente às famílias de workflows que escrevem no branch principal; o alinhamento BCB foi validado, mas não resolve escritores COTAHIST independentes.",
     "Continuar a classificação das falhas restantes por logs e evidências; não reexecutar workflows históricos em massa.",
     "Manter issues 12 e 13 abertas até critérios de aceitação aprovados."
   ],
