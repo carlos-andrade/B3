@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; 281_PENDENCIAS_ORIGINAIS_FECHADAS; 17_DOCUMENTOS_REVALIDADOS; QUATRO_RELATORIOS_FECHADOS; PENDENCIAS_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.3.0 |
-| **SHA-256 (conteúdo canónico)** | 514e6c133dee447c06bc51faf830dffd5832c9c0d32baa09defcb8481f7cbe01 |
+| **SHA-256 (conteúdo canónico)** | c897d908699e6de65bb7e2797d842b5dd3789c754c21b93855f33fd71afda30d |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
@@ -24,7 +24,7 @@
 
 ## 1. Estado e limite de evidência
 
-O snapshot da árvore Git continha **303 ficheiros Markdown** antes da criação desta matriz. Esta tabela é um inventário integral de controlo, mas **não afirma que todos os documentos já foram lidos e aprovados semanticamente**. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A; o Lote 22 reviu nove documentos de incidentes e armazenamento NORMALIZED; o Lote 23 reviu dez documentos de catálogo de fontes, parser e contratos NORMALIZED; o Lote 24 reviu dez documentos intraday/SPRD/negócio a negócio; o Lote 25 reviu 15 documentos de Copom, IBGE e calendário económico; o Lote 26 reviu 17 documentos de microestrutura, auditoria histórica e reconciliação. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
+O snapshot de referência continha **303 ficheiros Markdown** antes da criação desta matriz. A fila de 281 documentos originalmente pendentes foi revista nos Lotes 05–26; os 17 documentos previamente revistos foram revalidados após GOV-DIV-001; os Lotes 01–04 foram reconciliados por adendos posteriores e preservados como snapshots históricos. A matriz mantém o estado individual e os limites de evidência por ficheiro. A classificação documental está fechada para o inventário registado, mas isso não equivale a aprovação formal, certificação de dados ou execução de todos os gates operacionais. A classificação por diretório é apenas uma classe de triagem. O Lote 05 reviu 12 documentos WATCHDOG/Wiki, o Lote 06 reviu 15 documentos de governança/auditorias de workflows e o Lote 07 reviu nove relatórios de normalização/auditoria e o Lote 08 reviu dez documentos de governança de dados, frescor e fronteira de projetos; o Lote 09 reviu 16 documentos de produtos, mercados e economia; o Lote 10 reviu 14 documentos de licenciamento, tarifas e go-to-market; o Lote 11 reviu 15 documentos de catálogo e classificação estrutural de ativos; o Lote 12 reviu 14 README de classes de ativos e o Lote 13 reviu oito documentos de entrada, Wiki, dashboard e roadmap; o Lote 14 reviu 15 documentos de fontes, calendário e microestrutura; o Lote 15 reviu 15 documentos de arquitetura e evidências históricas COTAHIST; o Lote 16 reviu 11 documentos de certificação, orquestração e roadmaps COTAHIST; o Lote 17 reviu dez documentos de certificação estrutural, atualidade e promoção COTAHIST; o Lote 18 reviu 11 documentos de identidade histórica COTAHIST 1986; o Lote 19 reviu 15 documentos de calendário histórico e colisão K4; o Lote 20 reviu 15 documentos de arqueologia BDI e investigação Tipo/Prazo/Cxx; o Lote 21 reviu 15 documentos de FASE09 e FASE10A; o Lote 22 reviu nove documentos de incidentes e armazenamento NORMALIZED; o Lote 23 reviu dez documentos de catálogo de fontes, parser e contratos NORMALIZED; o Lote 24 reviu dez documentos intraday/SPRD/negócio a negócio; o Lote 25 reviu 15 documentos de Copom, IBGE e calendário económico; o Lote 26 reviu 17 documentos de microestrutura, auditoria histórica e reconciliação. Revisão documental não encerra ações operacionais nem certifica os dados. O estado só pode ser promovido após inspeção do conteúdo, identificação de autoridade, comparação com dependências e registo de evidência.
 
 - Revisão semântica estrutural/criptográfica e revisão semântica de conteúdo são gates diferentes.
 - Os Lotes 01–05 incluem revisões por lote; os Lotes 01–04 anteriores continuam amostrais; documentos previamente inspecionados devem ser revalidados quando a decisão GOV-DIV-001 altera a hierarquia.
@@ -374,13 +374,17 @@ O fecho acima encerra as pendências de **revisão e reconciliação documental*
 
 ## 4. Gate de fecho integral
 
-A revisão da fila original de 281 pendências está concluída. O fecho global dos 303 documentos só poderá ser marcado CONCLUÍDO quando:
-- todos os documentos elegíveis tiverem estado final explícito;
-- todos os conflitos tiverem decisão versionada ou bloqueio formal;
-- documentos históricos/gerados/formatos de máquina estiverem classificados e tratados segundo o contrato aplicável;
-- referências de autoridade e links internos críticos tiverem sido verificados;
-- o relatório de reconciliação listar exceções remanescentes, sem as ocultar;
-- auditoria canónica posterior confirmar integridade documental.
+**Fecho documental:** a revisão semântica dos documentos do inventário foi encerrada quanto à classificação e reconciliação documental, com base nos Lotes 05–26, na revalidação dos 17 documentos prioritários e nos adendos dos Lotes 01–04. Os quatro relatórios históricos não foram reescritos retroativamente.
+
+**Condições que permanecem fora do fecho documental e bloqueiam apenas os gates aplicáveis:**
+- evidência formal de adoção/publicação NORMALIZED V2.0 e gate M3;
+- migração Git LFS COTAHIST A1987, sujeita ao preflight do runbook;
+- captura RAW e reconciliação de fontes externas onde ainda pendentes;
+- validação de termos/licenças e autorização dos endpoints;
+- prova de execução real da rotina diária e gates WATCHDOG;
+- auditoria SHA-256 pós-commit desta atualização, incluindo confirmação dos hashes dos quatro relatórios e desta matriz.
+
+Estas exceções devem permanecer explícitas; não podem ser convertidas em concluídas sem evidência independente.
 
 ## 5. Restrições permanentes
 
