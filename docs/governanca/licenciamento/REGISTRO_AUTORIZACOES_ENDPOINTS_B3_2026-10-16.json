@@ -143,6 +143,39 @@
       ],
       "decision": "Preservar para consulta interna com proveniência; confirmar escopo de licença do anexo antes de redistribuição ou uso comercial.",
       "review_required": true
+    },
+    {
+      "id": "BCB_SGS_API",
+      "provider": "Banco Central do Brasil",
+      "endpoint": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados",
+      "discovery": "API oficial BCData/SGS; cada série deve ser localizada no Portal de Dados Abertos do BCB e ter licença ODbL verificada antes da captura.",
+      "authorization_status": "AUTHORIZED_WITH_CONDITIONS",
+      "automated_collection": "PUBLIC_OPEN_DATA_CATALOG_PER_SERIES_PREFLIGHT",
+      "storage_and_redistribution": "ODbL_CONDITIONS_APPLY_PER_DATASET",
+      "evidence": [
+        {
+          "type": "official_open_data_license",
+          "url": "https://www.bcb.gov.br/acessoinformacao/dadosabertos",
+          "finding": "O BCB declara que os conjuntos de dados abertos são disponibilizados sob licença aberta que permite utilização, consumo ou cruzamento; a elegibilidade operacional é validada por série no catálogo.",
+          "license_name": "Open Data Commons Open Database License (ODbL)",
+          "scope": "Somente códigos SGS cujo recurso exato seja encontrado no catálogo oficial com license_id=odc-odbl; verificação automática obrigatória antes de qualquer chamada à API."
+        },
+        {
+          "type": "official_dataset_license",
+          "url": "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+          "finding": "O catálogo oficial declara ODbL para a série SGS 432 e descreve limites de consulta por período de até dez anos.",
+          "license_name": "Open Data Commons Open Database License (ODbL)",
+          "scope": "Evidência ilustrativa específica da série 432; não substitui a verificação individual dos demais códigos."
+        }
+      ],
+      "conditions": [
+        "O preflight scripts/governanca/validar_licenca_bcb_sgs.py deve confirmar licença ODbL e recurso exato para cada código.",
+        "Se o catálogo não demonstrar licença para qualquer série, bloquear toda a execução antes de iniciar capturas.",
+        "Cumprir atribuição, termos ODbL e limites de consulta publicados.",
+        "Não interpretar a licença das séries SGS como licença automática para PDFs Copom ou dados B3."
+      ],
+      "decision": "Permitir apenas séries com recurso exato e licença ODbL confirmados dinamicamente pelo preflight; falhar fechado em ausência de correspondência.",
+      "review_required": true
     }
   ],
   "approval_requirements": [
