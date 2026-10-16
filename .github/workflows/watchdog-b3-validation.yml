@@ -82,7 +82,9 @@ jobs:
           bdi_workflow = bdi_workflow_path.read_text(encoding="utf-8")
           assert "candidate_dates" in bdi_script and "BDI_ALREADY_CURRENT=true" in bdi_script, "Seleção automática/idempotência BDI ausente"
           assert "não sobrescrever sem reconciliação explícita" in bdi_script, "Proteção contra divergência BDI ausente"
-          assert "0 11 * * 1-5" in bdi_workflow and "default: \"auto\"" in bdi_workflow, "Agenda ou data automática BDI ausente"
+          assert 'default: "auto"' in bdi_workflow, "Entrada de data automática BDI ausente"
+          assert "needs.authorization_gate.outputs.authorized == 'true'" in bdi_workflow, "Gate de licença BDI não protege a captura"
+          assert "schedule:" not in bdi_workflow, "Captura BDI não deve ter agenda automática enquanto a licença permanecer bloqueada"
           freshness_workflow_path = root / ".github/workflows/watchdog-data-freshness.yml"
           assert freshness_workflow_path.is_file(), "Workflow de atualidade ausente"
           freshness_workflow = freshness_workflow_path.read_text(encoding="utf-8")
