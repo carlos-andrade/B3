@@ -128,3 +128,16 @@ A pendência só passa a **CONCLUÍDA** quando:
 - **Não afirmado:** que exista contrato ou autorização B3 que não esteja representado por evidência verificável.
 
 Este registo é um controlo operacional e não substitui aconselhamento jurídico nem o contrato emitido pelo fornecedor dos dados.
+
+## 8. Evidência de execução dos gates — 16/10/2026
+
+| Controlo | Execução | Resultado comprovado |
+|---|---|---|
+| Pesquisa por Pregão | [run 38893246712](https://github.com/carlos-andrade/B3/actions/runs/38893246712) | Workflow de conformidade concluído; nenhuma chamada HTTP executada |
+| COTAHIST diário | [run 38893951941](https://github.com/carlos-andrade/B3/actions/runs/38893951941) | Testes do gate passaram; autorização REVIEW_REQUIRED; job de importação foi **SKIPPED** |
+| BDI API | [run 38893952039](https://github.com/carlos-andrade/B3/actions/runs/38893952039) | Testes do gate passaram; captura foi **SKIPPED** |
+| BCB Copom JSON | [run 38893951985](https://github.com/carlos-andrade/B3/actions/runs/38893951985) | Cinco testes passaram; captura JSON e validação NORMALIZED concluídas |
+| PDF externo da Ata | Incluído na [run 38893951985](https://github.com/carlos-andrade/B3/actions/runs/38893951985) | O gate devolveu authorized=false; log confirmou PDF_ATTACHMENT_SKIPPED_LICENSE_SCOPE_UNCONFIRMED |
+| Auditoria documental anterior à última atualização deste registo | [run 38893920324](https://github.com/carlos-andrade/B3/actions/runs/38893920324) | 332 documentos conformes, zero pendentes e zero divergentes no commit auditado; a alteração desta secção requer auditoria final subsequente |
+
+Os jobs COTAHIST e BDI terminarem com sucesso significa que o controlo de autorização foi aplicado corretamente; **não** significa que a recolha de dados foi executada. O resultado de captura para esses dois endpoints é deliberadamente bloqueado.
