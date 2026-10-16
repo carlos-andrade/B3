@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | CLASSIFICACAO_DOCUMENTAL_DO_INVENTARIO_CONCLUIDA; AMOSTRA_HISTORICA_PRESERVADA; GATES_OPERACIONAIS_SEPARADOS |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 11427467ed3b941bb0518f470f001e5d412165ecff3d7420baa987d48563830c |
+| **SHA-256 (conteúdo canónico)** | 5ce4f3790765d6da4b580c1811cfdf0d1fc57ec3aae2aa574c02390238d6341a |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
