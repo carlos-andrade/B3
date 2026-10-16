@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "source": "Portal de Dados Abertos do Banco Central do Brasil",
+  "catalog_api": "https://dadosabertos.bcb.gov.br/api/3/action/package_search",
+  "license_required": "odc-odbl",
+  "policy": "FAIL_CLOSED",
+  "checked_at_utc": "2026-10-16T13:19:36.108027+00:00",
+  "series_count": 5,
+  "eligible_count": 2,
+  "blocked_count": 3,
+  "results": [
+    {
+      "series_code": 1,
+      "authorized": false,
+      "license": null,
+      "matches": [],
+      "errors": [
+        "serie-sgs-1: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "dolar americano venda: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      ],
+      "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
+    },
+    {
+      "series_code": 11,
+      "authorized": true,
+      "license": "ODbL",
+      "matches": [
+        {
+          "dataset_name": "11-taxa-de-juros---selic",
+          "dataset_title": "Taxa de juros - Selic",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/11-taxa-de-juros---selic",
+          "resources": [
+            {
+              "name": "json_serie-sgs-11",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "csv_serie-sgs-11",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=csv&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "wsdl_serie-sgs-11",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            },
+            {
+              "name": "html_serie-sgs-11",
+              "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=11"
+            }
+          ]
+        }
+      ],
+      "errors": [
+        "serie-sgs-11: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "taxa de juros selic: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      ],
+      "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
+    },
+    {
+      "series_code": 12,
+      "authorized": false,
+      "license": null,
+      "matches": [],
+      "errors": [
+        "serie-sgs-12: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      ],
+      "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
+    },
+    {
+      "series_code": 432,
+      "authorized": true,
+      "license": "ODbL",
+      "matches": [
+        {
+          "dataset_name": "432-taxa-de-juros---meta-selic-definida-pelo-copom",
+          "dataset_title": "Taxa de juros - Meta Selic definida pelo Copom",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+          "resources": [
+            {
+              "name": "json_serie-sgs-432",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "csv_serie-sgs-432",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=csv&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "wsdl_serie-sgs-432",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            }
+          ]
+        }
+      ],
+      "errors": [
+        "meta selic definida pelo copom: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      ],
+      "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
+    },
+    {
+      "series_code": 433,
+      "authorized": false,
+      "license": null,
+      "matches": [],
+      "errors": [
+        "433: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "IPCA: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      ],
+      "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
+    }
+  ]
+}
