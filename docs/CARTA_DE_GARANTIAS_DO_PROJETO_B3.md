@@ -8,11 +8,11 @@
 | **Tipo documental** | CARTA_GARANTIAS |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.2.0 |
-| **SHA-256 (conteúdo canónico)** | 6fee08d67e3d0af58b726847c2c57734e00853689847e791823f2950e16849a2|
+| **Versão** | 1.2.1 |
+| **SHA-256 (conteúdo canónico)** | 53cbbf4c21bf2b89978a12ceab292b7ed69fec2083341c2e6854cb7beaf29783 |
 | **Commit de referência (versão anterior)** | [f8379d4dfd9f56cb5a9db4931fcee205f2807a60](https://github.com/carlos-andrade/B3/commit/f8379d4dfd9f56cb5a9db4931fcee205f2807a60) |
 | **Data de criação** | 2026-10-01 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -311,3 +311,13 @@ A ausência de observabilidade, isoladamente, não deve ser confundida com corru
 
 **Fluxo:** auditoria → evidência → classificação → correção na origem → nova validação.
 
+
+## Aditivo — garantia de custo zero e conformidade de uso — 2026-10-16
+
+O projeto não pode introduzir custos financeiros: fontes de dados, APIs, ferramentas, armazenamento, execução automatizada e distribuição devem permanecer em opções gratuitas.
+
+Esta garantia não autoriza uso irrestrito de recursos gratuitos. Antes de cada integração, verificar e documentar licença, termos de uso, limites de frequência, atribuição, retenção, automação e redistribuição. A ausência de preço não equivale a autorização de uso.
+
+Se uma fonte ou função exigir pagamento, subscrição ou contrato comercial, não a contratar nem contornar o bloqueio: procurar alternativa gratuita com direitos compatíveis ou registar a capacidade como indisponível. Em caso de ambiguidade jurídica ou técnica, manter a operação afetada bloqueada (FAIL_CLOSED) e não publicar nem promover dados cuja utilização não esteja fundamentada.
+
+Auditorias e workflows devem distinguir explicitamente: (a) custo financeiro zero; (b) licença/termos verificados; (c) uso concreto autorizado; (d) limites de automação e redistribuição. A aprovação de um desses pontos não prova automaticamente os restantes.
