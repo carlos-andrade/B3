@@ -112,9 +112,21 @@ jobs:
           git add dados/cotahist/quality/COTAHIST_2013_FASE00_GOVERNANCA_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar governanca fase 00 2013"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          pushed=false
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              pushed=true
+              echo "PERSISTENCIA_MAIN=OK tentativa=${attempt}"
+              break
+            fi
+            git rebase --abort || true
+            sleep "$((attempt * 2 + GITHUB_RUN_NUMBER % 3))"
+          done
+          if [ "$pushed" != "true" ]; then
+            echo "PERSISTENCIA_MAIN=FALHA apos 5 tentativas" >&2
+            exit 1
+          fi
 
       - name: Resumo
         if: always()
