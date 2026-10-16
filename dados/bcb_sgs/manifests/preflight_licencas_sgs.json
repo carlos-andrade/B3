@@ -4,21 +4,113 @@
   "catalog_api": "https://dadosabertos.bcb.gov.br/api/3/action/package_search",
   "license_required": "odc-odbl",
   "policy": "FAIL_CLOSED",
-  "checked_at_utc": "2026-10-16T13:19:36.108027+00:00",
+  "checked_at_utc": "2026-10-16T13:24:20.058084+00:00",
   "series_count": 5,
-  "eligible_count": 2,
-  "blocked_count": 3,
+  "eligible_count": 3,
+  "blocked_count": 2,
   "results": [
     {
       "series_code": 1,
-      "authorized": false,
-      "license": null,
-      "matches": [],
-      "errors": [
-        "serie-sgs-1: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
-        "dolar americano venda: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+      "authorized": true,
+      "license": "ODbL",
+      "matches": [
+        {
+          "dataset_name": "1-taxa-de-cambio---livre---dolar-americano-venda---diario",
+          "dataset_title": "Taxa de câmbio - Livre - Dólar americano (venda) - diário",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/1-taxa-de-cambio---livre---dolar-americano-venda---diario",
+          "resources": [
+            {
+              "name": "json_serie-sgs-1",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados?formato=json&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "csv_serie-sgs-1",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados?formato=csv&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "wsdl_serie-sgs-1",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            },
+            {
+              "name": "html_serie-sgs-1",
+              "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=1"
+            }
+          ]
+        },
+        {
+          "dataset_name": "1839-sgs",
+          "dataset_title": "Meios de pagamento amplos - Operações compromissadas/Selic (saldo em final de período)",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/1839-sgs",
+          "resources": [
+            {
+              "name": "json_serie-sgs-1839",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1839/dados?formato=json"
+            },
+            {
+              "name": "csv_serie-sgs-1839",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1839/dados?formato=csv"
+            },
+            {
+              "name": "wsdl_serie-sgs-1839",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            }
+          ]
+        },
+        {
+          "dataset_name": "1835-sgs",
+          "dataset_title": "Meios de pagamento amplos - Depósito de Poupança (saldo em final de período)",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/1835-sgs",
+          "resources": [
+            {
+              "name": "json_serie-sgs-1835",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1835/dados?formato=json"
+            },
+            {
+              "name": "csv_serie-sgs-1835",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1835/dados?formato=csv"
+            },
+            {
+              "name": "wsdl_serie-sgs-1835",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            }
+          ]
+        },
+        {
+          "dataset_name": "10813-taxa-de-cambio---livre---dolar-americano-compra",
+          "dataset_title": "Taxa de câmbio - Livre - Dólar americano (compra)",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/10813-taxa-de-cambio---livre---dolar-americano-compra",
+          "resources": [
+            {
+              "name": "json_serie-sgs-10813",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados?formato=json&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "csv_serie-sgs-10813",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados?formato=csv&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "wsdl_serie-sgs-10813",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            },
+            {
+              "name": "html_serie-sgs-10813",
+              "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=10813"
+            }
+          ]
+        }
       ],
-      "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
+      "errors": [
+        "package_show 1-taxa-de-cambio---livre---dolar-americano-venda---diario: HTTPError: HTTP Error 403: Forbidden"
+      ],
+      "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
     },
     {
       "series_code": 11,
@@ -49,11 +141,35 @@
               "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=11"
             }
           ]
+        },
+        {
+          "dataset_name": "1178-taxa-de-juros---selic-anualizada-base-252",
+          "dataset_title": "Taxa de juros - Selic anualizada base 252",
+          "license_id": "odc-odbl",
+          "license_title": "Open Data Commons Open Database License (ODbL)",
+          "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/1178-taxa-de-juros---selic-anualizada-base-252",
+          "resources": [
+            {
+              "name": "json_serie-sgs-1178",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1178/dados?formato=json&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "csv_serie-sgs-1178",
+              "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1178/dados?formato=csv&dataInicial=01/01/2023&dataFinal=31/12/2023"
+            },
+            {
+              "name": "wsdl_serie-sgs-1178",
+              "url": "https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl"
+            },
+            {
+              "name": "html_serie-sgs-1178",
+              "url": "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=1178"
+            }
+          ]
         }
       ],
       "errors": [
-        "serie-sgs-11: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
-        "taxa de juros selic: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        "package_show 11-taxa-de-juros---selic: HTTPError: HTTP Error 403: Forbidden"
       ],
       "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
     },
@@ -63,7 +179,8 @@
       "license": null,
       "matches": [],
       "errors": [
-        "serie-sgs-12: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        "serie-sgs-12: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+        "CDI: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
       ],
       "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
     },
@@ -95,6 +212,7 @@
         }
       ],
       "errors": [
+        "package_show 432-taxa-de-juros---meta-selic-definida-pelo-copom: HTTPError: HTTP Error 403: Forbidden",
         "meta selic definida pelo copom: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
       ],
       "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
@@ -104,10 +222,7 @@
       "authorized": false,
       "license": null,
       "matches": [],
-      "errors": [
-        "433: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
-        "IPCA: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
-      ],
+      "errors": [],
       "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
     }
   ]
