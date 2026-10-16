@@ -16,15 +16,18 @@
   "datas_fora_do_ano": 0,
   "bloqueios": [
     {
-      "codigo": "DATA_FIRST_DATE_MISMATCH",
-      "status": "OPEN",
+      "codigo": "HISTORICAL_VALIDATION_OUTPUT_CONFLICT",
+      "status": "NEEDS_REPRODUCTION",
       "expected_manifest_date": "2026-01-02",
-      "observed_csv_date": "2026-01-07",
-      "evidence_runs": [
+      "observed_in_earlier_runs": "2026-01-07",
+      "latest_observed_date": "2026-01-02",
+      "latest_evidence_run": "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
+      "earlier_evidence_runs": [
         "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
         "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
         "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
-      ]
+      ],
+      "reason": "Os logs de runs anteriores e de uma execução posterior com o mesmo identificador SHA LFS reportam primeiras datas diferentes. A discrepância não pode ser considerada defeito atual confirmado até reprodução controlada."
     },
     {
       "codigo": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED",
@@ -34,5 +37,5 @@
     }
   ],
   "status_decision_utc": "2026-10-16T21:00:00Z",
-  "status_decision_reason": "Retirar o estado VALIDADO até reconciliar a divergência de cobertura e demonstrar autorização compatível para a utilização/publicação pretendida. RAW e NORMALIZED existentes são preservados; nenhum dado foi inventado ou alterado."
+  "status_decision_reason": "Manter BLOQUEADO porque a autorização compatível da fonte para a utilização/publicação pretendida não está demonstrada e porque existe conflito histórico entre resultados de validação que exige reprodução controlada. RAW, NORMALIZED e sidecar SHA-256 foram preservados."
 }
