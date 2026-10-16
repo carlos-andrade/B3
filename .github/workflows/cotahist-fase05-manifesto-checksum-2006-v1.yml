@@ -3,7 +3,7 @@ name: COTAHIST 2006 - FASE05 Manifesto e Checksum
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [feat/cotahist-2006-offline-recovery]
     paths:
       - "dados/cotahist/quality/COTAHIST_2006_FASE04_NORMALIZACAO_V1.json"
 
@@ -147,9 +147,9 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar fase 05 manifesto checksum 2006"
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin feat/cotahist-2006-offline-recovery
+            git rebase origin/feat/cotahist-2006-offline-recovery
+            if git push origin HEAD:feat/cotahist-2006-offline-recovery; then exit 0; fi
             echo "Push concorrente; nova tentativa ${attempt}/5."
             sleep $((attempt * 2))
           done
