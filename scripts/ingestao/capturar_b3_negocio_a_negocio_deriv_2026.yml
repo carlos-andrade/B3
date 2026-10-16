@@ -16,6 +16,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Gate fail-closed: endpoint descoberto por terceiros, sem autorização oficial demonstrada.
+          python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_DRP_RAPINEGOCIOS
           mkdir -p out
           for d in 2026-09-16 2026-09-17; do
             compact=$(echo "$d" | tr -d '-')
