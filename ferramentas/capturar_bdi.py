@@ -13,6 +13,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -81,6 +82,8 @@ def main() -> None:
     ap.add_argument("--date", required=True, help="YYYY-MM-DD ou auto")
     ap.add_argument("--page", type=int, default=1)
     args = ap.parse_args()
+    # Gate fail-closed: sem autorização documentada, não efetuar pedidos HTTP.
+    subprocess.run(["python", "scripts/governanca/validar_autorizacao_endpoint.py", "--endpoint-id", "B3_BDI_TABLE_API"], cwd=ROOT, check=True)
     if args.page < 1:
         raise ValueError("--page deve ser >= 1.")
 
