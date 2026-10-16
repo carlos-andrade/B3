@@ -7,7 +7,7 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_REVALIDACAO_SEMANTICA |
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
-| **Estado** | REVALIDACAO_DOS_17_PRIORITARIOS_CONCLUIDA; ACOES_OPERACIONAIS_SEPARADAS; AUDITORIA_SHA256_PENDENTE |
+| **Estado** | REVALIDACAO_DOS_17_PRIORITARIOS_CONCLUIDA; AUDITORIA_SHA256_APROVADA; ACOES_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.1.0 |
 | **SHA-256 (conteúdo canónico)** | 8c1f15d385ffa9cf0f6b3a52f12cafa5671b06a0de7567b313e445e7f5973b20|
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
@@ -79,7 +79,7 @@ A lista abaixo regista o conjunto revalidado pós-decisão e está sincronizada 
 
 ## 4. Limites e ações ainda abertas
 
-- [ ] Confirmar auditoria SHA-256 pós-alterações documentais, incluindo Layout v1.2.0 e matriz v1.2.0.
+- [x] Confirmar auditoria SHA-256 pós-alterações documentais: run [38881634574](https://github.com/carlos-andrade/B3/actions/runs/38881634574), 330 ficheiros analisados, 316 `CONFORME`, 14 `PENDENTE`, zero `DIVERGENTE` e zero `FORMATO_HASH_INVALIDO`.
 - [x] Revalidar os 17 documentos prioritários por domínio de autoridade, cadeia normativa, referências, estados/versões e limites entre política, contrato, implementação e evidência; resultado registado na matriz v1.2.0.
 - [ ] Comprovar adoção do Dataset Oficial V1.0 ou NORMALIZED V2.0 por artefactos, manifestos e workflows em execução; não inferir adoção apenas pela existência de documentos.
 - [ ] Confirmar por evidência o estado de adoção do contrato NORMALIZED V2.0.
