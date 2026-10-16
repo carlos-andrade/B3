@@ -22,7 +22,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  authorization_gate:
+    runs-on: ubuntu-latest
+    outputs:
+      authorized: ${{ steps.gate.outputs.authorized }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verificar autorização de uso do endpoint COTAHIST
+        id: gate
+        run: python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_COTAHIST_DAILY --allow-blocked --github-output "$GITHUB_OUTPUT"
+
   import:
+    needs: authorization_gate
+    if: needs.authorization_gate.outputs.authorized == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
