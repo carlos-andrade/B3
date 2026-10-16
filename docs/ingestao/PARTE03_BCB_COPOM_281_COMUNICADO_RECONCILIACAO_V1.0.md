@@ -80,7 +80,7 @@ A informação da decisão pode ser usada em backtests somente a partir do times
 
 **COPOM_COMUNICADO:** NORMALIZED E VALIDADO  
 **BCB_API_JSON_RAW:** CAPTURADO COM SHA-256 E METADADOS  
-**PDF_BINÁRIO_ATA:** PENDENTE — não é equivalente à resposta JSON  
+**PDF_BINÁRIO_ATA:** CAPTURADO — `dados/calendario_economico/copom/raw/ata_281.pdf`; SHA-256 `f03423dc25625aa14ae29c10fdacf7b4665b6714ab0667c0dc86a6f77c43665c`; 401.502 bytes  
 **TIMESTAMP_EXATO_COMUNICADO:** UNKNOWN  
 **B3_INTRADAY_RECONCILIATION:** PENDING_DATASET
 
