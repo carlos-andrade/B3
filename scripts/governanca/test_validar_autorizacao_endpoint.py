@@ -7,6 +7,8 @@ import sys
 import unittest
 from pathlib import Path
 
+from scripts.governanca.validar_autorizacao_endpoint import authorization_decision
+
 ROOT = Path(__file__).resolve().parents[2]
 GATE = ROOT / "scripts/governanca/validar_autorizacao_endpoint.py"
 
@@ -43,6 +45,29 @@ class AuthorizationGateTests(unittest.TestCase):
         result = run_gate("ENDPOINT_NOT_REGISTERED")
         self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
         self.assertFalse(json.loads(result.stdout)["authorized"])
+
+    def test_authorized_status_without_contract_evidence_still_blocks(self):
+        status, allowed, _ = authorization_decision({
+            "id": "FAKE_B3_ENDPOINT",
+            "authorization_status": "AUTHORIZED",
+            "evidence": [{"type": "technical_source", "url": "https://example.invalid"}],
+        })
+        self.assertEqual(status, "AUTHORIZED")
+        self.assertFalse(allowed)
+
+    def test_open_license_requires_explicit_license_and_scope(self):
+        status, allowed, _ = authorization_decision({
+            "id": "FAKE_OPEN_DATA",
+            "authorization_status": "AUTHORIZED_WITH_CONDITIONS",
+            "evidence": [{
+                "type": "official_open_data_license",
+                "url": "https://example.invalid/license",
+                "license_name": "ODbL",
+                "scope": "JSON dataset",
+            }],
+        })
+        self.assertEqual(status, "AUTHORIZED_WITH_CONDITIONS")
+        self.assertTrue(allowed)
 
     def test_capture_scripts_compile_without_network_access(self):
         paths = (
