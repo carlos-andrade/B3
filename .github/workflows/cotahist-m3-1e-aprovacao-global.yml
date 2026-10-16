@@ -102,7 +102,7 @@ jobs:
               r=csv.reader(f); h=next(r); assert len(h)==25
               for row in r:
                   assert len(row)==25
-                  n+=1; first=first or row[0]; last=row[0]
+                  n+=1; first=row[0] if first is None else min(first,row[0]); last=row[0] if last is None else max(last,row[0])
           print(f"ROWS_ACTUAL={n} ROWS_OFFICIAL={o['linhas_normalized']} ROWS_QUALITY={q['linhas_normalized']} FIRST_ACTUAL={first} FIRST_OFFICIAL={o['primeira_data']} FIRST_QUALITY={q['primeira_data']} LAST_ACTUAL={last} LAST_OFFICIAL={o['ultima_data']} LAST_QUALITY={q['ultima_data']}")
           assert n==o["linhas_normalized"]==q["linhas_normalized"]
           assert first==o["primeira_data"]==q["primeira_data"]
