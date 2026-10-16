@@ -64,6 +64,7 @@ jobs:
           sys.path.insert(0, "scripts/ingestao")
           from normalize_cotahist import PARSER_VERSION
           q=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
+          assert q["status"] == "VALIDADO", f"quality status bloqueado: {q.get('status')}"
           o=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
           p=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
           sha=hashlib.sha256(p.read_bytes()).hexdigest()
