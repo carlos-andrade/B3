@@ -7,14 +7,14 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 0a980274c291ad529bd168815bd6b44761962ebaa3c1301cfe7457cd76caca50 |
+| **Estado** | CONCLUIDO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | 68edfa0d097d7f63b95e24bf1e49b55600bd1229fdd15117002ec892e33f946c |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
-| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Aprovador** | Proprietário do repositório — fecho confirmado em 2026-10-16 |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
@@ -132,3 +132,16 @@ Gates pós-migração aprovados:
 - O workflow concluiu todas as etapas pós-migração; nenhuma etapa de validação pós-migração foi ignorada. A persistência não precisou de novo commit porque as evidências geradas já coincidiam com as evidências canónicas existentes.
 
 **Decisão:** fechar a incidência de representação Git LFS A1987. A migração alterou apenas a representação de armazenamento Git/LFS; o conteúdo NORMALIZED, o RAW e os manifestos foram preservados. Não houve reescrita de histórico. A atualização diária de 2026 continua independente deste incidente.
+
+
+## Reconciliação final do estado — 2026-10-16
+
+O estado `CONCLUIDO` do registo de incidente abaixo é confirmado e reconciliado com o runbook. A tabela de cabeçalho inicial que ainda indicava `EM_REVISAO` foi atualizada para evitar conflito de estado.
+
+- **Preflight:** [run 38590349969](https://github.com/carlos-andrade/B3/actions/runs/38590349969) — `success`; validou SHA, tamanho, estrutura e ponteiro staged sem commit/push.
+- **Migração:** [run 38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646) — `success`; commit [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
+- **Árvore Git atual:** blob de 133 bytes, ponteiro LFS com OID `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc` e tamanho do objeto de 15.518.211 bytes.
+- **Integridade:** SHA-256 materializado idêntico; 130.665 registos, 25 campos, datas 1987-01-02–1987-12-30.
+- **Auditoria global:** 41/41 anos validados, zero falhas; Dataset Oficial V2 regenerado com sucesso.
+
+**Conclusão:** incidência encerrada. O aviso histórico ocorreu no checkout anterior à migração; a verificação posterior em checkout limpo confirmou a representação LFS e a preservação dos bytes. Nenhuma nova migração é necessária.
