@@ -7,14 +7,14 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | ROADMAP_MESTRE |
 | **Fase** | Governação documental e rastreabilidade |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | f0af69b7ddf303d04d61563b5f1089f1efdd9e42dc72e5cfa81690f89d0578a2 |
+| **Estado** | APROVADO |
+| **Versão** | 1.1.1 |
+| **SHA-256 (conteúdo canónico)** | 727b6631fffd7b6d9b95249e84b10f9e8d604993de54f57107fb3f929e3a78b0 |
 | **Commit de referência (versão anterior)** | [23df98911bb9bed5d3f6a1a670508fbfde5dc36d](https://github.com/carlos-andrade/B3/commit/23df98911bb9bed5d3f6a1a670508fbfde5dc36d) |
 | **Data de criação** | 2026-10-14 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
-| **Aprovador** | Pendente de validação formal da versão normalizada |
+| **Aprovador** | Proprietário do repositório — aprovação expressa registada em 2026-10-16 |
 | **Origem** | Documento B3 preexistente; corpo histórico preservado |
 | **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
@@ -169,3 +169,27 @@ Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governa
 
 ---
 **Documento de consolidação:** ROADMAP MESTRE COTAHIST 1986–2026, estado 2026-10-14.
+
+
+## 8. Atualização do gate M3 — 2026-10-16
+
+### Estado aprovado
+- **Adoção NORMALIZED V2.0:** APROVADA para os anos individualmente certificados.
+- **COTAHIST 2026:** Dataset Oficial publicado; manifesto com estado `OFICIAL` e gate `M3-1E`.
+- **Armazenamento:** Git LFS, com materialização física e SHA-256 verificados.
+- **Parser:** 1.1.2.
+- **RAW SHA-256:** `580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e`.
+- **NORMALIZED SHA-256:** `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`.
+- **Registos:** 3.142.910; 25 campos; datas de 2026-01-02 a 2026-10-13.
+
+### Evidências de execução
+| Gate | Run | Resultado |
+|---|---:|---|
+| M3-1C — integridade e reprodutibilidade | [38884804282](https://github.com/carlos-andrade/B3/actions/runs/38884804282) | SUCCESS |
+| M3-1D — Dataset Oficial | [38885204516](https://github.com/carlos-andrade/B3/actions/runs/38885204516) | SUCCESS |
+| M3-1E — aprovação global e publicação | [38885204284](https://github.com/carlos-andrade/B3/actions/runs/38885204284) | SUCCESS |
+| Dataset Oficial V2 — catálogo | [38885204334](https://github.com/carlos-andrade/B3/actions/runs/38885204334) | SUCCESS |
+| Auditoria SHA-256 documental | [38885590509](https://github.com/carlos-andrade/B3/actions/runs/38885590509) | SUCCESS |
+
+### Limite que permanece
+A aprovação global do mecanismo e a publicação de 2026 **não certificam automaticamente os anos de 1986–2025**. Cada ano histórico permanece sujeito à sua própria cadeia RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE. A regra fail-closed permanece em vigor.
