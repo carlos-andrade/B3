@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 1494a9cb66cc2dac0777f10845299700e9cf534fb3300b8797d339d542ff8bfa |
-| **Commit de referência (versão anterior)** | [d0fc12a12af3f1a2584bfc89b25516bb0eab4e93](https://github.com/carlos-andrade/B3/commit/d0fc12a12af3f1a2584bfc89b25516bb0eab4e93) |
+| **SHA-256 (conteúdo canónico)** | 76f8bd9d82c6dacca3a36b6c9db2dbe9838e7aafbd0e9bd450a1a7956eed6bb8 |
+| **Commit de referência (versão anterior)** | [1d9c05b2f692358c943f370d4b28743d9e6a087f](https://github.com/carlos-andrade/B3/commit/1d9c05b2f692358c943f370d4b28743d9e6a087f) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,7 +21,7 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-16T10:45:28.929270+00:00
+Gerado em UTC: 2026-10-16T11:21:36.490149+00:00
 Workflows auditados: 553
 
 ## Regra de decisão
@@ -58,7 +58,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/b3-normalizar-cabecalhos-invalidos.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/bcb-sgs-nucleo-macro-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/capturar-bcb-copom.yml | — | **CONFORME** | — | — |
-| .github/workflows/capturar-pesquisa-pregao.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/capturar-pesquisa-pregao.yml | — | **CONFORME_COM_OBSERVACAO** | — | IDEMPOTENCE_SIGNAL |
 | .github/workflows/classificar-bvbg028.yml | — | **CONFORME** | — | — |
 | .github/workflows/cotahist-auditoria-calendario-1987-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-auditoria-calendario-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |

@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-16T10:45:28.929270+00:00",
+  "generated_at_utc": "2026-10-16T11:21:36.490149+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 553,
   "status_counts": {
@@ -738,8 +738,8 @@
         },
         {
           "code": "STEP_SUMMARY",
-          "ok": false,
-          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado",
           "severity": "BAIXA"
         },
         {
@@ -749,10 +749,10 @@
           "severity": "CRITICA"
         },
         {
-          "code": "PERMISSIONS_MATCH_WRITE",
+          "code": "PERMISSIONS_MINIMAL",
           "ok": true,
-          "detail": "publicação possui credencial/permissão compatível",
-          "severity": "ALTA"
+          "detail": "sem escrita Git detectada; contents: write não é necessário",
+          "severity": "MEDIA"
         },
         {
           "code": "EVIDENCE_PERSISTENCE_SIGNAL",
@@ -768,14 +768,14 @@
         },
         {
           "code": "IDEMPOTENCE_SIGNAL",
-          "ok": true,
-          "detail": "padrão de idempotência/deduplicação detectado",
+          "ok": false,
+          "detail": "sem padrão estático forte de idempotência; requer validação funcional",
           "severity": "BAIXA"
         }
       ],
       "blocking_divergences": [],
       "observability_or_advisory": [
-        "STEP_SUMMARY"
+        "IDEMPOTENCE_SIGNAL"
       ]
     },
     {
