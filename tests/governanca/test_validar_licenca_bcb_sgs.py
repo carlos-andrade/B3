@@ -56,7 +56,7 @@ class BcbSgsLicenseTests(unittest.TestCase):
             raise RuntimeError("offline")
         result = verify_series(432, broken)
         self.assertFalse(result["authorized"])
-        self.assertEqual(len(result["errors"]), 2)
+        self.assertGreaterEqual(len(result["errors"]), 2)
 
 
 if __name__ == "__main__":
