@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: bcb-sgs-nucleo-macro-v1
+  group: b3-data-ingestion-serialized
   cancel-in-progress: false
 
 jobs:
