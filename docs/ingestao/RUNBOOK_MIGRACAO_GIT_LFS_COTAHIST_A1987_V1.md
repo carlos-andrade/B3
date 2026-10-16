@@ -7,21 +7,21 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 04e7d9acbc548e565114c6464ef72c6b935abc7240322e7b807c79f9c42c24c2|
+| **Estado** | CONCLUIDO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | b3839c1e1debde12b7573a7573e8fe33ae68eaaa86d937c5071694e196a4d7a1 |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
-| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Aprovador** | Proprietário do repositório — autorização de execução confirmada em 2026-10-16 |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 **Data de preparação:** 2026-10-14  
 **Repositório:** https://github.com/carlos-andrade/B3  
-**Estado:** workflow integrado em `main` por commit direto; migração ainda não executada.
+**Estado histórico da preparação:** workflow integrado em `main` por commit direto. A migração foi executada posteriormente com preflight aprovado; ver a secção de fecho abaixo.
 
 ## Objetivo
 
@@ -65,4 +65,26 @@ Workflow: [cotahist-lfs-migracao-controlada-a1987-v1.yml](../../.github/workflow
 
 ## Estado de conclusão
 
-**Ainda pendente.** O workflow e este runbook são uma preparação, não prova de migração. Fechar a incidência apenas após execução `migrate` bem-sucedida, checkout limpo, SHA-256 idêntico e auditorias pós-migração aprovadas.
+**Estado histórico substituído pelo fecho de 2026-10-16:** a migração foi concluída e validada. A prova está documentada abaixo; este texto de estado inicial é preservado apenas como contexto histórico.
+
+
+## Fecho operacional e reconciliação — 2026-10-16
+
+### Preflight obrigatório — aprovado
+- Run de preflight: [38590349969](https://github.com/carlos-andrade/B3/actions/runs/38590349969) — `success`, modo `preflight`; sem commit e sem push.
+- Conteúdo original: SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`; 15.518.211 bytes; 130.665 registos; 25 campos; datas observadas 1987-01-02–1987-12-30.
+- Ponteiro staged validado: OID SHA-256 igual ao hash do conteúdo e tamanho `15518211`.
+
+### Migração controlada — concluída
+- Run de migração: [38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646) — `success`, modo `migrate`.
+- Commit de migração: [e8c6bf21eeba789b763a9c88d6433dabe8b31b9a](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
+- Caminho: `dados/cotahist/normalized/anual/COTAHIST_A1987.csv`.
+- Representação no Git atual: ponteiro Git LFS de 133 bytes; OID `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`; tamanho do objeto `15518211` bytes.
+- Checkout limpo e materialização do objeto LFS: aprovados. Hash, tamanho, 130.665 registos, 25 campos e intervalo de datas preservados.
+- Auditoria física global: `APROVADO`, 41/41 anos validados, zero falhas.
+- Dataset Oficial V2 regenerado e persistido com sucesso.
+
+### Verificação independente do estado atual do repositório
+Na árvore `main` verificada em 2026-10-16, o blob do CSV A1987 tem 133 bytes e contém um ponteiro LFS válido para o objeto de 15.518.211 bytes. O sidecar, o manifesto de qualidade e a certificação física mantêm o SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`.
+
+**Decisão final:** migração A1987 para Git LFS concluída. Não executar nova migração. Não reescrever histórico, não alterar bytes RAW/NORMALIZED e não regenerar manifestos fora dos workflows controlados.
