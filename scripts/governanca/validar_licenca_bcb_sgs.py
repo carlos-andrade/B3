@@ -90,6 +90,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--series", required=True, help="Códigos SGS separados por vírgula")
     parser.add_argument("--json-output", default="")
+    parser.add_argument("--allow-partial", action="store_true", help="Aceita executar apenas as séries com ODbL demonstrada.")
     args = parser.parse_args()
     try:
         codes = sorted({int(x.strip()) for x in args.series.split(",") if x.strip()})
@@ -117,7 +118,9 @@ def main() -> int:
         output = Path(args.json_output)
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(rendered, encoding="utf-8")
-    return 0 if report["blocked_count"] == 0 else 2
+    if report["eligible_count"] == 0:
+        return 2
+    return 0 if report["blocked_count"] == 0 or args.allow_partial else 2
 
 
 if __name__ == "__main__":
