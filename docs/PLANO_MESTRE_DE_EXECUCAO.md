@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
 | **Versão** | 2.2.0 |
-| **SHA-256 (conteúdo canónico)** | fbd3aa3f3e19502cddec802c09651ba5581ea48e0f3511ae56985668b0dcc8cb |
+| **SHA-256 (conteúdo canónico)** | 0e0ce4809ec85fc5f155841500a4db9fd67c7fd1781fcc7a7c7033d608ab2db9 |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -603,7 +603,7 @@ A fila original de 281 está fechada. **A revisão semântica global dos 303 doc
 As restrições permanecem: COTAHIST 1986–2025 somente para consulta/read-only; 2026 com atualização diária; BLOOMBERG_MAIL isolado e fora do escopo operacional B3.
 
 
-## 16. Fase 03 operacional — capturas RAW e reconciliações — 2026-10-16
+## 25. Fase 03 operacional — capturas RAW e reconciliações — 2026-10-16
 
 A Fase 03 operacional foi executada em modo de verificação e reconciliação das capturas já autorizadas. O relatório [FECHO_FASE03_CAPTURAS_RAW_RECONCILIACOES_2026-10-16.md](ingestao/FECHO_FASE03_CAPTURAS_RAW_RECONCILIACOES_2026-10-16.md) regista evidências, resultados e bloqueios.
 
