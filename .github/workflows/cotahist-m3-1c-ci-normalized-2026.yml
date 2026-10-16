@@ -118,6 +118,7 @@ jobs:
                   n+=1
                   first=first or row[0]
                   last=row[0]
+          print(f"ROWS_ACTUAL={n} ROWS_MANIFEST={m['linhas_normalized']} FIRST_ACTUAL={first} FIRST_MANIFEST={m['primeira_data']} LAST_ACTUAL={last} LAST_MANIFEST={m['ultima_data']}")
           assert n == m["linhas_normalized"]
           assert first == m["primeira_data"]
           assert last == m["ultima_data"]
