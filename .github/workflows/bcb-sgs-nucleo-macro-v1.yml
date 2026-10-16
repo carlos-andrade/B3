@@ -34,6 +34,12 @@ jobs:
       - name: Testar preflight de licenças ODbL
         run: python -m unittest tests.governanca.test_validar_licenca_bcb_sgs -v
 
+      - name: Preflight explícito de licenças por série
+        run: >-
+          python scripts/governanca/validar_licenca_bcb_sgs.py
+          --series "432,11,12,1,433"
+          --json-output dados/bcb_sgs/manifests/preflight_licencas_sgs.json
+
       - name: Ingerir e validar BCB SGS
         run: python scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py
 
@@ -47,11 +53,13 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
 
-      - name: Publicar manifestos
+      - name: Publicar manifestos e preflight (mesmo em falha)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: bcb-sgs-nucleo-macro-v1
           path: dados/bcb_sgs/manifests/*.json
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Resumo de execução — observabilidade
