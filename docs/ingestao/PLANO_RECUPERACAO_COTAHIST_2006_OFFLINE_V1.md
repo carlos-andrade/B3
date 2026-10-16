@@ -28,7 +28,7 @@ A presença do manifesto não substitui o conteúdo normalizado.
 | 10 | `cotahist-fase10-validacao-independente-2006-v1.yml` | Checkout LFS efetivo, hash físico e comparação independente dos 25 campos |
 | 11 | `cotahist-fase11-certificacao-2006-v1.yml` | Certificar apenas depois da FASE10 aprovada |
 
-As fases são sequenciadas pela evidência da fase anterior, evitando execuções paralelas prematuras. Para cumprir o fluxo feature → validação → principal, os gatilhos `push` e os commits de evidência ficam limitados à branch `feat/cotahist-2006-offline-recovery`; nenhum workflow desta cadeia deve escrever diretamente em `main`. Todas mantêm `workflow_dispatch` para intervenção manual auditável.
+**Limitação operacional observada:** os workflows foram configurados para a branch `feat/cotahist-2006-offline-recovery`, e nenhum deles deve escrever diretamente em `main`. A FASE01 executou com sucesso e persistiu sua evidência na branch, mas não foi encontrada execução subsequente da FASE02. Portanto, o encadeamento automático ainda não está comprovado; commits gerados por `GITHUB_TOKEN` podem não disparar outros workflows. Antes de declarar a cadeia automática, é necessário usar um orquestrador único ou executar as fases seguintes por `workflow_dispatch` e verificar cada run. Todas mantêm `workflow_dispatch` para intervenção manual auditável.
 
 ## Critérios de aceitação
 
@@ -41,4 +41,4 @@ As fases são sequenciadas pela evidência da fase anterior, evitando execuçõe
 
 ## Limites
 
-Esta proposta não é evidência de execução. A cadeia deve ser executada e validada na branch de feature antes da revisão/integração em `main`; a integração só deve ocorrer após revisão do diff e evidências CI. A validação BRICKMASTER dos seis símbolos continua `UNKNOWN/BLOCKED` até que exista uma fonte que prove o contrato e o campo de abertura aplicável.
+**Evidência atual:** somente FASE01 tem execução comprovada (`success`); FASE02–FASE11 e Gate 06–08 continuam sem aprovação comprovada nesta cadeia. A PR deve permanecer draft até que o encadeamento seja corrigido e as fases necessárias sejam executadas e inspecionadas na branch de feature. A validação BRICKMASTER dos seis símbolos continua `UNKNOWN/BLOCKED` até que exista uma fonte que prove o contrato e o campo de abertura aplicável.
