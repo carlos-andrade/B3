@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "status": "CANDIDATO_A_PUBLICACAO",
+  "status": "OFICIAL",
   "dataset": "COTAHIST_NORMALIZED_ANUAL",
   "ano": 2026,
   "source": "B3",
@@ -17,6 +17,8 @@
   "ultima_data": "2026-10-13",
   "storage": "git-lfs",
   "canonical": true,
-  "approved_gate": "PENDENTE",
-  "approval_status": "AGUARDANDO_M3_1C_M3_1D_M3_1E"
+  "approved_gate": "M3-1E",
+  "approval_status": "APROVADO_M3_1E",
+  "approval_run_id": 38884816584,
+  "approval_commit": "4813087a622dc7b218267f1bc16197e4d2e24fad"
 }
