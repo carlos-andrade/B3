@@ -2,22 +2,13 @@ name: Capturar BCB - Copom
 # Revalidacao RAW/API e NORMALIZED Copom em 2026-10-16.
 
 on:
-  push:
-    paths:
-      - ".github/workflows/capturar-bcb-copom.yml"
-      - "scripts/ingestao/capturar_bcb_copom_v2.py"
-      - "scripts/ingestao/validar_bcb_copom_v1.py"
-      - "scripts/governanca/validar_autorizacao_endpoint.py"
-      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
-      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+  # Execução individual apenas para diagnóstico; o orquestrador central gere a rotina normal.
   workflow_dispatch:
     inputs:
       quantidade:
         description: "Quantidade de reuniões a consultar"
         required: true
         default: "5"
-  schedule:
-    - cron: "15 12 * * 2-5"
 
 permissions:
   contents: write
