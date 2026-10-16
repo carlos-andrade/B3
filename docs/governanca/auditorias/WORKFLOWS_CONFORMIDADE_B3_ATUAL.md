@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 51f68c82a0863271ad396adefcf0a1a47e335ac3473caef526d4b91b1729f898 |
-| **Commit de referência (versão anterior)** | [4760232f6089a8990a55961c97a06adadaaa1c00](https://github.com/carlos-andrade/B3/commit/4760232f6089a8990a55961c97a06adadaaa1c00) |
+| **SHA-256 (conteúdo canónico)** | ee388cea6aeade3ca5adddd220929115e5fcd94b1bdae220047ad8b0872f0d99 |
+| **Commit de referência (versão anterior)** | [0e0ae4bfec21648171966e60d7c8a8562965e04e](https://github.com/carlos-andrade/B3/commit/0e0ae4bfec21648171966e60d7c8a8562965e04e) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,8 +21,8 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-16T11:25:42.467927+00:00
-Workflows auditados: 553
+Gerado em UTC: 2026-10-16T12:32:24.961824+00:00
+Workflows auditados: 554
 
 ## Regra de decisão
 
@@ -51,6 +51,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 |---|---:|---|---|---|
 | .github/workflows/atualizar-catalogo-b3.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/atualizar-readme-b3.yml | — | **CONFORME** | — | — |
+| .github/workflows/b3-auditoria-autorizacao-endpoints.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-sha256-documental.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-workflows-layout-mestre-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-cotahist-rebase-conflict-hardening.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
