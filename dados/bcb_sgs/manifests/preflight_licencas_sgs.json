@@ -4,7 +4,7 @@
   "catalog_api": "https://dadosabertos.bcb.gov.br/api/3/action/package_search",
   "license_required": "odc-odbl",
   "policy": "FAIL_CLOSED",
-  "checked_at_utc": "2026-10-16T13:24:20.058084+00:00",
+  "checked_at_utc": "2026-10-16T21:35:20.730951+00:00",
   "series_count": 5,
   "eligible_count": 3,
   "blocked_count": 2,
@@ -169,7 +169,8 @@
         }
       ],
       "errors": [
-        "package_show 11-taxa-de-juros---selic: HTTPError: HTTP Error 403: Forbidden"
+        "package_show 11-taxa-de-juros---selic: HTTPError: HTTP Error 403: Forbidden",
+        "serie-sgs-11: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
       ],
       "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
     },
@@ -179,7 +180,6 @@
       "license": null,
       "matches": [],
       "errors": [
-        "serie-sgs-12: JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
         "CDI: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
       ],
       "decision": "Nenhuma correspondência exata com licença ODbL foi demonstrada no catálogo; captura bloqueada."
@@ -212,8 +212,7 @@
         }
       ],
       "errors": [
-        "package_show 432-taxa-de-juros---meta-selic-definida-pelo-copom: HTTPError: HTTP Error 403: Forbidden",
-        "meta selic definida pelo copom: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        "package_show 432-taxa-de-juros---meta-selic-definida-pelo-copom: HTTPError: HTTP Error 403: Forbidden"
       ],
       "decision": "Catálogo oficial identifica recurso exato da série com licença ODbL; cumprir atribuição e obrigações da licença."
     },
