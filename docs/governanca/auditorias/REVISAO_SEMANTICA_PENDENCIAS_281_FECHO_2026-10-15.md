@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | 281_PENDENTES_ORIGINAIS_REVISTOS; REVALIDACAO_GLOBAL_RESIDUAL_ABERTA |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | 7e9c69c76b788ff8d9ce09fd89de7f5d4a938a32b28cee8d74d55e4adc734b72 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
