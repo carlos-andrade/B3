@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
-| **Estado** | REVISAO_PARCIAL; DIVERGENCIA_ABERTA |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 36343a912407963cf7720e73a6f660172155c764124775624671a35c8a18063a |
+| **Estado** | REVISAO_SEMANTICA_FECHADA_POS_GOV_DIV_001; SNAPSHOT_HISTORICO_PRESERVADO |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | 0e4de7b97a263346b0490dbb970a3a7510a0d36f195f4e89351c3bbc7503416c |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de aprovação específica |
 | **Origem** | Inspeção direta dos cinco documentos listados abaixo e norma GOVERNANCA v1.0.3 |
@@ -65,8 +65,16 @@ Foram inspecionados cinco documentos prioritários. A finalidade desta etapa é 
 4. Implementar cálculo canónico reprodutível e validar hashes em lote.
 5. Atualizar o roadmap após a conclusão de cada fase e só então avançar.
 
+## 6A. Adendo de fecho — 2026-10-16
+
+**Estado do achado semântico:** FECHADO. A divergência de autoridade GOV-DIV-001 foi resolvida por decisão versionada e reconciliada no Layout Mestre v1.2.0. A revalidação dos 17 documentos prioritários está registada na [matriz integral v1.3.0](MATRIZ_REVISAO_SEMANTICA_INTEGRAL_B3_V1.md) e no [relatório pós-decisão](REVALIDACAO_SEMANTICA_POS_GOV_DIV_001_LOTES_01_A_04_2026-10-16.md).
+
+O texto deste lote permanece como snapshot de 2026-10-15 e não foi reescrito retroativamente. As conclusões originais continuam válidas como descrição do estado observado nessa data; a decisão e as correções posteriores fecham a ação normativa. Não se infere aprovação formal do proprietário nem certificação de dados ou workflows.
+
+
 ## 6. Histórico de alterações
 
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
+| 1.1.0 | 2026-10-16 | Fecho da revisão semântica; snapshot original preservado; ações operacionais separadas | GOV-DIV-001, matriz integral v1.3.0 e auditoria SHA-256 run 38881634574 |
 | 1.0.0 | 2026-10-15 | Primeira revisão semântica prioritária; registada divergência de autoridade | Inventário atualizado e documentos-fonte citados |
