@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "status": "OFICIAL",
+  "status": "CANDIDATO_A_PUBLICACAO",
   "dataset": "COTAHIST_NORMALIZED_ANUAL",
   "ano": 2026,
   "source": "B3",
@@ -8,15 +8,15 @@
   "normalized_file": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
   "quality_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
   "checksum_file": "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256",
-  "parser_version": "1.1.0",
-  "raw_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
-  "normalized_sha256": "befcf243540477cbae55b09231669b57d6bc84d6f91c96d8d71e32e14191e6c9",
-  "linhas_normalized": 2919760,
+  "parser_version": "1.1.2",
+  "raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+  "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "linhas_normalized": 3142910,
   "campos": 25,
   "primeira_data": "2026-01-02",
-  "ultima_data": "2026-09-23",
+  "ultima_data": "2026-10-13",
   "storage": "git-lfs",
   "canonical": true,
-  "approved_gate": "M3-1C",
-  "approval_status": "PENDENTE_M3_1D"
+  "approved_gate": "PENDENTE",
+  "approval_status": "AGUARDANDO_M3_1C_M3_1D_M3_1E"
 }
