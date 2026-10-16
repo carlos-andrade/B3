@@ -17,14 +17,20 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 API = "https://dadosabertos.bcb.gov.br/api/3/action/package_search"
+SHOW_API = "https://dadosabertos.bcb.gov.br/api/3/action/package_show"
+DATASET_SLUGS = {
+    1: "1-taxa-de-cambio---livre---dolar-americano-venda---diario",
+    11: "11-taxa-de-juros---selic",
+    432: "432-taxa-de-juros---meta-selic-definida-pelo-copom",
+}
 LICENSES = {"odc-odbl"}
 USER_AGENT = "B3-Fonte-Gratuita-Preflight/1.0 (+https://github.com/carlos-andrade/B3)"
 SEARCH_TERMS = {
     1: ("dolar americano venda",),
     11: ("taxa de juros selic",),
-    12: ("CDI", "taxa CDI"),
+    12: ("CDI",),
     432: ("meta selic definida pelo copom",),
-    433: ("IPCA", "indice nacional de precos ao consumidor amplo"),
+    433: ("IPCA",),
 }
 
 
@@ -38,6 +44,16 @@ def fetch_search(term: str) -> dict:
     return payload["result"]
 
 
+def fetch_show(slug: str) -> dict:
+    url = SHOW_API + "?" + urlencode({"id": slug})
+    request = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    with urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    if payload.get("success") is not True or not isinstance(payload.get("result"), dict):
+        raise RuntimeError(f"Resposta inválida do catálogo BCB para o dataset {slug!r}")
+    return payload["result"]
+
+
 def resource_matches(resource: dict, code: int) -> bool:
     marker = f"serie-sgs-{code}"
     url = str(resource.get("url") or "").lower()
@@ -46,10 +62,34 @@ def resource_matches(resource: dict, code: int) -> bool:
     return marker in url or marker in name or marker in description or f"bcdata.sgs.{code}/dados" in url
 
 
-def verify_series(code: int, search_fn=fetch_search) -> dict:
+def verify_series(code: int, search_fn=fetch_search, show_fn=fetch_show) -> dict:
     errors = []
+    # Consulta direta por slug reduz tráfego e evita falsos bloqueios por pesquisa ampla.
+    slug = DATASET_SLUGS.get(code)
+    if slug and show_fn is not None:
+        try:
+            dataset = show_fn(slug)
+            resources = dataset.get("resources") or []
+            exact_resources = [r for r in resources if resource_matches(r, code)]
+            license_id = str(dataset.get("license_id") or "").lower()
+            if exact_resources and license_id in LICENSES:
+                return {
+                    "series_code": code, "authorized": True, "license": "ODbL",
+                    "matches": [{
+                        "dataset_name": dataset.get("name"),
+                        "dataset_title": dataset.get("title"),
+                        "license_id": license_id,
+                        "license_title": str(dataset.get("license_title") or ""),
+                        "dataset_url": f"https://dadosabertos.bcb.gov.br/dataset/{dataset.get('name')}",
+                        "resources": [{"name": r.get("name"), "url": r.get("url")} for r in exact_resources],
+                    }],
+                    "errors": [],
+                    "decision": "Dataset oficial identificado por slug exato com licença ODbL; cumprir atribuição e obrigações da licença.",
+                }
+        except Exception as exc:
+            errors.append(f"package_show {slug}: {type(exc).__name__}: {exc}")
     seen = {}
-    terms = tuple(dict.fromkeys((f"serie-sgs-{code}", str(code), *SEARCH_TERMS.get(code, ()))))
+    terms = tuple(dict.fromkeys((f"serie-sgs-{code}", *SEARCH_TERMS.get(code, ()))))
     for term in terms:
         try:
             result = search_fn(term)
