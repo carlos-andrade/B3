@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "project": "B3 — A BOLSA DO BRASIL",
+  "repository": "carlos-andrade/B3",
+  "as_of": "2026-10-16",
+  "policy": "FAIL_CLOSED",
+  "rule": "Nenhum endpoint B3 com autorização não demonstrada pode ser usado para nova captura automatizada ou publicação de novos dados. Acesso HTTP bem-sucedido não prova licença.",
+  "endpoints": [
+    {
+      "id": "B3_PESQUISA_POR_PREGAO_API",
+      "provider": "B3 S.A.",
+      "endpoint": "https://arquivos.b3.com.br/api/download/requestname e https://arquivos.b3.com.br/api/download/",
+      "discovery": "Endpoint API utilizado pelo script legado de Pesquisa por Pregão.",
+      "authorization_status": "PROHIBITED_AUTOMATED_COLLECTION",
+      "automated_collection": "DENIED",
+      "storage_and_redistribution": "NOT_AUTHORIZED_BY_THIS_REGISTER",
+      "evidence": [
+        {
+          "type": "official_terms",
+          "url": "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/",
+          "finding": "A página oficial proíbe expressamente a coleta automatizada, inclusive por IA, para quaisquer finalidades."
+        }
+      ],
+      "decision": "Desativar a captura automatizada. Não usar manualmente o endpoint como forma de contornar a proibição.",
+      "review_required": false
+    },
+    {
+      "id": "B3_BDI_TABLE_API",
+      "provider": "B3 S.A.",
+      "endpoint": "https://arquivos.b3.com.br/bdi/table/{endpoint}/{start}/{end}/{page}/{pageSize}",
+      "discovery": "Endpoint no domínio oficial B3, usado pelo capturador BDI.",
+      "authorization_status": "REVIEW_REQUIRED",
+      "automated_collection": "BLOCKED_PENDING_EVIDENCE",
+      "storage_and_redistribution": "NOT_VERIFIED",
+      "evidence": [
+        {
+          "type": "technical_source",
+          "url": "https://arquivos.b3.com.br/bdi/table",
+          "finding": "O domínio/endpoint técnico é identificado; não foi encontrada nesta auditoria uma licença pública específica que autorize a automação, o armazenamento no repositório público ou a reutilização prevista."
+        },
+        {
+          "type": "related_terms",
+          "url": "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/",
+          "finding": "A proibição é expressa para a página Pesquisa por Pregão; não se presume que se estenda automaticamente a todo endpoint B3 nem que este endpoint esteja autorizado."
+        }
+      ],
+      "decision": "Bloquear novas capturas automatizadas até obter termos/licença aplicáveis ou autorização escrita da B3.",
+      "review_required": true
+    },
+    {
+      "id": "B3_COTAHIST_DAILY",
+      "provider": "B3 S.A.",
+      "endpoint": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_DDMMYYYY.ZIP",
+      "discovery": "Endpoint direto de ficheiros históricos usado pelo importador diário.",
+      "authorization_status": "REVIEW_REQUIRED",
+      "automated_collection": "BLOCKED_PENDING_SCOPE_CONFIRMATION",
+      "storage_and_redistribution": "NOT_VERIFIED",
+      "evidence": [
+        {
+          "type": "official_layout",
+          "url": "https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf",
+          "finding": "O layout oficial COTAHIST está publicado e identificado como Informação Pública; isso não equivale, isoladamente, a uma licença de automação, armazenamento num repositório público, redistribuição ou product development."
+        },
+        {
+          "type": "commercial_policy",
+          "url": "https://www.b3.com.br/data/files/CC/61/C9/7E/DCCFF91094DCD8F9AC094EA8/Market%20Data%20B3%20Commercial%20Policy%202026%20V1.1.pdf",
+          "finding": "A política comercial enumera licenças e aplicações de Market Data; V1.1 indica eficácia de 01/11/2026, portanto em 16/10/2026 não é ainda a versão efetiva indicada no próprio PDF."
+        },
+        {
+          "type": "consumption_policy",
+          "url": "https://www.b3.com.br/data/files/66/61/27/F2/DCCFF91094DCD8F9AC094EA8/Market%20Data%20B3%20Consumption%20Policy%20V1.1.pdf",
+          "finding": "A política de consumo deve ser analisada em conjunto com a política comercial e com o âmbito contratual concreto."
+        }
+      ],
+      "decision": "Bloquear novas capturas e publicação automatizada no repositório público até confirmação escrita do âmbito permitido para pesquisa interna, armazenamento, backtests, desenvolvimento de produto e redistribuição.",
+      "review_required": true
+    },
+    {
+      "id": "B3_DRP_RAPINEGOCIOS",
+      "provider": "B3 S.A. — endpoint técnico ainda não confirmado como canal autorizado",
+      "endpoint": "https://drp.b3.com.br/rapinegocios/tickercsv/{YYYY-MM-DD}?type=1",
+      "discovery": "Identificado por implementação independente de terceiros; não por documentação oficial de autorização.",
+      "authorization_status": "REVIEW_REQUIRED",
+      "automated_collection": "BLOCKED_PENDING_OFFICIAL_CONFIRMATION",
+      "storage_and_redistribution": "NOT_VERIFIED",
+      "evidence": [
+        {
+          "type": "third_party_discovery",
+          "url": "https://github.com/gustavobjorgefo/b3-data-collector",
+          "finding": "Fonte independente de terceiros; não prova autorização da B3."
+        },
+        {
+          "type": "official_page_terms",
+          "url": "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/boletins-diarios/pesquisa-por-pregao/pesquisa-por-pregao/",
+          "finding": "A B3 proíbe automação na página Pesquisa por Pregão. Não se presume que o endpoint DRP esteja coberto ou autorizado por outra via."
+        }
+      ],
+      "decision": "Não executar a captura. Solicitar confirmação oficial do endpoint, finalidade, limites, retenção e direitos de utilização.",
+      "review_required": true
+    },
+    {
+      "id": "BCB_COPOM_API_JSON",
+      "provider": "Banco Central do Brasil",
+      "endpoint": "https://www.bcb.gov.br/api/servico/sitebcb/copom",
+      "authorization_status": "AUTHORIZED_WITH_CONDITIONS",
+      "automated_collection": "PUBLIC_OPEN_DATA_CATALOG",
+      "storage_and_redistribution": "ODbL_CONDITIONS_APPLY",
+      "evidence": [
+        {
+          "type": "official_catalog_license",
+          "url": "https://www.bcb.gov.br/conteudo/dadosabertos/BCBDeinf/elements_copom.html",
+          "finding": "Catálogo oficial declara licença Open Database License (ODbL) para o conjunto de dados Copom."
+        },
+        {
+          "type": "open_data_policy",
+          "url": "https://www.bcb.gov.br/acessoinformacao/dadosabertos",
+          "finding": "O BCB descreve o regime de dados abertos e licença aberta."
+        }
+      ],
+      "conditions": [
+        "Atribuir a fonte BCB.",
+        "Cumprir ODbL, incluindo obrigações aplicáveis a bases derivadas/redistribuídas.",
+        "Não inferir que direitos sobre o JSON cobrem automaticamente todos os anexos/documentos externos ligados por URL."
+      ],
+      "decision": "Permitir ingestão do JSON sob as condições da licença. Manter revisão separada para redistribuição comercial e anexos externos, incluindo PDFs.",
+      "review_required": true
+    },
+    {
+      "id": "BCB_COPOM_PDF_ATTACHMENT",
+      "provider": "Banco Central do Brasil",
+      "endpoint": "PDF ligado pelo campo urlPdfAta da API Copom",
+      "authorization_status": "REVIEW_REQUIRED",
+      "automated_collection": "TECHNICALLY_CAPTURED_LICENSE_SCOPE_UNCONFIRMED",
+      "storage_and_redistribution": "NOT_VERIFIED_FOR_SEPARATE_ATTACHMENT",
+      "evidence": [
+        {
+          "type": "parent_dataset_license",
+          "url": "https://www.bcb.gov.br/conteudo/dadosabertos/BCBDeinf/elements_copom.html",
+          "finding": "O catálogo Copom declara ODbL para o conjunto; a extensão exata da licença ao PDF externo deve ser confirmada antes de redistribuição comercial."
+        }
+      ],
+      "decision": "Preservar para consulta interna com proveniência; confirmar escopo de licença do anexo antes de redistribuição ou uso comercial.",
+      "review_required": true
+    }
+  ],
+  "approval_requirements": [
+    "Documento contratual/licença ou autorização escrita emitida pela fonte/autoridade competente.",
+    "Identificação exata do endpoint, dataset, métodos HTTP e frequência permitidos.",
+    "Finalidade: consulta, pesquisa interna, backtest, desenvolvimento de produto, uso comercial.",
+    "Direitos de armazenamento, transformação, derivados, publicação em GitHub público e redistribuição.",
+    "Limites de taxa, autenticação, retenção, atribuição e obrigações de reporte/pagamento.",
+    "Data de validade e responsável pela aprovação.",
+    "Hash SHA-256 do artefacto de autorização ou referência interna auditável sem expor dados confidenciais."
+  ]
+}
