@@ -19,6 +19,6 @@
   "canonical": true,
   "approved_gate": "M3-1E",
   "approval_status": "APROVADO_M3_1E",
-  "approval_run_id": 38884816584,
-  "approval_commit": "4813087a622dc7b218267f1bc16197e4d2e24fad"
+  "prepublication_evidence_run_id": 38884816584,
+  "prepublication_evidence_commit": "4813087a622dc7b218267f1bc16197e4d2e24fad"
 }
