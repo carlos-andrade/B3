@@ -16,6 +16,50 @@ REGISTRY = ROOT / "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS
 ALLOWED = {"AUTHORIZED", "AUTHORIZED_WITH_CONDITIONS"}
 
 
+def authorization_decision(row: dict | None) -> tuple[str, bool, str]:
+    if row is None:
+        return "NOT_REGISTERED", False, "Endpoint ausente do registo; bloqueio por omissão."
+
+    status = row.get("authorization_status", "NOT_REGISTERED")
+    evidence = row.get("evidence") or []
+
+    if status == "AUTHORIZED_WITH_CONDITIONS":
+        valid_open_license = any(
+            item.get("type") == "official_open_data_license"
+            and item.get("url")
+            and item.get("license_name")
+            and item.get("scope")
+            for item in evidence
+        )
+        allowed = bool(valid_open_license)
+        reason = (
+            "Licença aberta oficial identificada; cumprir as condições e limitar o uso ao âmbito declarado."
+            if allowed else
+            "Licença aberta oficial sem evidência completa de licença, URL e âmbito; bloqueio por omissão."
+        )
+        return status, allowed, reason
+
+    if status == "AUTHORIZED":
+        approval = row.get("approval") or {}
+        valid_approval = all(approval.get(key) for key in (
+            "reference", "approved_by", "approved_at", "valid_until", "scope", "evidence_sha256"
+        ))
+        valid_approval = valid_approval and any(
+            item.get("type") in {"contract", "written_authorization", "license_agreement"}
+            and item.get("url")
+            for item in evidence
+        )
+        allowed = bool(valid_approval)
+        reason = (
+            "Autorização contratual/escrita com escopo, validade e hash de evidência registados."
+            if allowed else
+            "Estado AUTHORIZED sem aprovação contratual/escrita completa e evidência identificável; bloqueio por omissão."
+        )
+        return status, allowed, reason
+
+    return status, False, row.get("decision") or "Autorização não demonstrada; operação bloqueada."
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--endpoint-id", required=True)
@@ -27,18 +71,7 @@ def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     entries = {row["id"]: row for row in registry.get("endpoints", [])}
     row = entries.get(args.endpoint_id)
-    if row is None:
-        status, allowed, reason = "NOT_REGISTERED", False, "Endpoint ausente do registo; bloqueio por omissão."
-    else:
-        status = row.get("authorization_status", "NOT_REGISTERED")
-        evidence = row.get("evidence") or []
-        has_source = any(item.get("url") for item in evidence)
-        allowed = status in ALLOWED and has_source
-        reason = (
-            "Registo de autorização permite a operação, sujeito às condições documentadas."
-            if allowed else
-            row.get("decision") or "Autorização não demonstrada; operação bloqueada."
-        )
+    status, allowed, reason = authorization_decision(row)
 
     print(json.dumps({
         "endpoint_id": args.endpoint_id,
