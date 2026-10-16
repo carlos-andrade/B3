@@ -6,8 +6,6 @@ on:
     paths:
       - "ferramentas/capturar_bdi.py"
       - ".github/workflows/testar-captura-bdi.yml"
-  schedule:
-    - cron: "0 11 * * 1-5"
   workflow_dispatch:
     inputs:
       endpoint:
@@ -27,7 +25,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  authorization_gate:
+    runs-on: ubuntu-latest
+    outputs:
+      authorized: ${{ steps.gate.outputs.authorized }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar autorização de uso do endpoint BDI
+        id: gate
+        run: python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_BDI_TABLE_API --allow-blocked --github-output "$GITHUB_OUTPUT"
+
   captura:
+    needs: authorization_gate
+    if: needs.authorization_gate.outputs.authorized == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
