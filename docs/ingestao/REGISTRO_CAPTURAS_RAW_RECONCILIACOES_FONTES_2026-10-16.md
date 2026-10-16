@@ -63,7 +63,7 @@ Consolidar o estado comprovado das capturas RAW e reconciliações de fontes. Um
 - Detalhe da Ata 281: `dados/calendario_economico/copom/raw/atas_detalhes_281.json`; SHA-256 `fa402b27a6424c01d96fccce81f58347cc35dcb390e23d1fa31f2207792eba98`, 19.791 bytes.
 - Detalhe do Comunicado 281: `dados/calendario_economico/copom/raw/comunicados_detalhes_281.json`; SHA-256 `c32e5fccaba8d550544472f72f03222eb880fbb543674f77eb89d565d4dc9b66`, 6.503 bytes.
 - Metadados `.meta.json` registam URLs solicitados/finais, hora de captura, tipo de conteúdo, tamanho e SHA-256. NORMALIZED: `dados/calendario_economico/copom/normalized/copom_281.json`.
-- A resposta JSON da API e o texto da Ata fornecido pela API foram capturados. **O PDF oficial binário da Ata não está comprovado como arquivado**; o URL do PDF é preservado no JSON. A captura binária do PDF fica pendente até obter um artefacto autorizado e calcular o seu hash.
+- A resposta JSON da API e o texto da Ata fornecido pela API foram capturados. **O PDF oficial binário da Ata foi capturado e validado** em `dados/calendario_economico/copom/raw/ata_281.pdf`; SHA-256 `f03423dc25625aa14ae29c10fdacf7b4665b6714ab0667c0dc86a6f77c43665c`, 401.502 bytes, `application/pdf`, assinatura `%PDF-` validada. Metadados em `ata_281.pdf.meta.json`.
 
 ## 3. Pendências reais e bloqueios
 
@@ -82,9 +82,9 @@ Referências:
 
 ### P1 — PDF binário da Ata Copom 281
 
-**PENDENTE — A API JSON não equivale ao PDF original.**
+**CONCLUÍDO — PDF ORIGINAL CAPTURADO.**
 
-O JSON RAW e o texto da Ata foram capturados, mas não há evidência de que o PDF binário ligado em `urlPdfAta` tenha sido arquivado com hash e tamanho. Não declarar o PDF como capturado até guardar o binário original e criar metadados SHA-256.
+O workflow [run 38889815903](https://github.com/carlos-andrade/B3/actions/runs/38889815903) capturou o PDF oficial, verificou a assinatura `%PDF-` e persistiu o binário e o sidecar de metadados. SHA-256 `f03423dc25625aa14ae29c10fdacf7b4665b6714ab0667c0dc86a6f77c43665c`; tamanho 401.502 bytes. O JSON API permanece preservado separadamente.
 
 ### P1 — Timestamp intradiário exato do Comunicado Copom
 
@@ -109,7 +109,7 @@ A primeira execução BCB em 16/10 capturou e validou os dados, mas o push falho
 | COTAHIST diário até 15/10 | CONCLUÍDO | RAW + manifesto + NORMALIZED validado; zero conflitos |
 | BDI DailyAverageStocks 15/10 | CONCLUÍDO | RAW + SHA-256 + manifesto; 9 registos |
 | BCB/Copom API 281 | CONCLUÍDO | 4 capturas RAW com metadados + NORMALIZED validado |
-| PDF binário da Ata 281 | PENDENTE | PDF original guardado, hash/tamanho verificados |
+| PDF binário da Ata 281 | CONCLUÍDO | PDF original guardado, hash/tamanho verificados |
 | BDM negócio a negócio | BLOQUEADO POR AUTORIZAÇÃO/ACESSO | Captura autorizada, layout e contagem reconciliados |
 | Timestamp exato do Comunicado | PENDENTE | Fonte oficial com timestamp verificável |
 | Cobertura integral do BDI | PARCIAL | Matriz por capítulo/tabela com evidências por data |
