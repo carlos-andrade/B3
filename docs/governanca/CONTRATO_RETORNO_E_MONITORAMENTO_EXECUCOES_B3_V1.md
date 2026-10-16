@@ -17,7 +17,7 @@
 | **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 **Data:** 2026-10-01  
 **Status:** VIGENTE
@@ -134,7 +134,7 @@ EXECUTAR → PERDER O RESULTADO → EXECUTAR NOVAMENTE PARA DESCOBRIR O RESULTAD
 
 Este documento é **derivado/operacional** e não constitui fonte independente para geração de código. As regras executáveis devem ser reconciliadas com:
 
-`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+`docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
 **Regra:** Layout Mestre → especificação da tarefa → código/workflow → evidência.
 
