@@ -63,6 +63,22 @@ jobs:
         continue-on-error: true
         run: python scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py
 
+      - name: Validar promoção NORMALIZED SGS
+        id: sgs_quality
+        if: always() && steps.sgs_ingest.outcome == 'success'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("dados/bcb_sgs/manifests/BCB_SGS_NUCLEO_MACRO_quality.json")
+          if not path.exists():
+              raise SystemExit("Manifesto de qualidade SGS ausente.")
+          report = json.loads(path.read_text(encoding="utf-8"))
+          print(json.dumps({"status": report.get("status"), "series": report.get("series")}, ensure_ascii=False))
+          if report.get("status") != "VALIDADO":
+              raise SystemExit("SGS quality gate: lote rejeitado; candidatos inválidos ficam em quarentena.")
+          PY
+
       - name: Capturar API JSON Copom (PDFs permanecem bloqueados)
         id: copom
         if: always() && steps.tests.outcome == 'success'
@@ -73,6 +89,7 @@ jobs:
             --output "dados/calendario_economico/copom"
 
       - name: Validar Copom NORMALIZED
+        id: copom_validation
         if: always() && steps.copom.outcome == 'success'
         run: |
           set -euo pipefail
@@ -128,7 +145,21 @@ jobs:
             echo "- Testes de governança: ${{ steps.tests.outcome }}"
             echo "- Preflight SGS: ${{ steps.sgs_preflight.outcome }}"
             echo "- Ingestão SGS: ${{ steps.sgs_ingest.outcome }}"
+            echo "- Qualidade SGS: ${{ steps.sgs_quality.outcome }}"
             echo "- Copom JSON: ${{ steps.copom.outcome }}"
+            echo "- Validação Copom: ${{ steps.copom_validation.outcome }}"
             echo "- PDFs Copom: bloqueados por escopo de licença não demonstrado"
             echo "- COTAHIST/BDI/DRP: fora da captura automática até existir fonte gratuita com uso compatível demonstrado"
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Decisão final fail-closed
+        if: always()
+        run: |
+          status=0
+          [[ "${{ steps.tests.outcome }}" == "success" ]] || status=1
+          [[ "${{ steps.sgs_preflight.outcome }}" == "success" ]] || status=1
+          [[ "${{ steps.sgs_ingest.outcome }}" == "success" ]] || status=1
+          [[ "${{ steps.sgs_quality.outcome }}" == "success" ]] || status=1
+          [[ "${{ steps.copom.outcome }}" == "success" ]] || status=1
+          [[ "${{ steps.copom_validation.outcome }}" == "success" ]] || status=1
+          exit "$status"
