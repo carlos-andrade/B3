@@ -235,6 +235,8 @@ A governança passa a estabelecer explicitamente uma ordem de precedência opera
 
 **Nota de reconciliação GOV-DIV-001 (2026-10-16):** este aditivo é histórico e define sequência de processo, não uma hierarquia universal de autoridade. Deve ser interpretado conforme a secção 2 e a Decisão GOV-DIV-001: Carta Magna para princípios e competências; Layout Mestre para especificação operacional dentro desses limites; contratos e políticas subordinados; evidência factual preservada e não anulada por documento normativo.
 
+**Nota de reconciliação GOV-DIV-001 (2026-10-16):** este aditivo é histórico e define sequência de processo, não uma hierarquia universal de autoridade. Deve ser interpretado conforme a secção 2 e a Decisão GOV-DIV-001: Carta Magna para princípios e competências; Layout Mestre para especificação operacional dentro desses limites; contratos e políticas subordinados; evidência factual preservada e não anulada por documento normativo.
+
 ### 1. Ordem documental obrigatória
 
 Toda correção que altere regra, workflow, contrato ou classificação deve seguir:
