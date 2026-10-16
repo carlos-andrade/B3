@@ -7,21 +7,21 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 22684c331753e5b1e8795270ca123aba95bba8c46fdbbd2af9c3ffad64aad94e|
+| **Estado** | APROVADO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | ce44d0f308707c4ecef4d880c546dae4361487e159ff9c57ae1d495b3bb78ca0 |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
-| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Aprovador** | Proprietário do repositório — aprovação expressa registada em 2026-10-16 |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
 **Projeto:** B3 — A Bolsa do Brasil  
 **Data:** 2026-09-28  
-**Status:** PROPOSTA TÉCNICA — AGUARDANDO IMPLEMENTAÇÃO CONTROLADA  
+**Status histórico em 2026-09-28:** PROPOSTA TÉCNICA — superada pela aprovação de adoção e publicação em 2026-10-16  
 **Escopo:** COTAHIST anual 1986–2026 e novos anos futuros  
 **Dependências:** RAW anual, parser NORMALIZED, manifests de qualidade, certificação anual, Dataset Oficial e dashboards.
 
@@ -301,3 +301,19 @@ Nenhum lote de 41 anos deve ser executado antes da aprovação técnica da prova
 ---
 
 **Regra de integridade:** este contrato define a política. Ele não modifica, por si só, nenhum dado histórico.
+
+
+## 15. Adoção formal e publicação — 2026-10-16
+
+A política NORMALIZED V2.0 está **APROVADA** para os anos que concluam a certificação individual. Para COTAHIST 2026, a publicação foi autorizada após os gates M3-1C, M3-1D e M3-1E concluírem com sucesso.
+
+- Dataset Oficial: `dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json`
+- Estado: `OFICIAL`
+- Gate de aprovação: `M3-1E`
+- Parser: `1.1.2`
+- Persistência: Git LFS
+- RAW SHA-256: `580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e`
+- NORMALIZED SHA-256: `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`
+- Registos: 3.142.910; campos: 25; intervalo: 2026-01-02 a 2026-10-13.
+
+A aprovação não promove anos históricos automaticamente. Cada ano histórico precisa da própria cadeia de evidências, integridade, reconstrução e reconciliação antes de ser declarado oficial.
