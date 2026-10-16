@@ -9,7 +9,7 @@
 | **Fase** | Governação documental e rastreabilidade |
 | **Estado** | APROVADO |
 | **Versão** | 1.1.2 |
-| **SHA-256 (conteúdo canónico)** | 448bddcca3fad23b1965e7690ebe9eda2ea2546ab9cba7809cefdda492ecedac |
+| **SHA-256 (conteúdo canónico)** | 387d5f7a53ed4c6b47fb52fe7c720473025f1d18783d569cf41d0394d0699d2c |
 | **Commit de referência (versão anterior)** | [23df98911bb9bed5d3f6a1a670508fbfde5dc36d](https://github.com/carlos-andrade/B3/commit/23df98911bb9bed5d3f6a1a670508fbfde5dc36d) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-16 |
