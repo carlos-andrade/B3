@@ -80,12 +80,12 @@ jobs:
             exit 0
           fi
           git commit -m "audit(governanca): atualiza conformidade dos workflows"
-          for tentativa in 1 2 3 4 5; do
+          for tentativa in 1 2 3 4 5 6 7 8 9 10 11 12; do
             if git push origin HEAD:main; then
               exit 0
             fi
             echo "Push concorrente; reconstruindo a auditoria sobre main (tentativa ${tentativa}/5)."
-            git rebase --abort || true
+            git rebase --abort 2>/dev/null || true
             git fetch origin main
             git reset --hard origin/main
             python scripts/governanca/auditar_workflows_b3.py
@@ -95,9 +95,9 @@ jobs:
               exit 0
             fi
             git commit -m "audit(governanca): atualiza conformidade dos workflows"
-            sleep $((tentativa * 2))
+            sleep $((tentativa * 2 + RANDOM % 11))
           done
-          echo "Falha persistente ao publicar auditoria após 5 tentativas."
+          echo "Falha persistente ao publicar auditoria após 12 tentativas."
           exit 1
 
 # Reexecução auditável após consolidação do roadmap B3 e sincronização da matriz anual em 2026-10-14.

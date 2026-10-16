@@ -106,18 +106,18 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar governanca fase 00 2005"
           pushed=false
-          for attempt in 1 2 3 4 5; do
+          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
             git fetch origin main
             if git rebase origin/main && git push origin HEAD:main; then
               pushed=true
               echo "PERSISTENCIA_MAIN=OK tentativa=${attempt}"
               break
             fi
-            git rebase --abort || true
-            sleep "$((attempt * 2 + GITHUB_RUN_NUMBER % 3))"
+            git rebase --abort 2>/dev/null || true
+            sleep "$((attempt * 2 + RANDOM % 11))"
           done
           if [ "$pushed" != "true" ]; then
-            echo "PERSISTENCIA_MAIN=FALHA apos 5 tentativas" >&2
+            echo "PERSISTENCIA_MAIN=FALHA apos 12 tentativas" >&2
             exit 1
           fi
 
