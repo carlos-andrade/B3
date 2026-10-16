@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.4 |
-| **SHA-256 (conteúdo canónico)** | 31bdc308cc42c9c291bb925baabf498e5cbfad624fc08ced02a90eb45ace39d9 |
+| **Versão** | 2.3.5 |
+| **SHA-256 (conteúdo canónico)** | 67e8ea27c668af06bf85a4d0286e61707e3f00b104796afedde405ae1023abd0 |
 | **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -666,3 +666,19 @@ A política foi registada nas três cartas:
 - Os pedidos preparados anteriormente não foram enviados. A Issue #13 passa a acompanhar a reavaliação das fontes sob a política de custo zero, sem compromisso de contratação ou pagamento.
 
 A política é uma restrição económica do projeto e não uma dispensa de conformidade jurídica.
+
+## 28. Orquestração de fontes gratuitas — 2026-10-16
+
+### Implementação em lote
+- Criado scripts/governanca/validar_licenca_bcb_sgs.py: consulta o catálogo oficial do BCB e exige correspondência exata de recurso e licença ODbL por série.
+- O importador scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py executa o preflight antes de qualquer captura. Com --allow-partial, apenas séries com licença verificada são ingeridas; as restantes ficam registadas como bloqueadas.
+- O workflow SGS publica o relatório de preflight mesmo quando a captura falha.
+- Workflows de ingestão Copom e SGS usam o mesmo grupo de concorrência para evitar commits simultâneos nos diretórios dados/.
+- O JSON Copom continua elegível sob ODbL; os PDFs permanecem separados e bloqueados pelo gate de autorização.
+- O gate de endpoints foi expandido para reconhecer BCB_SGS_API com condições de verificação por série.
+
+### Evidência de execução e correção
+A primeira execução real do preflight identificou três séries elegíveis (SGS 1, 11 e 432) e duas sem correspondência ODbL demonstrada (12 e 433). A lógica foi ajustada para continuar com as elegíveis em vez de bloquear todo o lote. A pesquisa do catálogo foi ampliada por código e título para tentar resolver as duas séries restantes. A conclusão depende do workflow posterior a essa alteração.
+
+### Política para fontes B3 não elegíveis
+COTAHIST diário, BDI e DRP/Rapinegócios permanecem fora da captura automática enquanto não existir fonte gratuita com termos de uso compatíveis demonstrados. Pesquisa por Pregão continua proibida para recolha automatizada. Não contratar nem contornar; procurar alternativas gratuitas e documentar lacunas. COTAHIST 1986–2025 permanece consulta-only; 2026 não é atualizado por uma fonte sem uso compatível demonstrado.
