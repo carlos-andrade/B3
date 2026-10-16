@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
-| **Estado** | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | dba112c0a1daced2b80e53615fa361b15758cfc6bc381bbc817c6d169928fe55 |
+| **Estado** | REVISAO_SEMANTICA_FECHADA; DIVIDA_HISTORICA_EXPLICITADA; GATES_OPERACIONAIS_SEPARADOS |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | c4e38c3a05cd48a41472953677c45f0acd775c57b19e7133d0a0345daa6b2b8d |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de aprovação específica |
 | **Origem** | Inspeção direta dos seis documentos listados e norma GOVERNANCA v1.0.3 |
@@ -60,10 +60,20 @@ A versão atual inclui testes unitários para exclusão das duas linhas de contr
 4. Normalizar metadados de contratos em lotes pequenos, preservando integralmente o corpo e validando referências.
 5. Calcular hashes canónicos após a versão final de cada lote; não preencher valores por estimativa.
 
+## 6A. Adendo de fecho — 2026-10-16
+
+**Estado da revisão semântica:** FECHADA para os seis documentos inspecionados. Os seis documentos agora apresentam cabeçalho de controlo estruturado com H1, metadados e cadeia de autoridade alinhada a GOV-DIV-001. A aparente divergência entre o nome físico `CONTRATO_EVIDENCIA_FASES_00_09_V1.md` e o seu âmbito normativo está resolvida documentalmente: o caminho foi mantido para compatibilidade, enquanto o corpo identifica explicitamente o contrato FASE00–FASE12 V2.0. Não renomear o ficheiro sem mapear referências e aprovar uma migração de links.
+
+Os números de baseline dos runs 38713381853 e 38713567162 são históricos e não descrevem o estado atual. A auditoria canónica mais recente concluída, run [38881634574](https://github.com/carlos-andrade/B3/actions/runs/38881634574), analisou 330 ficheiros: 316 CONFORME, 14 PENDENTE, zero DIVERGENTE e zero FORMATO_HASH_INVALIDO.
+
+**Separação de estado:** a revisão semântica e o teste do algoritmo estão fechados. Adoção de contratos, execução real de workflows e aprovação formal do proprietário não são inferidas por esta revisão e permanecem gates operacionais quando exigidos por cada contrato.
+
+
 ## 6. Histórico
 
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
+| 1.1.0 | 2026-10-16 | Fecho da revisão semântica; snapshot original preservado; ações operacionais separadas | GOV-DIV-001, matriz integral v1.3.0 e auditoria SHA-256 run 38881634574 |
 | 1.0.0 | 2026-10-15 | Revisão semântica de seis contratos/políticas; dívida de metadados e estado inicial do auditor registados | Inspeção direta dos documentos-fonte; workflow de auditoria SHA-256 |
 | 1.1.0 | 2026-10-15 | Reexecução do auditor corrigido concluída com sucesso; artefacto JSON publicado no run | [Run 38713381853](https://github.com/carlos-andrade/B3/actions/runs/38713381853) |
 | 1.2.0 | 2026-10-15 | Testes unitários do algoritmo e nova auditoria concluídos com sucesso; hashes existentes continuam sem validação efetiva no baseline | [Run 38713567162](https://github.com/carlos-andrade/B3/actions/runs/38713567162) |
