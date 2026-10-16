@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
 | **Versão** | 2.2.0 |
-| **SHA-256 (conteúdo canónico)** | a365d43984b5a3d0947f06966fd85f686f750a388763fc9cc9ecad107dbc36fe |
+| **SHA-256 (conteúdo canónico)** | fbd3aa3f3e19502cddec802c09651ba5581ea48e0f3511ae56985668b0dcc8cb |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
