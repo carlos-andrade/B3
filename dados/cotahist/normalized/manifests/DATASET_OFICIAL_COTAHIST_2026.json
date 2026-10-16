@@ -25,14 +25,18 @@
   "approval_invalidated_at_utc": "2026-10-16T21:00:00Z",
   "blocking_reasons": [
     {
-      "code": "DATA_FIRST_DATE_MISMATCH",
+      "code": "HISTORICAL_VALIDATION_OUTPUT_CONFLICT_PENDING_REPRODUCTION",
       "expected_manifest_date": "2026-01-02",
-      "observed_csv_date": "2026-01-07",
-      "evidence_runs": [
+      "earlier_observed_date": "2026-01-07",
+      "latest_observed_date": "2026-01-02",
+      "latest_evidence_run": "https://github.com/carlos-andrade/B3/actions/runs/38969940913",
+      "earlier_evidence_runs": [
         "https://github.com/carlos-andrade/B3/actions/runs/38884507452",
         "https://github.com/carlos-andrade/B3/actions/runs/38884640793",
         "https://github.com/carlos-andrade/B3/actions/runs/38883878143"
-      ]
+      ],
+      "status": "NEEDS_REPRODUCTION",
+      "note": "O bloqueio não assume que a divergência de primeira data seja um defeito atual confirmado; exige reprodução controlada. A falta de autorização compatível permanece um bloqueio independente."
     },
     {
       "code": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED",
@@ -40,5 +44,5 @@
       "authorization_registry": "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
     }
   ],
-  "decision": "Não promover, não declarar oficial e não iniciar nova captura automatizada até reconciliar a divergência com artefactos existentes e autorizados e demonstrar direitos compatíveis com o uso pretendido. O RAW, o NORMALIZED e os respetivos hashes foram preservados."
+  "decision": "Não promover nem declarar oficial até a autorização compatível ser demonstrada e o conflito histórico de validação ser reproduzido/resolvido. A qualidade deve estar explicitamente VALIDADO e o gate M3-1E deve verificar esse estado. O RAW, o NORMALIZED e os respetivos hashes foram preservados."
 }
