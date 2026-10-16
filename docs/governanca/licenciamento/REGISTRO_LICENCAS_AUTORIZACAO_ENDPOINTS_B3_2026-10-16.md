@@ -86,7 +86,7 @@ O [catálogo oficial Copom do BCB](https://www.bcb.gov.br/conteudo/dadosabertos/
 ## 4. Controles técnicos implementados
 
 1. Criado o registo estruturado de fontes e decisões de autorização.
-2. Criado `scripts/governanca/validar_autorizacao_endpoint.py`, um gate fail-closed que não faz chamadas HTTP e só autoriza IDs com estado explícito permitido no registo.
+2. Criado `scripts/governanca/validar_autorizacao_endpoint.py`, um gate fail-closed sem chamadas HTTP. Uma licença aberta só passa com licença, URL e âmbito explícitos; uma autorização B3 exige evidência contratual/escrita com referência, aprovador, data, validade, âmbito e hash da evidência.
 3. O importador COTAHIST diário e o capturador BDI passam a consultar o gate antes de fazer pedidos.
 4. O workflow de Pesquisa por Pregão passa a ser informativo e não executa recolha.
 5. O workflow BDI deixa de executar captura automática enquanto o gate não autorizar.
@@ -134,10 +134,10 @@ Este registo é um controlo operacional e não substitui aconselhamento jurídic
 | Controlo | Execução | Resultado comprovado |
 |---|---|---|
 | Pesquisa por Pregão | [run 38893246712](https://github.com/carlos-andrade/B3/actions/runs/38893246712) | Workflow de conformidade concluído; nenhuma chamada HTTP executada |
-| COTAHIST diário | [run 38893951941](https://github.com/carlos-andrade/B3/actions/runs/38893951941) | Testes do gate passaram; autorização REVIEW_REQUIRED; job de importação foi **SKIPPED** |
-| BDI API | [run 38893952039](https://github.com/carlos-andrade/B3/actions/runs/38893952039) | Testes do gate passaram; captura foi **SKIPPED** |
-| BCB Copom JSON | [run 38893951985](https://github.com/carlos-andrade/B3/actions/runs/38893951985) | Cinco testes passaram; captura JSON e validação NORMALIZED concluídas |
-| PDF externo da Ata | Incluído na [run 38893951985](https://github.com/carlos-andrade/B3/actions/runs/38893951985) | O gate devolveu authorized=false; log confirmou PDF_ATTACHMENT_SKIPPED_LICENSE_SCOPE_UNCONFIRMED |
-| Auditoria documental anterior à última atualização deste registo | [run 38893920324](https://github.com/carlos-andrade/B3/actions/runs/38893920324) | 332 documentos conformes, zero pendentes e zero divergentes no commit auditado; a alteração desta secção requer auditoria final subsequente |
+| COTAHIST diário | [run 38894476519](https://github.com/carlos-andrade/B3/actions/runs/38894476519) | Testes do gate passaram; autorização REVIEW_REQUIRED; job de importação foi **SKIPPED** |
+| BDI API | [run 38894476389](https://github.com/carlos-andrade/B3/actions/runs/38894476389) | Testes do gate passaram; captura foi **SKIPPED** |
+| BCB Copom JSON | [run 38894476513](https://github.com/carlos-andrade/B3/actions/runs/38894476513) | Sete testes passaram; captura JSON e validação NORMALIZED concluídas |
+| PDF externo da Ata | Incluído na [run 38894476513](https://github.com/carlos-andrade/B3/actions/runs/38894476513) | O gate devolveu authorized=false; log confirmou PDF_ATTACHMENT_SKIPPED_LICENSE_SCOPE_UNCONFIRMED |
+| Auditoria documental anterior à última atualização deste registo | [run 38893920324](https://github.com/carlos-andrade/B3/actions/runs/38893920324) | 332 documentos conformes, zero pendentes e zero divergentes no commit auditado; o registo foi posteriormente atualizado e a auditoria final está associada ao HEAD indicado no resultado desta execução |
 
 Os jobs COTAHIST e BDI terminarem com sucesso significa que o controlo de autorização foi aplicado corretamente; **não** significa que a recolha de dados foi executada. O resultado de captura para esses dois endpoints é deliberadamente bloqueado.
