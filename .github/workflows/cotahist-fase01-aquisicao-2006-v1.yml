@@ -3,7 +3,7 @@ name: COTAHIST 2006 - FASE01 Aquisicao RAW
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [feat/cotahist-2006-offline-recovery]
     paths:
       - ".github/workflows/cotahist-fase01-aquisicao-2006-v1.yml"
 
@@ -97,9 +97,9 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar fase 01 aquisicao 2006"
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
+            git fetch origin feat/cotahist-2006-offline-recovery
+            git rebase origin/feat/cotahist-2006-offline-recovery
+            if git push origin HEAD:feat/cotahist-2006-offline-recovery; then
               exit 0
             fi
             echo "Push concorrente; nova tentativa ${attempt}/5."
