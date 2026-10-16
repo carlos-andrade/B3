@@ -7,10 +7,10 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_FECHO_FASE_OPERACIONAL |
 | **Fase** | FASE 04 — Licenciamento e autorização de endpoints |
-| **Estado** | CONTROLOS TÉCNICOS VERIFICADOS; AUTORIZAÇÕES EXTERNAS PENDENTES; FAIL_CLOSED |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | de4d57fd75c9506c96cc9a93e910f39e2b3f7f54e26073c4d917c974fd0e6614 |
-| **Commit de referência (versão anterior)** | N/A — documento inicial |
+| **Estado** | AUDITORIA TÉCNICA APROVADA; AUTORIZAÇÕES EXTERNAS PENDENTES; FAIL_CLOSED |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 8bc48382b8580a6aecd6e9bd532954decf3b6c5ea8fb793f708e570e9d763135 |
+| **Commit de referência (versão anterior)** | [1e77b27a2867bb897ba2d2528001f9a853ee443d](https://github.com/carlos-andrade/B3/commit/1e77b27a2867bb897ba2d2528001f9a853ee443d) |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
@@ -50,6 +50,7 @@ O resultado não transforma a permissão condicional do JSON Copom em permissão
 - Inspeção dos workflows de ingestão COTAHIST diário e BDI: ambos executam testes de autorização e avaliam o gate antes do job de captura; o job de ingestão/captura depende de `authorized == 'true'`.
 - Inspeção do script Pesquisa por Pregão: o gate é chamado antes de qualquer pedido HTTP; a recolha automatizada proibida falha fechada.
 - Não foram executadas chamadas aos endpoints B3/BDI/DRP, nem tentativas de contornar restrições.
+- Auditoria automatizada do registo: [run 38901173441](https://github.com/carlos-andrade/B3/actions/runs/38901173441) — **success** no HEAD `0e0ae4bfec21648171966e60d7c8a8562965e04e`; os testes unitários passaram, os seis endpoints foram avaliados, um ficou autorizado sob condições e cinco bloqueados, sem erros de controlo. Artefacto: [b3-auditoria-autorizacao-endpoints](https://github.com/carlos-andrade/B3/actions/runs/38901173441/artifacts/12045768807).
 
 ## 4. Critérios de saída
 
