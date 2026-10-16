@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | RELATORIO_REVISAO_SEMANTICA |
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
-| **Estado** | REVISAO_PARCIAL; METADADOS_LEGADOS_PENDENTES |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | b469a12983ee76eb93de087ebe4651b60474b35ff1d6585bf2b604d1709f6f8c |
+| **Estado** | REVISAO_SEMANTICA_FECHADA; PRECEDENCIA_V1_V2_EXPLICITADA; ADocAO_V2_BLOQUEADA_POR_EVIDENCIA |
+| **Versão** | 1.1.0 |
+| **SHA-256 (conteúdo canónico)** | 8875374871d13430a0c053e66d79093ec30444ff7eef1302d2c96d1b0e825b4f |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de aprovação específica |
 | **Origem** | Inspeção direta dos três contratos-fonte e norma GOVERNANCA v1.0.3 |
@@ -63,8 +63,18 @@ Foram inspecionados três contratos de ingestão/identidade. Os conteúdos têm 
 3. Continuar a revisão de contratos de dados restantes, mantendo as regras técnicas intactas.
 4. Após fechar a classificação semântica, normalizar cabeçalhos em lotes controlados e calcular hashes por ferramenta reprodutível.
 
+## 6A. Adendo de fecho — 2026-10-16
+
+**Estado da revisão semântica:** FECHADA quanto à classificação e à relação entre versões. O contrato Dataset Oficial V1.0 é preservado como referência histórica; FASE10A M2 e o contrato físico V2.0 descrevem a arquitetura de destino. A existência do contrato V2.0, de ficheiros NORMALIZED ou de manifests não prova, por si só, adoção formal nem autorização de publicação.
+
+A decisão de controlo fica explícita: **não declarar a V2.0 adotada nem liberar publicação global enquanto a evidência de adoção e o gate M3 não estiverem presentes**. Isto fecha a ambiguidade documental sem inventar uma execução ou certificação. O contrato de identidade K4 continua a proibir deduplicação do RAW de 1986 apenas com base nessa chave.
+
+A auditoria canónica mais recente concluída, run [38881634574](https://github.com/carlos-andrade/B3/actions/runs/38881634574), reportou 316 CONFORME, 14 PENDENTE, zero DIVERGENTE e zero FORMATO_HASH_INVALIDO em 330 ficheiros. Os pendentes legados são dívida documental separada, não evidência de adoção V2.0.
+
+
 ## 6. Histórico
 
 | Versão | Data | Alteração | Evidência |
 |---|---|---|---|
+| 1.1.0 | 2026-10-16 | Fecho da revisão semântica; snapshot original preservado; ações operacionais separadas | GOV-DIV-001, matriz integral v1.3.0 e auditoria SHA-256 run 38881634574 |
 | 1.0.0 | 2026-10-15 | Revisão semântica de três contratos de ingestão/identidade | Inspeção direta dos documentos-fonte |
