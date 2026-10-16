@@ -32,7 +32,7 @@ jobs:
           fetch-depth: 0
 
       - name: Testar preflight de licenças ODbL
-        run: python -m unittest tests.governanca.test_validar_licenca_bcb_sgs -v
+        run: python -m unittest discover -s tests/governanca -p "test_validar_licenca_bcb_sgs.py" -v
 
       - name: Preflight explícito de licenças por série
         run: >-
