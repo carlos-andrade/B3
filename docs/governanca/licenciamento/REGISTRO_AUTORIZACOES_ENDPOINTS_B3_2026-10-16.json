@@ -107,9 +107,11 @@
       "storage_and_redistribution": "ODbL_CONDITIONS_APPLY",
       "evidence": [
         {
-          "type": "official_catalog_license",
+          "type": "official_open_data_license",
           "url": "https://www.bcb.gov.br/conteudo/dadosabertos/BCBDeinf/elements_copom.html",
-          "finding": "Catálogo oficial declara licença Open Database License (ODbL) para o conjunto de dados Copom."
+          "finding": "Catálogo oficial declara licença Open Database License (ODbL) para o conjunto de dados Copom.",
+          "license_name": "Open Database License (ODbL)",
+          "scope": "Conjunto de dados JSON Copom publicado no catálogo oficial; não presume direitos sobre anexos externos."
         },
         {
           "type": "open_data_policy",
