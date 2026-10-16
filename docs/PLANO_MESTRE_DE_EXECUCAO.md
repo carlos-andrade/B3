@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.9 |
-| **SHA-256 (conteúdo canónico)** | 0c71fef6901a122e3cf1d6bacf8e90cfeeb55736516b591e55f145e73814ddf8 |
-| **Commit de referência (versão anterior)** | [f7317e8e1d37908e4e18089e1c02b64232ee18b8](https://github.com/carlos-andrade/B3/commit/f7317e8e1d37908e4e18089e1c02b64232ee18b8) |
+| **Versão** | 2.3.10 |
+| **SHA-256 (conteúdo canónico)** | daf28e986ff223c5797fab1b68ac4f9d899712a40a2a41e33843389d7f581d6b |
+| **Commit de referência (versão anterior)** | [be77044b3cb6da92fb0a486d6304e1201e778945](https://github.com/carlos-andrade/B3/commit/be77044b3cb6da92fb0a486d6304e1201e778945) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -728,3 +728,31 @@ A execução real inicial demonstrou que a pesquisa por licença encontra recurs
 5. Só promover as pendências que tenham evidência de execução atual, hash, manifesto e licença compatível.
 
 **Decisão de saída:** validação transversal em curso; projeto NÃO CONCLUÍDO. Gates de captura sem direitos demonstrados continuam fechados.
+
+
+## 31. Triagem WATCHDOG e bloqueio preventivo de COTAHIST 2026 — 2026-10-16
+
+### Fotografia e método
+A consulta completa à API do GitHub Actions para a janela de 24 horas iniciada em 2026-10-15T21:00:00Z retornou 412 execuções: 226 `success`, 93 `failure`, 93 `cancelled` e zero ativas no momento da fotografia. A triagem inicial está registada em [TRIAGEM_WATCHDOG_B3_2026-10-16.json](governanca/auditorias/TRIAGEM_WATCHDOG_B3_2026-10-16.json). A classificação por amostragem de logs não atribui causa a todas as 93 falhas; as restantes continuam em investigação.
+
+### Causas confirmadas
+- **Concorrência de escrita Git:** rejeições de push e conflitos de rebase em FASE00 COTAHIST, manifestos SGS e metadados Copom; o orquestrador também esgotou as tentativas de reconciliação. É necessário consolidar a estratégia de persistência e concorrência antes de declarar o WATCHDOG favorável.
+- **Bloqueios esperados de licença:** COTAHIST diário e BDI permanecem com `authorized=false`; Pesquisa por Pregão tem `PROHIBITED_AUTOMATED_COLLECTION`. Os gates continuam fechados; o monitor deve distinguir um bloqueio esperado de um defeito técnico sem contornar a autorização.
+- **Divergência material no NORMALIZED 2026:** os testes registaram 3.142.910 linhas, mas a primeira data observada é 2026-01-07 e os manifestos indicavam 2026-01-02. Contagem igual não elimina divergência de cobertura.
+
+### Correção preventiva executada
+Para não continuar a declarar como validado um conjunto que falha a reconciliação, o manifesto de qualidade `COTAHIST_A2026_quality.json` foi alterado para `BLOQUEADO` no commit [7363a76884198450e4d34687cc3ab5e81663b4dd](https://github.com/carlos-andrade/B3/commit/7363a76884198450e4d34687cc3ab5e81663b4dd). O manifesto `DATASET_OFICIAL_COTAHIST_2026.json` foi alterado para `BLOQUEADO`, com invalidação explícita da aprovação anterior, no commit [5f2778d86c755bafae4003c5972980de0dc1ac0b](https://github.com/carlos-andrade/B3/commit/5f2778d86c755bafae4003c5972980de0dc1ac0b). RAW, NORMALIZED e sidecar SHA-256 não foram alterados.
+
+As execuções decorrentes confirmaram o fail-closed:
+- [Certificação anual #38969941051](https://github.com/carlos-andrade/B3/actions/runs/38969941051): 40 anos certificados, 2026 bloqueado.
+- [Dataset Oficial V1 #38969941082](https://github.com/carlos-andrade/B3/actions/runs/38969941082): rejeitou 2026 por `quality status` inválido.
+- [Dataset Oficial V2 #38969941094](https://github.com/carlos-andrade/B3/actions/runs/38969941094): não publicou o dataset por falhas de certificação física.
+- [Auditoria de calendário #38969941018](https://github.com/carlos-andrade/B3/actions/runs/38969941018) e [auditoria FASE04/05 #38969941009](https://github.com/carlos-andrade/B3/actions/runs/38969941009): sucesso; estes resultados não substituem a reconciliação da primeira data.
+
+### Decisão e próximos passos
+- COTAHIST 2026 fica **BLOQUEADO / NÃO PROMOVER** até reconciliar RAW, parser, NORMALIZED e manifestos com evidência autorizada; não inventar registos ausentes.
+- Manter a política de custo zero e os gates de licença.
+- Corrigir a persistência concorrente nas famílias de workflows que escrevem no branch principal.
+- Classificar as falhas restantes e os cancelamentos por evidência, sem reexecutar em massa workflows históricos.
+- Manter as Issues [#12 WATCHDOG](https://github.com/carlos-andrade/B3/issues/12) e [#13 fontes gratuitas](https://github.com/carlos-andrade/B3/issues/13) abertas.
+- Estado global: **AUDITORIA_TRANSVERSAL_EM_CURSO; PROJETO NÃO CONCLUÍDO**.
