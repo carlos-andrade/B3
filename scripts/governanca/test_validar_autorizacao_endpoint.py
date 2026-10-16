@@ -27,7 +27,7 @@ class AuthorizationGateTests(unittest.TestCase):
         self.assertTrue(json.loads(result.stdout)["authorized"] is False)
 
     def test_unconfirmed_b3_endpoints_are_blocked(self):
-        for endpoint in ("B3_BDI_TABLE_API", "B3_COTAHIST_DAILY", "B3_DRP_RAPINEGOCIOS"):
+        for endpoint in ("B3_BDI_TABLE_API", "B3_COTAHIST_DAILY", "B3_DRP_RAPINEGOCIOS", "BCB_COPOM_PDF_ATTACHMENT"):
             with self.subTest(endpoint=endpoint):
                 result = run_gate(endpoint)
                 self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
