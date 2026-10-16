@@ -8,8 +8,8 @@
 | **Tipo documental** | ROADMAP_MESTRE |
 | **Fase** | Governação documental e rastreabilidade |
 | **Estado** | APROVADO |
-| **Versão** | 1.1.1 |
-| **SHA-256 (conteúdo canónico)** | 727b6631fffd7b6d9b95249e84b10f9e8d604993de54f57107fb3f929e3a78b0 |
+| **Versão** | 1.1.2 |
+| **SHA-256 (conteúdo canónico)** | 448bddcca3fad23b1965e7690ebe9eda2ea2546ab9cba7809cefdda492ecedac |
 | **Commit de referência (versão anterior)** | [23df98911bb9bed5d3f6a1a670508fbfde5dc36d](https://github.com/carlos-andrade/B3/commit/23df98911bb9bed5d3f6a1a670508fbfde5dc36d) |
 | **Data de criação** | 2026-10-14 |
 | **Data de atualização** | 2026-10-16 |
@@ -193,3 +193,17 @@ Política normativa: https://github.com/carlos-andrade/B3/blob/main/docs/governa
 
 ### Limite que permanece
 A aprovação global do mecanismo e a publicação de 2026 **não certificam automaticamente os anos de 1986–2025**. Cada ano histórico permanece sujeito à sua própria cadeia RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE. A regra fail-closed permanece em vigor.
+
+
+## 9. Migração Git LFS COTAHIST A1987 — concluída em 2026-10-16
+
+- **Preflight:** [run 38590349969](https://github.com/carlos-andrade/B3/actions/runs/38590349969) — `success`, sem commit/push.
+- **Migração controlada:** [run 38591026646](https://github.com/carlos-andrade/B3/actions/runs/38591026646) — `success`; [commit e8c6bf21](https://github.com/carlos-andrade/B3/commit/e8c6bf21eeba789b763a9c88d6433dabe8b31b9a).
+- **Estado atual em main:** blob de 133 bytes, ponteiro Git LFS válido para o objeto de 15.518.211 bytes.
+- **Integridade:** SHA-256 `5dd255d8164ab321fe577d0cac0b4c1ee94b590d785343202762036786adffcc`; 130.665 registos; 25 campos; intervalo 1987-01-02–1987-12-30. Conteúdo preservado.
+- **Auditoria pós-migração:** [AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json](https://github.com/carlos-andrade/B3/blob/main/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json) — 41/41 anos validados, zero falhas.
+- **Dataset Oficial V2:** regenerado e persistido com sucesso após a migração.
+- **Runbook:** [RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/RUNBOOK_MIGRACAO_GIT_LFS_COTAHIST_A1987_V1.md).
+- **Incidência:** [INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md](https://github.com/carlos-andrade/B3/blob/main/docs/ingestao/INCIDENCIA_GIT_LFS_COTAHIST_A1987_2026-10-14.md).
+
+**Decisão:** A1987 está migrado para Git LFS. Não repetir a migração. A auditoria SHA-256 documental do HEAD mais recente está a ser executada após a atualização deste roadmap; a conclusão será aceite apenas após resultado final conforme.
