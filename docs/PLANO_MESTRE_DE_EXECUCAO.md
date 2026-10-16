@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
 | **Versão** | 2.3.14 |
-| **SHA-256 (conteúdo canónico)** | ccbc18a7e82c80176b08461cfb4ca8547a7a4adf45a88930502fa3e3f21a5ef5 |
+| **SHA-256 (conteúdo canónico)** | d1190873a1c1aaa65239523a8ec8884e6e17220b94f1aa6c6313ec93b10ecb4e |
 | **Commit de referência (versão anterior)** | [6495ef01b2f78e308821dbd464cec098c306ad91](https://github.com/carlos-andrade/B3/commit/6495ef01b2f78e308821dbd464cec098c306ad91) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
