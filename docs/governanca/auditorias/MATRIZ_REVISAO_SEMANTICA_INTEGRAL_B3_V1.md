@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; 281_PENDENCIAS_ORIGINAIS_FECHADAS; 17_DOCUMENTOS_REVALIDADOS; QUATRO_RELATORIOS_FECHADOS; PENDENCIAS_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.3.0 |
-| **SHA-256 (conteúdo canónico)** | c897d908699e6de65bb7e2797d842b5dd3789c754c21b93855f33fd71afda30d |
+| **SHA-256 (conteúdo canónico)** | 136b94d285ff142ff9f77d965fd496aa66e5d05b3d2d9602cd17d5793b5e80bb |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
