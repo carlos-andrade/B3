@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Classificação semântica e reconciliação |
 | **Estado** | REVISAO_SEMANTICA_FECHADA_POS_GOV_DIV_001; SNAPSHOT_HISTORICO_PRESERVADO |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 0e4de7b97a263346b0490dbb970a3a7510a0d36f195f4e89351c3bbc7503416c |
+| **SHA-256 (conteúdo canónico)** | 98681e007cb795e2a0a5b16a6772e97d1bb201b14f755f6cc42b549dacdbfffa |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
