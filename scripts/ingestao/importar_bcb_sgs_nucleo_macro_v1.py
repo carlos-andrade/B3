@@ -153,14 +153,16 @@ def main():
     # Gate obrigatório: nenhuma série é descarregada antes de verificar a licença
     # ODbL do recurso exato no catálogo oficial de Dados Abertos do BCB.
     series_arg = ",".join(str(code) for code in sorted(SERIES))
+    preflight_path = ROOT / "dados" / "bcb_sgs" / "manifests" / "preflight_licencas_sgs.json"
     preflight = subprocess.run(
         [
             sys.executable,
             str(ROOT / "scripts" / "governanca" / "validar_licenca_bcb_sgs.py"),
             "--series",
             series_arg,
+            "--allow-partial",
             "--json-output",
-            str(ROOT / "dados" / "bcb_sgs" / "manifests" / "preflight_licencas_sgs.json"),
+            str(preflight_path),
         ],
         cwd=ROOT,
         check=False,
@@ -168,9 +170,29 @@ def main():
     )
     if preflight.returncode != 0:
         raise SystemExit(
-            "SGS_BLOCKED_LICENSE_PREFLIGHT: uma ou mais séries não têm licença ODbL "
-            "demonstrada no catálogo oficial; nenhuma captura foi iniciada."
+            "SGS_BLOCKED_LICENSE_PREFLIGHT: nenhuma série tem licença ODbL demonstrada; "
+            "nenhuma captura foi iniciada."
         )
+    preflight_report = json.loads(preflight_path.read_text(encoding="utf-8"))
+    eligible_codes = {
+        int(row["series_code"])
+        for row in preflight_report.get("results", [])
+        if row.get("authorized") is True
+    }
+    blocked_codes = sorted(set(SERIES) - eligible_codes)
+    if not eligible_codes:
+        raise SystemExit("SGS_BLOCKED_LICENSE_PREFLIGHT: conjunto elegível vazio.")
+    SERIES_TO_CAPTURE = {code: meta for code, meta in SERIES.items() if code in eligible_codes}
+    if blocked_codes:
+        print(json.dumps({
+            "event": "SGS_SERIES_SKIPPED_LICENSE_UNVERIFIED",
+            "blocked_series": blocked_codes,
+            "eligible_series": sorted(eligible_codes),
+            "policy": "FAIL_CLOSED_PER_SERIES",
+        }, ensure_ascii=False))
+    # Reduzir a lista efetiva sem perder a definição original para rastreabilidade.
+    SERIES.clear()
+    SERIES.update(SERIES_TO_CAPTURE)
 
     capture_dt = datetime.now(ZoneInfo("America/Sao_Paulo"))
     capture_date = capture_dt.date()
