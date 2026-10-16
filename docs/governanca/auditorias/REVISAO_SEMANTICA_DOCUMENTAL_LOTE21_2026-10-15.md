@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | REVISAO_CONTEUDO_CONCLUIDA; HISTORICO_PRESERVADO; CONTRATOS_V1_V2_RECONCILIADOS_POR_VERSAO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | a3afe0aa6f412ae9c2870cd63d831167dcc95cdba671998a584fbd4d91961908 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
