@@ -50,8 +50,10 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib,json
+          import hashlib,json,sys
           from pathlib import Path
+          sys.path.insert(0, "scripts/ingestao")
+          from normalize_cotahist import PARSER_VERSION
           q=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
           o=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
           p=Path("dados/cotahist/normalized/anual/COTAHIST_A2026.csv")
@@ -60,10 +62,10 @@ jobs:
           raw=hashlib.sha256(Path("dados/cotahist/raw/anual/COTAHIST_A2026.ZIP").read_bytes()).hexdigest()
           assert sha == checksum == q["normalized_sha256"] == o["normalized_sha256"]
           assert raw == q["raw_sha256"] == o["raw_sha256"]
-          assert o["status"] == "OFICIAL"
+          assert o["status"] in {"CANDIDATO_A_PUBLICACAO", "OFICIAL"}
           assert o["canonical"] is True
           assert o["storage"] == "git-lfs"
-          assert q["parser_version"] == o["parser_version"] == "1.1.0"
+          assert q["parser_version"] == o["parser_version"] == PARSER_VERSION
           print("M3-1E_CRYPTO_CHAIN=OK")
           print(f"RAW_SHA={raw}")
           print(f"NORMALIZED_SHA={sha}")
@@ -102,5 +104,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA"
-          echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA" >> "$GITHUB_STEP_SUMMARY"
+          STATUS="$(python -c 'import json; print(json.load(open("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json"))["status"])')"
+          if [ "$STATUS" = "OFICIAL" ]; then
+            echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA"
+            echo "M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "M3-1E_STATUS=EVIDENCIAS_GLOBAIS_VALIDAS_AGUARDANDO_PUBLICACAO"
+            echo "M3-1E_STATUS=EVIDENCIAS_GLOBAIS_VALIDAS_AGUARDANDO_PUBLICACAO" >> "$GITHUB_STEP_SUMMARY"
+          fi
