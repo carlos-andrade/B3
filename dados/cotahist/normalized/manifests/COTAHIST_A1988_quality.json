@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status": "VALIDADO",
   "ano": 1988,
-  "parser_version": "1.1.0",
+  "parser_version": "1.1.2",
   "source": "B3",
   "raw_file": "COTAHIST_A1988.ZIP",
   "raw_sha256": "b99563d58d2c58ba4c910545fc969041499a45e4e2f6649829a67702193a88ee",
