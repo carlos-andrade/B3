@@ -228,7 +228,7 @@ def main():
 
     capture_dt = datetime.now(ZoneInfo("America/Sao_Paulo"))
     capture_date = capture_dt.date()
-    stamp = capture_dt.strftime("%Y%m%dT%H%M%S%z")
+    stamp = capture_dt.strftime("%Y%m%dT%H%M%S%z").replace("+", "p").replace("-", "m")
     run_manifests = []
 
     for code, meta in SERIES.items():
@@ -262,7 +262,7 @@ def main():
             url = BASE_URL.format(codigo=code) + "?" + params
             payload = fetch(url)
 
-            raw_path = raw_dir / f"SGS_{code}_{chunk_start.isoformat()}_{chunk_end.isoformat()}.json"
+            raw_path = raw_dir / f"SGS_{code}_{chunk_start.isoformat()}_{chunk_end.isoformat()}_{stamp}.json"
             raw_path.write_bytes(payload)
 
             try:
