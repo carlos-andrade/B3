@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
 | **Versão** | 2.3.6 |
-| **SHA-256 (conteúdo canónico)** | 65ff3596cb4b1194914350adc2e09b9b4005329cf3cdd309c6c9d7807e057737 |
+| **SHA-256 (conteúdo canónico)** | 6f980c057892f6006f2d74bf0f0ff74680dbad713101cb45a008e11f12b3886c |
 | **Commit de referência (versão anterior)** | [a0c2f5369417d73e293044affcae9d19aef73c6c](https://github.com/carlos-andrade/B3/commit/a0c2f5369417d73e293044affcae9d19aef73c6c) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -695,4 +695,4 @@ Criado .github/workflows/b3-fontes-gratuitas-orquestrador.yml como ponto único 
 
 Os workflows individuais SGS e Copom foram limitados a execução manual de diagnóstico. A agenda normal passa ao orquestrador central. Todos os workflows de ingestão BCB partilham o grupo de concorrência b3-data-ingestion-serialized.
 
-A execução real inicial demonstrou que a pesquisa por licença encontra recursos SGS 1, 11 e 432; as séries 12 e 433 não tinham correspondência exata na primeira consulta. O gate foi ajustado para procurar também por títulos e continuar com séries elegíveis. A conclusão operacional depende do run do orquestrador e dos artefactos finais; não declarar captura concluída até o workflow terminar e a reconciliação ser verificada.
+A execução real inicial demonstrou que a pesquisa por licença encontra recursos SGS 1, 11 e 432; as séries 12 e 433 não tinham correspondência exata na primeira consulta. O gate foi ajustado para procurar também por títulos e continuar com séries elegíveis. A ingestão SGS passou a usar janela incremental de sete dias antes da última observação conhecida, preservando o histórico anterior e reconsultando apenas a janela recente para absorver revisões. A lógica foi coberta por testes em tests/ingestao/test_bcb_sgs_incremental.py. A conclusão operacional depende do run do orquestrador e dos artefactos finais; não declarar captura concluída até o workflow terminar e a reconciliação ser verificada.
