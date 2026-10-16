@@ -8,11 +8,11 @@
 | **Tipo documental** | CARTA_DADOS |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 61b012138c983d16ff245511a86e91f70885d0b46ba35ce66faf7bb64adccd6c|
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | d64e080d61fb6c7347ec5a00c08d0534ad9ccda9c98d465fe918565bb2333edb |
 | **Commit de referência (versão anterior)** | [dd97e488701c62645a3cc2ca855897efcd3162db](https://github.com/carlos-andrade/B3/commit/dd97e488701c62645a3cc2ca855897efcd3162db) |
 | **Data de criação** | 2026-09-24 |
-| **Data de atualização** | 2026-10-14 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -689,3 +689,17 @@ Este aditivo alimenta o Layout Mestre. A implementação executável deve obedec
 
 **Carta → reconciliação → Layout Mestre → código → evidência → validação.**
 
+
+## Aditivo — proveniência gratuita e direitos de uso — 2026-10-16
+
+Um dado só pode entrar no pipeline operacional se a fonte for gratuita para o projeto e se houver evidência suficiente de que a recolha e o uso pretendido são compatíveis com a licença ou os termos aplicáveis.
+
+A validação de confiança deve registar, separadamente:
+- custo de acesso e de operação: deve ser zero;
+- origem e data da captura;
+- licença/termos e respetiva versão ou URL;
+- permissões e restrições para automatização, armazenamento, transformação, publicação e redistribuição;
+- atribuição ou outras obrigações de licença;
+- decisão por finalidade concreta.
+
+Dados disponíveis publicamente não são automaticamente livres para qualquer utilização. Quando a licença ou os termos não forem claros, classificar a utilização pretendida como NAO_VERIFICADA e bloquear a promoção/publicação afetada (FAIL_CLOSED). Se não existir uma alternativa gratuita com direitos compatíveis, documentar a lacuna em vez de contornar a restrição ou substituir dados reais por valores não verificados.
