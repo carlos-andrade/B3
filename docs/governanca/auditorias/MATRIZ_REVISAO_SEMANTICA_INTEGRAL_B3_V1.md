@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | INVENTARIO_INTEGRAL; 281_PENDENCIAS_ORIGINAIS_FECHADAS; 17_DOCUMENTOS_REVALIDADOS; QUATRO_RELATORIOS_FECHADOS; PENDENCIAS_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.3.0 |
-| **SHA-256 (conteúdo canónico)** | 136b94d285ff142ff9f77d965fd496aa66e5d05b3d2d9602cd17d5793b5e80bb |
+| **SHA-256 (conteúdo canónico)** | 6dda349507d168e36fa9a054edba70bce9951adcd316f1f787b2e82506d0abf6 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-16 |
@@ -385,6 +385,8 @@ O fecho acima encerra as pendências de **revisão e reconciliação documental*
 - auditoria SHA-256 pós-commit desta atualização, incluindo confirmação dos hashes dos quatro relatórios e desta matriz.
 
 Estas exceções devem permanecer explícitas; não podem ser convertidas em concluídas sem evidência independente.
+
+**Auditoria pós-fecho anterior:** [run 38882929335](https://github.com/carlos-andrade/B3/actions/runs/38882929335) — 330 ficheiros analisados, 316 `CONFORME`, 14 `PENDENTE`, zero `DIVERGENTE` e zero `FORMATO_HASH_INVALIDO`. O artefacto confirmou `CONFORME` nos quatro relatórios e na matriz v1.3.0 então auditada. A execução do commit desta atualização será a evidência final para esta versão.
 
 ## 5. Restrições permanentes
 
