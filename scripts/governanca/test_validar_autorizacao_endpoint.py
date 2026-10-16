@@ -41,6 +41,13 @@ class AuthorizationGateTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertTrue(json.loads(result.stdout)["authorized"])
 
+    def test_bcb_sgs_is_allowed_only_with_dynamic_series_preflight(self):
+        result = run_gate("BCB_SGS_API")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertTrue(payload["authorized"])
+        self.assertEqual(payload["authorization_status"], "AUTHORIZED_WITH_CONDITIONS")
+
     def test_unknown_endpoint_fails_closed(self):
         result = run_gate("ENDPOINT_NOT_REGISTERED")
         self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
@@ -72,6 +79,7 @@ class AuthorizationGateTests(unittest.TestCase):
     def test_capture_scripts_compile_without_network_access(self):
         paths = (
             "scripts/governanca/validar_autorizacao_endpoint.py",
+            "scripts/governanca/validar_licenca_bcb_sgs.py",
             "scripts/ingestao/importar_cotahist_diario_v1.py",
             "scripts/ingestao/capturar_bcb_copom_v2.py",
             "ferramentas/capturar_bdi.py",
