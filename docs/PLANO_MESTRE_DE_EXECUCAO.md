@@ -7,17 +7,17 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
-| **Estado** | EM_REVISAO |
-| **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 94a8222dc8d0f87b2b430656d3537db9087e5e2271ec08abc83f1359d2196b13 |
+| **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
+| **Versão** | 2.1.0 |
+| **SHA-256 (conteúdo canónico)** | e3b3fa2b603043e7dc6d5df274600b54de7777d696eaea15d003721e9d62441e |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
 | **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Rastreabilidade** | Histórico Git, versões anteriores e evidências referenciadas no corpo |
 | **Escopo** | Planeamento e coordenação das frentes de execução do projeto B3. |
 | **Objetivo** | Orientar execução, validação e publicação sem ocultar falhas entre frentes. |
