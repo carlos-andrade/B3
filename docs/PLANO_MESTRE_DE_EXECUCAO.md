@@ -8,8 +8,8 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | ATUALIZADO_POS_GOV_DIV_001; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.1.0 |
-| **SHA-256 (conteúdo canónico)** | 054d3f5549553b164d2d52f22a5f9167c9e1158ea3ed2db81188571ccc8cef17 |
+| **Versão** | 2.2.0 |
+| **SHA-256 (conteúdo canónico)** | a365d43984b5a3d0947f06966fd85f686f750a388763fc9cc9ecad107dbc36fe |
 | **Commit de referência (versão anterior)** | [aa3007b3a5d2824338011775255779838f8d3933](https://github.com/carlos-andrade/B3/commit/aa3007b3a5d2824338011775255779838f8d3933) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
@@ -601,3 +601,21 @@ A fila original de 281 está fechada. **A revisão semântica global dos 303 doc
 5. Confirmar auditoria canónica final dos documentos alterados.
 
 As restrições permanecem: COTAHIST 1986–2025 somente para consulta/read-only; 2026 com atualização diária; BLOOMBERG_MAIL isolado e fora do escopo operacional B3.
+
+
+## 16. Fase 03 operacional — capturas RAW e reconciliações — 2026-10-16
+
+A Fase 03 operacional foi executada em modo de verificação e reconciliação das capturas já autorizadas. O relatório [FECHO_FASE03_CAPTURAS_RAW_RECONCILIACOES_2026-10-16.md](ingestao/FECHO_FASE03_CAPTURAS_RAW_RECONCILIACOES_2026-10-16.md) regista evidências, resultados e bloqueios.
+
+### Evidências de execução
+- COTAHIST diário até 2026-10-15: [run 38889032782](https://github.com/carlos-andrade/B3/actions/runs/38889032782) — sucesso; RAW, NORMALIZED e manifesto persistidos; 18.827 registos, 25 campos, zero conflitos reportados.
+- BDI DailyAverageStocks: [run 38889119047](https://github.com/carlos-andrade/B3/actions/runs/38889119047) — sucesso; uma tabela/página validada, não cobertura integral do BDI.
+- BCB/Copom reunião 281: [run 38889256929](https://github.com/carlos-andrade/B3/actions/runs/38889256929) — sucesso; respostas API e NORMALIZED persistidos.
+- PDF oficial da Ata 281: [run 38889815903](https://github.com/carlos-andrade/B3/actions/runs/38889815903) — sucesso; PDF binário de 401.502 bytes e assinatura validada.
+- Auditoria documental anterior: [run 38899464790](https://github.com/carlos-andrade/B3/actions/runs/38899464790) — sucesso no commit `3e623cb6c194ce4d70ab37f97341f92c6a8e58c5`.
+
+### Estado de saída
+**EXECUTADA PARCIALMENTE; BLOQUEIOS FAIL_CLOSED MANTIDOS.** A captura automatizada BDM negócio a negócio não foi realizada devido à restrição de autorização documentada; agressor e Cumulative Delta continuam não confirmados. O timestamp exato de publicação do comunicado Copom continua `UNKNOWN`. A cobertura BDI permanece parcial. Estes itens não podem ser considerados resolvidos por inferência nem substituídos por fontes consolidadas.
+
+### Próxima ação autorizada
+Obter os arquivos BDM de 2026-09-16 e 2026-09-17 por via autorizada e reconciliar cada arquivo; procurar evidência oficial do horário de publicação Copom; expandir a matriz BDI tabela a tabela com RAW, manifesto e reconciliação próprios. Não alterar o histórico COTAHIST 1986–2025 nem contornar restrições de recolha.
