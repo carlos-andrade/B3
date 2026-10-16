@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - "ferramentas/capturar_bdi.py"
+      - "scripts/governanca/validar_autorizacao_endpoint.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
       - ".github/workflows/testar-captura-bdi.yml"
   workflow_dispatch:
     inputs:
@@ -31,6 +34,8 @@ jobs:
       authorized: ${{ steps.gate.outputs.authorized }}
     steps:
       - uses: actions/checkout@v4
+      - name: Testar os controlos de autorização
+        run: python -m unittest scripts/governanca/test_validar_autorizacao_endpoint.py -v
       - name: Verificar autorização de uso do endpoint BDI
         id: gate
         run: python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_BDI_TABLE_API --allow-blocked --github-output "$GITHUB_OUTPUT"
