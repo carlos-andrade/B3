@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | REVISAO_CONTEUDO_CONCLUIDA; GATE_DE_TERMS_E_CAPTURA_RAW_REGISTADO |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | c5913fa16b2a12946e470e8e67bdcd442792cd8fcf6700dd002b8722ba5f2979 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-15 |
 | **Data de atualização** | 2026-10-15 |
