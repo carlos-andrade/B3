@@ -2,6 +2,7 @@
 import csv,json,sys
 from datetime import datetime
 from pathlib import Path
+from normalize_cotahist import PARSER_VERSION
 
 csv_path=Path(sys.argv[1]); report_path=Path(sys.argv[2]); year=int(sys.argv[3]); raw_sha=sys.argv[4]; norm_sha=sys.argv[5]
 with csv_path.open(encoding="utf-8", newline="") as f:
@@ -23,7 +24,7 @@ wrong=[d for d in dates if not d.startswith(f"{year}-")]
 if bad or wrong:
     raise SystemExit(f"falha de qualidade: invalidas={len(bad)} fora_ano={len(wrong)}")
 report={
-    "schema_version":"1.0.0","status":"VALIDADO","ano":year,"parser_version":"1.1.0","source":"B3",
+    "schema_version":"1.0.0","status":"VALIDADO","ano":year,"parser_version":PARSER_VERSION,"source":"B3",
     "raw_file":f"COTAHIST_A{year}.ZIP","raw_sha256":raw_sha,
     "normalized_file":f"COTAHIST_A{year}.csv","normalized_sha256":norm_sha,
     "linhas_normalized":len(rows),"campos":len(fields),
