@@ -31,6 +31,8 @@ O documento deve ser lido junto da Market Data B3 Consumption Policy e do Period
 
 Este diretório não substitui contrato nem autorização de uso. Direitos de consumo, exibição, distribuição, redistribuição e desenvolvimento devem ser validados contra as políticas e contratos vigentes.
 
+**Estado de licenciamento em 16/10/2026:** consultar o [Registo de Licenças e Autorização de Endpoints](../../../governanca/licenciamento/REGISTRO_LICENCAS_AUTORIZACAO_ENDPOINTS_B3_2026-10-16.md). A versão V1.1 da Commercial Policy publicada pela B3 indica eficácia a partir de 01/11/2026; até 31/10/2026, a versão efetiva indicada no próprio documento é a V1.0. A mera publicação de política ou acessibilidade de endpoint não prova que o projeto tem contrato/licença para cada finalidade.
+
 Arquivos planejados: FONTE-PRIMARIA.md; POLITICA-ESTRUTURADA.md; PRECOS-E-TARIFAS.md; DATASETS-E-CLASSIFICACOES.md; LICENCAS-E-APLICACOES.md; IMPACTO-NO-NEGOCIO.md; CHANGELOG.md.
 
 Nota de copyright: não reproduzimos integralmente o PDF. O repositório mantém a fonte oficial e uma extração estruturada para análise futura.
