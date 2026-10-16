@@ -54,7 +54,7 @@ jobs:
           official=json.loads(Path("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json").read_text())
           quality=json.loads(Path("dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json").read_text())
 
-          assert official["status"] == "OFICIAL"
+          assert official["status"] in {"CANDIDATO_A_PUBLICACAO", "OFICIAL"}
           assert official["dataset"] == "COTAHIST_NORMALIZED_ANUAL"
           assert official["ano"] == 2026
           assert official["source"] == "B3"
@@ -96,5 +96,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO"
-          echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO" >> "$GITHUB_STEP_SUMMARY"
+          STATUS="$(python -c 'import json; print(json.load(open("dados/cotahist/normalized/manifests/DATASET_OFICIAL_COTAHIST_2026.json"))["status"])')"
+          if [ "$STATUS" = "OFICIAL" ]; then
+            echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO"
+            echo "M3-1D_STATUS=DATASET_OFICIAL_VALIDADO" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "M3-1D_STATUS=CANDIDATO_VALIDADO_AGUARDANDO_M3_1E"
+            echo "M3-1D_STATUS=CANDIDATO_VALIDADO_AGUARDANDO_M3_1E" >> "$GITHUB_STEP_SUMMARY"
+          fi
