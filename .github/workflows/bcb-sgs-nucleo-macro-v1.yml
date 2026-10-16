@@ -71,4 +71,4 @@ jobs:
             echo "- Workflow: bcb-sgs-nucleo-macro-v1.yml"
             echo "- Resultado do job: ${{ job.status }}"
             echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "\$GITHUB_STEP_SUMMARY"
+          } >> "$GITHUB_STEP_SUMMARY"
