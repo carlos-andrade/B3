@@ -1,4 +1,5 @@
 name: COTAHIST - importacao diaria automatica V1
+# Execucao de reconciliação operacional RAW/normalizado em 2026-10-16.
 # reconciliacao anual V1 streaming
 # append incremental validado
 # indice oficial corrente composto
