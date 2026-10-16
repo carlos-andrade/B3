@@ -1,0 +1,117 @@
+name: B3 - Orquestrador de fontes gratuitas
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 12 * * 2-5"
+    - cron: "20 23 * * 1-5"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-fontes-gratuitas-orquestrador.yml"
+      - "scripts/governanca/validar_autorizacao_endpoint.py"
+      - "scripts/governanca/validar_licenca_bcb_sgs.py"
+      - "scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py"
+      - "scripts/ingestao/capturar_bcb_copom_v2.py"
+      - "scripts/ingestao/validar_bcb_copom_v1.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+      - "tests/governanca/test_validar_licenca_bcb_sgs.py"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-data-ingestion-serialized
+  cancel-in-progress: false
+
+jobs:
+  executar-fontes-gratuitas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes de governança e licença
+        id: tests
+        run: |
+          set -euo pipefail
+          python -m unittest scripts.governanca.test_validar_autorizacao_endpoint -v
+          python -m unittest discover -s tests/governanca -p "test_validar_licenca_bcb_sgs.py" -v
+
+      - name: Preflight ODbL SGS por série
+        id: sgs_preflight
+        continue-on-error: true
+        run: |
+          python scripts/governanca/validar_licenca_bcb_sgs.py \
+            --series "432,11,12,1,433" \
+            --allow-partial \
+            --json-output dados/bcb_sgs/manifests/preflight_licencas_sgs.json
+
+      - name: Ingerir apenas séries SGS elegíveis
+        id: sgs_ingest
+        if: steps.tests.outcome == 'success' && steps.sgs_preflight.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/ingestao/importar_bcb_sgs_nucleo_macro_v1.py
+
+      - name: Capturar API JSON Copom (PDFs permanecem bloqueados)
+        id: copom
+        if: always() && steps.tests.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python scripts/ingestao/capturar_bcb_copom_v2.py \
+            --quantidade "5" \
+            --output "dados/calendario_economico/copom"
+
+      - name: Validar Copom NORMALIZED
+        if: always() && steps.copom.outcome == 'success'
+        run: |
+          set -euo pipefail
+          latest="$(find dados/calendario_economico/copom/normalized -name 'copom_*.json' -type f | sort | tail -1)"
+          test -n "$latest"
+          python scripts/ingestao/validar_bcb_copom_v1.py "$latest"
+
+      - name: Persistir dados, preflight e evidências num único commit
+        if: always() && steps.tests.outcome == 'success'
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/bcb_sgs dados/calendario_economico/copom
+          git diff --cached --quiet && exit 0
+          git commit -m "data(b3): atualizar fontes gratuitas licenciadas"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publicar evidências
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-orquestrador-fontes-gratuitas
+          path: |
+            dados/bcb_sgs/manifests/*.json
+            dados/calendario_economico/copom/raw/*.meta.json
+            dados/calendario_economico/copom/normalized/*.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Resumo executivo
+        if: always()
+        run: |
+          {
+            echo "# B3 — Orquestrador de fontes gratuitas"
+            echo "- Testes de governança: ${{ steps.tests.outcome }}"
+            echo "- Preflight SGS: ${{ steps.sgs_preflight.outcome }}"
+            echo "- Ingestão SGS: ${{ steps.sgs_ingest.outcome }}"
+            echo "- Copom JSON: ${{ steps.copom.outcome }}"
+            echo "- PDFs Copom: bloqueados por escopo de licença não demonstrado"
+            echo "- COTAHIST/BDI/DRP: fora da captura automática até existir fonte gratuita com uso compatível demonstrado"
+          } >> "$GITHUB_STEP_SUMMARY"
