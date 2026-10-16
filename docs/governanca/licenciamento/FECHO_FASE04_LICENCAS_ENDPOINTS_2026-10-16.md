@@ -8,9 +8,9 @@
 | **Tipo documental** | RELATORIO_FECHO_FASE_OPERACIONAL |
 | **Fase** | FASE 04 — Licenciamento e autorização de endpoints |
 | **Estado** | AUDITORIA TÉCNICA APROVADA; AUTORIZAÇÕES EXTERNAS PENDENTES; FAIL_CLOSED |
-| **Versão** | 1.0.1 |
-| **SHA-256 (conteúdo canónico)** | 8bc48382b8580a6aecd6e9bd532954decf3b6c5ea8fb793f708e570e9d763135 |
-| **Commit de referência (versão anterior)** | [1e77b27a2867bb897ba2d2528001f9a853ee443d](https://github.com/carlos-andrade/B3/commit/1e77b27a2867bb897ba2d2528001f9a853ee443d) |
+| **Versão** | 1.0.2 |
+| **SHA-256 (conteúdo canónico)** | 15fa1a5a026aee0b5225a3833ba9b333854be660d297e47d5bc024c44347f64c |
+| **Commit de referência (versão anterior)** | [65d284ea0a624ef1772eb476e537cebdd62a7574](https://github.com/carlos-andrade/B3/commit/65d284ea0a624ef1772eb476e537cebdd62a7574) |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
