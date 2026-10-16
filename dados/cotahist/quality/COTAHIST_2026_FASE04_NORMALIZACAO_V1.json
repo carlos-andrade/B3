@@ -16,7 +16,7 @@
   "invalid_dates": 0,
   "dates_out_of_year": 0,
   "blockers": [],
-  "validated_at_utc": "2026-10-16T21:36:16.292326+00:00",
+  "validated_at_utc": "2026-10-16T21:39:45.869569+00:00",
   "raw_modified": false,
   "deduplication_performed": false,
   "scope_note": "Auditoria de integridade e consistencia documental; nao substitui comparacao independente de todos os 25 campos RAW x NORMALIZED.",
