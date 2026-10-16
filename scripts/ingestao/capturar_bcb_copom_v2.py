@@ -22,6 +22,38 @@ def get_json(url: str) -> tuple[bytes, str]:
         return r.read(), r.geturl()
 
 
+def get_pdf(url: str) -> tuple[bytes, str, str]:
+    """Captura o PDF oficial da Ata sem o confundir com o JSON que o referencia."""
+    req = Request(url, headers={"User-Agent": UA, "Accept": "application/pdf"})
+    with urlopen(req, timeout=60) as r:
+        payload = r.read()
+        final_url = r.geturl()
+        content_type = r.headers.get_content_type()
+    if not payload.startswith(b"%PDF-"):
+        raise RuntimeError(f"Resposta da Ata não é PDF válido: {url}; content_type={content_type}")
+    return payload, final_url, content_type
+
+
+def save_raw_binary(root: Path, name: str, requested: str, payload: bytes, final_url: str, content_type: str) -> dict:
+    p = root / name
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_bytes(payload)
+    meta = {
+        "source_url": requested,
+        "final_url": final_url,
+        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "content_type": content_type,
+        "timezone": TZ,
+        "signature": "PDF_HEADER_VALIDATED",
+    }
+    p.with_suffix(p.suffix + ".meta.json").write_text(
+        json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return meta
+
+
 def save_raw(root: Path, name: str, requested: str, payload: bytes, final_url: str) -> dict:
     p = root / name
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -114,6 +146,20 @@ def main() -> int:
 
     ata = (detail["ata"].get("conteudo") or [{}])[0]
     com = (detail["comunicado"].get("conteudo") or [{}])[0]
+
+    # Persistir o PDF original separado da resposta JSON/API que o referencia.
+    ata_pdf_url = field(ata, "urlPdfAta", "url_pdf_ata")
+    if ata_pdf_url:
+        pdf_payload, pdf_final_url, pdf_content_type = get_pdf(ata_pdf_url)
+        save_raw_binary(
+            raw_dir,
+            f"ata_{meeting}.pdf",
+            ata_pdf_url,
+            pdf_payload,
+            pdf_final_url,
+            pdf_content_type,
+        )
+
     ata_text = text_from_html(field(ata, "textoAta", "texto_ata") or "")
     com_text = text_from_html(field(com, "textoComunicado", "texto_comunicado") or "")
 
