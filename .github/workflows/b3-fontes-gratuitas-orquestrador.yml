@@ -22,7 +22,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: b3-data-ingestion-serialized
+  group: b3-central-orchestrator
   cancel-in-progress: false
 
 jobs:
