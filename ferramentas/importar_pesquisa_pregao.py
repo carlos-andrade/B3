@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Baixa arquivos da API CSV oficial da B3 e gera manifesto auditável."""
 from __future__ import annotations
-import argparse, csv, hashlib, json, re
+import argparse, csv, hashlib, json, re, subprocess
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import HTTPError, Request, urlopen
@@ -115,6 +115,8 @@ def baixar(codigo: str, date: str) -> dict:
     return manifest
 
 def main() -> None:
+    # A página oficial proíbe recolha automatizada; bloquear antes de qualquer pedido HTTP.
+    subprocess.run(["python", "scripts/governanca/validar_autorizacao_endpoint.py", "--endpoint-id", "B3_PESQUISA_POR_PREGAO_API"], cwd=ROOT, check=True)
     ap = argparse.ArgumentParser()
     ap.add_argument("--arquivo", action="append", choices=sorted(ARQUIVOS))
     ap.add_argument("--date", required=True)
