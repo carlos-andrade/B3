@@ -7,14 +7,14 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
-| **Estado** | EM_REVISAO |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | a927554e2c8e8f692c7072c5e432c7c11a690110dd7f00308ba27d8916df0091 |
+| **Estado** | APROVADO |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | b02d289ffde23f8957dfea7a4c15aa7b89afa04055b66544271fc9aba68684aa |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
-| **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
+| **Aprovador** | Proprietário do repositório — aprovação expressa registada em 2026-10-16 |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
 | **Autoridade superior** | [Norma de cabeçalho GOVERNANCA v1.0.3](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md) |
 | **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
@@ -89,3 +89,29 @@ A auditoria histórica inicial deve preservar a regra do projeto de reconciliar 
 12. reconciliação.
 
 **Não liberar 1987 enquanto a reconciliação semântica de 1986 não estiver concluída.**
+
+
+## 6. Reaprovação global e publicação — 2026-10-16
+
+Esta secção prevalece sobre os números e resultados de 2026-09-28 acima, que permanecem preservados como histórico.
+
+- Workflow: `.github/workflows/cotahist-m3-1e-aprovacao-global.yml`
+- Run final: [38885204284](https://github.com/carlos-andrade/B3/actions/runs/38885204284)
+- Resultado: `success`; `M3-1E_STATUS=APROVACAO_GLOBAL_CONCLUIDA`
+- Commit de publicação: [a28437a81af29be36b6cf4569dc9f232539cd3bc](https://github.com/carlos-andrade/B3/commit/a28437a81af29be36b6cf4569dc9f232539cd3bc)
+- RAW SHA-256: `580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e`
+- NORMALIZED SHA-256: `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`
+- Parser: `1.1.2`; armazenamento: Git LFS.
+- Registos: 3.142.910; campos: 25; intervalo: 2026-01-02 a 2026-10-13.
+- Cadeia criptográfica, validação semântica, materialização física e coerência entre CSV, checksum, manifesto de qualidade e Dataset Oficial aprovadas.
+
+### Resultado consolidado dos gates
+
+| Gate | Run | Resultado |
+|---|---:|---|
+| M3-1C — CI de integridade e reprodutibilidade | [38884804282](https://github.com/carlos-andrade/B3/actions/runs/38884804282) | APROVADO |
+| M3-1D — Dataset Oficial | [38885204516](https://github.com/carlos-andrade/B3/actions/runs/38885204516) | APROVADO |
+| M3-1E — Aprovação global | [38885204284](https://github.com/carlos-andrade/B3/actions/runs/38885204284) | APROVADO |
+| Dataset Oficial V2 — publicação do catálogo | [38885204334](https://github.com/carlos-andrade/B3/actions/runs/38885204334) | SUCCESS |
+
+**Decisão:** NORMALIZED V2.0 adotado para os anos certificados; COTAHIST 2026 aprovado e publicado. A aprovação não certifica automaticamente os anos históricos 1986–2025: cada ano continua sujeito à sequência RAW → NORMALIZE → SHA → VALIDATE → PERSIST → CERTIFY → RECONCILE.
