@@ -8,11 +8,11 @@
 | **Tipo documental** | DOCUMENTO_TECNICO |
 | **Fase** | NORMALIZACAO_DOCUMENTAL |
 | **Estado** | EM_REVISAO |
-| **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | f375bce103713b8ed31bdd78ce7b6ebf05c16646b0b69ac788e27817e2708d89 |
+| **Versão** | 1.2.0 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO_POS_REVISAO_GOV_DIV_001 |
 | **Commit de referência (versão anterior)** | [3fac0651cae1370a22e493269dfc4bb91f3adaa8](https://github.com/carlos-andrade/B3/commit/3fac0651cae1370a22e493269dfc4bb91f3adaa8) |
 | **Data de criação** | N/A — data original não identificada no ficheiro-base |
-| **Data de atualização** | 2026-10-15 |
+| **Data de atualização** | 2026-10-16 |
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Pendente — validação do proprietário do repositório, quando aplicável |
 | **Origem** | Conteúdo preexistente preservado; consultar as evidências e referências no corpo |
@@ -83,18 +83,18 @@ Nenhum código novo deve ser criado diretamente a partir de:
 
 Esses materiais podem fornecer informação, requisito ou evidência, mas a regra executável deve estar consolidada neste documento antes de gerar ou alterar código.
 
-### 2.2 Regra de precedência
+### 2.2 Hierarquia por domínio e reconciliação de divergências — GOV-DIV-001
 
-Em caso de divergência entre documentos:
+Não existe precedência universal que permita a um único documento anular silenciosamente todos os demais. A autoridade é definida pela competência de cada domínio:
 
-1. este LAYOUT MESTRE;
-2. evidência factual persistida;
-3. documentação oficial externa aplicável;
-4. cartas e documentos de entrada;
-5. procedimentos derivados;
-6. implementação existente.
+1. **Carta Magna B3:** princípios constitucionais, competências, limites de autoridade e processo de alteração normativa.
+2. **Este Layout Mestre:** especificação operacional única para pipelines, workflows, dados e geração/validação de código, dentro dos limites da Carta Magna.
+3. **Cartas de domínio e políticas:** princípios e garantias do respetivo domínio, subordinados à Carta Magna e reconciliados com este Layout antes de produzirem comportamento executável.
+4. **Contratos técnicos:** regras específicas subordinadas aos níveis anteriores.
+5. **Procedimentos e implementação:** executam regras aprovadas e não constituem autoridade normativa autónoma.
+6. **Evidência factual e documentação oficial externa:** estabelecem factos e requisitos de origem; não alteram, por si só, a hierarquia normativa interna.
 
-Uma divergência relevante deve gerar reconciliação versionada antes de ser transformada em código.
+Quando existir conflito, não escolher silenciosamente uma regra. Bloquear apenas a decisão/alteração afetada (`fail-closed`), registar documentos, versões, linhas, impacto e evidências, reconciliar por alteração versionada e só depois alterar código/workflows e testar. Este Layout continua a ser a única especificação operacional diretamente executável; não pode revogar princípios da Carta Magna. A evidência factual não pode ser subordinada como se fosse apenas um procedimento, nem alterar retroativamente uma certificação.
 
 ---
 
@@ -1160,7 +1160,8 @@ Qualquer processo futuro deve ser enquadrado neste fluxo antes de ser implementa
 | Versão | Data | Alteração | Status |
 |---|---|---|---|
 | 1.0.0 | 2026-10-01 | Consolidação das cartas, contratos, matriz operacional, governança de workflows, monitoramento, README, gates, fases e regra única de geração de código. | HISTÓRICA |
-| 1.0.1 | 2026-10-12 | Acrescenta controles de existência física, reconciliação de hash, offsets de layout e não promoção automática para artefatos normalizados. | VIGENTE |
+| 1.0.1 | 2026-10-12 | Acrescenta controles de existência física, reconciliação de hash, offsets de layout e não promoção automática para artefatos normalizados. | HISTÓRICA |
+| 1.2.0 | 2026-10-16 | Reconcilia a hierarquia universal anterior com GOV-DIV-001: autoridade por domínio, Carta Magna constitucional e Layout Mestre operacional; hash pós-alteração pendente de auditoria independente. | EM_VALIDAÇÃO |
 
 
 ## 40. AUDITORIA SEMÂNTICA DOS WORKFLOWS — REGRA VIGENTE
