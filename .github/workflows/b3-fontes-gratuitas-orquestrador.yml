@@ -89,8 +89,24 @@ jobs:
           git add dados/bcb_sgs dados/calendario_economico/copom
           git diff --cached --quiet && exit 0
           git commit -m "data(b3): atualizar fontes gratuitas licenciadas"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # Reconciliar commits concorrentes sem perder os dados recém-gerados.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort || true
+            git fetch origin main
+            git reset --mixed origin/main
+            git add dados/bcb_sgs dados/calendario_economico/copom
+            if git diff --cached --quiet; then
+              echo "Os dados locais já estão representados em main."
+              exit 0
+            fi
+            git commit -m "data(b3): reconciliar atualização gratuita concorrente"
+          done
+          echo "Falha após três tentativas de reconciliação de commits."
+          exit 1
 
       - name: Publicar evidências
         if: always()
