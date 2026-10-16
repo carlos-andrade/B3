@@ -149,6 +149,38 @@ def validate_records(records: list[dict], code: int, allow_future: bool, capture
     }
 
 
+def load_existing_normalized(path: Path) -> tuple[list[dict], list[date]]:
+    """Lê a série normalizada existente sem perder observações fora da janela incremental."""
+    if not path.exists():
+        return [], []
+    rows: list[dict] = []
+    dates: list[date] = []
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames != ["codigo_sgs", "data", "valor"]:
+            raise RuntimeError(f"Schema NORMALIZED inválido: {path}")
+        for line_no, row in enumerate(reader, start=2):
+            try:
+                observed = date.fromisoformat(str(row.get("data", "")).strip())
+            except ValueError as exc:
+                raise RuntimeError(f"Data inválida em {path}:{line_no}") from exc
+            value = str(row.get("valor", "")).strip()
+            rows.append({
+                "data": observed.strftime("%d/%m/%Y"),
+                "valor": value,
+            })
+            dates.append(observed)
+    return rows, dates
+
+
+def incremental_window(initial: date, end: date, existing_dates: list[date]) -> date:
+    """Reconsulta uma janela de sete dias para absorver revisões, sem refazer o histórico."""
+    past = [observed for observed in existing_dates if observed <= end]
+    if not past:
+        return initial
+    return max(initial, max(past) - timedelta(days=7))
+
+
 def main():
     # Gate obrigatório: nenhuma série é descarregada antes de verificar a licença
     # ODbL do recurso exato no catálogo oficial de Dados Abertos do BCB.
@@ -207,9 +239,18 @@ def main():
         norm_dir.mkdir(parents=True, exist_ok=True)
         manifest_dir.mkdir(parents=True, exist_ok=True)
 
-        start = date.fromisoformat(meta["inicio"])
+        initial_start = date.fromisoformat(meta["inicio"])
         end = capture_date
-        all_records = []
+        norm_path = norm_dir / f"SGS_{code}.csv"
+        existing_records, existing_dates = load_existing_normalized(norm_path)
+        start = incremental_window(initial_start, end, existing_dates)
+        # Preservar o histórico anterior à janela e observações futuras permitidas.
+        # As observações dentro da janela são substituídas pela captura oficial atual.
+        all_records = [
+            row for row, observed in zip(existing_records, existing_dates)
+            if observed < start or observed > end
+        ]
+        capture_mode = "INCREMENTAL" if existing_dates else "FULL_INITIAL"
         chunks_meta = []
 
         for idx, (chunk_start, chunk_end) in enumerate(chunks(start, end), start=1):
@@ -277,7 +318,6 @@ def main():
         else:
             quality["future_rejected"] = False
 
-        norm_path = norm_dir / f"SGS_{code}.csv"
         with norm_path.open("w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["codigo_sgs", "data", "valor"])
@@ -293,6 +333,10 @@ def main():
             "nome": meta["nome"],
             "frequencia": meta["frequencia"],
             "captured_at": capture_dt.isoformat(),
+            "capture_mode": capture_mode,
+            "incremental_start": start.isoformat(),
+            "incremental_end": end.isoformat(),
+            "previous_normalized_rows": len(existing_records),
             "capture_timezone": "America/Sao_Paulo",
             "source_api": BASE_URL.format(codigo=code),
             "normalized_file": str(norm_path.relative_to(ROOT)),
