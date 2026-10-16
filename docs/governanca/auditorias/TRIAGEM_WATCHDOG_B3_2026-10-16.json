@@ -169,6 +169,24 @@
         "NORMALIZED: 3.142.910 linhas; primeira data 2026-01-02; última data 2026-10-13; SHA e tamanho reproduzidos"
       ],
       "status": "PASS_CURRENT_HEAD"
+    },
+    {
+      "class": "COTAHIST_FASE00_CONCURRENT_PERSISTENCE_RETRY",
+      "confidence": "high",
+      "evidence_runs": [
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144507",
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144717",
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144645",
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144641",
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144640",
+        "https://github.com/carlos-andrade/B3/actions/runs/38972144502"
+      ],
+      "observed_signatures": [
+        "Primeiro teste com 5 tentativas: 17/21 FASE00 success; 4 esgotaram tentativas devido avanço concorrente de main",
+        "Segundo teste com 12 tentativas e backoff aleatório: 21/21 FASE00 success",
+        "Auditoria estática: 555 workflows, 555 conformes no modelo, 0 divergências críticas, 144 observações"
+      ],
+      "status": "VALIDATED_SECOND_PASS"
     }
   ],
   "triage_limitations": [
@@ -177,12 +195,27 @@
     "The 144 workflow audit observations remain review items, not 144 runtime failures."
   ],
   "next_actions": [
-    "Confirmar o resultado terminal do dataset oficial V2 após a atualização dos manifestos e manter a promoção bloqueada por licenciamento.",
-    "Manter o gate M3-1E fail-closed; a validação demonstrou que status BLOQUEADO é rejeitado.",
-    "Manter o registo histórico da discrepância de logs; não a tratar como defeito atual sem nova reprodução.",
-    "Estender a correção de persistência concorrente às famílias de workflows que escrevem no branch principal; o alinhamento BCB foi validado, mas não resolve escritores COTAHIST independentes.",
-    "Continuar a classificação das falhas restantes por logs e evidências; não reexecutar workflows históricos em massa.",
-    "Manter issues 12 e 13 abertas até critérios de aceitação aprovados."
+    "Atualizar a fotografia WATCHDOG após estabilização da execução recente; o snapshot de 21:39 está desatualizado.",
+    "Continuar a triagem das falhas restantes, distinguindo bloqueios esperados, defeitos técnicos e runs substituídos.",
+    "Manter a fonte de preços B3 bloqueada até evidência de autorização compatível sob custo zero.",
+    "Manter REC-001 COTAHIST x BLOOMBERG_MAIL fora do âmbito de trabalho desta fase, conforme separação definida.",
+    "Rever as 144 observações da auditoria estática por risco e prioridade, apesar de zero divergências críticas."
   ],
-  "status": "TRIAGE_IN_PROGRESS_NOT_PROJECT_CLOSURE"
+  "status": "TRIAGE_IN_PROGRESS_NOT_PROJECT_CLOSURE",
+  "latest_watchdog_snapshot": {
+    "checked_at_utc": "2026-10-16T21:39:05.149019Z",
+    "run_url": "https://github.com/carlos-andrade/B3/actions/runs/38970787369",
+    "runs_observed": 458,
+    "distribution": {
+      "success": 244,
+      "failure": 107,
+      "cancelled": 95,
+      "in_progress": 9,
+      "pending": 3
+    },
+    "unfavorable_count": 107,
+    "active_count": 12,
+    "result": "NAO_FAVORAVEL",
+    "note": "Fotografia anterior ao segundo teste FASE00; requer nova leitura depois da estabilização."
+  }
 }

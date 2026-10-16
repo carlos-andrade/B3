@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.13 |
-| **SHA-256 (conteúdo canónico)** | b04781482b24797ea0dbf1fdd34b10bab0670c65ae8e75f278fdade755e4b518 |
-| **Commit de referência (versão anterior)** | [fd09456c341ccb6cd349c106f26292f7da42b590](https://github.com/carlos-andrade/B3/commit/fd09456c341ccb6cd349c106f26292f7da42b590) |
+| **Versão** | 2.3.14 |
+| **SHA-256 (conteúdo canónico)** | ccbc18a7e82c80176b08461cfb4ca8547a7a4adf45a88930502fa3e3f21a5ef5 |
+| **Commit de referência (versão anterior)** | [6495ef01b2f78e308821dbd464cec098c306ad91](https://github.com/carlos-andrade/B3/commit/6495ef01b2f78e308821dbd464cec098c306ad91) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-16 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -760,3 +760,30 @@ As execuções decorrentes confirmaram o fail-closed:
 - Classificar as falhas restantes e os cancelamentos por evidência, sem reexecutar em massa workflows históricos.
 - Manter as Issues [#12 WATCHDOG](https://github.com/carlos-andrade/B3/issues/12) e [#13 fontes gratuitas](https://github.com/carlos-andrade/B3/issues/13) abertas.
 - Estado global: **AUDITORIA_TRANSVERSAL_EM_CURSO; PROJETO NÃO CONCLUÍDO**.
+
+
+## 32. Persistência concorrente FASE00 e auditoria — 2026-10-16
+
+### Correção e teste de stress
+A primeira correção de persistência, com 5 tentativas, permitiu 17/21 workflows FASE00 (2002–2022) concluírem com sucesso, mas 4 esgotaram as tentativas enquanto `main` avançava rapidamente. Os logs confirmaram rejeições de ref não fast-forward/lock concorrente, não erros de dados. A correção foi reforçada para 12 tentativas com backoff aleatório e aplicada também à persistência da auditoria estática no commit [dc37f6a558b6dfa36b44fcd6d8d51af649cfd47d](https://github.com/carlos-andrade/B3/commit/dc37f6a558b6dfa36b44fcd6d8d51af649cfd47d).
+
+A segunda execução de validação concluiu **21/21 workflows FASE00 com sucesso**:
+- [2002 #38972144729](https://github.com/carlos-andrade/B3/actions/runs/38972144729)
+- [2003 #38972144717](https://github.com/carlos-andrade/B3/actions/runs/38972144717)
+- [2012 #38972144507](https://github.com/carlos-andrade/B3/actions/runs/38972144507)
+- [2014 #38972144645](https://github.com/carlos-andrade/B3/actions/runs/38972144645)
+- [2021 #38972144641](https://github.com/carlos-andrade/B3/actions/runs/38972144641)
+- [2022 #38972144640](https://github.com/carlos-andrade/B3/actions/runs/38972144640)
+
+A auditoria estática foi executada novamente e terminou em sucesso em [#38972144502](https://github.com/carlos-andrade/B3/actions/runs/38972144502): 555 workflows auditados, 555 classificados como conformes dentro do modelo (incluindo os que têm observações), zero divergências críticas e 144 observações. A decisão foi `AVANCAR`; as observações continuam sujeitas a revisão e não equivalem a falhas críticas.
+
+### Estado do WATCHDOG
+A última fotografia disponível, [#38970787369](https://github.com/carlos-andrade/B3/actions/runs/38970787369), registou em 2026-10-16T21:39:05Z: 458 execuções observadas, 244 success, 107 failure, 95 cancelled, 9 in_progress e 3 pending. Essa fotografia antecede o segundo teste FASE00 e inclui workflows fora do âmbito imediato; é necessário aguardar uma nova fotografia após a conclusão das execuções recentes. O resultado global então era `NAO_FAVORAVEL`.
+
+### Decisões e pendências
+- A persistência concorrente dos 21 workflows FASE00 2002–2022 foi validada no segundo teste.
+- O grupo de concorrência do orquestrador BCB já foi alinhado e validado.
+- Não tratar workflows `REC-001 COTAHIST x BLOOMBERG_MAIL` nesta fase; manter a separação de âmbito definida pelo projeto.
+- A autorização da fonte de preços B3 continua pendente; COTAHIST 2026 permanece `BLOQUEADO` para promoção/captura automatizada.
+- Continuar a triagem das falhas e cancelamentos restantes, incluindo a distinção entre bloqueios esperados, defeitos técnicos e runs substituídos.
+- Estado global: **AUDITORIA TRANSVERSAL EM CURSO; PROJETO NÃO CONCLUÍDO**.
