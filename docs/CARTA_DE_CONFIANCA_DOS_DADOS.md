@@ -17,7 +17,7 @@
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
 | **Autoridade superior** | [Norma GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA/blob/main/CABE%C3%87ALHO/NORMA-CABECALHO-PADRAO.md); [Layout Mestre B3](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md) |
-| **Cadeia de autoridade** | PROMPTS → CARTAS → LAYOUT ÚNICO → CÓDIGO |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 | **Rastreabilidade** | Histórico Git, versões anteriores e evidências referenciadas no corpo |
 | **Escopo** | Critérios de confiança, integridade e proveniência dos dados. |
 | **Objetivo** | Definir quando os dados podem ser considerados confiáveis e quais ressalvas devem acompanhar seu uso. |
@@ -663,13 +663,13 @@ Esta carta é **documento de entrada e histórico de governança**. Ela não é 
 
 Toda regra operacional desta carta que deva produzir ou alterar código deve ser consolidada no documento canônico:
 
-`docs/governanca/LAYOUT_MESTRE_CANONICO_B3_V1.md`
+`docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md`
 
 Fluxo obrigatório:
 
 **CARTA → PROPOSTA/CONTRIBUIÇÃO → RECONCILIAÇÃO → LAYOUT MESTRE → CÓDIGO → EVIDÊNCIA → VALIDAÇÃO.**
 
-A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em caso de divergência operacional, o Layout Mestre prevalece até que uma reconciliação formal altere sua versão.
+A carta não pode, isoladamente, disparar implementação, criar workflow, alterar parser, alterar validação ou determinar comportamento de código. Em divergência de execução, o Layout Mestre rege apenas a especificação operacional; não pode contrariar a Carta Magna nem substituir evidência factual. A divergência exige reconciliação versionada antes de alterar código ou workflows.
 
 **Status desta carta:** preservada como fonte de entrada/histórico; regras executáveis subordinadas ao Layout Mestre.
 
