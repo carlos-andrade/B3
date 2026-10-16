@@ -9,7 +9,7 @@
 | **Fase** | FASE 3 — Revisão semântica e reconciliação |
 | **Estado** | REVALIDACAO_DOS_17_PRIORITARIOS_CONCLUIDA; AUDITORIA_SHA256_APROVADA; ACOES_OPERACIONAIS_SEPARADAS |
 | **Versão** | 1.1.0 |
-| **SHA-256 (conteúdo canónico)** | 8c1f15d385ffa9cf0f6b3a52f12cafa5671b06a0de7567b313e445e7f5973b20|
+| **SHA-256 (conteúdo canónico)** | d6c187875774b5ff37d36b7be263c386c34ff5652f15a76792a9a4f6b69cfad9|
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
