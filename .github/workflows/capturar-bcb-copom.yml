@@ -22,6 +22,11 @@ on:
 permissions:
   contents: write
 
+# Serializar todas as capturas que escrevem em dados/ para impedir rebase concorrente.
+concurrency:
+  group: b3-data-ingestion-serialized
+  cancel-in-progress: false
+
 jobs:
   copom:
     runs-on: ubuntu-latest
