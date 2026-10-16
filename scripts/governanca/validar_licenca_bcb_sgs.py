@@ -19,6 +19,13 @@ from urllib.request import Request, urlopen
 API = "https://dadosabertos.bcb.gov.br/api/3/action/package_search"
 LICENSES = {"odc-odbl"}
 USER_AGENT = "B3-Fonte-Gratuita-Preflight/1.0 (+https://github.com/carlos-andrade/B3)"
+SEARCH_TERMS = {
+    1: ("dolar americano venda",),
+    11: ("taxa de juros selic",),
+    12: ("CDI", "taxa CDI"),
+    432: ("meta selic definida pelo copom",),
+    433: ("IPCA", "indice nacional de precos ao consumidor amplo"),
+}
 
 
 def fetch_search(term: str) -> dict:
@@ -42,7 +49,8 @@ def resource_matches(resource: dict, code: int) -> bool:
 def verify_series(code: int, search_fn=fetch_search) -> dict:
     errors = []
     seen = {}
-    for term in (f"serie-sgs-{code}", str(code)):
+    terms = tuple(dict.fromkeys((f"serie-sgs-{code}", str(code), *SEARCH_TERMS.get(code, ()))))
+    for term in terms:
         try:
             result = search_fn(term)
         except Exception as exc:
