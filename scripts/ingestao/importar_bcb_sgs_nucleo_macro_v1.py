@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW_ROOT = ROOT / "dados" / "bcb_sgs" / "raw"
 NORM_ROOT = ROOT / "dados" / "bcb_sgs" / "normalized"
 MANIFEST_ROOT = ROOT / "dados" / "bcb_sgs" / "manifests"
+QUARANTINE_ROOT = ROOT / "dados" / "bcb_sgs" / "quarantine"
 
 SERIES = {
     432: {"nome": "Meta Selic definida pelo Copom", "inicio": "1999-03-05", "frequencia": "D", "allow_future": True},
@@ -318,16 +319,28 @@ def main():
         else:
             quality["future_rejected"] = False
 
-        with norm_path.open("w", encoding="utf-8", newline="") as f:
+        dates = [x[0] for x in normalized]
+        quality_status = (
+            "VALIDADO"
+            if quality["datas_invalidas"] == 0
+            and quality["valores_invalidos"] == 0
+            and quality["duplicidades"] == 0
+            and not quality["future_rejected"]
+            else "REJEITADO"
+        )
+        output_path = norm_path
+        if quality_status != "VALIDADO":
+            QUARANTINE_ROOT.mkdir(parents=True, exist_ok=True)
+            output_path = QUARANTINE_ROOT / f"SGS_{code}_{stamp}.csv"
+        with output_path.open("w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["codigo_sgs", "data", "valor"])
             for d, value in normalized:
                 writer.writerow([code, d, "" if value is None else value])
 
-        dates = [x[0] for x in normalized]
         manifest = {
             "schema_version": "1.0.0",
-            "status": "VALIDADO" if quality["datas_invalidas"] == 0 and quality["valores_invalidos"] == 0 and quality["duplicidades"] == 0 and not quality["future_rejected"] else "REJEITADO",
+            "status": quality_status,
             "source": "Banco Central do Brasil - BCData/SGS",
             "codigo_sgs": code,
             "nome": meta["nome"],
@@ -339,8 +352,8 @@ def main():
             "previous_normalized_rows": len(existing_records),
             "capture_timezone": "America/Sao_Paulo",
             "source_api": BASE_URL.format(codigo=code),
-            "normalized_file": str(norm_path.relative_to(ROOT)),
-            "normalized_sha256": sha256_file(norm_path),
+            "normalized_file": str(output_path.relative_to(ROOT)),
+            "normalized_sha256": sha256_file(output_path),
             "linhas_normalized": len(normalized),
             "primeira_data": dates[0] if dates else None,
             "ultima_data": dates[-1] if dates else None,
