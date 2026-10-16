@@ -9,7 +9,7 @@
 | **Fase** | FASE 01 — Governação e conformidade |
 | **Estado** | CONCLUIDA_COM_EVIDENCIA; GATES_RESIDUAIS_OPERACIONAIS_MANTIDOS_FAIL_CLOSED |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 7e0fc4f4418fe592dccbe763597d52cc93cda29f6cab64e9a8506ac4360a334f |
+| **SHA-256 (conteúdo canónico)** | 0e5b156cba4ae6a1ec765202066d273cfec702742dd57c689e57efea6c0e1511 |
 | **Commit de referência (versão anterior)** | N/A — documento inicial |
 | **Data de criação** | 2026-10-16 |
 | **Data de atualização** | 2026-10-16 |
