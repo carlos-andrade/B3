@@ -3,7 +3,6 @@ name: B3 - Orquestrador de fontes gratuitas
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 12 * * 2-5"
     - cron: "20 23 * * 1-5"
   push:
     branches: [main]
