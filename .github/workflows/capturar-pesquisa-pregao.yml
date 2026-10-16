@@ -1,68 +1,29 @@
-name: Capturar dados B3 - Pesquisa por Pregao
+name: B3 Pesquisa por Pregão — BLOQUEADO POR TERMOS OFICIAIS
 
 on:
   push:
     paths:
       - ".github/workflows/capturar-pesquisa-pregao.yml"
       - "ferramentas/importar_pesquisa_pregao.py"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
   workflow_dispatch:
-    inputs:
-      date:
-        description: "Data de referencia YYYY-MM-DD"
-        required: true
-        default: "2026-09-22"
-      arquivo:
-        description: "Codigo B3 (vazio = todos os 6 prioritarios)"
-        required: false
-        default: ""
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  captura:
+  authorization_gate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Capturar arquivos
-        env:
-          DATA: ${{ inputs.date }}
-          ARQUIVO: ${{ inputs.arquivo }}
-          GITHUB_EVENT_NAME: ${{ github.event_name }}
+      - name: Confirmar bloqueio de conformidade
         run: |
           set -euo pipefail
-          if [ -z "$DATA" ]; then
-            if [ "$GITHUB_EVENT_NAME" = "push" ]; then
-              DATA="$(TZ=America/Sao_Paulo date -d 'yesterday' +%F)"
-            else
-              DATA="$(TZ=America/Sao_Paulo date +%F)"
-            fi
-          fi
-          echo "Evento: $GITHUB_EVENT_NAME"
-          echo "Data de referência: $DATA"
-          if [ -n "$ARQUIVO" ]; then
-            python ferramentas/importar_pesquisa_pregao.py --date "$DATA" --arquivo "$ARQUIVO"
-          else
-            python ferramentas/importar_pesquisa_pregao.py --date "$DATA"
-          fi
-      - name: Verificar tamanhos
-        run: |
-          set -euo pipefail
-          find dados/market_data/raw -type f -printf "%s %p\n" | sort -nr | head -50
-      - name: Commit dos dados
-        run: |
-          set -euo pipefail
-          git config user.name "B3 Data Bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/market_data/raw dados/market_data/manifests
-          if git diff --cached --quiet; then
-            echo "Nenhum novo dado para commit."
-          else
-            git commit -m "data(b3): captura Pesquisa por Pregao $DATA"
-            git push
-          fi
+          python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_PESQUISA_POR_PREGAO_API --allow-blocked
+          {
+            echo "## Captura desativada por termos oficiais"
+            echo "- Nenhuma chamada HTTP foi executada."
+            echo "- A página oficial Pesquisa por Pregão proíbe recolha automatizada."
+            echo "- Reativação exige alteração legítima do âmbito de autorização e aprovação documentada; não basta a acessibilidade técnica."
+          } >> "$GITHUB_STEP_SUMMARY"
