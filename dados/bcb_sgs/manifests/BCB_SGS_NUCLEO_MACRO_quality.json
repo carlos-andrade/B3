@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-16T18:35:20.762414-03:00",
+  "generated_at": "2026-10-16T22:23:09.357364-03:00",
   "status": "VALIDADO",
   "series": [
     {
@@ -13,8 +13,8 @@
     {
       "codigo_sgs": 11,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-15",
-      "linhas": 10120,
+      "ultima_data": "2026-10-16",
+      "linhas": 10121,
       "manifest": "dados/bcb_sgs/manifests/SGS_11_quality.json"
     },
     {
