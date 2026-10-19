@@ -89,7 +89,7 @@ def main() -> None:
     print(f"Arquivo histórico atualizado: {OUT}")
     print(f"Anos incluídos para consulta: {len(records)} (1986–2025)")
     print("2026 excluído: BLOQUEADO_AUTORIZACAO_FONTE")
-        print("Política: nenhuma nova captura foi efetuada; apenas artefactos locais foram reconciliados.")
+    print("Política: nenhuma nova captura foi efetuada; apenas artefactos locais foram reconciliados.")
 
 
 if __name__ == "__main__":
