@@ -9,7 +9,7 @@
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; CORRECOES_AGUARDAM_CI |
 | **Versão** | 2.3.15 |
-| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
+| **SHA-256 (conteúdo canónico)** | c6d03f212cd3d9b645d9f963ac18cdeca1346efa595d3cfbfe76924f2351c504 |
 | **Commit de referência (versão anterior)** | [6495ef01b2f78e308821dbd464cec098c306ad91](https://github.com/carlos-andrade/B3/commit/6495ef01b2f78e308821dbd464cec098c306ad91) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-19 |
