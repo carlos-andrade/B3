@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preserva as linhas históricas e recalcula a certificação de 2026."""
+"""Preserva certificações históricas e classifica 2026 como bloqueado por política de fonte."""
 
 from __future__ import annotations
 
@@ -11,10 +11,6 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "dados" / "cotahist" / "raw" / "anual"
 MANIFESTS = ROOT / "dados" / "cotahist" / "normalized" / "manifests"
 OUT = ROOT / "dados" / "cotahist" / "certificacao" / "COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
-
-YEARS = range(1986, 2027)
-# Versoes explicitamente reconhecidas apos validacao dos manifestos historicos.
-SUPPORTED_PARSER_VERSIONS = {"1.1.0", "1.1.1", "1.1.2"}
 
 FIELDS = [
     "ano", "raw_present", "quality_manifest_present", "quality_status",
@@ -42,80 +38,48 @@ def main() -> None:
             "histórico congelado, sem reconstrução automática."
         )
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    rows = []
-    failures = []
+    # Anos encerrados: preservar literalmente as linhas já certificadas.
+    rows = [existing_rows[year] for year in range(1986, 2026)]
 
-    for year in YEARS:
-        if year < 2026:
-            # Congelar as linhas históricas: não reavaliar nem reescrever 1986–2025 na rotina.
-            rows.append(existing_rows[year])
-            continue
-
-        manifest_path = MANIFESTS / f"COTAHIST_A{year}_quality.json"
-        present = manifest_path.is_file()
-        raw = raw_exists(year)
-        data = json.loads(manifest_path.read_text(encoding="utf-8")) if present else {}
-
-        status = data.get("status", "AUSENTE")
-        parser = data.get("parser_version", "")
-        lines = data.get("linhas_normalized", "")
-        fields = data.get("campos", "")
-        invalid = data.get("datas_invalidas", "")
-        outside = data.get("datas_fora_do_ano", "")
-
-        structural_ok = (
-            raw and present and status == "VALIDADO" and parser in SUPPORTED_PARSER_VERSIONS
-            and fields == 25 and invalid == 0 and outside == 0
-        )
-
-        if year == 1986:
-            semantic_scope = "EXCEÇÃO_HISTÓRICA_CONTROLADA"
-            certification = (
-                "CERTIFICADO_NORMALIZACAO_COM_EXCECAO_SEMANTICA"
-                if structural_ok else "NAO_CERTIFICADO"
-            )
-            exception = "Investigação semântica histórica mantida como exceção controlada."
-        else:
-            semantic_scope = "NORMALIZACAO_ESTRUTURAL"
-            certification = "CERTIFICADO_NORMALIZACAO" if structural_ok else "NAO_CERTIFICADO"
-            exception = ""
-
-        if not structural_ok:
-            failures.append(year)
-
-        rows.append({
-            "ano": year,
-            "raw_present": "SIM" if raw else "NAO",
-            "quality_manifest_present": "SIM" if present else "NAO",
-            "quality_status": status,
-            "parser_version": parser,
-            "linhas_normalized": lines,
-            "campos": fields,
-            "datas_invalidas": invalid,
-            "datas_fora_do_ano": outside,
-            "escopo_semantico": semantic_scope,
-            "certificacao": certification,
-            "excecao": exception,
-        })
+    # 2026: registar o bloqueio de autorização sem confundi-lo com defeito estrutural.
+    year = 2026
+    manifest_path = MANIFESTS / f"COTAHIST_A{year}_quality.json"
+    present = manifest_path.is_file()
+    raw = raw_exists(year)
+    data = json.loads(manifest_path.read_text(encoding="utf-8")) if present else {}
+    rows.append({
+        "ano": year,
+        "raw_present": "SIM" if raw else "NAO",
+        "quality_manifest_present": "SIM" if present else "NAO",
+        "quality_status": data.get("status", "AUSENTE"),
+        "parser_version": data.get("parser_version", ""),
+        "linhas_normalized": data.get("linhas_normalized", ""),
+        "campos": data.get("campos", ""),
+        "datas_invalidas": data.get("datas_invalidas", ""),
+        "datas_fora_do_ano": data.get("datas_fora_do_ano", ""),
+        "escopo_semantico": "FORA_DO_ESCOPO_PUBLICACAO",
+        "certificacao": "BLOQUEADO_AUTORIZACAO_FONTE",
+        "excecao": (
+            "Não promover nem publicar automaticamente 2026: autorização compatível da fonte "
+            "não demonstrada. A presença de RAW/NORMALIZED não equivale a autorização."
+        ),
+    })
 
     with OUT.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)
 
+    certified_historical = sum(
+        row["certificacao"].startswith("CERTIFICADO_")
+        for row in rows if int(row["ano"]) < 2026
+    )
     print(f"Matriz gerada: {OUT}")
-    print(f"Anos avaliados: {len(rows)}")
-    print(f"Anos certificados: {sum(r['certificacao'].startswith('CERTIFICADO_') for r in rows)}")
-    print(f"Falhas de certificação estrutural: {failures}")
-
-    if failures:
-        raise SystemExit(f"Certificação falhou para os anos: {failures}")
+    print("Anos históricos preservados: 40 (1986–2025; sem reavaliação automática)")
+    print(f"Anos históricos certificados na matriz: {certified_historical}")
+    print("Ano 2026: BLOQUEADO_AUTORIZACAO_FONTE; não contado como certificado.")
+    print("Nenhum ano histórico foi recalculado ou reescrito semanticamente.")
 
 
 if __name__ == "__main__":
     main()
-
-# Retrigger: evidencia FASE10 1991 materializada no main.
-
-# Retrigger auditável: sincronização do manifesto canónico COTAHIST 2026 em 2026-10-14.
