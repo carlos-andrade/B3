@@ -9,10 +9,10 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 5d24dd6893cc49fee51ddf54d827abd2fe40555f6e415be1bf4f071e3044aadc |
-| **Commit de referência (versão anterior)** | [dcba50d2e623c5653109c5157983318966700390](https://github.com/carlos-andrade/B3/commit/dcba50d2e623c5653109c5157983318966700390) |
+| **SHA-256 (conteúdo canónico)** | 508c0b0fd8137fa3b8ed044807dfc5302b593be2526290fc50e0f9e66f47d80d |
+| **Commit de referência (versão anterior)** | [3f525e3267253c0d8df18c3fe0db1e818f940f65](https://github.com/carlos-andrade/B3/commit/3f525e3267253c0d8df18c3fe0db1e818f940f65) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
-| **Data de atualização** | 2026-10-18 |
+| **Data de atualização** | 2026-10-19 |
 | **Responsável** | Automação de auditoria de governança B3 |
 | **Aprovador** | Pendente — relatório diagnóstico, não constitui aprovação normativa |
 | **Origem** | Gerado por scripts/governanca/auditar_workflows_b3.py |
@@ -21,7 +21,7 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-18T08:05:48.717335+00:00
+Gerado em UTC: 2026-10-19T08:57:52.954151+00:00
 Workflows auditados: 555
 
 ## Regra de decisão
