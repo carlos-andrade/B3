@@ -1,17 +1,11 @@
-name: COTAHIST - certificacao anual automatica V1
+name: COTAHIST - certificação histórica e bloqueio de 2026 V1
 
 on:
   push:
     branches: [main]
     paths:
-      - "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2026.csv.sha256"
-      - "dados/cotahist/quality/COTAHIST_2026_FASE10_INTEGRIDADE_V1.json"
       - "scripts/ingestao/certificar_cotahist_anual_v1.py"
       - ".github/workflows/cotahist-certificacao-anual-v1.yml"
-  schedule:
-    - cron: "15 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Gerar matriz oficial
+      - name: Gerar matriz histórica com bloqueio explícito de 2026
         run: python scripts/ingestao/certificar_cotahist_anual_v1.py
 
       - name: Verificar estado Git
@@ -47,23 +41,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
-          git commit -m "data(certificacao): atualiza matriz anual COTAHIST"
+          git commit -m "data(certificacao): bloqueia promocao COTAHIST 2026"
           git pull --rebase origin main
           git push origin HEAD:main
 
-      - name: Publicar matriz
+      - name: Publicar evidência da matriz
         uses: actions/upload-artifact@v4
         with:
           name: cotahist-certificacao-anual-v1
           path: dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
           retention-days: 30
-
-# Auditoria: reexecucao explicita apos evidencias FASE10.
-# Retrigger apos evidencia FASE10 1991.
-# Retrigger apos FASE10 1992 VALIDADO.
-# Retrigger apos FASE10 1993 VALIDADO.
-# Retrigger: FASE11 reexecutada apos FASE09 1993 VALIDADA.
-# PARTE13: retrigger auditavel apos validacao da FASE09 1993.
 
       - name: Resumo de execução — observabilidade
         if: always()
@@ -72,5 +59,7 @@ jobs:
             echo "## Observabilidade"
             echo "- Workflow: cotahist-certificacao-anual-v1.yml"
             echo "- Resultado do job: ${{ job.status }}"
+            echo "- 1986–2025: linhas históricas preservadas"
+            echo "- 2026: BLOQUEADO_AUTORIZACAO_FONTE; não certificado nem publicado"
             echo "- GITHUB_STEP_SUMMARY: habilitado"
           } >> "$GITHUB_STEP_SUMMARY"
