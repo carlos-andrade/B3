@@ -1,0 +1,82 @@
+{
+  "document_id": "B3-AUD-TRIAGEM-ATUAL-2026-10-19",
+  "project": "B3 — A BOLSA DO BRASIL",
+  "repository": "carlos-andrade/B3",
+  "document_type": "AUDIT_EVIDENCE",
+  "version": "1.0.0",
+  "as_of_utc": "2026-10-19",
+  "governance": {
+    "cost_zero": true,
+    "fail_closed_for_unverified_sources": true,
+    "do_not_bulk_rerun_historical_workflows": true,
+    "do_not_promote_unvalidated_or_unlicensed_data": true,
+    "historical_cotahist_1986_2025": "CONSULTA_HISTORICA",
+    "cotahist_2026": "BLOCKED_PENDING_COMPATIBLE_SOURCE_RIGHTS"
+  },
+  "current_watchdog_snapshot": {
+    "issue_url": "https://github.com/carlos-andrade/B3/issues/12",
+    "observed_at_utc": "2026-10-19T06:46:41.106099Z",
+    "rolling_window_hours": 24,
+    "observed_runs": 31,
+    "success": 27,
+    "failure": 3,
+    "cancelled": 0,
+    "active_at_snapshot": 1,
+    "note": "Fotografia datada; não representa o estado em tempo real após a consulta."
+  },
+  "triaged_failures": [
+    {
+      "workflow": "B3 — WATCHDOG de atualidade dos dados",
+      "run_id": 39125607011,
+      "url": "https://github.com/carlos-andrade/B3/actions/runs/39125607011",
+      "job_id": 117669964450,
+      "failure_step": "Falhar quando existem datasets STALE ou UNKNOWN",
+      "evidence": "O avaliador terminou os passos de análise e publicação; falhou intencionalmente porque SGS 12 e SGS 433 estavam UNKNOWN.",
+      "root_cause": "O registo de monitorização tratava séries bloqueadas por falta de prova de licença como alvos operacionais de frescura.",
+      "corrective_action": "Removidas do conjunto operacional e listadas em excluded_by_policy; adicionada regressão que exige que apenas SGS 1, 11 e 432 sejam monitorizadas.",
+      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+    },
+    {
+      "workflow": "COTAHIST - dataset oficial V1",
+      "run_id": 39116661095,
+      "url": "https://github.com/carlos-andrade/B3/actions/runs/39116661095",
+      "job_id": 117643723975,
+      "failure_step": "Gerar Dataset Oficial",
+      "evidence": "O gerador recusou a promoção porque o quality manifest de 2026 tinha status BLOQUEADO.",
+      "root_cause": "O contrato do dataset exigia o ano 2026 apesar da política atual de não promover/publicar automaticamente dados B3 sem direitos compatíveis demonstrados.",
+      "corrective_action": "Gerador alterado para preservar o arquivo histórico de consulta 1986–2025, excluir 2026 e exigir certificação histórica válida; agendamento automático removido.",
+      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+    },
+    {
+      "workflow": "COTAHIST - certificacao anual automatica V1",
+      "run_id": 39115951331,
+      "url": "https://github.com/carlos-andrade/B3/actions/runs/39115951331",
+      "job_id": 117641649012,
+      "failure_step": "Gerar matriz oficial",
+      "evidence": "O script reportou 40 de 41 anos certificados e falha para 2026, cujo manifesto de qualidade está BLOQUEADO por autorização da fonte.",
+      "root_cause": "A rotina misturava certificação histórica com a elegibilidade de publicação do ano corrente.",
+      "corrective_action": "Rotina alterada para preservar literalmente as linhas de 1986–2025 e registar 2026 como BLOQUEADO_AUTORIZACAO_FONTE, sem o contar como certificado; agendamento automático removido.",
+      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+    }
+  ],
+  "commits": [
+    "8093916e4421885d3f0251219f6e4bf6b00246ff",
+    "0fb6d334833a6b3e6ddaf09f678a41ddca35383e",
+    "cd4f65e4d4ba44af73b493cf9ba82b86ab4fa3ca",
+    "396416d66118c368c9a6d6fd5fcc884a9dc3ec60",
+    "93058479901da530cdb712bb4ae931f747657184",
+    "cfc056f6f86a391b0289535853dc94481e3f7f59"
+  ],
+  "pending_validation": [
+    "Aguardar e inspecionar CI após as correções de WATCHDOG e COTAHIST.",
+    "Verificar a matriz anual resultante e confirmar que 1986–2025 permanecem inalterados e 2026 está explicitamente bloqueado.",
+    "Verificar que o arquivo de consulta oficial contém somente 1986–2025 e status CONSULTA_HISTORICA.",
+    "Executar a auditoria estática dos workflows e a auditoria SHA-256 após atualizar o roadmap.",
+    "Reavaliar o WATCHDOG agregado depois de as correções terminarem; não declarar o estado global favorável apenas pelo sucesso técnico do workflow."
+  ],
+  "limitations": [
+    "Não foram reexecutados workflows históricos em massa.",
+    "Não foi feita nova captura de COTAHIST, BDI ou outras fontes bloqueadas.",
+    "As correções ainda não estão consideradas validadas até os respetivos workflows terminarem com evidência positiva."
+  ]
+}
