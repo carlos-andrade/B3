@@ -7,10 +7,10 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
-| **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; CORRECOES_AGUARDAM_CI |
-| **Versão** | 2.3.15 |
-| **SHA-256 (conteúdo canónico)** | c6d03f212cd3d9b645d9f963ac18cdeca1346efa595d3cfbfe76924f2351c504 |
-| **Commit de referência (versão anterior)** | [6495ef01b2f78e308821dbd464cec098c306ad91](https://github.com/carlos-andrade/B3/commit/6495ef01b2f78e308821dbd464cec098c306ad91) |
+| **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; VALIDACOES_PARCIAIS_APROVADAS; FECHO_GLOBAL_PENDENTE |
+| **Versão** | 2.3.16 |
+| **SHA-256 (conteúdo canónico)** | 6b9fac1d32b9aeacff66d7d4624366ed3056f4c1eeabf7c6b0386faa647c43d5 |
+| **Commit de referência (versão anterior)** | [80378ba3618cb10857f56087dfe1c1380858ea1a](https://github.com/carlos-andrade/B3/commit/80378ba3618cb10857f56087dfe1c1380858ea1a) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-19 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -821,3 +821,33 @@ A evidência estruturada está em [TRIAGEM_FALHAS_ATUAIS_B3_2026-10-19.json](htt
 - Reavaliar o estado agregado do WATCHDOG depois das correções; o sucesso técnico de um workflow não certifica a saúde global.
 
 **Decisão:** não declarar o projeto concluído enquanto os testes e a auditoria final não confirmarem os critérios acima.
+
+
+## 15. Validação pós-correção — 2026-10-19
+
+### 15.1 Resultados confirmados
+
+- **Atualidade de dados:** a [Issue #15](https://github.com/carlos-andrade/B3/issues/15) foi atualizada para `PASS`: 3 datasets elegíveis avaliados, 3 `PASS`, zero `STALE` e zero `UNKNOWN`. O âmbito está limitado a SGS 1, 11 e 432; fontes bloqueadas não são tratadas como operacionais.
+- **Matriz de certificação COTAHIST:** o commit automático [ee8079aabd3e6eca7739c42248e262d06bcd5195](https://github.com/carlos-andrade/B3/commit/ee8079aabd3e6eca7739c42248e262d06bcd5195) preservou as linhas de 1986–2025 e classificou 2026 como `BLOQUEADO_AUTORIZACAO_FONTE`.
+- **Arquivo histórico COTAHIST:** o commit automático [e5f4e75836fc34c454e8e6474acfdf591cc59d69](https://github.com/carlos-andrade/B3/commit/e5f4e75836fc34c454e8e6474acfdf591cc59d69) atualizou o dataset para `CONSULTA_HISTORICA`, período 1986–2025, excluindo 2026.
+- **Integridade documental:** a auditoria SHA-256 do roadmap v2.3.15 passou no [run #39249778813](https://github.com/carlos-andrade/B3/actions/runs/39249778813).
+- **Auditoria estática de workflows:** o relatório foi regenerado em 2026-10-19T12:08:01Z, com 555 workflows examinados. A auditoria estática não substitui a validação das execuções pós-correção.
+
+### 15.2 Falhas históricas ainda visíveis no WATCHDOG agregado
+
+A última fotografia consultada da [Issue #12](https://github.com/carlos-andrade/B3/issues/12), às 12:08:53Z, ainda apresentava duas falhas:
+- [run #39241817231](https://github.com/carlos-andrade/B3/actions/runs/39241817231), iniciado em 11:03Z;
+- [run #39239626716](https://github.com/carlos-andrade/B3/actions/runs/39239626716), iniciado em 10:44Z.
+
+Ambos foram executados antes das correções finais de workflow/script e permanecem no intervalo móvel de 24 horas. Não são prova de falha da versão corrigida, mas também não podem ser apagados ou contados como sucesso. É necessário confirmar as execuções pós-correção e obter uma nova fotografia do monitor independente.
+
+### 15.3 Estado e próximo passo
+
+As correções de âmbito de monitorização, certificação e arquivo foram persistidas no repositório. O encerramento global permanece pendente até:
+1. confirmar a execução pós-correção dos dois workflows COTAHIST;
+2. executar a auditoria estática sobre o HEAD atual;
+3. executar a auditoria SHA-256 desta versão;
+4. obter nova fotografia do WATCHDOG independente e classificar qualquer falha ainda dentro da janela;
+5. manter todas as fontes sem direitos demonstrados bloqueadas.
+
+Não declarar o projeto concluído apenas porque os workflows de validação documental passam.
