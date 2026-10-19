@@ -4,7 +4,7 @@
   "repository": "carlos-andrade/B3",
   "document_type": "AUDIT_EVIDENCE",
   "version": "1.0.0",
-  "as_of_utc": "2026-10-19",
+  "as_of_utc": "2026-10-19T12:13:00Z",
   "governance": {
     "cost_zero": true,
     "fail_closed_for_unverified_sources": true,
@@ -34,7 +34,7 @@
       "evidence": "O avaliador terminou os passos de análise e publicação; falhou intencionalmente porque SGS 12 e SGS 433 estavam UNKNOWN.",
       "root_cause": "O registo de monitorização tratava séries bloqueadas por falta de prova de licença como alvos operacionais de frescura.",
       "corrective_action": "Removidas do conjunto operacional e listadas em excluded_by_policy; adicionada regressão que exige que apenas SGS 1, 11 e 432 sejam monitorizadas.",
-      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+      "status": "CORRECAO_VALIDADA_POR_WATCHDOG_PASS"
     },
     {
       "workflow": "COTAHIST - dataset oficial V1",
@@ -45,7 +45,7 @@
       "evidence": "O gerador recusou a promoção porque o quality manifest de 2026 tinha status BLOQUEADO.",
       "root_cause": "O contrato do dataset exigia o ano 2026 apesar da política atual de não promover/publicar automaticamente dados B3 sem direitos compatíveis demonstrados.",
       "corrective_action": "Gerador alterado para preservar o arquivo histórico de consulta 1986–2025, excluir 2026 e exigir certificação histórica válida; agendamento automático removido.",
-      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+      "status": "RESOLVIDO_NO_HEAD_ATUAL; RUN_POS_CORRECAO_ANTERIOR"
     },
     {
       "workflow": "COTAHIST - certificacao anual automatica V1",
@@ -56,7 +56,19 @@
       "evidence": "O script reportou 40 de 41 anos certificados e falha para 2026, cujo manifesto de qualidade está BLOQUEADO por autorização da fonte.",
       "root_cause": "A rotina misturava certificação histórica com a elegibilidade de publicação do ano corrente.",
       "corrective_action": "Rotina alterada para preservar literalmente as linhas de 1986–2025 e registar 2026 como BLOQUEADO_AUTORIZACAO_FONTE, sem o contar como certificado; agendamento automático removido.",
-      "status": "CORRECAO_COMMITADA_A_AGUARDAR_CI"
+      "status": "RESOLVIDO_NO_HEAD_ATUAL; RUN_POS_CORRECAO_ANTERIOR"
+    },
+    {
+      "workflow": "COTAHIST - arquivo histórico para consulta V1",
+      "run_id": 39249993927,
+      "url": "https://github.com/carlos-andrade/B3/actions/runs/39249993927",
+      "job_id": 118051154064,
+      "failure_step": "Gerar arquivo histórico de consulta",
+      "evidence": "IndentationError na linha 92, introduzido durante a inclusão de uma linha de observabilidade.",
+      "root_cause": "Erro sintático transitório na alteração de saída; não relacionado à qualidade dos dados nem à autorização da fonte.",
+      "corrective_action": "Indentação corrigida no commit 1d7f6e17f5b85b9491abefb302cb51ad631f5032; run #42 passou.",
+      "resolution_evidence": "https://github.com/carlos-andrade/B3/actions/runs/39250249274",
+      "status": "RESOLVED_FOR_CURRENT_HEAD"
     }
   ],
   "commits": [
@@ -68,15 +80,15 @@
     "cfc056f6f86a391b0289535853dc94481e3f7f59"
   ],
   "pending_validation": [
-    "Aguardar e inspecionar CI após as correções de WATCHDOG e COTAHIST.",
-    "Verificar a matriz anual resultante e confirmar que 1986–2025 permanecem inalterados e 2026 está explicitamente bloqueado.",
-    "Verificar que o arquivo de consulta oficial contém somente 1986–2025 e status CONSULTA_HISTORICA.",
-    "Executar a auditoria estática dos workflows e a auditoria SHA-256 após atualizar o roadmap.",
-    "Reavaliar o WATCHDOG agregado depois de as correções terminarem; não declarar o estado global favorável apenas pelo sucesso técnico do workflow."
+    "Obter uma nova fotografia do monitor independente após as correções; a janela atual ainda contém falhas pré-correção.",
+    "Confirmar auditoria estática sobre o HEAD após as últimas alterações de workflows (último run confirmado: 39249502528, success).",
+    "Confirmar auditoria SHA-256 do roadmap v2.3.16 (run 39250141881, success) e executar novamente após a próxima alteração documental.",
+    "Manter fontes sem direitos demonstrados bloqueadas e não reexecutar workflows históricos em massa."
   ],
   "limitations": [
     "Não foram reexecutados workflows históricos em massa.",
     "Não foi feita nova captura de COTAHIST, BDI ou outras fontes bloqueadas.",
-    "As correções ainda não estão consideradas validadas até os respetivos workflows terminarem com evidência positiva."
+    "As correções ainda não estão consideradas validadas até os respetivos workflows terminarem com evidência positiva.",
+    "O run #41 falhou por erro de indentação na instrumentação; foi corrigido e o run #42 passou."
   ]
 }
