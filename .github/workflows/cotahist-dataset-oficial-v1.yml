@@ -1,15 +1,12 @@
-name: COTAHIST - dataset oficial V1
+name: COTAHIST - arquivo histórico para consulta V1
 
 on:
   push:
     branches: [main]
     paths:
       - "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
-      - "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json"
       - "scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py"
       - ".github/workflows/cotahist-dataset-oficial-v1.yml"
-  schedule:
-    - cron: "30 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -27,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Gerar Dataset Oficial
+      - name: Gerar arquivo histórico de consulta
         run: python scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py
 
       - name: Verificar alterações
@@ -45,14 +42,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json
-          git commit -m "data(oficial): atualiza dataset oficial COTAHIST"
+          git commit -m "data(arquivo): limita COTAHIST historico a 1986-2025"
           git pull --rebase origin main
           git push origin HEAD:main
 
-      - name: Publicar manifesto
+      - name: Publicar evidência do arquivo
         uses: actions/upload-artifact@v4
         with:
-          name: cotahist-dataset-oficial-v1
+          name: cotahist-arquivo-consulta-v1
           path: dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json
           retention-days: 30
 
@@ -63,5 +60,6 @@ jobs:
             echo "## Observabilidade"
             echo "- Workflow: cotahist-dataset-oficial-v1.yml"
             echo "- Resultado do job: ${{ job.status }}"
+            echo "- Escopo: arquivo histórico 1986–2025; 2026 excluído por bloqueio de autorização"
             echo "- GITHUB_STEP_SUMMARY: habilitado"
           } >> "$GITHUB_STEP_SUMMARY"
