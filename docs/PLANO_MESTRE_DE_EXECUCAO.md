@@ -8,9 +8,9 @@
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
 | **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; VALIDACOES_PARCIAIS_APROVADAS; FECHO_GLOBAL_PENDENTE |
-| **Versão** | 2.3.16 |
-| **SHA-256 (conteúdo canónico)** | 6b9fac1d32b9aeacff66d7d4624366ed3056f4c1eeabf7c6b0386faa647c43d5 |
-| **Commit de referência (versão anterior)** | [80378ba3618cb10857f56087dfe1c1380858ea1a](https://github.com/carlos-andrade/B3/commit/80378ba3618cb10857f56087dfe1c1380858ea1a) |
+| **Versão** | 2.3.17 |
+| **SHA-256 (conteúdo canónico)** | bcf4d395561b4c44e9496ab356b713a0d3d833dffe1f405120cd291259904314 |
+| **Commit de referência (versão anterior)** | [2ace0b0b617121cf8833bfd691697c5cdf2b4b6e](https://github.com/carlos-andrade/B3/commit/2ace0b0b617121cf8833bfd691697c5cdf2b4b6e) |
 | **Data de criação** | 2026-09-25 |
 | **Data de atualização** | 2026-10-19 |
 | **Responsável** | Responsável técnico do projeto B3 |
@@ -830,24 +830,26 @@ A evidência estruturada está em [TRIAGEM_FALHAS_ATUAIS_B3_2026-10-19.json](htt
 - **Atualidade de dados:** a [Issue #15](https://github.com/carlos-andrade/B3/issues/15) foi atualizada para `PASS`: 3 datasets elegíveis avaliados, 3 `PASS`, zero `STALE` e zero `UNKNOWN`. O âmbito está limitado a SGS 1, 11 e 432; fontes bloqueadas não são tratadas como operacionais.
 - **Matriz de certificação COTAHIST:** o commit automático [ee8079aabd3e6eca7739c42248e262d06bcd5195](https://github.com/carlos-andrade/B3/commit/ee8079aabd3e6eca7739c42248e262d06bcd5195) preservou as linhas de 1986–2025 e classificou 2026 como `BLOQUEADO_AUTORIZACAO_FONTE`.
 - **Arquivo histórico COTAHIST:** o commit automático [e5f4e75836fc34c454e8e6474acfdf591cc59d69](https://github.com/carlos-andrade/B3/commit/e5f4e75836fc34c454e8e6474acfdf591cc59d69) atualizou o dataset para `CONSULTA_HISTORICA`, período 1986–2025, excluindo 2026.
-- **Integridade documental:** a auditoria SHA-256 do roadmap v2.3.15 passou no [run #39249778813](https://github.com/carlos-andrade/B3/actions/runs/39249778813).
-- **Auditoria estática de workflows:** o relatório foi regenerado em 2026-10-19T12:08:01Z, com 555 workflows examinados. A auditoria estática não substitui a validação das execuções pós-correção.
+- **Arquivo histórico COTAHIST:** a execução corrigida [run #39250249274](https://github.com/carlos-andrade/B3/actions/runs/39250249274) terminou `success` após corrigir uma falha transitória de indentação no run anterior #41.
+- **Certificação anual COTAHIST:** o run [#39249953480](https://github.com/carlos-andrade/B3/actions/runs/39249953480) terminou `success`, preservando 1986–2025 e mantendo 2026 bloqueado por autorização.
+- **Integridade documental:** a auditoria SHA-256 do roadmap v2.3.16 passou no [run #39250141881](https://github.com/carlos-andrade/B3/actions/runs/39250141881).
+- **Auditoria estática de workflows:** o run [#39249502528](https://github.com/carlos-andrade/B3/actions/runs/39249502528) terminou `success`; o relatório foi regenerado em 2026-10-19T12:08:01Z, com 555 workflows examinados. A auditoria estática não substitui a validação de cada execução.
 
-### 15.2 Falhas históricas ainda visíveis no WATCHDOG agregado
+### 15.2 Estado agregado do WATCHDOG
 
-A última fotografia consultada da [Issue #12](https://github.com/carlos-andrade/B3/issues/12), às 12:08:53Z, ainda apresentava duas falhas:
-- [run #39241817231](https://github.com/carlos-andrade/B3/actions/runs/39241817231), iniciado em 11:03Z;
-- [run #39239626716](https://github.com/carlos-andrade/B3/actions/runs/39239626716), iniciado em 10:44Z.
+A fotografia mais recente consultada da [Issue #12](https://github.com/carlos-andrade/B3/issues/12), às 12:11:40Z, observou 45 execuções: 40 success, 3 failure e 2 ativas. As falhas listadas eram:
+- [run #39241817231](https://github.com/carlos-andrade/B3/actions/runs/39241817231), execução anterior à correção do contrato do dataset;
+- [run #39239626716](https://github.com/carlos-andrade/B3/actions/runs/39239626716), execução anterior à correção da certificação;
+- [run #39249993927](https://github.com/carlos-andrade/B3/actions/runs/39249993927), erro transitório de indentação na saída do gerador.
 
-Ambos foram executados antes das correções finais de workflow/script e permanecem no intervalo móvel de 24 horas. Não são prova de falha da versão corrigida, mas também não podem ser apagados ou contados como sucesso. É necessário confirmar as execuções pós-correção e obter uma nova fotografia do monitor independente.
+O terceiro caso foi corrigido e validado pelo run #39250249274. As duas falhas mais antigas permanecem no histórico e na janela móvel; não devem ser apagadas nem contabilizadas como sucessos. A próxima fotografia independente deve verificar que as execuções posteriores estão saudáveis e classificar as falhas ainda visíveis.
 
 ### 15.3 Estado e próximo passo
 
 As correções de âmbito de monitorização, certificação e arquivo foram persistidas no repositório. O encerramento global permanece pendente até:
-1. confirmar a execução pós-correção dos dois workflows COTAHIST;
-2. executar a auditoria estática sobre o HEAD atual;
+1. obter nova fotografia do WATCHDOG independente depois do run #42 e classificar as falhas pré-correção ainda dentro da janela;
+2. executar a auditoria estática se houver novas alterações de workflow;
 3. executar a auditoria SHA-256 desta versão;
-4. obter nova fotografia do WATCHDOG independente e classificar qualquer falha ainda dentro da janela;
-5. manter todas as fontes sem direitos demonstrados bloqueadas.
+4. manter todas as fontes sem direitos demonstrados bloqueadas e não reexecutar workflows históricos em massa.
 
 Não declarar o projeto concluído apenas porque os workflows de validação documental passam.
