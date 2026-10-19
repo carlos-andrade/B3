@@ -7,12 +7,12 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | PLANO_EXECUCAO |
 | **Fase** | Governança, preservação e execução do projeto |
-| **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; PENDENCIAS_RESIDUAIS_CLASSIFICADAS |
-| **Versão** | 2.3.14 |
-| **SHA-256 (conteúdo canónico)** | d1190873a1c1aaa65239523a8ec8884e6e17220b94f1aa6c6313ec93b10ecb4e |
+| **Estado** | AUDITORIA_TRANSVERSAL_EM_CURSO; CORRECOES_AGUARDAM_CI |
+| **Versão** | 2.3.15 |
+| **SHA-256 (conteúdo canónico)** | PENDENTE_CALCULO |
 | **Commit de referência (versão anterior)** | [6495ef01b2f78e308821dbd464cec098c306ad91](https://github.com/carlos-andrade/B3/commit/6495ef01b2f78e308821dbd464cec098c306ad91) |
 | **Data de criação** | 2026-09-25 |
-| **Data de atualização** | 2026-10-16 |
+| **Data de atualização** | 2026-10-19 |
 | **Responsável** | Responsável técnico do projeto B3 |
 | **Aprovador** | Pendente de validação formal desta versão normalizada |
 | **Origem** | Documento histórico B3 normalizado conforme a norma de cabeçalho GOVERNANCA v1.0.3 |
@@ -787,3 +787,37 @@ A última fotografia disponível, [#38970787369](https://github.com/carlos-andra
 - A autorização da fonte de preços B3 continua pendente; COTAHIST 2026 permanece `BLOQUEADO` para promoção/captura automatizada.
 - Continuar a triagem das falhas e cancelamentos restantes, incluindo a distinção entre bloqueios esperados, defeitos técnicos e runs substituídos.
 - Estado global: **AUDITORIA TRANSVERSAL EM CURSO; PROJETO NÃO CONCLUÍDO**.
+
+
+## 14. Auditoria de encerramento — 2026-10-19
+
+### 14.1 Estado verificado
+
+A auditoria de encerramento continua aberta. A fotografia do WATCHDOG publicada em [Issue #12](https://github.com/carlos-andrade/B3/issues/12), verificada em 2026-10-19T06:46:41Z, observou 31 execuções nas últimas 24 horas: 27 success, 3 failure e 1 ativa. Esta é uma fotografia datada, não um estado em tempo real.
+
+### 14.2 Falhas classificadas e correções submetidas
+
+1. **WATCHDOG de atualidade** — [run #39125607011](https://github.com/carlos-andrade/B3/actions/runs/39125607011): a falha foi acionada por SGS 12 e SGS 433 em UNKNOWN. As séries não estão elegíveis sem prova de licença ODbL exata. O registo operacional passou a incluir apenas SGS 1, 11 e 432; as fontes bloqueadas estão documentadas em `excluded_by_policy`. Foi adicionada uma regressão que valida esta separação.
+2. **Dataset oficial COTAHIST** — [run #39116661095](https://github.com/carlos-andrade/B3/actions/runs/39116661095): o gerador exigia que 2026 estivesse VALIDADO, apesar do bloqueio de autorização. O contrato foi alterado para preservar o arquivo histórico 1986–2025 apenas para consulta e excluir 2026. O agendamento automático foi removido.
+3. **Certificação anual COTAHIST** — [run #39115951331](https://github.com/carlos-andrade/B3/actions/runs/39115951331): a rotina misturava qualidade estrutural e autorização da fonte. A nova regra preserva as linhas de 1986–2025 e classifica 2026 como `BLOQUEADO_AUTORIZACAO_FONTE`, sem o contar como certificado. O agendamento automático foi removido.
+
+A evidência estruturada está em [TRIAGEM_FALHAS_ATUAIS_B3_2026-10-19.json](https://github.com/carlos-andrade/B3/blob/main/docs/governanca/auditorias/TRIAGEM_FALHAS_ATUAIS_B3_2026-10-19.json).
+
+### 14.3 Política operacional reafirmada
+
+- Custo zero: não contratar feeds, licenças ou subscrições.
+- Direitos não demonstrados: bloquear captura automatizada e publicação.
+- COTAHIST 1986–2025: arquivo histórico de consulta; não reabrir nem reconstruir automaticamente.
+- COTAHIST 2026: excluído da promoção/publicação automática até existir fonte gratuita e direitos compatíveis demonstrados.
+- `BLOQUEADO` por autorização não é defeito estrutural, nem pode ser convertido em `VALIDADO` para fazer passar um workflow.
+- Não reexecutar workflows históricos em massa.
+
+### 14.4 Critérios ainda pendentes
+
+- Confirmar CI dos commits de correção e verificar os artefactos resultantes.
+- Confirmar que a matriz mantém inalteradas as linhas históricas 1986–2025 e assinala 2026 como bloqueado.
+- Confirmar que o arquivo de consulta contém exclusivamente 1986–2025.
+- Executar novamente auditoria estática de workflows e auditoria SHA-256 documental.
+- Reavaliar o estado agregado do WATCHDOG depois das correções; o sucesso técnico de um workflow não certifica a saúde global.
+
+**Decisão:** não declarar o projeto concluído enquanto os testes e a auditoria final não confirmarem os critérios acima.
