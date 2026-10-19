@@ -4,7 +4,7 @@
   "repository": "carlos-andrade/B3",
   "document_type": "AUDIT_EVIDENCE",
   "version": "1.0.0",
-  "as_of_utc": "2026-10-19T12:13:00Z",
+  "as_of_utc": "2026-10-19T12:14:30Z",
   "governance": {
     "cost_zero": true,
     "fail_closed_for_unverified_sources": true,
@@ -80,15 +80,62 @@
     "cfc056f6f86a391b0289535853dc94481e3f7f59"
   ],
   "pending_validation": [
-    "Obter uma nova fotografia do monitor independente após as correções; a janela atual ainda contém falhas pré-correção.",
-    "Confirmar auditoria estática sobre o HEAD após as últimas alterações de workflows (último run confirmado: 39249502528, success).",
-    "Confirmar auditoria SHA-256 do roadmap v2.3.16 (run 39250141881, success) e executar novamente após a próxima alteração documental.",
-    "Manter fontes sem direitos demonstrados bloqueadas e não reexecutar workflows históricos em massa."
+    "Aguardar que as três falhas já classificadas saiam da janela móvel de 24 horas e obter nova fotografia do monitor independente; não reexecutar em massa.",
+    "Manter fontes sem direitos compatíveis demonstrados bloqueadas; a substituição autorizada de preço B3 permanece pendente.",
+    "Executar novamente a auditoria estática se forem alterados workflows após o run 39249502528."
   ],
   "limitations": [
     "Não foram reexecutados workflows históricos em massa.",
     "Não foi feita nova captura de COTAHIST, BDI ou outras fontes bloqueadas.",
     "As correções ainda não estão consideradas validadas até os respetivos workflows terminarem com evidência positiva.",
     "O run #41 falhou por erro de indentação na instrumentação; foi corrigido e o run #42 passou."
-  ]
+  ],
+  "confirmed_validation": {
+    "freshness_watchdog": {
+      "issue": "https://github.com/carlos-andrade/B3/issues/15",
+      "result": "PASS",
+      "evaluated_datasets": 3,
+      "pass": 3,
+      "stale": 0,
+      "unknown": 0,
+      "scope": [
+        "BCB-SGS-1",
+        "BCB-SGS-11",
+        "BCB-SGS-432"
+      ]
+    },
+    "cotahist_certification": {
+      "run_url": "https://github.com/carlos-andrade/B3/actions/runs/39249953480",
+      "result": "success",
+      "current_year_2026": "BLOQUEADO_AUTORIZACAO_FONTE"
+    },
+    "cotahist_historical_archive": {
+      "run_url": "https://github.com/carlos-andrade/B3/actions/runs/39250249274",
+      "result": "success",
+      "status": "CONSULTA_HISTORICA",
+      "years": "1986-2025"
+    },
+    "static_workflow_audit": {
+      "run_url": "https://github.com/carlos-andrade/B3/actions/runs/39249502528",
+      "result": "success",
+      "workflows_examined": 555
+    },
+    "roadmap_sha256": {
+      "run_url": "https://github.com/carlos-andrade/B3/actions/runs/39250446406",
+      "result": "success",
+      "roadmap_version": "2.3.17",
+      "canonical_sha256": "bcf4d395561b4c44e9496ab356b713a0d3d833dffe1f405120cd291259904314"
+    },
+    "independent_watchdog": {
+      "issue": "https://github.com/carlos-andrade/B3/issues/12",
+      "run_url": "https://github.com/carlos-andrade/B3/actions/runs/39250446468",
+      "result": "NAO_FAVORAVEL",
+      "observed_runs": 48,
+      "success": 43,
+      "failure": 3,
+      "active_at_snapshot": 2,
+      "verified_at_utc": "2026-10-19T12:14:02.065501Z",
+      "interpretation": "The three failures are classified: two COTAHIST runs from before the policy-aligned changes, plus one transient indentation failure corrected by the successful run 39250249274. The rolling window retains these historical failures; they are not erased or counted as successful."
+    }
+  }
 }
