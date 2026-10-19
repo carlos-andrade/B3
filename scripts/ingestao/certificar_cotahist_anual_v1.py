@@ -78,6 +78,7 @@ def main() -> None:
     print("Anos históricos preservados: 40 (1986–2025; sem reavaliação automática)")
     print(f"Anos históricos certificados na matriz: {certified_historical}")
     print("Ano 2026: BLOQUEADO_AUTORIZACAO_FONTE; não contado como certificado.")
+    print("Política: nenhuma nova captura foi efetuada; esta rotina só classifica artefactos locais existentes.")
     print("Nenhum ano histórico foi recalculado ou reescrito semanticamente.")
 
 
