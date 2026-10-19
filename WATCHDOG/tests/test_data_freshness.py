@@ -6,6 +6,8 @@ from pathlib import Path
 
 from WATCHDOG.engine.check_data_freshness import evaluate, evaluate_dataset
 
+ROOT = Path(__file__).resolve().parents[2]
+
 
 class DataFreshnessTests(unittest.TestCase):
     def test_recent_observation_passes(self):
@@ -66,6 +68,16 @@ class DataFreshnessTests(unittest.TestCase):
                      "manifest_path": "../outside.json", "date_field": "date", "max_age_days": 2}
             with self.assertRaises(ValueError):
                 evaluate_dataset(entry, root, dt.date(2026, 10, 13))
+
+    def test_blocked_sources_are_not_operational_freshness_targets(self):
+        config_path = ROOT / "WATCHDOG" / "registry" / "datasets-monitorizados.json"
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        active_ids = {item["id"] for item in config["datasets"]}
+        excluded_ids = {item["id"] for item in config.get("excluded_by_policy", [])}
+        self.assertEqual(active_ids, {"BCB-SGS-432", "BCB-SGS-11", "BCB-SGS-1"})
+        self.assertTrue({"BCB-SGS-12", "BCB-SGS-433", "B3-BDI-DAILY-AVERAGE-STOCKS",
+                         "COTAHIST-2026", "COTAHIST-DIARIO"}.issubset(excluded_ids))
+        self.assertTrue(active_ids.isdisjoint(excluded_ids))
 
 
 if __name__ == "__main__":
