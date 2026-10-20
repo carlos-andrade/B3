@@ -51,11 +51,12 @@ class CvmOpenDataTests(unittest.TestCase):
         with self.assertRaises(SourceError):
             select_resource("fundos-informe", package("fundos-informe"))
 
-    def test_rejects_nonofficial_resource_host(self):
+    def test_ignores_nonofficial_resource_host(self):
         p = package()
         p["resources"][1]["url"] = "https://example.com/dfp_cia_aberta_2026.zip"
-        with self.assertRaises(SourceError):
-            select_resource("cia_aberta-doc-dfp", p)
+        result = select_resource("cia_aberta-doc-dfp", p)
+        self.assertEqual(result["year"], 2025)
+        self.assertEqual(result["resource_id"], "old")
 
     def test_rejects_closed_package(self):
         p = package()
