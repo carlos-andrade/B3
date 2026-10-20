@@ -1,0 +1,103 @@
+name: B3 — PTAX BCB dados abertos (ODbL)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "55 23 * * 1-5"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-ptax-bcb.yml"
+      - "scripts/ingestao/importar_ptax_bcb.py"
+      - "scripts/ingestao/test_importar_ptax_bcb.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-data-ingestion-serialized
+  cancel-in-progress: false
+
+jobs:
+  capturar-ptax:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes unitários PTAX
+        run: python -m unittest scripts.ingestao.test_importar_ptax_bcb -v
+
+      - name: Capturar EUR e USD
+        run: python scripts/ingestao/importar_ptax_bcb.py --end-date "$(date -u +%F)" --lookback-days 30
+
+      - name: Validar SHA-256 e manifestos
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          manifests = [Path("dados/cambio/ptax/manifests") / f"PTAX_{currency}_{__import__('datetime').date.today().isoformat()}.json"
+                       for currency in ("EUR", "USD")]
+          for manifest_path in manifests:
+              if not manifest_path.is_file():
+                  raise SystemExit(f"Manifesto ausente: {manifest_path}")
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              raw = Path(manifest["raw_path"])
+              if not raw.is_file():
+                  raise SystemExit(f"RAW ausente: {raw}")
+              if hashlib.sha256(raw.read_bytes()).hexdigest() != manifest["sha256"]:
+                  raise SystemExit(f"SHA-256 divergente: {raw}")
+              if manifest["license"] != "Open Data Commons Open Database License (ODbL)":
+                  raise SystemExit(f"Licença não esperada: {manifest['currency']}")
+              if manifest["observations"] < 1:
+                  raise SystemExit(f"Sem observações: {manifest['currency']}")
+          print("PTAX EUR/USD: RAW, manifestos, licença ODbL e SHA-256 verificados.")
+          PY
+
+      - name: Persistir RAW e manifestos
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cambio/ptax/raw dados/cambio/ptax/manifests
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nos artefactos PTAX."
+            exit 0
+          fi
+          git commit -m "data(b3): atualizar PTAX EUR e USD"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort || true
+            git fetch origin main
+            git reset --mixed origin/main
+            git add dados/cambio/ptax/raw dados/cambio/ptax/manifests
+            if git diff --cached --quiet; then
+              echo "Os artefactos PTAX já estão representados em main."
+              exit 0
+            fi
+            git commit -m "data(b3): reconciliar artefactos PTAX concorrentes"
+          done
+          echo "Falha ao reconciliar publicação PTAX após três tentativas."
+          exit 1
+
+      - name: Guardar evidência de execução
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-ptax-bcb
+          path: dados/cambio/ptax/manifests/*.json
+          if-no-files-found: warn
+          retention-days: 30
