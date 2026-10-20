@@ -40,6 +40,7 @@ A Wiki documenta arquitetura, governança, metodologia, estado operacional, font
 - [Estado Atual](00-INICIO/ESTADO_ATUAL.md)
 - [Modelo de Governança](01-GOVERNANCA/MODELO_DE_GOVERNANCA.md)
 - [Política de Evidências](01-GOVERNANCA/POLITICA_DE_EVIDENCIAS.md)
+- [Política de aquisição de dados públicos gratuitos](01-GOVERNANCA/POLITICA_AQUISICAO_DADOS_PUBLICOS_GRATUITOS_V1.md)
 - [Arquitetura Geral](02-ARQUITETURA/ARQUITETURA_GERAL.md)
 
 ## Marco histórico
