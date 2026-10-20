@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-19T22:56:00.461847-03:00",
+  "generated_at": "2026-10-20T08:09:49.265883-03:00",
   "status": "VALIDADO",
   "series": [
     {
       "codigo_sgs": 432,
       "status": "VALIDADO",
-      "ultima_data": "2026-10-19",
-      "linhas": 10091,
+      "ultima_data": "2026-10-20",
+      "linhas": 10092,
       "manifest": "dados/bcb_sgs/manifests/SGS_432_quality.json"
     },
     {
