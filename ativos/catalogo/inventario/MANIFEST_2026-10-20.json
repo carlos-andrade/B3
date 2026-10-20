@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-20",
+  "source": "B3 BVBG.028.02 / InstrumentsConsolidated",
+  "rows": 85659,
+  "sha256": "1127198a3e5944e3768e41d61bd4a5e0861fc953a4dce2c85f929b54aeea2b70",
+  "raw_file": "ativos/catalogo/fontes/bruto/InstrumentsConsolidated_2026-10-20.csv",
+  "inventory_file": "ativos/catalogo/inventario/INVENTARIO_B3_2026-10-20.csv"
+}
