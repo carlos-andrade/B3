@@ -31,18 +31,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python scripts/governanca/validar_autorizacao_endpoint.py \
-            --endpoint-id B3_PESQUISA_POR_PREGAO_API --allow-blocked
-          python - <<'PY'
+          result="$(python scripts/governanca/validar_autorizacao_endpoint.py \
+            --endpoint-id B3_PESQUISA_POR_PREGAO_API --allow-blocked)"
+          echo "$result"
+          python - "$result" <<'PY'
           import json
-          import subprocess
+          import os
           import sys
-          p = subprocess.run(
-              [sys.executable, "scripts/governanca/validar_autorizacao_endpoint.py",
-               "--endpoint-id", "B3_PESQUISA_POR_PREGAO_API", "--allow-blocked"],
-              capture_output=True, text=True, check=True,
-          )
-          result = json.loads(p.stdout)
+          result = json.loads(sys.argv[1])
           summary = [
               "# Catálogo B3 — gate de autorização",
               f"- Estado: **{result['authorization_status']}**",
@@ -51,9 +47,8 @@ jobs:
               "- Chamadas HTTP ao endpoint de catálogo: **0**",
               "- Próxima ação: confirmar canal oficial de download/API fora da interface restrita ou obter autorização documentada.",
           ]
-          print("\\n".join(summary))
-          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
-              f.write("\\n".join(summary) + "\\n")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write("\n".join(summary) + "\n")
           if result["authorized"] is True:
               raise SystemExit("Rever este workflow antes de reativar a captura; o gate não implementa o importador.")
           PY
