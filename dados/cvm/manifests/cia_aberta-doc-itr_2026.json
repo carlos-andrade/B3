@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "source": "CVM Portal Dados Abertos / CKAN",
+  "package_id": "cia_aberta-doc-itr",
+  "year": 2026,
+  "resource_id": "5fc7da13-e93a-4224-bdb6-0e5f49da743e",
+  "resource_name": "Formulários de Informações Trimestrais de Cias Abertas (2026)",
+  "resource_url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip",
+  "resource_format": "ZIP",
+  "package_license_id": "odc-odbl",
+  "package_license_title": "Licença Aberta para Bases de Dados (ODbL) do Open Data Commons",
+  "package_url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr",
+  "metadata_modified": "2026-10-19T11:01:14.711475",
+  "captured_at_utc": "2026-10-20T11:12:01.733383+00:00",
+  "http_method": "GET",
+  "bytes": 19690261,
+  "sha256": "56a82941d1c381b421a8075a584b498e4f183986ad526546e14682422773e6a1",
+  "raw_path": "dados/cvm/raw/cia_aberta-doc-itr/itr_cia_aberta_2026.zip",
+  "validation": {
+    "https_official_domain": true,
+    "package_is_open": true,
+    "license_id_odc_odbl": true,
+    "zip_integrity": "PASS",
+    "promoted_to_normalized": false,
+    "certified": false
+  }
+}

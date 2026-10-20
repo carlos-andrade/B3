@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "source": "CVM Portal Dados Abertos / CKAN",
+  "package_id": "cia_aberta-doc-dfp",
+  "year": 2026,
+  "resource_id": "738c8eef-8be3-4f19-950c-c44862432d9e",
+  "resource_name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2026)",
+  "resource_url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2026.zip",
+  "resource_format": "ZIP",
+  "package_license_id": "odc-odbl",
+  "package_license_title": "Licença Aberta para Bases de Dados (ODbL) do Open Data Commons",
+  "package_url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp",
+  "metadata_modified": "2026-10-19T11:01:10.208344",
+  "captured_at_utc": "2026-10-20T11:12:00.667980+00:00",
+  "http_method": "GET",
+  "bytes": 243348,
+  "sha256": "b5a805d46cdb3c865eaff362013e2ff7df058b2112874d5be5e88cfe17dc50c6",
+  "raw_path": "dados/cvm/raw/cia_aberta-doc-dfp/dfp_cia_aberta_2026.zip",
+  "validation": {
+    "https_official_domain": true,
+    "package_is_open": true,
+    "license_id_odc_odbl": true,
+    "zip_integrity": "PASS",
+    "promoted_to_normalized": false,
+    "certified": false
+  }
+}
