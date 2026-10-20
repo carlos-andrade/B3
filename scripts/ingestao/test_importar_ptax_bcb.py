@@ -13,7 +13,7 @@ class PtaxCaptureTests(unittest.TestCase):
         self.assertTrue(url.startswith("https://olinda.bcb.gov.br/"))
         self.assertIn("CotacaoMoedaPeriodo", url)
         self.assertIn("%40moeda=%27EUR%27", url)
-        self.assertIn("01-10-2026", url)
+        self.assertIn("10-01-2026", url)
         self.assertIn("10-20-2026", url)
 
     def test_rejects_unknown_currency(self):
