@@ -9,6 +9,8 @@
 | **Fase** | Governança de dados e ingestão |
 | **Estado** | PROPOSTA_OPERACIONAL — sujeita à hierarquia normativa do projeto |
 | **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | c8c07d2d4bff5e8c9b4a6e0e57aed7ce448ab7666314b3bf93cea61595e3a7c9 | 
+| **Commit de referência (versão anterior)** | N/A — criação inicial em 2026-10-20 |
 | **Data de atualização** | 2026-10-20 |
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Proprietário do projeto, conforme governança aplicável |
