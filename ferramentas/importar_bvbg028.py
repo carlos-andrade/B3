@@ -103,7 +103,12 @@ def main() -> None:
 
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.date):
         raise SystemExit("DATA_INVALIDA: use o formato YYYY-MM-DD.")
-    params = urlencode({"fileName": "InstrumentsConsolidated", "date": args.date})
+    params = urlencode({
+        "fileName": "InstrumentsConsolidated",
+        "date": args.date,
+        # Parâmetro usado pelo endpoint público de download da B3; vazio não contorna CAPTCHA.
+        "recaptchaToken": "",
+    })
     request_info = get_json(f"{REQUESTNAME}?{params}")
 
     token = request_info.get("token")
