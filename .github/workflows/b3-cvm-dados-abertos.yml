@@ -1,0 +1,117 @@
+name: B3 — CVM dados abertos (ODbL)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "45 23 * * 0"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/b3-cvm-dados-abertos.yml"
+      - "scripts/ingestao/importar_cvm_dados_abertos.py"
+      - "scripts/ingestao/test_importar_cvm_dados_abertos.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-data-ingestion-serialized
+  cancel-in-progress: false
+
+jobs:
+  capturar-cvm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes unitários de seleção e licença
+        run: python -m unittest scripts.ingestao.test_importar_cvm_dados_abertos -v
+
+      - name: Capturar DFP e ITR mais recentes com ODbL
+        run: |
+          set -euo pipefail
+          python scripts/ingestao/importar_cvm_dados_abertos.py \
+            --package cia_aberta-doc-dfp \
+            --package cia_aberta-doc-itr
+
+      - name: Validar artefactos antes da publicação
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import zipfile
+          from pathlib import Path
+
+          manifests = sorted(Path("dados/cvm/manifests").glob("cia_aberta-doc-*.json"))
+          if len(manifests) < 2:
+              raise SystemExit("Esperados manifestos para DFP e ITR.")
+          found = set()
+          for path in manifests:
+              row = json.loads(path.read_text(encoding="utf-8"))
+              package_id = row["package_id"]
+              if package_id not in {"cia_aberta-doc-dfp", "cia_aberta-doc-itr"}:
+                  continue
+              raw = Path(row["raw_path"])
+              if not raw.is_file():
+                  raise SystemExit(f"RAW ausente: {raw}")
+              digest = hashlib.sha256(raw.read_bytes()).hexdigest()
+              if digest != row["sha256"]:
+                  raise SystemExit(f"SHA-256 divergente: {raw}")
+              if row["package_license_id"] != "odc-odbl":
+                  raise SystemExit(f"Licença inválida: {package_id}")
+              with zipfile.ZipFile(raw) as archive:
+                  if archive.testzip() is not None or not archive.namelist():
+                      raise SystemExit(f"ZIP inválido: {raw}")
+              found.add(package_id)
+          if found != {"cia_aberta-doc-dfp", "cia_aberta-doc-itr"}:
+              raise SystemExit(f"Cobertura incompleta: {sorted(found)}")
+          print("DFP e ITR: manifestos, ODbL, SHA-256 e integridade ZIP verificados.")
+          PY
+
+      - name: Persistir RAW e manifestos
+        run: |
+          set -euo pipefail
+          git config user.name "B3 Data Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/cvm/raw dados/cvm/manifests
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração de conteúdo; os artefactos já estão atualizados."
+            exit 0
+          fi
+          git commit -m "data(b3): atualizar datasets CVM abertos DFP e ITR"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort || true
+            git fetch origin main
+            git reset --mixed origin/main
+            git add dados/cvm/raw dados/cvm/manifests
+            if git diff --cached --quiet; then
+              echo "Os artefactos CVM já estão representados em main."
+              exit 0
+            fi
+            git commit -m "data(b3): reconciliar datasets CVM concorrentes"
+          done
+          echo "Falha ao reconciliar publicação CVM após três tentativas."
+          exit 1
+
+      - name: Publicar evidências de execução
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b3-cvm-dados-abertos
+          path: dados/cvm/manifests/*.json
+          if-no-files-found: warn
+          retention-days: 30
