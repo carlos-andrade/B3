@@ -1,45 +1,73 @@
 # Recuperação offline controlada — COTAHIST 2006
 
-**Estado:** proposta de recuperação; não constitui certificação nem autorização para publicar dados adicionais.  
-**Branch de trabalho:** `fix/pr14-conflicts-main-sync`  
-**Fonte de dados:** RAW ZIP de 2006 já existente no repositório.  
-**Proibido:** nova captura externa nesta cadeia, substituir RAW, alterar manifesto/checksum sem evidência ou promover o CSV sem validação física e semântica.
+| Campo | Valor |
+|---|---|
+| **ID** | B3-COTAHIST-2006-OFFLINE-RECOVERY |
+| **Projeto** | B3 — A BOLSA DO BRASIL |
+| **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
+| **Tipo documental** | PLANO_TECNICO_RECUPERACAO_OFFLINE |
+| **Fase** | RECONCILIACAO_PR14 |
+| **Estado** | EM_REVISAO; MERGE_BLOQUEADO_POR_VALIDACAO |
+| **Versão** | 1.0.1 |
+| **Data de atualização** | 2026-10-20 |
+| **Autoridade superior** | [Carta Magna B3](../CARTA_MAGNA_GOVERNANCA_B3.md); [Layout Mestre Canónico B3](../governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md); [Decisão GOV-DIV-001](../governanca/decisoes/DECISAO_GOV_DIV_001_HIERARQUIA_NORMATIVA_B3_V1.md) |
+| **Cadeia de autoridade** | CARTA MAGNA → LAYOUT MESTRE → CONTRATOS/POLÍTICAS → IMPLEMENTAÇÃO → EVIDÊNCIAS |
 
-## Contexto
+## 1. Objetivo e limites
 
-O repositório contém o RAW anual de 2006, manifesto e checksums, e o CSV normalizado está versionado via Git LFS. A recuperação proposta tem de validar o objeto físico de LFS e comparar o CSV com o RAW; um ponteiro LFS ou manifesto, isoladamente, não prova o conteúdo materializado.
+Registar como recuperar e validar o normalizado COTAHIST de 2006 sem descarregar nova cópia externa, sem substituir o RAW, sem alterar manifesto/checksum para satisfazer um teste e sem certificar dados com base apenas na existência de ficheiros.
 
-## Divergência identificada no PR #14
+Este plano não é evidência de validação e não autoriza publicação/redistribuição adicional.
 
-A branch original foi criada antes de mudanças substanciais em `main`. A integração direta foi marcada como conflitante pelo GitHub. Os workflows de recuperação já existem em `main`; vários conteúdos divergem entre as branches e as persistências nas duas versões têm alvos incompatíveis (`main` versus branch de feature). Não deve ser feito um merge automático que escolha um lado globalmente.
+## 2. Estado do repositório na verificação
 
-## Resolução segura
+- O PR #14, `feat/cotahist-2006-offline-recovery → main`, foi consultado em 2026-10-20.
+- A branch do PR tinha 51 commits exclusivos e estava 2.329 commits atrás de `main` no snapshot consultado; GitHub reportou `mergeable=false` / `mergeable_state=dirty`.
+- Os 13 workflows FASE01–FASE11/Gate 06–08 existem já em `main`; não devem ser adicionados outra vez como ficheiros paralelos.
+- A versão da branch do PR difere materialmente da versão atual em múltiplos workflows. As diferenças incluem triggers de branch e destino de persistência. A versão atual de `main` usa triggers em `main` e persistência em `main`; não se pode reintroduzir automaticamente a versão da feature branch.
+- O RAW, o manifesto de origem e os sidecars/checksums relevantes comparados têm os mesmos objetos Git nos dois snapshots consultados.
+- O CSV canónico de 2006 está presente em `main` como objeto Git LFS. Um ponteiro LFS, o hash declarado no manifesto ou a presença do ficheiro não substituem uma verificação física do conteúdo materializado.
+- A evidência FASE01 foi encontrada tanto em `main` como na branch do PR, mas com timestamp diferente. A diferença não prova, por si, regressão de dados; é evidência que precisa de reconciliação documental quando aplicável.
 
-1. Manter `main` como base atualizada.
-2. Preservar os ficheiros e dados atuais de `main`, incluindo CSV LFS e evidências mais recentes.
-3. Tratar a branch do PR como fonte para revisão, não como autoridade para retroceder workflows ou evidências da `main`.
-4. Inspecionar os workflows de 2006 que já existem em `main`; harmonizar eventuais diferenças em alteração específica e testável, sem duplicar os ficheiros.
-5. Executar as fases em ordem, com evidência independente por fase e sem extrapolar o resultado de uma fase para as seguintes.
-6. Antes de certificar, validar objeto LFS materializado, SHA-256, contagem, 25 campos, datas, tipos de registo e reconciliação integral RAW × NORMALIZED.
-7. Não fundir o PR enquanto as validações exigidas não forem executadas e inspecionadas.
+## 3. Diagnóstico do conflito
 
-## Estado da verificação
+Não é seguro resolver o conflito por escolha global de `ours`/ `theirs`, reset de branch ou merge apressado. A branch está muito atrás de `main`; o conflito reflete divergência temporal e alterações posteriores nos mesmos workflows, não apenas algumas linhas sobrepostas.
 
-- A branch original do PR #14 está 51 commits à frente e 2.329 atrás da `main` no snapshot consultado.
-- Os 13 workflows-alvo já existem na `main`; o conteúdo difere de forma material em pelo menos os controlos de trigger e persistência.
-- Os checksums e manifestos centrais de 2006 coincidem entre os snapshots comparados.
-- O CSV canónico normalizado existe em `main` como objeto Git LFS; o PR não deve apagar nem substituir esse artefacto.
-- A FASE01 tem evidência versionada, mas a cadeia tem de ser executada e verificada na revisão atual. Evidência histórica não prova que as fases seguintes estejam aprovadas.
+### Classes de divergência
 
-## Critérios de aceitação
+1. **Workflows já existentes em main:** harmonização individual, sem duplicação de ficheiros.
+2. **Triggers e persistência:** manter o contrato operacional da versão atual de `main`, exceto se houver decisão normativa aprovada que justifique alteração.
+3. **Evidências FASE01/FASE00:** preservar evidências atuais e históricas, sem substituir timestamp ou estado para parecer mais recente/aprovado.
+4. **CSV normalizado/LFS:** preservar o objeto físico existente em `main`; validar hash/contagem/campos/datas independentemente antes de qualquer substituição.
+5. **Fases posteriores:** resultado de uma fase não certifica a seguinte; cada gate deve ter a sua evidência independente.
 
-- Nenhuma regressão de conteúdo atual de `main`.
-- Nenhuma alteração ao RAW, manifesto ou sidecar apenas para fazer passar um teste.
-- Workflows consistentes com a governança e com uma única branch de destino explicitamente documentada.
-- Cada fase reporta o seu próprio resultado e falha fechada quando uma precondição falha.
-- Certificação apenas após validação independente física e semântica.
-- A análise de COTAHIST não implica cobertura de futuros ou prova de abertura de contratos BRICKMASTER.
+## 4. Plano de resolução controlada
 
-## Decisão
+1. **Base:** a branch de revisão nasce do HEAD atual de `main`.
+2. **Inventário:** comparar individualmente os 13 workflows de 2006/Gate 06–08, mais FASE00 quando relevante, entre a branch original e `main`.
+3. **Sem duplicação:** manter como fonte canónica os workflows já presentes em `main`. Incorporar apenas alterações de lógica que sejam demonstradas como necessárias, compatíveis com a governança e testáveis.
+4. **Validação estática:** verificar sintaxe YAML, referências de ficheiros, triggers, escopos sparse-checkout, permissões mínimas, isolamento direcional das fases, idempotência e destino de persistência.
+5. **Validação de dados:** materializar o objeto Git LFS em ambiente de CI, calcular SHA-256 físico, conferir contagem esperada, os 25 campos, datas, tipos de registo e reconciliação integral RAW × NORMALIZED.
+6. **Execução por fases:** executar em ordem FASE00 → FASE01 → FASE02 → FASE03 → FASE04A/04B → FASE05 → FASE06 → FASE07 → FASE08 → Gate 06–08 → FASE09 → FASE10 → Gate → FASE11. Inspecionar logs e artefactos reais.
+7. **Promoção:** não fazer merge até todos os critérios obrigatórios estarem satisfeitos e a validação do PR ter sido atualizada.
 
-**PR #14 permanece bloqueado para merge até resolução dos conflitos, reconciliação dos workflows e validação operacional.** Este documento registra a decisão e não substitui os logs dos workflows nem os artefactos de auditoria.
+## 5. Critérios de aceitação
+
+- [ ] Nenhuma regressão em relação ao conteúdo atual de `main`.
+- [ ] Nenhum workflow duplicado com a mesma responsabilidade e nome.
+- [ ] Triggers e destinos de persistência coerentes com governança e documentados.
+- [ ] O RAW continua imutável e com hash conferido.
+- [ ] O objeto LFS físico é validado; não apenas o pointer.
+- [ ] O normalizado corresponde ao RAW nos 25 campos, contagem e datas.
+- [ ] Cada fase e gate tem evidência da execução real.
+- [ ] Os manifestos e sidecars não são reescritos para ocultar divergências.
+- [ ] O PR continua sem merge enquanto existir qualquer critério bloqueante pendente.
+
+## 6. Histórico da resolução
+
+- 2026-10-20: detetada divergência substancial da branch do PR face a `main`; criação de branch de revisão baseada no HEAD atual de `main`.
+- 2026-10-20: criado este plano para registar as diferenças e os critérios de aceitação. A existência do plano não significa que a resolução funcional ou os testes estejam concluídos.
+
+## 7. Decisão
+
+**PR #14 permanece bloqueado para merge até a reconciliação individual dos workflows e a validação operacional completa.** A branch de revisão é um registo de trabalho separado; não altera `main` nem declara o dataset certificado.
