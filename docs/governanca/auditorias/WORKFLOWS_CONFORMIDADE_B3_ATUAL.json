@@ -1,17 +1,17 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-20T08:36:59.680074+00:00",
+  "generated_at_utc": "2026-10-20T11:09:41.916790+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 555,
   "status_counts": {
-    "CONFORME_COM_OBSERVACAO": 144,
-    "CONFORME": 411
+    "CONFORME": 412,
+    "CONFORME_COM_OBSERVACAO": 143
   },
   "results": [
     {
       "workflow": ".github/workflows/atualizar-catalogo-b3.yml",
       "current_phase": null,
-      "status": "CONFORME_COM_OBSERVACAO",
+      "status": "CONFORME",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -45,8 +45,8 @@
         },
         {
           "code": "STEP_SUMMARY",
-          "ok": false,
-          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "ok": true,
+          "detail": "GITHUB_STEP_SUMMARY encontrado",
           "severity": "BAIXA"
         },
         {
@@ -56,10 +56,10 @@
           "severity": "CRITICA"
         },
         {
-          "code": "PERMISSIONS_MATCH_WRITE",
+          "code": "PERMISSIONS_MINIMAL",
           "ok": true,
-          "detail": "publicação possui credencial/permissão compatível",
-          "severity": "ALTA"
+          "detail": "sem escrita Git detectada; contents: write não é necessário",
+          "severity": "MEDIA"
         },
         {
           "code": "EVIDENCE_PERSISTENCE_SIGNAL",
@@ -69,8 +69,8 @@
         },
         {
           "code": "DECISION_SIGNAL",
-          "ok": false,
-          "detail": "não foi identificado sinal explícito de decisão",
+          "ok": true,
+          "detail": "há sinal de status/decisão/fail-closed",
           "severity": "MEDIA"
         },
         {
@@ -81,9 +81,7 @@
         }
       ],
       "blocking_divergences": [],
-      "observability_or_advisory": [
-        "STEP_SUMMARY"
-      ]
+      "observability_or_advisory": []
     },
     {
       "workflow": ".github/workflows/atualizar-readme-b3.yml",

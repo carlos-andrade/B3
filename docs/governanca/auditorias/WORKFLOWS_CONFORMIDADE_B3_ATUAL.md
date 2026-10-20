@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | ce8e6afab010d2870d813c6aa5026ede06ed6073187e7399e6b6a7e3db818763 |
-| **Commit de referência (versão anterior)** | [41c0e8c0dfa25ea8c0c085c5ee2edc8d05eaff2c](https://github.com/carlos-andrade/B3/commit/41c0e8c0dfa25ea8c0c085c5ee2edc8d05eaff2c) |
+| **SHA-256 (conteúdo canónico)** | d2998d67e4ea963d84a9a3a9006763c7b3ed3a69d532f339a27d4e18021099d4 |
+| **Commit de referência (versão anterior)** | [b1e767c7abaa69fc9c59eab5908adf1620d9c104](https://github.com/carlos-andrade/B3/commit/b1e767c7abaa69fc9c59eab5908adf1620d9c104) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-20 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,7 +21,7 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-20T08:36:59.680074+00:00
+Gerado em UTC: 2026-10-20T11:09:41.916790+00:00
 Workflows auditados: 555
 
 ## Regra de decisão
@@ -49,7 +49,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 
 | Workflow | Fase | Status | Bloqueadores | Alertas |
 |---|---:|---|---|---|
-| .github/workflows/atualizar-catalogo-b3.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/atualizar-catalogo-b3.yml | — | **CONFORME** | — | — |
 | .github/workflows/atualizar-readme-b3.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-autorizacao-endpoints.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-auditoria-sha256-documental.yml | — | **CONFORME** | — | — |
