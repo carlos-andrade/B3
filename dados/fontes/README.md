@@ -7,7 +7,7 @@
 | **Estado** | EM EXECUÇÃO |
 | **Versão** | 1.0.0 |
 | **SHA-256 (conteúdo canónico)** | 274b3c862fecd361522be5b82abbc53ca90730d897912798c240d625b7ba14c0 |
-| **Commit de referência (versão anterior)** | N/A — criação inicial em 2026-10-20 |
+| **Commit de referência (versão anterior)** | [90a35cd](https://github.com/carlos-andrade/B3/commit/90a35cd247ad3952a65497ea03ef433c2e7051c6) |
 | **Data de atualização** | 2026-10-20 |
 | **Autoridade normativa** | [Política de aquisição de dados públicos gratuitos](../../WIKI/01-GOVERNANCA/POLITICA_AQUISICAO_DADOS_PUBLICOS_GRATUITOS_V1.md) |
 
