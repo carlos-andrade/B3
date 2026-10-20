@@ -17,6 +17,9 @@ on:
       - "tests/governanca/test_validar_licenca_bcb_sgs.py"
       - "tests/ingestao/test_bcb_sgs_incremental.py"
       - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+      - "dados/fontes/INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json"
+      - "scripts/governanca/validar_inventario_fontes_publicas.py"
+      - "scripts/governanca/test_validar_inventario_fontes_publicas.py"
 
 permissions:
   contents: write
@@ -45,6 +48,8 @@ jobs:
         run: |
           set -euo pipefail
           python -m unittest scripts.governanca.test_validar_autorizacao_endpoint -v
+          python -m unittest scripts.governanca.test_validar_inventario_fontes_publicas -v
+          python scripts/governanca/validar_inventario_fontes_publicas.py
           python -m unittest discover -s tests/governanca -p "test_validar_licenca_bcb_sgs.py" -v
           python -m unittest discover -s tests/ingestao -p "test_bcb_sgs_incremental.py" -v
 
