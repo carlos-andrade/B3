@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IBLV",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lCTFYnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBLV?language=pt-br",
+  "captured_at": "2026-10-19T23:00:06.206451-03:00",
+  "reference_date": "2026-10-19",
+  "raw_file": "dados/indices_b3/raw/2026/IBLV_2026-10-19.json",
+  "raw_sha256": "92f14384c29578ef4a76e82b071820de1b0ec2a259f2e0ea29a69624d97fcf0c",
+  "normalized_file": "dados/indices_b3/normalized/2026/IBLV_2026-10-19.csv",
+  "normalized_sha256": "44104eea90a6542a8d512ead63fe3dca8ea48fdf5bdb094f7b4609385325c8c4",
+  "rows": 25,
+  "participation_sum_pct": 100.0,
+  "redutor": "49.422.276,61515186",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
