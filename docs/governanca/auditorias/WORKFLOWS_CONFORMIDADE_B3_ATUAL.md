@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 1d3a9863b3112d2ab508948797fb0968803051f9d4c063269970296ba25ba772 |
-| **Commit de referência (versão anterior)** | [e07b4e2ad995052ed9fa6c5bca25f36f420917c0](https://github.com/carlos-andrade/B3/commit/e07b4e2ad995052ed9fa6c5bca25f36f420917c0) |
+| **SHA-256 (conteúdo canónico)** | 940cb6b1534d77fdb133840dc75f3617a57de1220db29602656a1b200da42068 |
+| **Commit de referência (versão anterior)** | [9f4d4bd7d3dc88999f505f862f67b2937f8fae31](https://github.com/carlos-andrade/B3/commit/9f4d4bd7d3dc88999f505f862f67b2937f8fae31) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-20 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,8 +21,8 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-20T11:12:58.863595+00:00
-Workflows auditados: 556
+Gerado em UTC: 2026-10-20T11:15:34.381092+00:00
+Workflows auditados: 557
 
 ## Regra de decisão
 
@@ -59,6 +59,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/b3-fontes-gratuitas-orquestrador.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-monitor-execucoes-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/b3-normalizar-cabecalhos-invalidos.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
+| .github/workflows/b3-ptax-bcb.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/bcb-sgs-nucleo-macro-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/capturar-bcb-copom.yml | — | **CONFORME** | — | — |
 | .github/workflows/capturar-pesquisa-pregao.yml | — | **CONFORME_COM_OBSERVACAO** | — | IDEMPOTENCE_SIGNAL |
