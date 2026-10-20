@@ -14,6 +14,9 @@
 - [Auditoria e roadmap de execução (2026-10-20)](./AUDITORIA_FONTES_PUBLICAS_GRATUITAS_2026-10-20.md)
 - [Registo de autorização de endpoints B3](../../docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json)
 - [Workflow de fontes gratuitas](../../.github/workflows/b3-fontes-gratuitas-orquestrador.yml)
+- [Workflow de ingestão CVM DFP/ITR](../../.github/workflows/b3-cvm-dados-abertos.yml)
+- [Importador CVM DFP/ITR](../../scripts/ingestao/importar_cvm_dados_abertos.py)
+- [Testes do importador CVM](../../scripts/ingestao/test_importar_cvm_dados_abertos.py)
 - [Validador do inventário](../../scripts/governanca/validar_inventario_fontes_publicas.py)
 - [Testes do validador](../../scripts/governanca/test_validar_inventario_fontes_publicas.py)
 
