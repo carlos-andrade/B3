@@ -150,8 +150,8 @@
       "access": "Público; ZIP histórico desde 2010; atualização semanal",
       "license": "ODbL explicitamente indicada no catálogo oficial",
       "automation_status": "AUTORIZADO_COM_CONDICOES",
-      "capture_evidence": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp",
-      "current_state": "Fonte elegível prioritária; recurso 2026 disponível no catálogo; ingestão B3 ainda por implementar.",
+      "capture_evidence": "https://github.com/carlos-andrade/B3/actions/runs/39413170519",
+      "current_state": "Captura operacional validada em 2026-10-20; RAW ZIP 2026 persistido com manifesto, SHA-256 e integridade ZIP PASS.",
       "priority": "P0"
     },
     {
@@ -164,8 +164,8 @@
       "access": "Público; ZIP histórico desde 2011; atualização semanal",
       "license": "ODbL explicitamente indicada no catálogo oficial",
       "automation_status": "AUTORIZADO_COM_CONDICOES",
-      "capture_evidence": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr",
-      "current_state": "Fonte elegível prioritária; recurso 2026 disponível no catálogo; ingestão B3 ainda por implementar.",
+      "capture_evidence": "https://github.com/carlos-andrade/B3/actions/runs/39413170519",
+      "current_state": "Captura operacional validada em 2026-10-20; RAW ZIP 2026 persistido com manifesto, SHA-256 e integridade ZIP PASS.",
       "priority": "P0"
     },
     {
