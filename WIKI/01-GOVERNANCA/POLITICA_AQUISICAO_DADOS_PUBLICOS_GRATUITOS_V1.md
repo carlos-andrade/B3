@@ -7,9 +7,9 @@
 | **Repositório** | [carlos-andrade/B3](https://github.com/carlos-andrade/B3) |
 | **Tipo documental** | POLITICA_OPERACIONAL |
 | **Fase** | Governança de dados e ingestão |
-| **Estado** | PROPOSTA_OPERACIONAL — sujeita à hierarquia normativa do projeto |
+| **Estado** | EM_VIGOR_OPERACIONAL — aprovação do proprietário do projeto em 2026-10-20 |
 | **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | c8c07d2d4bff5e8c9b4a6e0e57aed7ce448ab7666314b3bf93cea61595e3a7c9 | 
+| **SHA-256 (conteúdo canónico)** | cef12e1b2ec017049a4c36f4e139f6a73bb7e11f762f75b7574dfaf64ec173e1 | 
 | **Commit de referência (versão anterior)** | N/A — criação inicial em 2026-10-20 |
 | **Data de atualização** | 2026-10-20 |
 | **Responsável** | Manutenção técnica do projeto B3 |
