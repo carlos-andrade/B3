@@ -6,6 +6,8 @@
 | **Projeto** | B3 — A BOLSA DO BRASIL |
 | **Data de corte** | 2026-10-20 |
 | **Versão** | 1.0.0 |
+| **SHA-256 (conteúdo canónico)** | 2e99e200ebb33067c2114da53fccf278e3faaa2e133de2d8fda717a360863460 |
+| **Commit de referência (versão anterior)** | N/A — criação inicial em 2026-10-20 |
 | **Estado** | EXECUÇÃO PARCIAL COM EVIDÊNCIAS; pendências externas explicitadas |
 | **Inventário** | [INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json](./INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json) |
 | **Política** | [Política de aquisição de dados públicos gratuitos](../../WIKI/01-GOVERNANCA/POLITICA_AQUISICAO_DADOS_PUBLICOS_GRATUITOS_V1.md) |
