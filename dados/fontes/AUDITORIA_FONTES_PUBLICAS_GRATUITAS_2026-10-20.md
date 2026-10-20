@@ -5,9 +5,9 @@
 | **ID** | B3-AUD-FONTES-PUBLICAS-20261020 |
 | **Projeto** | B3 — A BOLSA DO BRASIL |
 | **Data de corte** | 2026-10-20 |
-| **Versão** | 1.0.0 |
-| **SHA-256 (conteúdo canónico)** | 2e99e200ebb33067c2114da53fccf278e3faaa2e133de2d8fda717a360863460 |
-| **Commit de referência (versão anterior)** | N/A — criação inicial em 2026-10-20 |
+| **Versão** | 1.0.1 |
+| **SHA-256 (conteúdo canónico)** | 5f7bdea42f148aa3d9823469cd651ad350f8f3ce69871c10eb411b98d1bb5235 |
+| **Commit de referência (versão anterior)** | [3ed15bc](https://github.com/carlos-andrade/B3/commit/3ed15bc94ec0a6f31a638b490bfce86fe285ff21) |
 | **Estado** | EXECUÇÃO PARCIAL COM EVIDÊNCIAS; pendências externas explicitadas |
 | **Inventário** | [INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json](./INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json) |
 | **Política** | [Política de aquisição de dados públicos gratuitos](../../WIKI/01-GOVERNANCA/POLITICA_AQUISICAO_DADOS_PUBLICOS_GRATUITOS_V1.md) |
@@ -54,7 +54,7 @@ Fontes confirmadas nos catálogos oficiais consultados:
 ### Fase 3 — Implementar captura e validação
 
 **Parcial, com duas capturas novas verificadas.**
-- O orquestrador BCB SGS + Copom passou no [run #16](https://github.com/carlos-andrade/B3/actions/runs/39412861864): testes de governança/licença, preflight SGS, ingestão, gate de qualidade e captura/validação JSON Copom passaram. O preflight excluiu SGS 12 e 433 porque não demonstrou recurso/licença elegível; SGS 1, 11 e 432 ficaram `VALIDADO`.
+- O orquestrador BCB SGS + Copom passou nos [runs #16](https://github.com/carlos-andrade/B3/actions/runs/39412861864), [#17](https://github.com/carlos-andrade/B3/actions/runs/39413299122) e [#18](https://github.com/carlos-andrade/B3/actions/runs/39413806000): testes de governança/licença, preflight SGS, ingestão, gate de qualidade e captura/validação JSON Copom passaram. O preflight excluiu SGS 12 e 433 porque não demonstrou recurso/licença elegível; SGS 1, 11 e 432 ficaram `VALIDADO`.
 - O inventário recebeu validador estrutural e testes unitários: `scripts/governanca/validar_inventario_fontes_publicas.py` e `scripts/governanca/test_validar_inventario_fontes_publicas.py`; no run #16, `valid=true` e `source_count=14`.
 - O workflow do orquestrador foi ligado ao inventário e aos testes, para executar validação no CI.
 - DFP e ITR da CVM foram capturados e publicados com sucesso no [run #2 do pipeline CVM](https://github.com/carlos-andrade/B3/actions/runs/39413170519). Ambos foram obtidos via CKAN oficial com licença `odc-odbl`, validados como ZIP, receberam SHA-256 e manifestos e foram persistidos em RAW. DFP 2026: 243.348 bytes, SHA-256 `b5a805d46cdb3c865eaff362013e2ff7df058b2112874d5be5e88cfe17dc50c6`; ITR 2026: 19.690.261 bytes, SHA-256 `56a82941d1c381b421a8075a584b498e4f183986ad526546e14682422773e6a1`.
@@ -93,8 +93,8 @@ Fontes confirmadas nos catálogos oficiais consultados:
 
 ## 4. Critérios de aceitação pendentes
 
-- [ ] Confirmar o resultado do CI após a inclusão do validador do inventário.
-- [ ] Inspecionar logs e artefactos da execução de auditoria do catálogo/gate.
+- [x] Confirmar o resultado do CI após a inclusão do validador do inventário — runs #16, #17 e #18 passaram.
+- [x] Inspecionar logs e artefactos da execução de auditoria do catálogo/gate — runs #21 e #22 passaram sem chamada de rede.
 - [ ] Documentar o canal oficial alternativo ou autorização específica para BVBG.028.02 antes de reativar captura automatizada.
 - [ ] Confirmar escopo de uso para COTAHIST e BDI.
 - [ ] Implementar e testar capturas PTAX e CVM com licença/recursos exatos, RAW, manifesto, SHA-256 e validação.
