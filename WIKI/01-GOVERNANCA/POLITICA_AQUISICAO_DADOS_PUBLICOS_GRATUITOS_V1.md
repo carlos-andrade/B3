@@ -10,7 +10,7 @@
 | **Estado** | EM_VIGOR_OPERACIONAL — aprovação do proprietário do projeto em 2026-10-20 |
 | **Versão** | 1.0.0 |
 | **SHA-256 (conteúdo canónico)** | cef12e1b2ec017049a4c36f4e139f6a73bb7e11f762f75b7574dfaf64ec173e1 | 
-| **Commit de referência (versão anterior)** | [e24d34d](https://github.com/carlos-andrade/B3/commit/e24d34dc1fe5abc96ab7b8037b3ef8a11ea1a4d9) |
+| **Commit de referência (versão anterior)** | [eeda057](https://github.com/carlos-andrade/B3/commit/eeda057c44737b789209ca1a4559999cde5560d5) |
 | **Data de atualização** | 2026-10-20 |
 | **Responsável** | Manutenção técnica do projeto B3 |
 | **Aprovador** | Proprietário do projeto, conforme governança aplicável |
