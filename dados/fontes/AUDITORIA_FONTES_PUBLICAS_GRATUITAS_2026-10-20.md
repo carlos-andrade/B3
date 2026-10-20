@@ -51,11 +51,13 @@ Fontes confirmadas nos catálogos oficiais consultados:
 
 ### Fase 3 — Implementar captura e validação
 
-**Parcial.**
-- O orquestrador existente BCB SGS + Copom foi executado com sucesso no [run #15](https://github.com/carlos-andrade/B3/actions/runs/39356057835): testes de governança/licença, preflight SGS, ingestão, gate de qualidade e captura/validação JSON Copom passaram.
-- O inventário recebeu validador estrutural e testes unitários: `scripts/governanca/validar_inventario_fontes_publicas.py` e `scripts/governanca/test_validar_inventario_fontes_publicas.py`.
+**Parcial, com duas capturas novas verificadas.**
+- O orquestrador BCB SGS + Copom passou no [run #16](https://github.com/carlos-andrade/B3/actions/runs/39412861864): testes de governança/licença, preflight SGS, ingestão, gate de qualidade e captura/validação JSON Copom passaram. O preflight excluiu SGS 12 e 433 porque não demonstrou recurso/licença elegível; SGS 1, 11 e 432 ficaram `VALIDADO`.
+- O inventário recebeu validador estrutural e testes unitários: `scripts/governanca/validar_inventario_fontes_publicas.py` e `scripts/governanca/test_validar_inventario_fontes_publicas.py`; no run #16, `valid=true` e `source_count=14`.
 - O workflow do orquestrador foi ligado ao inventário e aos testes, para executar validação no CI.
-- PTAX e conjuntos CVM estão identificados como prioridades de implementação, mas esta alteração não finge que os seus dados já foram importados. A ingestão deve usar os recursos oficiais específicos e preservar RAW, manifesto, SHA-256 e validações.
+- DFP e ITR da CVM foram capturados e publicados com sucesso no [run #2 do pipeline CVM](https://github.com/carlos-andrade/B3/actions/runs/39413170519). Ambos foram obtidos via CKAN oficial com licença `odc-odbl`, validados como ZIP, receberam SHA-256 e manifestos e foram persistidos em RAW. DFP 2026: 243.348 bytes, SHA-256 `b5a805d46cdb3c865eaff362013e2ff7df058b2112874d5be5e88cfe17dc50c6`; ITR 2026: 19.690.261 bytes, SHA-256 `56a82941d1c381b421a8075a584b498e4f183986ad526546e14682422773e6a1`.
+- Foi criado workflow semanal para atualizar os conjuntos DFP/ITR e preservar os artefactos brutos e manifestos. A execução inicial #1 falhou apenas num teste que esperava exceção em vez de confirmar a filtragem segura de URL; o teste foi corrigido e a execução #2 passou. O histórico da falha foi preservado.
+- PTAX e outros conjuntos CVM continuam prioritários. A ingestão deve usar recursos oficiais específicos e preservar RAW, manifesto, SHA-256 e validações.
 - Não se devem descarregar arquivos históricos volumosos para Git sem avaliar o tamanho, retenção, Git LFS e política de redistribuição; isso é uma decisão de armazenamento, não motivo para omitir o inventário.
 
 ### Fase 4 — Corrigir bloqueios genéricos
@@ -74,7 +76,7 @@ Fontes confirmadas nos catálogos oficiais consultados:
 - Inventário versionado e validador estrutural adicionados.
 - Orquestrador atualizado para testar o inventário no CI e executar as capturas BCB já existentes.
 - A execução CI iniciada pela alteração deve ser verificada antes de declarar os testes aprovados.
-- A cobertura ainda é incompleta: PTAX, conjuntos CVM, IBGE/SIDRA e Tesouro Transparente requerem captura, teste, manifesto e estado de frescor próprios.
+- A cobertura ainda é incompleta: PTAX, informe diário/cadastro de fundos e cadastro de companhias CVM, IBGE/SIDRA e Tesouro Transparente requerem captura, teste, manifesto e estado de frescor próprios.
 - A issue WATCHDOG #12 só deve ser encerrada após um novo snapshot independente posterior à correção e reconciliação das execuções relevantes.
 
 ## 3. Alterações de implementação
