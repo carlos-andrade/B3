@@ -27,6 +27,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
@@ -40,9 +41,32 @@ ASSET_ROOT = ROOT / "ativos" / "instrumentos"
 
 
 def get_json(url: str) -> dict:
-    req = Request(url, headers={"User-Agent": "B3-Catalogo/1.0"})
-    with urlopen(req, timeout=60) as r:
-        return json.loads(r.read().decode("utf-8"))
+    """Consulta a API B3 e regista erros HTTP/JSON sem expor tokens."""
+    req = Request(url, headers={"User-Agent": "B3-Catalogo/1.0", "Accept": "application/json"})
+    try:
+        with urlopen(req, timeout=60) as r:
+            payload = r.read().decode("utf-8")
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace").strip()
+        detail = body[:1000] if body else "(resposta sem corpo)"
+        raise RuntimeError(
+            f"B3_REQUEST_REJECTED: HTTP {exc.code} ao solicitar metadados BVBG.028.02; "
+            f"endpoint={REQUESTNAME}; resposta={detail}"
+        ) from exc
+    except URLError as exc:
+        raise RuntimeError(
+            f"B3_ENDPOINT_UNREACHABLE: falha de transporte ao consultar {REQUESTNAME}: {exc.reason}"
+        ) from exc
+
+    try:
+        data = json.loads(payload)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"B3_INVALID_RESPONSE: resposta de requestname não é JSON válido: {payload[:500]}"
+        ) from exc
+    if not isinstance(data, dict):
+        raise RuntimeError("B3_INVALID_RESPONSE: requestname retornou JSON que não é objeto.")
+    return data
 
 
 def get_bytes(url: str) -> bytes:
@@ -77,12 +101,18 @@ def main() -> None:
     CATALOG.mkdir(parents=True, exist_ok=True)
     ASSET_ROOT.mkdir(parents=True, exist_ok=True)
 
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.date):
+        raise SystemExit("DATA_INVALIDA: use o formato YYYY-MM-DD.")
     params = urlencode({"fileName": "InstrumentsConsolidated", "date": args.date})
     request_info = get_json(f"{REQUESTNAME}?{params}")
 
     token = request_info.get("token")
     if not token:
-        raise RuntimeError(f"Token não retornado pela B3: {request_info}")
+        response_keys = sorted(request_info.keys())
+        raise RuntimeError(
+            "B3_TOKEN_MISSING: endpoint respondeu sem campo 'token'; "
+            f"campos_recebidos={response_keys}"
+        )
 
     data = get_bytes(f"{BASE}?token={token}")
     digest = sha256(data)
