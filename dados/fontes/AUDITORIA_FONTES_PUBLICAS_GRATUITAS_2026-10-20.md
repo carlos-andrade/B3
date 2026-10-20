@@ -7,7 +7,7 @@
 | **Data de corte** | 2026-10-20 |
 | **Versão** | 1.0.1 |
 | **SHA-256 (conteúdo canónico)** | 5f7bdea42f148aa3d9823469cd651ad350f8f3ce69871c10eb411b98d1bb5235 |
-| **Commit de referência (versão anterior)** | [3ed15bc](https://github.com/carlos-andrade/B3/commit/3ed15bc94ec0a6f31a638b490bfce86fe285ff21) |
+| **Commit de referência (versão anterior)** | [3ed4857](https://github.com/carlos-andrade/B3/commit/3ed4857b33608ff1f39251b329a8c418af36560a) |
 | **Estado** | EXECUÇÃO PARCIAL COM EVIDÊNCIAS; pendências externas explicitadas |
 | **Inventário** | [INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json](./INVENTARIO_FONTES_PUBLICAS_GRATUITAS_V1.json) |
 | **Política** | [Política de aquisição de dados públicos gratuitos](../../WIKI/01-GOVERNANCA/POLITICA_AQUISICAO_DADOS_PUBLICOS_GRATUITOS_V1.md) |
