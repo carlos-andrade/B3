@@ -108,8 +108,8 @@
       "access": "Público; API/OData oficial",
       "license": "ODbL explicitamente indicada no catálogo oficial",
       "automation_status": "AUTORIZADO_COM_CONDICOES",
-      "capture_evidence": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
-      "current_state": "Fonte elegível prioritária; captura persistente dedicada ainda por implementar e validar.",
+      "capture_evidence": "https://github.com/carlos-andrade/B3/actions/runs/39413690563",
+      "current_state": "Captura operacional validada em 2026-10-20: EUR e USD, janela móvel de 30 dias, 100 observações por moeda; RAW, manifestos, SHA-256 e validação publicados.",
       "priority": "P1"
     },
     {
