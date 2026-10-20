@@ -17,6 +17,11 @@
 - [Workflow de ingestão CVM DFP/ITR](../../.github/workflows/b3-cvm-dados-abertos.yml)
 - [Importador CVM DFP/ITR](../../scripts/ingestao/importar_cvm_dados_abertos.py)
 - [Testes do importador CVM](../../scripts/ingestao/test_importar_cvm_dados_abertos.py)
+- [RAW CVM DFP 2026](../cvm/raw/cia_aberta-doc-dfp/dfp_cia_aberta_2026.zip)
+- [Manifesto CVM DFP 2026](../cvm/manifests/cia_aberta-doc-dfp_2026.json)
+- [RAW CVM ITR 2026](../cvm/raw/cia_aberta-doc-itr/itr_cia_aberta_2026.zip)
+- [Manifesto CVM ITR 2026](../cvm/manifests/cia_aberta-doc-itr_2026.json)
+- [Evidência da captura CVM](https://github.com/carlos-andrade/B3/actions/runs/39413170519)
 - [Validador do inventário](../../scripts/governanca/validar_inventario_fontes_publicas.py)
 - [Testes do validador](../../scripts/governanca/test_validar_inventario_fontes_publicas.py)
 
