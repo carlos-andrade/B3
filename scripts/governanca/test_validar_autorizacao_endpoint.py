@@ -46,8 +46,50 @@ class AuthorizationGateTests(unittest.TestCase):
         self.assertFalse(payload["publication_authorized"])
 
     def test_limited_scope_without_required_controls_fails_closed(self):
-        status, allowed, _ = authorization_decision({
-            "id": "FAKE_LIMITED",
+        cases = [
+            {
+                "id": "FAKE_LIMITED_NO_AUTOMATION_CONTROL",
+                "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+                "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
+                "decision": "permitir aquisição limitada; não presumir autorização de publicação",
+                "scope_limits": ["Aquisição limitada para validação técnica e processamento interno.",
+                                 "Não publicar novo RAW nem redistribuir o ficheiro até os termos aplicáveis estarem documentados."]
+            },
+            {
+                "id": "FAKE_LIMITED_NO_STORAGE_CONTROL",
+                "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+                "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
+                "decision": "permitir aquisição limitada; não presumir autorização de publicação",
+                "scope_limits": ["Aquisição limitada para validação técnica e processamento interno.",
+                                 "Não publicar novo RAW nem redistribuir o ficheiro até os termos aplicáveis estarem documentados."]
+            },
+            {
+                "id": "FAKE_LIMITED_NO_PUBLICATION_LIMIT",
+                "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+                "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
+                "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
+                "decision": "permitir aquisição limitada; não presumir autorização de publicação",
+                "scope_limits": ["Aquisição limitada para validação técnica e processamento interno."]
+            },
+            {
+                "id": "FAKE_LIMITED_NO_NON_PRESUMPTION",
+                "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+                "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
+                "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
+                "decision": "aquisição e publicação autorizadas",
+                "scope_limits": ["Aquisição limitada para validação técnica e processamento interno.",
+                                 "Não publicar novo RAW nem redistribuir o ficheiro até os termos aplicáveis estarem documentados."]
+            },
+        ]
+        for row in cases:
+            with self.subTest(endpoint=row["id"]):
+                status, allowed, _ = authorization_decision(row)
+                self.assertEqual(status, "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED")
+                self.assertFalse(allowed)
+
+    def test_limited_scope_requires_all_controls_to_allow_internal_validation(self):
+        status, allowed, reason = authorization_decision({
+            "id": "FAKE_LIMITED_VALID",
             "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
             "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
             "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
@@ -57,6 +99,7 @@ class AuthorizationGateTests(unittest.TestCase):
         })
         self.assertEqual(status, "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED")
         self.assertTrue(allowed)
+        self.assertIn("publicação e redistribuição continuam bloqueadas", reason)
 
     def test_bcb_open_data_api_is_allowed_with_conditions(self):
         result = run_gate("BCB_COPOM_API_JSON")
