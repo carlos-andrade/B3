@@ -1,4 +1,5 @@
 # Reexecução controlada após FASE09 liberada (2026-10-14).
+# R3: executar contra o probe atual, com SHA-256 do candidato 2026-10-20.
 name: COTAHIST 2026 - FASE10 Validar candidato sem promover canonico
 
 on:
