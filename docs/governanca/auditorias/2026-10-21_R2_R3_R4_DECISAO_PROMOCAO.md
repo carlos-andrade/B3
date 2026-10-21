@@ -71,19 +71,18 @@ O run [39592181392](https://github.com/carlos-andrade/B3/actions/runs/3959218139
 
 Por isso foi corrigido o workflow nesta branch para incluir os incrementos diários canónicos de 14 e 15 de outubro no cálculo de multiplicidade, preservar as ocorrências duplicadas e persistir a evidência na branch de trabalho, sem fazer push para `main`. A reexecução com comparação da composição completa está no run [39622127035](https://github.com/carlos-andrade/B3/actions/runs/39622127035); no momento deste registo, o run está em fila e ainda não há resultado final.
 
-**Estado R3: VALIDADO TECNICAMENTE COM DIFERENÇAS REPRODUZIDAS; PROMOÇÃO NÃO AUTORIZADA.** O run [39624008823](https://github.com/carlos-andrade/B3/actions/runs/39624008823) concluiu a validação técnica da composição completa com sucesso (o passo de persistência também terminou com sucesso na branch de trabalho). Resultado do artefacto FASE10:
-- RAW candidato SHA-256 `78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0`; tamanho 94.685.771 bytes.
-- NORMALIZED candidato SHA-256 `e9319702ef63c9d2d89d5c7b3b67f496d4c538824bc666248320a618af4deecf`; tamanho 434.061.968 bytes.
-- SHA do NORMALIZED anual canónico: `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`.
-- 3.233.168 registos candidatos e 25 campos; 0 comprimentos RAW inválidos; todas as linhas reconciliadas do RAW para o NORMALIZED.
-- Composição canónica comparada: 3.179.893 linhas (snapshot anual + incrementos diários 14/10 e 15/10); candidato contém 53.275 linhas a mais e 0 linhas canónicas ausentes. `full_row_multiset_unchanged=false`.
-- O estado correto é `VALIDADO_COM_DIFERENCAS_A_REVISAR), não igualdade integral e não elegibilidade para promoção.
+**Estado R3: VALIDADO SEM DIFERENÇAS DE LINHAS; GATE R4 DE PROMOÇÃO CONTINUA BLOQUEADO.** O artefacto FASE10 produzido no run [39628922181](https://github.com/carlos-andrade/B3/actions/runs/39628922181) comparou o candidato anual com a composição canónica vigente até 20/10/2026 (snapshot anual + incrementos diários de 14, 15, 16, 19 e 20 de outubro). O JSON foi preservado na branch de validação e os passos de verificação terminaram com sucesso.
 
-A execução de PR [39624052757](https://github.com/carlos-andrade/B3/actions/runs/39624052757) confirmou estes mesmos números, mas falhou ao persistir a evidência porque a rotina tentou buscar a ref sintética `22/merge`. O workflow foi corrigido para obter a branch `pull_request.head.ref`; novas execuções em PR estão em curso. A evidência já foi registada na branch da FASE10, sem modificar o dataset canónico.
+Valores auditados:
+- RAW candidato: SHA-256 `78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0`; 94.685.771 bytes.
+- NORMALIZED candidato: SHA-256 `e9319702ef63c9d2d89d5c7b3b67f496d4c538824bc666248320a618af4deecf`; 434.061.968 bytes.
+- NORMALIZED anual canónico: SHA-256 `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`.
+- RAW e NORMALIZED: 3.233.168 registos de cotação; 25 campos; zero comprimentos RAW inválidos; todas as linhas RAW reconciliadas campo a campo para NORMALIZED.
+- Composição canónica (snapshot + 5 incrementos diários): 3.233.168 linhas; candidato: 3.233.168 linhas.
+- Diferenças por SHA-256 da linha integral com multiplicidade preservada: `candidate_rows_added_vs_canonical=0`, `canonical_rows_absent_from_candidate=0`, `full_row_multiset_unchanged=true`. Nenhuma deduplicação foi aplicada.
+- Relatório FASE10: `status=VALIDADO_SEM_DIFERENCAS_DE_LINHAS`, `canonical_mutated=false`, `raw_committed=false`, `normalized_committed=false`, `promotion_authorized=false`.
 
-### Correção do workflow de evidências após a comparação
-
-O workflow de FASE10 agora resolve a branch remota corretamente quando o evento é `pull_request`, em vez de usar `GITHUB_REF_NAME=<número>/merge`. Foi incluída validação explícita do resultado conhecido (53.275 linhas adicionais, zero linhas canónicas ausentes e 25 campos reconciliados), para que as diferenças não sejam tratadas como aprovação silenciosa. As execuções mais recentes após essa alteração estão em curso; a evidência funcional de multiplicidade está concluída no run 39624008823 e fica registada como resultado técnico, não como promoção.
+A diferença anterior de 53.275 linhas resultava de comparar com uma composição incompleta terminada em 15/10; corresponde exatamente aos incrementos canónicos então ausentes: 16/10 (23.018 linhas), 19/10 (15.046) e 20/10 (15.211). O candidato não tem diferença de linhas frente à composição canónica atual.
 
 ## 4. R4 — Histórico e permissões
 
@@ -105,27 +104,32 @@ O manifesto regista `HISTORICAL_VALIDATION_OUTPUT_CONFLICT`: uma execução ante
 - Os termos aplicáveis de Market Data, a política de consumo e eventuais direitos contratuais devem ser verificados para o uso concreto antes de publicar/redistribuir.
 - O estado do endpoint direto não deve ser extrapolado para Pesquisa por Pregão, BDI, DRP ou outros endpoints.
 
-**Estado R4:** comparação histórica dos estados de manifesto efetuada: o SHA/contagem do snapshot anual não mudou entre VALIDADO e BLOQUEADO; a decisão de bloqueio mudou por autorização/âmbito de uso, não por alteração do SHA do NORMALIZED. A FASE10 concluiu a comparação quantitativa da composição completa no run [39624008823](https://github.com/carlos-andrade/B3/actions/runs/39624008823): 53.275 linhas adicionais no candidato e zero linhas canónicas ausentes. Fica pendente classificar a origem dessas linhas adicionais e resolver a inconsistência semântica entre o dataset que declara `VIGENTE/VALIDADO` e o manifesto anual `BLOQUEADO`. A autorização operacional continua limitada a validação interna; não prova direito de publicação ou redistribuição.
+**Estado R4: BLOQUEADO POR AUTORIZAÇÃO DE PUBLICAÇÃO/REDISTRIBUIÇÃO PENDENTE.** A validação técnica da FASE10 passou, mas o manifesto anual permanece `BLOQUEADO` com `SOURCE_AUTHORIZATION_REVIEW_REQUIRED` (`OPEN`). O registo oficial permite aquisição controlada para validação interna e declara `storage_and_redistribution=REVIEW_REQUIRED_BEFORE_PUBLICATION`; não contém `publication_authorized=true`. A equivalência técnica não autoriza promover ou redistribuir RAW/anual NORMALIZED.
+
+A correção EXDEV e de concorrência foi integrada na [PR #26](https://github.com/carlos-andrade/B3/pull/26). O run [39629823149](https://github.com/carlos-andrade/B3/actions/runs/39629823149) passou no gate de autorização operacional, importação, reconciliação, gate de conflitos e upload de evidência. A correção que separa aquisição interna de publicação foi integrada na [PR #28](https://github.com/carlos-andrade/B3/pull/28), commit [6b8fded](https://github.com/carlos-andrade/B3/commit/6b8fded9157251f2452c3cc00662b6ecd134f541): antes de persistir qualquer dado, o workflow exige autorização explícita e escopo de publicação permitido no registo. O run de PR [39630975069](https://github.com/carlos-andrade/B3/actions/runs/39630975069) passou; a persistência foi corretamente ignorada no evento PR.
+
+**Limite da remediação:** o novo gate deve impedir novas publicações automáticas sem autorização explícita; não reescreve nem apaga artefactos que já se encontram no histórico público Git. Nenhum artefacto canónico foi promovido por esta auditoria.
 
 ## 5. Decisão formal de promoção
 
-**DECISÃO: PROMOÇÃO BLOQUEADA.**
+**DECISÃO: PROMOÇÃO BLOQUEADA. R2 E R3 TÉCNICAS PASSARAM; R4 DE PUBLICAÇÃO CONTINUA PENDENTE.**
 
 Fundamentos:
-1. A auditoria integral R2 tem de terminar com todos os endpoints auditados, zero erros e artefacto verificável.
-2. A FASE10 R3 ainda não demonstrou nesta execução hashes recalculados, reconciliação dos 25 campos e igualdade de multiplicidade.
-3. O manifesto anual e o dataset corrente têm estados que necessitam de reconciliação explícita.
-4. Os direitos de publicação e redistribuição dos dados B3 não estão demonstrados pelo registo de autorização operacional limitada.
+1. R2: 11 testes unitários e auditoria de 7/7 endpoints com `errors=[]`; o âmbito COTAHIST permanece limitado a uso interno.
+2. R3: candidato e composição canónica integral coincidem em 3.233.168 linhas; hashes recalculados, 25 campos reconciliados e multiplicidade idêntica.
+3. R4: o manifesto anual continua `BLOQUEADO` por revisão de autorização; o registo não concede publicação/redistribuição.
+4. O gate fail-closed de publicação foi integrado; falta confirmar a sua execução pós-merge em `main`.
 
 ### Condições para reabrir a decisão
 
-- [ ] Testes unitários R2 concluídos com sucesso no GitHub Actions.
-- [ ] Auditoria integral R2 concluída; `audited_count = endpoint_count`, `errors = []`; artefacto preservado.
-- [ ] FASE10 R3 executada no HEAD candidato, com SHA-256 recalculados, 25 campos reconciliados e multiplicidade reconciliada.
-- [ ] Diferenças históricas explicadas ou explicitamente classificadas como não resolvidas, sem ocultar divergências.
-- [ ] Estados do manifesto anual e do dataset canónico reconciliados.
-- [ ] Direitos aplicáveis a armazenamento, publicação e redistribuição documentados para o âmbito pretendido.
-- [ ] Aprovação explícita da pessoa responsável registada com data, âmbito, evidências e hash da decisão.
+- [x] Testes unitários R2 concluídos com sucesso no GitHub Actions.
+- [x] Auditoria integral R2 concluída; 7/7 endpoints auditados, `errors=[]`; artefacto de evidência preservado.
+- [x] FASE10 R3 executada com hashes recalculados, 25 campos reconciliados e igualdade integral de multiplicidade: 3.233.168 linhas, zero adicionais e zero ausentes.
+- [x] Diferença histórica de 53.275 linhas classificada como incrementos de 16, 19 e 20/10 que não estavam incluídos na composição da comparação anterior.
+- [ ] Reconciliar o estado semântico do dataset `VIGENTE/VALIDADO` e do manifesto anual `BLOQUEADO` sem converter bloqueio de autorização em aprovação de publicação.
+- [ ] Documentar licença/autorização que cubra armazenamento público e redistribuição, incluindo evidência contratual/escrita e âmbito aplicável.
+- [ ] Confirmar no run de `main` pós-PR #28 o resultado `PERSISTENCIA_BLOQUEADA` e a ausência de novas alterações aos artefactos canónicos.
+- [ ] Registar a aprovação explícita da pessoa responsável, com data, âmbito, evidências e hash da decisão.
 
 Até que todos os itens aplicáveis estejam satisfeitos e exista aprovação explícita, não promover, não publicar novos RAW e não alterar o estado para `LIBERADO`.
 
@@ -137,5 +141,7 @@ Até que todos os itens aplicáveis estejam satisfeitos e exista aprovação exp
 - Workflow de auditoria: `.github/workflows/b3-auditoria-autorizacao-endpoints.yml`
 - Dataset corrente: `dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json`
 - Manifesto anual: `dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json`
-- Manifests diários: `dados/cotahist/normalized/manifests/diario/COTAHIST_D14102026_quality.json` e `COTAHIST_D15102026_quality.json`
+- Manifests diários: `dados/cotahist/normalized/manifests/diario/COTAHIST_D14102026_quality.json`, `COTAHIST_D15102026_quality.json`, `COTAHIST_D16102026_quality.json`, `COTAHIST_D19102026_quality.json` e `COTAHIST_D20102026_quality.json`
+- Workflow diário e gate de publicação: `.github/workflows/cotahist-importacao-diaria-v1.yml`
+- Relatório FASE10 com igualdade de multiplicidade (branch auditada): `dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json`, blob SHA `6baa2208ba48e8f5f10e8e14e3a6d73a65f5388b`
 - FASE10 histórica de 2017 (referência metodológica, não prova de 2026): `dados/cotahist/quality/COTAHIST_2017_FASE10_VALIDACAO_INDEPENDENTE_V1.json`
