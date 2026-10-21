@@ -45,11 +45,8 @@ def import_day(ref_date: date) -> str:
     norm_out = NORM_DIR / f"{name}.csv"
     manifest_out = MAN_DIR / f"{name}_quality.json"
 
-    if norm_out.exists() or raw_out.exists() or manifest_out.exists():
-        # Não sobrescrever artefactos existentes antes de comparar a fonte recebida.
-        RAW_DIR.mkdir(parents=True, exist_ok=True)
-    else:
-        RAW_DIR.mkdir(parents=True, exist_ok=True)
+    # O temporário deve residir no mesmo filesystem do destino final.
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(suffix=".ZIP", delete=False, dir=RAW_DIR) as tmp:
         tmp_path = Path(tmp.name)
 
