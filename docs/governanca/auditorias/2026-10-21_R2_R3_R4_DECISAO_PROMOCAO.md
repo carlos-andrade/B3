@@ -30,8 +30,10 @@ O workflow de auditoria foi também ajustado para correr em branches `audit/**` 
 
 - **Revisão estática:** efetuada.
 - **Correção de teste/workflow:** commitada nesta branch.
-- **Testes unitários e auditoria integral:** aguardam resultado do GitHub Actions para esta branch; não declarar PASS antes de consultar o run e o artefacto `authorization_audit.json`.
-- **Critério de aceitação:** todos os endpoints registados auditados, zero erros de controlo, estados desconhecidos bloqueados, e COTAHIST limitado a validação interna sem autorização de publicação.
+- **Testes unitários:** PASS — 11 testes concluídos em 0,222 s, sem falhas, no run [39621833806](https://github.com/carlos-andrade/B3/actions/runs/39621833806).
+- **Auditoria integral:** PASS no mesmo run — 7/7 endpoints auditados, 3 permitidos pelo respetivo âmbito, 4 bloqueados, `errors=[]`.
+- **Artefacto:** [b3-auditoria-autorizacao-endpoints](https://github.com/carlos-andrade/B3/actions/runs/39621833806/artifacts/12354514648), SHA-256 do ZIP `aab8a1bcd46b42b4e5097ca8f11a3dc3b37a5b871eea42b3ffb6b713fc849be9`, retenção indicada até 2026-11-20.
+- **Critério de aceitação:** satisfeito para R2 neste commit auditado: todos os endpoints registados auditados, zero erros de controlo, e COTAHIST limitado a validação interna sem autorização de publicação. O run foi executado no commit `7d82dec1a37ab95feb290bcfc2e36ee432255bb1`; a revisão do commit posterior que contém este relatório está separadamente em execução.
 
 ## 3. R3 — FASE10: SHA-256, 25 campos e multiplicidade
 
