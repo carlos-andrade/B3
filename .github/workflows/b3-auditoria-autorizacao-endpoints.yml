@@ -2,7 +2,13 @@ name: B3 - Auditoria de licenças e autorização de endpoints
 
 on:
   push:
-    branches: [main]
+    branches: [main, "audit/**"]
+    paths:
+      - ".github/workflows/b3-auditoria-autorizacao-endpoints.yml"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+      - "scripts/governanca/validar_autorizacao_endpoint.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+  pull_request:
     paths:
       - ".github/workflows/b3-auditoria-autorizacao-endpoints.yml"
       - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
