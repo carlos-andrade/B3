@@ -99,6 +99,8 @@ def main() -> int:
         "authorization_status": status,
         "authorized": allowed,
         "reason": reason,
+        "operation_scope": ("INTERNAL_VALIDATION_ONLY" if status == "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED" and allowed else "GENERAL_AUTHORIZATION"),
+        "publication_authorized": (False if status == "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED" else allowed),
         "registry": str(REGISTRY.relative_to(ROOT)),
     }, ensure_ascii=False))
 
