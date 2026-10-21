@@ -77,6 +77,30 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # O gate de aquisição permite processamento interno; publicação exige autorização explícita distinta.
+          publication_allowed="$(python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          path=Path("docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json")
+          registry=json.loads(path.read_text(encoding="utf-8"))
+          endpoint=next((e for e in registry.get("endpoints",[]) if e.get("id")=="B3_COTAHIST_DAILY"),None)
+          status=endpoint.get("storage_and_redistribution") if endpoint else None
+          explicit=endpoint.get("publication_authorized") is True if endpoint else False
+          allowed=explicit and status in {"AUTHORIZED","AUTHORIZED_WITH_CONDITIONS","LICENSED"}
+          print(json.dumps({"endpoint_id":"B3_COTAHIST_DAILY","publication_authorized":explicit,"storage_and_redistribution":status,"decision":"ALLOW" if allowed else "BLOCK"},ensure_ascii=False),file=sys.stderr)
+          print("true" if allowed else "false")
+          PY
+          )"
+          if [[ "$publication_allowed" != "true" ]]; then
+            echo "PERSISTENCIA_BLOQUEADA: registo de governação não contém autorização explícita para publicar/redistribuir COTAHIST."
+            {
+              echo "## Gate de publicação COTAHIST"
+              echo "- Persistência no repositório público: **bloqueada**."
+              echo "- Motivo: o registo não contém publication_authorized=true nem um âmbito explícito de publicação autorizado."
+              echo "- A aquisição e validação interna ocorreram no runner; os artefactos canónicos não serão alterados por esta execução."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           pushed=0
