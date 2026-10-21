@@ -52,5 +52,5 @@
   "comparison_method": "SHA-256 por linha integral e multiplicidade em SQLite; sem deduplicação",
   "first_trading_date": "2026-01-02",
   "last_trading_date": "2026-10-20",
-  "validated_at_utc": "2026-10-21T15:22:45.785746+00:00"
+  "validated_at_utc": "2026-10-21T15:40:10.380441+00:00"
 }
