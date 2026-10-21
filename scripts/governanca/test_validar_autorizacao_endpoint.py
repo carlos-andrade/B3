@@ -30,11 +30,33 @@ class AuthorizationGateTests(unittest.TestCase):
         self.assertTrue(json.loads(result.stdout)["authorized"] is False)
 
     def test_unconfirmed_b3_endpoints_are_blocked(self):
-        for endpoint in ("B3_BDI_TABLE_API", "B3_COTAHIST_DAILY", "B3_DRP_RAPINEGOCIOS", "BCB_COPOM_PDF_ATTACHMENT"):
+        for endpoint in ("B3_BDI_TABLE_API", "B3_DRP_RAPINEGOCIOS", "BCB_COPOM_PDF_ATTACHMENT"):
             with self.subTest(endpoint=endpoint):
                 result = run_gate(endpoint)
                 self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
                 self.assertFalse(json.loads(result.stdout)["authorized"])
+
+    def test_cotahist_direct_file_allows_only_limited_internal_validation(self):
+        result = run_gate("B3_COTAHIST_DAILY")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertTrue(payload["authorized"])
+        self.assertEqual(payload["authorization_status"], "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED")
+        self.assertEqual(payload["operation_scope"], "INTERNAL_VALIDATION_ONLY")
+        self.assertFalse(payload["publication_authorized"])
+
+    def test_limited_scope_without_required_controls_fails_closed(self):
+        status, allowed, _ = authorization_decision({
+            "id": "FAKE_LIMITED",
+            "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+            "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
+            "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
+            "decision": "permitir aquisição limitada; não presumir autorização de publicação",
+            "scope_limits": ["Aquisição limitada para validação técnica e processamento interno.",
+                             "Não publicar novo RAW nem redistribuir o ficheiro até os termos aplicáveis estarem documentados."]
+        })
+        self.assertEqual(status, "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED")
+        self.assertTrue(allowed)
 
     def test_bcb_open_data_api_is_allowed_with_conditions(self):
         result = run_gate("BCB_COPOM_API_JSON")
