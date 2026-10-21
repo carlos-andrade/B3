@@ -4,12 +4,16 @@ import json
 import py_compile
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 from scripts.governanca.validar_autorizacao_endpoint import authorization_decision
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts/ingestao"))
+from importar_cotahist_diario_v1 import create_temp_file_for_destination
+
 GATE = ROOT / "scripts/governanca/validar_autorizacao_endpoint.py"
 
 
@@ -113,6 +117,16 @@ class AuthorizationGateTests(unittest.TestCase):
         })
         self.assertEqual(status, "AUTHORIZED_WITH_CONDITIONS")
         self.assertTrue(allowed)
+
+    def test_raw_temp_file_uses_destination_filesystem(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary) / "raw"
+            temp_path = create_temp_file_for_destination(destination)
+            try:
+                self.assertEqual(temp_path.parent, destination)
+                self.assertTrue(temp_path.is_file())
+            finally:
+                temp_path.unlink(missing_ok=True)
 
     def test_capture_scripts_compile_without_network_access(self):
         paths = (
