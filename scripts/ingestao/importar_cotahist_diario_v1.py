@@ -53,8 +53,17 @@ def import_day(ref_date: date) -> str:
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "B3-repository-ingestion/1.1"})
         try:
-            with urllib.request.urlopen(req, timeout=60) as response, tmp_path.open("wb") as dst:
-                dst.write(response.read())
+            with urllib.request.urlopen(req, timeout=60) as response, tempfile.NamedTemporaryFile(suffix=".ZIP", delete=False, dir=RAW_DIR) as download_tmp:
+                tmp_path.unlink(missing_ok=True)
+                tmp_path = Path(download_tmp.name)
+                while True:
+                    chunk = response.read(1024 * 1024)
+                    if not chunk:
+                        break
+                    download_tmp.write(chunk)
+                download_tmp.flush()
+                import os
+                os.fsync(download_tmp.fileno())
         except urllib.error.HTTPError as exc:
             if exc.code in (404, 410):
                 print(f"SEM_PREGAO_OU_ARQUIVO: {iso_date} HTTP={exc.code}")
