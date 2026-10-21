@@ -71,7 +71,19 @@ O run [39592181392](https://github.com/carlos-andrade/B3/actions/runs/3959218139
 
 Por isso foi corrigido o workflow nesta branch para incluir os incrementos diários canónicos de 14 e 15 de outubro no cálculo de multiplicidade, preservar as ocorrências duplicadas e persistir a evidência na branch de trabalho, sem fazer push para `main`. A reexecução com comparação da composição completa está no run [39622127035](https://github.com/carlos-andrade/B3/actions/runs/39622127035); no momento deste registo, o run está em fila e ainda não há resultado final.
 
-**Estado R3: PARCIALMENTE VALIDADO.** A integridade RAW → NORMALIZED e os 25 campos passaram no run 39592181392. A reconciliação da multiplicidade contra a composição canónica completa continua pendente do run 39622127035. A promoção permanece bloqueada até a comparação completa concluir e as diferenças serem classificadas.
+**Estado R3: VALIDADO TECNICAMENTE COM DIFERENÇAS REPRODUZIDAS; PROMOÇÃO NÃO AUTORIZADA.** O run [39624008823](https://github.com/carlos-andrade/B3/actions/runs/39624008823) concluiu a validação técnica da composição completa com sucesso (o passo de persistência também terminou com sucesso na branch de trabalho). Resultado do artefacto FASE10:
+- RAW candidato SHA-256 `78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0`; tamanho 94.685.771 bytes.
+- NORMALIZED candidato SHA-256 `e9319702ef63c9d2d89d5c7b3b67f496d4c538824bc666248320a618af4deecf`; tamanho 434.061.968 bytes.
+- SHA do NORMALIZED anual canónico: `e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc`.
+- 3.233.168 registos candidatos e 25 campos; 0 comprimentos RAW inválidos; todas as linhas reconciliadas do RAW para o NORMALIZED.
+- Composição canónica comparada: 3.179.893 linhas (snapshot anual + incrementos diários 14/10 e 15/10); candidato contém 53.275 linhas a mais e 0 linhas canónicas ausentes. `full_row_multiset_unchanged=false`.
+- O estado correto é `VALIDADO_COM_DIFERENCAS_A_REVISAR), não igualdade integral e não elegibilidade para promoção.
+
+A execução de PR [39624052757](https://github.com/carlos-andrade/B3/actions/runs/39624052757) confirmou estes mesmos números, mas falhou ao persistir a evidência porque a rotina tentou buscar a ref sintética `22/merge`. O workflow foi corrigido para obter a branch `pull_request.head.ref`; novas execuções em PR estão em curso. A evidência já foi registada na branch da FASE10, sem modificar o dataset canónico.
+
+### Correção do workflow de evidências após a comparação
+
+O workflow de FASE10 agora resolve a branch remota corretamente quando o evento é `pull_request`, em vez de usar `GITHUB_REF_NAME=<número>/merge`. Foi incluída validação explícita do resultado conhecido (53.275 linhas adicionais, zero linhas canónicas ausentes e 25 campos reconciliados), para que as diferenças não sejam tratadas como aprovação silenciosa. As execuções mais recentes após essa alteração estão em curso; a evidência funcional de multiplicidade está concluída no run 39624008823 e fica registada como resultado técnico, não como promoção.
 
 ## 4. R4 — Histórico e permissões
 
