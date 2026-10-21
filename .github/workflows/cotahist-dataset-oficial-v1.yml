@@ -6,7 +6,6 @@ on:
     paths:
       - "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
       - "scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py"
-      - ".github/workflows/cotahist-dataset-oficial-v1.yml"
   workflow_dispatch:
 
 permissions:
