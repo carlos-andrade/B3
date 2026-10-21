@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "project": "B3 — A BOLSA DO BRASIL",
   "repository": "carlos-andrade/B3",
-  "as_of": "2026-10-16",
+  "as_of": "2026-10-21",
   "policy": "FAIL_CLOSED",
-  "rule": "Nenhum endpoint B3 com autorização não demonstrada pode ser usado para nova captura automatizada ou publicação de novos dados. Acesso HTTP bem-sucedido não prova licença.",
+  "rule": "Aplicar controlos por canal e finalidade: não presumir autorização de uso/redistribuição, mas também não bloquear aquisição controlada por canal oficial direto sem evidência específica de proibição. Acesso HTTP não prova licença; publicação, redistribuição e uso comercial permanecem sujeitos à verificação dos termos aplicáveis.",
   "endpoints": [
     {
       "id": "B3_PESQUISA_POR_PREGAO_API",
@@ -52,9 +52,9 @@
       "provider": "B3 S.A.",
       "endpoint": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_DDMMYYYY.ZIP",
       "discovery": "Endpoint direto de ficheiros históricos usado pelo importador diário.",
-      "authorization_status": "REVIEW_REQUIRED",
-      "automated_collection": "BLOCKED_PENDING_SCOPE_CONFIRMATION",
-      "storage_and_redistribution": "NOT_VERIFIED",
+      "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+      "automated_collection": "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION",
+      "storage_and_redistribution": "REVIEW_REQUIRED_BEFORE_PUBLICATION",
       "evidence": [
         {
           "type": "official_layout",
@@ -72,8 +72,15 @@
           "finding": "A política de consumo deve ser analisada em conjunto com a política comercial e com o âmbito contratual concreto."
         }
       ],
-      "decision": "Bloquear novas capturas e publicação automatizada no repositório público até confirmação escrita do âmbito permitido para pesquisa interna, armazenamento, backtests, desenvolvimento de produto e redistribuição.",
-      "review_required": true
+      "decision": "Reverter o bloqueio operacional geral para o endpoint direto de ficheiros históricos anuais/diários: permitir aquisição controlada do ficheiro oficial para validação técnica e processamento interno, com retries limitados e proveniência completa. Não presumir que esta decisão concede direitos de publicação do RAW no repositório público, redistribuição, uso comercial ou desenvolvimento de produto; esses âmbitos permanecem sujeitos a verificação específica antes de publicar ou redistribuir.",
+      "review_required": true,
+      "scope_limits": [
+        "Esta é uma decisão de governação operacional do projeto, não uma licença emitida pela B3 nem um parecer jurídico.",
+        "Aplicável apenas ao endpoint direto de ficheiros históricos identificado neste registo; não autoriza a interface Pesquisa por Pregão nem endpoints B3 distintos.",
+        "Aquisição limitada para validar integridade, atualidade, estrutura e processamento interno; preservar URL, timestamp UTC, headers relevantes, tamanho, SHA-256 e logs.",
+        "Não publicar novo RAW nem redistribuir o ficheiro até os termos aplicáveis a armazenamento público e redistribuição estarem documentados.",
+        "Reavaliar imediatamente se os termos oficiais do canal direto demonstrarem uma restrição específica."
+      ]
     },
     {
       "id": "B3_DRP_RAPINEGOCIOS",
