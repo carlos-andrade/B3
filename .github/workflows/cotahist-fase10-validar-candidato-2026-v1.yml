@@ -33,8 +33,12 @@ jobs:
             dados/cotahist/normalized/anual/COTAHIST_A2026.csv
             dados/cotahist/normalized/diario/COTAHIST_D14102026.csv
             dados/cotahist/normalized/diario/COTAHIST_D15102026.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D14102026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D15102026_quality.json
             dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
             dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
           sparse-checkout-cone-mode: false
 
       - name: Obter NORMALIZED canónico via Git LFS
