@@ -5,7 +5,7 @@ name: COTAHIST 2026 - FASE10 Validar candidato sem promover canonico
 on:
   workflow_dispatch:
   push:
-    branches: [main, "audit/**"]
+    branches: [main, "audit/**", "fix/**"]
     paths:
       - ".github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml"
       - "dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"
