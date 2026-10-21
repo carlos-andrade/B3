@@ -59,13 +59,31 @@ O manifesto `COTAHIST_A2026_quality.json` está `BLOQUEADO` por `SOURCE_AUTHORIZ
 4. Guardar contagens de divergências, amostras reproduzíveis, hashes, versão do parser e timestamp UTC no artefacto FASE10.
 5. Comparar o resultado com o dataset canónico e os manifests diários incluídos na composição vigente.
 
-**Estado R3: NÃO VALIDADO nesta execução.** Os dados consultados fornecem hashes e contagens registados, mas não comprovam o recálculo atual nem a reconciliação independente das linhas. A promoção fica bloqueada até a execução real gerar evidência E3/E4.
+### Execução FASE10 encontrada e correção do comparador
+
+O run [39592181392](https://github.com/carlos-andrade/B3/actions/runs/39592181392), executado em 2026-10-21, concluiu com sucesso a validação RAW → NORMALIZED do candidato. Evidência registada:
+
+- RAW candidato: SHA-256 `78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0`, 94.685.771 bytes.
+- NORMALIZED candidato: SHA-256 `e9319702ef63c9d2d89d5c7b3b67f496d4c538824bc666248320a618af4deecf`, 434.061.968 bytes.
+- RAW e NORMALIZED: 3.233.168 registos de cotação, 25 campos, 0 comprimentos RAW inválidos; reconciliação de todas as linhas RAW → NORMALIZED = verdadeira.
+- Candidato cobre `2026-01-02` a `2026-10-20`.
+- O comparador original comparou o candidato apenas com o snapshot anual, não com a composição completa do dataset canónico (snapshot + incrementos diários validados). Produziu 90.258 linhas adicionais face ao snapshot anual, zero linhas canónicas ausentes e `full_row_multiset_unchanged=false`.
+
+Por isso foi corrigido o workflow nesta branch para incluir os incrementos diários canónicos de 14 e 15 de outubro no cálculo de multiplicidade, preservar as ocorrências duplicadas e persistir a evidência na branch de trabalho, sem fazer push para `main`. A reexecução com comparação da composição completa está no run [39622127035](https://github.com/carlos-andrade/B3/actions/runs/39622127035); no momento deste registo, o run está em fila e ainda não há resultado final.
+
+**Estado R3: PARCIALMENTE VALIDADO.** A integridade RAW → NORMALIZED e os 25 campos passaram no run 39592181392. A reconciliação da multiplicidade contra a composição canónica completa continua pendente do run 39622127035. A promoção permanece bloqueada até a comparação completa concluir e as diferenças serem classificadas.
 
 ## 4. R4 — Histórico e permissões
 
 ### Evidência histórica existente
 
-O manifesto anual regista `HISTORICAL_VALIDATION_OUTPUT_CONFLICT`: uma execução anterior reportou primeira data `2026-01-07`, enquanto a evidência mais recente registou `2026-01-02`. O mesmo manifesto declara que a reprodução M3-1C confirmou RAW → NORMALIZED, SHA e tamanho idênticos para o HEAD então auditado, com 3.142.910 linhas e última data `2026-10-13`; a causa dos logs históricos anteriores permanece desconhecida. Esta anotação histórica não substitui a repetição da FASE10 no HEAD atual.
+A história do manifesto anual mostra mudança de estado sem mudança do hash/contagem do NORMALIZED:
+- Commit [3e49146](https://github.com/carlos-andrade/B3/commit/3e4914638dedb5bec1935abd4a9821e5ddc4cfc6), 14/10: `VALIDADO`, SHA `e7763b6f…71f4cbdc`, 3.142.910 linhas, 25 campos, datas 02/01–13/10.
+- Commit [7363a76](https://github.com/carlos-andrade/B3/commit/7363a76884198450e4d34687cc3ab5e81663b4dd), 16/10: estado alterado para `BLOQUEADO` devido à divergência de cobertura e à necessidade de demonstrar autorização compatível.
+- Commit [45058d8](https://github.com/carlos-andrade/B3/commit/45058d87a8ee076bf6d8f8a8f66a2849e1a87b0c): mantém bloqueio por autorização não demonstrada e conflito histórico de validação.
+- Commit [6da968c](https://github.com/carlos-andrade/B3/commit/6da968cc85da50528d2fcf2dfeb6d633cf3111fb), 16/10: mantém `BLOQUEADO`, qualificando a divergência histórica como não reproduzida no HEAD então auditado; SHA e contagem permanecem iguais.
+
+O manifesto regista `HISTORICAL_VALIDATION_OUTPUT_CONFLICT`: uma execução anterior reportou primeira data `2026-01-07`, enquanto a evidência mais recente registou `2026-01-02`. A reprodução M3-1C confirmou RAW → NORMALIZED, SHA e tamanho idênticos para o HEAD então auditado; a causa dos logs antigos continua desconhecida. O run FASE10 de 21/10 confirmou a nova fonte anual até 20/10, mas a reconciliação contra a composição canónica completa está a ser repetida nesta branch.
 
 ### Âmbito de armazenamento/publicação
 
