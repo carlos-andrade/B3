@@ -84,13 +84,30 @@ jobs:
             pushed=0
             for attempt in 1 2 3 4 5; do
               git fetch origin main
-              git rebase origin/main
-              if git push origin HEAD:main; then
+              git rebase --abort || true
+              if git rebase origin/main; then
+                if git push origin HEAD:main; then
+                  pushed=1
+                  break
+                fi
+                echo "Push concorrente falhou (tentativa $attempt/5); nova sincronização."
+                git rebase --abort || true
+              else
+                echo "Rebase com conflitos; a persistência automática foi abortada sem alterar main."
+                git rebase --abort || true
+                # Resolver em execução seguinte com HEAD fresco, sem forçar push nem descartar dados.
+              fi
+              sleep $((attempt * 2))
+              # Reconstruir o commit de dados sobre main atual. Artefactos idênticos serão reaproveitados,
+              # enquanto diferenças de hash dos RAW/manifestos ficam sob o gate de conflitos.
+              git fetch origin main
+              git reset --mixed origin/main
+              git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/quality/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
+              if git diff --cached --quiet; then
                 pushed=1
                 break
               fi
-              echo "Push concorrente falhou (tentativa $attempt/5); nova sincronização."
-              sleep 2
+              git commit -m "data(cotahist): importacao diaria automatica"
             done
             test "$pushed" -eq 1
           fi
