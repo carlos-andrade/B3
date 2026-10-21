@@ -111,8 +111,19 @@ def main() -> None:
             year_failures.append("AUDITORIA_FISICA_NAO_CONFIRMA_HASH_TRIPLO")
         if physical.get("linhas_fisicas") != quality.get("linhas_normalized"):
             year_failures.append("CONTAGEM_LINHAS_DIVERGENTE")
-        if quality.get("status") != "VALIDADO" or quality.get("ano") != year or quality.get("campos") != 25:
-            year_failures.append("QUALITY_MANIFEST_INVALIDO")
+        quality_status = quality.get("status")
+        quality_blockers = {
+            item.get("codigo")
+            for item in quality.get("bloqueios", [])
+            if isinstance(item, dict)
+        }
+        if quality_status == "BLOQUEADO" and "SOURCE_AUTHORIZATION_REVIEW_REQUIRED" in quality_blockers:
+            # A estrutura física pode estar íntegra, mas o gate de autorização continua vinculativo.
+            year_failures.append("SOURCE_AUTHORIZATION_REVIEW_REQUIRED")
+        elif quality_status != "VALIDADO":
+            year_failures.append("QUALITY_MANIFEST_STATUS_INVALIDO")
+        if quality.get("ano") != year or quality.get("campos") != 25:
+            year_failures.append("QUALITY_MANIFEST_SCHEMA_INVALIDO")
         if physical.get("datas_invalidas") != 0 or physical.get("datas_fora_do_ano") != 0:
             year_failures.append("DATAS_INVALIDAS_OU_FORA_DO_ANO")
         if raw_path is not None and quality.get("raw_sha256") is None:
