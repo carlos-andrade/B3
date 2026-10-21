@@ -85,7 +85,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--endpoint-id", required=True)
     parser.add_argument("--allow-blocked", action="store_true",
-                        help="Não falha o processo; escreve authorized=false para gates GitHub Actions.")
+                        help="Não falha o processo; escreve authorized=false para gates GitHub Actions; não altera a decisão de autorização.")
     parser.add_argument("--github-output", default="")
     args = parser.parse_args()
 
