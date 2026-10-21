@@ -3,10 +3,10 @@
   "dataset_id": "COTAHIST_OFICIAL_ATUAL",
   "status": "VIGENTE",
   "status_frescor": "VALIDADO",
-  "generated_at_utc": "2026-10-16T01:34:36.310926+00:00",
+  "generated_at_utc": "2026-10-21T15:41:02.685656+00:00",
   "source": "B3",
   "ano_corrente": 2026,
-  "ultima_data": "2026-10-15",
+  "ultima_data": "2026-10-20",
   "composicao": {
     "snapshot_anual": {
       "normalized_file": "COTAHIST_A2026.csv",
@@ -37,6 +37,39 @@
         "raw_sha256": "346a8ec8ab89db34c5ff2388246d6f658a5e04d989fd549d0ba57e52d90967c8",
         "normalized_sha256": "e67473ac5c636f98c755094be50e66e14eeb124b28cb2b503c3384373c00bef0",
         "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D15102026_quality.json"
+      },
+      {
+        "data_referencia": "2026-10-16",
+        "primeira_data": "2026-10-16",
+        "ultima_data": "2026-10-16",
+        "linhas_normalized": 23018,
+        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D16102026.ZIP",
+        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D16102026.csv",
+        "raw_sha256": "7d6821fee1f445dd5b2fb5d3149776aa07eafebca864ae1ae8b8041ce48cea51",
+        "normalized_sha256": "65278f91b2ab3401353a510d4adb6713db5c97b3a69746ce4ce80668d01ed292",
+        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D16102026_quality.json"
+      },
+      {
+        "data_referencia": "2026-10-19",
+        "primeira_data": "2026-10-19",
+        "ultima_data": "2026-10-19",
+        "linhas_normalized": 15046,
+        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D19102026.ZIP",
+        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D19102026.csv",
+        "raw_sha256": "87babb69cd10eb605c90a9672a0ea459c30704e4b25ba0e075653b5b4b6eb3dd",
+        "normalized_sha256": "6c8a5058041a86ec1091bab387e7e99290626958c513997a5e8fc5aab731ec67",
+        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D19102026_quality.json"
+      },
+      {
+        "data_referencia": "2026-10-20",
+        "primeira_data": "2026-10-20",
+        "ultima_data": "2026-10-20",
+        "linhas_normalized": 15211,
+        "raw_file": "dados/cotahist/raw/diario/COTAHIST_D20102026.ZIP",
+        "normalized_file": "dados/cotahist/normalized/diario/COTAHIST_D20102026.csv",
+        "raw_sha256": "cc1d527231edc8d473492439453997b19c5af2977739aad83d8e8e6a88dfc784",
+        "normalized_sha256": "33b7dc1e90ad51ecd0352f1c554382a1127175ba1d68492d6ac968d3af22506c",
+        "quality_manifest": "dados/cotahist/normalized/manifests/diario/COTAHIST_D20102026_quality.json"
       }
     ]
   },

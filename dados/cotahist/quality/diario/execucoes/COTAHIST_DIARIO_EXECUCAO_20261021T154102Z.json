@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "tipo": "EXECUCAO_IMPORTACAO_COTAHIST_DIARIO",
+  "executado_em_utc": "2026-10-21T15:41:02.617679+00:00",
+  "data_referencia_local": "2026-10-21",
+  "janela_backfill_dias": 7,
+  "resultados": {
+    "2026-10-21": "SKIPPED",
+    "2026-10-20": "IMPORTED",
+    "2026-10-19": "IMPORTED",
+    "2026-10-18": "SKIPPED",
+    "2026-10-17": "SKIPPED",
+    "2026-10-16": "IMPORTED",
+    "2026-10-15": "UNCHANGED"
+  },
+  "dias_com_conflito": [],
+  "status": "EXECUCAO_SEM_CONFLITOS",
+  "regra": "Nenhum RAW canónico é substituído se o hash da fonte divergir; revisão formal necessária."
+}
