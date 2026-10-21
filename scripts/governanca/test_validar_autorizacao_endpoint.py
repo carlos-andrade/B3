@@ -42,8 +42,24 @@ class AuthorizationGateTests(unittest.TestCase):
         payload = json.loads(result.stdout)
         self.assertTrue(payload["authorized"])
         self.assertEqual(payload["authorization_status"], "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED")
+        self.assertIn("operation_scope", payload)
         self.assertEqual(payload["operation_scope"], "INTERNAL_VALIDATION_ONLY")
+        self.assertIn("publication_authorized", payload)
         self.assertFalse(payload["publication_authorized"])
+
+    def test_allow_blocked_never_changes_authorization_decision(self):
+        result = subprocess.run(
+            [sys.executable, str(GATE), "--endpoint-id", "ENDPOINT_NOT_REGISTERED", "--allow-blocked"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertFalse(payload["authorized"])
+        self.assertFalse(payload["publication_authorized"])
+        self.assertEqual(payload["authorization_status"], "NOT_REGISTERED")
 
     def test_limited_scope_without_required_controls_fails_closed(self):
         status, allowed, _ = authorization_decision({
