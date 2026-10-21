@@ -1,0 +1,29 @@
+name: COTAHIST - inventário estático de escritores
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - "scripts/governanca/auditar_escritores_cotahist.py"
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gerar inventário
+        run: |
+          python scripts/governanca/auditar_escritores_cotahist.py
+          cat cotahist-writer-inventory.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Guardar inventário
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-writer-inventory
+          path: |
+            cotahist-writer-inventory.json
+            cotahist-writer-inventory.md
+          retention-days: 30
