@@ -1,0 +1,2 @@
+probe=first-push
+purpose=isolated scheduler test only
