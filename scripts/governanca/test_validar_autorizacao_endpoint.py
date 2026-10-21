@@ -137,6 +137,23 @@ class AuthorizationGateTests(unittest.TestCase):
         }, 2026)
         self.assertEqual(failures, ["QUALITY_MANIFEST_STATUS_INVALIDO"])
 
+    def test_cotahist_writer_inventory_generates_report(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/governanca/auditar_escritores_cotahist.py")],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads(result.stdout)
+        self.assertGreater(report["workflow_count"], 0)
+        self.assertGreater(report["writer_count"], 0)
+        markdown = (ROOT / "cotahist-writer-inventory.md").read_text(encoding="utf-8")
+        print("COTAHIST_WRITER_INVENTORY_BEGIN")
+        print(markdown)
+        print("COTAHIST_WRITER_INVENTORY_END")
+
     def test_raw_temp_file_uses_destination_filesystem(self):
         with tempfile.TemporaryDirectory() as temporary:
             destination = Path(temporary) / "raw"
