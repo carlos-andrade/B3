@@ -105,7 +105,7 @@ O manifesto regista `HISTORICAL_VALIDATION_OUTPUT_CONFLICT`: uma execução ante
 - Os termos aplicáveis de Market Data, a política de consumo e eventuais direitos contratuais devem ser verificados para o uso concreto antes de publicar/redistribuir.
 - O estado do endpoint direto não deve ser extrapolado para Pesquisa por Pregão, BDI, DRP ou outros endpoints.
 
-**Estado R4:** comparação histórica dos estados de manifesto efetuada: o SHA/contagem do snapshot anual não mudou entre VALIDADO e BLOQUEADO; a decisão de bloqueio mudou por cobertura/autorização e conflito histórico. Os limites de armazenamento/publicação estão documentados. A classificação final das diferenças do candidato permanece pendente do comparador de multiplicidade da composição canónica completa (run 39622127035).
+**Estado R4:** comparação histórica dos estados de manifesto efetuada: o SHA/contagem do snapshot anual não mudou entre VALIDADO e BLOQUEADO; a decisão de bloqueio mudou por autorização/âmbito de uso, não por alteração do SHA do NORMALIZED. A FASE10 concluiu a comparação quantitativa da composição completa no run [39624008823](https://github.com/carlos-andrade/B3/actions/runs/39624008823): 53.275 linhas adicionais no candidato e zero linhas canónicas ausentes. Fica pendente classificar a origem dessas linhas adicionais e resolver a inconsistência semântica entre o dataset que declara `VIGENTE/VALIDADO` e o manifesto anual `BLOQUEADO`. A autorização operacional continua limitada a validação interna; não prova direito de publicação ou redistribuição.
 
 ## 5. Decisão formal de promoção
 
