@@ -140,7 +140,31 @@ def import_day(ref_date: date) -> str:
                 print(f"CONFLITO_FONTE_NAO_PROMOVIDO: {name} canonico={existing_sha} recebido={tmp_sha}")
                 return "CONFLICT"
 
-        tmp_path.replace(raw_out)
+        # Defesa adicional para ambientes em que o diretório temporário e o checkout
+        # estejam em mounts diferentes: copiar para arquivo temporário no destino e só
+        # depois fazer replace atómico no mesmo filesystem.
+        try:
+            tmp_path.replace(raw_out)
+        except OSError as exc:
+            import errno
+            if exc.errno != errno.EXDEV:
+                raise
+            with tempfile.NamedTemporaryFile(suffix=".ZIP", delete=False, dir=RAW_DIR) as dst_tmp:
+                dst_path = Path(dst_tmp.name)
+                with tmp_path.open("rb") as src:
+                    while True:
+                        chunk = src.read(1024 * 1024)
+                        if not chunk:
+                            break
+                        dst_tmp.write(chunk)
+                dst_tmp.flush()
+                import os
+                os.fsync(dst_tmp.fileno())
+            if sha256(dst_path) != tmp_sha:
+                dst_path.unlink(missing_ok=True)
+                raise RuntimeError(f"SHA-256 diverge na cópia cross-device de {name}")
+            dst_path.replace(raw_out)
+            dst_path.unlink(missing_ok=True)
 
         subprocess.run(
             [
