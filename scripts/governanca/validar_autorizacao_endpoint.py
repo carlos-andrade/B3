@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
-ALLOWED = {"AUTHORIZED", "AUTHORIZED_WITH_CONDITIONS"}
+ALLOWED = {"AUTHORIZED", "AUTHORIZED_WITH_CONDITIONS", "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED"}
 
 
 def authorization_decision(row: dict | None) -> tuple[str, bool, str]:
@@ -22,6 +22,27 @@ def authorization_decision(row: dict | None) -> tuple[str, bool, str]:
 
     status = row.get("authorization_status", "NOT_REGISTERED")
     evidence = row.get("evidence") or []
+
+    if status == "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED":
+        # Decisão operacional limitada; não equivale a licença nem autoriza publicação/redistribuição.
+        decision = str(row.get("decision") or "")
+        limits = row.get("scope_limits") or []
+        has_internal_scope = (
+            row.get("automated_collection") == "ALLOW_CONTROLLED_ACQUISITION_FOR_VALIDATION"
+            and row.get("storage_and_redistribution") == "REVIEW_REQUIRED_BEFORE_PUBLICATION"
+            and any("validação técnica" in str(item).lower() or "processamento interno" in str(item).lower()
+                    for item in limits)
+            and any("não" in str(item).lower() and ("publicar" in str(item).lower() or "redistribuir" in str(item).lower())
+                    for item in limits)
+            and "não presumir" in decision.lower()
+        )
+        allowed = bool(has_internal_scope)
+        reason = (
+            "Aquisição controlada permitida apenas para validação técnica/processamento interno; publicação e redistribuição continuam bloqueadas."
+            if allowed else
+            "Âmbito operacional limitado sem controlos completos no registo; bloqueio por omissão."
+        )
+        return status, allowed, reason
 
     if status == "AUTHORIZED_WITH_CONDITIONS":
         valid_open_license = any(
