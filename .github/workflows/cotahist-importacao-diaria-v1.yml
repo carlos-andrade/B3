@@ -73,44 +73,34 @@ jobs:
         run: python scripts/ingestao/reconciliar_cotahist_anual_v1.py
 
       - name: Persistir atualização
+        if: github.event_name != 'pull_request'
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/quality/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
-          if git diff --cached --quiet; then
-            echo "Sem alterações novas para persistir."
-          else
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            # Recalcular sempre a partir do HEAD corrente de main; não rebater datasets em conflito.
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/ingestao/importar_cotahist_diario_v1.py
+            python scripts/ingestao/reconciliar_cotahist_anual_v1.py
+            git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/quality/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
+            if git diff --cached --quiet; then
+              echo "Sem alterações novas para persistir."
+              pushed=1
+              break
+            fi
             git commit -m "data(cotahist): importacao diaria automatica"
-            pushed=0
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              git rebase --abort || true
-              if git rebase origin/main; then
-                if git push origin HEAD:main; then
-                  pushed=1
-                  break
-                fi
-                echo "Push concorrente falhou (tentativa $attempt/5); nova sincronização."
-                git rebase --abort || true
-              else
-                echo "Rebase com conflitos; a persistência automática foi abortada sem alterar main."
-                git rebase --abort || true
-                # Resolver em execução seguinte com HEAD fresco, sem forçar push nem descartar dados.
-              fi
-              sleep $((attempt * 2))
-              # Reconstruir o commit de dados sobre main atual. Artefactos idênticos serão reaproveitados,
-              # enquanto diferenças de hash dos RAW/manifestos ficam sob o gate de conflitos.
-              git fetch origin main
-              git reset --mixed origin/main
-              git add dados/cotahist/raw/diario dados/cotahist/normalized/diario dados/cotahist/normalized/manifests/diario dados/cotahist/quality/diario dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
-              if git diff --cached --quiet; then
-                pushed=1
-                break
-              fi
-              git commit -m "data(cotahist): importacao diaria automatica"
-            done
-            test "$pushed" -eq 1
-          fi
+            if git push origin HEAD:main; then
+              pushed=1
+              break
+            fi
+            echo "HEAD de main mudou durante persistência (tentativa $attempt/5); recalcular."
+            sleep $((attempt * 2))
+          done
+          test "$pushed" -eq 1
 
       - name: Gate de conflitos após persistência
         shell: bash
