@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-dataset-oficial-v2
+  group: b3-cotahist-main-publish-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
