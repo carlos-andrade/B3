@@ -183,8 +183,20 @@ jobs:
           git add --sparse dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar candidato 2026 sem promover canonico"
-          for attempt in 1 2 3 4 5; do
+          # Em pull_request, GITHUB_REF_NAME é "<numero>/merge", ref sintética que não existe no remoto.
+          # Persistir a evidência na branch de origem da PR; em push/workflow_dispatch usar a branch corrente.
+          if [[ "${GITHUB_EVENT_NAME:-}" == "pull_request" ]]; then
+            target_branch="$(python - <<'PY'
+          import json, os
+          event=json.load(open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8"))
+          print(event["pull_request"]["head"]["ref"])
+          PY
+          )"
+          else
             target_branch="$GITHUB_REF_NAME"
+          fi
+          test -n "$target_branch"
+          for attempt in 1 2 3 4 5; do
             git fetch origin "$target_branch"
             git rebase "origin/$target_branch"
             if git push origin "HEAD:$target_branch"; then exit 0; fi
