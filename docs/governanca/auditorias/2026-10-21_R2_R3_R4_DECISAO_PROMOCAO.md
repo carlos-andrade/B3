@@ -93,7 +93,7 @@ O manifesto regista `HISTORICAL_VALIDATION_OUTPUT_CONFLICT`: uma execução ante
 - Os termos aplicáveis de Market Data, a política de consumo e eventuais direitos contratuais devem ser verificados para o uso concreto antes de publicar/redistribuir.
 - O estado do endpoint direto não deve ser extrapolado para Pesquisa por Pregão, BDI, DRP ou outros endpoints.
 
-**Estado R4:** limites de autorização documentados; auditoria comparativa integral de artefactos históricos continua dependente da FASE10 atual e da reconciliação dos estados dos manifests.
+**Estado R4:** comparação histórica dos estados de manifesto efetuada: o SHA/contagem do snapshot anual não mudou entre VALIDADO e BLOQUEADO; a decisão de bloqueio mudou por cobertura/autorização e conflito histórico. Os limites de armazenamento/publicação estão documentados. A classificação final das diferenças do candidato permanece pendente do comparador de multiplicidade da composição canónica completa (run 39622127035).
 
 ## 5. Decisão formal de promoção
 
