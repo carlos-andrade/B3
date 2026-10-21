@@ -99,7 +99,8 @@ jobs:
               raw_sha=sha(raw); candidate_sha=sha(candidate); canonical_sha=sha(canonical)
               canonical_paths=[canonical]
               for increment in dataset.get("composicao",{}).get("incrementos_diarios",[]):
-                  manifest_path=root/increment["quality_manifest"].replace("dados/cotahist/","")
+                  manifest_rel=pathlib.Path(increment["quality_manifest"])
+                  manifest_path=root/manifest_rel.relative_to("dados/cotahist") if str(manifest_rel).startswith("dados/cotahist/") else pathlib.Path(increment["quality_manifest"])
                   manifest=json.loads(manifest_path.read_text(encoding="utf-8"))
                   if manifest.get("status")!="VALIDADO":
                       raise RuntimeError("Incremento diário canónico não VALIDADO: "+str(increment.get("data_referencia")))
@@ -108,6 +109,11 @@ jobs:
                       normalized_path=pathlib.Path(increment["normalized_file"])
                   if not normalized_path.is_file():
                       raise RuntimeError("NORMALIZED diário canónico ausente: "+str(normalized_path))
+                  # Verificar cada hash/contagem declarados antes da comparação de multiplicidade.
+                  if manifest.get("normalized_sha256") != sha(normalized_path):
+                      raise RuntimeError("SHA-256 NORMALIZED diverge do manifesto diário: "+str(normalized_path))
+                  if manifest.get("linhas_normalized") is None:
+                      raise RuntimeError("Manifesto diário sem contagem declarada: "+str(manifest_path))
                   canonical_paths.append(normalized_path)
               report.update({"source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP","candidate_raw_sha256":raw_sha,"candidate_raw_bytes":raw.stat().st_size,"candidate_normalized_sha256":candidate_sha,"candidate_normalized_bytes":candidate.stat().st_size,"canonical_normalized_sha256":canonical_sha,"canonical_composition":[{"path":str(p),"sha256":sha(p),"bytes":p.stat().st_size} for p in canonical_paths],"canonical_component_count":len(canonical_paths),"probe_candidate_sha256":probe.get("candidate_sha256"),"candidate_raw_sha_matches_probe":raw_sha==probe.get("candidate_sha256")})
               if raw_sha!=probe.get("candidate_sha256"): raise RuntimeError("SHA-256 do download atual difere do probe; repetir a auditoria da fonte")
