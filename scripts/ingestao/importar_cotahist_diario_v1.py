@@ -35,6 +35,13 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def create_temp_file_for_destination(destination_dir: Path, suffix: str = ".ZIP.tmp") -> Path:
+    """Create a temporary file on the destination filesystem for atomic replacement."""
+    destination_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(dir=destination_dir, suffix=suffix, delete=False) as tmp:
+        return Path(tmp.name)
+
+
 def import_day(ref_date: date) -> str:
     iso_date = ref_date.isoformat()
     date_ref = ref_date.strftime("%d%m%Y")
@@ -45,10 +52,8 @@ def import_day(ref_date: date) -> str:
     norm_out = NORM_DIR / f"{name}.csv"
     manifest_out = MAN_DIR / f"{name}_quality.json"
 
-    # Criar o temporário no mesmo filesystem do destino para garantir replace atómico.
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(dir=RAW_DIR, suffix=".ZIP.tmp", delete=False) as tmp:
-        tmp_path = Path(tmp.name)
+    # O temporário e o destino ficam no mesmo filesystem para replace atómico.
+    tmp_path = create_temp_file_for_destination(RAW_DIR)
 
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "B3-repository-ingestion/1.1"})
