@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-certificacao-anual-v1
+  group: b3-cotahist-main-publish-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
