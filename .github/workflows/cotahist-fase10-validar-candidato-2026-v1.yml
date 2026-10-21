@@ -5,9 +5,10 @@ name: COTAHIST 2026 - FASE10 Validar candidato sem promover canonico
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, "audit/**"]
     paths:
       - ".github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml"
+      - "dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"
 
 permissions:
   contents: write
@@ -30,18 +31,26 @@ jobs:
             .github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml
             scripts/ingestao/normalize_cotahist.py
             dados/cotahist/normalized/anual/COTAHIST_A2026.csv
+            dados/cotahist/normalized/diario/COTAHIST_D14102026.csv
+            dados/cotahist/normalized/diario/COTAHIST_D15102026.csv
+            dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
             dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
           sparse-checkout-cone-mode: false
 
       - name: Obter NORMALIZED canónico via Git LFS
         run: |
           set -euo pipefail
-          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv" --exclude=""
-          test -s dados/cotahist/normalized/anual/COTAHIST_A2026.csv
-          if head -c 120 dados/cotahist/normalized/anual/COTAHIST_A2026.csv | grep -q "oid sha256"; then
-            echo "NORMALIZED canónico permanece como ponteiro LFS."
-            exit 1
-          fi
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv,dados/cotahist/normalized/diario/COTAHIST_D14102026.csv,dados/cotahist/normalized/diario/COTAHIST_D15102026.csv" --exclude=""
+          for file in \
+            dados/cotahist/normalized/anual/COTAHIST_A2026.csv \
+            dados/cotahist/normalized/diario/COTAHIST_D14102026.csv \
+            dados/cotahist/normalized/diario/COTAHIST_D15102026.csv; do
+            test -s "$file"
+            if head -c 120 "$file" | grep -q "oid sha256"; then
+              echo "NORMALIZED canónico permanece como ponteiro LFS: $file"
+              exit 1
+            fi
+          done
 
       - uses: actions/setup-python@v5
         with:
@@ -63,6 +72,7 @@ jobs:
           raw=pathlib.Path("/tmp/cotahist-fase10/COTAHIST_A2026.ZIP")
           candidate=pathlib.Path("/tmp/cotahist-fase10/COTAHIST_A2026.csv")
           canonical=root/"normalized/anual/COTAHIST_A2026.csv"
+          dataset_path=root/"oficial/COTAHIST_DATASET_ATUAL_V1.1.json"
           probe_path=root/"quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json"
           output=root/"quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json"
           output.parent.mkdir(parents=True,exist_ok=True)
@@ -77,8 +87,21 @@ jobs:
           conn=None
           try:
               probe=json.loads(probe_path.read_text(encoding="utf-8"))
+              dataset=json.loads(dataset_path.read_text(encoding="utf-8"))
               raw_sha=sha(raw); candidate_sha=sha(candidate); canonical_sha=sha(canonical)
-              report.update({"source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP","candidate_raw_sha256":raw_sha,"candidate_raw_bytes":raw.stat().st_size,"candidate_normalized_sha256":candidate_sha,"candidate_normalized_bytes":candidate.stat().st_size,"canonical_normalized_sha256":canonical_sha,"probe_candidate_sha256":probe.get("candidate_sha256"),"candidate_raw_sha_matches_probe":raw_sha==probe.get("candidate_sha256")})
+              canonical_paths=[canonical]
+              for increment in dataset.get("composicao",{}).get("incrementos_diarios",[]):
+                  manifest_path=root/increment["quality_manifest"].replace("dados/cotahist/","")
+                  manifest=json.loads(manifest_path.read_text(encoding="utf-8"))
+                  if manifest.get("status")!="VALIDADO":
+                      raise RuntimeError("Incremento diário canónico não VALIDADO: "+str(increment.get("data_referencia")))
+                  normalized_path=pathlib.Path(increment["normalized_file"])
+                  if not normalized_path.is_absolute():
+                      normalized_path=pathlib.Path(increment["normalized_file"])
+                  if not normalized_path.is_file():
+                      raise RuntimeError("NORMALIZED diário canónico ausente: "+str(normalized_path))
+                  canonical_paths.append(normalized_path)
+              report.update({"source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP","candidate_raw_sha256":raw_sha,"candidate_raw_bytes":raw.stat().st_size,"candidate_normalized_sha256":candidate_sha,"candidate_normalized_bytes":candidate.stat().st_size,"canonical_normalized_sha256":canonical_sha,"canonical_composition":[{"path":str(p),"sha256":sha(p),"bytes":p.stat().st_size} for p in canonical_paths],"canonical_component_count":len(canonical_paths),"probe_candidate_sha256":probe.get("candidate_sha256"),"candidate_raw_sha_matches_probe":raw_sha==probe.get("candidate_sha256")})
               if raw_sha!=probe.get("candidate_sha256"): raise RuntimeError("SHA-256 do download atual difere do probe; repetir a auditoria da fonte")
               raw_count=0; bad_lengths=0; types={}
               with zipfile.ZipFile(raw) as z:
@@ -101,7 +124,7 @@ jobs:
               conn=sqlite3.connect("/tmp/cotahist-fase10/diff.sqlite")
               conn.execute("PRAGMA journal_mode=OFF"); conn.execute("PRAGMA synchronous=OFF"); conn.execute("PRAGMA temp_store=FILE")
               conn.execute("CREATE TABLE rows (side TEXT,row_hash TEXT)")
-              for side,path in (("canonical",canonical),("candidate",candidate)):
+              for side,path in ([("canonical",p) for p in canonical_paths]+[("candidate",candidate)]):
                   batch=[]
                   with path.open(encoding="utf-8",newline="") as f:
                       reader=csv.reader(f)
@@ -153,9 +176,10 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar candidato 2026 sem promover canonico"
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then exit 0; fi
+            target_branch="$GITHUB_REF_NAME"
+            git fetch origin "$target_branch"
+            git rebase "origin/$target_branch"
+            if git push origin "HEAD:$target_branch"; then exit 0; fi
             sleep $((attempt * 2))
           done
           exit 1
