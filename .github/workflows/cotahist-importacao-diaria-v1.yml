@@ -6,6 +6,7 @@ name: COTAHIST - importacao diaria automatica V1
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/cotahist-importacao-diaria-v1.yml"
       - "scripts/ingestao/importar_cotahist_diario_v1.py"
