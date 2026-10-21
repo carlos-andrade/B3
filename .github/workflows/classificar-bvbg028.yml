@@ -1,5 +1,12 @@
 name: Classificar BVBG.028.02
 
+# Serializa publicações que alteram o catálogo BVBG.028.02 em main.
+# O grupo partilhado evita execuções simultâneas; validar comportamento de pending
+# e idempotência antes de considerar a concorrência operacionalmente encerrada.
+concurrency:
+  group: b3-bvbg028-catalog-publish-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
   workflow_dispatch:
   push:
