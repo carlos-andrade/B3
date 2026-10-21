@@ -45,6 +45,7 @@ def import_day(ref_date: date) -> str:
     norm_out = NORM_DIR / f"{name}.csv"
     manifest_out = MAN_DIR / f"{name}_quality.json"
 
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(suffix=".ZIP", delete=False, dir=RAW_DIR) as tmp:
         tmp_path = Path(tmp.name)
 
