@@ -4,20 +4,21 @@ import json, re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 DIR=ROOT/".github/workflows"
-WRITE=re.compile(r"\bgit\s+(?:commit|push)\b|create-pull-request|git-auto-commit-action|gh api[^\n]*(?:git/refs|contents/)",re.I)
+REMOTE_WRITE=re.compile(r"\bgit\s+push\b|create-pull-request|git-auto-commit-action|gh api[^\n]*(?:git/refs|contents/)|repository\.createCommit|createCommit\s*\(",re.I)
+LOCAL_COMMIT=re.compile(r"\bgit\s+commit\b",re.I)
 PERM=re.compile(r"contents:\s*write|permissions:\s*write-all|pull-requests:\s*write",re.I)
 DRY=re.compile(r"dry.?run|--dry-run|\bdryrun\b",re.I)
 RES=re.compile(r"(?:dados/cotahist|docs/cotahist|reports/cotahist)[^\s\"']*",re.I)
 def classify(p):
  t=p.read_text(encoding="utf-8",errors="replace")
- wp=bool(PERM.search(t)); ew=bool(WRITE.search(t))
- candidate=wp and bool(re.search(r"\b(?:python|python3|bash|sh)\s+[^\n]*(?:cotahist|ingest|normaliz|public|reconcil|certific|manifest)",t,re.I))
+ wp=bool(PERM.search(t)); ew=bool(REMOTE_WRITE.search(t)); lc=bool(LOCAL_COMMIT.search(t))
+ candidate=wp and (lc or bool(re.search(r"\b(?:python|python3|bash|sh)\s+[^\n]*(?:cotahist|ingest|normaliz|public|reconcil|certific|manifest)",t,re.I)))
  kind="WRITER_CONFIRMED_STATIC" if ew else "WRITER_CANDIDATE_SCRIPT_REVIEW" if candidate else "WRITE_PERMISSION_REVIEW_REQUIRED" if wp else "DRY_RUN_READ_ONLY" if DRY.search(t) else "READ_ONLY" if re.search(r"contents:\s*read",t,re.I) else "NO_STATIC_WRITE_SIGNAL_REVIEW_REQUIRED"
  g=re.search(r"^\s*group:\s*(.+?)\s*$",t,re.M); ci=re.search(r"^\s*cancel-in-progress:\s*(.+?)\s*$",t,re.M)
  branches=[]
  for m in re.finditer(r"^\s*branches:\s*\[([^\]]+)\]",t,re.M): branches += [x.strip().strip("\"'") for x in m.group(1).split(",")]
  target="main" if re.search(r"HEAD:main|git push origin main|git push origin HEAD:main|origin/main",t) else "push-target-review-required" if re.search(r"git push",t) else "not-statically-determined"
- return {"file":p.relative_to(ROOT).as_posix(),"workflow_name":(re.search(r"^name:\s*(.+)$",t,re.M).group(1).strip() if re.search(r"^name:\s*(.+)$",t,re.M) else p.name),"classification":kind,"write_permission":wp,"explicit_write_signal":ew,"invoked_writer_candidate":candidate,"concurrency_group":g.group(1) if g else None,"cancel_in_progress":ci.group(1) if ci else "default","trigger_branches":branches,"target_branch":target,"resource_paths":sorted(set(RES.findall(t)))}
+ return {"file":p.relative_to(ROOT).as_posix(),"workflow_name":(re.search(r"^name:\s*(.+)$",t,re.M).group(1).strip() if re.search(r"^name:\s*(.+)$",t,re.M) else p.name),"classification":kind,"write_permission":wp,"remote_write_signal":ew,"local_commit_signal":lc,"invoked_writer_candidate":candidate,"concurrency_group":g.group(1) if g else None,"cancel_in_progress":ci.group(1) if ci else "default","trigger_branches":branches,"target_branch":target,"resource_paths":sorted(set(RES.findall(t)))}
 def main():
  records=[]
  for p in sorted(DIR.iterdir()):
