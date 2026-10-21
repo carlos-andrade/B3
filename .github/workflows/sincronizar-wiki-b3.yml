@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: b3-wiki-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   sync:
