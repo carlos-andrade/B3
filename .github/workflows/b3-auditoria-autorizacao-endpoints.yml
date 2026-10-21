@@ -77,10 +77,15 @@ jobs:
               authorized = result.get("authorized") is True
               if status in ("PROHIBITED_AUTOMATED_COLLECTION", "REVIEW_REQUIRED") and authorized:
                   errors.append(f"{endpoint_id}: autorizado sem prova apesar do estado {status}")
+              elif status == "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED":
+                  if authorized and (result.get("operation_scope") != "INTERNAL_VALIDATION_ONLY" or result.get("publication_authorized") is not False):
+                      errors.append(f"{endpoint_id}: âmbito limitado não está restrito à validação interna")
+                  if not authorized and endpoint_id == "B3_COTAHIST_DAILY":
+                      errors.append(f"{endpoint_id}: decisão operacional limitada não passou pelo gate")
               elif status == "AUTHORIZED_WITH_CONDITIONS" and not authorized:
                   errors.append(f"{endpoint_id}: licença condicional não passou pelo gate")
               elif status not in ("PROHIBITED_AUTOMATED_COLLECTION", "REVIEW_REQUIRED",
-                                  "AUTHORIZED_WITH_CONDITIONS", "AUTHORIZED"):
+                                  "AUTHORIZED_WITH_CONDITIONS", "AUTHORIZED", "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED"):
                   errors.append(f"{endpoint_id}: estado não reconhecido {status}")
               result["decision_recorded"] = row.get("decision")
               results.append(result)
