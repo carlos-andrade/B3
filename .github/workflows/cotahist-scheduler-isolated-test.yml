@@ -1,0 +1,38 @@
+name: COTAHIST - teste isolado do scheduler
+on:
+  push:
+    branches:
+      - "test/cotahist-scheduler-*"
+permissions:
+  contents: read
+concurrency:
+  group: cotahist-scheduler-isolated-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  serialized_probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Registar início
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p scheduler-evidence
+          printf 'run_id=%s\nrun_attempt=%s\nref=%s\nstart_utc=%s\n' "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$GITHUB_REF" "$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)" | tee scheduler-evidence/run.log
+          cat scheduler-evidence/run.log >> "$GITHUB_STEP_SUMMARY"
+      - name: Espera isolada para observar exclusão mútua
+        run: sleep 25
+      - name: Registar fim
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'end_utc=%s\nconclusion=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)" "${{ job.status }}" | tee -a scheduler-evidence/run.log
+          cat scheduler-evidence/run.log >> "$GITHUB_STEP_SUMMARY"
+      - name: Guardar logs de início/fim
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-scheduler-${{ github.run_id }}-${{ github.run_attempt }}
+          path: scheduler-evidence/run.log
+          retention-days: 14
