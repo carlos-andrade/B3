@@ -65,6 +65,8 @@ jobs:
           git reset --hard origin/main
 
       - name: Importar e validar COTAHIST diário
+        env:
+          PYTHONUNBUFFERED: "1"
         run: python scripts/ingestao/importar_cotahist_diario_v1.py
 
       - name: Reconciliar Dataset Anual 2026
