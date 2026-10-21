@@ -148,3 +148,5 @@ jobs:
           echo "## COTAHIST 2026 — probe read-only da fonte oficial" >> "$GITHUB_STEP_SUMMARY"
           echo "- Não substitui nem altera RAW/NORMALIZED canónicos." >> "$GITHUB_STEP_SUMMARY"
           echo "- Resultado do job: ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+
+# Governação 2026-10-21: aquisição controlada pelo endpoint direto permitida para validação interna; publicação continua sujeita a gate separado.
