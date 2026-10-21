@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "SMLL",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ1NNTEwnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/SMLL?language=pt-br",
+  "captured_at": "2026-10-20T22:50:42.581088-03:00",
+  "reference_date": "2026-10-20",
+  "raw_file": "dados/indices_b3/raw/2026/SMLL_2026-10-20.json",
+  "raw_sha256": "65f5b9aa08a20ba2b3b70e7a4f9c68806082222a2995477906604ad8e22e9031",
+  "normalized_file": "dados/indices_b3/normalized/2026/SMLL_2026-10-20.csv",
+  "normalized_sha256": "ff63f61b3444d599695380456b9ccde67156603bbde59813d13c4e4b6bd4e5a3",
+  "rows": 104,
+  "participation_sum_pct": 100.0,
+  "redutor": "148.856.830,71812851",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

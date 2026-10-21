@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "MLCX",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ01MQ1gnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/MLCX?language=pt-br",
+  "captured_at": "2026-10-20T22:50:42.581088-03:00",
+  "reference_date": "2026-10-20",
+  "raw_file": "dados/indices_b3/raw/2026/MLCX_2026-10-20.json",
+  "raw_sha256": "32b851fd025b66f7bcc44c263594a608a4219db3f74666327e109608c0e2ae37",
+  "normalized_file": "dados/indices_b3/normalized/2026/MLCX_2026-10-20.csv",
+  "normalized_sha256": "be884a5e1086e1c3ad3013b02da1ef585fc9df15d6e5efe76f5421f873a1171c",
+  "rows": 44,
+  "participation_sum_pct": 100.0,
+  "redutor": "648.170.112,96712946",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
