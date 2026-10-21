@@ -100,7 +100,7 @@ jobs:
               canonical_paths=[canonical]
               for increment in dataset.get("composicao",{}).get("incrementos_diarios",[]):
                   manifest_rel=pathlib.Path(increment["quality_manifest"])
-                  manifest_path=root/manifest_rel.relative_to("dados/cotahist") if str(manifest_rel).startswith("dados/cotahist/") else pathlib.Path(increment["quality_manifest"])
+                  manifest_path=pathlib.Path(increment["quality_manifest"])
                   manifest=json.loads(manifest_path.read_text(encoding="utf-8"))
                   if manifest.get("status")!="VALIDADO":
                       raise RuntimeError("Incremento diário canónico não VALIDADO: "+str(increment.get("data_referencia")))
