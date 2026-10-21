@@ -4,6 +4,10 @@ name: COTAHIST 2026 - FASE10 Validar candidato sem promover canonico
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/cotahist-fase10-validar-candidato-2026-v1.yml"
+      - "dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json"
   push:
     branches: [main, "audit/**"]
     paths:
@@ -33,18 +37,31 @@ jobs:
             dados/cotahist/normalized/anual/COTAHIST_A2026.csv
             dados/cotahist/normalized/diario/COTAHIST_D14102026.csv
             dados/cotahist/normalized/diario/COTAHIST_D15102026.csv
+            dados/cotahist/normalized/diario/COTAHIST_D16102026.csv
+            dados/cotahist/normalized/diario/COTAHIST_D19102026.csv
+            dados/cotahist/normalized/diario/COTAHIST_D20102026.csv
+            dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D14102026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D15102026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D16102026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D19102026_quality.json
+            dados/cotahist/normalized/manifests/diario/COTAHIST_D20102026_quality.json
             dados/cotahist/oficial/COTAHIST_DATASET_ATUAL_V1.1.json
             dados/cotahist/quality/COTAHIST_2026_FONTE_OFICIAL_REFRESH_PROBE_V1.json
+            dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
           sparse-checkout-cone-mode: false
 
       - name: Obter NORMALIZED canónico via Git LFS
         run: |
           set -euo pipefail
-          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv,dados/cotahist/normalized/diario/COTAHIST_D14102026.csv,dados/cotahist/normalized/diario/COTAHIST_D15102026.csv" --exclude=""
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A2026.csv,dados/cotahist/normalized/diario/COTAHIST_D14102026.csv,dados/cotahist/normalized/diario/COTAHIST_D15102026.csv,dados/cotahist/normalized/diario/COTAHIST_D16102026.csv,dados/cotahist/normalized/diario/COTAHIST_D19102026.csv,dados/cotahist/normalized/diario/COTAHIST_D20102026.csv" --exclude=""
           for file in \
             dados/cotahist/normalized/anual/COTAHIST_A2026.csv \
             dados/cotahist/normalized/diario/COTAHIST_D14102026.csv \
-            dados/cotahist/normalized/diario/COTAHIST_D15102026.csv; do
+            dados/cotahist/normalized/diario/COTAHIST_D15102026.csv \
+            dados/cotahist/normalized/diario/COTAHIST_D16102026.csv \
+            dados/cotahist/normalized/diario/COTAHIST_D19102026.csv \
+            dados/cotahist/normalized/diario/COTAHIST_D20102026.csv; do
             test -s "$file"
             if head -c 120 "$file" | grep -q "oid sha256"; then
               echo "NORMALIZED canónico permanece como ponteiro LFS: $file"
@@ -83,15 +100,24 @@ jobs:
               with path.open("rb") as f:
                   for chunk in iter(lambda:f.read(1048576),b""): h.update(chunk)
               return h.hexdigest()
-          report={"schema_version":"1.0.0","year":2026,"phase":"FASE10_VALIDACAO_CANDIDATO","status":"BLOQUEADO","decision":"NAO_PROMOVER_CANONICO","canonical_mutated":False,"raw_committed":False,"normalized_committed":False,"deduplication_performed":False,"blockers":[]}
+          report={"schema_version":"1.0.0","year":2026,"phase":"FASE10_VALIDACAO_CANDIDATO","status":"BLOQUEADO","decision":"NAO_PROMOVER_CANONICO","canonical_mutated":False,"raw_committed":False,"normalized_committed":False,"deduplication_performed":False,"blockers":[],"promotion_authorized":False,"authorization_note":"Comparação técnica não constitui licença nem autorização de publicação/redistribuição."}
           conn=None
           try:
               probe=json.loads(probe_path.read_text(encoding="utf-8"))
               dataset=json.loads(dataset_path.read_text(encoding="utf-8"))
               raw_sha=sha(raw); candidate_sha=sha(candidate); canonical_sha=sha(canonical)
+              annual_manifest_path=root/"normalized/manifests/COTAHIST_A2026_quality.json"
+              annual_manifest=json.loads(annual_manifest_path.read_text(encoding="utf-8"))
+              if annual_manifest.get("normalized_sha256") != canonical_sha:
+                  raise RuntimeError("SHA-256 NORMALIZED anual diverge do manifesto")
+              if annual_manifest.get("campos") != 25:
+                  raise RuntimeError("Manifesto anual declara número de campos diferente de 25")
+              report["canonical_annual_manifest_status"]=annual_manifest.get("status")
+              report["canonical_annual_authorization_blockers"]=annual_manifest.get("bloqueios",[])
               canonical_paths=[canonical]
               for increment in dataset.get("composicao",{}).get("incrementos_diarios",[]):
-                  manifest_path=root/increment["quality_manifest"].replace("dados/cotahist/","")
+                  manifest_rel=pathlib.Path(increment["quality_manifest"])
+                  manifest_path=pathlib.Path(increment["quality_manifest"])
                   manifest=json.loads(manifest_path.read_text(encoding="utf-8"))
                   if manifest.get("status")!="VALIDADO":
                       raise RuntimeError("Incremento diário canónico não VALIDADO: "+str(increment.get("data_referencia")))
@@ -100,6 +126,21 @@ jobs:
                       normalized_path=pathlib.Path(increment["normalized_file"])
                   if not normalized_path.is_file():
                       raise RuntimeError("NORMALIZED diário canónico ausente: "+str(normalized_path))
+                  # Verificar cada hash/contagem declarados antes da comparação de multiplicidade.
+                  if manifest.get("normalized_sha256") != sha(normalized_path):
+                      raise RuntimeError("SHA-256 NORMALIZED diverge do manifesto diário: "+str(normalized_path))
+                  if manifest.get("linhas_normalized") is None:
+                      raise RuntimeError("Manifesto diário sem contagem declarada: "+str(manifest_path))
+                  if manifest.get("campos") != 25:
+                      raise RuntimeError("Manifesto diário não declara 25 campos: "+str(manifest_path))
+                  component_rows=0
+                  with normalized_path.open(encoding="utf-8",newline="") as component_file:
+                      component_reader=csv.reader(component_file)
+                      if next(component_reader,None)!=normalizer.HEADER:
+                          raise RuntimeError("Cabeçalho de NORMALIZED diário inválido: "+str(normalized_path))
+                      component_rows=sum(1 for _ in component_reader)
+                  if component_rows!=manifest.get("linhas_normalized"):
+                      raise RuntimeError("Contagem de linhas NORMALIZED diverge do manifesto: "+str(normalized_path))
                   canonical_paths.append(normalized_path)
               report.update({"source_url":"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP","candidate_raw_sha256":raw_sha,"candidate_raw_bytes":raw.stat().st_size,"candidate_normalized_sha256":candidate_sha,"candidate_normalized_bytes":candidate.stat().st_size,"canonical_normalized_sha256":canonical_sha,"canonical_composition":[{"path":str(p),"sha256":sha(p),"bytes":p.stat().st_size} for p in canonical_paths],"canonical_component_count":len(canonical_paths),"probe_candidate_sha256":probe.get("candidate_sha256"),"candidate_raw_sha_matches_probe":raw_sha==probe.get("candidate_sha256")})
               if raw_sha!=probe.get("candidate_sha256"): raise RuntimeError("SHA-256 do download atual difere do probe; repetir a auditoria da fonte")
@@ -166,7 +207,7 @@ jobs:
           PY
 
       - name: Persistir evidência FASE10
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         run: |
           set -euo pipefail
           test -s dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json || exit 0
@@ -175,14 +216,62 @@ jobs:
           git add --sparse dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): validar candidato 2026 sem promover canonico"
-          for attempt in 1 2 3 4 5; do
+          # Em pull_request, GITHUB_REF_NAME é "<numero>/merge", ref sintética que não existe no remoto.
+          # Persistir a evidência na branch de origem da PR; em push/workflow_dispatch usar a branch corrente.
+          if [[ "${GITHUB_EVENT_NAME:-}" == "pull_request" ]]; then
+            target_branch="$(python - <<'PY'
+          import json, os
+          event=json.load(open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8"))
+          print(event["pull_request"]["head"]["ref"])
+          PY
+          )"
+          else
             target_branch="$GITHUB_REF_NAME"
+          fi
+          test -n "$target_branch"
+          for attempt in 1 2 3 4 5; do
             git fetch origin "$target_branch"
             git rebase "origin/$target_branch"
             if git push origin "HEAD:$target_branch"; then exit 0; fi
             sleep $((attempt * 2))
           done
           exit 1
+
+      - name: Validar comparador de multiplicidade
+        if: always()
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json")
+          if not p.exists():
+              raise SystemExit("FASE10_REPORT_MISSING")
+          r=json.loads(p.read_text(encoding="utf-8"))
+          print(json.dumps({k:r.get(k) for k in ("status","decision","canonical_rows","candidate_rows","candidate_rows_added_vs_canonical","canonical_rows_absent_from_candidate","full_row_multiset_unchanged","blockers")},ensure_ascii=False))
+          if r.get("status") == "BLOQUEADO":
+              raise SystemExit("FASE10_BLOCKED")
+          if r.get("candidate_field_count") != 25 or r.get("raw_to_normalized_all_rows_match") is not True:
+              raise SystemExit("FASE10_RAW_NORMALIZED_RECONCILIATION_FAILED")
+          if r.get("candidate_rows_added_vs_canonical") != 0 or r.get("canonical_rows_absent_from_candidate") != 0:
+              raise SystemExit("FASE10_COMPOSITION_MISMATCH")
+          if r.get("full_row_multiset_unchanged") is not True:
+              raise SystemExit("FASE10_FULL_ROW_MULTISET_NOT_IDENTICAL")
+          if r.get("canonical_rows") != r.get("candidate_rows"):
+              raise SystemExit("FASE10_CANONICAL_CANDIDATE_ROW_COUNT_MISMATCH")
+          if r.get("status") != "VALIDADO_SEM_DIFERENCAS_DE_LINHAS":
+              raise SystemExit("FASE10_UNEXPECTED_STATUS")
+          print("FASE10 técnica confirmada: composição canónica integralmente igual ao candidato; promoção permanece dependente do gate de autorização e da decisão formal R4.")
+          PY
+
+      - name: Publicar evidência FASE10
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-fase10-validacao-candidato
+          path: dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Resumo
         if: always()
