@@ -1,0 +1,2 @@
+probe=1
+purpose=isolated scheduler test only
