@@ -2,14 +2,55 @@
   "schema_version": "1.0.0",
   "year": 2026,
   "phase": "FASE10_VALIDACAO_CANDIDATO",
-  "status": "BLOQUEADO",
-  "decision": "NAO_PROMOVER_CANONICO",
+  "status": "VALIDADO_COM_DIFERENCAS_A_REVISAR",
+  "decision": "REVISAO_DAS_DIFERENCAS_ANTES_DA_PROMOCAO",
   "canonical_mutated": false,
   "raw_committed": false,
   "normalized_committed": false,
   "deduplication_performed": false,
-  "blockers": [
-    "[Errno 2] No such file or directory: 'dados/cotahist/normalized/manifests/diario/COTAHIST_D14102026_quality.json'"
+  "blockers": [],
+  "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "candidate_raw_sha256": "78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0",
+  "candidate_raw_bytes": 94685771,
+  "candidate_normalized_sha256": "e9319702ef63c9d2d89d5c7b3b67f496d4c538824bc666248320a618af4deecf",
+  "candidate_normalized_bytes": 434061968,
+  "canonical_normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+  "canonical_composition": [
+    {
+      "path": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
+      "sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
+      "bytes": 421981550
+    },
+    {
+      "path": "dados/cotahist/normalized/diario/COTAHIST_D14102026.csv",
+      "sha256": "196b573c89e0a4fbf1b460b9a3c7390971758f1b5c1949cbbfe56bd287288aa9",
+      "bytes": 2426244
+    },
+    {
+      "path": "dados/cotahist/normalized/diario/COTAHIST_D15102026.csv",
+      "sha256": "e67473ac5c636f98c755094be50e66e14eeb124b28cb2b503c3384373c00bef0",
+      "bytes": 2515359
+    }
   ],
-  "validated_at_utc": "2026-10-21T15:11:39.350298+00:00"
+  "canonical_component_count": 3,
+  "probe_candidate_sha256": "78032d39937bb540a57850a30ee3ef928462c5fa5c8dc073b2a10f64501740d0",
+  "candidate_raw_sha_matches_probe": true,
+  "raw_record_type_counts": {
+    "00": 1,
+    "01": 3233168,
+    "99": 1
+  },
+  "raw_invalid_record_lengths": 0,
+  "candidate_rows_reconciled": 3233168,
+  "candidate_field_count": 25,
+  "raw_to_normalized_all_rows_match": true,
+  "canonical_rows": 3179893,
+  "candidate_rows": 3233168,
+  "candidate_rows_added_vs_canonical": 53275,
+  "canonical_rows_absent_from_candidate": 0,
+  "full_row_multiset_unchanged": false,
+  "comparison_method": "SHA-256 por linha integral e multiplicidade em SQLite; sem deduplicação",
+  "first_trading_date": "2026-01-02",
+  "last_trading_date": "2026-10-20",
+  "validated_at_utc": "2026-10-21T15:22:45.785746+00:00"
 }
