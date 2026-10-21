@@ -13,6 +13,7 @@ from scripts.governanca.validar_autorizacao_endpoint import authorization_decisi
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts/ingestao"))
 from importar_cotahist_diario_v1 import create_temp_file_for_destination
+from gerar_dataset_oficial_cotahist_v2 import quality_manifest_failures
 
 GATE = ROOT / "scripts/governanca/validar_autorizacao_endpoint.py"
 
@@ -117,6 +118,24 @@ class AuthorizationGateTests(unittest.TestCase):
         })
         self.assertEqual(status, "AUTHORIZED_WITH_CONDITIONS")
         self.assertTrue(allowed)
+
+    def test_blocked_quality_manifest_reports_authorization_gate(self):
+        failures = quality_manifest_failures({
+            "status": "BLOQUEADO",
+            "ano": 2026,
+            "campos": 25,
+            "bloqueios": [{"codigo": "SOURCE_AUTHORIZATION_REVIEW_REQUIRED"}],
+        }, 2026)
+        self.assertEqual(failures, ["SOURCE_AUTHORIZATION_REVIEW_REQUIRED"])
+
+    def test_invalid_quality_manifest_still_fails_closed(self):
+        failures = quality_manifest_failures({
+            "status": "INVALIDO",
+            "ano": 2026,
+            "campos": 25,
+            "bloqueios": [],
+        }, 2026)
+        self.assertEqual(failures, ["QUALITY_MANIFEST_STATUS_INVALIDO"])
 
     def test_raw_temp_file_uses_destination_filesystem(self):
         with tempfile.TemporaryDirectory() as temporary:
