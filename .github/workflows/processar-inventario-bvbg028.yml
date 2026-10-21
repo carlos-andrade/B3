@@ -1,4 +1,10 @@
 name: Processar inventario BVBG.028.02
+
+# Usa o mesmo grupo dos restantes escritores do catálogo BVBG.028.02.
+concurrency:
+  group: b3-bvbg028-catalog-publish-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
   push:
     paths:
