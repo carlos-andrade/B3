@@ -204,6 +204,29 @@ jobs:
           done
           exit 1
 
+      - name: Validar comparador de multiplicidade
+        if: always()
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("dados/cotahist/quality/COTAHIST_2026_FASE10_VALIDACAO_CANDIDATO_V1.json")
+          if not p.exists():
+              raise SystemExit("FASE10_REPORT_MISSING")
+          r=json.loads(p.read_text(encoding="utf-8"))
+          print(json.dumps({k:r.get(k) for k in ("status","decision","canonical_rows","candidate_rows","candidate_rows_added_vs_canonical","canonical_rows_absent_from_candidate","full_row_multiset_unchanged","blockers")},ensure_ascii=False))
+          if r.get("status") == "BLOQUEADO":
+              raise SystemExit("FASE10_BLOCKED")
+          if r.get("candidate_field_count") != 25 or r.get("raw_to_normalized_all_rows_match") is not True:
+              raise SystemExit("FASE10_RAW_NORMALIZED_RECONCILIATION_FAILED")
+          if r.get("candidate_rows_added_vs_canonical") != 53275 or r.get("canonical_rows_absent_from_candidate") != 0:
+              raise SystemExit("FASE10_DIFF_NOT_MATCHED_TO_REVIEWED_BASELINE")
+          if r.get("status") != "VALIDADO_COM_DIFERENCAS_A_REVISAR":
+              raise SystemExit("FASE10_UNEXPECTED_STATUS")
+          print("FASE10 técnica confirmada; promoção permanece bloqueada por 53.275 registos adicionais.")
+          PY
+
       - name: Resumo
         if: always()
         run: |
