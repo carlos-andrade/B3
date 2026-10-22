@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IDVR",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lEVlInLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IDVR?language=pt-br",
+  "captured_at": "2026-10-21T22:41:57.764468-03:00",
+  "reference_date": "2026-10-21",
+  "raw_file": "dados/indices_b3/raw/2026/IDVR_2026-10-21.json",
+  "raw_sha256": "ecb7514e299fe3b992b4066b8ffbeba25907e8c6350985daa1f135ed04d9f0d4",
+  "normalized_file": "dados/indices_b3/normalized/2026/IDVR_2026-10-21.csv",
+  "normalized_sha256": "7c898c41907d0800ee72535eb4a198814d29be64e5b033bed459a911f78a54e3",
+  "rows": 88,
+  "participation_sum_pct": 100.0,
+  "redutor": "623.616.025,52669599",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
