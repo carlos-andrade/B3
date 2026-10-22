@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "source": "BCB Dados Abertos / PTAX OData",
+  "dataset_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
+  "endpoint": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?%40moeda=%27EUR%27&%40dataInicial=%2709-23-2026%27&%40dataFinalCotacao=%2710-22-2026%27&%24top=10000&%24format=json",
+  "license": "Open Data Commons Open Database License (ODbL)",
+  "currency": "EUR",
+  "start_date": "2026-09-23",
+  "end_date": "2026-10-22",
+  "captured_at_utc": "2026-10-22T01:58:58.377800+00:00",
+  "observations": 100,
+  "bytes": 17512,
+  "sha256": "c81fb4bc67de9160d8bb7c05282051623d484fea6934282f91606b01ee5b6c31",
+  "raw_path": "dados/cambio/ptax/raw/PTAX_EUR_2026-09-23_2026-10-22_20261022T015858Z.json",
+  "validation": {
+    "official_https_endpoint": true,
+    "json_schema_minimum": "PASS",
+    "observations_nonempty": true,
+    "normalized": false,
+    "certified": false
+  }
+}
