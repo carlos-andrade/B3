@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IFNC",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lGTkMnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IFNC?language=pt-br",
+  "captured_at": "2026-10-22T22:44:56.408173-03:00",
+  "reference_date": "2026-10-22",
+  "raw_file": "dados/indices_b3/raw/2026/IFNC_2026-10-22.json",
+  "raw_sha256": "b2ed023901de9395c55304001d85f0403285d4706a6c00214bdd48f2fa784db1",
+  "normalized_file": "dados/indices_b3/normalized/2026/IFNC_2026-10-22.csv",
+  "normalized_sha256": "c1048d4d48022892700a417419ffc4163f483f1f3a8f0733f9bbdc0e9fe9343d",
+  "rows": 17,
+  "participation_sum_pct": 100.0,
+  "redutor": "24.548.891,29190618",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

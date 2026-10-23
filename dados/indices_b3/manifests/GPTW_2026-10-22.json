@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "GPTW",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0dQVFcnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/GPTW?language=pt-br",
+  "captured_at": "2026-10-22T22:44:56.408173-03:00",
+  "reference_date": "2026-10-22",
+  "raw_file": "dados/indices_b3/raw/2026/GPTW_2026-10-22.json",
+  "raw_sha256": "969fe113e46c9fb72e158c1a70606007984593e4f5d307da21419c22f79658f7",
+  "normalized_file": "dados/indices_b3/normalized/2026/GPTW_2026-10-22.csv",
+  "normalized_sha256": "a8fbbdc9bfecab97cd9699b10710ad9d38058a7c5f33b9b9ce3cd73cc4fd7d60",
+  "rows": 41,
+  "participation_sum_pct": 100.0,
+  "redutor": "9.826.457.797,24940027",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

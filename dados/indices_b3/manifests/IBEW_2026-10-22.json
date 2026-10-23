@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IBEW",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lCRVcnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBEW?language=pt-br",
+  "captured_at": "2026-10-22T22:44:56.408173-03:00",
+  "reference_date": "2026-10-22",
+  "raw_file": "dados/indices_b3/raw/2026/IBEW_2026-10-22.json",
+  "raw_sha256": "28b49d3a783dbd7f22268fe3ca871950eab75585bd5469680a230d6f86b569a7",
+  "normalized_file": "dados/indices_b3/normalized/2026/IBEW_2026-10-22.csv",
+  "normalized_sha256": "a9dbce586258d37ad49592a547e3a72ec8d5d29327af7a313b4660ceb663d394",
+  "rows": 76,
+  "participation_sum_pct": 100.0,
+  "redutor": "1.130.984.242,71099107",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

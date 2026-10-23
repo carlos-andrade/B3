@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "ITAG",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lUQUcnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/ITAG?language=pt-br",
+  "captured_at": "2026-10-22T22:44:56.408173-03:00",
+  "reference_date": "2026-10-22",
+  "raw_file": "dados/indices_b3/raw/2026/ITAG_2026-10-22.json",
+  "raw_sha256": "f2c9a4c0c75e5f0c9928b8957f6efda5ceb2c4a27338ad875d3486cae260c11f",
+  "normalized_file": "dados/indices_b3/normalized/2026/ITAG_2026-10-22.csv",
+  "normalized_sha256": "4ee6913ac14b6006ae948cae50c63788506bea3ae2cca9afcd2c65b92f369182",
+  "rows": 207,
+  "participation_sum_pct": 100.0,
+  "redutor": "67.797.541,81132222",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
