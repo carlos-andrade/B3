@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-fase02-integridade-1994-v1
+  cancel-in-progress: false
+
 jobs:
   validar:
     runs-on: ubuntu-latest
