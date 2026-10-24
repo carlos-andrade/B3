@@ -8,6 +8,10 @@ on:
       - ".github/workflows/cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1.yml"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1
+  cancel-in-progress: false
+
 jobs:
   analise:
     runs-on: ubuntu-24.04
