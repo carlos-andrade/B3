@@ -27,7 +27,7 @@ def extract_paths(t):
 def classify(path,raw):
  t=uncomment(raw)
  if "cotahist" not in path.lower() and not re.search(r"dados/cotahist",t,re.I): return None
- pushes=re.findall(r"(?im)^\s*git\s+push\b([^\n]*)",t)
+ pushes=re.findall(r"(?i)\bgit\s+push\b([^\n]*)",t)
  api=bool(re.search(r"createOrUpdateFileContents|repos\.createOrUpdateFileContents|git\.push\(|push_files|contents\.create|update_file\(",t,re.I))
  commit=bool(re.search(r"\bgit\s+commit\b",t,re.I))
  perm=bool(re.search(r"(?m)^\s*contents:\s*write\s*$",t)) or bool(re.search(r"permissions:\s*\{[^}]*contents:\s*write",t,re.I))
