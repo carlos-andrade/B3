@@ -1,82 +1,32 @@
-name: COTAHIST - dataset oficial V2
+name: COTAHIST - dataset oficial V2 (validação manual, sem publicação)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "dados/cotahist/normalized/anual/**"
-      - "dados/cotahist/certificacao/v2/**"
-      - "dados/cotahist/normalized/manifests/**"
-      - "scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py"
-      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
-      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
-      - ".github/workflows/cotahist-dataset-oficial-v2.yml"
 
 permissions:
-  contents: write
-
-concurrency:
-  group: b3-cotahist-main-publish-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  publish:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout sem materialização LFS global
         uses: actions/checkout@v4
         with:
           lfs: false
-
-      - name: Instalar Git LFS e materializar apenas NORMALIZED anual
+      - name: Instalar Git LFS e materializar NORMALIZED anual
         run: |
           set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y git-lfs
           git lfs install
           git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
-
-      - name: Gerar Dataset Oficial V2
+      - name: Gerar Dataset Oficial V2 em ambiente temporário
         run: python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
-
-      - name: Persistir Dataset Oficial V2
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
-          if git diff --cached --quiet; then
-            echo "Sem alterações novas para persistir."
-          else
-            git commit -m "data(oficial): publicar dataset COTAHIST V2"
-            pushed=0
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              git rebase origin/main
-              if git push origin HEAD:main; then
-                pushed=1
-                break
-              fi
-              echo "Push concorrente falhou (tentativa $attempt/5); nova sincronização."
-              sleep 2
-            done
-            test "$pushed" -eq 1
-          fi
-
-      - name: Publicar evidência
+      - name: Disponibilizar artefacto para revisão
         uses: actions/upload-artifact@v4
         with:
-          name: cotahist-dataset-oficial-v2
+          name: cotahist-dataset-oficial-v2-validation
           path: dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
-          retention-days: 30
-
-      - name: Resumo de execução — observabilidade
-        if: always()
-        run: |
-          {
-            echo "## Observabilidade"
-            echo "- Workflow: cotahist-dataset-oficial-v2.yml"
-            echo "- Resultado do job: ${{ job.status }}"
-            echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "$GITHUB_STEP_SUMMARY"
+          retention-days: 7
