@@ -1,0 +1,82 @@
+name: COTAHIST - validação de correções e inventário
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py"
+      - "scripts/ingestao/test_gerar_dataset_oficial_cotahist_v2.py"
+      - "scripts/governanca/auditar_workflows_b3.py"
+      - "scripts/governanca/test_cotahist_writer_inventory.py"
+      - "scripts/governanca/test_validar_autorizacao_endpoint.py"
+      - ".github/workflows/cotahist-*.yml"
+      - "dados/cotahist/normalized/manifests/**"
+      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-tests-and-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validar sintaxe e contrato dos gates
+        run: |
+          python -m py_compile scripts/governanca/auditar_workflows_b3.py
+          python -m unittest \
+            scripts.ingestao.test_gerar_dataset_oficial_cotahist_v2 \
+            scripts.governanca.test_cotahist_writer_inventory \
+            scripts.governanca.test_validar_autorizacao_endpoint -v
+      - name: Gerar auditoria estática e inventário completo
+        run: python scripts/governanca/auditar_workflows_b3.py
+      - name: Validar cobertura do inventário
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path("docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json").read_text(encoding="utf-8"))
+          inventory=report["cotahist_writer_inventory"]
+          print(json.dumps({k:v for k,v in inventory.items() if k != "workflows"},ensure_ascii=False,indent=2))
+          assert inventory["workflow_count"] >= 536, "Inventário COTAHIST incompleto"
+          assert all(item.get("workflow") and item.get("classification") and item.get("branch_target") for item in inventory["workflows"])
+          PY
+  dataset-v2-scope-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Materializar NORMALIZED anual para verificação local
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+          git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
+      - name: Validar Dataset V2 sem publicar
+        run: |
+          python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload=json.loads(Path("dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json").read_text(encoding="utf-8"))
+          years=[int(item["ano"]) for item in payload["records"]]
+          assert years == list(range(1986,2026)), f"Intervalo inesperado: {years[0]}–{years[-1]} ({len(years)} anos)"
+          assert payload["periodo"] == {"inicio":1986,"fim":2025}
+          assert payload["policy_exclusions"]["2026"]["status"] == "BLOQUEADO_AUTORIZACAO_FONTE"
+          assert 2026 not in years
+          print("PASS: 40 anos publicados para consulta; 2026 permanece bloqueado.")
+          PY

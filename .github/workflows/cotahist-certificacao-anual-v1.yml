@@ -1,19 +1,10 @@
-name: COTAHIST - certificação histórica e bloqueio de 2026 V1
+name: COTAHIST - certificação anual (validação manual, sem publicação)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "scripts/ingestao/certificar_cotahist_anual_v1.py"
-      - ".github/workflows/cotahist-certificacao-anual-v1.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: b3-cotahist-main-publish-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
   certify:
@@ -22,44 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Gerar matriz histórica com bloqueio explícito de 2026
+      - name: Gerar matriz histórica em ambiente temporário
         run: python scripts/ingestao/certificar_cotahist_anual_v1.py
-
-      - name: Verificar estado Git
-        id: diff
-        run: |
-          if git diff --quiet -- dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Persistir matriz
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
-          git commit -m "data(certificacao): bloqueia promocao COTAHIST 2026"
-          git pull --rebase origin main
-          git push origin HEAD:main
-
-      - name: Publicar evidência da matriz
+      - name: Disponibilizar artefacto para revisão
         uses: actions/upload-artifact@v4
         with:
-          name: cotahist-certificacao-anual-v1
+          name: cotahist-certificacao-anual-v1-validation
           path: dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
-          retention-days: 30
-
-      - name: Resumo de execução — observabilidade
-        if: always()
-        run: |
-          {
-            echo "## Observabilidade"
-            echo "- Workflow: cotahist-certificacao-anual-v1.yml"
-            echo "- Resultado do job: ${{ job.status }}"
-            echo "- 1986–2025: linhas históricas preservadas"
-            echo "- 2026: BLOQUEADO_AUTORIZACAO_FONTE; não certificado nem publicado"
-            echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "$GITHUB_STEP_SUMMARY"
+          retention-days: 7

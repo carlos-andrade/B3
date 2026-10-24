@@ -1,0 +1,95 @@
+name: COTAHIST - publicador serial canónico
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/certificar_cotahist_anual_v1.py"
+      - "scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py"
+      - "scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py"
+      - "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
+      - "dados/cotahist/normalized/anual/**"
+      - "dados/cotahist/normalized/manifests/**"
+      - "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
+      - "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: b3-cotahist-main-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout sem materialização LFS global
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+      - name: Recalcular e publicar outputs numa única transação
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            git lfs pull --include="dados/cotahist/normalized/anual/COTAHIST_A*.csv"
+            python scripts/ingestao/certificar_cotahist_anual_v1.py
+            python scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py
+            python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
+            git add \
+              dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv \
+              dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json \
+              dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
+            if git diff --cached --quiet; then
+              echo "Sem alterações novas; estado canónico já reconciliado."
+              pushed=1
+              break
+            fi
+            git commit -m "data(cotahist): reconciliar certificação e datasets oficiais"
+            if git push origin HEAD:main; then
+              pushed=1
+              break
+            fi
+            echo "Push concorrente; reconstruir todos os outputs sobre main (tentativa $attempt/5)."
+            git reset --hard origin/main
+            sleep $((attempt * 2))
+          done
+          test "$pushed" -eq 1
+      - name: Publicar artefactos de auditoria
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-publish-transaction
+          path: |
+            dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv
+            dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json
+            dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
+          retention-days: 30
+      - name: Resumo da transação
+        if: always()
+        run: |
+          {
+            echo "## Publicação COTAHIST serializada"
+            echo "- Um único workflow é responsável pela certificação e pelos datasets V1/V2."
+            echo "- O Dataset V2 exclui 2026 até existir autorização explícita de publicação."
+            echo "- Os retries recalculam os três outputs a partir do HEAD corrente de main."
+            echo "- Resultado do job: ${{ job.status }}"
+          } >> "$GITHUB_STEP_SUMMARY"

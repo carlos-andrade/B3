@@ -1,0 +1,41 @@
+name: COTAHIST scheduler isolated probe B
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/cotahist-scheduler-probe-a.yml"
+      - ".github/workflows/cotahist-scheduler-probe-b.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: b3-cotahist-scheduler-isolated-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Record isolated scheduler interval
+        shell: bash
+        run: |
+          set -euo pipefail
+          start_epoch_ns="$(date -u +%s%N)"
+          start_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+          echo "SCHEDULER_PROBE=B START_UTC=$start_utc START_EPOCH_NS=$start_epoch_ns"
+          sleep 20
+          end_epoch_ns="$(date -u +%s%N)"
+          end_utc="$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)"
+          echo "SCHEDULER_PROBE=B END_UTC=$end_utc END_EPOCH_NS=$end_epoch_ns"
+          test "$end_epoch_ns" -gt "$start_epoch_ns"
+          {
+            echo "## Isolated GitHub Actions scheduler probe B"
+            echo "- START_UTC: $start_utc"
+            echo "- START_EPOCH_NS: $start_epoch_ns"
+            echo "- END_UTC: $end_utc"
+            echo "- END_EPOCH_NS: $end_epoch_ns"
+            echo "- Resource: isolated synthetic delay only; no checkout, secrets, network or publication."
+          } >> "$GITHUB_STEP_SUMMARY"

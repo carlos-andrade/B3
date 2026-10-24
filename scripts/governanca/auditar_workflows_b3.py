@@ -250,12 +250,129 @@ def audit_workflow(path: pathlib.Path) -> dict:
         "observability_or_advisory": [c["code"] for c in observability_only],
     }
 
+
+def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
+    """Classifica estaticamente escrita efetiva, branch alvo, grupo e paths COTAHIST."""
+    rel = path.as_posix()
+    if "cotahist" not in path.name.lower() and not re.search(r"dados/cotahist", text, re.I):
+        return None
+
+    push_commands = re.findall(r"(?i)\bgit\s+push\b([^\n]*)", text)
+    push_flat = " ".join(part.strip() for part in push_commands)
+    api_writer = bool(re.search(
+        r"createOrUpdateFileContents|repos\.createOrUpdateFileContents|git\.push\(|push_files|contents\.create|update_file\(",
+        text, re.I
+    ))
+    has_commit = bool(re.search(r"\bgit\s+commit\b", text, re.I))
+    contents_write = bool(
+        re.search(r"(?m)^\s+contents:\s*write\s*$", text)
+        or re.search(r"permissions:\s*\{\s*contents:\s*write\s*\}", text, re.I)
+    )
+
+    if push_commands or api_writer:
+        classification = "REPO_WRITER"
+    elif has_commit:
+        classification = "LOCAL_GIT_MUTATION_NO_REMOTE_PUSH"
+    elif contents_write:
+        classification = "WRITE_PERMISSION_NO_STATIC_PUBLISH_COMMAND"
+    else:
+        classification = "READ_ONLY_OR_ARTIFACT_ONLY"
+
+    if re.search(r"HEAD\s*:\s*main|origin\s+main\b|refs/heads/main", push_flat, re.I):
+        branch_target = "main"
+    elif re.search(r"github\.ref_name", push_flat, re.I):
+        branch_target = "github.ref_name"
+    elif re.search(r"github\.ref", push_flat, re.I):
+        branch_target = "github.ref"
+    elif push_commands:
+        branch_target = "UPSTREAM_OR_IMPLICIT"
+    elif api_writer:
+        branch_target = "API_TARGET_UNRESOLVED"
+    else:
+        branch_target = "NONE"
+
+    group_match = re.search(r"(?m)^\s*group:\s*(.+?)\s*$", text)
+    concurrency_group = group_match.group(1).strip() if group_match else "MISSING"
+
+    write_paths = []
+    lines = text.splitlines()
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        if re.search(r"\bgit\s+add\b", line, re.I):
+            command = line.split("git add", 1)[-1].strip()
+            while line.rstrip().endswith("\\") and index + 1 < len(lines):
+                index += 1
+                line = lines[index]
+                command += " " + line.strip().rstrip("\\")
+            tokens = command.replace('"', '').replace("'", "").split()
+            for value in tokens:
+                value = value.strip()
+                if not value:
+                    continue
+                if value in {".", "-A", "--all"}:
+                    write_paths = ["<entire-repository>"]
+                    break
+                if value.startswith("-"):
+                    continue
+                if value not in write_paths:
+                    write_paths.append(value)
+        index += 1
+    if any(value in {".", "-A", "--all"} for value in write_paths):
+        write_paths = ["<entire-repository>"]
+    referenced_paths = sorted(set(re.findall(
+        r"(?<![A-Za-z0-9_])dados/cotahist/[A-Za-z0-9_./*{}-]+", text, re.I
+    )))
+    if not write_paths and classification == "REPO_WRITER":
+        write_paths = ["UNRESOLVED_FROM_STATIC_GIT_ADD"]
+    return {
+        "workflow": rel,
+        "classification": classification,
+        "branch_target": branch_target,
+        "write_paths": write_paths,
+        "referenced_cotahist_paths": referenced_paths[:30],
+        "concurrency_group": concurrency_group,
+        "contents_write_permission": contents_write,
+        "git_push_detected": bool(push_commands),
+        "api_write_detected": api_writer,
+        "git_commit_detected": has_commit,
+        "static_only": True,
+    }
+
 def main() -> int:
     workflows = sorted(WORKFLOW_DIR.glob("*.yml")) + sorted(WORKFLOW_DIR.glob("*.yaml"))
     results = [audit_workflow(p) for p in workflows]
     counts = {}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
+
+    cotahist_inventory = []
+    for workflow_path in workflows:
+        workflow_text = workflow_path.read_text(encoding="utf-8", errors="replace")
+        item = classify_cotahist_writer(workflow_path, workflow_text)
+        if item is not None:
+            cotahist_inventory.append(item)
+    branch_counts = {}
+    group_counts = {}
+    for item in cotahist_inventory:
+        if item["classification"] == "REPO_WRITER":
+            branch = item["branch_target"]
+            branch_counts[branch] = branch_counts.get(branch, 0) + 1
+        group = item["concurrency_group"]
+        group_counts[group] = group_counts.get(group, 0) + 1
+    inventory_payload = {
+        "scope": "Inventário estático de workflows cujo nome ou conteúdo referencia COTAHIST.",
+        "static_only": True,
+        "workflow_count": len(cotahist_inventory),
+        "effective_repo_writer_count": sum(x["classification"] == "REPO_WRITER" for x in cotahist_inventory),
+        "local_git_mutation_count": sum(x["classification"] == "LOCAL_GIT_MUTATION_NO_REMOTE_PUSH" for x in cotahist_inventory),
+        "write_permission_only_count": sum(x["classification"] == "WRITE_PERMISSION_NO_STATIC_PUBLISH_COMMAND" for x in cotahist_inventory),
+        "read_only_or_artifact_only_count": sum(x["classification"] == "READ_ONLY_OR_ARTIFACT_ONLY" for x in cotahist_inventory),
+        "repo_writer_branch_target_counts": branch_counts,
+        "concurrency_group_counts": group_counts,
+        "shared_branch_note": "Workflows que publicam em main partilham o mesmo branch Git mesmo quando os paths são distintos; os paths listados são evidência estática, não prova de execução em runtime.",
+        "workflows": cotahist_inventory,
+    }
     payload = {
         "schema_version": "2.0.0",
         "generated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -263,6 +380,7 @@ def main() -> int:
         "workflow_count": len(results),
         "status_counts": counts,
         "results": results,
+        "cotahist_writer_inventory": inventory_payload,
         "classification_policy": {
             "blocking": ["CRITICA", "ALTA"],
             "advisory": ["MEDIA", "BAIXA"],
@@ -314,6 +432,30 @@ def main() -> int:
             + (", ".join(r["blocking_divergences"]) or "—") + " | "
             + (", ".join(r["observability_or_advisory"]) or "—") + " |"
         )
+    lines.extend([
+        "",
+        "## Inventário estático de escritores COTAHIST",
+        "",
+        f"- Workflows COTAHIST/referenciados: **{inventory_payload['workflow_count']}**",
+        f"- Escritores efetivos do repositório (push/API): **{inventory_payload['effective_repo_writer_count']}**",
+        f"- Commits locais sem push detetado: **{inventory_payload['local_git_mutation_count']}**",
+        f"- Permissão de escrita sem comando de publicação detetado: **{inventory_payload['write_permission_only_count']}**",
+        f"- Read-only/artefactos: **{inventory_payload['read_only_or_artifact_only_count']}**",
+        "- Classificação baseada em análise estática; confirmar dinamicamente antes de alterar políticas de execução.",
+        "",
+        "| Workflow | Classe | Branch destino | Grupo de concorrência | Paths de escrita detetados |",
+        "|---|---|---|---|---|",
+    ])
+    for item in cotahist_inventory:
+        if item["classification"] == "REPO_WRITER":
+            paths_text = ", ".join(item["write_paths"][:4]) or "—"
+            lines.append(
+                "| " + item["workflow"] + " | " + item["classification"] + " | "
+                + item["branch_target"] + " | " + item["concurrency_group"] + " | "
+                + paths_text + " |"
+            )
+    lines.extend(["", "O JSON desta auditoria contém o inventário completo, incluindo workflows sem escrita efetiva."])
+
     # O relatório gerado também obedece ao cabeçalho canónico GOVERNANCA 1.0.3.
     baseline = subprocess.run(
         ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
