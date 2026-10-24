@@ -82,7 +82,7 @@ def classify(path,raw):
  elif api: branch="API_TARGET_UNRESOLVED"
  group=re.search(r"(?m)^\s*group:\s*(.+?)\s*$",t)
  inline_group=re.search(r"(?m)^\s*concurrency:\s*\{\s*group:\s*([^,}]+)",t)
- group_value=group.group(1).strip() if group else (inline_group.group(1).strip().strip("\\'\\\"") if inline_group else "MISSING")
+ group_value=group.group(1).strip() if group else (inline_group.group(1).strip().strip("\'").strip('"') if inline_group else "MISSING")
  secrets=sorted(set(re.findall(r"\b(?:secrets|vars)\.([A-Z][A-Z0-9_]*)\b",t)))
  creds=sorted(set(re.findall(r"(?i)\b([A-Z][A-Z0-9_]*(?:TOKEN|PAT|APP_ID|PRIVATE_KEY|PASSWORD|SECRET|CREDENTIAL)[A-Z0-9_]*)\b",t)))
  refs=sorted(set(re.findall(r"(?<![A-Za-z0-9_])dados/cotahist/[A-Za-z0-9_./*{}-]+",t,re.I)))
