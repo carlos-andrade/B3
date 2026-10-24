@@ -19,7 +19,11 @@ RAW_DIR = ROOT / "dados/cotahist/raw/anual"
 QUALITY_DIR = ROOT / "dados/cotahist/quality"
 PHYSICAL_AUDIT = QUALITY_DIR / "AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json"
 OUT = ROOT / "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json"
-YEARS = list(range(1986, 2027))
+AUDIT_YEARS = list(range(1986, 2027))
+# V2.0.0 publica apenas anos encerrados; 2026 continua bloqueado para publicação.
+YEARS = list(range(1986, 2026))
+AUTH_REGISTRY = ROOT / "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+QUALITY_2026 = MANIFEST_DIR / "COTAHIST_A2026_quality.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -38,6 +42,40 @@ def raw_path_for(year: int) -> Path | None:
     return None
 
 
+
+def policy_exclusion_for_2026(quality: dict, endpoint: dict | None) -> dict:
+    """Exclui 2026 da V2.0.0 sem confundir integridade física com licença de publicação."""
+    publication_authorized = bool(
+        endpoint
+        and endpoint.get("publication_authorized") is True
+        and endpoint.get("storage_and_redistribution") in {
+            "AUTHORIZED", "AUTHORIZED_WITH_CONDITIONS", "LICENSED"
+        }
+    )
+    if publication_authorized:
+        status = "EXCLUDED_BY_VERSION_SCOPE"
+        reason = (
+            "A V2.0.0 está limitada explicitamente a 1986–2025; incluir 2026 exige revisão "
+            "versionada do dataset e dos critérios de aceitação."
+        )
+    else:
+        status = "BLOQUEADO_AUTORIZACAO_FONTE"
+        reason = (
+            "A autorização de publicação/redistribuição de COTAHIST 2026 não está demonstrada; "
+            "a validação física não concede direitos de publicação."
+        )
+    return {
+        "status": status,
+        "reason": reason,
+        "endpoint_id": "B3_COTAHIST_DAILY",
+        "authorization_status": endpoint.get("authorization_status", "NOT_REGISTERED") if endpoint else "NOT_REGISTERED",
+        "publication_authorized": publication_authorized,
+        "quality_manifest_status": quality.get("status", "MISSING"),
+        "quality_manifest": str(QUALITY_2026.relative_to(ROOT)).replace("\\", "/"),
+        "authorization_registry": str(AUTH_REGISTRY.relative_to(ROOT)).replace("\\", "/"),
+    }
+
+
 def main() -> None:
     failures: list[str] = []
     records: list[dict] = []
@@ -54,10 +92,28 @@ def main() -> None:
         failures.append("AUDITORIA_FISICA_GLOBAL_NAO_APROVADA")
     if audit.get("intervalo_anos") != [1986, 2026]:
         failures.append("INTERVALO_AUDITORIA_FISICA_INCORRETO")
-    if audit.get("anos_auditados") != len(YEARS):
+    if audit.get("anos_auditados") != len(AUDIT_YEARS):
         failures.append("CONTAGEM_ANOS_AUDITADOS_INCORRETA")
-    if audit.get("anos_validados") != len(YEARS) or audit.get("anos_com_falha") != 0:
+    if audit.get("anos_validados") != len(AUDIT_YEARS) or audit.get("anos_com_falha") != 0:
         failures.append("AUDITORIA_FISICA_GLOBAL_INCOMPLETA")
+
+    quality_2026 = {}
+    if QUALITY_2026.is_file():
+        try:
+            quality_2026 = json.loads(QUALITY_2026.read_text(encoding="utf-8"))
+        except Exception as exc:
+            failures.append(f"2026: QUALITY_MANIFEST_LEITURA_FALHOU:{type(exc).__name__}")
+    registry = {}
+    if AUTH_REGISTRY.is_file():
+        try:
+            registry = json.loads(AUTH_REGISTRY.read_text(encoding="utf-8"))
+        except Exception as exc:
+            failures.append(f"2026: AUTH_REGISTRY_JSON_INVALIDO:{type(exc).__name__}")
+    endpoint_2026 = next((
+        row for row in registry.get("endpoints", [])
+        if isinstance(row, dict) and row.get("id") == "B3_COTAHIST_DAILY"
+    ), None)
+    exclusion_2026 = policy_exclusion_for_2026(quality_2026, endpoint_2026)
 
     audit_by_year = {
         item.get("ano"): item
@@ -153,11 +209,12 @@ def main() -> None:
         "status": "VIGENTE",
         "generated_at": date.today().isoformat(),
         "source": "B3",
-        "periodo": {"inicio": 1986, "fim": 2026},
-        "escopo": "COTAHIST anual normalizado validado pela auditoria física independente global",
+        "periodo": {"inicio": YEARS[0], "fim": YEARS[-1]},
+        "escopo": "Arquivo COTAHIST anual de consulta, com integridade física validada, limitado a 1986–2025; 2026 excluído por gate explícito de publicação.",
         "certificacao_source": str(PHYSICAL_AUDIT.relative_to(ROOT)).replace("\\", "/"),
         "auditoria_fisica_sha256": sha256_file(PHYSICAL_AUDIT),
         "records": records,
+        "policy_exclusions": {"2026": exclusion_2026},
         "fail_closed": True,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
