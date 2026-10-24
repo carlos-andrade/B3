@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-fase07e-dimes-1986-v1
+  cancel-in-progress: false
+
 jobs:
   analisar-dimes:
     runs-on: ubuntu-latest
