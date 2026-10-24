@@ -281,8 +281,8 @@
     {
       "year": "2026",
       "file": "COTAHIST_A2026.ZIP",
-      "sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
-      "size_bytes": 84469516
+      "sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+      "size_bytes": 85075031
     }
   ],
   "coverage": {
@@ -338,8 +338,8 @@
     ]
   },
   "totals": {
-    "records_type01": 24314082,
-    "k4_groups_total": 24314081,
+    "records_type01": 24537232,
+    "k4_groups_total": 24537231,
     "duplicate_k4_groups_total": 1,
     "duplicate_k4_rows_total": 2,
     "duplicate_k4_groups_with_statistical_difference": 1,
@@ -1028,9 +1028,9 @@
     {
       "year": "2026",
       "raw_file": "COTAHIST_A2026.ZIP",
-      "raw_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
-      "records_type01": 2919760,
-      "k4_groups_total": 2919760,
+      "raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
+      "records_type01": 3142910,
+      "k4_groups_total": 3142910,
       "duplicate_k4_groups_total": 0,
       "duplicate_k4_rows_total": 0,
       "duplicate_k4_groups_with_statistical_difference": 0,
