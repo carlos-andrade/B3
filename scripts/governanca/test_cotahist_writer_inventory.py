@@ -28,6 +28,26 @@ steps:
         self.assertIn("dados/cotahist/oficial/dataset.json", result["write_paths"])
         self.assertIn("b3-cotahist-main-publish", result["concurrency_group"])
 
+    def test_does_not_misclassify_shell_tokens_as_write_paths(self):
+        result = classify_cotahist_writer(
+            Path(".github/workflows/cotahist-dynamic-writer.yml"),
+            """
+permissions:
+  contents: write
+steps:
+  - run: |
+      git add "$evidence" && git diff --cached --quiet
+      git commit -m save
+      git push origin HEAD:main
+""",
+        )
+        self.assertIsNotNone(result)
+        self.assertEqual(result["classification"], "REPO_WRITER")
+        self.assertEqual(result["write_paths"], ["DYNAMIC:$evidence"])
+        self.assertNotIn("git", result["write_paths"])
+        self.assertNotIn("diff", result["write_paths"])
+        self.assertEqual(result["write_target_confidence"], "DYNAMIC_VARIABLE")
+
     def test_classifies_read_only_workflow(self):
         result = classify_cotahist_writer(
             Path(".github/workflows/cotahist-read-only.yml"),
