@@ -16,6 +16,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase09-prerelease-1993-v1
+  cancel-in-progress: false
+
 jobs:
   prerelease:
     runs-on: ubuntu-latest
