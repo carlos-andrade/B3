@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-fase01-aquisicao-raw-1993-v1
+  cancel-in-progress: false
+
 jobs:
   auditar:
     runs-on: ubuntu-latest
