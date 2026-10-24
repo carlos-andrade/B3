@@ -6,6 +6,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-classificacao-excecoes-1988-v1
+  cancel-in-progress: false
+
 jobs:
   classify:
     runs-on: ubuntu-latest
