@@ -1,0 +1,28 @@
+name: COTAHIST - diagnóstico isolado de comprimento de registos
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingestao/diagnosticar_registos_cotahist.py"
+      - ".github/workflows/cotahist-record-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Gate de aquisição para validação interna
+        run: python scripts/governanca/validar_autorizacao_endpoint.py --endpoint-id B3_COTAHIST_DAILY --allow-blocked
+      - name: Inspecionar comprimentos sem normalizar ou publicar
+        run: python scripts/ingestao/diagnosticar_registos_cotahist.py
