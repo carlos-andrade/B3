@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IMOB",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lNT0InLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IMOB?language=pt-br",
+  "captured_at": "2026-10-23T22:48:23.764930-03:00",
+  "reference_date": "2026-10-23",
+  "raw_file": "dados/indices_b3/raw/2026/IMOB_2026-10-23.json",
+  "raw_sha256": "8c2eaf8bccfe0b3062f1214fa7b76f9edf91f910ce9938ea54648a85db1e0aaf",
+  "normalized_file": "dados/indices_b3/normalized/2026/IMOB_2026-10-23.csv",
+  "normalized_sha256": "a05c404fe5fd3a79c0aed2bf3abc30eb8766df9964baee878fee6e73559ff3fe",
+  "rows": 15,
+  "participation_sum_pct": 100.0,
+  "redutor": "42.498.836,58301416",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

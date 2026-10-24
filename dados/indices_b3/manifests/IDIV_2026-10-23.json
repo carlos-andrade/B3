@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IDIV",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lESVYnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IDIV?language=pt-br",
+  "captured_at": "2026-10-23T22:48:23.764930-03:00",
+  "reference_date": "2026-10-23",
+  "raw_file": "dados/indices_b3/raw/2026/IDIV_2026-10-23.json",
+  "raw_sha256": "41414f2950608e61b72f5a4bdff0c7afa231aa97d9ee55903d73c60a83eccc3f",
+  "normalized_file": "dados/indices_b3/normalized/2026/IDIV_2026-10-23.csv",
+  "normalized_sha256": "45ca0cb2c56beca68c1623b88a4923b700908136e35b45051100a9d7b638460a",
+  "rows": 51,
+  "participation_sum_pct": 100.0,
+  "redutor": "39.871.832,43176190",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

@@ -4,214 +4,214 @@
   "status": "VIGENTE",
   "status_frescor": "VALIDADO",
   "source": "B3",
-  "generated_at": "2026-10-22T22:44:56.408173-03:00",
+  "generated_at": "2026-10-23T22:48:23.764930-03:00",
   "reference_dates": [
-    "2026-10-22"
+    "2026-10-23"
   ],
   "indices": [
     {
       "index_code": "AGFS",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/AGFS_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/AGFS_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/AGFS_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/AGFS_2026-10-23.json"
     },
     {
       "index_code": "BDRX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/BDRX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/BDRX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/BDRX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/BDRX_2026-10-23.json"
     },
     {
       "index_code": "GPTW",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/GPTW_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/GPTW_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/GPTW_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/GPTW_2026-10-23.json"
     },
     {
       "index_code": "IBBR",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBBR_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBBR_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBBR_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBBR_2026-10-23.json"
     },
     {
       "index_code": "IBEE",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBEE_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBEE_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBEE_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBEE_2026-10-23.json"
     },
     {
       "index_code": "IBEP",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBEP_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBEP_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBEP_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBEP_2026-10-23.json"
     },
     {
       "index_code": "IBEW",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBEW_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBEW_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBEW_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBEW_2026-10-23.json"
     },
     {
       "index_code": "IBHB",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBHB_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBHB_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBHB_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBHB_2026-10-23.json"
     },
     {
       "index_code": "IBLV",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBLV_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBLV_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBLV_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBLV_2026-10-23.json"
     },
     {
       "index_code": "IBOV",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBOV_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBOV_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBOV_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBOV_2026-10-23.json"
     },
     {
       "index_code": "IBRA",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBRA_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBRA_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBRA_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBRA_2026-10-23.json"
     },
     {
       "index_code": "IBRX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBRX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBRX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBRX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBRX_2026-10-23.json"
     },
     {
       "index_code": "IBRX50",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBRX50_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBRX50_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBRX50_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBRX50_2026-10-23.json"
     },
     {
       "index_code": "IBSD",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IBSD_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IBSD_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IBSD_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IBSD_2026-10-23.json"
     },
     {
       "index_code": "ICO2",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/ICO2_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/ICO2_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/ICO2_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/ICO2_2026-10-23.json"
     },
     {
       "index_code": "ICON",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/ICON_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/ICON_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/ICON_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/ICON_2026-10-23.json"
     },
     {
       "index_code": "IDIV",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IDIV_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IDIV_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IDIV_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IDIV_2026-10-23.json"
     },
     {
       "index_code": "IDVR",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IDVR_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IDVR_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IDVR_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IDVR_2026-10-23.json"
     },
     {
       "index_code": "IEE",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IEE_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IEE_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IEE_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IEE_2026-10-23.json"
     },
     {
       "index_code": "IFIL",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IFIL_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IFIL_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IFIL_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IFIL_2026-10-23.json"
     },
     {
       "index_code": "IFIX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IFIX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IFIX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IFIX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IFIX_2026-10-23.json"
     },
     {
       "index_code": "IFNC",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IFNC_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IFNC_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IFNC_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IFNC_2026-10-23.json"
     },
     {
       "index_code": "IGCNM",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IGCNM_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IGCNM_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IGCNM_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IGCNM_2026-10-23.json"
     },
     {
       "index_code": "IGCT",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IGCT_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IGCT_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IGCT_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IGCT_2026-10-23.json"
     },
     {
       "index_code": "IGCX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IGCX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IGCX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IGCX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IGCX_2026-10-23.json"
     },
     {
       "index_code": "IMAT",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IMAT_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IMAT_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IMAT_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IMAT_2026-10-23.json"
     },
     {
       "index_code": "IMOB",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IMOB_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IMOB_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IMOB_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IMOB_2026-10-23.json"
     },
     {
       "index_code": "INDX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/INDX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/INDX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/INDX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/INDX_2026-10-23.json"
     },
     {
       "index_code": "ISE",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/ISE_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/ISE_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/ISE_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/ISE_2026-10-23.json"
     },
     {
       "index_code": "ITAG",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/ITAG_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/ITAG_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/ITAG_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/ITAG_2026-10-23.json"
     },
     {
       "index_code": "IVBX2",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/IVBX2_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/IVBX2_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/IVBX2_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/IVBX2_2026-10-23.json"
     },
     {
       "index_code": "MLCX",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/MLCX_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/MLCX_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/MLCX_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/MLCX_2026-10-23.json"
     },
     {
       "index_code": "SMLL",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/SMLL_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/SMLL_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/SMLL_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/SMLL_2026-10-23.json"
     },
     {
       "index_code": "UTIL",
-      "reference_date": "2026-10-22",
-      "normalized_file": "dados/indices_b3/normalized/2026/UTIL_2026-10-22.csv",
-      "manifest": "dados/indices_b3/manifests/UTIL_2026-10-22.json"
+      "reference_date": "2026-10-23",
+      "normalized_file": "dados/indices_b3/normalized/2026/UTIL_2026-10-23.csv",
+      "manifest": "dados/indices_b3/manifests/UTIL_2026-10-23.json"
     }
   ],
   "fail_closed": true

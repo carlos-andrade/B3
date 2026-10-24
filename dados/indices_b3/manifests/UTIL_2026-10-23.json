@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "UTIL",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ1VUSUwnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/UTIL?language=pt-br",
+  "captured_at": "2026-10-23T22:48:23.764930-03:00",
+  "reference_date": "2026-10-23",
+  "raw_file": "dados/indices_b3/raw/2026/UTIL_2026-10-23.json",
+  "raw_sha256": "dc137a7a3ef2bd3c5cbedabac73f8cb6b91f0e742f5b231f567c9ae3d20c1927",
+  "normalized_file": "dados/indices_b3/normalized/2026/UTIL_2026-10-23.csv",
+  "normalized_sha256": "470558d9befab8741bbf20fea94b7ab556b8e739d7423e71d1f76e75fa3e7ee9",
+  "rows": 16,
+  "participation_sum_pct": 100.0,
+  "redutor": "24.272.170,60159439",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
