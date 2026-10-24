@@ -7,6 +7,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-validacao-independente-1988-v1
+  cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
