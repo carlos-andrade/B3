@@ -1,65 +1,23 @@
-name: COTAHIST - arquivo histórico para consulta V1
+name: COTAHIST - arquivo histórico para consulta V1 (validação manual, sem publicação)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv"
-      - "scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py"
-      - ".github/workflows/cotahist-dataset-oficial-v1.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: b3-cotahist-main-publish-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  publish:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Gerar arquivo histórico de consulta
+      - name: Gerar arquivo histórico em ambiente temporário
         run: python scripts/ingestao/gerar_dataset_oficial_cotahist_v1.py
-
-      - name: Verificar alterações
-        id: diff
-        run: |
-          if git diff --quiet -- dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Persistir manifesto
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json
-          git commit -m "data(arquivo): limita COTAHIST historico a 1986-2025"
-          git pull --rebase origin main
-          git push origin HEAD:main
-
-      - name: Publicar evidência do arquivo
+      - name: Disponibilizar artefacto para revisão
         uses: actions/upload-artifact@v4
         with:
-          name: cotahist-arquivo-consulta-v1
+          name: cotahist-arquivo-consulta-v1-validation
           path: dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json
-          retention-days: 30
-
-      - name: Resumo de execução — observabilidade
-        if: always()
-        run: |
-          {
-            echo "## Observabilidade"
-            echo "- Workflow: cotahist-dataset-oficial-v1.yml"
-            echo "- Resultado do job: ${{ job.status }}"
-            echo "- Escopo: arquivo histórico 1986–2025; 2026 excluído por bloqueio de autorização"
-            echo "- GITHUB_STEP_SUMMARY: habilitado"
-          } >> "$GITHUB_STEP_SUMMARY"
+          retention-days: 7
