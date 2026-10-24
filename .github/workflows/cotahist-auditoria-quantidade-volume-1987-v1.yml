@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-auditoria-quantidade-volume-1987-v1
+  cancel-in-progress: false
+
 jobs:
   auditar:
     runs-on: ubuntu-latest
