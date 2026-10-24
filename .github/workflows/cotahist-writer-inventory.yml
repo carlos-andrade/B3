@@ -1,0 +1,43 @@
+name: COTAHIST - inventario isolado de escritores
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/**'
+      - 'scripts/governanca/inventariar_escritores_cotahist.py'
+      - 'scripts/governanca/tests/test_inventariar_escritores_cotahist.py'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: cotahist-writer-inventory
+  cancel-in-progress: false
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test classifier
+        run: python -m unittest discover -s scripts/governanca/tests -p 'test_inventariar_escritores_cotahist.py' -v
+      - name: Generate inventory in temporary directory
+        run: python scripts/governanca/inventariar_escritores_cotahist.py --repo-root . --output-dir "$RUNNER_TEMP/cotahist-writer-audit"
+      - name: Upload report only
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-writer-inventory
+          path: |
+            ${{ runner.temp }}/cotahist-writer-audit/cotahist-writer-inventory.json
+            ${{ runner.temp }}/cotahist-writer-audit/cotahist-writer-inventory.md
+          retention-days: 30
