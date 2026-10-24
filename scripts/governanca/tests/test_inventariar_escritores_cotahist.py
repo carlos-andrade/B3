@@ -33,7 +33,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(item["classification"], "FALSE_POSITIVE")
 
     def test_validation_signal_is_validator(self):
-        item = MODULE.classify(".github/workflows/cotahist-validate-only.yml", "steps:\\n  - run: python scripts/ingestao/validar_cotahist.py\\n")
+        item = MODULE.classify(".github/workflows/cotahist-workflow.yml", "steps:\\n  - run: python scripts/ingestao/validar_cotahist.py\\n")
         self.assertEqual(item["classification"], "VALIDATOR")
 
     def test_secret_names_only(self):
@@ -47,7 +47,7 @@ class Tests(unittest.TestCase):
             root = Path(temp)
             workflows = root / ".github" / "workflows"
             workflows.mkdir(parents=True)
-            (workflows / "cotahist-validator.yml").write_text("name: validator\non: workflow_dispatch\nsteps:\n  - run: echo validate\n")
+            (workflows / "cotahist-reference.yml").write_text("name: validator\non: workflow_dispatch\nsteps:\n  - run: echo validate\n")
             data = MODULE.run(root)
             self.assertEqual(data["workflow_count"], 1)
             self.assertEqual(data["classification_counts"]["FALSE_POSITIVE"], 1)
