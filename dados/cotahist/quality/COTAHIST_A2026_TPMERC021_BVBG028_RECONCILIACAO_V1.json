@@ -7,14 +7,14 @@
   },
   "raw": {
     "cotahist_path": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
-    "cotahist_sha256": "4f2cf2aac1073446ccd827f5ba868fe5cf15d5cdc87d636178fe00ac06741768",
+    "cotahist_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
     "bvbg_path": "ativos/catalogo/raw/IN260922.zip",
     "bvbg_sha256": "4e29690d9ce9e226bb61da80a167c11c50f828565431351eaf1f8fbbdcfe0a49"
   },
   "cotahist_021": {
-    "record_count": 1544,
-    "distinct_codneg": 255,
-    "distinct_dates": 179,
+    "record_count": 1798,
+    "distinct_codneg": 267,
+    "distinct_dates": 192,
     "date_distribution": {
       "20260102": 1,
       "20260105": 2,
@@ -194,357 +194,370 @@
       "20260918": 9,
       "20260921": 11,
       "20260922": 18,
-      "20260923": 21
+      "20260923": 21,
+      "20260924": 16,
+      "20260925": 10,
+      "20260928": 16,
+      "20260929": 13,
+      "20260930": 13,
+      "20261001": 7,
+      "20261002": 20,
+      "20261005": 31,
+      "20261006": 26,
+      "20261007": 19,
+      "20261008": 32,
+      "20261009": 29,
+      "20261013": 22
     },
     "samples": [
       {
-        "line": 1426,
-        "data_pregao": "20260102",
+        "line": 1782,
+        "data_pregao": "20260219",
         "codbdi": "93",
-        "codneg": "EMET11Q",
+        "codneg": "BPML11Q",
         "tpmerc": "021"
       },
       {
-        "line": 3286,
-        "data_pregao": "20260105",
+        "line": 2357,
+        "data_pregao": "20260220",
         "codbdi": "93",
-        "codneg": "EMET11Q",
+        "codneg": "ITSA4Q",
         "tpmerc": "021"
       },
       {
-        "line": 3287,
-        "data_pregao": "20260105",
+        "line": 3757,
+        "data_pregao": "20260625",
         "codbdi": "93",
-        "codneg": "GGRC11Q",
+        "codneg": "MOTV3Q",
         "tpmerc": "021"
       },
       {
-        "line": 5138,
-        "data_pregao": "20260106",
-        "codbdi": "93",
-        "codneg": "MCRE11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 5139,
-        "data_pregao": "20260106",
+        "line": 3792,
+        "data_pregao": "20260504",
         "codbdi": "93",
         "codneg": "SBFG3Q",
         "tpmerc": "021"
       },
       {
-        "line": 6948,
-        "data_pregao": "20260107",
+        "line": 3794,
+        "data_pregao": "20260504",
         "codbdi": "93",
-        "codneg": "MCRE11Q",
+        "codneg": "SBSP3Q",
         "tpmerc": "021"
       },
       {
-        "line": 6949,
-        "data_pregao": "20260107",
+        "line": 3898,
+        "data_pregao": "20260625",
         "codbdi": "93",
         "codneg": "AXIA3Q",
         "tpmerc": "021"
       },
       {
-        "line": 6950,
-        "data_pregao": "20260107",
+        "line": 3938,
+        "data_pregao": "20260625",
         "codbdi": "93",
-        "codneg": "CPTS11Q",
+        "codneg": "HGBS11Q",
         "tpmerc": "021"
       },
       {
-        "line": 8754,
-        "data_pregao": "20260108",
+        "line": 3971,
+        "data_pregao": "20260625",
+        "codbdi": "93",
+        "codneg": "MATD3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 3983,
+        "data_pregao": "20260625",
         "codbdi": "93",
         "codneg": "BBAS3Q",
         "tpmerc": "021"
       },
       {
-        "line": 8755,
-        "data_pregao": "20260108",
+        "line": 3994,
+        "data_pregao": "20260625",
         "codbdi": "93",
-        "codneg": "RELG11Q",
+        "codneg": "GOGL34Q",
         "tpmerc": "021"
       },
       {
-        "line": 8756,
-        "data_pregao": "20260108",
+        "line": 4333,
+        "data_pregao": "20260505",
         "codbdi": "93",
-        "codneg": "AZZA3Q",
+        "codneg": "MCLO11Q",
         "tpmerc": "021"
       },
       {
-        "line": 8757,
-        "data_pregao": "20260108",
+        "line": 4407,
+        "data_pregao": "20260625",
         "codbdi": "93",
-        "codneg": "MCRE11Q",
+        "codneg": "PQDP11Q",
         "tpmerc": "021"
       },
       {
-        "line": 8758,
+        "line": 4478,
+        "data_pregao": "20260511",
+        "codbdi": "93",
+        "codneg": "BBAS3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 4940,
+        "data_pregao": "20260511",
+        "codbdi": "93",
+        "codneg": "FLRY3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 5065,
+        "data_pregao": "20260511",
+        "codbdi": "93",
+        "codneg": "ITUB4Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 5308,
+        "data_pregao": "20260423",
+        "codbdi": "93",
+        "codneg": "EQTL3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 6611,
         "data_pregao": "20260108",
         "codbdi": "93",
         "codneg": "TOKY3Q",
         "tpmerc": "021"
       },
       {
-        "line": 10536,
-        "data_pregao": "20260109",
+        "line": 7869,
+        "data_pregao": "20260107",
+        "codbdi": "93",
+        "codneg": "CPTS11Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 9800,
+        "data_pregao": "20260331",
+        "codbdi": "93",
+        "codneg": "SMFT3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 9813,
+        "data_pregao": "20260331",
+        "codbdi": "93",
+        "codneg": "MBRF3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 11049,
+        "data_pregao": "20260105",
+        "codbdi": "93",
+        "codneg": "EMET11Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 11841,
+        "data_pregao": "20260105",
+        "codbdi": "93",
+        "codneg": "GGRC11Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 13266,
+        "data_pregao": "20260130",
+        "codbdi": "93",
+        "codneg": "ITUB4Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 13385,
+        "data_pregao": "20260226",
         "codbdi": "93",
         "codneg": "VALE3Q",
         "tpmerc": "021"
       },
       {
-        "line": 10537,
-        "data_pregao": "20260109",
+        "line": 13467,
+        "data_pregao": "20260130",
         "codbdi": "93",
-        "codneg": "BTLG11Q",
+        "codneg": "SAPR4Q",
         "tpmerc": "021"
       },
       {
-        "line": 14199,
-        "data_pregao": "20260113",
+        "line": 13672,
+        "data_pregao": "20260609",
         "codbdi": "93",
-        "codneg": "TRXF11Q",
+        "codneg": "PETR4Q",
         "tpmerc": "021"
       },
       {
-        "line": 15992,
-        "data_pregao": "20260114",
+        "line": 13822,
+        "data_pregao": "20260417",
         "codbdi": "93",
-        "codneg": "VALE3Q",
+        "codneg": "AXIA6Q",
         "tpmerc": "021"
       },
       {
-        "line": 15993,
-        "data_pregao": "20260114",
+        "line": 14109,
+        "data_pregao": "20260417",
         "codbdi": "93",
-        "codneg": "BRCR11Q",
+        "codneg": "ITUB4Q",
         "tpmerc": "021"
       },
       {
-        "line": 15994,
-        "data_pregao": "20260114",
+        "line": 14120,
+        "data_pregao": "20260417",
         "codbdi": "93",
-        "codneg": "BTHF11Q",
+        "codneg": "GGRC11Q",
         "tpmerc": "021"
       },
       {
-        "line": 15995,
-        "data_pregao": "20260114",
+        "line": 14135,
+        "data_pregao": "20260417",
         "codbdi": "93",
-        "codneg": "BBAS3Q",
+        "codneg": "ITSA4Q",
         "tpmerc": "021"
       },
       {
-        "line": 15996,
-        "data_pregao": "20260114",
+        "line": 14153,
+        "data_pregao": "20260417",
         "codbdi": "93",
-        "codneg": "MCLO11Q",
+        "codneg": "HPDP11Q",
         "tpmerc": "021"
       },
       {
-        "line": 15997,
-        "data_pregao": "20260114",
+        "line": 14369,
+        "data_pregao": "20260512",
         "codbdi": "93",
-        "codneg": "NEOE3Q",
+        "codneg": "BPAC11Q",
         "tpmerc": "021"
       },
       {
-        "line": 17790,
-        "data_pregao": "20260115",
+        "line": 14378,
+        "data_pregao": "20260512",
         "codbdi": "93",
-        "codneg": "BPAN4Q",
+        "codneg": "INBR32Q",
         "tpmerc": "021"
       },
       {
-        "line": 19594,
-        "data_pregao": "20260116",
+        "line": 14717,
+        "data_pregao": "20260512",
         "codbdi": "93",
-        "codneg": "TRXF11Q",
+        "codneg": "PETR4Q",
         "tpmerc": "021"
       },
       {
-        "line": 19595,
-        "data_pregao": "20260116",
+        "line": 14723,
+        "data_pregao": "20260512",
         "codbdi": "93",
-        "codneg": "RBRX11Q",
+        "codneg": "TRBL11Q",
         "tpmerc": "021"
       },
       {
-        "line": 19596,
-        "data_pregao": "20260116",
+        "line": 14866,
+        "data_pregao": "20260512",
         "codbdi": "93",
-        "codneg": "VALE3Q",
+        "codneg": "HGBS11Q",
         "tpmerc": "021"
       },
       {
-        "line": 21284,
-        "data_pregao": "20260119",
+        "line": 15184,
+        "data_pregao": "20260513",
         "codbdi": "93",
-        "codneg": "TRXF11Q",
+        "codneg": "PGMN3Q",
         "tpmerc": "021"
       },
       {
-        "line": 23129,
-        "data_pregao": "20260120",
-        "codbdi": "93",
-        "codneg": "AXIA3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 23130,
-        "data_pregao": "20260120",
-        "codbdi": "93",
-        "codneg": "ROXO34Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 23131,
-        "data_pregao": "20260120",
-        "codbdi": "93",
-        "codneg": "VALE3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 23132,
-        "data_pregao": "20260120",
-        "codbdi": "93",
-        "codneg": "XPML11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 24958,
-        "data_pregao": "20260121",
-        "codbdi": "93",
-        "codneg": "NEOE3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 24959,
-        "data_pregao": "20260121",
-        "codbdi": "93",
-        "codneg": "TIMS3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 24960,
-        "data_pregao": "20260121",
-        "codbdi": "93",
-        "codneg": "BPAN4Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 26797,
-        "data_pregao": "20260122",
-        "codbdi": "93",
-        "codneg": "BTLG11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 26798,
-        "data_pregao": "20260122",
-        "codbdi": "93",
-        "codneg": "AXIA3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 26799,
-        "data_pregao": "20260122",
-        "codbdi": "93",
-        "codneg": "CSAN3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 26800,
-        "data_pregao": "20260122",
-        "codbdi": "93",
-        "codneg": "BPAN4Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 28667,
-        "data_pregao": "20260123",
-        "codbdi": "93",
-        "codneg": "PSEC11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 28668,
-        "data_pregao": "20260123",
-        "codbdi": "93",
-        "codneg": "LREN3Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 28669,
-        "data_pregao": "20260123",
-        "codbdi": "93",
-        "codneg": "BPAN4Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 28670,
-        "data_pregao": "20260123",
-        "codbdi": "93",
-        "codneg": "BTHF11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 30544,
-        "data_pregao": "20260126",
-        "codbdi": "93",
-        "codneg": "SNEL11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 30545,
-        "data_pregao": "20260126",
-        "codbdi": "93",
-        "codneg": "XPBR31Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 30546,
-        "data_pregao": "20260126",
+        "line": 15191,
+        "data_pregao": "20260513",
         "codbdi": "93",
         "codneg": "ENEV3Q",
         "tpmerc": "021"
       },
       {
-        "line": 32422,
-        "data_pregao": "20260127",
+        "line": 15380,
+        "data_pregao": "20260513",
         "codbdi": "93",
-        "codneg": "EQTL3Q",
+        "codneg": "INBR32Q",
         "tpmerc": "021"
       },
       {
-        "line": 32423,
-        "data_pregao": "20260127",
+        "line": 15483,
+        "data_pregao": "20260303",
+        "codbdi": "93",
+        "codneg": "UGPA3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 15729,
+        "data_pregao": "20260522",
+        "codbdi": "93",
+        "codneg": "SAUD3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 16061,
+        "data_pregao": "20260522",
+        "codbdi": "93",
+        "codneg": "HSRE11Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17228,
+        "data_pregao": "20260616",
+        "codbdi": "93",
+        "codneg": "CSMG3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17521,
+        "data_pregao": "20260424",
+        "codbdi": "93",
+        "codneg": "TRXF11Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17527,
+        "data_pregao": "20260424",
+        "codbdi": "93",
+        "codneg": "ASAI3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17545,
+        "data_pregao": "20260424",
+        "codbdi": "93",
+        "codneg": "STOC34Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17660,
+        "data_pregao": "20260325",
+        "codbdi": "93",
+        "codneg": "EMBJ3Q",
+        "tpmerc": "021"
+      },
+      {
+        "line": 17955,
+        "data_pregao": "20260617",
         "codbdi": "93",
         "codneg": "VALE3Q",
         "tpmerc": "021"
       },
       {
-        "line": 32424,
-        "data_pregao": "20260127",
+        "line": 18011,
+        "data_pregao": "20260424",
         "codbdi": "93",
-        "codneg": "ENEV3Q",
+        "codneg": "SBSP3Q",
         "tpmerc": "021"
       },
       {
-        "line": 32425,
-        "data_pregao": "20260127",
+        "line": 19342,
+        "data_pregao": "20260107",
         "codbdi": "93",
-        "codneg": "PSEC11Q",
-        "tpmerc": "021"
-      },
-      {
-        "line": 32426,
-        "data_pregao": "20260127",
-        "codbdi": "93",
-        "codneg": "MCLO11Q",
+        "codneg": "MCRE11Q",
         "tpmerc": "021"
       }
     ]
@@ -569,15 +582,18 @@
   },
   "cotahist_021_semantics": {
     "all_codneg_end_q": false,
-    "q_suffix_count": 252,
+    "q_suffix_count": 261,
     "non_q_tickers": [
+      "BPAC11M",
       "BTCI11M",
+      "ITUB4M",
       "MOTV3M",
+      "PETR4M",
       "SBSP3M"
     ],
     "codbdi_distribution": {
-      "93": 1538,
-      "92": 6
+      "93": 1789,
+      "92": 9
     }
   },
   "cross_match": {
