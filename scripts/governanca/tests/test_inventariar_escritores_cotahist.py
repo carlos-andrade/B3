@@ -42,6 +42,17 @@ class Tests(unittest.TestCase):
         self.assertEqual(item["secret_reference_names"], ["B3_PUBLISH_TOKEN"])
         self.assertNotIn("secrets.B3_PUBLISH_TOKEN", json.dumps(item))
 
+    def test_inline_concurrency_group_is_detected(self):
+        source = """permissions: {contents: write}
+concurrency: {group: cotahist-inline-group, cancel-in-progress: false}
+steps:
+  - run: |
+      git add dados/cotahist/quality/EVIDENCE.json
+      git push origin HEAD:main
+"""
+        item = MODULE.classify(".github/workflows/cotahist-inline-test.yml", source)
+        self.assertEqual(item["concurrency_group"], "cotahist-inline-group")
+
     def test_resolves_static_shell_variables_and_loop_allowlists(self):
         source = """evidence="dados/cotahist/quality/EVIDENCE.json"
 norm="dados/cotahist/normalized/anual/COTAHIST_A2015.csv"
