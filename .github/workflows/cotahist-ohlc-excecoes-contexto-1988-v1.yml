@@ -7,6 +7,10 @@ on:
       - '.github/workflows/cotahist-ohlc-excecoes-contexto-1988-v1.yml'
       - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
 permissions: {contents: write}
+concurrency:
+  group: cotahist-writer-cotahist-ohlc-excecoes-contexto-1988-v1
+  cancel-in-progress: false
+
 jobs:
   audit:
     runs-on: ubuntu-latest
