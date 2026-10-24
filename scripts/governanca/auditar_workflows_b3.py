@@ -251,8 +251,9 @@ def audit_workflow(path: pathlib.Path) -> dict:
     }
 
 
+
 def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
-    """Classifica estaticamente escrita efetiva, branch alvo, grupo e paths COTAHIST."""
+    """Classifica escrita efetiva, destino de branch e paths estáticos/dinâmicos."""
     rel = path.as_posix()
     if "cotahist" not in path.name.lower() and not re.search(r"dados/cotahist", text, re.I):
         return None
@@ -307,29 +308,49 @@ def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
                 command += " " + line.strip().rstrip("\\")
             tokens = command.replace('"', '').replace("'", "").split()
             for value in tokens:
-                value = value.strip()
-                if not value:
+                value = value.strip().rstrip(",;")
+                if not value or value in {"&&", "||", ";"}:
                     continue
                 if value in {".", "-A", "--all"}:
                     write_paths = ["<entire-repository>"]
                     break
-                if value.startswith("-"):
+                if value.startswith("-") or value in {"git", "diff", "commit", "push"}:
                     continue
-                if value not in write_paths:
-                    write_paths.append(value)
+                if value.startswith("$"):
+                    target = "DYNAMIC:" + value
+                elif value.startswith((
+                    "dados/cotahist/", "docs/", "registry/", ".gitattributes",
+                    ".github/", "README", "README.md"
+                )):
+                    target = value
+                else:
+                    continue
+                if target not in write_paths:
+                    write_paths.append(target)
+            if "<entire-repository>" in write_paths:
+                break
         index += 1
-    if any(value in {".", "-A", "--all"} for value in write_paths):
-        write_paths = ["<entire-repository>"]
+
     referenced_paths = sorted(set(re.findall(
         r"(?<![A-Za-z0-9_])dados/cotahist/[A-Za-z0-9_./*{}-]+", text, re.I
     )))
     if not write_paths and classification == "REPO_WRITER":
         write_paths = ["UNRESOLVED_FROM_STATIC_GIT_ADD"]
+    if "<entire-repository>" in write_paths:
+        target_confidence = "REPOSITORY_WIDE"
+    elif any(x.startswith("DYNAMIC:") for x in write_paths):
+        target_confidence = "DYNAMIC_VARIABLE"
+    elif any(x.startswith(("dados/cotahist/", "docs/", "registry/", ".gitattributes", ".github/", "README")) for x in write_paths):
+        target_confidence = "STATIC_PATHS"
+    else:
+        target_confidence = "UNRESOLVED"
+
     return {
         "workflow": rel,
         "classification": classification,
         "branch_target": branch_target,
         "write_paths": write_paths,
+        "write_target_confidence": target_confidence,
         "referenced_cotahist_paths": referenced_paths[:30],
         "concurrency_group": concurrency_group,
         "contents_write_permission": contents_write,
@@ -354,12 +375,21 @@ def main() -> int:
             cotahist_inventory.append(item)
     branch_counts = {}
     group_counts = {}
+    resource_map = {}
     for item in cotahist_inventory:
         if item["classification"] == "REPO_WRITER":
             branch = item["branch_target"]
             branch_counts[branch] = branch_counts.get(branch, 0) + 1
+            for target in item["write_paths"]:
+                if target.startswith(("dados/cotahist/", "docs/", "registry/", ".gitattributes", ".github/", "README")):
+                    resource_map.setdefault(target, []).append(item["workflow"])
         group = item["concurrency_group"]
         group_counts[group] = group_counts.get(group, 0) + 1
+    shared_write_targets = [
+        {"path": target, "writer_count": len(writers), "workflows": sorted(writers)}
+        for target, writers in sorted(resource_map.items())
+        if len(set(writers)) > 1
+    ]
     inventory_payload = {
         "scope": "Inventário estático de workflows cujo nome ou conteúdo referencia COTAHIST.",
         "static_only": True,
@@ -370,6 +400,9 @@ def main() -> int:
         "read_only_or_artifact_only_count": sum(x["classification"] == "READ_ONLY_OR_ARTIFACT_ONLY" for x in cotahist_inventory),
         "repo_writer_branch_target_counts": branch_counts,
         "concurrency_group_counts": group_counts,
+        "shared_write_target_count": len(shared_write_targets),
+        "shared_write_targets": shared_write_targets,
+        "dynamic_or_unresolved_target_count": sum(x["write_target_confidence"] in {"DYNAMIC_VARIABLE", "UNRESOLVED"} for x in cotahist_inventory if x["classification"] == "REPO_WRITER"),
         "shared_branch_note": "Workflows que publicam em main partilham o mesmo branch Git mesmo quando os paths são distintos; os paths listados são evidência estática, não prova de execução em runtime.",
         "workflows": cotahist_inventory,
     }
@@ -454,6 +487,21 @@ def main() -> int:
                 + item["branch_target"] + " | " + item["concurrency_group"] + " | "
                 + paths_text + " |"
             )
+    lines.extend([
+        "",
+        "## Recursos com múltiplos escritores estáticos",
+        "",
+        f"- Destinos estáticos partilhados: **{inventory_payload['shared_write_target_count']}**",
+        f"- Escritores com alvo dinâmico ou não resolvido: **{inventory_payload['dynamic_or_unresolved_target_count']}**",
+        "",
+        "| Recurso de escrita | Nº de workflows | Writers |",
+        "|---|---:|---|",
+    ])
+    for target in inventory_payload["shared_write_targets"]:
+        lines.append(
+            "| " + target["path"] + " | " + str(target["writer_count"]) + " | "
+            + ", ".join(target["workflows"]) + " |"
+        )
     lines.extend(["", "O JSON desta auditoria contém o inventário completo, incluindo workflows sem escrita efetiva."])
 
     # O relatório gerado também obedece ao cabeçalho canónico GOVERNANCA 1.0.3.
