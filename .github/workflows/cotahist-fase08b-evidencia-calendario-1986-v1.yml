@@ -8,6 +8,10 @@ on:
       - ".github/workflows/cotahist-fase08b-evidencia-calendario-1986-v1.yml"
       - "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json"
 
+concurrency:
+  group: cotahist-writer-cotahist-fase08b-evidencia-calendario-1986-v1
+  cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
