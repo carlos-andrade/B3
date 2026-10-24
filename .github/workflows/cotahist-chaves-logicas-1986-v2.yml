@@ -7,6 +7,10 @@ on:
       - "scripts/ingestao/auditar_chaves_logicas_cotahist_1986_v2.py"
       - ".github/workflows/cotahist-chaves-logicas-1986-v2.yml"
 
+concurrency:
+  group: cotahist-writer-cotahist-chaves-logicas-1986-v2
+  cancel-in-progress: false
+
 jobs:
   audit:
     runs-on: ubuntu-latest
