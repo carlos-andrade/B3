@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | ab101b6049194fa895700228652701fceafdeb4181d8b991e86e490d69fab7af |
-| **Commit de referência (versão anterior)** | [6f634456300ef7a72621f70de8ab74e327b40088](https://github.com/carlos-andrade/B3/commit/6f634456300ef7a72621f70de8ab74e327b40088) |
+| **SHA-256 (conteúdo canónico)** | b697d5425ad23674f4ef51821c9362f798f9db872cb6a8bd1b6e52219f1c39b9 |
+| **Commit de referência (versão anterior)** | [7e6c74026fc5723ef69128741e56102776e68f71](https://github.com/carlos-andrade/B3/commit/7e6c74026fc5723ef69128741e56102776e68f71) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-24 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,8 +21,8 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-24T08:11:50.005549+00:00
-Workflows auditados: 562
+Gerado em UTC: 2026-10-24T13:05:55.579701+00:00
+Workflows auditados: 563
 
 ## Regra de decisão
 
@@ -603,6 +603,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-validacao-independente-1988-v1.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-validacao-independente-1988-v2.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/cotahist-validation-tests.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY, IDEMPOTENCE_SIGNAL |
+| .github/workflows/cotahist-writer-inventory.yml | — | **CONFORME_COM_OBSERVACAO** | — | STEP_SUMMARY |
 | .github/workflows/indices-b3-composicao-v1.yml | — | **CONFORME** | — | — |
 | .github/workflows/processar-inventario-bvbg028.yml | — | **CONFORME** | — | — |
 | .github/workflows/rec001-cotahist-bloomberg-mail.yml | — | **CONFORME** | — | — |
@@ -614,11 +615,11 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 
 ## Inventário estático de escritores COTAHIST
 
-- Workflows COTAHIST/referenciados: **542**
+- Workflows COTAHIST/referenciados: **543**
 - Escritores efetivos do repositório (push/API): **527**
 - Commits locais sem push detetado: **0**
 - Permissão de escrita sem comando de publicação detetado: **1**
-- Read-only/artefactos: **14**
+- Read-only/artefactos: **15**
 - Classificação baseada em análise estática; confirmar dinamicamente antes de alterar políticas de execução.
 
 | Workflow | Classe | Branch destino | Grupo de concorrência | Paths de escrita detetados |
