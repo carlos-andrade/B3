@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-24T13:05:55.579701+00:00",
+  "generated_at_utc": "2026-10-24T13:24:43.827182+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
   "workflow_count": 563,
   "status_counts": {
-    "CONFORME": 412,
-    "CONFORME_COM_OBSERVACAO": 151
+    "CONFORME": 411,
+    "CONFORME_COM_OBSERVACAO": 152
   },
   "results": [
     {
@@ -41371,7 +41371,7 @@
     {
       "workflow": ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml",
       "current_phase": null,
-      "status": "CONFORME",
+      "status": "CONFORME_COM_OBSERVACAO",
       "checks": [
         {
           "code": "MASTER_PRESENT",
@@ -41405,8 +41405,8 @@
         },
         {
           "code": "STEP_SUMMARY",
-          "ok": true,
-          "detail": "GITHUB_STEP_SUMMARY encontrado",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente",
           "severity": "BAIXA"
         },
         {
@@ -41416,10 +41416,10 @@
           "severity": "CRITICA"
         },
         {
-          "code": "PERMISSIONS_MATCH_WRITE",
+          "code": "PERMISSIONS_MINIMAL",
           "ok": true,
-          "detail": "publicação possui credencial/permissão compatível",
-          "severity": "ALTA"
+          "detail": "sem escrita Git detectada; contents: write não é necessário",
+          "severity": "MEDIA"
         },
         {
           "code": "EVIDENCE_PERSISTENCE_SIGNAL",
@@ -41441,7 +41441,9 @@
         }
       ],
       "blocking_divergences": [],
-      "observability_or_advisory": []
+      "observability_or_advisory": [
+        "STEP_SUMMARY"
+      ]
     },
     {
       "workflow": ".github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml",
@@ -44009,10 +44011,10 @@
           "severity": "CRITICA"
         },
         {
-          "code": "PERMISSIONS_MATCH_WRITE",
+          "code": "PERMISSIONS_MINIMAL",
           "ok": true,
-          "detail": "publicação possui credencial/permissão compatível",
-          "severity": "ALTA"
+          "detail": "sem escrita Git detectada; contents: write não é necessário",
+          "severity": "MEDIA"
         },
         {
           "code": "EVIDENCE_PERSISTENCE_SIGNAL",
@@ -44803,22 +44805,35 @@
     "scope": "Inventário estático de workflows cujo nome ou conteúdo referencia COTAHIST.",
     "static_only": true,
     "workflow_count": 543,
-    "effective_repo_writer_count": 527,
+    "effective_repo_writer_count": 525,
     "local_git_mutation_count": 0,
     "write_permission_only_count": 1,
-    "read_only_or_artifact_only_count": 15,
+    "read_only_or_artifact_only_count": 17,
     "repo_writer_branch_target_counts": {
-      "main": 498,
+      "main": 496,
       "UPSTREAM_OR_IMPLICIT": 29
     },
     "concurrency_group_counts": {
       "b3-cotahist-rebase-conflict-hardening": 1,
-      "MISSING": 71,
+      "cotahist-writer-cotahist-auditoria-calendario-1987-v1": 1,
+      "cotahist-writer-cotahist-auditoria-calendario-1988-v1": 1,
       "cotahist-auditoria-fisica-normalized-v1": 1,
+      "cotahist-writer-cotahist-auditoria-ohlc-1987-v1": 1,
+      "cotahist-writer-cotahist-auditoria-ohlc-1988-v1": 1,
+      "cotahist-writer-cotahist-auditoria-quantidade-volume-1987-v1": 1,
+      "cotahist-writer-cotahist-auditoria-quantidade-volume-1988-v1": 1,
       "cotahist-cadeia-1994-06-12": 1,
+      "cotahist-writer-cotahist-calendario-1986-v1": 1,
       "cotahist-calendario-oficial-2026-v1": 1,
+      "MISSING": 6,
+      "cotahist-writer-cotahist-certificacao-final-1987-v1": 1,
       "cotahist-1987-chave-logica": 1,
       "cotahist-1988-chave-logica": 1,
+      "cotahist-writer-cotahist-chaves-logicas-1986-v2": 1,
+      "cotahist-writer-cotahist-classificacao-excecoes-1988-v1": 1,
+      "cotahist-writer-cotahist-diagnostico-prazot-1987-v1": 1,
+      "cotahist-writer-cotahist-evidencias-retrospectivas-1993-fases06-08-v1": 1,
+      "cotahist-writer-cotahist-fase00-governanca-1993-v1": 1,
       "cotahist-fase00-governanca-2002-v1": 1,
       "cotahist-fase00-governanca-2003-v1": 1,
       "cotahist-fase00-governanca-2004-v1": 1,
@@ -44863,6 +44878,10 @@
       "cotahist-fase01-aquisicao-2020-v1": 1,
       "cotahist-fase01-aquisicao-2021-v1": 1,
       "cotahist-fase01-aquisicao-2022-v1": 1,
+      "cotahist-writer-cotahist-fase01-aquisicao-raw-1993-v1": 1,
+      "cotahist-writer-cotahist-fase01-aquisicao-raw-1994-v1": 1,
+      "cotahist-writer-cotahist-fase02-evidencia-1993-v1": 1,
+      "cotahist-writer-cotahist-fase02-integridade-1994-v1": 1,
       "cotahist-fase02-integridade-1999-v1": 1,
       "cotahist-fase02-integridade-2000-v1": 1,
       "cotahist-fase02-integridade-2001-v1": 1,
@@ -44887,6 +44906,7 @@
       "cotahist-fase02-integridade-2020-v1": 1,
       "cotahist-fase02-integridade-2021-v1": 1,
       "cotahist-fase02-integridade-2022-v1": 1,
+      "cotahist-writer-cotahist-fase03-parsing-1994-v1": 1,
       "cotahist-fase03-1995": 1,
       "cotahist-fase03-1996": 1,
       "cotahist-fase03-1997": 1,
@@ -44964,6 +44984,7 @@
       "cotahist-fase04-validacao-independente-2012-v1": 1,
       "cotahist-fase04-validacao-independente-2013-v1": 1,
       "cotahist-fase04-validacao-independente-2014-v1": 1,
+      "cotahist-writer-cotahist-fase05-manifesto-checksum-1994-v1": 1,
       "cotahist-fase05-1995": 1,
       "cotahist-fase05-1996": 1,
       "cotahist-fase05-1997": 1,
@@ -44995,6 +45016,7 @@
       "cotahist-fase05-manifesto-checksum-2023-v1": 1,
       "cotahist-fase05-manifesto-checksum-2024-v1": 1,
       "cotahist-fase05-manifesto-checksum-2025-v1": 1,
+      "cotahist-writer-cotahist-fase06-reconciliacao-1994-v1": 1,
       "cotahist-fase06-reconciliacao-1999-v1": 1,
       "cotahist-fase06-reconciliacao-2000-v1": 1,
       "cotahist-fase06-reconciliacao-2001-v1": 1,
@@ -45058,13 +45080,20 @@
       "cotahist-fase07-identidade-2024-v1": 1,
       "cotahist-fase07-identidade-2025-v1": 1,
       "cotahist-fase07-identidade-2026-v1": 1,
+      "cotahist-writer-cotahist-fase07-identidade-historica-1986-v1": 1,
       "cotahist-fase07-1995": 1,
       "cotahist-fase07-1996": 1,
       "cotahist-fase07-1997": 1,
       "cotahist-fase07-1998": 1,
       "cotahist-fase07a-1998": 1,
       "cotahist-fase07b-${{ github.run_id }}": 1,
+      "cotahist-writer-cotahist-fase07b-tpmerc-1986-v1": 1,
+      "cotahist-writer-cotahist-fase07c-codbdi-1986-v1": 1,
       "cotahist-fase07c-${{ github.run_id }}": 1,
+      "cotahist-writer-cotahist-fase07d-codisi-1986-v1": 1,
+      "cotahist-writer-cotahist-fase07e-dimes-1986-v1": 1,
+      "cotahist-writer-cotahist-fase07f-colisao-k4-1986-v1": 1,
+      "cotahist-writer-cotahist-fase07g-matriz-identidade-1986-v1": 1,
       "cotahist-fase08-calendario-1999-v1": 1,
       "cotahist-fase08-calendario-2000-v1": 1,
       "cotahist-fase08-calendario-2001-v1": 1,
@@ -45094,11 +45123,24 @@
       "cotahist-fase08-calendario-2024-v1": 1,
       "cotahist-fase08-calendario-2025-v1": 1,
       "cotahist-fase08-calendario-2026-v1": 1,
+      "cotahist-writer-cotahist-fase08-consistencia-1998-v1": 1,
       "cotahist-fase08-diagnostico-ordem-2021-v1": 1,
+      "cotahist-writer-cotahist-fase08-semantica-k4-1986-v1": 1,
       "cotahist-fase08-1995": 1,
       "cotahist-fase08-1996": 1,
       "cotahist-fase08-1997": 1,
+      "cotahist-writer-cotahist-fase08a-matriz-calendario-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08b-evidencia-calendario-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08c-duplicidades-k4-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08c-padrao-negociacao-arredores-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08c-padroes-ausencia-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08e-cronologia-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08f-estrutura-estatistica-k4-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08g-recorrencia-perfis-k4-1986-v1": 1,
+      "cotahist-writer-cotahist-fase08h-recurrencia-k4-multianos-v1": 1,
+      "cotahist-writer-cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1": 1,
       "cotahist-fase08p-transicao-vigor-1986": 1,
+      "cotahist-writer-cotahist-fase09-prerelease-1993-v1": 1,
       "cotahist-fase09-1995": 1,
       "cotahist-fase09-1996": 1,
       "cotahist-fase09-1997": 1,
@@ -45238,6 +45280,21 @@
       "cotahist-fase14-1996": 1,
       "cotahist-fase14-1997": 1,
       "cotahist-fase14-1998": 1,
+      "cotahist-writer-cotahist-gate-06-08-1999-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2000-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2001-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2002-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2003-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2004-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2005-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2006-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2007-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2008-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2009-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2010-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2011-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2012-v1": 1,
+      "cotahist-writer-cotahist-gate-06-08-2013-v1": 1,
       "cotahist-gate-06-08-2014-v1": 1,
       "cotahist-gate-06-08-2015-v1": 1,
       "cotahist-gate-06-08-2016-v1": 1,
@@ -45254,10 +45311,11 @@
       "cotahist-gate-historico-1986": 1,
       "cotahist-importacao-diaria-v1": 1,
       "cotahist-1987-integridade-campos": 1,
+      "cotahist-writer-cotahist-integridade-campos-1988-v1": 1,
       "cotahist-lfs-a1987-migracao-controlada": 1,
       "cotahist-m2-certificacao-fisica": 1,
       "cotahist-m3-0-capacidade-2026": 1,
-      "cotahist-m3-1b-lfs-2026": 1,
+      "cotahist-m3-1b-lfs-audit-2026": 1,
       "cotahist-m3-1b-reconciliar-manifest-2026": 1,
       "cotahist-m3-1c-ci-2026": 1,
       "cotahist-m3-1d-2026": 1,
@@ -45271,111 +45329,31 @@
       "cotahist-normalizacao-1988": 1,
       "cotahist-normalizacao-controlada-v7": 1,
       "cotahist-normalized-m1-1987": 1,
+      "cotahist-writer-cotahist-ohlc-1986-v2": 1,
+      "cotahist-writer-cotahist-ohlc-excecoes-contexto-1988-v1": 1,
       "cotahist-orquestrador-anual-dryrun-v1-${{ inputs.ano }}": 1,
       "cotahist-orquestrador-anual-dryrun-v2-${{ inputs.ano }}": 1,
       "cotahist-1987-prazot-anomalias": 1,
+      "cotahist-writer-cotahist-quantidade-volume-preco-1986-v1": 1,
       "cotahist-1987-reconciliacao": 1,
       "cotahist-1988-reconciliacao": 1,
+      "cotahist-writer-cotahist-reconciliacao-final-1988-v1": 1,
       "cotahist-reconciliacao-raw-normalized-1986": 1,
+      "cotahist-writer-cotahist-reconciliacao-semantica-1986": 1,
+      "cotahist-writer-cotahist-reconciliacao-tpmerc021-bvbg028-v1": 1,
       "cotahist-recuperar-normalized-1999-v1": 1,
       "cotahist-refresh-probe-2026-v1": 1,
       "b3-cotahist-scheduler-isolated-${{ github.event.pull_request.number }}": 2,
       "cotahist-1987-semantica": 1,
+      "cotahist-writer-cotahist-semantica-1988-v1": 1,
+      "cotahist-writer-cotahist-validacao-independente-1988-v1": 1,
+      "cotahist-validacao-independente-1988-v2": 1,
       "cotahist-writer-inventory-${{ github.event.pull_request.number || github.ref }}": 1,
       "rec001-cotahist-bloomberg-mail": 1,
       "watchdog-data-freshness": 1
     },
-    "shared_write_target_count": 11,
-    "shared_write_targets": [
-      {
-        "path": ".gitattributes",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-gate-historico-1986.yml",
-          ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/normalized/anual/COTAHIST_A1996.csv",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase04-normalizacao-1996-v1.yml",
-          ".github/workflows/cotahist-fase13-materializacao-1996-v1.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/normalized/anual/COTAHIST_A1997.csv",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase04-normalizacao-1997-v1.yml",
-          ".github/workflows/cotahist-fase13-materializacao-1997-v1.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase04-normalizacao-1998-v1.yml",
-          ".github/workflows/cotahist-fase13-materializacao-1998-v1.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml",
-          ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml",
-          ".github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml",
-          ".github/workflows/cotahist-main-publisher.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-auditoria-fisica-normalized-v1.yml",
-          ".github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-validacao-independente-1988-v1.yml",
-          ".github/workflows/cotahist-validacao-independente-1988-v2.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml",
-          ".github/workflows/cotahist-fase06-semantica-1998-v1.yml"
-        ]
-      },
-      {
-        "path": "dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json",
-        "writer_count": 2,
-        "workflows": [
-          ".github/workflows/cotahist-fase10-validacao-independente-2013-retry-v1.yml",
-          ".github/workflows/cotahist-fase10-validacao-independente-2013-v1.yml"
-        ]
-      }
-    ],
+    "shared_write_target_count": 0,
+    "shared_write_targets": [],
     "dynamic_or_unresolved_target_count": 15,
     "shared_branch_note": "Workflows que publicam em main partilham o mesmo branch Git mesmo quando os paths são distintos; os paths listados são evidência estática, não prova de execução em runtime.",
     "workflows": [
@@ -45408,7 +45386,7 @@
           "dados/cotahist/normalized/anual/COTAHIST_A1987.csv",
           "dados/cotahist/quality/COTAHIST_1987_AUDITORIA_CALENDARIO_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-calendario-1987-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45427,7 +45405,7 @@
           "dados/cotahist/normalized/anual/COTAHIST_A1988.csv",
           "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-calendario-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45466,7 +45444,7 @@
           "dados/cotahist/quality/COTAHIST_1987_AUDITORIA_OHLC_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-ohlc-1987-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45485,7 +45463,7 @@
           "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_OHLC_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-ohlc-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45505,7 +45483,7 @@
           "dados/cotahist/quality/COTAHIST_1987_AUDITORIA_QUANTIDADE_VOLUME_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-quantidade-volume-1987-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45525,7 +45503,7 @@
           "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_QUANTIDADE_VOLUME_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-auditoria-quantidade-volume-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45574,7 +45552,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-calendario-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45630,7 +45608,7 @@
           "dados/cotahist/quality/COTAHIST_1987_*.json",
           "dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-certificacao-final-1987-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45687,7 +45665,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CHAVES_V2.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-chaves-logicas-1986-v2",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45705,7 +45683,7 @@
         "referenced_cotahist_paths": [
           "dados/cotahist/quality/COTAHIST_1988_CLASSIFICACAO_FINAL_EXCECOES_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-classificacao-excecoes-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45757,7 +45735,7 @@
           "dados/cotahist/quality/COTAHIST_1987_DIAGNOSTICO_PRAZOT_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1987.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-diagnostico-prazot-1987-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45781,7 +45759,7 @@
           "dados/cotahist/quality/COTAHIST_1993_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-evidencias-retrospectivas-1993-fases06-08-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -45801,7 +45779,7 @@
           "dados/cotahist/manifests/COTAHIST_A1993.json",
           "dados/cotahist/quality/COTAHIST_1993_FASE00_GOVERNANCA_PRE_CONDICOES_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase00-governanca-1993-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -46810,7 +46788,7 @@
           "dados/cotahist/quality/COTAHIST_1993_FASE01_AQUISICAO_RAW_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase01-aquisicao-raw-1993-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -46831,7 +46809,7 @@
           "dados/cotahist/quality/COTAHIST_1994_FASE01_AQUISICAO_RAW_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase01-aquisicao-raw-1994-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -46850,7 +46828,7 @@
           "dados/cotahist/quality/COTAHIST_1993_FASE02_INTEGRIDADE_FONTE_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase02-evidencia-1993-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -46871,7 +46849,7 @@
           "dados/cotahist/quality/COTAHIST_1994_FASE02_INTEGRIDADE_FONTE_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase02-integridade-1994-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -47419,7 +47397,7 @@
           "dados/cotahist/quality/COTAHIST_1994_FASE03_PARSING_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase03-parsing-1994-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -49197,7 +49175,7 @@
           "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase05-manifesto-checksum-1994-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -49970,7 +49948,7 @@
           "dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1994.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase06-reconciliacao-1994-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -50678,13 +50656,11 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json",
-          "dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json"
+          "dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
         "referenced_cotahist_paths": [
           "dados/cotahist/quality/COTAHIST_1998_FASE05_MANIFESTO_CHECKSUM_V1.json",
-          "dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json",
           "dados/cotahist/quality/COTAHIST_1998_FASE06_SEMANTICA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
         ],
@@ -51306,7 +51282,7 @@
           "dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_HISTORICA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07-identidade-historica-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51444,7 +51420,7 @@
           "dados/cotahist/quality/COTAHIST_1986_TPMERC_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07b-tpmerc-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51463,7 +51439,7 @@
           "dados/cotahist/quality/COTAHIST_1986_CODBDI_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07c-codbdi-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51503,7 +51479,7 @@
           "dados/cotahist/quality/COTAHIST_1986_CODISI_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07d-codisi-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51522,7 +51498,7 @@
           "dados/cotahist/quality/COTAHIST_1986_DIMES_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07e-dimes-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51541,7 +51517,7 @@
           "dados/cotahist/quality/COTAHIST_1986_COLISAO_K4_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07f-colisao-k4-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -51560,7 +51536,7 @@
           "dados/cotahist/quality/COTAHIST_1986_IDENTIDADE_FINAL_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase07g-matriz-identidade-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52188,7 +52164,7 @@
           "dados/cotahist/quality/COTAHIST_1998_FASE08_CONSISTENCIA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1998.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08-consistencia-1998-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52228,7 +52204,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08_SEMANTICA_K4_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08-semantica-k4-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52306,7 +52282,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_1986_MATRIZ_CALENDARIO_PROVISORIA_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08a-matriz-calendario-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52325,7 +52301,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_DIAS_UTEIS_AUSENTES_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08b-evidencia-calendario-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52344,7 +52320,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08C_DUPLICIDADES_K4_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08c-duplicidades-k4-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52364,7 +52340,7 @@
           "dados/cotahist/quality/COTAHIST_1986_PADRAO_NEGOCIACAO_ARREDORES_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08c-padrao-negociacao-arredores-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52384,7 +52360,7 @@
           "dados/cotahist/quality/COTAHIST_1986_EVIDENCIA_PADROES_AUSENCIA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08c-padroes-ausencia-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52403,7 +52379,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08E_CRONOLOGIA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08e-cronologia-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52422,7 +52398,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08F_ESTRUTURA_ESTATISTICA_K4_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08f-estrutura-estatistica-k4-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52441,7 +52417,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08G_RECORRENCIA_PERFIS_K4_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08g-recorrencia-perfis-k4-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52460,7 +52436,7 @@
           "dados/cotahist/quality/COTAHIST_FASE08H_RECORRENCIA_K4_MULTIANOS_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A*.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08h-recurrencia-k4-multianos-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52479,7 +52455,7 @@
           "dados/cotahist/quality/COTAHIST_1986_FASE08I_RECONSTRUCAO_REGRA_AGREGACAO_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase08i-reconstrucao-regra-agregacao-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -52528,7 +52504,7 @@
           "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP",
           "dados/cotahist/raw/anual/COTAHIST_A{y}.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-fase09-prerelease-1993-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -53977,7 +53953,7 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json"
+          "dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
         "referenced_cotahist_paths": [
@@ -53985,7 +53961,7 @@
           "dados/cotahist/normalized/manifests/COTAHIST_A2013.csv.sha256",
           "dados/cotahist/normalized/manifests/COTAHIST_A2013_quality.json",
           "dados/cotahist/quality/COTAHIST_2013_FASE09_PRE_RELEASE_V1.json",
-          "dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json",
+          "dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A2013.ZIP"
         ],
         "concurrency_group": "cotahist-fase10-validacao-independente-2013-retry-v1",
@@ -55826,7 +55802,6 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/normalized/anual/COTAHIST_A1996.csv",
           "dados/cotahist/quality/COTAHIST_1996_FASE13_MATERIALIZACAO_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
@@ -55848,7 +55823,6 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/normalized/anual/COTAHIST_A1997.csv",
           "dados/cotahist/quality/COTAHIST_1997_FASE13_MATERIALIZACAO_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
@@ -55870,7 +55844,6 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/normalized/anual/COTAHIST_A1998.csv",
           "dados/cotahist/quality/COTAHIST_1998_FASE13_MATERIALIZACAO_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
@@ -55986,7 +55959,7 @@
           "dados/cotahist/quality/COTAHIST_1999_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_1999_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-1999-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56008,7 +55981,7 @@
           "dados/cotahist/quality/COTAHIST_2000_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2000_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2000-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56030,7 +56003,7 @@
           "dados/cotahist/quality/COTAHIST_2001_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2001_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2001-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56052,7 +56025,7 @@
           "dados/cotahist/quality/COTAHIST_2002_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2002_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2002-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56074,7 +56047,7 @@
           "dados/cotahist/quality/COTAHIST_2003_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2003_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2003-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56096,7 +56069,7 @@
           "dados/cotahist/quality/COTAHIST_2004_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2004_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2004-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56118,7 +56091,7 @@
           "dados/cotahist/quality/COTAHIST_2005_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2005_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2005-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56140,7 +56113,7 @@
           "dados/cotahist/quality/COTAHIST_2006_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2006_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2006-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56162,7 +56135,7 @@
           "dados/cotahist/quality/COTAHIST_2007_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2007_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2007-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56184,7 +56157,7 @@
           "dados/cotahist/quality/COTAHIST_2008_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2008_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2008-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56206,7 +56179,7 @@
           "dados/cotahist/quality/COTAHIST_2009_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2009_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2009-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56228,7 +56201,7 @@
           "dados/cotahist/quality/COTAHIST_2010_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2010_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2010-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56250,7 +56223,7 @@
           "dados/cotahist/quality/COTAHIST_2011_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2011_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2011-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56272,7 +56245,7 @@
           "dados/cotahist/quality/COTAHIST_2012_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2012_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2012-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56294,7 +56267,7 @@
           "dados/cotahist/quality/COTAHIST_2013_FASE08_SEMANTICA_CALENDARIO_V1.json",
           "dados/cotahist/quality/COTAHIST_2013_GATE_06_08_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-gate-06-08-2013-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56594,7 +56567,6 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          ".gitattributes",
           "dados/cotahist/normalized/anual/COTAHIST_A1986.csv",
           "dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256",
           "dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json",
@@ -56681,7 +56653,7 @@
           "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_INTEGRIDADE_CAMPOS_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-integridade-campos-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -56693,9 +56665,7 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "DYNAMIC:$FILE",
-          "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json",
-          "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json"
+          "DYNAMIC:$FILE"
         ],
         "write_target_confidence": "DYNAMIC_VARIABLE",
         "referenced_cotahist_paths": [
@@ -56749,25 +56719,18 @@
       },
       {
         "workflow": ".github/workflows/cotahist-m3-1b-prova-lfs-2026.yml",
-        "classification": "REPO_WRITER",
-        "branch_target": "main",
-        "write_paths": [
-          ".gitattributes",
+        "classification": "READ_ONLY_OR_ARTIFACT_ONLY",
+        "branch_target": "NONE",
+        "write_paths": [],
+        "write_target_confidence": "UNRESOLVED",
+        "referenced_cotahist_paths": [
           "dados/cotahist/normalized/anual/COTAHIST_A2026.csv"
         ],
-        "write_target_confidence": "STATIC_PATHS",
-        "referenced_cotahist_paths": [
-          "dados/cotahist/normalized/anual",
-          "dados/cotahist/normalized/anual/*.csv",
-          "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
-          "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-          "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP"
-        ],
-        "concurrency_group": "cotahist-m3-1b-lfs-2026",
-        "contents_write_permission": true,
-        "git_push_detected": true,
+        "concurrency_group": "cotahist-m3-1b-lfs-audit-2026",
+        "contents_write_permission": false,
+        "git_push_detected": false,
         "api_write_detected": false,
-        "git_commit_detected": true,
+        "git_commit_detected": false,
         "static_only": true
       },
       {
@@ -56775,7 +56738,6 @@
         "classification": "REPO_WRITER",
         "branch_target": "main",
         "write_paths": [
-          "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
           "dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json"
         ],
         "write_target_confidence": "STATIC_PATHS",
@@ -57054,7 +57016,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_OHLC_V2.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-ohlc-1986-v2",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57073,7 +57035,7 @@
           "dados/cotahist/quality/COTAHIST_1988_OHLC_EXCECOES_CONTEXT_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-ohlc-excecoes-contexto-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57160,7 +57122,7 @@
           "dados/cotahist/quality/COTAHIST_1986_AUDITORIA_QUANTIDADE_VOLUME_PRECO_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-quantidade-volume-preco-1986-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57220,7 +57182,7 @@
           "dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_FINAL_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-reconciliacao-final-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57259,7 +57221,7 @@
           "dados/cotahist/quality/COTAHIST_1986_RECONCILIACAO_SEMANTICA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-reconciliacao-semantica-1986",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57277,7 +57239,7 @@
         "referenced_cotahist_paths": [
           "dados/cotahist/quality/COTAHIST_A2026_TPMERC021_BVBG028_RECONCILIACAO_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-reconciliacao-tpmerc021-bvbg028-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57404,7 +57366,7 @@
           "dados/cotahist/quality/COTAHIST_1988_AUDITORIA_SEMANTICA_V1.json",
           "dados/cotahist/raw/anual/COTAHIST_A1988.ZIP"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-semantica-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57422,7 +57384,7 @@
         "referenced_cotahist_paths": [
           "dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json"
         ],
-        "concurrency_group": "MISSING",
+        "concurrency_group": "cotahist-writer-cotahist-validacao-independente-1988-v1",
         "contents_write_permission": true,
         "git_push_detected": true,
         "api_write_detected": false,
@@ -57431,20 +57393,18 @@
       },
       {
         "workflow": ".github/workflows/cotahist-validacao-independente-1988-v2.yml",
-        "classification": "REPO_WRITER",
-        "branch_target": "main",
-        "write_paths": [
-          "dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json"
-        ],
-        "write_target_confidence": "STATIC_PATHS",
+        "classification": "READ_ONLY_OR_ARTIFACT_ONLY",
+        "branch_target": "NONE",
+        "write_paths": [],
+        "write_target_confidence": "UNRESOLVED",
         "referenced_cotahist_paths": [
           "dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json"
         ],
-        "concurrency_group": "MISSING",
-        "contents_write_permission": true,
-        "git_push_detected": true,
+        "concurrency_group": "cotahist-validacao-independente-1988-v2",
+        "contents_write_permission": false,
+        "git_push_detected": false,
         "api_write_detected": false,
-        "git_commit_detected": true,
+        "git_commit_detected": false,
         "static_only": true
       },
       {
