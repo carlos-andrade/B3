@@ -64,8 +64,7 @@ jobs:
           cp /tmp/cotahist1986/COTAHIST_A1986.csv.persist dados/cotahist/normalized/anual/COTAHIST_A1986.csv
           cp /tmp/cotahist1986/COTAHIST_A1986.csv.sha256 dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256
           cp /tmp/cotahist1986/semantic_audit.json dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json
-          git lfs track "dados/cotahist/normalized/anual/COTAHIST_A1986.csv"
-          git add .gitattributes             dados/cotahist/normalized/anual/COTAHIST_A1986.csv             dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256             dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json
+          git add dados/cotahist/normalized/anual/COTAHIST_A1986.csv             dados/cotahist/normalized/manifests/COTAHIST_A1986.csv.sha256             dados/cotahist/quality/COTAHIST_A1986_SEMANTIC_AUDIT.json
           git diff --cached --check
           test "$(git check-attr filter -- dados/cotahist/normalized/anual/COTAHIST_A1986.csv | awk '{print $3}')" = "lfs"
           git config user.name "github-actions[bot]"
