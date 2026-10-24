@@ -33,7 +33,7 @@ def classify(path,raw):
  perm=bool(re.search(r"(?m)^\s*contents:\s*write\s*$",t)) or bool(re.search(r"permissions:\s*\{[^}]*contents:\s*write",t,re.I))
  paths,dyn=extract_paths(t); writer=bool(pushes or api)
  conditional=bool(re.search(r"(?m)^\s*if:\s*\$\{\{",t)) or bool(re.search(r"\bif\s+\[|\bif\s+\[\[|\bif\s+\$\{",t))
- validator_signal=bool(re.search(r"\b(?:validat|validac|auditor|audit|reconcil|verificar|verify|check|gate|assert|pytest|unittest|sha256sum)\w*\b", path + " " + t, re.I))
+ validator_signal=bool(re.search(r"\b(?:valid|auditor|audit|reconcil|verificar|verify|check|gate|assert|pytest|unittest|sha256sum)\w*\b", path + " " + t, re.I))
  cls="WRITER_CONDITIONAL" if writer and conditional else "WRITER_EFFECTIVE" if writer else "VALIDATOR" if commit or perm or validator_signal else "FALSE_POSITIVE" if not paths else "VALIDATOR"
  flat=" ".join(pushes); branch="NONE"
  if re.search(r"(?:HEAD\s*:\s*main|origin\s+main\b|refs/heads/main)",flat,re.I): branch="main"
