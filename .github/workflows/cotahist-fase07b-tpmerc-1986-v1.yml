@@ -7,6 +7,10 @@ on:
       - ".github/workflows/cotahist-fase07b-tpmerc-1986-v1.yml"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase07b-tpmerc-1986-v1
+  cancel-in-progress: false
+
 jobs:
   tpmerc:
     runs-on: ubuntu-latest

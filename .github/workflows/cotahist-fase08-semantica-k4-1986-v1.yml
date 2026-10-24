@@ -8,6 +8,10 @@ on:
       - .github/workflows/cotahist-fase08-semantica-k4-1986-v1.yml
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase08-semantica-k4-1986-v1
+  cancel-in-progress: false
+
 jobs:
   analisar-semantica:
     runs-on: ubuntu-24.04

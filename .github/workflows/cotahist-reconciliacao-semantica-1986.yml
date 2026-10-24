@@ -7,6 +7,10 @@ on:
       - ".github/workflows/cotahist-reconciliacao-semantica-1986.yml"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-reconciliacao-semantica-1986
+  cancel-in-progress: false
+
 jobs:
   reconcile:
     runs-on: ubuntu-latest

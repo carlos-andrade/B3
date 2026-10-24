@@ -7,6 +7,10 @@ on:
       - "dados/cotahist/raw/anual/COTAHIST_A1986.ZIP"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase07f-colisao-k4-1986-v1
+  cancel-in-progress: false
+
 jobs:
   investigar-k4:
     runs-on: ubuntu-latest

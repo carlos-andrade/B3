@@ -14,6 +14,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-fase05-manifesto-checksum-1994-v1
+  cancel-in-progress: false
+
 jobs:
   manifesto_checksum:
     runs-on: ubuntu-latest

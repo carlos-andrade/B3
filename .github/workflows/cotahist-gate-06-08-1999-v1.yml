@@ -10,6 +10,10 @@ on:
       - "dados/cotahist/quality/COTAHIST_1999_FASE08_SEMANTICA_CALENDARIO_V1.json"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-gate-06-08-1999-v1
+  cancel-in-progress: false
+
 jobs:
   gate:
     runs-on: ubuntu-latest

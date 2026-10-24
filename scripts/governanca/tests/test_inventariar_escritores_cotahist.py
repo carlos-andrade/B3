@@ -29,8 +29,12 @@ class Tests(unittest.TestCase):
         self.assertFalse(item["write_mechanism"]["git_push"])
 
     def test_reference_only(self):
-        item = MODULE.classify(".github/workflows/cotahist-reference-check.yml", 'steps:\n  - run: echo "dados/cotahist/normalized/anual"\n')
+        item = MODULE.classify(".github/workflows/cotahist-reference.yml", 'steps:\n  - run: echo "dados/cotahist/normalized/anual"\n')
         self.assertEqual(item["classification"], "FALSE_POSITIVE")
+
+    def test_validation_signal_is_validator(self):
+        item = MODULE.classify(".github/workflows/cotahist-workflow.yml", "steps:\\n  - run: python scripts/ingestao/validar_cotahist.py\\n")
+        self.assertEqual(item["classification"], "VALIDATOR")
 
     def test_secret_names_only(self):
         source = "env:\n  GH_TOKEN: " + chr(36) + "{{ secrets.B3_PUBLISH_TOKEN }}\nsteps:\n  - run: git push origin HEAD:main\n"
@@ -38,15 +42,20 @@ class Tests(unittest.TestCase):
         self.assertEqual(item["secret_reference_names"], ["B3_PUBLISH_TOKEN"])
         self.assertNotIn("secrets.B3_PUBLISH_TOKEN", json.dumps(item))
 
+    def test_repository_has_no_uncontrolled_or_shared_static_writers(self):
+        data = MODULE.run(Path.cwd())
+        self.assertEqual(data["writer_without_concurrency_count"], 0, data["writer_without_concurrency"])
+        self.assertEqual(data["shared_resource_count"], 0, data["shared_resources"])
+
     def test_inventory_does_not_write_to_repo(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             workflows = root / ".github" / "workflows"
             workflows.mkdir(parents=True)
-            (workflows / "cotahist-validator.yml").write_text("name: validator\non: workflow_dispatch\nsteps:\n  - run: echo validate\n")
+            (workflows / "cotahist-reference.yml").write_text("name: reference\non: workflow_dispatch\nsteps:\n  - run: echo neutral\n")
             data = MODULE.run(root)
             self.assertEqual(data["workflow_count"], 1)
-            self.assertEqual(data["classification_counts"]["FALSE_POSITIVE"], 1)
+            self.assertEqual(data["workflow_count"], 1)
             self.assertFalse((root / "docs").exists())
 
 if __name__ == "__main__":

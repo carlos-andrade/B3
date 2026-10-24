@@ -7,6 +7,10 @@ on:
       - "scripts/ingestao/auditar_quantidade_volume_preco_cotahist_1986_v1.py"
       - ".github/workflows/cotahist-quantidade-volume-preco-1986-v1.yml"
 
+concurrency:
+  group: cotahist-writer-cotahist-quantidade-volume-preco-1986-v1
+  cancel-in-progress: false
+
 jobs:
   audit:
     runs-on: ubuntu-latest
