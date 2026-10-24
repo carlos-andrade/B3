@@ -8,6 +8,10 @@ on:
       - '.github/workflows/cotahist-integridade-campos-1988-v1.yml'
 permissions: {contents: write}
 concurrency: {group: cotahist-1988-integridade, cancel-in-progress: false}
+concurrency:
+  group: cotahist-writer-cotahist-integridade-campos-1988-v1
+  cancel-in-progress: false
+
 jobs:
   audit:
     runs-on: ubuntu-latest
