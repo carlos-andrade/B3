@@ -29,8 +29,12 @@ class Tests(unittest.TestCase):
         self.assertFalse(item["write_mechanism"]["git_push"])
 
     def test_reference_only(self):
-        item = MODULE.classify(".github/workflows/cotahist-reference-check.yml", 'steps:\n  - run: echo "dados/cotahist/normalized/anual"\n')
+        item = MODULE.classify(".github/workflows/cotahist-reference.yml", 'steps:\n  - run: echo "dados/cotahist/normalized/anual"\n')
         self.assertEqual(item["classification"], "FALSE_POSITIVE")
+
+    def test_validation_signal_is_validator(self):
+        item = MODULE.classify(".github/workflows/cotahist-validate-only.yml", "steps:\\n  - run: python scripts/ingestao/validar_cotahist.py\\n")
+        self.assertEqual(item["classification"], "VALIDATOR")
 
     def test_secret_names_only(self):
         source = "env:\n  GH_TOKEN: " + chr(36) + "{{ secrets.B3_PUBLISH_TOKEN }}\nsteps:\n  - run: git push origin HEAD:main\n"
