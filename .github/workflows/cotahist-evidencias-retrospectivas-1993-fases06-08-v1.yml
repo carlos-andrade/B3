@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-evidencias-retrospectivas-1993-fases06-08-v1
+  cancel-in-progress: false
+
 jobs:
   gerar:
     runs-on: ubuntu-latest
