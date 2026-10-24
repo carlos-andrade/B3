@@ -257,7 +257,7 @@ def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
     if "cotahist" not in path.name.lower() and not re.search(r"dados/cotahist", text, re.I):
         return None
 
-    push_commands = re.findall(r"(?im)^\s*git\s+push\b([^\n]*)", text)
+    push_commands = re.findall(r"(?i)\bgit\s+push\b([^\n]*)", text)
     push_flat = " ".join(part.strip() for part in push_commands)
     api_writer = bool(re.search(
         r"createOrUpdateFileContents|repos\.createOrUpdateFileContents|git\.push\(|push_files|contents\.create|update_file\(",
