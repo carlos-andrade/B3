@@ -8,6 +8,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-auditoria-calendario-1988-v1
+  cancel-in-progress: false
+
 jobs:
   auditar:
     runs-on: ubuntu-latest
