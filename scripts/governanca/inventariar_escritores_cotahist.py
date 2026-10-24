@@ -7,7 +7,14 @@ WORKFLOW_DIR=Path(".github/workflows")
 CANONICAL_OWNERS={
 " dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv".strip():".github/workflows/cotahist-main-publisher.yml",
 "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json":".github/workflows/cotahist-main-publisher.yml",
-"dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json":".github/workflows/cotahist-main-publisher.yml",\n"dados/cotahist/normalized/anual/COTAHIST_A1987.csv":".github/workflows/cotahist-normalized-m1-1987.yml"}
+"dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json":".github/workflows/cotahist-main-publisher.yml",
+"dados/cotahist/normalized/anual/COTAHIST_A1987.csv":".github/workflows/cotahist-normalized-m1-1987.yml"}
+APPROVED_SHARED_EXCEPTIONS={
+"dados/cotahist/normalized/anual/COTAHIST_A1987.csv": {
+ "exception_writer": ".github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml",
+ "concurrency_group": "cotahist-normalized-a1987-writer",
+ "reason": "migração LFS administrativa exclusivamente manual; M1 permanece proprietário normal do CSV"
+}}
 def uncomment(t): return "\n".join(x for x in t.splitlines() if not x.lstrip().startswith("#"))
 def extract_paths(t):
  p,d,ls=[],[],t.splitlines()
