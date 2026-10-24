@@ -42,6 +42,11 @@ class Tests(unittest.TestCase):
         self.assertEqual(item["secret_reference_names"], ["B3_PUBLISH_TOKEN"])
         self.assertNotIn("secrets.B3_PUBLISH_TOKEN", json.dumps(item))
 
+    def test_repository_has_no_uncontrolled_or_shared_static_writers(self):
+        data = MODULE.run(Path.cwd())
+        self.assertEqual(data["writer_without_concurrency_count"], 0, data["writer_without_concurrency"])
+        self.assertEqual(data["shared_resource_count"], 0, data["shared_resources"])
+
     def test_inventory_does_not_write_to_repo(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
