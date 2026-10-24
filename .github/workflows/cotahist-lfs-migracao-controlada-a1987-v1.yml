@@ -190,31 +190,15 @@ jobs:
           set -euo pipefail
           python scripts/ingestao/gerar_dataset_oficial_cotahist_v2.py
 
-      - name: Persistir evidências pós-migração
+      - name: Guardar evidências pós-migração como artefactos (sem disputar ownership)
         if: inputs.mode == 'migrate'
-        working-directory: verify-checkout
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json
-          git add dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
-          if git diff --cached --quiet; then
-            echo "Evidências já estavam atualizadas."
-            exit 0
-          fi
-          git commit -m "audit(cotahist): revalidar dataset após migração LFS A1987"
-          pushed=0
-          for tentativa in 1 2 3; do
-            git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
-              pushed=1
-              break
-            fi
-          done
-          test "$pushed" -eq 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-lfs-a1987-post-migration-diagnostics
+          path: |
+            verify-checkout/dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json
+            verify-checkout/dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json
+          retention-days: 30
 
       - name: Resumo de execução
         if: always()
