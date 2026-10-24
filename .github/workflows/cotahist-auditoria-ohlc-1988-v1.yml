@@ -9,9 +9,6 @@ on:
       - '.github/workflows/cotahist-auditoria-ohlc-1988-v1.yml'
 permissions: {contents: write}
 concurrency: {group: cotahist-1988-ohlc, cancel-in-progress: false}
-concurrency:
-  group: cotahist-writer-cotahist-auditoria-ohlc-1988-v1
-  cancel-in-progress: false
 
 jobs:
   audit:
