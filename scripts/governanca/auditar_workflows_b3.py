@@ -293,7 +293,12 @@ def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
         branch_target = "NONE"
 
     group_match = re.search(r"(?m)^\s*group:\s*(.+?)\s*$", text)
-    concurrency_group = group_match.group(1).strip() if group_match else "MISSING"
+    inline_group = re.search(r"(?m)^\s*concurrency:\s*\{\s*group:\s*([^,}]+)", text)
+    concurrency_group = (
+        group_match.group(1).strip() if group_match
+        else inline_group.group(1).strip().strip("'\"") if inline_group
+        else "MISSING"
+    )
 
     write_paths = []
     lines = text.splitlines()
