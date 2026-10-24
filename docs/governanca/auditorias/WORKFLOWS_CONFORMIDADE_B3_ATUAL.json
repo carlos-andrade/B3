@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0.0",
-  "generated_at_utc": "2026-10-24T00:57:31.984329+00:00",
+  "generated_at_utc": "2026-10-24T00:58:17.988159+00:00",
   "normative_source": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
-  "workflow_count": 561,
+  "workflow_count": 562,
   "status_counts": {
     "CONFORME": 412,
-    "CONFORME_COM_OBSERVACAO": 149
+    "CONFORME_COM_OBSERVACAO": 150
   },
   "results": [
     {
@@ -43353,6 +43353,84 @@
       ]
     },
     {
+      "workflow": ".github/workflows/cotahist-record-diagnostic.yml",
+      "current_phase": null,
+      "status": "CONFORME_COM_OBSERVACAO",
+      "checks": [
+        {
+          "code": "MASTER_PRESENT",
+          "ok": true,
+          "detail": "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "TRIGGER_DECLARED",
+          "ok": true,
+          "detail": "declaração on presente",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_CROSS_WORKFLOW_EXECUTION",
+          "ok": true,
+          "detail": "nenhuma chamada/reexecução de outro workflow detectada",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "NO_README_TRIGGER",
+          "ok": true,
+          "detail": "sem README em gatilho",
+          "severity": "ALTA"
+        },
+        {
+          "code": "NO_GENERIC_DOCS_TRIGGER",
+          "ok": true,
+          "detail": "sem docs/ genérico em gatilho",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "STEP_SUMMARY",
+          "ok": false,
+          "detail": "GITHUB_STEP_SUMMARY ausente",
+          "severity": "BAIXA"
+        },
+        {
+          "code": "NO_POSTERIOR_PHASE_TRIGGER",
+          "ok": true,
+          "detail": "nenhum gatilho explícito de fase posterior",
+          "severity": "CRITICA"
+        },
+        {
+          "code": "PERMISSIONS_MINIMAL",
+          "ok": true,
+          "detail": "sem escrita Git detectada; contents: write não é necessário",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "EVIDENCE_PERSISTENCE_SIGNAL",
+          "ok": false,
+          "detail": "não foi identificado mecanismo claro de persistência",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "DECISION_SIGNAL",
+          "ok": false,
+          "detail": "não foi identificado sinal explícito de decisão",
+          "severity": "MEDIA"
+        },
+        {
+          "code": "IDEMPOTENCE_SIGNAL",
+          "ok": false,
+          "detail": "sem padrão estático forte de idempotência; requer validação funcional",
+          "severity": "BAIXA"
+        }
+      ],
+      "blocking_divergences": [],
+      "observability_or_advisory": [
+        "STEP_SUMMARY",
+        "IDEMPOTENCE_SIGNAL"
+      ]
+    },
+    {
       "workflow": ".github/workflows/cotahist-recuperar-normalized-1999-v1.yml",
       "current_phase": null,
       "status": "CONFORME",
@@ -44647,18 +44725,18 @@
   "cotahist_writer_inventory": {
     "scope": "Inventário estático de workflows cujo nome ou conteúdo referencia COTAHIST.",
     "static_only": true,
-    "workflow_count": 541,
+    "workflow_count": 542,
     "effective_repo_writer_count": 527,
     "local_git_mutation_count": 0,
     "write_permission_only_count": 1,
-    "read_only_or_artifact_only_count": 13,
+    "read_only_or_artifact_only_count": 14,
     "repo_writer_branch_target_counts": {
       "main": 498,
       "UPSTREAM_OR_IMPLICIT": 29
     },
     "concurrency_group_counts": {
       "b3-cotahist-rebase-conflict-hardening": 1,
-      "MISSING": 70,
+      "MISSING": 71,
       "cotahist-auditoria-fisica-normalized-v1": 1,
       "cotahist-cadeia-1994-06-12": 1,
       "cotahist-calendario-oficial-2026-v1": 1,
@@ -57126,6 +57204,20 @@
         "git_push_detected": true,
         "api_write_detected": false,
         "git_commit_detected": true,
+        "static_only": true
+      },
+      {
+        "workflow": ".github/workflows/cotahist-record-diagnostic.yml",
+        "classification": "READ_ONLY_OR_ARTIFACT_ONLY",
+        "branch_target": "NONE",
+        "write_paths": [],
+        "write_target_confidence": "UNRESOLVED",
+        "referenced_cotahist_paths": [],
+        "concurrency_group": "MISSING",
+        "contents_write_permission": false,
+        "git_push_detected": false,
+        "api_write_detected": false,
+        "git_commit_detected": false,
         "static_only": true
       },
       {
