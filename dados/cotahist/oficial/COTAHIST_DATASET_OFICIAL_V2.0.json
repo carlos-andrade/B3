@@ -3,13 +3,13 @@
   "dataset_id": "COTAHIST_OFICIAL",
   "dataset_version": "2.0.0",
   "status": "VIGENTE",
-  "generated_at": "2026-10-16",
+  "generated_at": "2026-10-24",
   "source": "B3",
   "periodo": {
     "inicio": 1986,
-    "fim": 2026
+    "fim": 2025
   },
-  "escopo": "COTAHIST anual normalizado validado pela auditoria física independente global",
+  "escopo": "Arquivo COTAHIST anual de consulta, com integridade física validada, limitado a 1986–2025; 2026 excluído por gate explícito de publicação.",
   "certificacao_source": "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json",
   "auditoria_fisica_sha256": "e94cf4d0fa08f57d32a8452b8dc3aff812742591cfc2d35c4c2b47434dc78257",
   "records": [
@@ -652,23 +652,19 @@
       "ultima_data": "2025-12-30",
       "campos": 25,
       "escopo_semantico": "NORMALIZACAO_ESTRUTURAL"
-    },
-    {
-      "ano": 2026,
-      "raw_file": "dados/cotahist/raw/anual/COTAHIST_A2026.ZIP",
-      "normalized_file": "dados/cotahist/normalized/anual/COTAHIST_A2026.csv",
-      "quality_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
-      "certificacao_fisica": "dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json",
-      "certificacao": "VALIDADO_NA_AUDITORIA_FISICA_GLOBAL",
-      "auditoria_fisica_status": "VALIDADO",
-      "raw_sha256": "580d3b0bc768ef86c4b1afdd6d08eb05bae76f21db04f8cbc636d5bec54cdd7e",
-      "normalized_sha256": "e7763b6fa5e40acfed5e58b5dde65fe276a2def7ff43bdc160de34b871f4cbdc",
-      "linhas_normalized": 3142910,
-      "primeira_data": "2026-01-02",
-      "ultima_data": "2026-10-13",
-      "campos": 25,
-      "escopo_semantico": "NORMALIZACAO_ESTRUTURAL"
     }
   ],
+  "policy_exclusions": {
+    "2026": {
+      "status": "BLOQUEADO_AUTORIZACAO_FONTE",
+      "reason": "A autorização de publicação/redistribuição de COTAHIST 2026 não está demonstrada; a validação física não concede direitos de publicação.",
+      "endpoint_id": "B3_COTAHIST_DAILY",
+      "authorization_status": "OFFICIAL_DIRECT_FILE_CHANNEL_SCOPE_LIMITED",
+      "publication_authorized": false,
+      "quality_manifest_status": "BLOQUEADO",
+      "quality_manifest": "dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json",
+      "authorization_registry": "docs/governanca/licenciamento/REGISTRO_AUTORIZACOES_ENDPOINTS_B3_2026-10-16.json"
+    }
+  },
   "fail_closed": true
 }
