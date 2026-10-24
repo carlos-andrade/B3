@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-certificacao-final-1987-v1
+  cancel-in-progress: false
+
 jobs:
   certificar:
     runs-on: ubuntu-latest
