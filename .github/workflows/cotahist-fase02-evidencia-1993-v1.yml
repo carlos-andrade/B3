@@ -8,6 +8,10 @@ on:
       - "dados/cotahist/raw/anual/COTAHIST_A1993.ZIP"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase02-evidencia-1993-v1
+  cancel-in-progress: false
+
 jobs:
   validar:
     runs-on: ubuntu-latest
