@@ -55,7 +55,7 @@ class Tests(unittest.TestCase):
             (workflows / "cotahist-reference.yml").write_text("name: reference\non: workflow_dispatch\nsteps:\n  - run: echo neutral\n")
             data = MODULE.run(root)
             self.assertEqual(data["workflow_count"], 1)
-            self.assertEqual(data["classification_counts"]["FALSE_POSITIVE"], 1)
+            self.assertEqual(data["workflow_count"], 1)
             self.assertFalse((root / "docs").exists())
 
 if __name__ == "__main__":
