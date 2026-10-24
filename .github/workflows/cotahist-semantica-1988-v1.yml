@@ -2,6 +2,7 @@ name: COTAHIST 1988 - Auditoria Semantica V1
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
       - 'dados/cotahist/normalized/anual/COTAHIST_A1988.csv'
