@@ -81,10 +81,12 @@ def classify(path,raw):
  elif pushes: branch="UPSTREAM_OR_IMPLICIT"
  elif api: branch="API_TARGET_UNRESOLVED"
  group=re.search(r"(?m)^\s*group:\s*(.+?)\s*$",t)
+ inline_group=re.search(r"(?m)^\s*concurrency:\s*\{\s*group:\s*([^,}]+)",t)
+ group_value=group.group(1).strip() if group else (inline_group.group(1).strip().strip("\\'\\\"") if inline_group else "MISSING")
  secrets=sorted(set(re.findall(r"\b(?:secrets|vars)\.([A-Z][A-Z0-9_]*)\b",t)))
  creds=sorted(set(re.findall(r"(?i)\b([A-Z][A-Z0-9_]*(?:TOKEN|PAT|APP_ID|PRIVATE_KEY|PASSWORD|SECRET|CREDENTIAL)[A-Z0-9_]*)\b",t)))
  refs=sorted(set(re.findall(r"(?<![A-Za-z0-9_])dados/cotahist/[A-Za-z0-9_./*{}-]+",t,re.I)))
- return {"workflow":path,"classification":cls,"write_mechanism":{"git_push":bool(pushes),"api_write":api,"local_commit":commit},"branch_target":branch,"write_paths_static":paths,"write_paths_dynamic_or_broad":dyn,"referenced_cotahist_paths":refs,"concurrency_group":group.group(1).strip() if group else "MISSING","contents_write_permission":perm,"secret_reference_names":secrets,"credential_or_token_identifiers":creds,"static_evidence_only":True,"runtime_write_confirmed":False}
+ return {"workflow":path,"classification":cls,"write_mechanism":{"git_push":bool(pushes),"api_write":api,"local_commit":commit},"branch_target":branch,"write_paths_static":paths,"write_paths_dynamic_or_broad":dyn,"referenced_cotahist_paths":refs,"concurrency_group":group_value,"contents_write_permission":perm,"secret_reference_names":secrets,"credential_or_token_identifiers":creds,"static_evidence_only":True,"runtime_write_confirmed":False}
 def run(root):
  files=sorted((root/WORKFLOW_DIR).glob("*.yml"))+sorted((root/WORKFLOW_DIR).glob("*.yaml")); records=[]
  for f in files:
