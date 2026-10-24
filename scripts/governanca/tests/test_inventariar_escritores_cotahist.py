@@ -42,6 +42,43 @@ class Tests(unittest.TestCase):
         self.assertEqual(item["secret_reference_names"], ["B3_PUBLISH_TOKEN"])
         self.assertNotIn("secrets.B3_PUBLISH_TOKEN", json.dumps(item))
 
+    def test_inline_concurrency_group_is_detected(self):
+        source = """permissions: {contents: write}
+concurrency: {group: cotahist-inline-group, cancel-in-progress: false}
+steps:
+  - run: |
+      git add dados/cotahist/quality/EVIDENCE.json
+      git push origin HEAD:main
+"""
+        item = MODULE.classify(".github/workflows/cotahist-inline-test.yml", source)
+        self.assertEqual(item["concurrency_group"], "cotahist-inline-group")
+
+    def test_resolves_static_shell_variables_and_loop_allowlists(self):
+        source = """evidence="dados/cotahist/quality/EVIDENCE.json"
+norm="dados/cotahist/normalized/anual/COTAHIST_A2015.csv"
+for f in \\
+  dados/cotahist/quality/ONE.json \\
+  dados/cotahist/quality/TWO.json
+do
+  git add "$f"
+done
+git add "$evidence" "$norm"
+git push origin HEAD:main
+"""
+        item = MODULE.classify(".github/workflows/cotahist-path-test.yml", source)
+        self.assertIn("dados/cotahist/quality/ONE.json", item["write_paths_static"])
+        self.assertIn("dados/cotahist/quality/TWO.json", item["write_paths_static"])
+        self.assertIn("dados/cotahist/quality/EVIDENCE.json", item["write_paths_static"])
+        self.assertIn("dados/cotahist/normalized/anual/COTAHIST_A2015.csv", item["write_paths_static"])
+        self.assertEqual(item["write_paths_dynamic_or_broad"], [])
+
+    def test_no_duplicate_concurrency_keys_in_workflows(self):
+        root = Path.cwd() / ".github" / "workflows"
+        for path in list(root.glob("*.yml")) + list(root.glob("*.yaml")):
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+            declarations = [line for line in lines if line.startswith("concurrency:")]
+            self.assertLessEqual(len(declarations), 1, f"duplicate concurrency key: {path}")
+
     def test_repository_has_no_uncontrolled_or_shared_static_writers(self):
         data = MODULE.run(Path.cwd())
         self.assertEqual(data["writer_without_concurrency_count"], 0, data["writer_without_concurrency"])
