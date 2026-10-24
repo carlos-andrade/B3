@@ -12,6 +12,10 @@ on:
       - "dados/cotahist/checksums/COTAHIST_A1994.ZIP.sha256"
 permissions:
   contents: write
+concurrency:
+  group: cotahist-writer-cotahist-fase01-aquisicao-raw-1994-v1
+  cancel-in-progress: false
+
 jobs:
   gate:
     runs-on: ubuntu-latest
