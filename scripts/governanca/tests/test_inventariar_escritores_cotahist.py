@@ -52,7 +52,7 @@ class Tests(unittest.TestCase):
             root = Path(temp)
             workflows = root / ".github" / "workflows"
             workflows.mkdir(parents=True)
-            (workflows / "cotahist-reference.yml").write_text("name: validator\non: workflow_dispatch\nsteps:\n  - run: echo validate\n")
+            (workflows / "cotahist-reference.yml").write_text("name: reference\non: workflow_dispatch\nsteps:\n  - run: echo neutral\n")
             data = MODULE.run(root)
             self.assertEqual(data["workflow_count"], 1)
             self.assertEqual(data["classification_counts"]["FALSE_POSITIVE"], 1)
