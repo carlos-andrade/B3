@@ -8,6 +8,8 @@ on:
       - ".github/workflows/**"
       - "docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md"
       - "scripts/governanca/auditar_workflows_b3.py"
+      - "scripts/governanca/inventariar_escritores_cotahist.py"
+      - "scripts/governanca/tests/test_inventariar_escritores_cotahist.py"
   workflow_dispatch:
   schedule:
     - cron: "15 3 * * *"
@@ -34,8 +36,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Executar auditoria estática
-        run: python scripts/governanca/auditar_workflows_b3.py
+      - name: Executar auditorias estáticas e testes
+        run: |
+          python scripts/governanca/auditar_workflows_b3.py
+          python scripts/governanca/inventariar_escritores_cotahist.py --repo-root . --output-dir docs/governanca/auditorias/cotahist-writers
+          python -m unittest discover -s scripts/governanca/tests -p "test_inventariar_escritores_cotahist.py" -v
 
       - name: Publicar resultado no Step Summary
         run: |
@@ -74,7 +79,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md
+          git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md docs/governanca/auditorias/cotahist-writers/cotahist-writer-inventory.json docs/governanca/auditorias/cotahist-writers/cotahist-writer-inventory.md
           if git diff --cached --quiet; then
             echo "Sem alteração de auditoria. Nenhum commit necessário."
             exit 0
@@ -89,7 +94,9 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python scripts/governanca/auditar_workflows_b3.py
-            git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md
+            python scripts/governanca/inventariar_escritores_cotahist.py --repo-root . --output-dir docs/governanca/auditorias/cotahist-writers
+            python -m unittest discover -s scripts/governanca/tests -p "test_inventariar_escritores_cotahist.py" -v
+            git add docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.json docs/governanca/auditorias/WORKFLOWS_CONFORMIDADE_B3_ATUAL.md docs/governanca/auditorias/cotahist-writers/cotahist-writer-inventory.json docs/governanca/auditorias/cotahist-writers/cotahist-writer-inventory.md
             if git diff --cached --quiet; then
               echo "Sem alteração após reconstrução; auditoria já persistida."
               exit 0

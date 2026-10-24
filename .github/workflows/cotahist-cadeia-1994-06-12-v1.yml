@@ -7,6 +7,7 @@ name: COTAHIST 1994 - cadeia FASE06-12 V2
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/cotahist-cadeia-1994-06-12-v1.yml"
       - "scripts/ingestao/gerar_evidencias_cotahist_1994_fases06_08_v1.py"

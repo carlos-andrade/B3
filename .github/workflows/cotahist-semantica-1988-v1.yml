@@ -2,6 +2,7 @@ name: COTAHIST 1988 - Auditoria Semantica V1
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'dados/cotahist/raw/anual/COTAHIST_A1988.ZIP'
       - 'dados/cotahist/normalized/anual/COTAHIST_A1988.csv'
@@ -9,9 +10,6 @@ on:
       - '.github/workflows/cotahist-semantica-1988-v1.yml'
 permissions: {contents: write}
 concurrency: {group: cotahist-1988-semantica, cancel-in-progress: false}
-concurrency:
-  group: cotahist-writer-cotahist-semantica-1988-v1
-  cancel-in-progress: false
 
 jobs:
   audit:
