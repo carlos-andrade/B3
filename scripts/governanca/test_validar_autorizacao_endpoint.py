@@ -45,6 +45,13 @@ class AuthorizationGateTests(unittest.TestCase):
         self.assertEqual(payload["operation_scope"], "INTERNAL_VALIDATION_ONLY")
         self.assertFalse(payload["publication_authorized"])
 
+    def test_blocked_endpoint_payload_always_declares_scope_and_publication(self):
+        result = run_gate("B3_PESQUISA_POR_PREGAO_API")
+        self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["operation_scope"], "GENERAL_AUTHORIZATION")
+        self.assertFalse(payload["publication_authorized"])
+
     def test_limited_scope_without_required_controls_fails_closed(self):
         cases = [
             {
