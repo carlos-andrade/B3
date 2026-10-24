@@ -72,6 +72,13 @@ git push origin HEAD:main
         self.assertIn("dados/cotahist/normalized/anual/COTAHIST_A2015.csv", item["write_paths_static"])
         self.assertEqual(item["write_paths_dynamic_or_broad"], [])
 
+    def test_no_duplicate_concurrency_keys_in_workflows(self):
+        root = Path.cwd() / ".github" / "workflows"
+        for path in list(root.glob("*.yml")) + list(root.glob("*.yaml")):
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+            declarations = [line for line in lines if line.startswith("concurrency:")]
+            self.assertLessEqual(len(declarations), 1, f"duplicate concurrency key: {path}")
+
     def test_repository_has_no_uncontrolled_or_shared_static_writers(self):
         data = MODULE.run(Path.cwd())
         self.assertEqual(data["writer_without_concurrency_count"], 0, data["writer_without_concurrency"])
