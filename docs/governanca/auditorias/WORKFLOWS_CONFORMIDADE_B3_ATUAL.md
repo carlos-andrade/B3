@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 840535ad7b3bf2265eff174c51b72ac931b97bcfe13bb9abb728332a8fc163c6 |
-| **Commit de referência (versão anterior)** | [10b20bc43cd1347da8e55998e91898ceb36f4386](https://github.com/carlos-andrade/B3/commit/10b20bc43cd1347da8e55998e91898ceb36f4386) |
+| **SHA-256 (conteúdo canónico)** | 056b1aa571e3d9924e0d72149dbe56e3e485e8f69ed3102edf45f8ea419f3e68 |
+| **Commit de referência (versão anterior)** | [1e7c0dc6d4c18856d2ff1a68e8cb3cdbb35671b0](https://github.com/carlos-andrade/B3/commit/1e7c0dc6d4c18856d2ff1a68e8cb3cdbb35671b0) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-24 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,7 +21,7 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-24T00:52:51.632671+00:00
+Gerado em UTC: 2026-10-24T00:57:31.984329+00:00
 Workflows auditados: 561
 
 ## Regra de decisão
@@ -623,17 +623,17 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | Workflow | Classe | Branch destino | Grupo de concorrência | Paths de escrita detetados |
 |---|---|---|---|---|
 | .github/workflows/b3-cotahist-rebase-conflict-hardening.yml | REPO_WRITER | main | b3-cotahist-rebase-conflict-hardening | .github/workflows/cotahist-*.yml, .github/workflows/rec001-cotahist-bloomberg-mail.yml |
-| .github/workflows/cotahist-auditoria-calendario-1987-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_CALENDARIO_V1.json, dados/cotahist/quality/COTAHIST_1987_AUDITORIA_CALENDARIO_V1.json;, git, diff |
-| .github/workflows/cotahist-auditoria-calendario-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json, dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json;, git, diff |
+| .github/workflows/cotahist-auditoria-calendario-1987-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_CALENDARIO_V1.json |
+| .github/workflows/cotahist-auditoria-calendario-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CALENDARIO_V1.json |
 | .github/workflows/cotahist-auditoria-fisica-normalized-v1.yml | REPO_WRITER | main | cotahist-auditoria-fisica-normalized-v1 | dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json |
 | .github/workflows/cotahist-auditoria-ohlc-1987-v1.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_OHLC_V1.json |
 | .github/workflows/cotahist-auditoria-ohlc-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_OHLC_V1.json |
 | .github/workflows/cotahist-auditoria-quantidade-volume-1987-v1.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_QUANTIDADE_VOLUME_V1.json |
 | .github/workflows/cotahist-auditoria-quantidade-volume-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_QUANTIDADE_VOLUME_V1.json |
-| .github/workflows/cotahist-cadeia-1994-06-12-v1.yml | REPO_WRITER | main | cotahist-cadeia-1994-06-12 | $f |
+| .github/workflows/cotahist-cadeia-1994-06-12-v1.yml | REPO_WRITER | main | cotahist-cadeia-1994-06-12 | DYNAMIC:$f |
 | .github/workflows/cotahist-calendario-1986-v1.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CALENDARIO_V1.json |
-| .github/workflows/cotahist-calendario-oficial-2026-v1.yml | REPO_WRITER | main | cotahist-calendario-oficial-2026-v1 | $evidence |
-| .github/workflows/cotahist-certificacao-final-1987-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json, dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json;, git, commit |
+| .github/workflows/cotahist-calendario-oficial-2026-v1.yml | REPO_WRITER | main | cotahist-calendario-oficial-2026-v1 | DYNAMIC:$evidence |
+| .github/workflows/cotahist-certificacao-final-1987-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1987_CERTIFICACAO_FINAL_V1.json |
 | .github/workflows/cotahist-chave-logica-1987-v1.yml | REPO_WRITER | main | cotahist-1987-chave-logica | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_CHAVE_LOGICA_V1.json |
 | .github/workflows/cotahist-chave-logica-1988-v1.yml | REPO_WRITER | main | cotahist-1988-chave-logica | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_CHAVE_LOGICA_V1.json |
 | .github/workflows/cotahist-chaves-logicas-1986-v2.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1986_AUDITORIA_CHAVES_V2.json |
@@ -747,15 +747,15 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase04-normalizacao-1996-v1.yml | REPO_WRITER | main | cotahist-fase04-1996 | dados/cotahist/normalized/anual/COTAHIST_A1996.csv, dados/cotahist/quality/COTAHIST_1996_FASE04_NORMALIZACAO_V1.json |
 | .github/workflows/cotahist-fase04-normalizacao-1997-v1.yml | REPO_WRITER | main | cotahist-fase04-1997 | dados/cotahist/normalized/anual/COTAHIST_A1997.csv, dados/cotahist/quality/COTAHIST_1997_FASE04_NORMALIZACAO_V1.json |
 | .github/workflows/cotahist-fase04-normalizacao-1998-v1.yml | REPO_WRITER | main | cotahist-fase04-1998 | dados/cotahist/normalized/anual/COTAHIST_A1998.csv, dados/cotahist/quality/COTAHIST_1998_FASE04_NORMALIZACAO_V1.json |
-| .github/workflows/cotahist-fase04-normalizacao-2015-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2015-v1 | $evidence, $norm |
-| .github/workflows/cotahist-fase04-normalizacao-2016-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2016-v1 | $evidence, $norm |
-| .github/workflows/cotahist-fase04-normalizacao-2017-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2017-v1 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2018-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2018-v1 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2019-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2019-v1 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2020-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2020-v1 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2020-v2.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2020-v2 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2021-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2021-v1 | $evidence, $norm, $conflict_file |
-| .github/workflows/cotahist-fase04-normalizacao-2022-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2022-v1 | $evidence, $norm, $conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2015-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2015-v1 | DYNAMIC:$evidence, DYNAMIC:$norm |
+| .github/workflows/cotahist-fase04-normalizacao-2016-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2016-v1 | DYNAMIC:$evidence, DYNAMIC:$norm |
+| .github/workflows/cotahist-fase04-normalizacao-2017-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2017-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2018-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2018-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2019-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2019-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2020-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2020-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2020-v2.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2020-v2 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2021-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2021-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
+| .github/workflows/cotahist-fase04-normalizacao-2022-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2022-v1 | DYNAMIC:$evidence, DYNAMIC:$norm, DYNAMIC:$conflict_file |
 | .github/workflows/cotahist-fase04-normalizacao-2023-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2023-v2 | dados/cotahist/quality/COTAHIST_2023_FASE02_INTEGRIDADE_FONTE_V1.json, dados/cotahist/quality/COTAHIST_2023_FASE03_PARSING_V1.json, dados/cotahist/quality/COTAHIST_2023_FASE04_NORMALIZACAO_V1.json, dados/cotahist/normalized/anual/COTAHIST_A2023.csv |
 | .github/workflows/cotahist-fase04-normalizacao-2024-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2024-v1 | dados/cotahist/quality/COTAHIST_2024_FASE02_INTEGRIDADE_FONTE_V1.json, dados/cotahist/quality/COTAHIST_2024_FASE03_PARSING_V1.json, dados/cotahist/quality/COTAHIST_2024_FASE04_NORMALIZACAO_V1.json, dados/cotahist/normalized/anual/COTAHIST_A2024.csv |
 | .github/workflows/cotahist-fase04-normalizacao-2025-v1.yml | REPO_WRITER | main | cotahist-fase04-normalizacao-2025-v1 | dados/cotahist/quality/COTAHIST_2025_FASE02_INTEGRIDADE_FONTE_V1.json, dados/cotahist/quality/COTAHIST_2025_FASE03_PARSING_V1.json, dados/cotahist/quality/COTAHIST_2025_FASE04_NORMALIZACAO_V1.json, dados/cotahist/normalized/anual/COTAHIST_A2025.csv |
@@ -1048,7 +1048,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-fase11-certificacao-2023-v1.yml | REPO_WRITER | main | cotahist-fase11-certificacao-2023-v1 | dados/cotahist/quality/COTAHIST_2023_FASE11_CERTIFICACAO_V1.json |
 | .github/workflows/cotahist-fase11-certificacao-2024-v1.yml | REPO_WRITER | main | cotahist-fase11-certificacao-2024-v1 | dados/cotahist/quality/COTAHIST_2024_FASE11_CERTIFICACAO_V1.json |
 | .github/workflows/cotahist-fase11-certificacao-2025-v1.yml | REPO_WRITER | main | cotahist-fase11-certificacao-2025-v1 | dados/cotahist/quality/COTAHIST_2025_FASE11_CERTIFICACAO_V1.json |
-| .github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml | REPO_WRITER | main | cotahist-fase11-promocao-controlada-2026-v1 | dados/cotahist/raw/anual/COTAHIST_A2026.ZIP, \, dados/cotahist/manifests/COTAHIST_A2026.json, dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256 |
+| .github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml | REPO_WRITER | main | cotahist-fase11-promocao-controlada-2026-v1 | dados/cotahist/raw/anual/COTAHIST_A2026.ZIP, dados/cotahist/manifests/COTAHIST_A2026.json, dados/cotahist/checksums/COTAHIST_A2026.ZIP.sha256, dados/cotahist/normalized/anual/COTAHIST_A2026.csv |
 | .github/workflows/cotahist-fase12-fechamento-1995-abertura-1996-v1.yml | REPO_WRITER | main | cotahist-fase12-1995-1996 | dados/cotahist/quality/COTAHIST_1995_FASE12_FECHAMENTO_1996_ABERTURA_V1.json |
 | .github/workflows/cotahist-fase12-fechamento-1996-abertura-1997-v1.yml | REPO_WRITER | main | cotahist-fase12-1996-1997-v2 | dados/cotahist/quality/COTAHIST_1996_FASE12_FECHAMENTO_1997_ABERTURA_V1.json |
 | .github/workflows/cotahist-fase12-fechamento-1997-abertura-1998-v1.yml | REPO_WRITER | main | cotahist-fase12-1997-1998 | dados/cotahist/quality/COTAHIST_1997_FASE12_FECHAMENTO_1998_ABERTURA_V1.json |
@@ -1119,11 +1119,11 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-importacao-diaria-v1.yml | REPO_WRITER | main | cotahist-importacao-diaria-v1 | dados/cotahist/raw/diario, dados/cotahist/normalized/diario, dados/cotahist/normalized/manifests/diario, dados/cotahist/quality/diario |
 | .github/workflows/cotahist-integridade-campos-1987-v1.yml | REPO_WRITER | main | cotahist-1987-integridade-campos | dados/cotahist/quality/COTAHIST_1987_AUDITORIA_INTEGRIDADE_CAMPOS_V1.json |
 | .github/workflows/cotahist-integridade-campos-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_AUDITORIA_INTEGRIDADE_CAMPOS_V1.json |
-| .github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml | REPO_WRITER | main | cotahist-lfs-a1987-migracao-controlada | $FILE, dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json |
+| .github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml | REPO_WRITER | main | cotahist-lfs-a1987-migracao-controlada | DYNAMIC:$FILE, dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json |
 | .github/workflows/cotahist-m2-certificacao-fisica-1987-v2.yml | REPO_WRITER | main | cotahist-m2-certificacao-fisica | dados/cotahist/certificacao/v2/COTAHIST_A1987_CERTIFICACAO_FISICA_V2.0.json |
 | .github/workflows/cotahist-m3-1b-prova-lfs-2026.yml | REPO_WRITER | main | cotahist-m3-1b-lfs-2026 | .gitattributes, dados/cotahist/normalized/anual/COTAHIST_A2026.csv |
 | .github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml | REPO_WRITER | main | cotahist-m3-1b-reconciliar-manifest-2026 | dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json, dados/cotahist/quality/COTAHIST_A2026_RECONCILIACAO_MANIFEST_V1.json |
-| .github/workflows/cotahist-main-publisher.yml | REPO_WRITER | main | b3-cotahist-main-publish-${{ github.ref }} | \, dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json |
+| .github/workflows/cotahist-main-publisher.yml | REPO_WRITER | main | b3-cotahist-main-publish-${{ github.ref }} | dados/cotahist/certificacao/COTAHIST_CERTIFICACAO_ANUAL_1986_2026_V1.0.csv, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V1.0.json, dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json |
 | .github/workflows/cotahist-materializar-normalized-1989-v1.yml | REPO_WRITER | main | cotahist-materializar-normalized-1989-v1 | dados/cotahist/normalized/anual/COTAHIST_A1989.csv |
 | .github/workflows/cotahist-materializar-normalized-1990-v1.yml | REPO_WRITER | main | cotahist-materializar-normalized-1990-v1 | dados/cotahist/normalized/anual/COTAHIST_A1990.csv |
 | .github/workflows/cotahist-materializar-normalized-1991-v1.yml | REPO_WRITER | main | cotahist-materializar-normalized-1991-v1 | dados/cotahist/normalized/anual/COTAHIST_A1991.csv |
@@ -1138,7 +1138,7 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-quantidade-volume-preco-1986-v1.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1986_AUDITORIA_QUANTIDADE_VOLUME_PRECO_V1.json |
 | .github/workflows/cotahist-reconciliacao-1987-v1.yml | REPO_WRITER | main | cotahist-1987-reconciliacao | dados/cotahist/quality/COTAHIST_1987_RECONCILIACAO_RAW_NORMALIZED_V1.json |
 | .github/workflows/cotahist-reconciliacao-1988-v1.yml | REPO_WRITER | main | cotahist-1988-reconciliacao | dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_RAW_NORMALIZED_V1.json |
-| .github/workflows/cotahist-reconciliacao-final-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_FINAL_V1.json, dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_FINAL_V1.json;, git, diff |
+| .github/workflows/cotahist-reconciliacao-final-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_RECONCILIACAO_FINAL_V1.json |
 | .github/workflows/cotahist-reconciliacao-raw-normalized-1986-v1.yml | REPO_WRITER | main | cotahist-reconciliacao-raw-normalized-1986 | dados/cotahist/quality/COTAHIST_1986_RECONCILIACAO_RAW_NORMALIZED_V1.json |
 | .github/workflows/cotahist-reconciliacao-semantica-1986.yml | REPO_WRITER | UPSTREAM_OR_IMPLICIT | MISSING | dados/cotahist/quality/COTAHIST_1986_RECONCILIACAO_SEMANTICA_V1.json |
 | .github/workflows/cotahist-reconciliacao-tpmerc021-bvbg028-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_A2026_TPMERC021_BVBG028_RECONCILIACAO_V1.json |
@@ -1149,5 +1149,24 @@ Ausência isolada de GITHUB_STEP_SUMMARY não é defeito funcional de dados.
 | .github/workflows/cotahist-validacao-independente-1988-v1.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json |
 | .github/workflows/cotahist-validacao-independente-1988-v2.yml | REPO_WRITER | main | MISSING | dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json |
 | .github/workflows/rec001-cotahist-bloomberg-mail.yml | REPO_WRITER | main | rec001-cotahist-bloomberg-mail | dados/cotahist/quality/COTAHIST_A2026_REC001_BLOOMBERG_MAIL_V1.json |
+
+## Recursos com múltiplos escritores estáticos
+
+- Destinos estáticos partilhados: **11**
+- Escritores com alvo dinâmico ou não resolvido: **15**
+
+| Recurso de escrita | Nº de workflows | Writers |
+|---|---:|---|
+| .gitattributes | 2 | .github/workflows/cotahist-gate-historico-1986.yml, .github/workflows/cotahist-m3-1b-prova-lfs-2026.yml |
+| dados/cotahist/normalized/anual/COTAHIST_A1996.csv | 2 | .github/workflows/cotahist-fase04-normalizacao-1996-v1.yml, .github/workflows/cotahist-fase13-materializacao-1996-v1.yml |
+| dados/cotahist/normalized/anual/COTAHIST_A1997.csv | 2 | .github/workflows/cotahist-fase04-normalizacao-1997-v1.yml, .github/workflows/cotahist-fase13-materializacao-1997-v1.yml |
+| dados/cotahist/normalized/anual/COTAHIST_A1998.csv | 2 | .github/workflows/cotahist-fase04-normalizacao-1998-v1.yml, .github/workflows/cotahist-fase13-materializacao-1998-v1.yml |
+| dados/cotahist/normalized/anual/COTAHIST_A2026.csv | 2 | .github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml, .github/workflows/cotahist-m3-1b-prova-lfs-2026.yml |
+| dados/cotahist/normalized/manifests/COTAHIST_A2026_quality.json | 2 | .github/workflows/cotahist-fase11-promocao-controlada-2026-v1.yml, .github/workflows/cotahist-m3-1b-reconciliar-manifest-2026.yml |
+| dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json | 2 | .github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml, .github/workflows/cotahist-main-publisher.yml |
+| dados/cotahist/quality/AUDITORIA_FISICA_COTAHIST_1986_2026_V1.json | 2 | .github/workflows/cotahist-auditoria-fisica-normalized-v1.yml, .github/workflows/cotahist-lfs-migracao-controlada-a1987-v1.yml |
+| dados/cotahist/quality/COTAHIST_1988_VALIDACAO_INDEPENDENTE_V1.json | 2 | .github/workflows/cotahist-validacao-independente-1988-v1.yml, .github/workflows/cotahist-validacao-independente-1988-v2.yml |
+| dados/cotahist/quality/COTAHIST_1998_FASE06_RECONCILIACAO_OHLC_V1.json | 2 | .github/workflows/cotahist-fase06-reconciliacao-ohlc-1998-v1.yml, .github/workflows/cotahist-fase06-semantica-1998-v1.yml |
+| dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json | 2 | .github/workflows/cotahist-fase10-validacao-independente-2013-retry-v1.yml, .github/workflows/cotahist-fase10-validacao-independente-2013-v1.yml |
 
 O JSON desta auditoria contém o inventário completo, incluindo workflows sem escrita efetiva.
