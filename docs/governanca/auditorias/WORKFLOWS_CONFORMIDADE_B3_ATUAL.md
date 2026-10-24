@@ -9,8 +9,8 @@
 | **Fase** | GOVERNANCA_CONTINUA |
 | **Estado** | EM_REVISAO |
 | **Versão** | 2.0.0 |
-| **SHA-256 (conteúdo canónico)** | 7939bf74f6c53da65b08346fe647988a34b4b0920552cbd643918c13bc7d8cc9 |
-| **Commit de referência (versão anterior)** | [7b890205e2bdb188ccfbc5cfb7f5b31308dee194](https://github.com/carlos-andrade/B3/commit/7b890205e2bdb188ccfbc5cfb7f5b31308dee194) |
+| **SHA-256 (conteúdo canónico)** | ab101b6049194fa895700228652701fceafdeb4181d8b991e86e490d69fab7af |
+| **Commit de referência (versão anterior)** | [6f634456300ef7a72621f70de8ab74e327b40088](https://github.com/carlos-andrade/B3/commit/6f634456300ef7a72621f70de8ab74e327b40088) |
 | **Data de criação** | N/A — relatório regenerado automaticamente |
 | **Data de atualização** | 2026-10-24 |
 | **Responsável** | Automação de auditoria de governança B3 |
@@ -21,7 +21,7 @@
 
 
 Fonte normativa: docs/governanca/layout/LAYOUT_MESTRE_CANONICO_B3_V1.md
-Gerado em UTC: 2026-10-24T00:58:17.988159+00:00
+Gerado em UTC: 2026-10-24T08:11:50.005549+00:00
 Workflows auditados: 562
 
 ## Regra de decisão
