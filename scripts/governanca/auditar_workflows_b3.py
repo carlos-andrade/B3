@@ -305,10 +305,15 @@ def classify_cotahist_writer(path: pathlib.Path, text: str) -> dict | None:
                 index += 1
                 line = lines[index]
                 command += " " + line.strip().rstrip("\\")
-            tokens = re.findall(r"'([^']+)'|\\"([^\\"]+)\\"|([^\s]+)", command)
-            for token in tokens:
-                value = next((part for part in token if part), "").strip()
-                if not value or value.startswith("-"):
+            tokens = command.replace('"', '').replace("'", "").split()
+            for value in tokens:
+                value = value.strip()
+                if not value:
+                    continue
+                if value in {".", "-A", "--all"}:
+                    write_paths = ["<entire-repository>"]
+                    break
+                if value.startswith("-"):
                     continue
                 if value not in write_paths:
                     write_paths.append(value)
