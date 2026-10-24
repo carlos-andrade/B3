@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cotahist-writer-cotahist-fase03-parsing-1994-v1
+  cancel-in-progress: false
+
 jobs:
   parsing:
     runs-on: ubuntu-latest
