@@ -10,9 +10,6 @@ on:
       - '.github/workflows/cotahist-semantica-1988-v1.yml'
 permissions: {contents: write}
 concurrency: {group: cotahist-1988-semantica, cancel-in-progress: false}
-concurrency:
-  group: cotahist-writer-cotahist-semantica-1988-v1
-  cancel-in-progress: false
 
 jobs:
   audit:
