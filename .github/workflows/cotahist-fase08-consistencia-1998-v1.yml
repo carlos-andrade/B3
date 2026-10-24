@@ -7,6 +7,10 @@ on:
       - scripts/ingestao/validar_consistencia_cotahist_1998_fase08_v1.py
       - .github/workflows/cotahist-fase08-consistencia-1998-v1.yml
 permissions: {contents: write}
+concurrency:
+  group: cotahist-writer-cotahist-fase08-consistencia-1998-v1
+  cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
