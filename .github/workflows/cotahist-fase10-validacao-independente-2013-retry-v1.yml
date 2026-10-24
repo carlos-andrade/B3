@@ -33,7 +33,7 @@ jobs:
             dados/cotahist/normalized/manifests/COTAHIST_A2013_quality.json
             dados/cotahist/normalized/manifests/COTAHIST_A2013.csv.sha256
             dados/cotahist/quality/COTAHIST_2013_FASE09_PRE_RELEASE_V1.json
-            dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+            dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -50,7 +50,7 @@ jobs:
           manifest_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2013_quality.json")
           sidecar_path = pathlib.Path("dados/cotahist/normalized/manifests/COTAHIST_A2013.csv.sha256")
           f9_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2013_FASE09_PRE_RELEASE_V1.json")
-          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json")
+          ev_path = pathlib.Path("dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json")
           for p in (raw_path, csv_path, manifest_path, sidecar_path, f9_path):
               if not p.is_file() or p.stat().st_size == 0:
                   sys.exit(f"FASE10 BLOQUEADA: arquivo ausente/vazio: {p}")
@@ -162,13 +162,13 @@ jobs:
         if: always()
         run: |
           set -euo pipefail
-          test -s dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json || {
+          test -s dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json || {
             echo "Nenhuma evidência FASE10 produzida."
             exit 0
           }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_V1.json
+          git add dados/cotahist/quality/COTAHIST_2013_FASE10_VALIDACAO_INDEPENDENTE_RETRY_V1.json
           git diff --cached --quiet && exit 0
           git commit -m "audit(cotahist): persistir validacao independente fase 10 2013"
           for attempt in 1 2 3 4 5; do
