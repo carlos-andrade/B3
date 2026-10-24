@@ -10,20 +10,59 @@ CANONICAL_OWNERS={
 "dados/cotahist/oficial/COTAHIST_DATASET_OFICIAL_V2.0.json":".github/workflows/cotahist-main-publisher.yml"}
 def uncomment(t): return "\n".join(x for x in t.splitlines() if not x.lstrip().startswith("#"))
 def extract_paths(t):
- p,d,ls=[],[],t.splitlines(); i=0
+ p,d,ls=[],[],t.splitlines()
+ assignments={}
+ for m in re.finditer(r"""(?m)^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(['"])([^'"\n]+)\2\s*$""",t):
+  assignments[m.group(1)]=m.group(3)
+ loop_values={}
+ prefix=r"(?:dados/cotahist|docs|registry|\.gitattributes|\.github|README)"
+ for m in re.finditer(r"(?ms)^\s*for\s+([A-Za-z_][A-Za-z0-9_]*)\s+in\s+\\\s*\n(.*?)^\s*do\b",t):
+  vals=re.findall(r"(?m)^\s*("+prefix+r"[A-Za-z0-9_./*{}-]*)\s*\\?\s*$",m.group(2))
+  if vals: loop_values[m.group(1)]=vals
+ for m in re.finditer(r"""(?ms)case\s+['"]?\$([A-Za-z_][A-Za-z0-9_]*)['"]?\s+in(.*?)esac""",t):
+  var,block=m.group(1),m.group(2)
+  allowed=[]
+  for line in block.splitlines():
+   if ")" not in line: continue
+   lhs=line.split(")",1)[0].strip()
+   if lhs in {"*",""}: continue
+   for token in lhs.split("|"):
+    token=token.strip().strip("'\"")
+    if token.startswith("$"):
+     key=token[1:].strip("{}")
+     if key in assignments: allowed.append(assignments[key])
+     elif key in loop_values: allowed.extend(loop_values[key])
+    elif re.match(r"^"+prefix+r"[A-Za-z0-9_./*{}-]*$",token):
+     allowed.append(token)
+  if allowed: loop_values[var]=sorted(set(allowed))
+ def resolve(value):
+  value=value.strip().strip("'\"").rstrip(",;")
+  if value.startswith("$"):
+   key=value[1:].strip("{}")
+   if key in assignments: return [assignments[key]]
+   if key in loop_values: return loop_values[key]
+   return []
+  if value.startswith(("dados/cotahist/","docs/","registry/"," .gitattributes".strip(),".gitattributes",".github/","README")): return [value]
+  return []
+ i=0
  while i<len(ls):
   line=ls[i]
   if re.search(r"\bgit\s+add\b",line,re.I):
    cmd=line.split("git add",1)[-1].strip()
    while line.rstrip().endswith("\\") and i+1<len(ls):
     i+=1; line=ls[i]; cmd+=" "+line.strip().rstrip("\\")
-   for m in re.findall(r'''(?:"([^"]+)"|'([^']+)'|(\S+))''',re.sub(r"\s+#.*$","",cmd)):
-    v=next(z for z in m if z).rstrip(",;")
+   for match in re.findall(r'''(?:"([^"]+)"|'([^']+)'|(\S+))''',re.sub(r"\s+#.*$","",cmd)):
+    v=next(z for z in match if z).rstrip(",;")
     if v in {".","-A","--all"}: d.append("<entire-repository>")
-    elif v.startswith("$") or "$" in v: d.append(v)
-    elif v.startswith(("dados/cotahist/","docs/","registry/",".gitattributes",".github/","README")) and v not in p: p.append(v)
+    elif v.startswith("$"):
+     resolved=resolve(v)
+     if resolved: p.extend(resolved)
+     else: d.append("DYNAMIC:"+v)
+    elif "$" in v: d.append("DYNAMIC:"+v)
+    elif v.startswith(("dados/cotahist/","docs/","registry/",".gitattributes",".github/","README")): p.append(v)
   i+=1
- return sorted(p),sorted(set(d))
+ return sorted(set(p)),sorted(set(d))
+
 def classify(path,raw):
  t=uncomment(raw)
  if "cotahist" not in path.lower() and not re.search(r"dados/cotahist",t,re.I): return None
