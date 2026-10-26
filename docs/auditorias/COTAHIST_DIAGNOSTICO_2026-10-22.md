@@ -16,7 +16,7 @@ O normalizador parou no registo de linha 1485:
 - Último byte observado: offset 245, valor `39` (ASCII `9`)
 - O byte excedente **não é um espaço final**. Portanto, a hipótese de simplesmente remover um espaço terminal foi rejeitada.
 
-A evidência sugere uma anomalia de codificação ou conteúdo num campo de texto de largura fixa: o par `C3 82` corresponde a uma sequência UTF-8 multibyte, enquanto o registo é interpretado por posições de bytes. Esta é uma hipótese técnica a investigar, não uma confirmação da codificação oficial do ficheiro nem da intenção do emissor.
+O [layout oficial da B3](https://www.b3.com.br/data/files/33/67/B9/50/D84057102C784E47AC094EA8/SeriesHistoricas_Layout.pdf) especifica registos de 245 bytes e identifica `NOMRES` (nome resumido do emissor) nas posições 28–39. Os offsets zero-based 36–37 correspondem às posições 37–38, portanto o par `C3 82` está dentro de `NOMRES`, não no fim do registo. O par é uma sequência UTF-8 válida para `Â`, mas o layout consultado não determina por si só a codificação do ficheiro nem prova qual era o texto pretendido. A hipótese de incompatibilidade de codificação/conteúdo permanece por confirmar.
 
 ## Decisão
 
@@ -32,5 +32,5 @@ A evidência sugere uma anomalia de codificação ou conteúdo num campo de text
 - Importação do dia 23/10/2026: normalizou 16.898 cotações; SHA-256 do ZIP reportado pela CI: `d90845b442f17f9d004bbe2739bc2a59f450e9c413bd4ead8bc22317aed135af`.
 - Importação de 22/10/2026: falhou no registo 1485; manifesto e validação integral desse dia não foram produzidos.
 - Reconciliação anual e persistência: ignoradas após a falha.
-- Inventário de escritores: 10 de 11 testes passaram; um teste identificou uma colisão de escritores não controlada em `dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json`, entre dois workflows. É uma pendência de governança separada, não deve ser mascarada nem corrigida relaxando o teste.
+- Inventário de escritores: execução #24 encontrou colisão entre dois workflows para `dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json`. A correção em revisão retira a permissão de escrita e a publicação Git do workflow de reconciliação isolado; a cadeia FASE06→FASE12 permanece como publicador canónico e o workflow isolado deverá guardar apenas artefacto de auditoria. A correção ainda requer CI verde.
 
