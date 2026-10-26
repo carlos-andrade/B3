@@ -52,6 +52,22 @@ class NormalizeCotahistTests(unittest.TestCase):
                 normalize_line(valid_record()[:-1], line_number=125)
         self.assertIn("observed_bytes=244", stderr.getvalue())
 
+    def test_byte_utf8_multibyte_no_campo_e_rejeitado_com_offsets(self):
+        base = valid_record()
+        # Simula bytes UTF-8 multibyte dentro de um campo de texto de largura fixa.
+        bad = base[:36] + b"\\xc3\\x82" + base[37:-1] + b"9"
+        self.assertEqual(len(bad), 246)
+        stderr = io.StringIO()
+        with contextlib.redirect_stderr(stderr):
+            with self.assertRaisesRegex(ValueError, "246 bytes"):
+                normalize_line(bad, line_number=1485)
+        log = stderr.getvalue()
+        self.assertIn("line_number=1485", log)
+        self.assertIn("observed_bytes=246", log)
+        self.assertIn("36:c3", log)
+        self.assertIn("37:82", log)
+        self.assertIn("245:39", log)
+
     def test_tipo_de_registo_invalido_e_rejeitado(self):
         bad = b"02" + valid_record()[2:]
         with self.assertRaisesRegex(ValueError, "não é 01"):
