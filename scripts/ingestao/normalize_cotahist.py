@@ -100,10 +100,17 @@ def normalize_line(line: bytes, line_number: int | None = None) -> list[str]:
     if len(line) != 245:
         record_type = line[:2].decode("ascii", errors="backslashreplace") or "<vazio>"
         line_label = str(line_number) if line_number is not None else "desconhecida"
+        non_ascii_offsets = [i for i, value in enumerate(line) if value >= 0x80]
+        tail_start = max(0, len(line) - 16)
+        tail_indexed_hex = " ".join(
+            f"{i}:{line[i]:02x}" for i in range(tail_start, len(line))
+        )
         print(
             "COTAHIST_RECORD_LENGTH_MISMATCH "
             f"line_number={line_label} record_type={record_type!r} "
             f"observed_bytes={len(line)} expected_bytes=245 "
+            f"non_ascii_offsets={non_ascii_offsets} "
+            f"tail_indexed_hex={tail_indexed_hex} "
             f"hex={_hex_evidence(line)}",
             file=sys.stderr,
             flush=True,
