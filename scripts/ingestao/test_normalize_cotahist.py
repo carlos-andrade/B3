@@ -55,7 +55,7 @@ class NormalizeCotahistTests(unittest.TestCase):
     def test_byte_utf8_multibyte_no_campo_e_rejeitado_com_offsets(self):
         base = valid_record()
         # Simula bytes UTF-8 multibyte dentro de um campo de texto de largura fixa.
-        bad = base[:36] + b"\\xc3\\x82" + base[37:-1] + b"9"
+        bad = base[:36] + b"\xc3\x82" + base[37:-1] + b"9"
         self.assertEqual(len(bad), 246)
         stderr = io.StringIO()
         with contextlib.redirect_stderr(stderr):
