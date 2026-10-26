@@ -82,7 +82,10 @@ git push origin HEAD:main
     def test_repository_has_no_uncontrolled_or_shared_static_writers(self):
         data = MODULE.run(Path.cwd())
         self.assertEqual(data["writer_without_concurrency_count"], 0, data["writer_without_concurrency"])
-        self.assertEqual(data["uncontrolled_shared_resource_count"], 0, data["uncontrolled_shared_resources"])\n        self.assertEqual(data["shared_resource_count"], 1, data["shared_resources"])\n        self.assertEqual(data["shared_resources"][0]["path"], "dados/cotahist/normalized/anual/COTAHIST_A1987.csv")\n        self.assertEqual(data["writer_unresolved_variable_count"], 0, data["writer_unresolved_variables"])
+        self.assertEqual(data["uncontrolled_shared_resource_count"], 0, data["uncontrolled_shared_resources"])
+        self.assertEqual(data["shared_resource_count"], 1, data["shared_resources"])
+        self.assertEqual(data["shared_resources"][0]["path"], "dados/cotahist/normalized/anual/COTAHIST_A1987.csv")
+        self.assertEqual(data["writer_unresolved_variable_count"], 0, data["writer_unresolved_variables"])
 
     def test_inventory_does_not_write_to_repo(self):
         with tempfile.TemporaryDirectory() as temp:
