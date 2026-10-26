@@ -11,7 +11,7 @@ on:
       - "dados/cotahist/quality/COTAHIST_1994_FASE05_MANIFESTO_CHECKSUM_V1.json"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: cotahist-writer-cotahist-fase06-reconciliacao-1994-v1
@@ -122,13 +122,11 @@ jobs:
               sys.exit("FASE06 BLOQUEADA: divergências encontradas")
           PY
 
-      - name: Publicar evidência
-        if: success()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json
-          git diff --cached --quiet && exit 0
-          git commit -m "audit(cotahist): valida 1994 fase 06 reconciliacao"
-          git pull --rebase origin main
-          git push origin HEAD:main
+      - name: Guardar evidência como artefacto de auditoria
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotahist-1994-fase06-validacao
+          path: dados/cotahist/quality/COTAHIST_1994_FASE06_RECONCILIACAO_V1.json
+          if-no-files-found: warn
+          retention-days: 30
