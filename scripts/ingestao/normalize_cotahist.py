@@ -84,7 +84,7 @@ def parse_field(raw: bytes, kind: str) -> str:
 
 def strip_line_ending(raw: bytes) -> bytes:
     """Remove apenas terminadores de linha CR/LF; nunca remove espaços de dados."""
-    return raw.rstrip(b"\\r\\n")
+    return raw.rstrip(b"\r\n")
 
 
 def _hex_evidence(line: bytes, limit: int = 96) -> str:
