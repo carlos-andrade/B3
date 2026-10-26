@@ -1,7 +1,9 @@
 name: COTAHIST - M1 persistencia NORMALIZED anual 1987
+# Proprietario canonico do NORMALIZED A1987; concorrencia partilhada apenas com migracao administrativa LFS.
 
 on:
   push:
+    branches: [main]
     paths:
       - "docs/ingestao/FASE10A_M1_PERSISTENCIA_NORMALIZED_1987_V1.0.md"
   workflow_dispatch:
@@ -10,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-normalized-m1-1987
+  group: cotahist-normalized-a1987-writer
   cancel-in-progress: false
 
 jobs:

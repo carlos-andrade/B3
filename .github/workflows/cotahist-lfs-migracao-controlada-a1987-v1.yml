@@ -1,4 +1,5 @@
 name: COTAHIST - migração controlada Git LFS A1987
+# Excecao administrativa manual; M1 continua proprietario da escrita normal do CSV.
 
 on:
   workflow_dispatch:
@@ -16,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: cotahist-lfs-a1987-migracao-controlada
+  group: cotahist-normalized-a1987-writer
   cancel-in-progress: false
 
 jobs:
