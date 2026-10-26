@@ -20,6 +20,8 @@ on:
     paths:
       - ".github/workflows/cotahist-importacao-diaria-v1.yml"
       - "scripts/ingestao/importar_cotahist_diario_v1.py"
+      - "scripts/ingestao/normalize_cotahist.py"
+      - "scripts/ingestao/test_normalize_cotahist.py"
       - "scripts/ingestao/reconciliar_cotahist_anual_v1.py"
   schedule:
     - cron: "30 23 * * *"
