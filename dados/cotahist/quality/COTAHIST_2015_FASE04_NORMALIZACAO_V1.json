@@ -5,12 +5,14 @@
   "status": "VALIDADO",
   "decision": "LIBERADO_PARA_FASE05",
   "entry_gate": "FASE03",
-  "validation_method": "normalizacao_deterministica_com_script_canonico",
+  "validation_method": "normalizacao_deterministica_com_script_canonico_e_reconciliacao_manifesto",
   "raw_path": "dados/cotahist/raw/anual/COTAHIST_A2015.ZIP",
   "raw_sha256": "593f8740ec1aa87c80c54c623f1759530b6b32cdadd34a64f0fc66a529f34e35",
   "normalized_path": "dados/cotahist/normalized/anual/COTAHIST_A2015.csv",
   "normalized_manifest_path": "dados/cotahist/normalized/manifests/COTAHIST_A2015_quality.json",
-  "normalized_sha256": "9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d",
+  "normalized_sha256_calculated": "9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d",
+  "normalized_sha256_manifest": "9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d",
+  "normalized_sha256_sidecar": "9b767ef5089e2eddb6125b025b4deb7b456896d11a74486c727e56da8a59757d",
   "manifest_parser_version": "1.1.0",
   "normalizer_script_version": "1.1.2",
   "rows": 414177,
@@ -20,6 +22,13 @@
   "first_date": "2015-01-02",
   "last_date": "2015-12-30",
   "manifest_matches_computed": true,
-  "normalization_is_deterministically_reconciled": true,
-  "validated_at_utc": "2026-10-13T11:15:06.806440+00:00"
+  "blockers": [],
+  "raw_modified": false,
+  "deduplication_performed": false,
+  "validated_at_utc": "2026-10-26T14:21:36.997803+00:00",
+  "diagnostics": {
+    "normalizer_returncode": 0,
+    "normalizer_stdout": "NORMALIZADO: dados/cotahist/normalized/anual/COTAHIST_A2015.csv\nPARSER_VERSION=1.1.2\nCOTACOES_01=414177\nPRIMEIRA_DATA=2015-01-02\nULTIMA_DATA=2015-12-30\n",
+    "normalizer_stderr": ""
+  }
 }
