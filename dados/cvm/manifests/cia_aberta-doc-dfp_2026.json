@@ -11,10 +11,10 @@
   "package_license_title": "Licença Aberta para Bases de Dados (ODbL) do Open Data Commons",
   "package_url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp",
   "metadata_modified": "2026-10-19T11:01:10.208344",
-  "captured_at_utc": "2026-10-20T11:12:00.667980+00:00",
+  "captured_at_utc": "2026-10-26T01:43:53.128380+00:00",
   "http_method": "GET",
   "bytes": 243348,
-  "sha256": "b5a805d46cdb3c865eaff362013e2ff7df058b2112874d5be5e88cfe17dc50c6",
+  "sha256": "91098d4699e0cdca318deb97293bcbf462f36c39472675e224daf5895553cbf5",
   "raw_path": "dados/cvm/raw/cia_aberta-doc-dfp/dfp_cia_aberta_2026.zip",
   "validation": {
     "https_official_domain": true,

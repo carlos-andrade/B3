@@ -11,10 +11,10 @@
   "package_license_title": "Licença Aberta para Bases de Dados (ODbL) do Open Data Commons",
   "package_url": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr",
   "metadata_modified": "2026-10-19T11:01:14.711475",
-  "captured_at_utc": "2026-10-20T11:12:01.733383+00:00",
+  "captured_at_utc": "2026-10-26T01:43:54.274858+00:00",
   "http_method": "GET",
-  "bytes": 19690261,
-  "sha256": "56a82941d1c381b421a8075a584b498e4f183986ad526546e14682422773e6a1",
+  "bytes": 19947514,
+  "sha256": "eaac6b78aaf0dc38f337158480e401f2606057760694dd37c8d16da784f71881",
   "raw_path": "dados/cvm/raw/cia_aberta-doc-itr/itr_cia_aberta_2026.zip",
   "validation": {
     "https_official_domain": true,
