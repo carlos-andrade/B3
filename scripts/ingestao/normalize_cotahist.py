@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import sys
 import zipfile
 from datetime import datetime
 from decimal import Decimal
@@ -81,9 +82,36 @@ def parse_field(raw: bytes, kind: str) -> str:
     raise ValueError(kind)
 
 
-def normalize_line(line: bytes) -> list[str]:
+def strip_line_ending(raw: bytes) -> bytes:
+    """Remove apenas terminadores de linha CR/LF; nunca remove espaços de dados."""
+    return raw.rstrip(b"\r\n")
+
+
+def _hex_evidence(line: bytes, limit: int = 96) -> str:
+    """Representação hexadecimal limitada, sem despejar linhas inteiras nos logs."""
+    if len(line) <= limit:
+        return line.hex(" ")
+    head_size = limit // 2
+    tail_size = limit - head_size
+    return f"{line[:head_size].hex(' ')} ... {line[-tail_size:].hex(' ')}"
+
+
+def normalize_line(line: bytes, line_number: int | None = None) -> list[str]:
     if len(line) != 245:
-        raise ValueError(f"registro com {len(line)} bytes; esperado 245")
+        record_type = line[:2].decode("ascii", errors="backslashreplace") or "<vazio>"
+        line_label = str(line_number) if line_number is not None else "desconhecida"
+        print(
+            "COTAHIST_RECORD_LENGTH_MISMATCH "
+            f"line_number={line_label} record_type={record_type!r} "
+            f"observed_bytes={len(line)} expected_bytes=245 "
+            f"hex={_hex_evidence(line)}",
+            file=sys.stderr,
+            flush=True,
+        )
+        raise ValueError(
+            f"registro linha {line_label}, tipo {record_type!r}: "
+            f"{len(line)} bytes; esperado 245; evidência hexadecimal emitida"
+        )
     if line[:2] != b"01":
         raise ValueError("registro não é 01")
     return [parse_field(line[start - 1:end], kind) for _, start, end, kind in FIELDS]
@@ -107,11 +135,11 @@ def main() -> None:
         with zf.open(members[0]) as src, args.output.open("w", encoding="utf-8", newline="") as dst:
             writer = csv.writer(dst, lineterminator="\n")
             writer.writerow(HEADER)
-            for raw in src:
-                line = raw.rstrip(b"\r\n")
+            for line_number, raw in enumerate(src, start=1):
+                line = strip_line_ending(raw)
                 if line[:2] != b"01":
                     continue
-                row = normalize_line(line)
+                row = normalize_line(line, line_number=line_number)
                 writer.writerow(row)
                 quotes += 1
                 date = row[0]
