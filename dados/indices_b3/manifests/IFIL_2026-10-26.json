@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IFIL",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lGSUwnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IFIL?language=pt-br",
+  "captured_at": "2026-10-26T23:18:01.030107-03:00",
+  "reference_date": "2026-10-26",
+  "raw_file": "dados/indices_b3/raw/2026/IFIL_2026-10-26.json",
+  "raw_sha256": "5e7fe00ba45b4517240a140caa60c7130cdc7839ba99f29a6d1a621c4b7a9d44",
+  "normalized_file": "dados/indices_b3/normalized/2026/IFIL_2026-10-26.csv",
+  "normalized_sha256": "74e1f9e2317fcf2ce2587fd24ccd236e1b29343c1388943ead1a5d649daf898d",
+  "rows": 58,
+  "participation_sum_pct": 100.0,
+  "redutor": "79.619.902,31326584",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

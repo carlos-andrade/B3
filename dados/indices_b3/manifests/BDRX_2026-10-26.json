@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "BDRX",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0JEUlgnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/BDRX?language=pt-br",
+  "captured_at": "2026-10-26T23:18:01.030107-03:00",
+  "reference_date": "2026-10-26",
+  "raw_file": "dados/indices_b3/raw/2026/BDRX_2026-10-26.json",
+  "raw_sha256": "8c4e692525201812437ce27b43e739579723b13f4112cce11ff83b76b73be93f",
+  "normalized_file": "dados/indices_b3/normalized/2026/BDRX_2026-10-26.csv",
+  "normalized_sha256": "a16f02f45ef5202698cc190f57c1208aca5f5aed9fa95497191c5eb7614b52e9",
+  "rows": 135,
+  "participation_sum_pct": 100.0,
+  "redutor": "91.475.483,29120262",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
