@@ -4,7 +4,7 @@
   "catalog_api": "https://dadosabertos.bcb.gov.br/api/3/action/package_search",
   "license_required": "odc-odbl",
   "policy": "FAIL_CLOSED",
-  "checked_at_utc": "2026-10-27T02:10:48.739066+00:00",
+  "checked_at_utc": "2026-10-28T02:25:32.386295+00:00",
   "series_count": 5,
   "eligible_count": 3,
   "blocked_count": 2,
