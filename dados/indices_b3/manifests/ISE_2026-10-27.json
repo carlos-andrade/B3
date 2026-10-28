@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "ISE",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lTRUUnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/ISEE?language=pt-br",
+  "captured_at": "2026-10-27T23:30:36.981579-03:00",
+  "reference_date": "2026-10-27",
+  "raw_file": "dados/indices_b3/raw/2026/ISE_2026-10-27.json",
+  "raw_sha256": "084acb4152430eb8a1e22d4937a4116bb437dc4f43dd45587966e84831892701",
+  "normalized_file": "dados/indices_b3/normalized/2026/ISE_2026-10-27.csv",
+  "normalized_sha256": "4e8f363f3ebdade224148b2ee1510ae0cc7bdcdeb93588b9bf259e6c8ea348e3",
+  "rows": 68,
+  "participation_sum_pct": 100.0,
+  "redutor": "196.308.710,79973391",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

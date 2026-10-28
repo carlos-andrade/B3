@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IMAT",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lNQVQnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IMAT?language=pt-br",
+  "captured_at": "2026-10-27T23:30:36.981579-03:00",
+  "reference_date": "2026-10-27",
+  "raw_file": "dados/indices_b3/raw/2026/IMAT_2026-10-27.json",
+  "raw_sha256": "a28915ae759bcba5f84c72926a446d2b4850344f9772ad1ff60a95bbfa77bf81",
+  "normalized_file": "dados/indices_b3/normalized/2026/IMAT_2026-10-27.csv",
+  "normalized_sha256": "7b4d3962df8c400d55bc14a5d317882e1071830325c3c88f3e6f8a65d0974dd8",
+  "rows": 14,
+  "participation_sum_pct": 100.0,
+  "redutor": "20.982.223,46439680",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
