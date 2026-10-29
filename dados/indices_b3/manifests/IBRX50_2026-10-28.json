@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IBRX50",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lCWEwnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBXL?language=pt-br",
+  "captured_at": "2026-10-28T23:38:57.020583-03:00",
+  "reference_date": "2026-10-28",
+  "raw_file": "dados/indices_b3/raw/2026/IBRX50_2026-10-28.json",
+  "raw_sha256": "1b1a136e14f8c1a5cc3932e196ded230ba47b10e346b3c3caa7369db551711a4",
+  "normalized_file": "dados/indices_b3/normalized/2026/IBRX50_2026-10-28.csv",
+  "normalized_sha256": "59a4632b9b988ab3d1033be8c67b82980b25a148720627e8fb3a5cd0f9ce6c9d",
+  "rows": 50,
+  "participation_sum_pct": 100.0,
+  "redutor": "79.726.301,75814406",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
