@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "IGCNM",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lHTk0nLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/IGNM?language=pt-br",
+  "captured_at": "2026-10-29T23:46:41.022080-03:00",
+  "reference_date": "2026-10-29",
+  "raw_file": "dados/indices_b3/raw/2026/IGCNM_2026-10-29.json",
+  "raw_sha256": "9ffc4d115b996a7bc1d89a94f63491682d393013a5d9507166bbd694e41e0f81",
+  "normalized_file": "dados/indices_b3/normalized/2026/IGCNM_2026-10-29.csv",
+  "normalized_sha256": "bbfdaabc96f5ea566a336dafca5cc5faf832d33abf4d080d87ec215fa543b847",
+  "rows": 158,
+  "participation_sum_pct": 100.0,
+  "redutor": "338.654.626,75559385",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
