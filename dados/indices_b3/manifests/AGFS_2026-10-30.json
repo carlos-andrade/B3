@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "AGFS",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0FHRlMnLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/AGFS?language=pt-br",
+  "captured_at": "2026-10-30T23:38:23.090826-03:00",
+  "reference_date": "2026-10-30",
+  "raw_file": "dados/indices_b3/raw/2026/AGFS_2026-10-30.json",
+  "raw_sha256": "b1a21a76647fe83d42238114a117689821735226ff213085f8059a0da39dee6b",
+  "normalized_file": "dados/indices_b3/normalized/2026/AGFS_2026-10-30.csv",
+  "normalized_sha256": "ab6eeccaa69f7962b2970a2d5af8d86911b910d8cfd05dc4afe2723d1250a6d0",
+  "rows": 25,
+  "participation_sum_pct": 100.0,
+  "redutor": "62.185.134,17734531",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}

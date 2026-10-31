@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "INDICES_B3_COMPOSICAO_CARTEIRA",
+  "index_code": "ICO2",
+  "source": "B3",
+  "source_url": "https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/eydsYW5ndWFnZSc6ICdwdC1icicsICdwYWdlTnVtYmVyJzogMSwgJ3BhZ2VTaXplJzogMTAwMCwgJ2luZGV4JzogJ0lDTzInLCAnc2VnbWVudCc6ICcxJ30=",
+  "source_page_url": "https://sistemaswebb3-listados.b3.com.br/indexPage/day/ICO2?language=pt-br",
+  "captured_at": "2026-10-30T23:38:23.090826-03:00",
+  "reference_date": "2026-10-30",
+  "raw_file": "dados/indices_b3/raw/2026/ICO2_2026-10-30.json",
+  "raw_sha256": "9312d7ff605614a3540d36bcf58bcde96d2b373e700469c90c39c826babf9465",
+  "normalized_file": "dados/indices_b3/normalized/2026/ICO2_2026-10-30.csv",
+  "normalized_sha256": "c228766d91d50d0536e30afd217d23afe8b6566b97f0b0a34ad0eea09fcc273c",
+  "rows": 61,
+  "participation_sum_pct": 100.0,
+  "redutor": "284.301.673,98947754",
+  "duplicates": 0,
+  "future_reference_date": false,
+  "future_reference_days": 0,
+  "future_reference_policy": "PRE_PUBLICACAO_B3_JANELA_3_DIAS",
+  "status": "VALIDADO",
+  "fail_closed": true
+}
